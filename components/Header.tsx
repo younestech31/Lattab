@@ -1,0 +1,139 @@
+'use client';
+import { useState } from 'react';
+import Image from 'next/image';
+
+interface HeaderProps {
+  isScrolled: boolean;
+}
+
+const Header = ({ isScrolled }: HeaderProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: '#home', label: 'الرئيسية' },
+    { href: '#services', label: 'خدماتنا' },
+    { href: '#calculator', label: 'حاسبة مرجعية' },
+    { href: '#why-choose-us', label: 'لماذا نحن' },
+    { href: '#about', label: 'عن الموثق' },
+    { href: '#procedures', label: 'الإجراءات' },
+    { href: '#testimonials', label: 'آراء العملاء' },
+    { href: '#legal-updates', label: 'أخبار قانونية' },
+    { href: '#faq', label: 'الأسئلة الشائعة' },
+    { href: '#contact', label: 'اتصل بنا' },
+  ];
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || isMenuOpen
+          ? 'bg-white shadow-lg py-2'
+          : 'bg-transparent py-4'
+      }`}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <a href="#home" className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-white">
+              <Image
+                src="https://ia600106.us.archive.org/3/items/logo_black_202604/logo_black.png"
+                alt="Logo"
+                width={48}
+                height={48}
+                referrerPolicy="no-referrer"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h1 className={`text-xl font-bold ${isScrolled || isMenuOpen ? 'text-gray-800' : 'text-white'}`}>
+               الأستاذ لعطب محمد
+              </h1>
+              <p className={`text-xs ${isScrolled || isMenuOpen ? 'text-emerald-600' : 'text-emerald-200'}`}>
+                موثق معتمد
+              </p>
+            </div>
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden xl:flex items-center gap-4 xl:gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap ${
+                  isScrolled ? 'text-gray-700' : 'text-white'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+            >
+              احجز موعد
+            </a>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`xl:hidden p-2 rounded-lg ${
+              isScrolled || isMenuOpen ? 'text-gray-700' : 'text-white'
+            }`}
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <nav className={`xl:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}>
+            <div className="flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`font-medium text-gray-700`}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium text-center transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                احجز موعد
+              </a>
+            </div>
+          </nav>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;
