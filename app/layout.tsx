@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     locale: 'ar_DZ',
     images: [
       {
-        url: '/logo.png',
+        url: 'https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png',
         width: 800,
         height: 600,
         alt: 'مكتب الأستاذ لعطب محمد',
@@ -41,7 +41,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               "@context": "https://schema.org",
               "@type": "Notary",
               "name": "مكتب الأستاذ لعطب محمد - موثق معتمد",
-              "image": "https://lattab.vercel.app/logo.png",
+              "image": "https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png",
               "@id": "https://lattab.vercel.app",
               "url": "https://lattab.vercel.app",
               "telephone": "+213562296981",

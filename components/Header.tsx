@@ -35,7 +35,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
           <a href="#home" className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-white">
               <Image
-                src="/logo.png"
+                src="https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png"
                 alt="Logo"
                 width={48}
                 height={48}
