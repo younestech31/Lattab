@@ -16,7 +16,6 @@ const Header = ({ isScrolled }: HeaderProps) => {
     { href: '#why-choose-us', label: 'لماذا نحن' },
     { href: '#about', label: 'عن الموثق' },
     { href: '#procedures', label: 'الإجراءات' },
-    { href: '#testimonials', label: 'آراء العملاء' },
     { href: '#legal-updates', label: 'أخبار قانونية' },
     { href: '#faq', label: 'الأسئلة الشائعة' },
     { href: '#contact', label: 'اتصل بنا' },

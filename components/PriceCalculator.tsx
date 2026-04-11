@@ -8,6 +8,7 @@ const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
   const [regionId, setRegionId] = useState<string>('oran_est');
+  const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
   const [categoryIdx, setCategoryIdx] = useState<number | ''>('');
   const [typeIdx, setTypeIdx] = useState<number | ''>('');
   const [zoneKey, setZoneKey] = useState<string>('');
@@ -20,9 +21,15 @@ export default function PriceCalculator() {
   const availableZones = useMemo(() => {
     if (!selectedType) return [];
     return Object.entries(selectedType.zones)
-      .filter(([_, values]: [string, any]) => values.min !== null && values.max !== null)
+      .filter(([_, values]: [string, any]) => {
+        if (calculationMode === 'sale') {
+          return values.min !== null && values.max !== null;
+        } else {
+          return values.rent_min !== null && values.rent_max !== null && values.rent_min !== undefined && values.rent_max !== undefined;
+        }
+      })
       .map(([key]) => key);
-  }, [selectedType]);
+  }, [selectedType, calculationMode]);
 
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 
@@ -48,12 +55,30 @@ export default function PriceCalculator() {
     if (categoryIdx === '' || typeIdx === '' || zoneKey === '' || area === '' || area <= 0) {
       return null;
     }
-    if (!priceData || priceData.min === null || priceData.max === null) return null;
+    if (!priceData) return null;
 
-    const totalMin = priceData.min * Number(area);
-    const totalMax = priceData.max * Number(area);
+    const min = calculationMode === 'sale' ? priceData.min : priceData.rent_min;
+    const max = calculationMode === 'sale' ? priceData.max : priceData.rent_max;
 
-    return { totalMin, totalMax, min: priceData.min, max: priceData.max };
+    if (min === null || max === null || min === undefined || max === undefined) return null;
+
+    const totalMin = min * Number(area);
+    const totalMax = max * Number(area);
+
+    let taxRate = 0;
+    if (calculationMode === 'rent') {
+      const catName = selectedCategory?.categorie;
+      // IRG rates in Algeria: 7% for residential, 15% for commercial/professional
+      if (catName === 'Individuels' || catName === 'Collectifs et Semi-Collectifs') {
+        taxRate = 0.07;
+      } else if (catName === 'Locaux Commerciaux et Locaux à Usage Professionnels' || catName === 'Hangars') {
+        taxRate = 0.15;
+      } else {
+        taxRate = 0.15; // Default for others if rented
+      }
+    }
+
+    return { totalMin, totalMax, min, max, taxRate };
   };
 
   const result = calculatePrice();
@@ -71,11 +96,35 @@ export default function PriceCalculator() {
               حاسبة الأسعار المرجعية للتصريح العقاري
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              احسب الحد الأدنى والأقصى للتصريح بثمن بيع العقار لتفادي المراجعات الضريبية، بناءً على جدول 2025-2026 (وهران).
+              احسب الحد الأدنى والأقصى للتصريح بثمن {calculationMode === 'sale' ? 'بيع' : 'إيجار'} العقار لتفادي المراجعات الضريبية، بناءً على جدول 2025-2026 (وهران).
             </p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10 border border-emerald-100">
+            {/* Mode Toggle */}
+            <div className="flex p-1 bg-gray-100 rounded-2xl mb-8 max-w-md mx-auto">
+              <button
+                onClick={() => setCalculationMode('sale')}
+                className={`flex-1 py-3 px-6 rounded-xl font-bold transition-all ${
+                  calculationMode === 'sale'
+                    ? 'bg-white text-emerald-600 shadow-sm'
+                    : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                بيع العقار
+              </button>
+              <button
+                onClick={() => setCalculationMode('rent')}
+                className={`flex-1 py-3 px-6 rounded-xl font-bold transition-all ${
+                  calculationMode === 'rent'
+                    ? 'bg-white text-emerald-600 shadow-sm'
+                    : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                إيجار العقار
+              </button>
+            </div>
+
             <div className="grid md:grid-cols-2 gap-8">
               {/* Form Section */}
               <div className="space-y-6">
@@ -181,14 +230,18 @@ export default function PriceCalculator() {
                     <h4 className="text-xl font-bold mb-6 text-emerald-50">النتيجة التقريبية</h4>
                     
                     <div className="mb-6 bg-emerald-700/30 rounded-xl p-4">
-                      <p className="text-sm text-emerald-100 mb-2">السعر للمتر المرجعي:</p>
+                      <p className="text-sm text-emerald-100 mb-2">
+                        {calculationMode === 'sale' ? 'السعر للمتر المرجعي:' : 'مبلغ الإيجار المرجعي للمتر:'}
+                      </p>
                       <p className="font-medium text-lg">
                         من <span className="font-bold text-amber-300">{result.min.toLocaleString()}</span> إلى <span className="font-bold text-amber-300">{result.max.toLocaleString()}</span> د.ج
                       </p>
                     </div>
 
                     <div className="bg-emerald-800/40 rounded-xl p-6 border border-emerald-500/30">
-                      <p className="text-emerald-100 font-medium mb-3">إجمالي التصريح المرجعي:</p>
+                      <p className="text-emerald-100 font-medium mb-3">
+                        {calculationMode === 'sale' ? 'إجمالي التصريح المرجعي:' : 'إجمالي مبلغ الإيجار الشهري المرجعي:'}
+                      </p>
                       <div className="space-y-2" dir="ltr">
                         <p className="text-2xl md:text-3xl font-bold text-white">
                           {formatter.format(result.totalMin)}
@@ -199,6 +252,27 @@ export default function PriceCalculator() {
                         </p>
                       </div>
                     </div>
+
+                    {calculationMode === 'rent' && result.taxRate > 0 && (
+                      <div className="mt-6 pt-6 border-t border-emerald-500/30">
+                        <p className="text-emerald-100 text-sm mb-3">
+                          الضريبة على الدخل الإجمالي (IRG) المقدرة ({result.taxRate * 100}%):
+                        </p>
+                        <div className="grid grid-cols-2 gap-4" dir="ltr">
+                          <div className="bg-emerald-900/40 rounded-lg p-3">
+                            <p className="text-xs text-emerald-300 mb-1">الحد الأدنى</p>
+                            <p className="font-bold text-white">{formatter.format(result.totalMin * result.taxRate)}</p>
+                          </div>
+                          <div className="bg-emerald-900/40 rounded-lg p-3">
+                            <p className="text-xs text-emerald-300 mb-1">الحد الأقصى</p>
+                            <p className="font-bold text-white">{formatter.format(result.totalMax * result.taxRate)}</p>
+                          </div>
+                        </div>
+                        <p className="text-[10px] text-emerald-200 mt-3 text-right" dir="rtl">
+                          * هذه الضريبة تُدفع شهرياً أو سنوياً حسب الحالة.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div className="h-full min-h-[300px] border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center p-8 text-center bg-gray-50/50">

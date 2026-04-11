@@ -6,7 +6,6 @@ import Services from '@/components/Services';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import About from '@/components/About';
 import Procedures from '@/components/Procedures';
-import Testimonials from '@/components/Testimonials';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
@@ -34,7 +33,6 @@ export default function Home() {
         <WhyChooseUs />
         <About />
         <Procedures />
-        <Testimonials />
         <LegalUpdates />
         <FAQ />
         <Contact />

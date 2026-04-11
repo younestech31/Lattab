@@ -22,9 +22,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-pattern-plus opacity-50" />
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>

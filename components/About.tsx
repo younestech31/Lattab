@@ -90,8 +90,10 @@ const About = () => {
           {/* Image/Visual */}
           <div className="relative">
             <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-3xl p-8 text-white relative overflow-hidden">
-              {/* Professional Photo */}
-              <div className="relative w-full h-80 mb-8 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+              <div className="absolute inset-0 bg-pattern-plus opacity-30" />
+              <div className="relative z-10">
+                {/* Professional Photo */}
+                <div className="relative w-full h-80 mb-8 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
                 <Image
                   src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80"
                   alt="الأستاذ لعطب محمد"
@@ -128,8 +130,9 @@ const About = () => {
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Decorative Elements */}
+          {/* Decorative Elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-amber-400 rounded-2xl -z-10 opacity-50" />
             <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-emerald-200 rounded-2xl -z-10 opacity-50" />
           </div>

@@ -9,7 +9,6 @@ const Services = () => {
       title: 'عقود البيع والشراء العقارية',
       description: 'توثيق كامل لعقود بيع وشراء العقارات مع ضمان الصحة القانونية والتحقق من الملكية والرهون.',
       features: ['عقود بيع عقارات سكنية', 'عقود بيع محلات تجارية', 'عقود بيع أراضي', 'عقود بيع مركبات'],
-      time: 'من 24 إلى 48 ساعة'
     },
     {
       icon: (
@@ -20,7 +19,6 @@ const Services = () => {
       title: 'عقود الإيجار والتأجير',
       description: 'إعداد عقود إيجار شاملة مع جميع الضمانات القانونية لحماية حقوق المؤجر والمستأجر.',
       features: ['إيجار سكني طويل الأمد', 'إيجار تجاري', 'عقود إيجار موسمية', 'تجديد العقود'],
-      time: '24 ساعة'
     },
     {
       icon: (
@@ -31,7 +29,6 @@ const Services = () => {
       title: 'الوكالات والتفويضات',
       description: 'إعداد جميع أنواع الوكالات مع تحديد الصلاحيات بدقة لحماية حقوق الموكل.',
       features: ['وكالة عامة كاملة', 'وكالة خاصة محددة', 'وكالة قضائية', 'وكالة بنكية'],
-      time: 'من 4 إلى 8 ساعات'
     },
     {
       icon: (
@@ -116,17 +113,6 @@ const Services = () => {
                 ))}
               </ul>
 
-              {/* Time */}
-              {service.time && (
-                <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-4">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>{service.time}</span>
-                  </div>
-                </div>
-              )}
             </div>
           ))}
         </div>
