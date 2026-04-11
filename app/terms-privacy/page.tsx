@@ -1,9 +1,25 @@
-import React from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { WORKING_HOURS } from '@/lib/constants';
 
 const TermsPrivacyPage = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-20" dir="rtl">
+    <div className="min-h-screen bg-white">
+      <Header isScrolled={isScrolled} />
+      <main className="bg-gray-50 pt-24 pb-20" dir="rtl">
       {/* Hero Section */}
       <div className="bg-emerald-900 text-white py-20 mb-12 relative overflow-hidden">
         {/* Decorative background pattern */}
@@ -19,7 +35,7 @@ const TermsPrivacyPage = () => {
 
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Important Notice */}
-        <div className="bg-amber-50 border-r-4 border-amber-500 p-6 rounded-2xl mb-12 flex flex-col sm:flex-row items-start gap-4 shadow-sm">
+        <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-2xl mb-12 flex flex-col sm:flex-row items-start gap-4 shadow-sm">
           <AlertTriangle className="w-8 h-8 text-amber-500 flex-shrink-0 mt-1" />
           <div>
             <h3 className="text-lg font-bold text-amber-900 mb-2">إشعار هام</h3>
@@ -166,7 +182,7 @@ const TermsPrivacyPage = () => {
                   </table>
                 </div>
 
-                <div className="bg-red-50 border-r-4 border-red-500 p-6 rounded-2xl mb-8 flex items-start gap-4">
+                <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-2xl mb-8 flex items-start gap-4">
                   <Shield className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-bold text-red-900 mb-2">ما لا نجمعه إطلاقاً عبر الموقع:</h4>
@@ -225,7 +241,7 @@ const TermsPrivacyPage = () => {
                     </div>
                     <div className="flex items-center gap-4 text-gray-700">
                       <Clock className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span>الأحد - الخميس: 08:30 - 16:00</span>
+                      <span>{WORKING_HOURS.full}</span>
                     </div>
                   </div>
                 </div>
@@ -249,7 +265,9 @@ const TermsPrivacyPage = () => {
           <p>الإصدار: 1.1 | تاريخ آخر تحديث: {new Date().toLocaleDateString('ar-DZ')}</p>
           <p className="mt-2 font-medium">جميع الحقوق محفوظة © {new Date().getFullYear()} - مكتب الموثق الأستاذ لعطب محمد</p>
         </div>
-      </div>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };

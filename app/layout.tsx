@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     description: 'خدمات التوثيق القانوني في الجزائر - توثيق العقود وحساب الأسعار المرجعية للعقار 2026.',
     type: 'website',
     locale: 'ar_DZ',
+    images: [
+      {
+        url: '/logo.png',
+        width: 800,
+        height: 600,
+        alt: 'مكتب الأستاذ لعطب محمد',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -33,7 +41,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               "@context": "https://schema.org",
               "@type": "Notary",
               "name": "مكتب الأستاذ لعطب محمد - موثق معتمد",
-              "image": "https://ia600106.us.archive.org/3/items/logo_black_202604/logo_black.png",
+              "image": "https://lattab.vercel.app/logo.png",
               "@id": "https://lattab.vercel.app",
               "url": "https://lattab.vercel.app",
               "telephone": "+213562296981",
@@ -60,6 +68,18 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                     "Thursday"
                   ],
                   "opens": "08:30",
+                  "closes": "12:00"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday"
+                  ],
+                  "opens": "13:30",
                   "closes": "16:00"
                 }
               ],

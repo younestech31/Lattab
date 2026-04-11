@@ -25,7 +25,7 @@ const WhyChooseUs = () => {
     {
       icon: <MapPin className="w-8 h-8" />,
       title: "موقع مركزي",
-      description: "مكتبنا يقع في موقع مركزي ومميز في العاصمة، مع مواقف مجانية للسيارات."
+      description: "مكتبنا يقع في موقع مركزي ومميز في وهران، مع مواقف مجانية للسيارات."
     },
     {
       icon: <Smartphone className="w-8 h-8" />,
@@ -51,14 +51,14 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div 
               key={index}
               className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100 hover:border-emerald-300"
             >
               <div className="flex items-start mb-4">
-                <div className="p-3 bg-emerald-100 text-emerald-600 rounded-lg mr-4">
+                <div className="p-3 bg-emerald-100 text-emerald-600 rounded-lg ml-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-emerald-900">

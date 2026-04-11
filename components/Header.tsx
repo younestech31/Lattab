@@ -35,11 +35,10 @@ const Header = ({ isScrolled }: HeaderProps) => {
           <a href="#home" className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-white">
               <Image
-                src="https://ia600106.us.archive.org/3/items/logo_black_202604/logo_black.png"
+                src="/logo.png"
                 alt="Logo"
                 width={48}
                 height={48}
-                referrerPolicy="no-referrer"
                 className="object-cover"
               />
             </div>
@@ -77,6 +76,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
             className={`lg:hidden p-2 rounded-lg ${
               isScrolled || isMenuOpen ? 'text-gray-700' : 'text-white'
             }`}
@@ -108,7 +108,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className={`xl:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}>
+          <nav className={`lg:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}>
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a

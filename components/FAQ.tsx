@@ -1,8 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { Accordion } from './ui/Accordion';
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
@@ -104,51 +103,13 @@ const FAQ = () => {
 
           {/* Right Side - FAQ List */}
           <div className="lg:col-span-2">
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div
-                  key={index}
-                  className={`bg-gray-50 rounded-xl overflow-hidden transition-all ${
-                    openIndex === index ? 'ring-2 ring-emerald-500' : ''
-                  }`}
-                >
-                  <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full flex items-center justify-between p-5 text-right"
-                  >
-                    <span className="font-bold text-gray-800 flex-1">{faq.question}</span>
-                    <span
-                      className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mr-4 transition-colors ${
-                        openIndex === index
-                          ? 'bg-emerald-600 text-white'
-                          : 'bg-gray-200 text-gray-500'
-                      }`}
-                    >
-                      <svg
-                        className={`w-4 h-4 transition-transform ${
-                          openIndex === index ? 'rotate-180' : ''
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </span>
-                  </button>
-                  {openIndex === index && (
-                    <div className="px-5 pb-5">
-                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+            <Accordion 
+              items={faqs.map(faq => ({
+                title: faq.question,
+                content: <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+              }))}
+              initialOpenIndex={0}
+            />
           </div>
         </div>
       </div>

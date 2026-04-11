@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle } from 'lucide-react';
 
+import { WORKING_HOURS } from '@/lib/constants';
+
 const Contact = () => {
   const [activeTab, setActiveTab] = useState<'appointment' | 'inquiry'>('appointment');
 
@@ -53,7 +55,14 @@ const Contact = () => {
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const message = `استفسار عام:%0Aالاسم: ${inquiryData.name}%0Aالخدمة: ${inquiryData.service}%0Aالرسالة: ${inquiryData.message}`;
-    window.open(`https://wa.me/213562296981?text=${message}`, '_blank');
+    window.open(`https://wa.me/213562296981?text=${message}`, '_blank', 'noopener,noreferrer');
+    setIsInquirySubmitted(true);
+  };
+
+  const isWeekend = (dateString: string) => {
+    const date = new Date(dateString);
+    const day = date.getUTCDay();
+    return day === 5 || day === 6; // 5 = Friday, 6 = Saturday
   };
 
   const handleAppointmentSubmit = (e: React.FormEvent) => {
@@ -62,8 +71,13 @@ const Contact = () => {
       alert('يرجى اختيار وقت الموعد');
       return;
     }
+    if (isWeekend(appointmentData.date)) {
+      alert('عذراً، المكتب مغلق في عطلة نهاية الأسبوع (الجمعة والسبت). يرجى اختيار يوم آخر.');
+      return;
+    }
     const message = `طلب حجز موعد:%0Aالاسم: ${appointmentData.name}%0Aالهاتف: ${appointmentData.phone}%0Aالبريد الإلكتروني: ${appointmentData.email || 'غير متوفر'}%0Aالشركة/المؤسسة: ${appointmentData.company || 'غير متوفر'}%0Aالخدمة: ${appointmentData.service}%0Aالتاريخ: ${appointmentData.date}%0Aالوقت: ${appointmentData.time}%0Aملاحظات: ${appointmentData.notes}`;
-    window.open(`https://wa.me/213562296981?text=${message}`, '_blank');
+    window.open(`https://wa.me/213562296981?text=${message}`, '_blank', 'noopener,noreferrer');
+    setIsAppointmentSubmitted(true);
   };
 
   const services = [
@@ -186,11 +200,11 @@ const Contact = () => {
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">أوقات العمل</h3>
                   <p className="text-gray-600 text-sm">
-                    الأحد - الخميس: 08:30 - 12:00
+                    {WORKING_HOURS.days}: {WORKING_HOURS.morning}
                     <br />
-                    و 13:30 - 16:00
+                    و {WORKING_HOURS.afternoon}
                     <br />
-                    الجمعة والسبت: مغلق
+                    {WORKING_HOURS.closed}
                   </p>
                 </div>
               </div>

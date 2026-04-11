@@ -1,4 +1,5 @@
 import React from 'react';
+import { Accordion } from './ui/Accordion';
 
 const Procedures = () => {
   const generalDocuments = [
@@ -286,28 +287,11 @@ const Procedures = () => {
         {/* Procedures Accordion */}
         <div className="max-w-4xl mx-auto space-y-4 mb-12">
           <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">الوثائق والإجراءات حسب نوع المعاملة</h3>
-          {procedureTypes.map((procedure, index) => (
-            <details
-              key={index}
-              className="group bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600">
-                    {procedure.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800">
-                    {procedure.title}
-                  </h3>
-                </div>
-                <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform">
-                  <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </summary>
-
-              <div className="px-6 pb-6">
+          <Accordion 
+            items={procedureTypes.map((procedure) => ({
+              title: procedure.title,
+              icon: procedure.icon,
+              content: (
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* Documents */}
                   <div className="bg-gray-50 rounded-xl p-5">
@@ -349,9 +333,9 @@ const Procedures = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
-            </details>
-          ))}
+              )
+            }))}
+          />
         </div>
 
         {/* Fees and Expenses */}

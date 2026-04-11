@@ -1,6 +1,7 @@
 'use client';
 import { MessageCircle } from 'lucide-react';
-
+// Note: Lucide doesn't have a specific WhatsApp icon, but we can use a custom SVG or keep MessageCircle.
+// Since the user asked for "WhatsApp icon", I will use a custom SVG for better representation.
 const FloatingWhatsApp = () => {
   return (
     <a

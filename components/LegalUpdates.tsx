@@ -56,12 +56,6 @@ const LegalUpdates = () => {
               ابقَ على اطلاع بأحدث التطورات القانونية والتشريعية في الجزائر
             </p>
           </div>
-          <button 
-            onClick={() => alert('سيتم إضافة صفحة مخصصة لجميع المقالات قريباً.')}
-            className="mt-4 md:mt-0 px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-300 font-medium"
-          >
-            عرض جميع المقالات
-          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
