@@ -134,7 +134,7 @@ const Services = () => {
         {/* CTA */}
         <div className="text-center mt-12">
           <a
-            href="#contact"
+            href="#inquiry"
             className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-bold transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

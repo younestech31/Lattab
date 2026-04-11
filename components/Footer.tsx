@@ -5,7 +5,7 @@ const Footer = () => {
     { href: '#about', label: 'عن المكتب' },
     { href: '#procedures', label: 'الإجراءات' },
     { href: '#faq', label: 'الأسئلة الشائعة' },
-    { href: '#contact', label: 'تواصل معنا' },
+    { href: '#appointment', label: 'تواصل معنا' },
     { href: '/terms-privacy', label: 'الشروط والأحكام وسياسة الخصوصية' },
   ];
 

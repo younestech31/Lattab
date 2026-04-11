@@ -68,7 +68,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
               </a>
             ))}
             <a
-              href="#contact"
+              href="#appointment"
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
             >
               احجز موعد
@@ -122,7 +122,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="#appointment"
                 className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium text-center transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >

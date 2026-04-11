@@ -49,7 +49,7 @@ const Hero = () => {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
               <div className="text-3xl md:text-4xl font-bold text-white">15+</div>
               <div className="text-emerald-200 text-sm">سنة خبرة</div>
@@ -57,10 +57,6 @@ const Hero = () => {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
               <div className="text-3xl md:text-4xl font-bold text-white">10,000+</div>
               <div className="text-emerald-200 text-sm">معاملة ناجحة</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-              <div className="text-3xl md:text-4xl font-bold text-white">24</div>
-              <div className="text-emerald-200 text-sm">ساعة دعم</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
               <div className="text-3xl md:text-4xl font-bold text-white">99%</div>
@@ -71,7 +67,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#contact"
+              href="#appointment"
               className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

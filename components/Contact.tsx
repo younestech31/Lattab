@@ -1,9 +1,26 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
   const [activeTab, setActiveTab] = useState<'appointment' | 'inquiry'>('appointment');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#appointment' || hash === '#contact') {
+        setActiveTab('appointment');
+      } else if (hash === '#inquiry') {
+        setActiveTab('inquiry');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    // Check on mount
+    handleHashChange();
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
   
   // Inquiry Form State
   const [inquiryData, setInquiryData] = useState({
@@ -62,7 +79,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-12 bg-gray-50">
+    <section id="contact" className="py-12 bg-gray-50 relative">
+      {/* Anchors for scrolling with offset */}
+      <div id="appointment" className="absolute -top-24"></div>
+      <div id="inquiry" className="absolute -top-24"></div>
+      
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
