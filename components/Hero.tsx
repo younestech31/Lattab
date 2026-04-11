@@ -4,15 +4,9 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center bg-emerald-900 pt-20"
     >
-      {/* Background Image with Overlay */}
+      {/* Background Overlays */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80")',
-          }}
-        />
-        <div className="absolute inset-0 bg-emerald-900/80 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-emerald-900" />
         <div className="absolute inset-0 bg-gradient-to-t from-emerald-900 via-emerald-900/60 to-transparent" />
       </div>
 

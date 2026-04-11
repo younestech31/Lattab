@@ -41,6 +41,23 @@ const FAQ = () => {
 
   return (
     <section id="faq" className="py-12 bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Side - Info */}
