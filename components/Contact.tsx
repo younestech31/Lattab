@@ -198,7 +198,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
+          <div id="booking-form" className="lg:col-span-2 scroll-mt-24">
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               {/* Tabs */}
               <div className="flex gap-4 mb-8 border-b border-gray-100 pb-4">
