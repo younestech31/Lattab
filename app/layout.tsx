@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import { Cairo } from 'next/font/google';
 import './globals.css'; // Global styles
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
 
@@ -69,7 +70,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           }}
         />
       </head>
-      <body className="font-cairo" suppressHydrationWarning>{children}</body>
+      <body className="font-cairo" suppressHydrationWarning>
+        {children}
+        <FloatingWhatsApp />
+      </body>
     </html>
   );
 }

@@ -1,14 +1,14 @@
-import { CheckCircle, Shield, Clock, Award, Users, FileCheck, Building, Globe } from 'lucide-react';
+import { ShieldCheck, Zap, Award, FileText, MapPin, Smartphone, CheckSquare } from 'lucide-react';
 
 const WhyChooseUs = () => {
   const features = [
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <ShieldCheck className="w-8 h-8" />,
       title: "موثق معتمد من الدولة",
       description: "مكتبنا مرخص ومعتمد من وزارة العدل الجزائرية، مما يضمن صحة وكفاءة جميع المعاملات التوثيقية."
     },
     {
-      icon: <Clock className="w-8 h-8" />,
+      icon: <Zap className="w-8 h-8" />,
       title: "خدمة سريعة وفورية",
       description: "نقدم خدمات توثيقية سريعة مع إمكانية إنجاز المعاملات في نفس اليوم للخدمات العاجلة."
     },
@@ -18,22 +18,22 @@ const WhyChooseUs = () => {
       description: "أكثر من 15 عامًا من الخبرة في مجال التوثيق والقانون، مع آلاف المعاملات الناجحة."
     },
     {
-      icon: <FileCheck className="w-8 h-8" />,
+      icon: <FileText className="w-8 h-8" />,
       title: "دقة في التفاصيل",
       description: "نحرص على الدقة القانونية في كل وثيقة، مع مراجعة شاملة لكل التفاصيل قبل التوقيع."
     },
     {
-      icon: <Building className="w-8 h-8" />,
+      icon: <MapPin className="w-8 h-8" />,
       title: "موقع مركزي",
       description: "مكتبنا يقع في موقع مركزي ومميز في العاصمة، مع مواقف مجانية للسيارات."
     },
     {
-      icon: <Globe className="w-8 h-8" />,
+      icon: <Smartphone className="w-8 h-8" />,
       title: "خدمات إلكترونية",
       description: "نقدم خدمات توثيقية إلكترونية وحجز مواعيد عبر الإنترنت لتسهيل العملية على العملاء."
     },
     {
-      icon: <CheckCircle className="w-8 h-8" />,
+      icon: <CheckSquare className="w-8 h-8" />,
       title: "ضمان الجودة",
       description: "نضمن صحة وسلامة جميع الوثائق الموثقة، مع متابعة ما بعد التوثيق إذا لزم الأمر."
     }

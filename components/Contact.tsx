@@ -273,7 +273,7 @@ const Contact = () => {
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                           <Mail className="inline w-4 h-4 ml-2" />
-                          البريد الإلكتروني
+                          البريد الإلكتروني (اختياري)
                         </label>
                         <input
                           type="email"
@@ -394,6 +394,7 @@ const Contact = () => {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <User className="inline w-4 h-4 ml-2" />
                           الاسم الكامل *
                         </label>
                         <input
@@ -407,6 +408,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <Phone className="inline w-4 h-4 ml-2" />
                           رقم الهاتف *
                         </label>
                         <input
@@ -424,7 +426,8 @@ const Contact = () => {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          البريد الإلكتروني
+                          <Mail className="inline w-4 h-4 ml-2" />
+                          البريد الإلكتروني (اختياري)
                         </label>
                         <input
                           type="email"
@@ -437,6 +440,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <FileText className="inline w-4 h-4 ml-2" />
                           الخدمة المتعلقة بالاستفسار *
                         </label>
                         <select

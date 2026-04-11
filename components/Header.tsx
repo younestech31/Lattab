@@ -54,7 +54,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-4 xl:gap-6">
+          <nav className="hidden lg:flex items-center gap-4 lg:gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -67,7 +67,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
               </a>
             ))}
             <a
-              href="#appointment"
+              href="#booking-form"
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
             >
               احجز موعد
@@ -77,7 +77,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`xl:hidden p-2 rounded-lg ${
+            className={`lg:hidden p-2 rounded-lg ${
               isScrolled || isMenuOpen ? 'text-gray-700' : 'text-white'
             }`}
           >
