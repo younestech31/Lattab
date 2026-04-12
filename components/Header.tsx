@@ -43,9 +43,9 @@ const Header = ({ isScrolled }: HeaderProps) => {
               />
             </div>
             <div>
-              <h1 className={`text-xl font-bold ${isScrolled || isMenuOpen ? 'text-gray-800' : 'text-white'}`}>
+              <span className={`block text-xl font-bold ${isScrolled || isMenuOpen ? 'text-gray-800' : 'text-white'}`}>
                الأستاذ لعطب محمد
-              </h1>
+              </span>
               <p className={`text-xs ${isScrolled || isMenuOpen ? 'text-emerald-600' : 'text-emerald-200'}`}>
                 موثق معتمد
               </p>

@@ -10,25 +10,6 @@ export const metadata: Metadata = {
   description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق عقود البيع، حساب السعر المرجعي للعقار 2026، وتأسيس الشركات. خبرة 15 عاماً في القانون العقاري الجزائري.',
   keywords: ['موثق وهران', 'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026', 'موثق الجزائر', 'عقود عقارية', 'مكتب توثيق', 'وهران', 'توثيق عقاري'],
   robots: 'index, follow',
-  openGraph: {
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'خدمات التوثيق القانوني في الجزائر - توثيق العقود وحساب الأسعار المرجعية للعقار 2026.',
-    type: 'website',
-    locale: 'ar_DZ',
-    images: [
-      {
-        url: 'https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png',
-        width: 800,
-        height: 600,
-        alt: 'مكتب الأستاذ لعطب محمد',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'خدمات التوثيق القانوني في الجزائر - توثيق العقود وحساب الأسعار المرجعية للعقار 2026.',
-  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
