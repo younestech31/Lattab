@@ -1,84 +1,96 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle } from 'lucide-react';
-
+import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2 } from 'lucide-react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 import { WORKING_HOURS } from '@/lib/constants';
 
+// ─── تحويل الوقت المعروض إلى صيغة 24 ساعة للتخزين ───────────
+const TIME_DISPLAY_TO_24H: Record<string, string> = {
+  '09:00 صباحاً': '09:00',
+  '10:00 صباحاً': '10:00',
+  '11:00 صباحاً': '11:00',
+  '12:00 ظهراً':  '12:00',
+  '01:00 ظهراً':  '13:00',
+  '02:00 ظهراً':  '14:00',
+  '03:00 عصراً':  '15:00',
+};
+
+// ─── إرسال الموعد مباشرة إلى Firestore ───────────────────────
+async function submitAppointmentToFirestore(data: {
+  name: string;
+  phone: string;
+  email: string;
+  company: string;
+  service: string;
+  date: string;
+  time: string; // صيغة العرض العربية
+  notes: string;
+}) {
+  const time24h = TIME_DISPLAY_TO_24H[data.time] ?? data.time;
+
+  await addDoc(collection(db, 'appointments'), {
+    clientName:      data.name.trim(),
+    clientPhone:     data.phone.replace(/\s/g, ''),
+    clientEmail:     data.email.trim() || '',
+    clientCompany:   data.company.trim() || '',
+    service:         data.service,
+    appointmentDate: data.date,
+    appointmentTime: time24h,
+    status:          'pending',
+    notes:           data.notes.trim() || '',
+    clerkId:         null,
+    source:          'website', // لتمييز الحجوزات القادمة من الموقع
+    createdAt:       serverTimestamp(),
+    updatedAt:       serverTimestamp(),
+  });
+}
+
+// ─── إرسال الاستفسار عبر WhatsApp (بدون تغيير) ───────────────
+function openWhatsAppInquiry(data: {
+  name: string;
+  service: string;
+  message: string;
+}) {
+  const text =
+    `استفسار عام:%0A` +
+    `الاسم: ${data.name}%0A` +
+    `الخدمة: ${data.service}%0A` +
+    `الرسالة: ${data.message}`;
+  window.open(`https://wa.me/213562296981?text=${text}`, '_blank', 'noopener,noreferrer');
+}
+
+// ─── المكوّن الرئيسي ──────────────────────────────────────────
 const Contact = () => {
   const [activeTab, setActiveTab] = useState<'appointment' | 'inquiry'>('appointment');
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash === '#appointment' || hash === '#contact') {
-        setActiveTab('appointment');
-      } else if (hash === '#inquiry') {
-        setActiveTab('inquiry');
-      }
+      if (hash === '#appointment' || hash === '#contact') setActiveTab('appointment');
+      else if (hash === '#inquiry') setActiveTab('inquiry');
     };
-
     window.addEventListener('hashchange', handleHashChange);
-    // Check on mount
     handleHashChange();
-
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
-  
-  // Inquiry Form State
+
+  // ── حالة نموذج الاستفسار ──
   const [inquiryData, setInquiryData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    message: '',
+    name: '', phone: '', email: '', service: '', message: '',
   });
   const [isInquirySubmitted, setIsInquirySubmitted] = useState(false);
 
-  // Appointment Form State
+  // ── حالة نموذج الموعد ──
   const [appointmentData, setAppointmentData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    date: '',
-    time: '',
-    notes: '',
-    company: ''
+    name: '', phone: '', email: '', service: '',
+    date: '', time: '', notes: '', company: '',
   });
   const [isAppointmentSubmitted, setIsAppointmentSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const timeSlots = [
-    '09:00 صباحاً', '10:00 صباحاً', '11:00 صباحاً',
-    '12:00 ظهراً', '01:00 ظهراً', '02:00 ظهراً', '03:00 عصراً'
-  ];
-
-  const handleInquirySubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const message = `استفسار عام:%0Aالاسم: ${inquiryData.name}%0Aالخدمة: ${inquiryData.service}%0Aالرسالة: ${inquiryData.message}`;
-    window.open(`https://wa.me/213562296981?text=${message}`, '_blank', 'noopener,noreferrer');
-    setIsInquirySubmitted(true);
-  };
-
-  const isWeekend = (dateString: string) => {
-    const date = new Date(dateString);
-    const day = date.getUTCDay();
-    return day === 5 || day === 6; // 5 = Friday, 6 = Saturday
-  };
-
-  const handleAppointmentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!appointmentData.time) {
-      alert('يرجى اختيار وقت الموعد');
-      return;
-    }
-    if (isWeekend(appointmentData.date)) {
-      alert('عذراً، المكتب مغلق في عطلة نهاية الأسبوع (الجمعة والسبت). يرجى اختيار يوم آخر.');
-      return;
-    }
-    const message = `طلب حجز موعد:%0Aالاسم: ${appointmentData.name}%0Aالهاتف: ${appointmentData.phone}%0Aالبريد الإلكتروني: ${appointmentData.email || 'غير متوفر'}%0Aالشركة/المؤسسة: ${appointmentData.company || 'غير متوفر'}%0Aالخدمة: ${appointmentData.service}%0Aالتاريخ: ${appointmentData.date}%0Aالوقت: ${appointmentData.time}%0Aملاحظات: ${appointmentData.notes}`;
-    window.open(`https://wa.me/213562296981?text=${message}`, '_blank', 'noopener,noreferrer');
-    setIsAppointmentSubmitted(true);
-  };
+  const timeSlots = Object.keys(TIME_DISPLAY_TO_24H);
 
   const services = [
     'عقود البيع والشراء العقارية',
@@ -89,15 +101,52 @@ const Contact = () => {
     'الرهن والتأمينات',
     'التصريحات والمصادقات',
     'استشارة قانونية',
-    'خدمات أخرى'
+    'خدمات أخرى',
   ];
+
+  const isWeekend = (dateString: string) => {
+    const day = new Date(dateString).getUTCDay();
+    return day === 5 || day === 6;
+  };
+
+  // ── إرسال الموعد ──
+  const handleAppointmentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitError(null);
+
+    if (!appointmentData.time) {
+      setSubmitError('يرجى اختيار وقت الموعد');
+      return;
+    }
+    if (isWeekend(appointmentData.date)) {
+      setSubmitError('عذراً، المكتب مغلق في عطلة نهاية الأسبوع (الجمعة والسبت). يرجى اختيار يوم آخر.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await submitAppointmentToFirestore(appointmentData);
+      setIsAppointmentSubmitted(true);
+    } catch (err) {
+      console.error('Firestore error:', err);
+      setSubmitError('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مجدداً أو التواصل معنا عبر الهاتف.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // ── إرسال الاستفسار ──
+  const handleInquirySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    openWhatsAppInquiry(inquiryData);
+    setIsInquirySubmitted(true);
+  };
 
   return (
     <section id="contact" className="py-12 bg-gray-50 relative">
-      {/* Anchors for scrolling with offset */}
-      <div id="appointment" className="absolute -top-24"></div>
-      <div id="inquiry" className="absolute -top-24"></div>
-      
+      <div id="appointment" className="absolute -top-24" />
+      <div id="inquiry" className="absolute -top-24" />
+
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -127,10 +176,10 @@ const Contact = () => {
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">العنوان</h3>
                   <p className="text-gray-600 text-sm">
-                    <a 
-                      href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-emerald-600 transition-colors"
                     >
                       حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768
@@ -238,16 +287,29 @@ const Contact = () => {
                 </button>
               </div>
 
+              {/* ──────────── تبويب حجز الموعد ──────────── */}
               {activeTab === 'appointment' ? (
                 isAppointmentSubmitted ? (
                   <div className="text-center py-12">
                     <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
                       <CheckCircle className="w-10 h-10 text-emerald-600" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">شكراً لطلبك!</h3>
-                    <p className="text-gray-600">
-                      تم استلام طلب الحجز بنجاح. سنتواصل معك لتأكيد الموعد.
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">تم استلام طلبك!</h3>
+                    <p className="text-gray-600 mb-2">
+                      تم تسجيل طلب الحجز في نظام المكتب مباشرة.
                     </p>
+                    <p className="text-gray-500 text-sm">
+                      سيتواصل معك فريق المكتب لتأكيد الموعد في أقرب وقت.
+                    </p>
+                    <button
+                      onClick={() => {
+                        setIsAppointmentSubmitted(false);
+                        setAppointmentData({ name: '', phone: '', email: '', service: '', date: '', time: '', notes: '', company: '' });
+                      }}
+                      className="mt-8 text-emerald-600 hover:text-emerald-700 font-medium text-sm underline"
+                    >
+                      تقديم طلب آخر
+                    </button>
                   </div>
                 ) : (
                   <form onSubmit={handleAppointmentSubmit} className="space-y-6">
@@ -274,6 +336,8 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
+                          pattern="^(05|06|07)[0-9]{8}$"
+                          title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
                           value={appointmentData.phone}
                           onChange={(e) => setAppointmentData({ ...appointmentData, phone: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
@@ -356,10 +420,10 @@ const Contact = () => {
                           <button
                             key={index}
                             type="button"
-                            onClick={() => setAppointmentData({...appointmentData, time: slot})}
+                            onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
                             className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
-                              appointmentData.time === slot 
-                                ? 'bg-emerald-600 text-white border-emerald-600' 
+                              appointmentData.time === slot
+                                ? 'bg-emerald-600 text-white border-emerald-600'
                                 : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-500'
                             }`}
                           >
@@ -383,16 +447,34 @@ const Contact = () => {
                       />
                     </div>
 
+                    {/* رسالة الخطأ */}
+                    {submitError && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+                        {submitError}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                      className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2"
                     >
-                      <CheckCircle className="w-5 h-5" />
-                      تأكيد حجز الموعد
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          جاري الإرسال...
+                        </>
+                      ) : (
+                        <>
+                          <CheckCircle className="w-5 h-5" />
+                          تأكيد حجز الموعد
+                        </>
+                      )}
                     </button>
                   </form>
                 )
               ) : (
+                /* ──────────── تبويب الاستفسار (WhatsApp) ──────────── */
                 isInquirySubmitted ? (
                   <div className="text-center py-12">
                     <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -400,7 +482,7 @@ const Contact = () => {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">شكراً لتواصلك معنا!</h3>
                     <p className="text-gray-600">
-                      تم استلام استفسارك بنجاح. سنرد عليك في أقرب وقت ممكن.
+                      تم فتح WhatsApp بتفاصيل استفسارك. سنرد عليك في أقرب وقت ممكن.
                     </p>
                   </div>
                 ) : (
@@ -492,7 +574,7 @@ const Contact = () => {
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                       </svg>
-                      إرسال الاستفسار
+                      إرسال الاستفسار عبر WhatsApp
                     </button>
                   </form>
                 )
@@ -505,9 +587,9 @@ const Contact = () => {
         <div className="mt-12 space-y-4">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <h3 className="text-2xl font-bold text-gray-800">موقع المكتب</h3>
-            <a 
-              href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7" 
-              target="_blank" 
+            <a
+              href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 hover:bg-emerald-200 px-5 py-2.5 rounded-xl font-bold transition-colors w-full sm:w-auto justify-center"
             >
@@ -528,7 +610,7 @@ const Contact = () => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="موقع مكتب الموثق لعطب محمد"
-            ></iframe>
+            />
           </div>
         </div>
       </div>
