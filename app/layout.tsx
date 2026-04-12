@@ -35,6 +35,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <head>
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="kIcznbOizJFi9WN+OY1t/g" async></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
