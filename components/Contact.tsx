@@ -28,7 +28,6 @@ async function submitAppointmentToFirestore(data: {
   notes: string;
 }) {
   const time24h = TIME_DISPLAY_TO_24H[data.time] ?? data.time;
-
   await addDoc(collection(db, 'appointments'), {
     clientName:      data.name.trim(),
     clientPhone:     data.phone.replace(/\s/g, ''),
@@ -40,7 +39,7 @@ async function submitAppointmentToFirestore(data: {
     status:          'pending',
     notes:           data.notes.trim() || '',
     clerkId:         null,
-    source:          'website', // لتمييز الحجوزات القادمة من الموقع
+    source:          'website',
     createdAt:       serverTimestamp(),
     updatedAt:       serverTimestamp(),
   });
@@ -128,7 +127,6 @@ const Contact = () => {
       await submitAppointmentToFirestore(appointmentData);
       setIsAppointmentSubmitted(true);
     } catch (err) {
-      console.error('Firestore error:', err);
       setSubmitError('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مجدداً أو التواصل معنا عبر الهاتف.');
     } finally {
       setIsSubmitting(false);

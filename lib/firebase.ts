@@ -14,5 +14,6 @@ const firebaseConfig = {
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
 // Use the same named database as the admin dashboard
-const databaseId = process.env.NEXT_PUBLIC_FIREBASE_DATABASE_ID ?? "(default)";
+const databaseId = process.env.NEXT_PUBLIC_FIREBASE_DATABASE_ID || "(default)";
+
 export const db = getFirestore(app, databaseId);
