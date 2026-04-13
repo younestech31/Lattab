@@ -1,0 +1,31 @@
+{
+  "entities": {
+    "Appointment": {
+      "title": "Appointment",
+      "description": "A booking request from a client",
+      "type": "object",
+      "properties": {
+        "clientName": { "type": "string", "description": "Full name of the client" },
+        "clientPhone": { "type": "string", "description": "Algerian phone number" },
+        "clientEmail": { "type": "string", "format": "email", "description": "Email address" },
+        "clientCompany": { "type": "string", "description": "Company name" },
+        "service": { "type": "string", "description": "Type of service requested" },
+        "appointmentDate": { "type": "string", "description": "Preferred date (YYYY-MM-DD)" },
+        "appointmentTime": { "type": "string", "description": "Preferred time (HH:mm)" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"], "description": "Status of the appointment" },
+        "notes": { "type": "string", "description": "Additional notes" },
+        "clerkId": { "type": "string", "description": "ID of the clerk assigned" },
+        "source": { "type": "string", "description": "Source of the booking (e.g., website)" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" }
+      },
+      "required": ["clientName", "clientPhone", "service", "appointmentDate", "appointmentTime", "status", "source", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Collection of appointment bookings"
+    }
+  }
+}

@@ -7,7 +7,7 @@
 }
 
 /* Smooth Scrolling */
-html {
+html, body {
   scroll-behavior: smooth;
 }
 
@@ -57,9 +57,16 @@ details summary::-webkit-details-marker {
 }
 
 /* Focus Styles */
-input:focus,
-textarea:focus,
-select:focus {
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+}
+
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -78,5 +85,17 @@ input[type="tel"] {
 @media print {
   .no-print {
     display: none !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

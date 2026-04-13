@@ -3,13 +3,40 @@ import { Cairo } from 'next/font/google';
 import './globals.css'; // Global styles
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
-const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
+const cairo = Cairo({ 
+  subsets: ['arabic'], 
+  variable: '--font-cairo',
+  display: 'swap',
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
   description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق عقود البيع، حساب السعر المرجعي للعقار 2026، وتأسيس الشركات. خبرة 15 عاماً في القانون العقاري الجزائري.',
   keywords: ['موثق وهران', 'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026', 'موثق الجزائر', 'عقود عقارية', 'مكتب توثيق', 'وهران', 'توثيق عقاري'],
   robots: 'index, follow',
+  openGraph: {
+    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق عقود البيع، حساب السعر المرجعي للعقار 2026، وتأسيس الشركات.',
+    url: 'https://lattab.vercel.app',
+    siteName: 'مكتب الأستاذ لعطب محمد',
+    images: [
+      {
+        url: 'https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png',
+        width: 800,
+        height: 600,
+        alt: 'شعار مكتب الموثق لعطب محمد',
+      },
+    ],
+    locale: 'ar_DZ',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق عقود البيع، حساب السعر المرجعي للعقار 2026، وتأسيس الشركات.',
+    images: ['https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png'],
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

@@ -1,13 +1,14 @@
+import Link from 'next/link';
 import { WORKING_HOURS } from '@/lib/constants';
 
 const Footer = () => {
   const quickLinks = [
-    { href: '#home', label: 'الرئيسية' },
-    { href: '#services', label: 'الخدمات' },
-    { href: '#about', label: 'عن المكتب' },
-    { href: '#procedures', label: 'الإجراءات' },
-    { href: '#faq', label: 'الأسئلة الشائعة' },
-    { href: '#appointment', label: 'تواصل معنا' },
+    { href: '/#home', label: 'الرئيسية' },
+    { href: '/#services', label: 'الخدمات' },
+    { href: '/#about', label: 'عن المكتب' },
+    { href: '/#procedures', label: 'الإجراءات' },
+    { href: '/#faq', label: 'الأسئلة الشائعة' },
+    { href: '/#appointment', label: 'تواصل معنا' },
     { href: '/terms-privacy', label: 'الشروط والأحكام وسياسة الخصوصية' },
   ];
 
@@ -32,15 +33,17 @@ const Footer = () => {
           {/* About */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h6v6h6v10H6zm2-8h8v2H8v-2zm0 4h8v2H8v-2z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">مكتب الموثق</h3>
-                <p className="text-gray-400 text-sm">معتمد رسمياً</p>
-              </div>
+              <Link href="/#home" className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h6v6h6v10H6zm2-8h8v2H8v-2zm0 4h8v2H8v-2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">مكتب الموثق</h3>
+                  <p className="text-gray-400 text-sm">معتمد رسمياً</p>
+                </div>
+              </Link>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               مكتب موثق معتمد من وزارة العدل الجزائرية. نقدم خدمات توثيقية شاملة 
@@ -67,7 +70,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2"
                   >
@@ -75,7 +78,7 @@ const Footer = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -87,15 +90,15 @@ const Footer = () => {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a
-                    href="#services"
+                  <Link
+                    href="/#services"
                     className="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -169,12 +172,12 @@ const Footer = () => {
               © {new Date().getFullYear()} مكتب الموثق. جميع الحقوق محفوظة.
             </p>
             <div className="flex items-center gap-6">
-              <a href="/terms-privacy" className="text-gray-500 hover:text-emerald-400 text-sm transition-colors">
+              <Link href="/terms-privacy" className="text-gray-500 hover:text-emerald-400 text-sm transition-colors">
                 سياسة الخصوصية
-              </a>
-              <a href="/terms-privacy" className="text-gray-500 hover:text-emerald-400 text-sm transition-colors">
+              </Link>
+              <Link href="/terms-privacy" className="text-gray-500 hover:text-emerald-400 text-sm transition-colors">
                 الشروط والأحكام
-              </a>
+              </Link>
             </div>
           </div>
         </div>

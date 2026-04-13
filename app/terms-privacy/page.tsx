@@ -1,9 +1,10 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { WORKING_HOURS } from '@/lib/constants';
+import { WORKING_HOURS, SITE_CONFIG } from '@/lib/constants';
 
 const TermsPrivacyPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,12 +20,26 @@ const TermsPrivacyPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header isScrolled={isScrolled} />
-      <main className="bg-gray-50 pt-24 pb-20" dir="rtl">
+      <main className="bg-gray-50" dir="rtl">
       {/* Hero Section */}
-      <div className="bg-emerald-900 text-white py-20 mb-12 relative overflow-hidden">
+      <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
         {/* Decorative background pattern */}
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Back to Home Button inside Hero */}
+          <div className="mb-8 text-right">
+            <Link 
+              href="/" 
+              className="inline-flex items-center gap-2 text-emerald-400 hover:text-white font-bold transition-colors group"
+            >
+              <svg className="w-5 h-5 transform rotate-180 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              العودة إلى الصفحة الرئيسية
+            </Link>
+          </div>
+
           <Shield className="w-20 h-20 mx-auto mb-6 text-emerald-400" />
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">الشروط والأحكام وسياسة الخصوصية</h1>
           <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed">
@@ -262,7 +277,7 @@ const TermsPrivacyPage = () => {
         </div>
         
         <div className="text-center mt-12 text-gray-500 text-sm">
-          <p>الإصدار: 1.1 | تاريخ آخر تحديث: {new Date().toLocaleDateString('ar-DZ')}</p>
+          <p>الإصدار: {SITE_CONFIG.version} | تاريخ آخر تحديث: {new Date(SITE_CONFIG.lastUpdated).toLocaleDateString('ar-DZ')}</p>
           <p className="mt-2 font-medium">جميع الحقوق محفوظة © {new Date().getFullYear()} - مكتب الموثق الأستاذ لعطب محمد</p>
         </div>
         </div>

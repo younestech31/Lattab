@@ -1,11 +1,124 @@
 rules_version = '2';
+
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: appointments
+// Document ID: auto-generated
+// Fields:
+//   - clientName: string (required, 2-100 chars)
+//   - clientPhone: string (required, Algerian format: 05/06/07 + 8 digits)
+//   - clientEmail: string (optional, email format, max 100 chars)
+//   - clientCompany: string (optional, max 100 chars)
+//   - service: string (required, 2-100 chars)
+//   - appointmentDate: string (required, YYYY-MM-DD)
+//   - appointmentTime: string (required, HH:mm)
+//   - status: string (required, 'pending' on create)
+//   - notes: string (optional, max 1000 chars)
+//   - clerkId: string (optional/null)
+//   - source: string (required, 'website')
+//   - createdAt: timestamp (required, server time)
+//   - updatedAt: timestamp (required, server time)
+//
+// Collection: users
+// Document ID: auth.uid
+// Fields:
+//   - name: string
+//   - email: string
+//   - role: string (enum: ['admin', 'user'])
+//
+// ===============================================================
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow anyone to create an appointment from the website
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isValidPhone(phone) {
+      return phone is string && phone.matches("^(05|06|07)[0-9]{8}$");
+    }
+
+    function isValidDate(date) {
+      return date is string && date.matches("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$");
+    }
+
+    function isValidTime(time) {
+      return time is string && time.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
+    }
+
+    function hasOnlyAllowedFields(data, allowedFields) {
+      return data.keys().hasOnly(allowedFields);
+    }
+
+    function hasRequiredFields(data, requiredFields) {
+      return data.keys().hasAll(requiredFields);
+    }
+
+    // ===============================================================
+    // Domain Validators
+    // ===============================================================
+
+    function isValidAppointment(data) {
+      let required = ['clientName', 'clientPhone', 'service', 'appointmentDate', 'appointmentTime', 'status', 'source', 'createdAt', 'updatedAt'];
+      let allFields = ['clientName', 'clientPhone', 'clientEmail', 'clientCompany', 'service', 'appointmentDate', 'appointmentTime', 'status', 'notes', 'clerkId', 'source', 'createdAt', 'updatedAt'];
+      
+      return hasRequiredFields(data, required) &&
+             hasOnlyAllowedFields(data, allFields) &&
+             // String length limits
+             data.clientName is string && data.clientName.size() >= 2 && data.clientName.size() <= 100 &&
+             data.service is string && data.service.size() >= 2 && data.service.size() <= 100 &&
+             (!('clientEmail' in data) || data.clientEmail == "" || (data.clientEmail.size() <= 100 && isValidEmail(data.clientEmail))) &&
+             (!('clientCompany' in data) || data.clientCompany.size() <= 100) &&
+             (!('notes' in data) || data.notes.size() <= 1000) &&
+             // Format validations
+             isValidPhone(data.clientPhone) &&
+             isValidDate(data.appointmentDate) &&
+             isValidTime(data.appointmentTime) &&
+             // Business logic
+             data.status == 'pending' &&
+             data.source == 'website' &&
+             data.createdAt == request.time &&
+             data.updatedAt == request.time;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    // Appointments Collection
     match /appointments/{appointmentId} {
-      allow create: if true;
-      // Restrict read/update/delete to authenticated admins (to be configured)
-      allow read, update, delete: if false; 
+      // Public can only create appointments with strict validation
+      allow create: if isValidAppointment(request.resource.data);
+      
+      // Only admins can read, update, or delete appointments
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isAdmin();
     }
   }
 }

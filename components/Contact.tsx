@@ -1,9 +1,18 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2 } from 'lucide-react';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { serverTimestamp, doc, runTransaction } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { WORKING_HOURS } from '@/lib/constants';
+
+// ─── ثوابت تحديد معدل الإرسال (Rate Limiting) ───────────────
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 دقائق
+
+// ─── دالة تنظيف النصوص ──────────────────────────
+function cleanText(input: string): string {
+  return input ? input.trim() : '';
+}
 
 // ─── تحويل الوقت المعروض إلى صيغة 24 ساعة للتخزين ───────────
 const TIME_DISPLAY_TO_24H: Record<string, string> = {
@@ -28,35 +37,55 @@ async function submitAppointmentToFirestore(data: {
   notes: string;
 }) {
   const time24h = TIME_DISPLAY_TO_24H[data.time] ?? data.time;
-  await addDoc(collection(db, 'appointments'), {
-    clientName:      data.name.trim(),
-    clientPhone:     data.phone.replace(/\s/g, ''),
-    clientEmail:     data.email.trim() || '',
-    clientCompany:   data.company.trim() || '',
-    service:         data.service,
-    appointmentDate: data.date,
-    appointmentTime: time24h,
-    status:          'pending',
-    notes:           data.notes.trim() || '',
-    clerkId:         null,
-    source:          'website',
-    createdAt:       serverTimestamp(),
-    updatedAt:       serverTimestamp(),
+  const phoneDigits = data.phone.replace(/\D/g, '');
+  const docId = `${phoneDigits}_${data.date}_${time24h}`;
+  const docRef = doc(db, 'appointments', docId);
+
+  await runTransaction(db, async (transaction) => {
+    const docSnap = await transaction.get(docRef);
+    if (docSnap.exists()) {
+      throw new Error('لقد قمت بالفعل بحجز هذا الموعد.');
+    }
+    transaction.set(docRef, {
+      clientName:      cleanText(data.name),
+      clientPhone:     phoneDigits,
+      clientEmail:     cleanText(data.email),
+      clientCompany:   cleanText(data.company),
+      service:         cleanText(data.service),
+      appointmentDate: data.date,
+      appointmentTime: time24h,
+      status:          'pending',
+      notes:           cleanText(data.notes),
+      clerkId:         null,
+      source:          'website',
+      createdAt:       serverTimestamp(),
+      updatedAt:       serverTimestamp(),
+    });
   });
 }
 
-// ─── إرسال الاستفسار عبر WhatsApp (بدون تغيير) ───────────────
+// ─── إرسال الاستفسار عبر WhatsApp ───────────────
 function openWhatsAppInquiry(data: {
   name: string;
   service: string;
   message: string;
 }) {
-  const text =
-    `استفسار عام:%0A` +
-    `الاسم: ${data.name}%0A` +
-    `الخدمة: ${data.service}%0A` +
-    `الرسالة: ${data.message}`;
+  const name = encodeURIComponent(cleanText(data.name));
+  const service = encodeURIComponent(cleanText(data.service));
+  const message = encodeURIComponent(cleanText(data.message));
+
+  const text = `استفسار عام:%0Aالاسم: ${name}%0Aالخدمة: ${service}%0Aالرسالة: ${message}`;
   window.open(`https://wa.me/213562296981?text=${text}`, '_blank', 'noopener,noreferrer');
+}
+
+// ─── دالة تسجيل الأخطاء الآمنة ──────────────────────────
+function logError(message: string, error?: any) {
+  if (process.env.NODE_ENV !== 'production') {
+    console.error(message, error);
+  } else {
+    // هنا يمكن إضافة خدمة مثل Sentry
+    // Sentry.captureException(error);
+  }
 }
 
 // ─── المكوّن الرئيسي ──────────────────────────────────────────
@@ -74,20 +103,41 @@ const Contact = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  // ─── دالة تنسيق رقم الهاتف تلقائياً ────────────────────────
+  const formatPhoneNumber = (value: string) => {
+    // إزالة كل ما ليس رقماً
+    const numbers = value.replace(/\D/g, '');
+    // قص الرقم عند 10 أرقام
+    const truncated = numbers.slice(0, 10);
+    
+    // التنسيق: 05XX XX XX XX
+    let formatted = '';
+    for (let i = 0; i < truncated.length; i++) {
+      if (i > 0 && i % 2 === 0) {
+        formatted += ' ';
+      }
+      formatted += truncated[i];
+    }
+    return formatted;
+  };
+
   // ── حالة نموذج الاستفسار ──
   const [inquiryData, setInquiryData] = useState({
     name: '', phone: '', email: '', service: '', message: '',
   });
   const [isInquirySubmitted, setIsInquirySubmitted] = useState(false);
+  const [inquiryAgreed, setInquiryAgreed] = useState(false);
 
   // ── حالة نموذج الموعد ──
   const [appointmentData, setAppointmentData] = useState({
     name: '', phone: '', email: '', service: '',
     date: '', time: '', notes: '', company: '',
+    honeypot: '', // حقل الـ honeypot
   });
   const [isAppointmentSubmitted, setIsAppointmentSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [appointmentAgreed, setAppointmentAgreed] = useState(false);
 
   const timeSlots = Object.keys(TIME_DISPLAY_TO_24H);
 
@@ -103,15 +153,57 @@ const Contact = () => {
     'خدمات أخرى',
   ];
 
-  const isWeekend = (dateString: string) => {
-    const day = new Date(dateString).getUTCDay();
-    return day === 5 || day === 6;
-  };
+  const maxDate = new Date();
+  maxDate.setDate(maxDate.getDate() + 90);
+  const maxDateString = maxDate.toISOString().split('T')[0];
 
   // ── إرسال الموعد ──
   const handleAppointmentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitError(null);
+
+    // التحقق من معدل الإرسال (Rate Limiting)
+    const now = Date.now();
+    const limitData = sessionStorage.getItem('appointment_rate_limit');
+    let isBlocked = false;
+
+    if (limitData) {
+      const { count, startTime } = JSON.parse(limitData);
+      if (now - startTime < RATE_LIMIT_WINDOW_MS) {
+        if (count >= RATE_LIMIT_MAX) {
+          isBlocked = true;
+        } else {
+          sessionStorage.setItem('appointment_rate_limit', JSON.stringify({ count: count + 1, startTime }));
+        }
+      } else {
+        // إعادة تعيين النافذة الزمنية
+        sessionStorage.setItem('appointment_rate_limit', JSON.stringify({ count: 1, startTime: now }));
+      }
+    } else {
+      sessionStorage.setItem('appointment_rate_limit', JSON.stringify({ count: 1, startTime: now }));
+    }
+
+    if (isBlocked) {
+      setSubmitError('عذراً، لقد تجاوزت الحد الأقصى لطلبات الحجز المسموح بها حالياً. يرجى المحاولة مرة أخرى بعد 10 دقائق.');
+      return;
+    }
+
+    // التحقق من رقم الهاتف
+    const phoneDigits = appointmentData.phone.replace(/\D/g, '');
+    if (!/^(05|06|07)[0-9]{8}$/.test(phoneDigits)) {
+      setSubmitError('يرجى إدخال رقم هاتف جزائري صحيح يبدأ بـ 05 أو 06 أو 07 ويتكون من 10 أرقام');
+      return;
+    }
+
+    // التحقق من الـ honeypot
+    if (appointmentData.honeypot) {
+      return; // تجاهل الطلب إذا تم ملء الحقل
+    }
+
+    if (!appointmentAgreed) {
+      setSubmitError('يرجى الموافقة على الشروط والأحكام وسياسة الخصوصية للمتابعة');
+      return;
+    }
 
     if (!appointmentData.time) {
       setSubmitError('يرجى اختيار وقت الموعد');
@@ -127,6 +219,7 @@ const Contact = () => {
       await submitAppointmentToFirestore(appointmentData);
       setIsAppointmentSubmitted(true);
     } catch (err) {
+      logError('[Contact] Firestore error:', err);
       setSubmitError('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مجدداً أو التواصل معنا عبر الهاتف.');
     } finally {
       setIsSubmitting(false);
@@ -134,8 +227,24 @@ const Contact = () => {
   };
 
   // ── إرسال الاستفسار ──
+  const [inquiryError, setInquiryError] = useState<string | null>(null);
+
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setInquiryError(null);
+
+    if (!inquiryAgreed) {
+      setInquiryError('يرجى الموافقة على الشروط والأحكام وسياسة الخصوصية للمتابعة');
+      return;
+    }
+
+    // التحقق من رقم الهاتف
+    const phoneDigits = inquiryData.phone.replace(/\D/g, '');
+    if (!/^(05|06|07)[0-9]{8}$/.test(phoneDigits)) {
+      setInquiryError('يرجى إدخال رقم هاتف جزائري صحيح يبدأ بـ 05 أو 06 أو 07 ويتكون من 10 أرقام');
+      return;
+    }
+
     openWhatsAppInquiry(inquiryData);
     setIsInquirySubmitted(true);
   };
@@ -292,9 +401,14 @@ const Contact = () => {
                     <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
                       <CheckCircle className="w-10 h-10 text-emerald-600" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">تم استلام طلبك!</h3>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">تم استلام طلب الحجز!</h3>
+                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 max-w-md mx-auto">
+                      <p className="text-amber-800 text-sm font-medium">
+                        ملاحظة: موعدك حالياً &quot;قيد التأكيد&quot;. سيتواصل معك فريق المكتب عبر الهاتف لتأكيد الموعد النهائي أو اقتراح وقت بديل في حال وجود تعارض.
+                      </p>
+                    </div>
                     <p className="text-gray-600 mb-2">
-                      تم تسجيل طلب الحجز في نظام المكتب مباشرة.
+                      تم تسجيل طلبك بنجاح في نظام المكتب.
                     </p>
                     <p className="text-gray-500 text-sm">
                       سيتواصل معك فريق المكتب لتأكيد الموعد في أقرب وقت.
@@ -334,10 +448,10 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
-                          pattern="^(05|06|07)[0-9]{8}$"
+                          pattern="0(5|6|7) [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
                           title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
                           value={appointmentData.phone}
-                          onChange={(e) => setAppointmentData({ ...appointmentData, phone: e.target.value })}
+                          onChange={(e) => setAppointmentData({ ...appointmentData, phone: formatPhoneNumber(e.target.value) })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
                           placeholder="05XXXXXXXX"
                           dir="ltr"
@@ -403,15 +517,28 @@ const Contact = () => {
                           value={appointmentData.date}
                           onChange={(e) => setAppointmentData({ ...appointmentData, date: e.target.value })}
                           min={new Date().toISOString().split('T')[0]}
+                          max={maxDateString}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
                         />
                       </div>
                     </div>
 
+                    {/* حقل الـ honeypot المخفي */}
+                    <input
+                      type="text"
+                      name="honeypot"
+                      value={appointmentData.honeypot}
+                      onChange={(e) => setAppointmentData({ ...appointmentData, honeypot: e.target.value })}
+                      className="hidden"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         <Clock className="inline w-4 h-4 ml-2" />
                         الوقت المفضل *
+                        <span className="text-xs text-gray-500 mr-2 font-normal">(المواعيد تخضع للتأكيد الهاتفي)</span>
                       </label>
                       <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
                         {timeSlots.map((slot, index) => (
@@ -438,11 +565,33 @@ const Contact = () => {
                       </label>
                       <textarea
                         rows={3}
+                        maxLength={1000}
                         value={appointmentData.notes}
                         onChange={(e) => setAppointmentData({ ...appointmentData, notes: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all resize-none"
                         placeholder="أي معلومات إضافية تريد إضافتها..."
                       />
+                    </div>
+
+                    {/* Terms Agreement */}
+                    <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                      <div className="flex items-center h-5">
+                        <input
+                          id="terms-appointment"
+                          name="terms-appointment"
+                          type="checkbox"
+                          required
+                          checked={appointmentAgreed}
+                          onChange={(e) => setAppointmentAgreed(e.target.checked)}
+                          className="w-5 h-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500 cursor-pointer"
+                        />
+                      </div>
+                      <div className="text-sm">
+                        <label htmlFor="terms-appointment" className="font-medium text-gray-700 cursor-pointer">
+                          أوافق على <a href="/terms-privacy" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">الشروط والأحكام وسياسة الخصوصية</a> الخاصة بالمكتب.
+                        </label>
+                        <p className="text-gray-500 text-xs mt-1">بموجب هذا، أنت توافق على معالجة بياناتك الشخصية لغرض حجز الموعد.</p>
+                      </div>
                     </div>
 
                     {/* رسالة الخطأ */}
@@ -508,8 +657,10 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
+                          pattern="0(5|6|7) [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
+                          title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
                           value={inquiryData.phone}
-                          onChange={(e) => setInquiryData({ ...inquiryData, phone: e.target.value })}
+                          onChange={(e) => setInquiryData({ ...inquiryData, phone: formatPhoneNumber(e.target.value) })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
                           placeholder="05XXXXXXXX"
                           dir="ltr"
@@ -564,6 +715,34 @@ const Contact = () => {
                         placeholder="اكتب رسالتك أو استفسارك هنا..."
                       />
                     </div>
+
+                    {/* Terms Agreement */}
+                    <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                      <div className="flex items-center h-5">
+                        <input
+                          id="terms-inquiry"
+                          name="terms-inquiry"
+                          type="checkbox"
+                          required
+                          checked={inquiryAgreed}
+                          onChange={(e) => setInquiryAgreed(e.target.checked)}
+                          className="w-5 h-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500 cursor-pointer"
+                        />
+                      </div>
+                      <div className="text-sm">
+                        <label htmlFor="terms-inquiry" className="font-medium text-gray-700 cursor-pointer">
+                          أوافق على <a href="/terms-privacy" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">الشروط والأحكام وسياسة الخصوصية</a> الخاصة بالمكتب.
+                        </label>
+                        <p className="text-gray-500 text-xs mt-1">بموجب هذا، أنت توافق على معالجة بياناتك الشخصية لغرض التواصل معك.</p>
+                      </div>
+                    </div>
+
+                    {/* رسالة الخطأ */}
+                    {inquiryError && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+                        {inquiryError}
+                      </div>
+                    )}
 
                     <button
                       type="submit"

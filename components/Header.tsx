@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -10,15 +11,15 @@ const Header = ({ isScrolled }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: '#home', label: 'الرئيسية' },
-    { href: '#services', label: 'خدماتنا' },
-    { href: '#calculator', label: 'حاسبة مرجعية' },
-    { href: '#why-choose-us', label: 'لماذا نحن' },
-    { href: '#about', label: 'عن الموثق' },
-    { href: '#procedures', label: 'الإجراءات' },
-    { href: '#legal-updates', label: 'أخبار قانونية' },
-    { href: '#faq', label: 'الأسئلة الشائعة' },
-    { href: '#contact', label: 'اتصل بنا' },
+    { href: '/#home', label: 'الرئيسية' },
+    { href: '/#services', label: 'خدماتنا' },
+    { href: '/#calculator', label: 'حاسبة مرجعية' },
+    { href: '/#why-choose-us', label: 'لماذا نحن' },
+    { href: '/#about', label: 'عن الموثق' },
+    { href: '/#procedures', label: 'الإجراءات' },
+    { href: '/#legal-updates', label: 'أخبار قانونية' },
+    { href: '/#faq', label: 'الأسئلة الشائعة' },
+    { href: '/#contact', label: 'اتصل بنا' },
   ];
 
   return (
@@ -32,7 +33,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
+          <Link href="/#home" className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-white">
               <Image
                 src="https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png"
@@ -50,12 +51,12 @@ const Header = ({ isScrolled }: HeaderProps) => {
                 موثق معتمد
               </p>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-4 lg:gap-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap ${
@@ -63,14 +64,14 @@ const Header = ({ isScrolled }: HeaderProps) => {
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#booking-form"
+            <Link
+              href="/#booking-form"
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
             >
               احجز موعد
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -111,22 +112,22 @@ const Header = ({ isScrolled }: HeaderProps) => {
           <nav className={`lg:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}>
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={`font-medium text-gray-700`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#booking-form"
+              <Link
+                href="/#booking-form"
                 className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium text-center transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 احجز موعد
-              </a>
+              </Link>
             </div>
           </nav>
         )}

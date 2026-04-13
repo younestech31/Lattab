@@ -43,7 +43,7 @@ const Hero = () => {
               <div className="text-emerald-200 text-sm">سنة خبرة</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-              <div className="text-3xl md:text-4xl font-bold text-white">10,000+</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">5,000+</div>
               <div className="text-emerald-200 text-sm">معاملة ناجحة</div>
             </div>
           </div>
