@@ -53,7 +53,6 @@ async function submitAppointmentToFirestore(data: {
       appointmentTime: time24h,
       status:          'pending',
       notes:           cleanText(data.notes),
-      honeypot:        cleanText(data.honeypot),
       clerkId:         null,
       source:          'website',
       createdAt:       serverTimestamp(),
@@ -157,7 +156,7 @@ const Contact = () => {
   ];
 
   const isWeekend = (dateString: string) => {
-    const day = new Date(dateString).getUTCDay();
+    const day = new Date(dateString + 'T12:00:00').getDay();
     return day === 5 || day === 6;
   };
 
@@ -200,6 +199,10 @@ const Contact = () => {
     try {
       await submitAppointmentToFirestore({ ...appointmentData });
       setIsAppointmentSubmitted(true);
+      // التمرير إلى أعلى النموذج بعد الإرسال الناجح
+      setTimeout(() => {
+        document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     } catch (err: any) {
       logError('[Contact] Firestore error:', err);
       if (err instanceof Error && err.message) {

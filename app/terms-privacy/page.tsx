@@ -19,7 +19,7 @@ const TermsPrivacyPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header isScrolled={isScrolled} />
+      <Header />
       <main className="bg-gray-50" dir="rtl">
       {/* Hero Section */}
       <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">

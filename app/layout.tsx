@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق عقود البيع، حساب السعر المرجعي للعقار 2026، وتأسيس الشركات.',
     images: ['https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png'],
   },
+  alternates: {
+    canonical: 'https://lattab.vercel.app',
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

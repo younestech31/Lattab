@@ -1,5 +1,3 @@
-'use client';
-import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -13,19 +11,9 @@ import Footer from '@/components/Footer';
 import PriceCalculator from '@/components/PriceCalculator';
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-white">
-      <Header isScrolled={isScrolled} />
+      <Header />
       <main>
         <Hero />
         <Services />
