@@ -153,6 +153,11 @@ const Contact = () => {
     'خدمات أخرى',
   ];
 
+  const isWeekend = (dateString: string) => {
+    const day = new Date(dateString).getUTCDay();
+    return day === 5 || day === 6;
+  };
+
   const maxDate = new Date();
   maxDate.setDate(maxDate.getDate() + 90);
   const maxDateString = maxDate.toISOString().split('T')[0];
