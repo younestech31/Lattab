@@ -421,7 +421,7 @@ const Contact = () => {
                     <button
                       onClick={() => {
                         setIsAppointmentSubmitted(false);
-                        setAppointmentData({ name: '', phone: '', email: '', service: '', date: '', time: '', notes: '', company: '' });
+                        setAppointmentData({ name: '', phone: '', email: '', service: '', date: '', time: '', notes: '', company: '', honeypot: '' });
                       }}
                       className="mt-8 text-emerald-600 hover:text-emerald-700 font-medium text-sm underline"
                     >
