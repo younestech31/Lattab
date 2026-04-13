@@ -35,6 +35,7 @@ async function submitAppointmentToFirestore(data: {
   date: string;
   time: string; // صيغة العرض العربية
   notes: string;
+  honeypot: string;
 }) {
   const time24h = TIME_DISPLAY_TO_24H[data.time] ?? data.time;
   const phoneDigits = data.phone.replace(/\D/g, '');
@@ -56,6 +57,7 @@ async function submitAppointmentToFirestore(data: {
       appointmentTime: time24h,
       status:          'pending',
       notes:           cleanText(data.notes),
+      honeypot:        cleanText(data.honeypot),
       clerkId:         null,
       source:          'website',
       createdAt:       serverTimestamp(),
@@ -167,32 +169,6 @@ const Contact = () => {
     e.preventDefault();
     setSubmitError(null);
 
-    // التحقق من معدل الإرسال (Rate Limiting)
-    const now = Date.now();
-    const limitData = sessionStorage.getItem('appointment_rate_limit');
-    let isBlocked = false;
-
-    if (limitData) {
-      const { count, startTime } = JSON.parse(limitData);
-      if (now - startTime < RATE_LIMIT_WINDOW_MS) {
-        if (count >= RATE_LIMIT_MAX) {
-          isBlocked = true;
-        } else {
-          sessionStorage.setItem('appointment_rate_limit', JSON.stringify({ count: count + 1, startTime }));
-        }
-      } else {
-        // إعادة تعيين النافذة الزمنية
-        sessionStorage.setItem('appointment_rate_limit', JSON.stringify({ count: 1, startTime: now }));
-      }
-    } else {
-      sessionStorage.setItem('appointment_rate_limit', JSON.stringify({ count: 1, startTime: now }));
-    }
-
-    if (isBlocked) {
-      setSubmitError('عذراً، لقد تجاوزت الحد الأقصى لطلبات الحجز المسموح بها حالياً. يرجى المحاولة مرة أخرى بعد 10 دقائق.');
-      return;
-    }
-
     // التحقق من رقم الهاتف
     const phoneDigits = appointmentData.phone.replace(/\D/g, '');
     if (!/^(05|06|07)[0-9]{8}$/.test(phoneDigits)) {
@@ -221,7 +197,7 @@ const Contact = () => {
 
     setIsSubmitting(true);
     try {
-      await submitAppointmentToFirestore(appointmentData);
+      await submitAppointmentToFirestore({ ...appointmentData });
       setIsAppointmentSubmitted(true);
     } catch (err) {
       logError('[Contact] Firestore error:', err);

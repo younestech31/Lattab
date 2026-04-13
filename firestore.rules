@@ -81,7 +81,7 @@ service cloud.firestore {
 
     function isValidAppointment(data) {
       let required = ['clientName', 'clientPhone', 'service', 'appointmentDate', 'appointmentTime', 'status', 'source', 'createdAt', 'updatedAt'];
-      let allFields = ['clientName', 'clientPhone', 'clientEmail', 'clientCompany', 'service', 'appointmentDate', 'appointmentTime', 'status', 'notes', 'clerkId', 'source', 'createdAt', 'updatedAt'];
+      let allFields = ['clientName', 'clientPhone', 'clientEmail', 'clientCompany', 'service', 'appointmentDate', 'appointmentTime', 'status', 'notes', 'clerkId', 'source', 'createdAt', 'updatedAt', 'honeypot'];
       
       return hasRequiredFields(data, required) &&
              hasOnlyAllowedFields(data, allFields) &&
