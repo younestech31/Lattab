@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2 } from 'lucide-react';
-import { serverTimestamp, doc, runTransaction } from 'firebase/firestore';
+import { serverTimestamp, doc, setDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { WORKING_HOURS } from '@/lib/constants';
 
@@ -42,12 +42,8 @@ async function submitAppointmentToFirestore(data: {
   const docId = `${phoneDigits}_${data.date}_${time24h}`;
   const docRef = doc(db, 'appointments', docId);
 
-  await runTransaction(db, async (transaction) => {
-    const docSnap = await transaction.get(docRef);
-    if (docSnap.exists()) {
-      throw new Error('لقد قمت بالفعل بحجز هذا الموعد.');
-    }
-    transaction.set(docRef, {
+  try {
+    await setDoc(docRef, {
       clientName:      cleanText(data.name),
       clientPhone:     phoneDigits,
       clientEmail:     cleanText(data.email),
@@ -63,7 +59,12 @@ async function submitAppointmentToFirestore(data: {
       createdAt:       serverTimestamp(),
       updatedAt:       serverTimestamp(),
     });
-  });
+  } catch (error: any) {
+    if (error.code === 'permission-denied') {
+      throw new Error('عذراً، لا يمكن إتمام الحجز. قد تكون قمت بحجز هذا الموعد مسبقاً، أو أن البيانات غير صحيحة.');
+    }
+    throw error;
+  }
 }
 
 // ─── إرسال الاستفسار عبر WhatsApp ───────────────
@@ -199,9 +200,13 @@ const Contact = () => {
     try {
       await submitAppointmentToFirestore({ ...appointmentData });
       setIsAppointmentSubmitted(true);
-    } catch (err) {
+    } catch (err: any) {
       logError('[Contact] Firestore error:', err);
-      setSubmitError('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مجدداً أو التواصل معنا عبر الهاتف.');
+      if (err instanceof Error && err.message) {
+        setSubmitError(err.message);
+      } else {
+        setSubmitError('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مجدداً أو التواصل معنا عبر الهاتف.');
+      }
     } finally {
       setIsSubmitting(false);
     }
