@@ -1,13 +1,13 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://lattab.vercel.app';
-
   return {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/api/', '/_next/'],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: 'https://lattab.vercel.app/sitemap.xml',
+    host: 'https://lattab.vercel.app',
   };
 }

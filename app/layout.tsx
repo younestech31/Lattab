@@ -12,13 +12,11 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق عقود البيع، حساب السعر المرجعي للعقار 2026، وتأسيس الشركات. — Maître Lattab Mohamed, notaire agréé à Oran. Services: actes de vente, prix de référence immobilier 2026, création de sociétés.',
+  title: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
+  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران (Notaire agréé à Oran). تقديم خدمات التوثيق القانوني، عقود البيع والشراء، الإيجار، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
   keywords: [
-    // عربية
-    'موثق وهران', 'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026', 'موثق الجزائر', 'عقود عقارية', 'مكتب توثيق', 'وهران',
-    // فرنسية
-    'notaire Oran', 'notaire agréé Oran', 'acte de vente Oran', 'prix référence immobilier Algérie 2026', 'office notarial Oran', 'création société Algérie', 'notaire Algérie',
+    'موثق وهران', 'موثق معتمد وهران', 'مكتب توثيق وهران', 'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026', 'عقود عقارية', 'تأسيس شركات الجزائر',
+    'notaire Oran', 'notaire agréé Oran', 'office notarial Oran', 'acte de vente Oran', 'prix référence immobilier Algérie 2026', 'création société Algérie'
   ],
   robots: 'index, follow',
   openGraph: {
@@ -68,54 +66,87 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Notary",
-              "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
-              "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
-              "image": "https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png",
-              "@id": "https://lattab.vercel.app",
-              "url": "https://lattab.vercel.app",
-              "telephone": "+213562296981",
-              "priceRange": "$$",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي",
-                "addressLocality": "وهران",
-                "postalCode": "31000",
-                "addressCountry": "DZ"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 35.7277124,
-                "longitude": -0.5931358
-              },
-              "openingHoursSpecification": [
+              "@graph": [
                 {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": [
-                    "Sunday",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday"
+                  "@type": "LegalService",
+                  "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
+                  "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
+                  "image": "https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png",
+                  "@id": "https://lattab.vercel.app/#organization",
+                  "url": "https://lattab.vercel.app",
+                  "telephone": "+213562296981",
+                  "priceRange": "$$",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي",
+                    "addressLocality": "وهران",
+                    "postalCode": "31000",
+                    "addressCountry": "DZ"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 35.7277124,
+                    "longitude": -0.5931358
+                  },
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Sunday",
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday"
+                      ],
+                      "opens": "08:30",
+                      "closes": "12:00"
+                    },
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Sunday",
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday"
+                      ],
+                      "opens": "13:30",
+                      "closes": "16:00"
+                    }
                   ],
-                  "opens": "08:30",
-                  "closes": "12:00"
+                  "sameAs": [
+                    "https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
+                  ],
+                  "founder": {
+                    "@type": "Person",
+                    "name": "لعطب محمد"
+                  },
+                  "knowsLanguage": ["ar", "fr"],
+                  "serviceType": ["Notary", "Real Estate Law", "Corporate Law", "Family Law"]
                 },
                 {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": [
-                    "Sunday",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday"
-                  ],
-                  "opens": "13:30",
-                  "closes": "16:00"
+                  "@type": "WebSite",
+                  "@id": "https://lattab.vercel.app/#website",
+                  "url": "https://lattab.vercel.app",
+                  "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://lattab.vercel.app/?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://lattab.vercel.app/#breadcrumb",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "الرئيسية",
+                      "item": "https://lattab.vercel.app/"
+                    }
+                  ]
                 }
-              ],
-              "sameAs": [
-                "https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
               ]
             })
           }}
