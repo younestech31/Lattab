@@ -43,7 +43,7 @@ const TermsPrivacyPage = () => {
           <Shield className="w-20 h-20 mx-auto mb-6 text-emerald-400" />
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">الشروط والأحكام وسياسة الخصوصية</h1>
           <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed">
-            مكتب الموثق الأستاذ لعطب محمد - نلتزم بالشفافية وحماية بياناتك وفقاً للقوانين والتشريعات الجزائرية
+            مكتب الموثق الأستاذ لعطب محمد - نلتزم بالشفافية والسر المهني وحماية بياناتك وفقاً للتشريعات الجزائرية
           </p>
         </div>
       </div>
@@ -55,7 +55,7 @@ const TermsPrivacyPage = () => {
           <div>
             <h3 className="text-lg font-bold text-amber-900 mb-2">إشعار هام</h3>
             <p className="text-amber-800 leading-relaxed">
-              يُرجى قراءة هذه الوثيقة بعناية قبل استخدام المنصة أو حجز موعد. باستخدامك لخدماتنا، فإنك تُقرّ بقراءتك وفهمك وقبولك التام لجميع البنود الواردة أدناه، وتوافق على معالجة بياناتك في إطار تقديم الخدمة التوثيقية.
+              يُرجى قراءة هذه الوثيقة بعناية قبل استخدام المنصة أو حجز موعد. باستخدامك لخدماتنا، فإنك تُقرّ بقراءتك وفهمك وقبولك التام لجميع البنود الواردة أدناه، وتوافق صراحةً على معالجة بياناتك في إطار تقديم الخدمة التوثيقية.
             </p>
           </div>
         </div>
@@ -76,7 +76,7 @@ const TermsPrivacyPage = () => {
                   تُعدّ هذه الوثيقة عقداً ملزماً بين المستخدم وموقع <strong>مكتب الموثق الأستاذ لعطب محمد</strong>، وهو منصة إلكترونية تهدف إلى تسهيل وتنظيم حجز المواعيد وتقديم الخدمات التوثيقية المعتمدة في الجمهورية الجزائرية الديمقراطية الشعبية.
                 </p>
                 <p>
-                  يخضع المكتب لرقابة وإشراف <strong>الغرفة الوطنية للموثقين</strong> ويلتزم بجميع الأحكام القانونية المعمول بها، ولا سيما القانون رقم 06-02 المتعلق بالتوثيق، والقانون رقم 18-07 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي.
+                  يخضع المكتب لرقابة وإشراف <strong>الغرفة الوطنية للموثقين</strong> ويلتزم بجميع الأحكام القانونية المعمول بها، ولا سيما القانون رقم 06-02 المتعلق بمهنة الموثق، والقانون رقم 18-07 المعدل والمتمم بالقانون 25-11 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي.
                 </p>
                 
                 <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">التعريفات الأساسية</h3>
@@ -87,11 +87,11 @@ const TermsPrivacyPage = () => {
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                    <div><strong>&quot;الموثق&quot;:</strong> الأستاذ لعطب محمد، موثق مرخص ومعتمد وفق أحكام القانون، ومقره بوهران.</div>
+                    <div><strong>&quot;المسؤول عن المعالجة&quot;:</strong> مكتب الموثق الأستاذ لعطب محمد، والذي يحدد غايات ووسائل معالجة بياناتك.</div>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                    <div><strong>&quot;المستخدم&quot;:</strong> كل شخص طبيعي بالغ أو شخص معنوي ممثل قانوناً، يلج إلى المنصة ويستخدم خدماتها.</div>
+                    <div><strong>&quot;المستخدم&quot; (الشخص المعني):</strong> كل شخص طبيعي بالغ أو شخص معنوي ممثل قانوناً، يلج إلى المنصة ويستخدم خدماتها.</div>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
@@ -168,10 +168,10 @@ const TermsPrivacyPage = () => {
               </div>
               <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
                 <p>
-                  نلتزم التزاماً كاملاً بحماية خصوصيتك وفقاً للقانون رقم 18-07 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي. نحن نجمع فقط البيانات الضرورية لتقديم الخدمة وتسهيل تواصلنا معك.
+                  نلتزم التزاماً كاملاً بحماية خصوصيتك والالتزام بالسر المهني وفقاً للقانون رقم 18-07 (المعدل والمتمم بـ 25-11). نحن نجمع فقط البيانات الضرورية (بمبدأ الملاءمة) لتقديم الخدمة وتسهيل تواصلنا معك.
                 </p>
                 
-                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">البيانات التي نجمعها</h3>
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">1. البيانات التي نجمعها وغرضها:</h3>
                 <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden mb-8">
                   <table className="w-full text-sm md:text-base text-right">
                     <thead className="bg-gray-50 text-gray-700">
@@ -183,34 +183,65 @@ const TermsPrivacyPage = () => {
                     <tbody className="divide-y divide-gray-100">
                       <tr>
                         <td className="px-6 py-4 font-medium text-gray-900">بيانات الهوية</td>
-                        <td className="px-6 py-4">الاسم الكامل للتعريف وإعداد الملف الأولي.</td>
+                        <td className="px-6 py-4">الاسم الكامل (لتعريف هوية الحاجز وإعداد الملف الأولي).</td>
                       </tr>
                       <tr>
                         <td className="px-6 py-4 font-medium text-gray-900">بيانات التواصل</td>
-                        <td className="px-6 py-4">رقم الهاتف والبريد الإلكتروني لتأكيد الحجز والتواصل.</td>
+                        <td className="px-6 py-4">رقم الهاتف والبريد الإلكتروني (لتأكيد الحجز والتواصل في حال الطوارئ).</td>
                       </tr>
                       <tr>
                         <td className="px-6 py-4 font-medium text-gray-900">بيانات الخدمة</td>
-                        <td className="px-6 py-4">نوع الخدمة المطلوبة، التاريخ، واسم الشركة (إن وجدت) لتنظيم الجلسة.</td>
+                        <td className="px-6 py-4">نوع الخدمة المطلوبة، التاريخ، واسم الشركة إن وجدت (لتنظيم الجلسة وتحضير المتطلبات).</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">2. ما لا نجمعه إطلاقاً عبر الموقع:</h3>
                 <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-2xl mb-8 flex items-start gap-4">
                   <Shield className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-bold text-red-900 mb-2">ما لا نجمعه إطلاقاً عبر الموقع:</h4>
                     <p className="text-red-800 m-0">
-                      لا نطلب أبداً إدخال محتوى العقود الحساسة، البيانات البنكية، أو أرقام الحسابات عبر الموقع الإلكتروني. يتم تقديم هذه المعلومات شخصياً وبشكل سري في المكتب فقط.
+                      لا نطلب أبداً إدخال محتوى العقود الحساسة، البيانات البنكية، أو أرقام الحسابات، أو المعطيات الحساسة (البيانات الصحية، الجينية، الخ) عبر الموقع الإلكتروني. يتم تقديم هذه المعلومات شخصياً وبشكل سري في المكتب فقط.
                     </p>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">استخدام ومشاركة البيانات</h3>
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. استضافة البيانات ونقلها (هام):</h3>
                 <p>
-                  تُستخدم بياناتك <strong>حصراً</strong> لتنظيم المواعيد والتواصل معك بشأن ملفك. نؤكد أن بياناتك <strong>لن تُباع ولن تُشارك</strong> مع أي طرف ثالث لأغراض تجارية. يقتصر الوصول إليها على طاقم المكتب الملتزم بالسرية المهنية المطلقة.
+                  لضمان سرعة، استقرار، وأمان خدمة الحجز الإلكتروني، تستخدم منصتنا مزود خدمات سحابية عالمي موثوق (Google Firebase). بموافقتك على سياسة الخصوصية هذه، فإنك توافق صراحةً على نقل وتخزين بيانات الحجز الخاصة بك في خوادم سحابية قد تقع خارج التراب الوطني، وذلك حصرياً لغرض المعالجة التقنية لحجزك.
                 </p>
+
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">4. أمن وسرية البيانات:</h3>
+                <p>
+                  تُستخدم بياناتك حصراً لتنظيم المواعيد والتواصل معك. نؤكد أن بياناتك لن تُباع ولن تُشارك مع أي طرف ثالث لأغراض تجارية. يقتصر الوصول إليها على طاقم المكتب الملتزم بالسرية المهنية المطلقة. وتخضع المنصة لتدابير أمنية تقنية لحماية المعطيات من التلف أو الولوج غير المرخص (تطبيقاً للمادة 38 من القانون).
+                </p>
+
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">5. مدة حفظ البيانات:</h3>
+                <p>
+                  يتم الاحتفاظ ببيانات الحجز الإلكتروني فقط للفترة اللازمة لإتمام الموعد وتنظيم جدول المكتب، ليتم بعد ذلك أرشفتها أو مسحها وفقاً لما تقتضيه القوانين المنظمة لمهنة التوثيق.
+                </p>
+
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">6. حقوق المستخدم (الشخص المعني):</h3>
+                <p>وفقاً للقانون الجزائري، يحق لك ممارسة الحقوق التالية على بياناتك:</p>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
+                    <span><strong>الحق في الإعلام والولوج:</strong> يحق لك معرفة البيانات التي نعالجها عنك.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
+                    <span><strong>الحق في التصحيح:</strong> يحق لك طلب تعديل أي بيانات غير صحيحة.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
+                    <span><strong>الحق في المسح والإلغاء:</strong> يحق لك طلب سحب بياناتك من قاعدة بيانات الحجز.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
+                    <span><strong>الحق في التراجع:</strong> التراجع عن موافقتك على معالجة بياناتك إلكترونياً.</span>
+                  </li>
+                </ul>
               </div>
             </section>
 
@@ -265,9 +296,9 @@ const TermsPrivacyPage = () => {
                   <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle className="w-8 h-8 text-emerald-600" />
                   </div>
-                  <h4 className="text-xl font-bold text-emerald-900 mb-4">إقرار الموافقة</h4>
+                  <h4 className="text-xl font-bold text-emerald-900 mb-4">إقرار الموافقة الصريحة</h4>
                   <p className="text-emerald-800 leading-relaxed">
-                    باستخدامك لهذا الموقع وحجزك لموعد، فإنك تقر بقراءتك وفهمك وموافقتك التامة على جميع الشروط والأحكام وسياسة الخصوصية المذكورة أعلاه.
+                    باستخدامك لهذا الموقع ووضع علامة الموافقة عند إرسال طلب الحجز، فإنك تقر بقراءتك وفهمك التام وموافقتك الصريحة على جميع الشروط والأحكام وسياسة الخصوصية المذكورة أعلاه، بما في ذلك الموافقة على معالجة ونقل بياناتك تقنياً عبر المزود السحابي لغرض تأكيد الموعد.
                   </p>
                 </div>
               </div>
@@ -277,8 +308,8 @@ const TermsPrivacyPage = () => {
         </div>
         
         <div className="text-center mt-12 text-gray-500 text-sm">
-          <p>الإصدار: {SITE_CONFIG.version} | تاريخ آخر تحديث: {new Date(SITE_CONFIG.lastUpdated).toLocaleDateString('ar-DZ')}</p>
-          <p className="mt-2 font-medium">جميع الحقوق محفوظة © {new Date().getFullYear()} - مكتب الموثق الأستاذ لعطب محمد</p>
+          <p>الإصدار: 1.2 | تاريخ آخر تحديث: 12/4/2026</p>
+          <p className="mt-2 font-medium">جميع الحقوق محفوظة © 2026 - مكتب الموثق الأستاذ لعطب محمد</p>
         </div>
         </div>
       </main>
