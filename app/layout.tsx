@@ -1,6 +1,6 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import { Cairo } from 'next/font/google';
-import './globals.css'; // Global styles
+import './globals.css';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import { Analytics } from "@vercel/analytics/next";
 
@@ -59,7 +59,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <head>
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="kIcznbOizJFi9WN+OY1t/g" async></script>
         
-        {/* ✅ أضف هذين السطرين */}
         <link rel="alternate" hrefLang="ar-DZ" href="https://lattab.vercel.app" />
         <link rel="alternate" hrefLang="fr-DZ" href="https://lattab.vercel.app" />
         <link rel="alternate" hrefLang="x-default" href="https://lattab.vercel.app" />
