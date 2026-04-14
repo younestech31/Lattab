@@ -39,13 +39,15 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/#home" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden bg-white">
+            <div className="flex items-center gap-3">
+              {/* اللوغو الجديد */}
               <Image
                 src="/logo-notaire-lattab.png"
-                alt="Logo"
+                alt="مكتب الأستاذ لعطب محمد - موثق بوهران"
                 width={48}
                 height={48}
-                className="object-cover"
+                className="rounded-full object-cover border border-white shadow-md"
+                priority
               />
             </div>
             <div>
