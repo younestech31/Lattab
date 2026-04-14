@@ -46,7 +46,7 @@ const Header = () => {
                 alt="مكتب الأستاذ لعطب محمد - موثق بوهران"
                 width={48}
                 height={48}
-                className="rounded-full object-cover border border-white shadow-md"
+                className="rounded-full object-cover"
                 priority
               />
             </div>

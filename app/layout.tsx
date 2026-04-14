@@ -21,11 +21,6 @@ export const metadata: Metadata = {
     'notaire Oran', 'notaire agréé Oran', 'acte de vente Oran', 'prix référence immobilier Algérie 2026', 'office notarial Oran', 'création société Algérie', 'notaire Algérie',
   ],
   robots: 'index, follow',
-  icons: {
-    icon: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
-    apple: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
-    shortcut: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
-  },
   openGraph: {
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'Notaire agréé à Oran — موثق معتمد بوهران. Actes de vente, prix référence immobilier 2026, création de sociétés.',
