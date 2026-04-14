@@ -53,6 +53,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ia600909.us.archive.org',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   output: 'standalone',

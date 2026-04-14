@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   ],
   robots: 'index, follow',
   icons: {
-    icon: '/logo-notaire-lattab.png',
-    apple: '/logo-notaire-lattab.png',
-    shortcut: '/logo-notaire-lattab.png',
+    icon: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
+    apple: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
+    shortcut: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
   },
   openGraph: {
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
-        url: '/logo-notaire-lattab.png',
+        url: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
         width: 800,
         height: 600,
         alt: 'Maître Lattab Mohamed - Notaire Oran / موثق لعطب محمد وهران',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'Notaire agréé à Oran — actes de vente, immobilier 2026, sociétés.',
-    images: ['/logo-notaire-lattab.png'],
+    images: ['https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png'],
   },
   alternates: {
     canonical: 'https://lattab.vercel.app',
@@ -77,7 +77,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               "@type": "Notary",
               "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
               "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
-              "image": "/logo-notaire-lattab.png",
+              "image": "https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png",
               "@id": "https://lattab.vercel.app",
               "url": "https://lattab.vercel.app",
               "telephone": "+213562296981",

@@ -42,7 +42,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
               {/* اللوغو الجديد */}
               <Image
-                src="/logo-notaire-lattab.png"
+                src="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png"
                 alt="مكتب الأستاذ لعطب محمد - موثق بوهران"
                 width={48}
                 height={48}
