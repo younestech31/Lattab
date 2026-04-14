@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import { Cairo } from 'next/font/google';
 import './globals.css'; // Global styles
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import { Analytics } from "@vercel/analytics/next";
 
 const cairo = Cairo({ 
   subsets: ['arabic'], 
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
     'notaire Oran', 'notaire agréé Oran', 'acte de vente Oran', 'prix référence immobilier Algérie 2026', 'office notarial Oran', 'création société Algérie', 'notaire Algérie',
   ],
   robots: 'index, follow',
+  icons: {
+    icon: '/logo-notaire-lattab.png',
+    apple: '/logo-notaire-lattab.png',
+    shortcut: '/logo-notaire-lattab.png',
+  },
   openGraph: {
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'Notaire agréé à Oran — موثق معتمد بوهران. Actes de vente, prix référence immobilier 2026, création de sociétés.',
@@ -124,6 +130,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className="font-cairo" suppressHydrationWarning>
         {children}
         <FloatingWhatsApp />
+        <Analytics />
       </body>
     </html>
   );
