@@ -11,10 +11,7 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: 'مكتب الأستاذ لعطب محمد - موثق بوهران | Maître Lattab Mohamed - Notaire à Oran',
-    template: '%s | Maître Lattab Mohamed - Notaire Oran',
-  },
+  title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
   description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق عقود البيع، حساب السعر المرجعي للعقار 2026، وتأسيس الشركات. — Maître Lattab Mohamed, notaire agréé à Oran. Services: actes de vente, prix de référence immobilier 2026, création de sociétés.',
   keywords: [
     // عربية
@@ -24,10 +21,10 @@ export const metadata: Metadata = {
   ],
   robots: 'index, follow',
   openGraph: {
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران | Maître Lattab Mohamed - Notaire Oran',
+    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'Notaire agréé à Oran — موثق معتمد بوهران. Actes de vente, prix référence immobilier 2026, création de sociétés.',
     url: 'https://lattab.vercel.app',
-    siteName: 'Maître Lattab Mohamed - Notaire Oran',
+    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
         url: 'https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png',
@@ -41,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maître Lattab Mohamed - Notaire Oran | موثق لعطب محمد وهران',
+    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'Notaire agréé à Oran — actes de vente, immobilier 2026, sociétés.',
     images: ['https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png'],
   },
