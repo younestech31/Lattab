@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
-        url: 'https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png',
+        url: '/logo-notaire-lattab.png',
         width: 800,
         height: 600,
         alt: 'Maître Lattab Mohamed - Notaire Oran / موثق لعطب محمد وهران',
@@ -35,12 +35,13 @@ export const metadata: Metadata = {
     ],
     locale: 'ar_DZ',
     type: 'website',
+    countryName: 'الجزائر',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'Notaire agréé à Oran — actes de vente, immobilier 2026, sociétés.',
-    images: ['https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png'],
+    images: ['/logo-notaire-lattab.png'],
   },
   alternates: {
     canonical: 'https://lattab.vercel.app',
@@ -70,7 +71,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               "@type": "Notary",
               "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
               "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
-              "image": "https://archive.org/download/Opn-logo/Picsart_26-04-11_23-10-29-566.png",
+              "image": "/logo-notaire-lattab.png",
               "@id": "https://lattab.vercel.app",
               "url": "https://lattab.vercel.app",
               "telephone": "+213562296981",
