@@ -49,12 +49,22 @@ export const metadata: Metadata = {
       'fr-DZ': 'https://lattab.vercel.app',
     },
   },
+  icons: {
+    icon: [
+      { url: '/icon', type: 'image/png' },
+      { url: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png', type: 'image/png' }
+    ],
+    shortcut: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
+    apple: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <head>
+        <link rel="icon" href="/icon" type="image/png" sizes="32x32" />
+        <link rel="icon" href="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png" type="image/png" />
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="kIcznbOizJFi9WN+OY1t/g" async></script>
         
         <link rel="alternate" hrefLang="ar-DZ" href="https://lattab.vercel.app" />
