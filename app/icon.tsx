@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
 export const size = {
   width: 32,
   height: 32,
@@ -21,7 +20,6 @@ export default async function Icon() {
           borderRadius: '50%',
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png"
           alt="Logo"

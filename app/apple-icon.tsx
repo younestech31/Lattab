@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
 export const size = {
   width: 180,
   height: 180,
@@ -20,7 +19,6 @@ export default async function AppleIcon() {
           backgroundColor: 'white',
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png"
           alt="Logo"
