@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'Notaire agréé à Oran — موثق معتمد بوهران. Actes de vente, prix référence immobilier 2026, création de sociétés.',
-    url: 'https://lattab.vercel.app',
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
@@ -60,10 +59,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <link rel="icon" href="/icon" type="image/png" sizes="32x32" />
         <link rel="icon" href="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png" type="image/png" />
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="kIcznbOizJFi9WN+OY1t/g" async></script>
-        
-        <link rel="alternate" hrefLang="ar-DZ" href="https://lattab.vercel.app" />
-        <link rel="alternate" hrefLang="fr-DZ" href="https://lattab.vercel.app" />
-        <link rel="alternate" hrefLang="x-default" href="https://lattab.vercel.app" />
 
         <script
           type="application/ld+json"

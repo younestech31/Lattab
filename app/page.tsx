@@ -14,10 +14,6 @@ import PriceCalculator from '@/components/PriceCalculator';
 export const metadata: Metadata = {
   alternates: {
     canonical: '/',
-    languages: {
-      'ar-DZ': '/',
-      'fr-DZ': '/',
-    },
   },
 };
 

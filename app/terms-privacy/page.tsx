@@ -11,10 +11,6 @@ export const metadata: Metadata = {
   description: 'تعرف على الشروط والأحكام وسياسة الخصوصية الخاصة بمكتب الموثق الأستاذ لعطب محمد وكيفية حماية بياناتك.',
   alternates: {
     canonical: '/terms-privacy',
-    languages: {
-      'ar-DZ': '/terms-privacy',
-      'fr-DZ': '/terms-privacy',
-    },
   },
 };
 
