@@ -9,7 +9,7 @@ import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import PriceCalculator from '@/components/PriceCalculator';
+import CalculatorCTA from '@/components/CalculatorCTA';
 
 export const metadata: Metadata = {
   alternates: {
@@ -27,7 +27,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <PriceCalculator />
+        <CalculatorCTA />
         <WhyChooseUs />
         <About />
         <Procedures />

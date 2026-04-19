@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
-        url: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
-        width: 800,
-        height: 600,
-        alt: 'Maître Lattab Mohamed - Notaire Oran / موثق لعطب محمد وهران',
-        type: 'image/png',
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران | Notaire Oran',
+        type: 'image/jpeg',
       },
     ],
     locale: 'ar_DZ',
@@ -40,7 +40,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'موثق معتمد بوهران. تقديم خدمات التوثيق، العقود، وتأسيس الشركات.',
-    images: ['https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png'],
+    images: ['/og-image.jpg'],
+  },
+  alternates: {
+    languages: {
+      'ar-DZ': 'https://lattab.vercel.app/',
+      'fr-DZ': 'https://lattab.vercel.app/fr/',
+      'x-default': 'https://lattab.vercel.app/',
+    },
   },
   icons: {
     icon: [
@@ -128,12 +135,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                   "@type": "WebSite",
                   "@id": "https://lattab.vercel.app/#website",
                   "url": "https://lattab.vercel.app",
-                  "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
-                  "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://lattab.vercel.app/?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                  }
+                  "name": "مكتب الأستاذ لعطب محمد - موثق بوهران"
                 },
                 {
                   "@type": "BreadcrumbList",

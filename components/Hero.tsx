@@ -27,8 +27,8 @@ const Hero = () => {
 
           {/* Main Title */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            مكتب الموثق المعتمد
-            <span className="block text-amber-400">في الجزائر</span>
+            مكتب الأستاذ لعطب محمد
+            <span className="block text-amber-400">موثق معتمد بوهران</span>
           </h1>
 
           {/* Subtitle */}

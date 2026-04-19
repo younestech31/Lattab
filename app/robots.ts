@@ -5,9 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/_next/'],
+      disallow: ['/api/'],
     },
     sitemap: 'https://lattab.vercel.app/sitemap.xml',
-    host: 'https://lattab.vercel.app',
   };
 }

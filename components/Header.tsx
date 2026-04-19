@@ -18,7 +18,7 @@ const Header = () => {
   const navLinks = [
     { href: '/#home', label: 'الرئيسية' },
     { href: '/#services', label: 'خدماتنا' },
-    { href: '/#calculator', label: 'حاسبة مرجعية' },
+    { href: '/calculateur-prix-referentiel', label: 'حاسبة السعر المرجعي' },
     { href: '/#why-choose-us', label: 'لماذا نحن' },
     { href: '/#about', label: 'عن الموثق' },
     { href: '/#procedures', label: 'الإجراءات' },
