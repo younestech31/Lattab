@@ -16,7 +16,6 @@ rules_version = '2';
 //   - appointmentTime: string (required, HH:mm)
 //   - status: string (required, 'pending' on create)
 //   - notes: string (optional, max 1000 chars)
-//   - clerkId: string (optional/null)
 //   - source: string (required, 'website')
 //   - createdAt: timestamp (required, server time)
 //   - updatedAt: timestamp (required, server time)
@@ -81,7 +80,7 @@ service cloud.firestore {
 
     function isValidAppointment(data) {
       let required = ['clientName', 'clientPhone', 'service', 'appointmentDate', 'appointmentTime', 'status', 'source', 'createdAt', 'updatedAt'];
-      let allFields = ['clientName', 'clientPhone', 'clientEmail', 'clientCompany', 'service', 'appointmentDate', 'appointmentTime', 'status', 'notes', 'clerkId', 'source', 'createdAt', 'updatedAt'];
+      let allFields = ['clientName', 'clientPhone', 'clientEmail', 'clientCompany', 'service', 'appointmentDate', 'appointmentTime', 'status', 'notes', 'source', 'createdAt', 'updatedAt'];
       
       return hasRequiredFields(data, required) &&
              hasOnlyAllowedFields(data, allFields) &&

@@ -48,6 +48,7 @@ const Header = () => {
                 height={48}
                 className="rounded-full object-cover"
                 priority
+                fetchPriority="high"
               />
             </div>
             <div>

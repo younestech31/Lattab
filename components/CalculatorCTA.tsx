@@ -18,11 +18,12 @@ const CalculatorCTA = () => {
             
             <Link 
               href="/calculateur-prix-referentiel"
+              aria-label="الانتقال إلى حاسبة السعر المرجعي للعقار"
               className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20 group"
             >
               <Calculator className="w-5 h-5" />
               ابدأ الحساب الآن مجاناً
-              <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
             </Link>
           </div>
         </div>

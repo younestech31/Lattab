@@ -243,6 +243,29 @@ const Procedures = () => {
 
   return (
     <section id="procedures" className="py-12 bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": procedureTypes.map((procedure, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "HowTo",
+                "name": procedure.title,
+                "description": `الإجراءات المطلوبة لـ ${procedure.title}`,
+                "step": procedure.steps.map((step, stepIndex) => ({
+                  "@type": "HowToStep",
+                  "position": stepIndex + 1,
+                  "text": step
+                }))
+              }
+            }))
+          })
+        }}
+      />
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">

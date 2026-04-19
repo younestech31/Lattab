@@ -11,6 +11,8 @@ const cairo = Cairo({
   preload: true,
 });
 
+const SITE_URL = 'https://lattab.vercel.app';
+
 export const metadata: Metadata = {
   title: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
   description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق قانوني: عقود البيع والإيجار، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
@@ -44,9 +46,8 @@ export const metadata: Metadata = {
   },
   alternates: {
     languages: {
-      'ar-DZ': 'https://lattab.vercel.app/',
-      'fr-DZ': 'https://lattab.vercel.app/fr/',
-      'x-default': 'https://lattab.vercel.app/',
+      'ar-DZ': `${SITE_URL}/`,
+      'x-default': `${SITE_URL}/`,
     },
   },
   icons: {
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
     shortcut: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
     apple: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
   },
-  metadataBase: new URL('https://lattab.vercel.app'),
+  metadataBase: new URL(SITE_URL),
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
@@ -79,8 +80,8 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                   "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
                   "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
                   "image": "https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png",
-                  "@id": "https://lattab.vercel.app/#organization",
-                  "url": "https://lattab.vercel.app",
+                  "@id": `${SITE_URL}/#organization`,
+                  "url": SITE_URL,
                   "telephone": "+213562296981",
                   "priceRange": "$$",
                   "address": {
@@ -133,19 +134,19 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                 },
                 {
                   "@type": "WebSite",
-                  "@id": "https://lattab.vercel.app/#website",
-                  "url": "https://lattab.vercel.app",
+                  "@id": `${SITE_URL}/#website`,
+                  "url": SITE_URL,
                   "name": "مكتب الأستاذ لعطب محمد - موثق بوهران"
                 },
                 {
                   "@type": "BreadcrumbList",
-                  "@id": "https://lattab.vercel.app/#breadcrumb",
+                  "@id": `${SITE_URL}/#breadcrumb`,
                   "itemListElement": [
                     {
                       "@type": "ListItem",
                       "position": 1,
                       "name": "الرئيسية",
-                      "item": "https://lattab.vercel.app/"
+                      "item": SITE_URL
                     }
                   ]
                 }
