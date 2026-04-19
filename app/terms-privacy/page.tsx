@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/terms-privacy',
   },
+  openGraph: {
+    url: '/terms-privacy',
+    title: 'الشروط والأحكام وسياسة الخصوصية | مكتب الموثق الأستاذ لعطب محمد',
+    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية الخاصة بمكتب الموثق الأستاذ لعطب محمد وكيفية حماية بياناتك.',
+  },
 };
 
 const TermsPrivacyPage = () => {

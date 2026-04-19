@@ -13,7 +13,7 @@ const cairo = Cairo({
 
 export const metadata: Metadata = {
   title: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
-  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران (Notaire agréé à Oran). تقديم خدمات التوثيق القانوني، عقود البيع والشراء، الإيجار، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق قانوني: عقود البيع والإيجار، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
   keywords: [
     'موثق وهران', 'موثق معتمد وهران', 'مكتب توثيق وهران', 'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026', 'عقود عقارية', 'تأسيس شركات الجزائر',
     'notaire Oran', 'notaire agréé Oran', 'office notarial Oran', 'acte de vente Oran', 'prix référence immobilier Algérie 2026', 'création société Algérie'
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   robots: 'index, follow',
   openGraph: {
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'Notaire agréé à Oran — موثق معتمد بوهران. Actes de vente, prix référence immobilier 2026, création de sociétés.',
+    description: 'موثق معتمد بوهران. تقديم خدمات التوثيق، العقود، وتأسيس الشركات.',
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
@@ -29,6 +29,7 @@ export const metadata: Metadata = {
         width: 800,
         height: 600,
         alt: 'Maître Lattab Mohamed - Notaire Oran / موثق لعطب محمد وهران',
+        type: 'image/png',
       },
     ],
     locale: 'ar_DZ',
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'Notaire agréé à Oran — actes de vente, immobilier 2026, sociétés.',
+    description: 'موثق معتمد بوهران. تقديم خدمات التوثيق، العقود، وتأسيس الشركات.',
     images: ['https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png'],
   },
   icons: {

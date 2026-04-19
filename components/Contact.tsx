@@ -77,7 +77,7 @@ function openWhatsAppInquiry(data: {
   const message = encodeURIComponent(cleanText(data.message));
 
   const text = `استفسار عام:%0Aالاسم: ${name}%0Aالخدمة: ${service}%0Aالرسالة: ${message}`;
-  window.open(`https://wa.me/213562296981?text=${text}`, '_blank', 'noopener,noreferrer');
+  window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${text}`, '_blank', 'noopener,noreferrer');
 }
 
 // ─── دالة تسجيل الأخطاء الآمنة ──────────────────────────

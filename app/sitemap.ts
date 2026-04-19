@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://lattab.vercel.app',
+      url: 'https://lattab.vercel.app/',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,

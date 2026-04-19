@@ -52,7 +52,7 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://wa.me/213562296981"
+                href="https://api.whatsapp.com/send/?phone=213562296981"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 hover:bg-emerald-600 rounded-lg flex items-center justify-center transition-colors"
