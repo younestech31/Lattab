@@ -1,22 +1,24 @@
-'use client';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { WORKING_HOURS, SITE_CONFIG } from '@/lib/constants';
 
+export const metadata: Metadata = {
+  title: 'الشروط والأحكام وسياسة الخصوصية | مكتب الموثق الأستاذ لعطب محمد',
+  description: 'تعرف على الشروط والأحكام وسياسة الخصوصية الخاصة بمكتب الموثق الأستاذ لعطب محمد وكيفية حماية بياناتك.',
+  alternates: {
+    canonical: '/terms-privacy',
+    languages: {
+      'ar-DZ': '/terms-privacy',
+      'fr-DZ': '/terms-privacy',
+    },
+  },
+};
+
 const TermsPrivacyPage = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="min-h-screen bg-white">
       <Header />

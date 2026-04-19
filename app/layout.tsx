@@ -42,13 +42,6 @@ export const metadata: Metadata = {
     description: 'Notaire agréé à Oran — actes de vente, immobilier 2026, sociétés.',
     images: ['https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png'],
   },
-  alternates: {
-    canonical: 'https://lattab.vercel.app',
-    languages: {
-      'ar-DZ': 'https://lattab.vercel.app',
-      'fr-DZ': 'https://lattab.vercel.app',
-    },
-  },
   icons: {
     icon: [
       { url: '/icon', type: 'image/png' },
@@ -57,6 +50,7 @@ export const metadata: Metadata = {
     shortcut: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
     apple: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
   },
+  metadataBase: new URL('https://lattab.vercel.app'),
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
