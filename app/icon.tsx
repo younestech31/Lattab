@@ -21,7 +21,7 @@ export default async function Icon() {
         }}
       >
         <img
-          src="https://ais-dev-53ukigxa2a7ev5gei556io-89927942959.europe-west3.run.app/logo.webp"
+          src="https://ais-dev-53ukigxa2a7ev5gei556io-89927942959.europe-west3.run.app/logo.png"
           alt="Logo"
           width="32"
           height="32"
