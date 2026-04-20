@@ -2,10 +2,13 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +30,12 @@ const Header = () => {
     { href: '/#contact', label: 'اتصل بنا' },
   ];
 
+  const headerActive = !isHomePage || isScrolled || isMenuOpen;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMenuOpen
+        headerActive
           ? 'bg-white shadow-lg py-2'
           : 'bg-transparent py-4'
       }`}
@@ -52,31 +57,31 @@ const Header = () => {
               />
             </div>
             <div>
-              <span className={`block text-xl font-bold ${isScrolled || isMenuOpen ? 'text-gray-800' : 'text-white'}`}>
+              <span className={`block text-xl font-bold ${headerActive ? 'text-gray-800' : 'text-white'}`}>
                الأستاذ لعطب محمد
               </span>
-              <p className={`text-xs ${isScrolled || isMenuOpen ? 'text-emerald-600' : 'text-emerald-200'}`}>
+              <p className={`text-xs ${headerActive ? 'text-emerald-600' : 'text-emerald-200'}`}>
                 موثق معتمد
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-4 lg:gap-6">
+          <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap ${
-                  isScrolled ? 'text-gray-700' : 'text-white'
-                }`}
+                className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
+                  headerActive ? 'text-gray-700' : 'text-white'
+                } ${['لماذا نحن', 'الإجراءات', 'أخبار قانونية', 'الأسئلة الشائعة'].includes(link.label) ? 'hidden xl:block' : ''}`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/#booking-form"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-lg font-medium transition-colors text-sm"
             >
               احجز موعد
             </Link>
@@ -89,7 +94,7 @@ const Header = () => {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
             className={`lg:hidden p-2 rounded-lg ${
-              isScrolled || isMenuOpen ? 'text-gray-700' : 'text-white'
+              headerActive ? 'text-gray-700' : 'text-white'
             }`}
           >
             <svg
