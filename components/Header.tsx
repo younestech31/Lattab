@@ -50,9 +50,10 @@ const Header = () => {
                 alt="شعار مكتب الأستاذ لعطب محمد"
                 width={48}
                 height={48}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 priority
                 fetchPriority="high"
+                unoptimized
               />
             </div>
             <div>

@@ -41,7 +41,8 @@ const Footer = () => {
                     alt="شعار مكتب الموثق لعطب محمد" 
                     width={64} 
                     height={64}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
+                    unoptimized
                   />
                 </div>
                 <div>
