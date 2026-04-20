@@ -21,7 +21,7 @@ export default async function Icon() {
         }}
       >
         <img
-          src="https://lattab.vercel.app/logo.webp"
+          src="https://lattab.vercel.app/logo.png"
           alt="Logo"
           width="32"
           height="32"

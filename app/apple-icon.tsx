@@ -20,7 +20,7 @@ export default async function AppleIcon() {
         }}
       >
         <img
-          src="https://lattab.vercel.app/logo.webp"
+          src="https://lattab.vercel.app/logo.png"
           alt="Logo"
           width="180"
           height="180"
