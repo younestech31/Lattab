@@ -44,16 +44,18 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/#home" className="flex items-center gap-3">
-            <div className="flex items-center gap-3">
-              {/* اللوغو الجديد التابع محلياً */}
+            <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
               <Image
-                src="/logo.png"
-                alt="مكتب الأستاذ لعطب محمد - موثق بوهران"
+                src="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png"
+                alt="شعار مكتب الأستاذ لعطب محمد"
                 width={48}
                 height={48}
-                className="rounded-full object-cover"
+                className="w-full h-full object-cover"
                 priority
                 fetchPriority="high"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
               />
             </div>
             <div>
