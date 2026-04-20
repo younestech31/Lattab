@@ -35,13 +35,13 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <Link href="/#home" className="flex items-center gap-3">
-                <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center p-1">
+                <div className="w-16 h-16 bg-white rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
                   <Image 
-                    src="/logo.png" 
+                    src="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png" 
                     alt="شعار مكتب الموثق لعطب محمد" 
-                    width={48} 
-                    height={48}
-                    className="object-contain"
+                    width={64} 
+                    height={64}
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div>
