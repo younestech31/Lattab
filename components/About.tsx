@@ -100,6 +100,7 @@ const About = () => {
                   fill
                   className="object-cover object-top"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </div>
 

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { WORKING_HOURS } from '@/lib/constants';
 
@@ -34,10 +35,14 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <Link href="/#home" className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h6v6h6v10H6zm2-8h8v2H8v-2zm0 4h8v2H8v-2z" />
-                  </svg>
+                <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center p-1">
+                  <Image 
+                    src="/logo.png" 
+                    alt="شعار مكتب الموثق لعطب محمد" 
+                    width={48} 
+                    height={48}
+                    className="object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">مكتب الموثق</h3>

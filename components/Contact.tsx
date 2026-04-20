@@ -11,7 +11,9 @@ const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 دقائق
 
 // ─── دالة تنظيف النصوص ──────────────────────────
 function cleanText(input: string): string {
-  return input ? input.trim() : '';
+  return input
+    ? input.trim().replace(/<[^>]*>?/g, '').slice(0, 1000)
+    : '';
 }
 
 // ─── تحويل الوقت المعروض إلى صيغة 24 ساعة للتخزين ───────────
@@ -19,11 +21,13 @@ const TIME_DISPLAY_TO_24H: Record<string, string> = {
   '09:00 صباحاً': '09:00',
   '10:00 صباحاً': '10:00',
   '11:00 صباحاً': '11:00',
-  '12:00 ظهراً':  '12:00',
   '01:00 ظهراً':  '13:00',
   '02:00 ظهراً':  '14:00',
   '03:00 عصراً':  '15:00',
 };
+
+const MORNING_SLOTS = ['09:00 صباحاً', '10:00 صباحاً', '11:00 صباحاً'];
+const AFTERNOON_SLOTS = ['01:00 ظهراً', '02:00 ظهراً', '03:00 عصراً'];
 
 // ─── إرسال الموعد مباشرة إلى Firestore ───────────────────────
 async function submitAppointmentToFirestore(data: {
@@ -141,8 +145,6 @@ const Contact = () => {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [appointmentAgreed, setAppointmentAgreed] = useState(false);
 
-  const timeSlots = Object.keys(TIME_DISPLAY_TO_24H);
-
   const services = [
     'عقود البيع والشراء العقارية',
     'عقود الإيجار والتأجير',
@@ -195,8 +197,32 @@ const Contact = () => {
       return;
     }
 
+    const selectedDate = new Date(appointmentData.date + 'T12:00:00');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (selectedDate < today) {
+      setSubmitError('لا يمكن حجز موعد في تاريخ مضى. يرجى اختيار تاريخ مستقبلي.');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
+      // التحقق من خوادم Next.js للـ Rate Limiting بناءً على IP ورقم الهاتف
+      const rateLimitRes = await fetch('/api/rate-limit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phone: phoneDigits }),
+      });
+
+      if (!rateLimitRes.ok) {
+        const errorData = await rateLimitRes.json();
+        setSubmitError(errorData.error || 'تم تجاوز الحد المسموح به. يرجى الانتظار ثم المحاولة.');
+        setIsSubmitting(false);
+        return;
+      }
+
       await submitAppointmentToFirestore({ ...appointmentData });
       setIsAppointmentSubmitted(true);
       // التمرير إلى أعلى النموذج بعد الإرسال الناجح
@@ -443,12 +469,12 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
-                          pattern="0(5|6|7) [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
+                          pattern="0(5|6|7)[0-9] [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
                           title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
                           value={appointmentData.phone}
                           onChange={(e) => setAppointmentData({ ...appointmentData, phone: formatPhoneNumber(e.target.value) })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
-                          placeholder="05XXXXXXXX"
+                          placeholder="05 XX XX XX XX"
                           dir="ltr"
                         />
                       </div>
@@ -524,7 +550,8 @@ const Contact = () => {
                       name="honeypot"
                       value={appointmentData.honeypot}
                       onChange={(e) => setAppointmentData({ ...appointmentData, honeypot: e.target.value })}
-                      className="hidden"
+                      style={{ display: 'none', position: 'absolute', left: '-9999px' }}
+                      aria-hidden="true"
                       tabIndex={-1}
                       autoComplete="off"
                     />
@@ -535,21 +562,45 @@ const Contact = () => {
                         الوقت المفضل *
                         <span className="text-xs text-gray-500 mr-2 font-normal">(المواعيد تخضع للتأكيد الهاتفي)</span>
                       </label>
-                      <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-                        {timeSlots.map((slot, index) => (
-                          <button
-                            key={index}
-                            type="button"
-                            onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
-                            className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
-                              appointmentData.time === slot
-                                ? 'bg-emerald-600 text-white border-emerald-600'
-                                : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-500'
-                            }`}
-                          >
-                            {slot}
-                          </button>
-                        ))}
+                      
+                      <div className="mb-3">
+                        <span className="text-xs font-bold text-gray-500 mb-2 block">الفترة الصباحية</span>
+                        <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                          {MORNING_SLOTS.map((slot, index) => (
+                            <button
+                              key={`morning-${index}`}
+                              type="button"
+                              onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
+                              className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
+                                appointmentData.time === slot
+                                  ? 'bg-emerald-600 text-white border-emerald-600'
+                                  : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-500'
+                              }`}
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <span className="text-xs font-bold text-gray-500 mb-2 block">الفترة المسائية</span>
+                        <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                          {AFTERNOON_SLOTS.map((slot, index) => (
+                            <button
+                              key={`afternoon-${index}`}
+                              type="button"
+                              onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
+                              className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
+                                appointmentData.time === slot
+                                  ? 'bg-emerald-600 text-white border-emerald-600'
+                                  : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-500'
+                              }`}
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
@@ -622,10 +673,28 @@ const Contact = () => {
                     <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
                       <CheckCircle className="w-10 h-10 text-emerald-600" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">شكراً لتواصلك معنا!</h3>
-                    <p className="text-gray-600">
-                      تم فتح WhatsApp بتفاصيل استفسارك. سنرد عليك في أقرب وقت ممكن.
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">جاري فتح WhatsApp!</h3>
+                    <p className="text-gray-600 mb-6">
+                      إذا لم يُفتح تطبيق WhatsApp أو النافذة تلقائيًا، يمكنك النقر على الزر أدناه لإعادة المحاولة، أو تقديم استفسار جديد.
                     </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <button
+                        onClick={() => openWhatsAppInquiry(inquiryData)}
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center justify-center gap-2"
+                      >
+                        إعادة فتح WhatsApp
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsInquirySubmitted(false);
+                          setInquiryData({ name: '', phone: '', email: '', service: '', message: '' });
+                          setInquiryAgreed(false);
+                        }}
+                        className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 px-6 rounded-xl transition-colors text-sm"
+                      >
+                        إرسال استفسار جديد
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleInquirySubmit} className="space-y-6">
@@ -652,12 +721,12 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
-                          pattern="0(5|6|7) [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
+                          pattern="0(5|6|7)[0-9] [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
                           title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
                           value={inquiryData.phone}
                           onChange={(e) => setInquiryData({ ...inquiryData, phone: formatPhoneNumber(e.target.value) })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
-                          placeholder="05XXXXXXXX"
+                          placeholder="05 XX XX XX XX"
                           dir="ltr"
                         />
                       </div>

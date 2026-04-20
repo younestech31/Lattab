@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    url: '/',
+    url: 'https://lattab.vercel.app/',
   },
 };
 

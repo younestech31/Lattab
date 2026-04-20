@@ -67,6 +67,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <head>
         <link rel="icon" href="/icon" type="image/png" sizes="32x32" />
         <link rel="icon" href="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png" type="image/png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="preconnect" href="https://firestore.googleapis.com" />
+        <link rel="preconnect" href="https://apis.google.com" />
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="kIcznbOizJFi9WN+OY1t/g" async></script>
 
         <script

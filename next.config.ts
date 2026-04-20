@@ -23,7 +23,7 @@ const securityHeaders = [
   },
   {
     key: 'Content-Security-Policy',
-    value: "default-src 'self'; script-src 'self' 'unsafe-inline' analytics.ahrefs.com apis.google.com va.vercel-scripts.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' blob: data: images.unsplash.com *.archive.org *.googleapis.com; font-src 'self' fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; frame-src https://www.google.com; connect-src 'self' *.googleapis.com *.firebaseio.com *.firebaseapp.com firebasestorage.googleapis.com analytics.ahrefs.com vitals.vercel-insights.com; upgrade-insecure-requests;",
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' analytics.ahrefs.com apis.google.com va.vercel-scripts.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' blob: data: images.unsplash.com *.archive.org *.googleapis.com; font-src 'self' fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; frame-src https://www.google.com https://maps.google.com https://maps.googleapis.com; connect-src 'self' *.googleapis.com *.firebaseio.com *.firebaseapp.com firebasestorage.googleapis.com analytics.ahrefs.com vitals.vercel-insights.com; upgrade-insecure-requests;",
   },
 ];
 

@@ -32,19 +32,19 @@ const Hero = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-emerald-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             ثقة 15 عامًا في التوثيق القانوني - نضمن لك معاملات آمنة وسريعة وفق أحدث الأنظمة القانونية الجزائرية
           </p>
 
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 mb-12">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+            <div className="bg-emerald-950/40 backdrop-blur-sm rounded-xl p-4 border border-emerald-800/50">
               <div className="text-3xl md:text-4xl font-bold text-white">15+</div>
-              <div className="text-emerald-200 text-sm">سنة خبرة</div>
+              <div className="text-emerald-50 text-sm font-medium">سنة خبرة</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+            <div className="bg-emerald-950/40 backdrop-blur-sm rounded-xl p-4 border border-emerald-800/50">
               <div className="text-3xl md:text-4xl font-bold text-white">5,000+</div>
-              <div className="text-emerald-200 text-sm">معاملة ناجحة</div>
+              <div className="text-emerald-50 text-sm font-medium">معاملة ناجحة</div>
             </div>
           </div>
 

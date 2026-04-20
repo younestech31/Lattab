@@ -40,9 +40,9 @@ const Header = () => {
           {/* Logo */}
           <Link href="/#home" className="flex items-center gap-3">
             <div className="flex items-center gap-3">
-              {/* اللوغو الجديد */}
+              {/* اللوغو الجديد التابع محلياً */}
               <Image
-                src="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png"
+                src="/logo.png"
                 alt="مكتب الأستاذ لعطب محمد - موثق بوهران"
                 width={48}
                 height={48}
@@ -85,7 +85,9 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
             className={`lg:hidden p-2 rounded-lg ${
               isScrolled || isMenuOpen ? 'text-gray-700' : 'text-white'
             }`}
@@ -117,7 +119,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className={`lg:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}>
+          <nav id="mobile-nav" className={`lg:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}>
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link

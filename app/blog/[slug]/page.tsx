@@ -1,4 +1,5 @@
 import { marked } from 'marked';
+import DOMPurify from 'isomorphic-dompurify';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -10,6 +11,12 @@ import fs from 'fs';
 import path from 'path';
 
 const SITE_URL = 'https://lattab.vercel.app';
+
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -48,7 +55,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
   
   const content = fs.readFileSync(filePath, 'utf-8');
-  const processedContent = await marked(content);
+  const rawHtml = await marked(content);
+  const processedContent = DOMPurify.sanitize(rawHtml);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -56,13 +64,48 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "headline": post.title,
     "description": post.description,
     "datePublished": post.date,
+    "dateModified": post.date,
     "author": {
       "@type": "Person",
-      "name": "لعطب محمد",
-      "jobTitle": "موثق معتمد"
+      "name": "الأستاذ لعطب محمد",
+      "jobTitle": "موثق معتمد",
+      "url": `${SITE_URL}/#about`
     },
-    "publisher": { "@id": `${SITE_URL}/#organization` },
+    "publisher": {
+      "@type": "LegalService",
+      "@id": `${SITE_URL}/#organization`,
+      "name": "مكتب الموثق لعطب محمد",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/logo.png`
+      }
+    },
     "mainEntityOfPage": { "@id": `${SITE_URL}/blog/${slug}` }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": SITE_URL
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": `${SITE_URL}/blog`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `${SITE_URL}/blog/${slug}`
+      }
+    ]
   };
 
   return (
@@ -71,6 +114,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <main className="flex-grow pt-32 pb-20" dir="rtl">
         <div className="container mx-auto px-4 max-w-4xl">
           
+          <div className="mb-4 text-sm text-gray-500 overflow-x-auto whitespace-nowrap">
+            <nav className="flex items-center gap-2" aria-label="Breadcrumb">
+              <Link href="/" className="hover:text-emerald-700 transition-colors">الرئيسية</Link>
+              <span aria-hidden="true">&gt;</span>
+              <Link href="/blog" className="hover:text-emerald-700 transition-colors">المدونة</Link>
+              <span aria-hidden="true">&gt;</span>
+              <span className="text-gray-900 font-medium truncate max-w-[200px] sm:max-w-none inline-block align-bottom">{post.title}</span>
+            </nav>
+          </div>
+
           <div className="mb-8">
             <Link 
               href="/blog" 
@@ -83,6 +136,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           <article className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />                
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />                
             <div className="p-8 md:p-12">
               <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500">
                 <span className="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full font-bold">

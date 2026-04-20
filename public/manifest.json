@@ -1,0 +1,23 @@
+{
+  "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
+  "short_name": "الموثق لعطب",
+  "description": "مكتب موثق معتمد بمدينة وهران. تقديم خدمات التوثيق، العقود العقارية والتجارية.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#065f46",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "ar-DZ",
+  "dir": "rtl"
+}
