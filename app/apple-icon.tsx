@@ -20,7 +20,7 @@ export default async function AppleIcon() {
         }}
       >
         <img
-          src="https://lattab.vercel.app/logo.png"
+          src="https://archive.org/download/Opn-logo/logo-notaire-lattab.png"
           alt="Logo"
           width="180"
           height="180"

@@ -21,7 +21,7 @@ export default async function Icon() {
         }}
       >
         <img
-          src="https://lattab.vercel.app/logo.png"
+          src="https://archive.org/download/Opn-logo/logo-notaire-lattab.png"
           alt="Logo"
           width="32"
           height="32"
