@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: post.description,
       type: 'article',
-      publishedTime: post.date,
+      publishedTime: post.dateISO,
     }
   };
 }
@@ -63,8 +63,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "@type": "Article",
     "headline": post.title,
     "description": post.description,
-    "datePublished": post.date,
-    "dateModified": post.date,
+    "datePublished": post.dateISO,
+    "dateModified": post.dateISO,
     "author": {
       "@type": "Person",
       "name": "الأستاذ لعطب محمد",
