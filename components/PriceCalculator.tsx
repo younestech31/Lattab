@@ -4,6 +4,14 @@ import { useState, useMemo } from 'react';
 import { propertyDataMap, availableRegions, translations } from '@/lib/data/propertyPrices';
 import { Calculator } from 'lucide-react';
 
+const CalculatorSkeleton = () => (
+  <div className="animate-pulse space-y-4">
+    <div className="h-12 bg-gray-200 rounded-xl" />
+    <div className="h-12 bg-gray-200 rounded-xl" />
+    <div className="h-32 bg-gray-200 rounded-xl" />
+  </div>
+);
+
 const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {

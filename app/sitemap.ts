@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
-    { url: `${base}/`,                                    lastModified: new Date(), changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${base}/`,                                    lastModified: new Date(), changeFrequency: 'weekly',  priority: 1.0, images: [{ url: `${base}/og-image.jpg`, alt: 'مكتب الأستاذ لعطب محمد - موثق' }] },
     { url: `${base}/calculateur-prix-referentiel`,        lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.95 },
     { url: `${base}/blog`,                                lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.8 },
     { url: `${base}/terms-privacy`,                       lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },

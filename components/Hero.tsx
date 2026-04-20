@@ -2,7 +2,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-emerald-900 pt-16 md:pt-20"
+      className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center bg-emerald-900 pt-24 pb-16 md:pt-20"
     >
       {/* Background Overlays */}
       <div className="absolute inset-0 z-0">
@@ -26,13 +26,13 @@ const Hero = () => {
           </div>
 
           {/* Main Title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             مكتب الأستاذ لعطب محمد
-            <span className="block text-amber-400">موثق معتمد بوهران</span>
+            <span className="block text-amber-400 mt-2">موثق معتمد بوهران</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed px-2">
             ثقة 15 عامًا في التوثيق القانوني - نضمن لك معاملات آمنة وسريعة وفق أحدث الأنظمة القانونية الجزائرية
           </p>
 

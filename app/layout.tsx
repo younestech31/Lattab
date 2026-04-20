@@ -52,11 +52,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icon', type: 'image/png' },
-      { url: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png', type: 'image/png' }
+      { url: '/logo.png', type: 'image/png' }
     ],
-    shortcut: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
-    apple: 'https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
   },
   metadataBase: new URL(SITE_URL),
 };
@@ -65,8 +64,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <head>
-        <link rel="icon" href="/icon" type="image/png" sizes="32x32" />
-        <link rel="icon" href="https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png" type="image/png" />
+        <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://firestore.googleapis.com" />
         <link rel="preconnect" href="https://apis.google.com" />
@@ -82,7 +80,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                   "@type": "LegalService",
                   "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
                   "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
-                  "image": "https://ia600909.us.archive.org/16/items/Opn-logo/logo-notaire-lattab.png",
+                  "image": SITE_URL + "/logo.png",
                   "@id": `${SITE_URL}/#organization`,
                   "url": SITE_URL,
                   "telephone": "+213562296981",

@@ -5,12 +5,15 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { ReadingProgress } from '@/components/ReadingProgress';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
 import { blogPosts } from '@/lib/data/blog';
 import fs from 'fs';
 import path from 'path';
 
 const SITE_URL = 'https://lattab.vercel.app';
+
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -64,7 +67,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "headline": post.title,
     "description": post.description,
     "datePublished": post.dateISO,
-    "dateModified": post.dateISO,
+    "dateModified": post.dateModified ?? post.dateISO,
     "author": {
       "@type": "Person",
       "name": "الأستاذ لعطب محمد",
@@ -110,6 +113,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <ReadingProgress />
       <Header />
       <main className="flex-grow pt-32 pb-20" dir="rtl">
         <div className="container mx-auto px-4 max-w-4xl">

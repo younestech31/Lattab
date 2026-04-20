@@ -1,6 +1,6 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2 } from 'lucide-react';
+import { useState, useEffect, useMemo, useRef } from 'react';
+import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2, Copy } from 'lucide-react';
 import { serverTimestamp, doc, setDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { WORKING_HOURS } from '@/lib/constants';
@@ -18,16 +18,17 @@ function cleanText(input: string): string {
 
 // ─── تحويل الوقت المعروض إلى صيغة 24 ساعة للتخزين ───────────
 const TIME_DISPLAY_TO_24H: Record<string, string> = {
+  '08:30 صباحاً': '08:30',
   '09:00 صباحاً': '09:00',
   '10:00 صباحاً': '10:00',
   '11:00 صباحاً': '11:00',
-  '01:00 ظهراً':  '13:00',
+  '01:30 ظهراً':  '13:30',
   '02:00 ظهراً':  '14:00',
   '03:00 عصراً':  '15:00',
 };
 
-const MORNING_SLOTS = ['09:00 صباحاً', '10:00 صباحاً', '11:00 صباحاً'];
-const AFTERNOON_SLOTS = ['01:00 ظهراً', '02:00 ظهراً', '03:00 عصراً'];
+const MORNING_SLOTS = ['08:30 صباحاً', '09:00 صباحاً', '10:00 صباحاً', '11:00 صباحاً'];
+const AFTERNOON_SLOTS = ['01:30 ظهراً', '02:00 ظهراً', '03:00 عصراً'];
 
 // ─── إرسال الموعد مباشرة إلى Firestore ───────────────────────
 async function submitAppointmentToFirestore(data: {
@@ -133,6 +134,11 @@ const Contact = () => {
   });
   const [isInquirySubmitted, setIsInquirySubmitted] = useState(false);
   const [inquiryAgreed, setInquiryAgreed] = useState(false);
+  const retryButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isInquirySubmitted) retryButtonRef.current?.focus();
+  }, [isInquirySubmitted]);
 
   // ── حالة نموذج الموعد ──
   const [appointmentData, setAppointmentData] = useState({
@@ -144,6 +150,25 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [appointmentAgreed, setAppointmentAgreed] = useState(false);
+  const [countdown, setCountdown] = useState(10);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isAppointmentSubmitted) {
+      setCountdown(10);
+      timer = setInterval(() => {
+        setCountdown((c) => {
+          if (c <= 1) {
+            setIsAppointmentSubmitted(false);
+            setAppointmentData({ name: '', phone: '', email: '', service: '', date: '', time: '', notes: '', company: '', honeypot: '' });
+            clearInterval(timer);
+          }
+          return c - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [isAppointmentSubmitted]);
 
   const services = [
     'عقود البيع والشراء العقارية',
@@ -162,9 +187,11 @@ const Contact = () => {
     return day === 5 || day === 6;
   };
 
-  const maxDate = new Date();
-  maxDate.setDate(maxDate.getDate() + 90);
-  const maxDateString = maxDate.toISOString().split('T')[0];
+  const maxDateString = useMemo(() => {
+    const maxDate = new Date();
+    maxDate.setDate(maxDate.getDate() + 90);
+    return maxDate.toISOString().split('T')[0];
+  }, []);
 
   // ── إرسال الموعد ──
   const handleAppointmentSubmit = async (e: React.FormEvent) => {
@@ -324,16 +351,22 @@ const Contact = () => {
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">الهاتف</h3>
                   <div className="text-gray-600 text-sm space-y-2" dir="ltr">
-                    <div>
+                    <div className="flex items-center gap-2">
                       <a href="tel:+213562296981" className="hover:text-emerald-600 transition-colors font-medium">
                         +213 562 29 69 81
                       </a>
+                      <button onClick={() => navigator.clipboard.writeText('+213562296981')} aria-label="نسخ رقم الهاتف" className="text-gray-400 hover:text-emerald-600 transition-colors">
+                        <Copy className="w-4 h-4" />
+                      </button>
                       <span className="text-gray-400 text-xs ml-2" dir="rtl">(الخاص بالمكتب)</span>
                     </div>
-                    <div>
+                    <div className="flex items-center gap-2">
                       <a href="tel:+213558440001" className="hover:text-emerald-600 transition-colors font-medium">
                         +213 558 44 00 01
                       </a>
+                      <button onClick={() => navigator.clipboard.writeText('+213558440001')} aria-label="نسخ رقم الهاتف" className="text-gray-400 hover:text-emerald-600 transition-colors">
+                        <Copy className="w-4 h-4" />
+                      </button>
                       <span className="text-gray-400 text-xs ml-2" dir="rtl">(للدعم خارج أوقات العمل فقط)</span>
                     </div>
                   </div>
@@ -429,10 +462,10 @@ const Contact = () => {
                       </p>
                     </div>
                     <p className="text-gray-600 mb-2">
-                      تم تسجيل طلبك بنجاح في نظام المكتب.
+                       سيتم إعادة تحميل النموذج في غضون {countdown} ثانية.
                     </p>
                     <p className="text-gray-500 text-sm">
-                      سيتواصل معك فريق المكتب لتأكيد الموعد في أقرب وقت.
+                      تم تسجيل طلبك بنجاح في نظام المكتب.
                     </p>
                     <button
                       onClick={() => {
@@ -455,6 +488,7 @@ const Contact = () => {
                         <input
                           type="text"
                           required
+                          maxLength={100}
                           value={appointmentData.name}
                           onChange={(e) => setAppointmentData({ ...appointmentData, name: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
@@ -469,7 +503,7 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
-                          pattern="0(5|6|7)[0-9] [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
+                          pattern="0(5|6|7) [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
                           title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
                           value={appointmentData.phone}
                           onChange={(e) => setAppointmentData({ ...appointmentData, phone: formatPhoneNumber(e.target.value) })}
@@ -488,6 +522,7 @@ const Contact = () => {
                         </label>
                         <input
                           type="email"
+                          maxLength={100}
                           value={appointmentData.email}
                           onChange={(e) => setAppointmentData({ ...appointmentData, email: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
@@ -502,6 +537,7 @@ const Contact = () => {
                         </label>
                         <input
                           type="text"
+                          maxLength={100}
                           value={appointmentData.company}
                           onChange={(e) => setAppointmentData({ ...appointmentData, company: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
@@ -640,12 +676,14 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    {/* رسالة الخطأ */}
-                    {submitError && (
-                      <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
-                        {submitError}
-                      </div>
-                    )}
+{/* رسالة الخطأ مع تأمين إمكانية الوصول */}
+                    <div role="alert" aria-live="assertive" aria-atomic="true">
+                      {submitError && (
+                        <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+                          {submitError}
+                        </div>
+                      )}
+                    </div>
 
                     <button
                       type="submit"
@@ -679,6 +717,7 @@ const Contact = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <button
+                        ref={retryButtonRef}
                         onClick={() => openWhatsAppInquiry(inquiryData)}
                         className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center justify-center gap-2"
                       >
@@ -707,6 +746,7 @@ const Contact = () => {
                         <input
                           type="text"
                           required
+                          maxLength={100}
                           value={inquiryData.name}
                           onChange={(e) => setInquiryData({ ...inquiryData, name: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
@@ -721,7 +761,7 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
-                          pattern="0(5|6|7)[0-9] [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
+                          pattern="0(5|6|7) [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
                           title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
                           value={inquiryData.phone}
                           onChange={(e) => setInquiryData({ ...inquiryData, phone: formatPhoneNumber(e.target.value) })}
@@ -740,6 +780,7 @@ const Contact = () => {
                         </label>
                         <input
                           type="email"
+                          maxLength={100}
                           value={inquiryData.email}
                           onChange={(e) => setInquiryData({ ...inquiryData, email: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
@@ -801,12 +842,14 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    {/* رسالة الخطأ */}
-                    {inquiryError && (
-                      <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
-                        {inquiryError}
-                      </div>
-                    )}
+                    {/* رسالة الخطأ مع تأمين إمكانية الوصول */}
+                    <div role="alert" aria-live="assertive" aria-atomic="true">
+                      {inquiryError && (
+                        <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+                          {inquiryError}
+                        </div>
+                      )}
+                    </div>
 
                     <button
                       type="submit"

@@ -1,10 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default function ErrorPage() {
+  useEffect(() => {
+    document.title = 'خطأ في الخادم | مكتب الأستاذ لعطب محمد';
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Set meta tags manually for client components if needed or rely on metadata */}

@@ -5,7 +5,7 @@ rules_version = '2';
 // ===============================================================
 //
 // Collection: appointments
-// Document ID: auto-generated
+// Document ID: {phone}_{YYYY-MM-DD}_{HH:mm} (prevents duplicate bookings)
 // Fields:
 //   - clientName: string (required, 2-100 chars)
 //   - clientPhone: string (required, Algerian format: 05/06/07 + 8 digits)
