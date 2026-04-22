@@ -1,5 +1,4 @@
 import { marked } from 'marked';
-import DOMPurify from 'isomorphic-dompurify';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -69,7 +68,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   
   const content = fs.readFileSync(filePath, 'utf-8');
   const rawHtml = await marked(content);
-  const processedContent = DOMPurify.sanitize(rawHtml);
 
   const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
 
@@ -177,7 +175,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
               <div 
                 className="prose prose-lg prose-emerald max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-p:leading-relaxed prose-a:text-emerald-600 prose-li:text-gray-600"
-                dangerouslySetInnerHTML={{ __html: processedContent }}
+                dangerouslySetInnerHTML={{ __html: rawHtml }}
               />
             </div>
             
