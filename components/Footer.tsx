@@ -37,7 +37,7 @@ const Footer = () => {
               <Link href="/#home" className="flex items-center gap-3">
                 <div className="w-16 h-16 bg-white rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
                   <Image 
-                    src="/logo.webp" 
+                    src="/logo.png" 
                     alt="شعار مكتب الموثق لعطب محمد" 
                     width={64} 
                     height={64}
