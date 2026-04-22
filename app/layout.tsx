@@ -53,10 +53,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logo.png', type: 'image/png' }
+      { url: '/logo.webp', type: 'image/webp' }
     ],
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    shortcut: '/logo.webp',
+    apple: '/logo.webp',
   },
   metadataBase: new URL(SITE_URL),
 };
@@ -65,7 +65,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <head>
-        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="icon" href="/logo.webp" type="image/webp" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://firestore.googleapis.com" />
         <link rel="preconnect" href="https://apis.google.com" />
@@ -81,7 +81,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                   "@type": "LegalService",
                   "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
                   "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
-                  "image": SITE_URL + "/logo.png",
+                  "image": SITE_URL + "/logo.webp",
                   "@id": `${SITE_URL}/#organization`,
                   "url": SITE_URL,
                   "telephone": "+213562296981",

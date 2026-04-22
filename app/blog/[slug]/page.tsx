@@ -93,7 +93,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       "name": "مكتب الموثق لعطب محمد",
       "logo": {
         "@type": "ImageObject",
-        "url": `${SITE_URL}/logo.png`
+        "url": `${SITE_URL}/logo.webp`
       }
     },
     "mainEntityOfPage": { "@id": `${SITE_URL}/blog/${slug}` }
