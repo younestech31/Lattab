@@ -12,7 +12,20 @@ export const metadata: Metadata = {
     canonical: '/blog',
   },
   openGraph: {
-    url: '/blog',
+    title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
+    description: 'مقالات ونصوص قانونية، الأسعار المرجعية للعقار بوهران 2026، شروحات تأسيس الشركات وكل ما يخص المعاملات التوثيقية بالجزائر.',
+    url: 'https://lattab.vercel.app/blog',
+    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'المدونة القانونية - موثق معتمد',
+      },
+    ],
+    locale: 'ar_DZ',
+    type: 'website',
   },
 };
 

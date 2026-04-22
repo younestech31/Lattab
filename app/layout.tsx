@@ -15,7 +15,7 @@ const SITE_URL = 'https://lattab.vercel.app';
 
 export const metadata: Metadata = {
   title: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
-  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق قانوني: عقود البيع والإيجار، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق قانوني احترافية: عقود البيع والإيجار، تأسيس الشركات، وحساب السعر المرجعي للعقار لعام 2026.',
   keywords: [
     'موثق وهران', 'موثق معتمد وهران', 'مكتب توثيق وهران', 'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026', 'عقود عقارية', 'تأسيس شركات الجزائر',
     'notaire Oran', 'notaire agréé Oran', 'office notarial Oran', 'acte de vente Oran', 'prix référence immobilier Algérie 2026', 'création société Algérie'
@@ -23,7 +23,8 @@ export const metadata: Metadata = {
   robots: 'index, follow',
   openGraph: {
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'موثق معتمد بوهران. تقديم خدمات التوثيق، العقود، وتأسيس الشركات.',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق قانوني احترافية: عقود البيع والإيجار، تأسيس الشركات، وحساب السعر المرجعي للعقار لعام 2026.',
+    url: SITE_URL,
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
@@ -46,8 +47,8 @@ export const metadata: Metadata = {
   },
   alternates: {
     languages: {
-      'ar-DZ': `${SITE_URL}/`,
-      'x-default': `${SITE_URL}/`,
+      'ar-DZ': SITE_URL,
+      'x-default': SITE_URL,
     },
   },
   icons: {

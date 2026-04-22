@@ -37,12 +37,11 @@ const Footer = () => {
               <Link href="/#home" className="flex items-center gap-3">
                 <div className="w-16 h-16 bg-white rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
                   <Image 
-                    src="https://archive.org/download/Opn-logo/logo-notaire-lattab.png" 
+                    src="/logo.png" 
                     alt="شعار مكتب الموثق لعطب محمد" 
                     width={64} 
                     height={64}
                     className="w-full h-full object-contain"
-                    unoptimized
                   />
                 </div>
                 <div>

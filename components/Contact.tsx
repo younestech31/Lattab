@@ -76,12 +76,12 @@ function openWhatsAppInquiry(data: {
   service: string;
   message: string;
 }) {
-  const name = encodeURIComponent(cleanText(data.name));
-  const service = encodeURIComponent(cleanText(data.service));
-  const message = encodeURIComponent(cleanText(data.message));
+  const name = cleanText(data.name);
+  const service = cleanText(data.service);
+  const message = cleanText(data.message);
 
-  const text = `استفسار عام:%0Aالاسم: ${name}%0Aالخدمة: ${service}%0Aالرسالة: ${message}`;
-  window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${text}`, '_blank', 'noopener,noreferrer');
+  const text = `استفسار عام:\nالاسم: ${name}\nالخدمة: ${service}\nالرسالة: ${message}`;
+  window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
 // ─── دالة تسجيل الأخطاء الآمنة ──────────────────────────
@@ -193,6 +193,21 @@ const Contact = () => {
     return maxDate.toISOString().split('T')[0];
   }, []);
 
+  const isPastTime = (slot: string, selectedDate: string) => {
+    if (!selectedDate) return false;
+    // We compare with current local timezone split
+    const tzOffset = (new Date()).getTimezoneOffset() * 60000; 
+    const localISOTime = (new Date(Date.now() - tzOffset)).toISOString().split('T')[0];
+    if (selectedDate !== localISOTime) return false;
+    
+    const time24h = TIME_DISPLAY_TO_24H[slot] ?? slot;
+    if (!time24h) return false;
+    
+    const [hours, minutes] = time24h.split(':').map(Number);
+    const currentTime = new Date();
+    return currentTime.getHours() > hours || (currentTime.getHours() === hours && currentTime.getMinutes() > minutes);
+  };
+
   // ── إرسال الموعد ──
   const handleAppointmentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -229,6 +244,11 @@ const Contact = () => {
     today.setHours(0, 0, 0, 0);
     if (selectedDate < today) {
       setSubmitError('لا يمكن حجز موعد في تاريخ مضى. يرجى اختيار تاريخ مستقبلي.');
+      return;
+    }
+
+    if (isPastTime(appointmentData.time, appointmentData.date)) {
+      setSubmitError('لا يمكن حجز موعد في وقت مضى اليوم. يرجى اختيار وقت آخر.');
       return;
     }
 
@@ -531,11 +551,12 @@ const Contact = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="appointment_company" className="block text-sm font-medium text-gray-700 mb-2">
                           <Building className="inline w-4 h-4 ml-2" />
                           الشركة/المؤسسة (اختياري)
                         </label>
                         <input
+                          id="appointment_company"
                           type="text"
                           maxLength={100}
                           value={appointmentData.company}
@@ -548,10 +569,11 @@ const Contact = () => {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="appointment_service" className="block text-sm font-medium text-gray-700 mb-2">
                           نوع الخدمة المطلوبة *
                         </label>
                         <select
+                          id="appointment_service"
                           required
                           value={appointmentData.service}
                           onChange={(e) => setAppointmentData({ ...appointmentData, service: e.target.value })}
@@ -564,11 +586,12 @@ const Contact = () => {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="appointment_date" className="block text-sm font-medium text-gray-700 mb-2">
                           <Calendar className="inline w-4 h-4 ml-2" />
                           التاريخ المفضل *
                         </label>
                         <input
+                          id="appointment_date"
                           type="date"
                           required
                           value={appointmentData.date}
@@ -607,9 +630,12 @@ const Contact = () => {
                               key={`morning-${index}`}
                               type="button"
                               onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
+                              disabled={isPastTime(slot, appointmentData.date)}
                               className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                                 appointmentData.time === slot
                                   ? 'bg-emerald-600 text-white border-emerald-600'
+                                  : isPastTime(slot, appointmentData.date)
+                                  ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                                   : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-500'
                               }`}
                             >
@@ -627,9 +653,12 @@ const Contact = () => {
                               key={`afternoon-${index}`}
                               type="button"
                               onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
+                              disabled={isPastTime(slot, appointmentData.date)}
                               className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                                 appointmentData.time === slot
                                   ? 'bg-emerald-600 text-white border-emerald-600'
+                                  : isPastTime(slot, appointmentData.date)
+                                  ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                                   : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-500'
                               }`}
                             >
@@ -814,6 +843,7 @@ const Contact = () => {
                       <textarea
                         required
                         rows={5}
+                        maxLength={1000}
                         value={inquiryData.message}
                         onChange={(e) => setInquiryData({ ...inquiryData, message: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all resize-none"

@@ -34,11 +34,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: `/blog/${slug}`,
     },
     openGraph: {
-      url: `/blog/${slug}`,
+      url: `${SITE_URL}/blog/${slug}`,
       title: post.title,
       description: post.description,
       type: 'article',
       publishedTime: post.dateISO,
+      images: [
+        {
+          url: '/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+      locale: 'ar_DZ',
     }
   };
 }
@@ -61,11 +71,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const rawHtml = await marked(content);
   const processedContent = DOMPurify.sanitize(rawHtml);
 
+  const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
     "description": post.description,
+    "image": [
+      `${SITE_URL}/og-image.jpg`
+    ],
     "datePublished": post.dateISO,
     "dateModified": post.dateModified ?? post.dateISO,
     "author": {
@@ -179,6 +194,29 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </Link>
             </div>
           </article>
+
+          {/* Related Posts for Internal Linking */}
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">مقالات ذات صلة</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedPosts.map((related) => (
+                <Link 
+                  key={related.id}
+                  href={`/blog/${related.slug}`}
+                  className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group block"
+                >
+                  <p className="text-sm font-bold text-emerald-600 mb-2">{related.category}</p>
+                  <h4 className="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2 mb-2">
+                    {related.title}
+                  </h4>
+                  <p className="text-xs text-gray-500 flex items-center gap-1">
+                    <Calendar className="w-3 h-3" />
+                    {related.date}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </main>
       <Footer />

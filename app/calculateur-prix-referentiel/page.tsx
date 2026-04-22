@@ -13,9 +13,20 @@ export const metadata: Metadata = {
     canonical: '/calculateur-prix-referentiel',
   },
   openGraph: {
-    url: '/calculateur-prix-referentiel',
+    url: 'https://lattab.vercel.app/calculateur-prix-referentiel',
     title: 'حاسبة السعر المرجعي للعقار وهران 2026 | لعطب محمد موثق',
     description: 'احسب السعر المرجعي الرسمي لعقارك في وهران مجاناً. بيانات رسمية من وزارة المالية 2026. تجنب غرامات التقييم الإداري.',
+    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'حاسبة السعر المرجعي للعقار وهران 2026',
+      },
+    ],
+    locale: 'ar_DZ',
+    type: 'website',
   },
 };
 
