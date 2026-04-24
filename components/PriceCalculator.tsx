@@ -2,6 +2,8 @@
 
 import { useState, useMemo } from 'react';
 import { propertyDataMap, availableRegions, translations } from '@/lib/data/propertyPrices';
+import { oranFtrLocations } from '@/lib/data/oran_ftr_locations_data';
+import { getPricesForCalculator } from '@/lib/utils/dataMapper';
 import { Calculator } from 'lucide-react';
 
 const CalculatorSkeleton = () => (
@@ -21,12 +23,14 @@ export default function PriceCalculator() {
   const [typeIdx, setTypeIdx] = useState<number | ''>('');
   const [zoneKey, setZoneKey] = useState<string>('');
   const [area, setArea] = useState<number | ''>('');
-
-  const currentRegionData = propertyDataMap[regionId];
+  
+  const mappedRentData = useMemo(() => getPricesForCalculator(regionId, calculationMode), [regionId, calculationMode]);
+  
+  const currentRegionData = calculationMode === 'rent' && mappedRentData ? { prix: mappedRentData.categories } : propertyDataMap[regionId];
   const selectedCategory = currentRegionData && categoryIdx !== '' ? currentRegionData.prix[categoryIdx] : null;
   const selectedType = selectedCategory && typeIdx !== '' ? selectedCategory.types[typeIdx] : null;
   
-  const availableZones = useMemo(() => {
+  const availableZones = useMemo(() => {                
     if (!selectedType) return [];
     return Object.entries(selectedType.zones)
       .filter(([_, values]: [string, any]) => {
@@ -100,9 +104,6 @@ export default function PriceCalculator() {
             <div className="inline-flex items-center justify-center p-4 bg-emerald-100 text-emerald-600 rounded-2xl mb-6 shadow-sm">
               <Calculator className="w-8 h-8" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              حاسبة الأسعار المرجعية للتصريح العقاري
-            </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               احسب الحد الأدنى والأقصى للتصريح بثمن {calculationMode === 'sale' ? 'بيع' : 'إيجار'} العقار لتفادي المراجعات الضريبية، بناءً على جدول 2025-2026 (وهران).
             </p>
