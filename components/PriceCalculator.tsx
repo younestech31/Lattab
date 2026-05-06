@@ -30,7 +30,7 @@ export default function PriceCalculator() {
   const selectedCategory = currentRegionData && categoryIdx !== '' ? currentRegionData.prix[categoryIdx] : null;
   const selectedType = selectedCategory && typeIdx !== '' ? selectedCategory.types[typeIdx] : null;
   
-  const availableZones = useMemo(() => {                
+  const availableZones = (() => {                
     if (!selectedType) return [];
     return Object.entries(selectedType.zones)
       .filter(([_, values]: [string, any]) => {
@@ -41,7 +41,7 @@ export default function PriceCalculator() {
         }
       })
       .map(([key]) => key);
-  }, [selectedType, calculationMode]);
+  })();
 
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 

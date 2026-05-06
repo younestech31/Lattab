@@ -1,8 +1,6 @@
 'use client';
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2, Copy } from 'lucide-react';
-import { serverTimestamp, doc, setDoc } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
 import { WORKING_HOURS } from '@/lib/constants';
 
 // ─── ثوابت تحديد معدل الإرسال (Rate Limiting) ───────────────
@@ -30,57 +28,57 @@ const TIME_DISPLAY_TO_24H: Record<string, string> = {
 const MORNING_SLOTS = ['08:30 صباحاً', '09:00 صباحاً', '10:00 صباحاً', '11:00 صباحاً'];
 const AFTERNOON_SLOTS = ['01:30 ظهراً', '02:00 ظهراً', '03:00 عصراً'];
 
-// ─── إرسال الموعد مباشرة إلى Firestore ───────────────────────
-async function submitAppointmentToFirestore(data: {
+// ─── إرسال الموعد عبر WhatsApp ───────────────────────
+function openWhatsAppAppointment(data: {
   name: string;
   phone: string;
   email: string;
   company: string;
   service: string;
   date: string;
-  time: string; // صيغة العرض العربية
+  time: string;
   notes: string;
-  honeypot: string;
 }) {
-  const time24h = TIME_DISPLAY_TO_24H[data.time] ?? data.time;
-  const phoneDigits = data.phone.replace(/\D/g, '');
-  const docId = `${phoneDigits}_${data.date}_${time24h}`;
-  const docRef = doc(db, 'appointments', docId);
+  const name = cleanText(data.name);
+  const phone = cleanText(data.phone);
+  const email = cleanText(data.email) || 'غير محدد';
+  const company = cleanText(data.company) || 'لا توجد';
+  const service = cleanText(data.service);
+  const notes = cleanText(data.notes) || 'لا توجد ملاحظات';
 
-  try {
-    await setDoc(docRef, {
-      clientName:      cleanText(data.name),
-      clientPhone:     phoneDigits,
-      clientEmail:     cleanText(data.email),
-      clientCompany:   cleanText(data.company),
-      service:         cleanText(data.service),
-      appointmentDate: data.date,
-      appointmentTime: time24h,
-      status:          'pending',
-      notes:           cleanText(data.notes),
-      source:          'website',
-      createdAt:       serverTimestamp(),
-      updatedAt:       serverTimestamp(),
-    });
-  } catch (error: any) {
-    if (error.code === 'permission-denied') {
-      throw new Error('عذراً، لا يمكن إتمام الحجز. قد تكون قمت بحجز هذا الموعد مسبقاً، أو أن البيانات غير صحيحة.');
-    }
-    throw error;
-  }
+  const text = `طلب حجز موعد جديد:
+الاسم: ${name}
+الخدمة: ${service}
+التاريخ: ${data.date}
+الوقت: ${data.time}
+رقم الهاتف: \u200E${phone}\u200E
+البريد الإلكتروني: ${email}
+الشركة/المؤسسة: ${company}
+ملاحظات: ${notes}`;
+
+  window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
 // ─── إرسال الاستفسار عبر WhatsApp ───────────────
 function openWhatsAppInquiry(data: {
   name: string;
+  phone: string;
+  email: string;
   service: string;
   message: string;
 }) {
   const name = cleanText(data.name);
+  const phone = cleanText(data.phone);
+  const email = cleanText(data.email) || 'غير محدد';
   const service = cleanText(data.service);
   const message = cleanText(data.message);
 
-  const text = `استفسار عام:\nالاسم: ${name}\nالخدمة: ${service}\nالرسالة: ${message}`;
+  const text = `استفسار عام:
+الاسم: ${name}
+الخدمة: ${service}
+رقم الهاتف: \u200E${phone}\u200E
+البريد الإلكتروني: ${email}
+الرسالة: ${message}`;
   window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
@@ -112,20 +110,8 @@ const Contact = () => {
 
   // ─── دالة تنسيق رقم الهاتف تلقائياً ────────────────────────
   const formatPhoneNumber = (value: string) => {
-    // إزالة كل ما ليس رقماً
-    const numbers = value.replace(/\D/g, '');
-    // قص الرقم عند 10 أرقام
-    const truncated = numbers.slice(0, 10);
-    
-    // التنسيق: 05XX XX XX XX
-    let formatted = '';
-    for (let i = 0; i < truncated.length; i++) {
-      if (i > 0 && i % 2 === 0) {
-        formatted += ' ';
-      }
-      formatted += truncated[i];
-    }
-    return formatted;
+    // إزالة كل ما ليس رقماً أو رمزاً مسموحاً (مثل + أو فراغات)
+    return value.replace(/[^\d\s\+\-\(\)]/g, '');
   };
 
   // ── حالة نموذج الاستفسار ──
@@ -215,8 +201,8 @@ const Contact = () => {
 
     // التحقق من رقم الهاتف
     const phoneDigits = appointmentData.phone.replace(/\D/g, '');
-    if (!/^(05|06|07)[0-9]{8}$/.test(phoneDigits)) {
-      setSubmitError('يرجى إدخال رقم هاتف جزائري صحيح يبدأ بـ 05 أو 06 أو 07 ويتكون من 10 أرقام');
+    if (phoneDigits.length < 8) {
+      setSubmitError('يرجى إدخال رقم هاتف صحيح');
       return;
     }
 
@@ -270,7 +256,8 @@ const Contact = () => {
         return;
       }
 
-      await submitAppointmentToFirestore({ ...appointmentData });
+      await new Promise(resolve => setTimeout(resolve, 500)); // محاكاة تحميل بسيط
+      openWhatsAppAppointment({ ...appointmentData });
       setIsAppointmentSubmitted(true);
       // التمرير إلى أعلى النموذج بعد الإرسال الناجح
       setTimeout(() => {
@@ -302,8 +289,8 @@ const Contact = () => {
 
     // التحقق من رقم الهاتف
     const phoneDigits = inquiryData.phone.replace(/\D/g, '');
-    if (!/^(05|06|07)[0-9]{8}$/.test(phoneDigits)) {
-      setInquiryError('يرجى إدخال رقم هاتف جزائري صحيح يبدأ بـ 05 أو 06 أو 07 ويتكون من 10 أرقام');
+    if (phoneDigits.length < 8) {
+      setInquiryError('يرجى إدخال رقم هاتف صحيح');
       return;
     }
 
@@ -523,12 +510,12 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
-                          pattern="0(5|6|7) [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
-                          title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
+                          pattern="^\+?[0-9\s\-\(\)]{8,}$"
+                          title="أدخل رقم هاتف صحيح"
                           value={appointmentData.phone}
                           onChange={(e) => setAppointmentData({ ...appointmentData, phone: formatPhoneNumber(e.target.value) })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
-                          placeholder="05 XX XX XX XX"
+                          placeholder="رقم الهاتف (مثل: 0555555555 أو +123...)"
                           dir="ltr"
                         />
                       </div>
@@ -790,12 +777,12 @@ const Contact = () => {
                         <input
                           type="tel"
                           required
-                          pattern="0(5|6|7) [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
-                          title="أدخل رقم هاتف جزائري صحيح (05/06/07 متبوعاً بـ 8 أرقام)"
+                          pattern="^\+?[0-9\s\-\(\)]{8,}$"
+                          title="أدخل رقم هاتف صحيح"
                           value={inquiryData.phone}
                           onChange={(e) => setInquiryData({ ...inquiryData, phone: formatPhoneNumber(e.target.value) })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
-                          placeholder="05 XX XX XX XX"
+                          placeholder="رقم الهاتف (مثل: 0555555555 أو +123...)"
                           dir="ltr"
                         />
                       </div>
