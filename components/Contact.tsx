@@ -41,20 +41,21 @@ function openWhatsAppAppointment(data: {
 }) {
   const name = cleanText(data.name);
   const phone = cleanText(data.phone);
-  const email = cleanText(data.email) || 'غير محدد';
-  const company = cleanText(data.company) || 'لا توجد';
+  const email = cleanText(data.email);
+  const company = cleanText(data.company);
   const service = cleanText(data.service);
-  const notes = cleanText(data.notes) || 'لا توجد ملاحظات';
+  const notes = cleanText(data.notes);
 
-  const text = `طلب حجز موعد جديد:
+  let text = `طلب حجز موعد جديد:
 الاسم: ${name}
 الخدمة: ${service}
 التاريخ: ${data.date}
 الوقت: ${data.time}
-رقم الهاتف: \u200E${phone}\u200E
-البريد الإلكتروني: ${email}
-الشركة/المؤسسة: ${company}
-ملاحظات: ${notes}`;
+رقم الهاتف: \u200E${phone}\u200E`;
+
+  if (email) text += `\nالبريد الإلكتروني: ${email}`;
+  if (company) text += `\nالشركة/المؤسسة: ${company}`;
+  if (notes) text += `\nملاحظات: ${notes}`;
 
   window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
@@ -69,16 +70,18 @@ function openWhatsAppInquiry(data: {
 }) {
   const name = cleanText(data.name);
   const phone = cleanText(data.phone);
-  const email = cleanText(data.email) || 'غير محدد';
+  const email = cleanText(data.email);
   const service = cleanText(data.service);
   const message = cleanText(data.message);
 
-  const text = `استفسار عام:
+  let text = `استفسار عام:
 الاسم: ${name}
 الخدمة: ${service}
-رقم الهاتف: \u200E${phone}\u200E
-البريد الإلكتروني: ${email}
-الرسالة: ${message}`;
+رقم الهاتف: \u200E${phone}\u200E`;
+
+  if (email) text += `\nالبريد الإلكتروني: ${email}`;
+  text += `\nالرسالة: ${message}`;
+
   window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
