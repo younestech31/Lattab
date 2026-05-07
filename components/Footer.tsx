@@ -4,14 +4,16 @@ import { WORKING_HOURS } from '@/lib/constants';
 
 const Footer = () => {
   const quickLinks = [
-    { href: '/#home', label: 'الرئيسية' },
-    { href: '/#services', label: 'الخدمات' },
-    { href: '/#about', label: 'عن المكتب' },
-    { href: '/#procedures', label: 'الإجراءات' },
-    { href: '/#faq', label: 'الأسئلة الشائعة' },
-    { href: '/#appointment', label: 'تواصل معنا' },
-    { href: '/terms-privacy', label: 'الشروط والأحكام وسياسة الخصوصية' },
-  ];
+  { href: '/#home', label: 'الرئيسية' },
+  { href: '/#services', label: 'الخدمات' },
+  { href: '/calculateur-prix-referentiel', label: 'حاسبة السعر المرجعي' },
+  { href: '/blog', label: 'المدونة القانونية' },
+  { href: '/#about', label: 'عن المكتب' },
+  { href: '/#procedures', label: 'الإجراءات' },
+  { href: '/#faq', label: 'الأسئلة الشائعة' },
+  { href: '/#appointment', label: 'تواصل معنا' },
+  { href: '/terms-privacy', label: 'الشروط والأحكام' },
+];
 
   const services = [
     'عقود البيع والشراء',

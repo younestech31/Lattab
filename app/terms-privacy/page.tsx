@@ -7,15 +7,25 @@ import Footer from '@/components/Footer';
 import { WORKING_HOURS, SITE_CONFIG } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'الشروط والأحكام وسياسة الخصوصية | مكتب الموثق الأستاذ لعطب محمد',
-  description: 'تعرف على الشروط والأحكام وسياسة الخصوصية الخاصة بمكتب الموثق الأستاذ لعطب محمد وكيفية حماية بياناتك.',
+  title: 'الشروط والأحكام وسياسة الخصوصية',
+  description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها، والتزاماتنا القانونية والمهنية تجاهك كعميل.',
   alternates: {
-    canonical: '/terms-privacy',
+    canonical: 'https://lattab.vercel.app/terms-privacy',
   },
   openGraph: {
-    url: '/terms-privacy',
-    title: 'الشروط والأحكام وسياسة الخصوصية | مكتب الموثق الأستاذ لعطب محمد',
-    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية الخاصة بمكتب الموثق الأستاذ لعطب محمد وكيفية حماية بياناتك.',
+    url: 'https://lattab.vercel.app/terms-privacy',
+    title: 'الشروط والأحكام وسياسة الخصوصية | موثق لعطب - وهران',
+    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
+    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    images: [{ url: 'https://lattab.vercel.app/og-image.jpg', width: 1200, height: 630, alt: 'الشروط والأحكام - موثق لعطب محمد وهران', type: 'image/jpeg' }],
+    locale: 'ar_DZ',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'الشروط والأحكام وسياسة الخصوصية | موثق لعطب - وهران',
+    description: 'الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران.',
+    images: ['https://lattab.vercel.app/og-image.jpg'],
   },
 };
 

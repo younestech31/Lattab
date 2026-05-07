@@ -22,6 +22,7 @@ const Header = () => {
     { href: '/#home', label: 'الرئيسية' },
     { href: '/#services', label: 'خدماتنا' },
     { href: '/calculateur-prix-referentiel', label: 'حاسبة السعر المرجعي' },
+    { href: '/blog', label: 'المدونة' },
     { href: '/#why-choose-us', label: 'لماذا نحن' },
     { href: '/#about', label: 'عن الموثق' },
     { href: '/#procedures', label: 'الإجراءات' },

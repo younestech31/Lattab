@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return { title: 'مقال غير موجود' };
   }
   return {
-    title: `${post.title} | الأستاذ لعطب محمد - موثق`,
+    title: `${post.title} | موثق لعطب`,
     description: post.description,
     alternates: {
       canonical: `/blog/${slug}`,
@@ -96,7 +96,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         "url": `${SITE_URL}/logo.png`
       }
     },
-    "mainEntityOfPage": { "@id": `${SITE_URL}/blog/${slug}` }
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${slug}`
+    }
   };
 
   const breadcrumbSchema = {

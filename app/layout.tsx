@@ -14,7 +14,10 @@ const cairo = Cairo({
 const SITE_URL = 'https://lattab.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
+  title: {
+    default: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
+    template: '%s | موثق لعطب - وهران',
+  },
   description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. خدمات توثيق قانوني احترافية: عقود البيع والإيجار، تأسيس الشركات، وحساب السعر المرجعي للعقار لعام 2026.',
   keywords: [
     'موثق وهران', 'موثق معتمد وهران', 'مكتب توثيق وهران', 'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026', 'عقود عقارية', 'تأسيس شركات الجزائر',
@@ -81,7 +84,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                   "@type": "LegalService",
                   "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
                   "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
-                  "image": SITE_URL + "/logo.png",
+                  "image": {
+                    "@type": "ImageObject",
+                    "url": "https://lattab.vercel.app/logo.png"
+                  },
                   "@id": `${SITE_URL}/#organization`,
                   "url": SITE_URL,
                   "telephone": "+213562296981",
@@ -132,13 +138,37 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                     "name": "لعطب محمد"
                   },
                   "knowsLanguage": ["ar", "fr"],
-                  "serviceType": ["Notary", "Real Estate Law", "Corporate Law", "Family Law"]
+                  "areaServed": {
+                    "@type": "City",
+                    "name": "وهران",
+                    "sameAs": "https://www.wikidata.org/wiki/Q183236"
+                  },
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "خدمات توثيقية",
+                    "itemListElement": [
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "عقود البيع والشراء العقاري" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "تأسيس الشركات" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "عقود الزواج والطلاق" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "الوكالات العامة والخاصة" } },
+                      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "الرهن والتأمين العقاري" } }
+                    ]
+                  }
                 },
                 {
                   "@type": "WebSite",
                   "@id": `${SITE_URL}/#website`,
                   "url": SITE_URL,
-                  "name": "مكتب الأستاذ لعطب محمد - موثق بوهران"
+                  "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
+                  "description": "موثق معتمد بوهران — خدمات توثيق قانوني، عقارات، تأسيس شركات",
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                      "@type": "EntryPoint",
+                      "urlTemplate": "https://lattab.vercel.app/blog?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                  }
                 },
                 {
                   "@type": "BreadcrumbList",

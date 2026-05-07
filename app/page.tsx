@@ -13,10 +13,7 @@ import CalculatorCTA from '@/components/CalculatorCTA';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    url: 'https://lattab.vercel.app/',
+    canonical: 'https://lattab.vercel.app/',
   },
 };
 
