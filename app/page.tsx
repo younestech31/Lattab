@@ -12,10 +12,12 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import CalculatorCTA from '@/components/CalculatorCTA';
 import WebPageSchema from '@/components/WebPageSchema';
+import StickyMobileCTA from '@/components/StickyMobileCTA';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://lattab.vercel.app/',
+    canonical: `${SITE_URL}/`,
   },
 };
 
@@ -23,28 +25,35 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <WebPageSchema
-        url="https://lattab.vercel.app/"
+        url={`${SITE_URL}/`}
         name="مكتب الأستاذ لعطب محمد - موثق بوهران"
         description="مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة: عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار."
         breadcrumbs={[
-          { name: "الرئيسية", item: "https://lattab.vercel.app/" }
+          { name: "الرئيسية", item: `${SITE_URL}/` }
         ]}
       />
-      <Header />
-      <main>
-        <FAQSchema />
-        <Hero />
-        <Services />
+      <div className="no-print">
+        <Header />
+      </div>
+      <main id="main-content">
+        <div className="no-print">
+          <FAQSchema />
+          <Hero />
+          <Services />
 
-        <CalculatorCTA />
-        <WhyChooseUs />
-        <About />
-        <Procedures />
-        <LegalUpdates />
-        <FAQ />
+          <CalculatorCTA />
+          <WhyChooseUs />
+          <About />
+          <Procedures />
+          <LegalUpdates />
+          <FAQ />
+        </div>
         <Contact />
       </main>
-      <Footer />
+      <div className="no-print">
+        <Footer />
+        <StickyMobileCTA />
+      </div>
     </div>
   );
 }

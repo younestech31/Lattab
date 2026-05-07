@@ -242,7 +242,7 @@ const Procedures = () => {
   ];
 
   return (
-    <section id="procedures" className="py-12 bg-gray-50">
+    <section id="procedures" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-gray-50">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

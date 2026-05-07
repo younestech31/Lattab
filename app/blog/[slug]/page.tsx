@@ -9,8 +9,7 @@ import { Calendar, ArrowLeft, Clock } from 'lucide-react';
 import { blogPosts } from '@/lib/data/blog';
 import fs from 'fs';
 import path from 'path';
-
-const SITE_URL = 'https://lattab.vercel.app';
+import { SITE_URL } from '@/lib/constants';
 
 export const revalidate = 86400;
 
@@ -34,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${post.title} | موثق لعطب`,
     description: description,
     alternates: {
-      canonical: `/blog/${slug}`,
+      canonical: `${SITE_URL}/blog/${slug}`,
       languages: {
         'ar-DZ': post.language === 'ar' || post.language === 'ar-fr' ? `${SITE_URL}/blog/${slug}` : undefined,
         'fr-DZ': post.language === 'fr' || post.language === 'ar-fr' ? `${SITE_URL}/blog/${slug}` : undefined,

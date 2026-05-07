@@ -7,6 +7,14 @@ import { WORKING_HOURS } from '@/lib/constants';
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 دقائق
 
+const ALGERIAN_HOLIDAYS = [
+  '01-01', // رأس السنة الميلادية
+  '01-12', // رأس السنة الأمازيغية (يناير)
+  '05-01', // عيد العمال
+  '07-05', // عيد الاستقلال
+  '11-01', // اندلاع الثورة التحريرية
+];
+
 // ─── دالة تنظيف النصوص ──────────────────────────
 function cleanText(input: string): string {
   return input
@@ -139,25 +147,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [appointmentAgreed, setAppointmentAgreed] = useState(false);
-  const [countdown, setCountdown] = useState(10);
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isAppointmentSubmitted) {
-      setCountdown(10);
-      timer = setInterval(() => {
-        setCountdown((c) => {
-          if (c <= 1) {
-            setIsAppointmentSubmitted(false);
-            setAppointmentData({ name: '', phone: '', email: '', service: '', date: '', time: '', notes: '', company: '', honeypot: '' });
-            clearInterval(timer);
-          }
-          return c - 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(timer);
-  }, [isAppointmentSubmitted]);
 
   const services = [
     'عقود البيع والشراء العقارية',
@@ -176,6 +165,12 @@ const Contact = () => {
     return day === 5 || day === 6;
   };
 
+  const isPublicHoliday = (dateString: string) => {
+    if (!dateString) return false;
+    const mmdd = dateString.slice(5);
+    return ALGERIAN_HOLIDAYS.includes(mmdd);
+  };
+
   const maxDateString = useMemo(() => {
     const maxDate = new Date();
     maxDate.setDate(maxDate.getDate() + 90);
@@ -185,8 +180,8 @@ const Contact = () => {
   const isPastTime = (slot: string, selectedDate: string) => {
     if (!selectedDate) return false;
     // We compare with current local timezone split
-    const tzOffset = (new Date()).getTimezoneOffset() * 60000; 
-    const localISOTime = (new Date(Date.now() - tzOffset)).toISOString().split('T')[0];
+    const now = new Date();
+    const localISOTime = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
     if (selectedDate !== localISOTime) return false;
     
     const time24h = TIME_DISPLAY_TO_24H[slot] ?? slot;
@@ -228,6 +223,11 @@ const Contact = () => {
       return;
     }
 
+    if (isPublicHoliday(appointmentData.date)) {
+      setSubmitError('هذا اليوم عطلة وطنية. يرجى اختيار يوم عمل.');
+      return;
+    }
+
     const selectedDate = new Date(appointmentData.date + 'T12:00:00');
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -259,7 +259,6 @@ const Contact = () => {
         return;
       }
 
-      await new Promise(resolve => setTimeout(resolve, 500)); // محاكاة تحميل بسيط
       openWhatsAppAppointment({ ...appointmentData });
       setIsAppointmentSubmitted(true);
       // التمرير إلى أعلى النموذج بعد الإرسال الناجح
@@ -302,13 +301,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-12 bg-gray-50 relative">
+    <section id="contact" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-gray-50 relative">
       <div id="appointment" className="absolute -top-24" />
       <div id="inquiry" className="absolute -top-24" />
 
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 no-print">
           <span className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
             تواصل معنا
           </span>
@@ -322,7 +321,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Info Cards */}
-          <div className="space-y-6">
+          <div className="space-y-6 no-print">
             {/* Address */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
               <div className="flex items-start gap-4">
@@ -429,7 +428,7 @@ const Contact = () => {
           <div id="booking-form" className="lg:col-span-2 scroll-mt-24">
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               {/* Tabs */}
-              <div className="flex gap-4 mb-8 border-b border-gray-100 pb-4">
+              <div className="flex gap-4 mb-8 border-b border-gray-100 pb-4 no-print">
                 <button
                   onClick={() => setActiveTab('appointment')}
                   className={`flex-1 py-3 px-4 rounded-xl font-bold transition-colors ${
@@ -461,28 +460,56 @@ const Contact = () => {
               </noscript>
               {activeTab === 'appointment' ? (
                 isAppointmentSubmitted ? (
-                  <div className="text-center py-12">
-                    <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="text-center py-12 print:py-0">
+                    <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6 no-print">
                       <CheckCircle className="w-10 h-10 text-emerald-600" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">تم استلام طلب الحجز!</h3>
-                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 max-w-md mx-auto">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2 no-print">تم استلام طلب الحجز!</h3>
+                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 max-w-md mx-auto no-print">
                       <p className="text-amber-800 text-sm font-medium">
                         ملاحظة: موعدك حالياً &quot;قيد التأكيد&quot;. سيتواصل معك فريق المكتب عبر الهاتف لتأكيد الموعد النهائي أو اقتراح وقت بديل في حال وجود تعارض.
                       </p>
                     </div>
-                    <p className="text-gray-600 mb-2">
-                       سيتم إعادة تحميل النموذج في غضون {countdown} ثانية.
-                    </p>
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-gray-500 text-sm no-print mb-8">
                       تم تسجيل طلبك بنجاح في نظام المكتب.
                     </p>
+
+                    {/* Receipt Card */}
+                    <div className="bg-white border-2 border-emerald-100 rounded-2xl p-6 text-right max-w-sm mx-auto mb-6 shadow-sm relative no-print:shadow-md receipt-card print:border-black print:border">
+                      <div className="flex justify-between items-start mb-4 border-b border-gray-100 pb-4 print:border-black">
+                        <div>
+                          <h4 className="font-bold text-gray-900 text-lg">مكتب الأستاذ لعطب محمد</h4>
+                          <p className="text-gray-500 text-sm">موثق معتمد بوهران</p>
+                        </div>
+                      </div>
+                      <div className="space-y-3 text-sm text-gray-700">
+                        <p><span className="font-bold ml-2">الاسم:</span> {appointmentData.name}</p>
+                        <p><span className="font-bold ml-2">الخدمة:</span> {appointmentData.service}</p>
+                        <p><span className="font-bold ml-2">التاريخ:</span> <span dir="ltr">{appointmentData.date}</span></p>
+                        <p><span className="font-bold ml-2">الوقت:</span> {appointmentData.time}</p>
+                        <p><span className="font-bold ml-2">الهاتف:</span> <span dir="ltr">{appointmentData.phone}</span></p>
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-gray-100 print:border-black flex justify-between items-center">
+                         <span className="bg-amber-100 text-amber-800 px-2 py-1 rounded text-xs font-bold border border-amber-200 print:border-black">
+                           في انتظار التأكيد  / En attente
+                         </span>
+                         <span className="text-gray-500 text-xs font-medium" dir="ltr">+213 562 29 69 81</span>
+                      </div>
+                    </div>
+                    
+                    <button
+                      onClick={() => window.print()}
+                      className="mb-4 w-full block bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 rounded-xl transition-colors no-print"
+                    >
+                      طباعة الإيصال
+                    </button>
+
                     <button
                       onClick={() => {
                         setIsAppointmentSubmitted(false);
                         setAppointmentData({ name: '', phone: '', email: '', service: '', date: '', time: '', notes: '', company: '', honeypot: '' });
                       }}
-                      className="mt-8 text-emerald-600 hover:text-emerald-700 font-medium text-sm underline"
+                      className="text-emerald-600 hover:text-emerald-700 font-medium text-sm underline no-print"
                     >
                       تقديم طلب آخر
                     </button>
@@ -491,11 +518,12 @@ const Contact = () => {
                   <form onSubmit={handleAppointmentSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="appt-name" className="block text-sm font-medium text-gray-700 mb-2">
                           <User className="inline w-4 h-4 ml-2" />
                           الاسم الكامل *
                         </label>
                         <input
+                          id="appt-name"
                           type="text"
                           required
                           maxLength={100}
@@ -506,11 +534,12 @@ const Contact = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="appt-phone" className="block text-sm font-medium text-gray-700 mb-2">
                           <Phone className="inline w-4 h-4 ml-2" />
                           رقم الهاتف *
                         </label>
                         <input
+                          id="appt-phone"
                           type="tel"
                           required
                           pattern="^\+?[0-9\s\-\(\)]{8,}$"
@@ -526,11 +555,12 @@ const Contact = () => {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="appt-email" className="block text-sm font-medium text-gray-700 mb-2">
                           <Mail className="inline w-4 h-4 ml-2" />
                           البريد الإلكتروني (اختياري)
                         </label>
                         <input
+                          id="appt-email"
                           type="email"
                           maxLength={100}
                           value={appointmentData.email}
@@ -657,14 +687,40 @@ const Contact = () => {
                           ))}
                         </div>
                       </div>
+
+                      {/* Availability Indicator */}
+                      {appointmentData.date && (
+                        <div className="mt-4">
+                          {isWeekend(appointmentData.date) ? (
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                              المكتب مغلق - عطلة نهاية الأسبوع
+                            </span>
+                          ) : isPublicHoliday(appointmentData.date) ? (
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
+                              ⚠️ هذا اليوم عطلة وطنية - قد يكون المكتب مغلقاً
+                            </span>
+                          ) : appointmentData.time ? (
+                            appointmentData.date === new Date().toISOString().split('T')[0] ? (
+                              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                                اليوم — سيتم التأكيد الهاتفي فوراً
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                ✓ الوقت متاح - في انتظار التأكيد
+                              </span>
+                            )
+                          ) : null}
+                        </div>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="appt-notes" className="block text-sm font-medium text-gray-700 mb-2">
                         <FileText className="inline w-4 h-4 ml-2" />
                         ملاحظات إضافية
                       </label>
                       <textarea
+                        id="appt-notes"
                         rows={3}
                         maxLength={1000}
                         value={appointmentData.notes}
@@ -672,6 +728,11 @@ const Contact = () => {
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all resize-none"
                         placeholder="أي معلومات إضافية تريد إضافتها..."
                       />
+                      <div className="flex justify-end mt-1">
+                        <span className="text-xs text-gray-400">
+                          {appointmentData.notes.length} / 1000
+                        </span>
+                      </div>
                     </div>
 
                     {/* Terms Agreement */}
@@ -758,11 +819,12 @@ const Contact = () => {
                   <form onSubmit={handleInquirySubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="inq-name" className="block text-sm font-medium text-gray-700 mb-2">
                           <User className="inline w-4 h-4 ml-2" />
                           الاسم الكامل *
                         </label>
                         <input
+                          id="inq-name"
                           type="text"
                           required
                           maxLength={100}
@@ -773,11 +835,12 @@ const Contact = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="inq-phone" className="block text-sm font-medium text-gray-700 mb-2">
                           <Phone className="inline w-4 h-4 ml-2" />
                           رقم الهاتف *
                         </label>
                         <input
+                          id="inq-phone"
                           type="tel"
                           required
                           pattern="^\+?[0-9\s\-\(\)]{8,}$"
@@ -793,11 +856,12 @@ const Contact = () => {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="inq-email" className="block text-sm font-medium text-gray-700 mb-2">
                           <Mail className="inline w-4 h-4 ml-2" />
                           البريد الإلكتروني (اختياري)
                         </label>
                         <input
+                          id="inq-email"
                           type="email"
                           maxLength={100}
                           value={inquiryData.email}
@@ -827,10 +891,11 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="inq-message" className="block text-sm font-medium text-gray-700 mb-2">
                         رسالتك أو استفسارك *
                       </label>
                       <textarea
+                        id="inq-message"
                         required
                         rows={5}
                         maxLength={1000}
@@ -839,6 +904,11 @@ const Contact = () => {
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all resize-none"
                         placeholder="اكتب رسالتك أو استفسارك هنا..."
                       />
+                      <div className="flex justify-end mt-1">
+                        <span className="text-xs text-gray-400">
+                          {inquiryData.message.length} / 1000
+                        </span>
+                      </div>
                     </div>
 
                     {/* Terms Agreement */}

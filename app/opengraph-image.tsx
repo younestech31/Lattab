@@ -1,7 +1,8 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'مكتب الأستاذة حطاب - توثيق وأعمال قانونية';
+export const revalidate = 31536000;
+export const alt = 'مكتب الأستاذ لعطب محمد - توثيق وأعمال قانونية';
 export const size = {
   width: 1200,
   height: 630,
@@ -49,7 +50,7 @@ export default async function Image() {
               direction: 'rtl',
             }}
           >
-            مكتب الأستاذة حطاب ليلى
+            مكتب الأستاذ لعطب محمد
           </div>
           
           <div
@@ -60,7 +61,7 @@ export default async function Image() {
               direction: 'rtl',
             }}
           >
-            موثقة معتمدة - توثيق وأعمال قانونية شاملة
+            موثق معتمد - توثيق وأعمال قانونية شاملة
           </div>
 
           <div
@@ -83,6 +84,9 @@ export default async function Image() {
     ),
     {
       ...size,
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+      },
       fonts: [
         {
           name: 'Cairo',

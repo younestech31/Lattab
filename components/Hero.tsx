@@ -1,10 +1,10 @@
 const Hero = () => {
   return (
     <div className="relative">
-      <link rel="preload" href="/logo-optimized.png" as="image" fetchPriority="high" />
       <section
         id="home"
         className="
+          scroll-mt-20 md:scroll-mt-24
           relative flex items-center justify-center bg-emerald-900
           min-h-[100svh]
           pt-[calc(4rem+env(safe-area-inset-top,0px))]

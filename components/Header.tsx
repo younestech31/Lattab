@@ -3,12 +3,17 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLang } from '@/lib/i18n';
+import { translations } from '@/lib/translations';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
+  const { lang, toggleLang } = useLang();
+  
+  const text = translations[lang].nav;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,17 +23,38 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      const header = document.querySelector('header');
+      if (header && !header.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen]);
+
   const navLinks = [
-    { href: '/#home', label: 'الرئيسية' },
-    { href: '/#services', label: 'خدماتنا' },
-    { href: '/calculateur-prix-referentiel', label: 'حاسبة السعر المرجعي' },
-    { href: '/blog', label: 'المدونة' },
-    { href: '/#why-choose-us', label: 'لماذا نحن' },
-    { href: '/#about', label: 'عن الموثق' },
-    { href: '/#procedures', label: 'الإجراءات' },
-    { href: '/#legal-updates', label: 'أخبار قانونية' },
-    { href: '/#faq', label: 'الأسئلة الشائعة' },
-    { href: '/#contact', label: 'اتصل بنا' },
+    { href: '/#home', label: text.home },
+    { href: '/#services', label: text.services },
+    { href: '/calculateur-prix-referentiel', label: text.calculator },
+    { href: '/blog', label: text.blog },
+    { href: '/#why-choose-us', label: text.why_us },
+    { href: '/#about', label: text.about },
+    { href: '/#procedures', label: text.procedures },
+    { href: '/#legal-updates', label: text.news },
+    { href: '/#faq', label: text.faq },
+    { href: '/#contact', label: text.contact },
   ];
 
   const headerActive = !isHomePage || isScrolled || isMenuOpen;
@@ -47,79 +73,98 @@ const Header = () => {
           <Link href="/#home" className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
               <Image
-                src="/logo.png"
+                src="/logo-optimized.png"
                 alt="شعار مكتب الأستاذ لعطب محمد"
                 width={48}
                 height={48}
                 className="w-full h-full block object-contain"
                 priority
-                fetchPriority="high"
               />
             </div>
             <div>
               <span className={`block text-xl font-bold ${headerActive ? 'text-gray-800' : 'text-white'}`}>
-               الأستاذ لعطب محمد
+               {text.name}
               </span>
               <p className={`text-xs ${headerActive ? 'text-emerald-600' : 'text-emerald-200'}`}>
-                موثق معتمد
+                {text.notary}
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
-            {navLinks.map((link) => (
+          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
+            <nav className="flex items-center gap-3 xl:gap-5">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
+                    headerActive ? 'text-gray-700' : 'text-white'
+                  } ${[text.why_us, text.procedures, text.news, text.faq].includes(link.label) ? 'hidden xl:block' : ''}`}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                key={link.href}
-                href={link.href}
-                className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
-                  headerActive ? 'text-gray-700' : 'text-white'
-                } ${['لماذا نحن', 'الإجراءات', 'أخبار قانونية', 'الأسئلة الشائعة'].includes(link.label) ? 'hidden xl:block' : ''}`}
+                href="/#booking-form"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-lg font-medium transition-colors text-sm"
               >
-                {link.label}
+                {text.book}
               </Link>
-            ))}
-            <Link
-              href="/#booking-form"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-lg font-medium transition-colors text-sm"
+            </nav>
+            <button
+              onClick={toggleLang}
+              className={`border border-current rounded-lg px-3 py-1 text-sm font-bold ml-2 ${
+                headerActive ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+              }`}
             >
-              احجز موعد
-            </Link>
-          </nav>
+              {lang === 'ar' ? 'FR' : 'AR'}
+            </button>
+          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-nav"
-            className={`lg:hidden p-2 rounded-lg ${
-              headerActive ? 'text-gray-700' : 'text-white'
-            }`}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Mobile Menu Button & Lang Toggle */}
+          <div className="flex items-center gap-3 lg:hidden">
+            <button
+              onClick={toggleLang}
+              className={`border border-current rounded-lg px-2 py-1 text-sm font-bold ${
+                headerActive ? 'text-gray-700' : 'text-white'
+              }`}
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              {lang === 'ar' ? 'FR' : 'AR'}
+            </button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-nav"
+              className={`p-2 rounded-lg ${
+                headerActive ? 'text-gray-700' : 'text-white'
+              }`}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -141,7 +186,7 @@ const Header = () => {
                 className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium text-center transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                احجز موعد
+                {text.book}
               </Link>
             </div>
           </nav>

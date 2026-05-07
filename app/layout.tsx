@@ -1,9 +1,12 @@
+import NextTopLoader from 'nextjs-toploader';
+import { LanguageProvider } from '@/lib/i18n';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Cairo } from 'next/font/google';
 import './globals.css';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL } from '@/lib/constants';
 
 const cairo = Cairo({ 
   subsets: ['arabic'], 
@@ -11,8 +14,6 @@ const cairo = Cairo({
   display: 'swap',
   preload: true,
 });
-
-const SITE_URL = 'https://lattab.vercel.app';
 
 export const metadata: Metadata = {
   title: {
@@ -59,9 +60,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="ar" dir="rtl" className={cairo.variable}>
+    <html lang="ar" dir="rtl" className={cairo.variable} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preload" href="/logo-optimized.png" as="image" fetchPriority="high" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -184,15 +186,28 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           }}
         />
       </head>
-      <body className="font-cairo" suppressHydrationWarning>
-        {children}
-        <FloatingWhatsApp />
-        <Analytics />
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="kIcznbOizJFi9WN+OY1t/g"
-          strategy="lazyOnload"
-        />
+  <body className="font-cairo" suppressHydrationWarning>
+    <a 
+      href="#main-content" 
+      className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold"
+    >
+      تخطى إلى المحتوى الرئيسي
+    </a>
+    <NextTopLoader 
+      color="#059669"
+      showSpinner={false}
+      height={3}
+    />
+    <LanguageProvider>
+          {children}
+          <FloatingWhatsApp />
+          <Analytics />
+          <Script
+            src="https://analytics.ahrefs.com/analytics.js"
+            data-key="kIcznbOizJFi9WN+OY1t/g"
+            strategy="lazyOnload"
+          />
+        </LanguageProvider>
       </body>
     </html>
   );

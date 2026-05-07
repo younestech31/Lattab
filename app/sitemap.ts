@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
 import { blogPosts } from '@/lib/data/blog';
+import { SITE_URL as base } from '@/lib/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://lattab.vercel.app';
   
   const blogEntries: MetadataRoute.Sitemap = blogPosts.map(post => ({
     url: `${base}/blog/${post.slug}`,

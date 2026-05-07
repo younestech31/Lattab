@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PriceCalculator from '@/components/PriceCalculator';
 import WebPageSchema from '@/components/WebPageSchema';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'حاسبة السعر المرجعي للعقار وهران 2026 | لعطب محمد موثق',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     canonical: '/calculateur-prix-referentiel',
   },
   openGraph: {
-    url: 'https://lattab.vercel.app/calculateur-prix-referentiel',
+    url: `${SITE_URL}/calculateur-prix-referentiel`,
     title: 'حاسبة السعر المرجعي للعقار وهران 2026 | لعطب محمد موثق',
     description: 'احسب السعر المرجعي الرسمي لعقارك في وهران 2026 مجاناً. بيانات رسمية من وزارة المالية. تجنب غرامات التقييم الإداري.',
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
@@ -38,30 +39,30 @@ const CalculatorPage = () => {
     "name": "حاسبة السعر المرجعي للعقار وهران 2026",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
-    "url": "https://lattab.vercel.app/calculateur-prix-referentiel",
+    "url": `${SITE_URL}/calculateur-prix-referentiel`,
     "description": "احسب السعر المرجعي الرسمي لعقارك في وهران مجاناً. بيانات رسمية من وزارة المالية 2026.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DZD" },
-    "provider": { "@id": "https://lattab.vercel.app/#organization" }
+    "provider": { "@id": `${SITE_URL}/#organization` }
   };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://lattab.vercel.app/" },
-      { "@type": "ListItem", "position": 2, "name": "حاسبة السعر المرجعي", "item": "https://lattab.vercel.app/calculateur-prix-referentiel" }
+      { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": `${SITE_URL}/` },
+      { "@type": "ListItem", "position": 2, "name": "حاسبة السعر المرجعي", "item": `${SITE_URL}/calculateur-prix-referentiel` }
     ]
   };
 
   return (
     <div className="min-h-screen bg-white">
       <WebPageSchema
-        url="https://lattab.vercel.app/calculateur-prix-referentiel"
+        url={`${SITE_URL}/calculateur-prix-referentiel`}
         name="حاسبة السعر المرجعي للعقار وهران 2026"
         description="احسب السعر المرجعي الرسمي لعقارك في وهران مجاناً. بيانات رسمية من وزارة المالية 2026."
         breadcrumbs={[
-          { name: "الرئيسية", item: "https://lattab.vercel.app/" },
-          { name: "حاسبة السعر المرجعي", item: "https://lattab.vercel.app/calculateur-prix-referentiel" }
+          { name: "الرئيسية", item: `${SITE_URL}/` },
+          { name: "حاسبة السعر المرجعي", item: `${SITE_URL}/calculateur-prix-referentiel` }
         ]}
       />
       <script
@@ -69,7 +70,7 @@ const CalculatorPage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
       <Header />
-      <main className="bg-gray-50" dir="rtl">
+      <main className="bg-gray-50" dir="rtl" lang="ar">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>

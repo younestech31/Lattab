@@ -14,7 +14,7 @@ const LegalUpdates = () => {
   const latestPosts = blogPosts.slice(0, 4);
 
   return (
-    <section id="legal-updates" className="py-16 bg-white relative" dir="rtl">
+    <section id="legal-updates" className="scroll-mt-20 md:scroll-mt-24 py-16 bg-white relative" dir="rtl">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
           <div>

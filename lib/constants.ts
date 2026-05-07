@@ -1,3 +1,5 @@
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://lattab.vercel.app';
+
 export const WORKING_HOURS = {
   days: 'الأحد - الخميس',
   morning: '08:30 - 12:00',

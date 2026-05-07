@@ -41,7 +41,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-12 bg-white">
+    <section id="about" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Content */}
