@@ -26,26 +26,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) {
     return { title: 'مقال غير موجود' };
   }
+  const description = post.description.length > 155 
+    ? post.description.slice(0, 152) + '...' 
+    : post.description;
+
   return {
     title: `${post.title} | موثق لعطب`,
-    description: post.description,
+    description: description,
     alternates: {
       canonical: `/blog/${slug}`,
+      languages: {
+        'ar-DZ': post.language === 'ar' || post.language === 'ar-fr' ? `${SITE_URL}/blog/${slug}` : undefined,
+        'fr-DZ': post.language === 'fr' || post.language === 'ar-fr' ? `${SITE_URL}/blog/${slug}` : undefined,
+      },
     },
     openGraph: {
       url: `${SITE_URL}/blog/${slug}`,
       title: post.title,
-      description: post.description,
+      description: description,
       type: 'article',
       publishedTime: post.dateISO,
-      images: [
-        {
-          url: '/og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
       siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
       locale: 'ar_DZ',
     }
@@ -68,6 +68,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   
   const content = fs.readFileSync(filePath, 'utf-8');
   const rawHtml = await marked(content);
+  
+  // Calculate word count for schema
+  const wordCount = content.split(/\s+/).length;
 
   const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
 
@@ -93,13 +96,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       "name": "مكتب الموثق لعطب محمد",
       "logo": {
         "@type": "ImageObject",
-        "url": `${SITE_URL}/logo.png`
+        "url": `${SITE_URL}/logo-optimized.png`
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `${SITE_URL}/blog/${slug}`
-    }
+    },
+    "isPartOf": { "@id": "https://lattab.vercel.app/blog" },
+    "inLanguage": post.language === 'fr' ? 'fr-DZ' : 'ar-DZ',
+    "wordCount": wordCount
   };
 
   const breadcrumbSchema = {
@@ -131,7 +137,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <ReadingProgress />
       <Header />
-      <main className="flex-grow pt-32 pb-20" dir="rtl">
+      <main className="flex-grow pt-32 pb-20" dir={post.language === 'fr' ? 'ltr' : 'rtl'}>
         <div className="container mx-auto px-4 max-w-4xl">
           
           <div className="mb-4 text-sm text-gray-500 overflow-x-auto whitespace-nowrap">
@@ -154,7 +160,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </Link>
           </div>
 
-          <article className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+          <article 
+            className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden"
+            lang={post.language === 'fr' ? 'fr' : 'ar'}
+          >
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />                
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />                
             <div className="p-8 md:p-12">

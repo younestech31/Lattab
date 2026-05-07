@@ -7,9 +7,11 @@ import About from '@/components/About';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
+import FAQSchema from './faq-schema';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import CalculatorCTA from '@/components/CalculatorCTA';
+import WebPageSchema from '@/components/WebPageSchema';
 
 export const metadata: Metadata = {
   alternates: {
@@ -20,10 +22,20 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <WebPageSchema
+        url="https://lattab.vercel.app/"
+        name="مكتب الأستاذ لعطب محمد - موثق بوهران"
+        description="مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة: عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار."
+        breadcrumbs={[
+          { name: "الرئيسية", item: "https://lattab.vercel.app/" }
+        ]}
+      />
       <Header />
       <main>
+        <FAQSchema />
         <Hero />
         <Services />
+
         <CalculatorCTA />
         <WhyChooseUs />
         <About />

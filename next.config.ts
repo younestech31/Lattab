@@ -32,6 +32,10 @@ const nextConfig: NextConfig = {
         source: '/(.*)',
         headers: securityHeaders,
       },
+      {
+        source: '/(.*)\\.(ico|png|jpg|webp|svg|woff2)',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
+      }
     ];
   },
   eslint: {
@@ -53,7 +57,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  output: 'standalone',
 };
 
 export default nextConfig;

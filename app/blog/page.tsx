@@ -2,18 +2,19 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import WebPageSchema from '@/components/WebPageSchema';
 import { Calendar, FileText, Scale, TrendingUp, ArrowLeft } from 'lucide-react';
 import { blogPosts } from '@/lib/data/blog';
 
 export const metadata: Metadata = {
   title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
-  description: 'مقالات ونصوص قانونية، الأسعار المرجعية للعقار بوهران 2026، شروحات تأسيس الشركات وكل ما يخص المعاملات التوثيقية بالجزائر.',
+  description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
   alternates: {
     canonical: '/blog',
   },
   openGraph: {
     title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
-    description: 'مقالات ونصوص قانونية، الأسعار المرجعية للعقار بوهران 2026، شروحات تأسيس الشركات وكل ما يخص المعاملات التوثيقية بالجزائر.',
+    description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
     url: 'https://lattab.vercel.app/blog',
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
@@ -38,6 +39,15 @@ const iconMap: Record<string, React.ReactNode> = {
 export default function BlogList() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <WebPageSchema
+        url="https://lattab.vercel.app/blog"
+        name="المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق"
+        description="مقالات ونصوص قانونية، الأسعار المرجعية للعقار بوهران 2026، شروحات تأسيس الشركات وكل ما يخص المعاملات التوثيقية بالجزائر."
+        breadcrumbs={[
+          { name: "الرئيسية", item: "https://lattab.vercel.app/" },
+          { name: "المدونة", item: "https://lattab.vercel.app/blog" }
+        ]}
+      />
       <Header />
       <main className="pt-32 pb-20" dir="rtl">
         <div className="container mx-auto px-4">

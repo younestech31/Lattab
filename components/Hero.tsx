@@ -1,9 +1,11 @@
 const Hero = () => {
   return (
-    <section
-      id="home"
-      className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center bg-emerald-900 pt-24 pb-16 md:pt-20"
-    >
+    <div className="relative">
+      <link rel="preload" href="/logo-optimized.png" as="image" fetchPriority="high" />
+      <section
+        id="home"
+        className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center bg-emerald-900 pt-24 pb-16 md:pt-20"
+      >
       {/* Background Overlays */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-emerald-900" />
@@ -12,8 +14,8 @@ const Hero = () => {
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-72 h-72 bg-amber-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse motion-reduce:animate-none will-change-[transform]" />
+      <div className="absolute bottom-20 right-10 w-72 h-72 bg-amber-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse motion-reduce:animate-none will-change-[transform]" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -73,7 +75,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce will-change-[transform]">
         <a href="#services" className="text-white/50 hover:text-white transition-colors">
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -81,7 +83,8 @@ const Hero = () => {
         </a>
       </div>
     </section>
-  );
+  </div>
+);
 };
 
 export default Hero;

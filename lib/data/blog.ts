@@ -9,7 +9,8 @@ export const blogPosts = [
     dateISO: "2026-04-19",
     dateModified: "2026-04-19",
     category: "عقاري",
-    readTime: "7 دقائق"
+    readTime: "7 دقائق",
+    language: "ar"
   },
   {
     id: "comment-creer-sarl-en-algerie-2026",
@@ -21,7 +22,8 @@ export const blogPosts = [
     dateISO: "2026-04-12",
     dateModified: "2026-04-12",
     category: "شركات",
-    readTime: "6 دقائق"
+    readTime: "6 دقائق",
+    language: "ar"
   },
   {
     id: "nouvelle-loi-enregistrement-immobilier-2026",
@@ -33,7 +35,8 @@ export const blogPosts = [
     dateISO: "2026-04-05",
     dateModified: "2026-04-05",
     category: "جبائي",
-    readTime: "5 دقائق"
+    readTime: "5 دقائق",
+    language: "ar"
   },
   {
     id: "guide-acte-de-vente-immobilier",
@@ -45,7 +48,8 @@ export const blogPosts = [
     dateISO: "2026-03-25",
     dateModified: "2026-03-25",
     category: "عقاري",
-    readTime: "8 دقائق"
+    readTime: "8 دقائق",
+    language: "ar"
   },
   {
     id: "procuration-generale-algerie",
@@ -57,6 +61,59 @@ export const blogPosts = [
     dateISO: "2026-03-18",
     dateModified: "2026-03-18",
     category: "قانوني",
-    readTime: "4 دقائق"
+    readTime: "4 دقائق",
+    language: "ar"
+  },
+  {
+    id: "documents-vente-immobilier-algerie",
+    slug: "documents-vente-immobilier-algerie",
+    icon: "FileText",
+    title: "الوثائق المطلوبة لعقد البيع العقاري في الجزائر",
+    description: "تعرف على القائمة الكاملة للوثائق المطلوبة قانوناً لإتمام عملية بيع عقار في الجزائر، من شهادة الملكية إلى الدفتر العقاري.",
+    date: "15 يناير 2025",
+    dateISO: "2025-01-15",
+    dateModified: "2025-01-15",
+    category: "عقاري",
+    readTime: "6 دقائق",
+    language: "ar"
+  },
+  {
+    id: "wikalat-am-algerie-guide",
+    slug: "wikalat-am-algerie-guide",
+    icon: "FileText",
+    title: "دليل الوكالة العامة في القانون الجزائري",
+    description: "كل ما يجب معرفته عن الوكالة العامة، آثارها، وطرق إنهائها. وكيف تحمي نفسك من سوء استخدام التوكيل.",
+    date: "10 مارس 2025",
+    dateISO: "2025-03-10",
+    dateModified: "2025-03-10",
+    category: "قانوني",
+    readTime: "7 دقائق",
+    language: "ar"
+  },
+  {
+    id: "succession-heritage-algerie",
+    slug: "succession-heritage-algerie",
+    icon: "Scale",
+    title: "إجراءات الميراث والتركة في الجزائر",
+    description: "خطوات قسمة التركة وتوثيق الفريضة في الجزائر. الوثائق المطلوبة وكيفية التعامل مع المنازعات الإرثية قانوناً.",
+    date: "5 أبريل 2025",
+    dateISO: "2025-04-05",
+    dateModified: "2025-04-05",
+    category: "قانوني",
+    readTime: "8 دقائق",
+    language: "ar"
+  },
+  {
+    id: "contrat-location-commercial-oran",
+    slug: "contrat-location-commercial-oran",
+    icon: "TrendingUp",
+    title: "عقود الإيجار التجاري في وهران: دليل عملي",
+    description: "نظرة تفصيلية على شروط الإيجار التجاري بوهران، حقوق المستأجر والمؤجر، وأهمية تحرير العقد التوثيقي لضمان الاستقرار.",
+    date: "12 مايو 2025",
+    dateISO: "2025-05-12",
+    dateModified: "2025-05-12",
+    category: "عقاري",
+    readTime: "6 دقائق",
+    language: "ar"
   }
 ];
