@@ -1,9 +1,10 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 
 /* Custom Font */
 .font-cairo {
-  font-family: 'Cairo', sans-serif;
+  font-family: var(--font-cairo), 'Cairo', sans-serif;
 }
 
 /* Smooth Scrolling */
