@@ -97,7 +97,9 @@ const About = () => {
                 <Image
                   src="/logo.webp"
                   alt="الأستاذ لعطب محمد"
-                  fill
+                  width={600}
+                  height={320}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain"
                   referrerPolicy="no-referrer"
                   loading="lazy"
