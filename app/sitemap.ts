@@ -37,8 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${base}/calculateur-prix-referentiel`,
       lastModified: new Date(SITE_CONFIG.lastUpdated),
-      changeFrequency: 'weekly',
-      priority: 0.95,
+      changeFrequency: 'monthly',
+      priority: 0.9,
       alternates: {
         languages: {
           'ar-DZ': `${base}/calculateur-prix-referentiel`,

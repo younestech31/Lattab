@@ -49,8 +49,30 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'LegalService'],
+    name: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    url: 'https://lattab.vercel.app',
+    telephone: '+213562296981',
+    email: 'maitrelattabmohamed@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'وهران، الجزائر',
+      addressLocality: 'Oran',
+      addressCountry: 'DZ',
+    },
+    openingHours: 'Su-Th 08:30-12:00, Su-Th 13:30-16:00',
+    priceRange: '$$',
+    sameAs: [],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <WebPageSchema
         url={`${SITE_URL}/`}
         name="مكتب الأستاذ لعطب محمد - موثق بوهران"
