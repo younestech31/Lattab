@@ -33,6 +33,17 @@ export const metadata: Metadata = {
     description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي.',
     url: `${SITE_URL}/calculateur-prix-referentiel`,
     type: 'website',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'حاسبة السعر المرجعي للعقار بوهران 2026' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'حاسبة السعر المرجعي للعقار بوهران 2026',
+    description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

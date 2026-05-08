@@ -27,6 +27,25 @@ export const metadata: Metadata = {
       'x-default': `${SITE_URL}/`,
     },
   },
+  openGraph: {
+    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+    url: `${SITE_URL}/`,
+    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    locale: 'ar_DZ',
+    type: 'website',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function Home() {
