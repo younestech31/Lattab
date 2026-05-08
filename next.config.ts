@@ -8,9 +8,9 @@ const securityHeaders = [
       `script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV !== 'production' ? "'unsafe-eval'" : ''} https://analytics.ahrefs.com https://va.vercel-scripts.com`,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://www.google.com https://maps.gstatic.com https://maps.googleapis.com",
+      "img-src 'self' data: blob: https://ia600909.us.archive.org https://images.unsplash.com https://lattab.vercel.app/_next/ https://www.google.com https://maps.gstatic.com https://maps.googleapis.com",
       "frame-src https://www.google.com",
-      "connect-src 'self' https://api.whatsapp.com https://analytics.ahrefs.com https://va.vercel-scripts.com",
+      "connect-src 'self' https://api.anthropic.com https://api.whatsapp.com https://analytics.ahrefs.com https://va.vercel-scripts.com",
       "media-src 'none'",
       "object-src 'none'",
       "base-uri 'self'",
@@ -27,15 +27,19 @@ const securityHeaders = [
   },
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=31536000; includeSubDomains; preload',
+    value: 'max-age=31536000; includeSubDomains',
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin',
+    value: 'strict-origin-when-cross-origin',
   },
   {
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
+  },
+  {
+    key: 'X-XSS-Protection',
+    value: '1; mode=block',
   },
 ];
 
