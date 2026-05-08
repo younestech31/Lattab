@@ -93,12 +93,11 @@ const About = () => {
               <div className="absolute inset-0 bg-pattern-plus opacity-30" />
               <div className="relative z-10">
                 {/* Professional Photo */}
-                <div className="relative w-full h-64 sm:h-80 mb-8 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+                <div className="relative w-full aspect-video mb-8 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
                 <Image
                   src="/logo.webp"
                   alt="الأستاذ لعطب محمد"
-                  width={600}
-                  height={320}
+                  fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain"
                   referrerPolicy="no-referrer"
@@ -133,11 +132,11 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Decorative Elements */}
+            
+            {/* Decorative Elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-amber-400 rounded-2xl -z-10 opacity-50" />
             <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-emerald-200 rounded-2xl -z-10 opacity-50" />
+            </div>
           </div>
         </div>
       </div>
