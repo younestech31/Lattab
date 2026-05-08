@@ -12,17 +12,38 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function BlogSearchList() {
   const [query, setQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('الكل');
+  const categories = ['الكل', 'عقاري', 'شركات', 'جبائي'];
 
-  const filtered = query.trim()
-    ? blogPosts.filter(p =>
-        p.title.includes(query) ||
-        p.description?.includes(query) ||
-        (p as any).tags?.some((t: string) => t.includes(query))
-      )
-    : blogPosts;
+  const filtered = blogPosts.filter(p => {
+    const matchesQuery = query.trim() ?
+        (p.title.includes(query) ||
+         p.description?.includes(query) ||
+         (p as any).tags?.some((t: string) => t.includes(query))) : true;
+    
+    const matchesCategory = selectedCategory === 'الكل' || p.category === selectedCategory;
+
+    return matchesQuery && matchesCategory;
+  });
 
   return (
     <>
+      <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setSelectedCategory(cat)}
+            className={`px-4 py-2 rounded-full font-bold transition-all ${
+              selectedCategory === cat
+                ? 'bg-emerald-600 text-white'
+                : 'bg-white text-gray-600 hover:bg-emerald-50'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       <input
         type="search"
         placeholder="ابحث في المدونة..."
@@ -34,7 +55,7 @@ export default function BlogSearchList() {
       {filtered.length === 0 ? (
         <p className="text-center text-gray-500 py-12">لا توجد نتائج لـ &quot;{query}&quot;</p>
       ) : (
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 transition-all">
           {filtered.map((post) => (
             <Link 
               key={post.id}

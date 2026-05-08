@@ -46,6 +46,46 @@ const TIME_DISPLAY_TO_24H: Record<string, string> = {
 const MORNING_SLOTS = ['08:30 صباحاً', '09:00 صباحاً', '10:00 صباحاً', '11:00 صباحاً'];
 const AFTERNOON_SLOTS = ['01:30 ظهراً', '02:00 ظهراً', '03:00 عصراً'];
 
+const REQUIRED_DOCUMENTS_HINT: Record<string, string[]> = {
+  'عقود البيع والشراء العقارية': [
+    'سند الملكية (من البائع)',
+    'شهادة عدم الرهن أو سلبية الرهن',
+    'وثائق الهوية للطرفين',
+  ],
+  'عقود الإيجار والتأجير': [
+    'سند ملكية العقار',
+    'بطاقة الهوية للمؤجر والمستأجر',
+  ],
+  'الوكالات والتفويضات': [
+    'بطاقة الهوية للموكل والوكيل',
+    'شهادة الميلاد',
+    'معلومات دقيقة عن الغرض من الوكالة',
+  ],
+  'عقود الزواج والمستندات العائلية': [
+    'شهادات الميلاد للطرفين',
+    'بطاقات الهوية',
+    'شاهدان بالغان',
+  ],
+  'تأسيس الشركات والمؤسسات': [
+    'وثائق الهوية وشهادات الميلاد للشركاء',
+    'تسمية الشركة المرغوبة',
+    'عقد ملكية أو إيجار المقر',
+  ],
+  'الرهن والتأمينات': [
+    'سند الملكية',
+    'عقد القرض أو وثيقة الدين',
+    'وثائق الهوية',
+  ],
+  'التصريحات والمصادقات': [
+    'بطاقة الهوية',
+    'موضوع المصادقة بدقة',
+  ]
+};
+
+function getRequiredDocuments(service: string) {
+  return REQUIRED_DOCUMENTS_HINT[service] || null;
+}
+
 // ─── إرسال الموعد عبر WhatsApp ───────────────────────
 function openWhatsAppAppointment(data: {
   name: string;
@@ -614,6 +654,16 @@ const Contact = () => {
                             <option key={index} value={service}>{service}</option>
                           ))}
                         </select>
+                        {(appointmentData.service && getRequiredDocuments(appointmentData.service)) && (
+                          <div className="mt-3 bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100 text-sm animate-in fade-in slide-in-from-top-2">
+                            <p className="font-bold mb-1">الوثائق الأساسية المطلوبة لهذه الخدمة:</p>
+                            <ul className="list-disc list-inside space-y-1 text-blue-700 mr-2">
+                              {getRequiredDocuments(appointmentData.service)?.map((doc, idx) => (
+                                <li key={idx}>{doc}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                       <div>
                         <label htmlFor="appointment_date" className="block text-sm font-medium text-gray-700 mb-2">

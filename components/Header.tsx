@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/translations';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -125,29 +126,16 @@ const Header = () => {
               >
                 {text.book}
               </Link>
+              <LanguageSwitcher headerActive={headerActive} />
             </nav>
-            <button
-              onClick={toggleLang}
-              className={`border border-current rounded-lg px-3 py-1 text-sm font-bold ml-2 ${
-                headerActive ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-              }`}
-            >
-              {lang === 'ar' ? 'FR' : 'AR'}
-            </button>
           </div>
 
           {/* Mobile Menu Button & Lang Toggle */}
           <div className="flex items-center gap-3 lg:hidden">
-            <button
-              onClick={toggleLang}
-              className={`border border-current rounded-lg px-2 py-1 text-sm font-bold ${
-                headerActive ? 'text-gray-700' : 'text-white'
-              }`}
-            >
-              {lang === 'ar' ? 'FR' : 'AR'}
-            </button>
+            <LanguageSwitcher headerActive={headerActive} isMobile={true} />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+
               aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-nav"
