@@ -1,7 +1,17 @@
 'use client';
+import dynamic from 'next/dynamic';
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2, Copy } from 'lucide-react';
 import { WORKING_HOURS } from '@/lib/constants';
+
+const MapComponent = dynamic(() => import('./MapComponent'), {
+  ssr: false,
+  loading: () => (
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'400px',fontFamily:'sans-serif'}}>
+      Loading map...
+    </div>
+  ),
+});
 
 // ─── ثوابت تحديد معدل الإرسال (Rate Limiting) ───────────────
 const RATE_LIMIT_MAX = 3;
@@ -978,16 +988,7 @@ const Contact = () => {
             </a>
           </div>
           <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 h-[400px] overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.938810222046!2d-0.5931358!3d35.7277124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7e63c19cea6045%3A0x8f3a2767975898bd!2sNOTAIRE%20LATTAB%20MOHAMED!5e0!3m2!1sar!2sdz!4v1712698680000!5m2!1sar!2sdz"
-              width="100%"
-              height="100%"
-              style={{ border: 0, borderRadius: '0.75rem' }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="موقع مكتب الموثق لعطب محمد"
-            />
+            <MapComponent />
           </div>
         </div>
       </div>
