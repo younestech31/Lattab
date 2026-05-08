@@ -5,11 +5,11 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const url = request.nextUrl.clone();
 
-  // 1. Redirect www → non-www
-  if (host.startsWith('www.')) {
-    url.host = host.replace('www.', '');
-    return NextResponse.redirect(url, { status: 301 });
-  }
+  // 1. Redirect www → non-www (TODO: www redirect only possible after custom domain is connected.)
+  // if (host.startsWith('www.')) {
+  //   url.host = host.replace('www.', '');
+  //   return NextResponse.redirect(url, { status: 301 });
+  // }
 
   // 2. Remove trailing slashes (except root)
   if (url.pathname !== '/' && url.pathname.endsWith('/')) {
