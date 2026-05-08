@@ -502,12 +502,7 @@ const Contact = () => {
               </div>
 
               {/* ──────────── تبويب حجز الموعد ──────────── */}
-              <noscript>
-                <div className="p-6 bg-red-50 text-red-800 rounded-xl border border-red-200 mb-6">
-                  <h3 className="font-bold mb-2">تنبيه: النموذج لا يعمل بدون JavaScript</h3>
-                  <p>يرجى التواصل معنا مباشرة عبر الهاتف: <a href="tel:+213562296981" className="underline font-bold">+213 562 29 69 81</a> أو عبر البريد الإلكتروني: <a href="mailto:maitrelattabmohamed@gmail.com" className="underline font-bold">maitrelattabmohamed@gmail.com</a></p>
-                </div>
-              </noscript>
+              <noscript dangerouslySetInnerHTML={{ __html: '<div class="p-6 bg-red-50 text-red-800 rounded-xl border border-red-200 mb-6"><h3 class="font-bold mb-2">تنبيه: النموذج لا يعمل بدون JavaScript</h3><p>يرجى التواصل معنا مباشرة عبر الهاتف: <a href="tel:+213562296981" class="underline font-bold">+213 562 29 69 81</a> أو عبر البريد الإلكتروني: <a href="mailto:maitrelattabmohamed@gmail.com" class="underline font-bold">maitrelattabmohamed@gmail.com</a></p></div>' }} />
               {activeTab === 'appointment' ? (
                 isAppointmentSubmitted ? (
                   <div className="text-center py-12 print:py-0">
