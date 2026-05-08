@@ -88,11 +88,10 @@ const Header = () => {
           <Link href="/#home" className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
               <Image
-                src="/logo-optimized.png"
+                src="/logo.webp"
                 alt="شعار مكتب الأستاذ لعطب محمد"
                 width={48}
                 height={48}
-                className="w-full h-full block object-contain"
                 priority
               />
             </div>

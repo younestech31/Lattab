@@ -16,7 +16,7 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),   // CRITICAL — must be first, makes all relative URLs absolute
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
     template: '%s | موثق لعطب - وهران',
@@ -40,29 +40,18 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',     // lets Google show large image previews in search
-      'max-snippet': -1,                 // unlimited text snippet in search results
+      'max-image-preview': 'large',
+      'max-snippet': -1,
       'max-video-preview': -1,
     },
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/manifest.json',
   openGraph: {
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
-    url: SITE_URL,
-    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    locale: 'ar_DZ',
-    alternateLocale: ['fr_DZ'],          // tell Open Graph about French version
-    type: 'website',
-    countryName: 'الجزائر',
-    images: [
-      {
-        url: '/og-image.jpg',             // relative = auto-resolved with metadataBase
-        width: 1200,
-        height: 630,
-        alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران',
-        type: 'image/jpeg',
-      },
-    ],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -78,18 +67,8 @@ export const metadata: Metadata = {
       'x-default': SITE_URL,
     },
   },
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
-  },
-  manifest: '/manifest.json',
   verification: {
-    google: 'bb0bdf3d32a68c3f',   // extracted from /public/googlebb0bdf3d32a68c3f.html
+    google: 'bb0bdf3d32a68c3f',
   },
 };
 
