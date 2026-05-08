@@ -69,7 +69,7 @@ const About = () => {
             </div>
 
             {/* Features Grid */}
-            <div className="grid grid-cols-2 gap-4 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {features.map((feature, index) => (
                 <div
                   key={index}
@@ -89,11 +89,11 @@ const About = () => {
 
           {/* Image/Visual */}
           <div className="relative">
-            <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-3xl p-8 text-white relative overflow-hidden">
+            <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-3xl p-4 sm:p-8 text-white relative overflow-hidden">
               <div className="absolute inset-0 bg-pattern-plus opacity-30" />
               <div className="relative z-10">
                 {/* Professional Photo */}
-                <div className="relative w-full h-80 mb-8 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+                <div className="relative w-full h-64 sm:h-80 mb-8 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
                 <Image
                   src="/logo.webp"
                   alt="الأستاذ لعطب محمد"
