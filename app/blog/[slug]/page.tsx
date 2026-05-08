@@ -30,24 +30,43 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     : post.description;
 
   return {
-    title: `${post.title} | موثق لعطب`,
-    description: description,
+    title: post.title,
+    description: post.description,
+    authors: [{ name: 'مكتب الأستاذ لعطب محمد', url: SITE_URL }],
     alternates: {
-      canonical: `${SITE_URL}/blog/${slug}`,
+      canonical: `${SITE_URL}/blog/${post.slug}`,
       languages: {
-        'ar-DZ': post.language === 'ar' || post.language === 'ar-fr' ? `${SITE_URL}/blog/${slug}` : undefined,
-        'fr-DZ': post.language === 'fr' || post.language === 'ar-fr' ? `${SITE_URL}/blog/${slug}` : undefined,
+        'ar-DZ': `${SITE_URL}/blog/${post.slug}`,
+        'x-default': `${SITE_URL}/blog/${post.slug}`,
       },
     },
     openGraph: {
-      url: `${SITE_URL}/blog/${slug}`,
       title: post.title,
-      description: description,
-      type: 'article',
-      publishedTime: post.dateISO,
+      description: post.description,
+      url: `${SITE_URL}/blog/${post.slug}`,
       siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
       locale: 'ar_DZ',
-    }
+      type: 'article',
+      publishedTime: post.dateISO,
+      modifiedTime: post.dateModified || post.dateISO,
+      authors: ['مكتب الأستاذ لعطب محمد'],
+      section: post.category,
+      tags: [post.category, 'قانون جزائري', 'توثيق', 'وهران'],
+      images: [
+        {
+          url: '/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: ['/og-image.jpg'],
+    },
   };
 }
 
@@ -68,69 +87,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const content = fs.readFileSync(filePath, 'utf-8');
   const rawHtml = await marked(content);
   
-  // Calculate word count for schema
-  const wordCount = content.split(/\s+/).length;
-
   const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
-
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": post.title,
-    "description": post.description,
-    "image": [
-      `${SITE_URL}/og-image.jpg`
-    ],
-    "datePublished": post.dateISO,
-    "dateModified": post.dateModified ?? post.dateISO,
-    "author": {
-      "@type": "Person",
-      "name": "الأستاذ لعطب محمد",
-      "jobTitle": "موثق معتمد",
-      "url": `${SITE_URL}/#about`
-    },
-    "publisher": {
-      "@type": "LegalService",
-      "@id": `${SITE_URL}/#organization`,
-      "name": "مكتب الموثق لعطب محمد",
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${SITE_URL}/logo-optimized.png`
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `${SITE_URL}/blog/${slug}`
-    },
-    "isPartOf": { "@id": "https://lattab.vercel.app/blog" },
-    "inLanguage": post.language === 'fr' ? 'fr-DZ' : 'ar-DZ',
-    "wordCount": wordCount
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "الرئيسية",
-        "item": SITE_URL
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "المدونة",
-        "item": `${SITE_URL}/blog`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": post.title,
-        "item": `${SITE_URL}/blog/${slug}`
-      }
-    ]
-  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -163,8 +120,49 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden"
             lang={post.language === 'fr' ? 'fr' : 'ar'}
           >
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />                
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />                
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "Article",
+                  "headline": post.title,
+                  "description": post.description,
+                  "datePublished": post.dateISO,
+                  "dateModified": post.dateModified || post.dateISO,
+                  "author": {
+                    "@type": "Person",
+                    "name": "لعطب محمد",
+                    "jobTitle": "موثق معتمد",
+                    "worksFor": {
+                      "@type": "LegalService",
+                      "name": "مكتب الأستاذ لعطب محمد",
+                      "url": SITE_URL,
+                    }
+                  },
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "مكتب الأستاذ لعطب محمد",
+                    "logo": {
+                      "@type": "ImageObject",
+                      "url": `${SITE_URL}/logo-optimized.png`
+                    }
+                  },
+                  "image": `${SITE_URL}/og-image.jpg`,
+                  "url": `${SITE_URL}/blog/${post.slug}`,
+                  "inLanguage": "ar-DZ",
+                  "about": {
+                    "@type": "Thing",
+                    "name": post.category
+                  },
+                  "isPartOf": {
+                    "@type": "WebSite",
+                    "url": SITE_URL,
+                    "name": "مكتب الأستاذ لعطب محمد"
+                  }
+                })
+              }}
+            />
             <div className="p-8 md:p-12">
               <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500">
                 <span className="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full font-bold">
@@ -203,6 +201,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </Link>
             </div>
           </article>
+
+          <div className="mt-12 p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
+            <h3 className="font-bold text-gray-800 mb-3">🔗 قد يفيدك أيضاً:</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/calculateur-prix-referentiel" className="text-emerald-600 hover:underline font-medium">
+                  ← احسب السعر المرجعي لعقارك بوهران 2026
+                </Link>
+              </li>
+              <li>
+                <Link href="/#appointment" className="text-emerald-600 hover:underline font-medium">
+                  ← احجز موعداً مع الموثق مباشرة
+                </Link>
+              </li>
+            </ul>
+          </div>
 
           {/* Related Posts for Internal Linking */}
           <div className="mt-12">

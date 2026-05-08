@@ -5,7 +5,7 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://analytics.ahrefs.com https://va.vercel-scripts.com",
+      `script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV !== 'production' ? "'unsafe-eval'" : ''} https://analytics.ahrefs.com https://va.vercel-scripts.com`,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://www.google.com https://maps.gstatic.com https://maps.googleapis.com",
@@ -42,16 +42,31 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  compress: true,
   async headers() {
     return [
       {
         source: '/(.*)',
-        headers: securityHeaders,
+        headers: [
+          ...securityHeaders,
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+          },
+        ],
       },
       {
-        source: '/(.*)\\.(ico|png|jpg|webp|svg|woff2)',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
-      }
+        source: '/(.*)\\.(ico|png|jpg|jpeg|webp|avif|svg|woff2|woff)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        source: '/((?!api).*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=3600' },
+        ],
+      },
     ];
   },
   eslint: {
@@ -61,19 +76,11 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   images: {
-    deviceSizes: [390, 768, 1200, 1920],
-    imageSizes: [48, 96, 192],
+    deviceSizes: [390, 640, 768, 1024, 1200, 1920],
+    imageSizes: [48, 96, 192, 384],
     formats: ['image/avif', 'image/webp'],
-    qualities: [75, 90],
     minimumCacheTTL: 604800,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
+    remotePatterns: [],
   },
 };
 

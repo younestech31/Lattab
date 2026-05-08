@@ -13,10 +13,21 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Language>('ar');
+  const [lang, setLang] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('lang') as Language) || 'ar';
+    }
+    return 'ar';
+  });
 
   const toggleLang = () => {
-    setLang((prev) => (prev === 'ar' ? 'fr' : 'ar'));
+    setLang((prev) => {
+      const next = prev === 'ar' ? 'fr' : 'ar';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('lang', next);
+      }
+      return next;
+    });
   };
 
   useEffect(() => {

@@ -32,7 +32,13 @@ export async function GET() {
     });
 
     if (response.ok) {
-      return NextResponse.json({ 
+        // Also ping Google
+        await fetch(
+          `https://www.google.com/ping?sitemap=${encodeURIComponent(`https://${HOST}/sitemap.xml`)}`,
+          { method: 'GET' }
+        ).catch(() => {});
+        
+        return NextResponse.json({ 
         success: true, 
         message: 'تم إرسال روابط الموقع لمحرك البحث بنجاح (IndexNow)', 
         urlsSubmitted: urlList.length 

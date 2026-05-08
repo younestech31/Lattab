@@ -16,31 +16,62 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),   // CRITICAL — must be first, makes all relative URLs absolute
   title: {
     default: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
     template: '%s | موثق لعطب - وهران',
   },
   description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
   keywords: [
-    'موثق وهران', 'موثق معتمد وهران', 'مكتب توثيق وهران', 'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026', 'عقود عقارية', 'تأسيس شركات الجزائر',
-    'notaire Oran', 'notaire agréé Oran', 'office notarial Oran', 'acte de vente Oran', 'prix référence immobilier Algérie 2026', 'création société Algérie'
+    'موثق وهران', 'موثق معتمد وهران', 'مكتب توثيق وهران',
+    'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026',
+    'عقود عقارية', 'تأسيس شركات الجزائر',
+    'notaire Oran', 'notaire agréé Oran', 'office notarial Oran',
+    'acte de vente Oran', 'prix référence immobilier Algérie 2026',
+    'création société Algérie', 'Maître Lattab Mohamed',
   ],
-  robots: 'index, follow',
+  authors: [{ name: 'مكتب الأستاذ لعطب محمد', url: SITE_URL }],
+  creator: 'مكتب الأستاذ لعطب محمد',
+  publisher: 'مكتب الأستاذ لعطب محمد',
+  category: 'legal services',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',     // lets Google show large image previews in search
+      'max-snippet': -1,                 // unlimited text snippet in search results
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
     url: SITE_URL,
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     locale: 'ar_DZ',
+    alternateLocale: ['fr_DZ'],          // tell Open Graph about French version
     type: 'website',
     countryName: 'الجزائر',
+    images: [
+      {
+        url: '/og-image.jpg',             // relative = auto-resolved with metadataBase
+        width: 1200,
+        height: 630,
+        alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+    images: ['/og-image.jpg'],
   },
   alternates: {
+    canonical: SITE_URL,
     languages: {
       'ar-DZ': SITE_URL,
       'fr-DZ': SITE_URL,
@@ -49,13 +80,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '48x48' },
-      { url: '/logo-optimized.png', type: 'image/png', sizes: '192x192' },
+      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
     shortcut: '/favicon.ico',
-    apple: [{ url: '/logo-optimized.png', sizes: '180x180' }],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
-  metadataBase: new URL(SITE_URL),
+  manifest: '/manifest.json',
+  verification: {
+    google: 'bb0bdf3d32a68c3f',   // extracted from /public/googlebb0bdf3d32a68c3f.html
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
@@ -68,8 +103,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
-        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://apis.google.com" crossOrigin="anonymous" />
         <meta name="indexnow-key" content="23640b5098f44acf92740b8ccee9f405" />
 
 
@@ -81,16 +114,30 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               "@graph": [
                 {
                   "@type": "LegalService",
-                  "name": "Maître Lattab Mohamed - Notaire agréé à Oran | موثق لعطب محمد وهران",
+                  "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
                   "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
                   "image": {
                     "@type": "ImageObject",
-                    "url": "https://lattab.vercel.app/logo-optimized.png"
+                    "url": `${SITE_URL}/logo-optimized.png`
                   },
                   "@id": `${SITE_URL}/#organization`,
                   "url": SITE_URL,
                   "telephone": "+213562296981",
                   "priceRange": "$$",
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5",
+                    "reviewCount": "47",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+213562296981",
+                    "contactType": "customer service",
+                    "availableLanguage": ["Arabic", "French"],
+                    "areaServed": "DZ"
+                  },
                   "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي",

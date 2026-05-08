@@ -620,6 +620,9 @@ const Contact = () => {
                           max={maxDateString}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
                         />
+                        <p className="text-xs text-gray-500 mt-2">
+                          ملاحظة: المواعيد خلال الأعياد الدينية المتغيرة (كعيد الفطر وعيد الأضحى) خاضعة للتأكيد لاحقاً.
+                        </p>
                       </div>
                     </div>
 

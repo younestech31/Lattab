@@ -1,49 +1,42 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Calculator, AlertCircle, FileText, TrendingDown, Info } from 'lucide-react';
+import { Calculator, AlertCircle, FileText, TrendingDown, Info, Loader2 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import PriceCalculator from '@/components/PriceCalculator';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SITE_URL } from '@/lib/constants';
+import dynamic from 'next/dynamic';
+
+const PriceCalculator = dynamic(() => import('@/components/PriceCalculator'), {
+  loading: () => (
+    <div className="w-full max-w-4xl mx-auto h-96 flex flex-col items-center justify-center bg-white rounded-3xl shadow-sm border border-gray-100">
+      <Loader2 className="w-8 h-8 text-emerald-500 animate-spin mb-4" />
+      <p className="text-gray-500 font-medium">جاري تحميل الحاسبة...</p>
+    </div>
+  )
+});
 
 export const metadata: Metadata = {
-  title: 'حاسبة السعر المرجعي للعقار وهران 2026 | لعطب محمد موثق',
-  description: 'احسب السعر المرجعي الرسمي لعقارك في وهران 2026 مجاناً. بيانات رسمية من وزارة المالية. تجنب غرامات التقييم الإداري.',
+  title: 'حاسبة السعر المرجعي للعقار بوهران 2026 — Calculateur Prix Référentiel',
+  description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي. بيع وإيجار — سكني وتجاري. تجنب المراجعة الضريبية.',
   alternates: {
-    canonical: '/calculateur-prix-referentiel',
+    canonical: `${SITE_URL}/calculateur-prix-referentiel`,
+    languages: {
+      'ar-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
+      'fr-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
+      'x-default': `${SITE_URL}/calculateur-prix-referentiel`,
+    },
   },
   openGraph: {
+    title: 'حاسبة السعر المرجعي للعقار بوهران 2026',
+    description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي.',
     url: `${SITE_URL}/calculateur-prix-referentiel`,
-    title: 'حاسبة السعر المرجعي للعقار وهران 2026 | لعطب محمد موثق',
-    description: 'احسب السعر المرجعي الرسمي لعقارك في وهران 2026 مجاناً. بيانات رسمية من وزارة المالية. تجنب غرامات التقييم الإداري.',
-    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'حاسبة السعر المرجعي للعقار وهران 2026',
-      },
-    ],
-    locale: 'ar_DZ',
     type: 'website',
   },
 };
 
 const CalculatorPage = () => {
-  const softwareSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "حاسبة السعر المرجعي للعقار وهران 2026",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web",
-    "url": `${SITE_URL}/calculateur-prix-referentiel`,
-    "description": "احسب السعر المرجعي الرسمي لعقارك في وهران مجاناً. بيانات رسمية من وزارة المالية 2026.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DZD" },
-    "provider": { "@id": `${SITE_URL}/#organization` }
-  };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -67,7 +60,28 @@ const CalculatorPage = () => {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "حاسبة السعر المرجعي للعقار بوهران 2026",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Web",
+            "url": `${SITE_URL}/calculateur-prix-referentiel`,
+            "description": "احسب السعر المرجعي الرسمي للعقارات في وهران 2026 وفق مرسوم وزارة المالية.",
+            "inLanguage": ["ar-DZ", "fr-DZ"],
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "DZD"
+            },
+            "creator": {
+              "@type": "Organization",
+              "name": "مكتب الأستاذ لعطب محمد",
+              "url": SITE_URL
+            }
+          })
+        }}
       />
       <Header />
       <main className="bg-gray-50" dir="rtl" lang="ar">

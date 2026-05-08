@@ -9,7 +9,11 @@ export const metadata: Metadata = {
   title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
   description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
   alternates: {
-    canonical: '/blog',
+    canonical: `${SITE_URL}/blog`,    // was missing base URL — CRITICAL fix
+    languages: {
+      'ar-DZ': `${SITE_URL}/blog`,
+      'x-default': `${SITE_URL}/blog`,
+    },
   },
   openGraph: {
     title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
@@ -45,7 +49,7 @@ export default function BlogList() {
       <main className="pt-32 pb-20" dir="rtl">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">المدونة القانونية</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">المدونة القانونية والعقارية — موثق وهران</h1>
             <p className="text-xl text-gray-600">
               دليلك الشامل للقوانين العقارية، الإجراءات التوثيقية، وأدلة تأسيس الشركات في الجزائر. 
             </p>

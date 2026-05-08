@@ -95,10 +95,10 @@ const About = () => {
                 {/* Professional Photo */}
                 <div className="relative w-full h-80 mb-8 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
                 <Image
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80"
+                  src="/logo.webp"
                   alt="الأستاذ لعطب محمد"
                   fill
-                  className="object-cover object-top"
+                  className="object-contain"
                   referrerPolicy="no-referrer"
                   loading="lazy"
                 />
