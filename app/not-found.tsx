@@ -1,7 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'الصفحة غير موجودة | مكتب الأستاذ لعطب محمد - موثق',
@@ -14,7 +12,6 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <Header />
       <main className="flex-grow flex items-center justify-center pt-32 pb-20">
         <div className="text-center p-8">
           <h1 className="text-6xl font-bold text-emerald-600 mb-4">404</h1>
@@ -33,7 +30,6 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+import { setLanguageCookie } from '@/app/actions/language';
 
 export type Language = 'ar' | 'fr';
 
@@ -12,28 +13,21 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('lang') as Language) || 'ar';
-    }
-    return 'ar';
-  });
+export function LanguageProvider({ children, defaultLang = 'ar' }: { children: React.ReactNode, defaultLang?: Language }) {
+  const [lang, setLangState] = useState<Language>(defaultLang);
 
   const toggleLang = () => {
-    setLang((prev) => {
+    setLangState((prev) => {
       const next = prev === 'ar' ? 'fr' : 'ar';
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('lang', next);
-      }
+      setLanguageCookie(next);
       return next;
     });
   };
 
-  useEffect(() => {
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  }, [lang]);
+  const setLang = (newLang: Language) => {
+    setLangState(newLang);
+    setLanguageCookie(newLang);
+  };
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, toggleLang }}>

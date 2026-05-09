@@ -1,6 +1,11 @@
 import { faqs } from '@/lib/data/faq';
+import { headers } from 'next/headers';
+import { JsonLdScript } from '@/components/schema';
 
-export default function FAQSchema() {
+export default async function FAQSchema() {
+  const headerStore = await headers();
+  const nonce = headerStore.get('x-nonce') ?? '';
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -14,10 +19,5 @@ export default function FAQSchema() {
     }))
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLdScript schema={schema} nonce={nonce} />;
 }

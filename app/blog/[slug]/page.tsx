@@ -3,16 +3,18 @@ import DOMPurify from 'isomorphic-dompurify';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
 import { blogPosts } from '@/lib/data/blog';
-import fs from 'fs';
-import path from 'path';
+import { headers } from 'next/headers';
 import { SITE_URL } from '@/lib/constants';
+import { JsonLdScript } from '@/components/schema';
+import { readFile, access } from 'node:fs/promises';
+import path from 'node:path';
 
 export const revalidate = 86400;
+
+const domPurifyInit = { added: false };
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -73,6 +75,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const headerStore = await headers();
+  const nonce = headerStore.get('x-nonce') ?? '';
   const post = blogPosts.find(p => p.slug === slug);
   
   if (!post) {
@@ -81,18 +85,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const filePath = path.join(process.cwd(), 'content', 'blog', `${slug}.md`);
   
-  if (!fs.existsSync(filePath)) {
+  try {
+    await access(filePath);
+  } catch (e) {
     notFound();
   }
   
-  const content = fs.readFileSync(filePath, 'utf-8');
+  const content = await readFile(filePath, 'utf-8');
   const unsafeHtml = await marked(content);
   
-  DOMPurify.addHook('afterSanitizeAttributes', function(node) {
-    if ('target' in node && node.getAttribute('target') === '_blank') {
-      node.setAttribute('rel', 'noopener noreferrer');
-    }
-  });
+  if (!domPurifyInit.added) {
+    DOMPurify.addHook('afterSanitizeAttributes', function(node) {
+      if ('target' in node && node.getAttribute('target') === '_blank') {
+        node.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+    domPurifyInit.added = true; // eslint-disable-line
+  }
 
   const safeHtml = DOMPurify.sanitize(unsafeHtml, {
     ALLOWED_TAGS: ['p','h1','h2','h3','h4','h5','h6','ul','ol','li','blockquote','pre','code','em','strong','a','img','table','thead','tbody','tr','th','td','br','hr','span','div'],
@@ -107,7 +116,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <ReadingProgress />
-      <Header />
       <main className="flex-grow pt-32 pb-20" dir={post.language === 'fr' ? 'ltr' : 'rtl'}>
         <div className="container mx-auto px-4 max-w-4xl">
           
@@ -135,48 +143,46 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden"
             lang={post.language === 'fr' ? 'fr' : 'ar'}
           >
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "Article",
-                  "headline": post.title,
-                  "description": post.description,
-                  "datePublished": post.dateISO,
-                  "dateModified": post.dateModified || post.dateISO,
-                  "author": {
-                    "@type": "Person",
-                    "name": "لعطب محمد",
-                    "jobTitle": "موثق معتمد",
-                    "worksFor": {
-                      "@type": "LegalService",
-                      "name": "مكتب الأستاذ لعطب محمد",
-                      "url": SITE_URL,
-                    }
-                  },
-                  "publisher": {
-                    "@type": "Organization",
+            <JsonLdScript
+              schema={{
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": post.title,
+                "description": post.description,
+                "datePublished": post.dateISO,
+                "dateModified": post.dateModified || post.dateISO,
+                "author": {
+                  "@type": "Person",
+                  "name": "لعطب محمد",
+                  "jobTitle": "موثق معتمد",
+                  "worksFor": {
+                    "@type": "LegalService",
                     "name": "مكتب الأستاذ لعطب محمد",
-                    "logo": {
-                      "@type": "ImageObject",
-                      "url": `${SITE_URL}/logo-optimized.png`
-                    }
-                  },
-                  "image": `${SITE_URL}/og-image.jpg`,
-                  "url": `${SITE_URL}/blog/${post.slug}`,
-                  "inLanguage": "ar-DZ",
-                  "about": {
-                    "@type": "Thing",
-                    "name": post.category
-                  },
-                  "isPartOf": {
-                    "@type": "WebSite",
                     "url": SITE_URL,
-                    "name": "مكتب الأستاذ لعطب محمد"
                   }
-                })
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "مكتب الأستاذ لعطب محمد",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": `${SITE_URL}/logo-optimized.png`
+                  }
+                },
+                "image": `${SITE_URL}/og-image.jpg`,
+                "url": `${SITE_URL}/blog/${post.slug}`,
+                "inLanguage": "ar-DZ",
+                "about": {
+                  "@type": "Thing",
+                  "name": post.category
+                },
+                "isPartOf": {
+                  "@type": "WebSite",
+                  "url": SITE_URL,
+                  "name": "مكتب الأستاذ لعطب محمد"
+                }
               }}
+              nonce={nonce}
             />
             <div className="p-8 md:p-12">
               <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500">
@@ -270,7 +276,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

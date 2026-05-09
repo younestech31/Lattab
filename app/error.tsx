@@ -2,8 +2,6 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function ErrorPage({
   error,
@@ -21,7 +19,6 @@ export default function ErrorPage({
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Set meta tags manually for client components if needed or rely on metadata */}
-      <Header />
       <main className="flex-grow flex items-center justify-center pt-32 pb-20">
         <div className="text-center">
           <h1 className="text-6xl font-bold text-gray-900 mb-4">500</h1>
@@ -43,7 +40,6 @@ export default function ErrorPage({
           </Link>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

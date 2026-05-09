@@ -1,6 +1,4 @@
 import { Metadata } from 'next';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import WebPageSchema from '@/components/WebPageSchema';
 import BlogSearchList from '@/components/BlogSearchList';
 import { SITE_URL } from '@/lib/constants';
@@ -45,7 +43,6 @@ export default function BlogList() {
           { name: "المدونة", item: `${SITE_URL}/blog` }
         ]}
       />
-      <Header />
       <main className="pt-32 pb-20" dir="rtl">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
@@ -58,7 +55,6 @@ export default function BlogList() {
           <BlogSearchList />
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -2,11 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Calculator, AlertCircle, FileText, TrendingDown, Info, Loader2 } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SITE_URL } from '@/lib/constants';
 import dynamic from 'next/dynamic';
+import { headers } from 'next/headers';
+import { JsonLdScript } from '@/components/schema';
 
 const PriceCalculator = dynamic(() => import('@/components/PriceCalculator'), {
   loading: () => (
@@ -47,7 +47,9 @@ export const metadata: Metadata = {
   },
 };
 
-const CalculatorPage = () => {
+const CalculatorPage = async () => {
+  const headerStore = await headers();
+  const nonce = headerStore.get('x-nonce') ?? '';
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -69,32 +71,29 @@ const CalculatorPage = () => {
           { name: "حاسبة السعر المرجعي", item: `${SITE_URL}/calculateur-prix-referentiel` }
         ]}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "حاسبة السعر المرجعي للعقار بوهران 2026",
-            "applicationCategory": "FinanceApplication",
-            "operatingSystem": "Web",
-            "url": `${SITE_URL}/calculateur-prix-referentiel`,
-            "description": "احسب السعر المرجعي الرسمي للعقارات في وهران 2026 وفق مرسوم وزارة المالية.",
-            "inLanguage": ["ar-DZ", "fr-DZ"],
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "DZD"
-            },
-            "creator": {
-              "@type": "Organization",
-              "name": "مكتب الأستاذ لعطب محمد",
-              "url": SITE_URL
-            }
-          })
+      <JsonLdScript
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "حاسبة السعر المرجعي للعقار بوهران 2026",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "url": `${SITE_URL}/calculateur-prix-referentiel`,
+          "description": "احسب السعر المرجعي الرسمي للعقارات في وهران 2026 وفق مرسوم وزارة المالية.",
+          "inLanguage": ["ar-DZ", "fr-DZ"],
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DZD"
+          },
+          "creator": {
+            "@type": "Organization",
+            "name": "مكتب الأستاذ لعطب محمد",
+            "url": SITE_URL
+          }
         }}
+        nonce={nonce}
       />
-      <Header />
       <main className="bg-gray-50" dir="rtl" lang="ar">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">
@@ -187,7 +186,6 @@ const CalculatorPage = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

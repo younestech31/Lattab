@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
-import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import FAQSchema from './faq-schema';
 import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
 import CalculatorCTA from '@/components/CalculatorCTA';
 import WebPageSchema from '@/components/WebPageSchema';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { SITE_URL } from '@/lib/constants';
 import dynamic from 'next/dynamic';
+import { headers } from 'next/headers';
+import { JsonLdScript } from '@/components/schema';
 
 const WhyChooseUs = dynamic(() => import('@/components/WhyChooseUs'));
 const About = dynamic(() => import('@/components/About'));
@@ -48,7 +48,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const headerStore = await headers();
+  const nonce = headerStore.get('x-nonce') ?? '';
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'LegalService'],
@@ -69,10 +72,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLdScript schema={jsonLd} nonce={nonce} />
       <WebPageSchema
         url={`${SITE_URL}/`}
         name="مكتب الأستاذ لعطب محمد - موثق بوهران"
@@ -81,9 +81,6 @@ export default function Home() {
           { name: "الرئيسية", item: `${SITE_URL}/` }
         ]}
       />
-      <div className="no-print">
-        <Header />
-      </div>
       <main id="main-content">
         <div className="no-print">
           <FAQSchema />
@@ -100,7 +97,6 @@ export default function Home() {
         <Contact />
       </main>
       <div className="no-print">
-        <Footer />
         <StickyMobileCTA />
       </div>
     </div>

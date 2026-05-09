@@ -1,7 +1,12 @@
 import React from 'react';
 import { Accordion } from './ui/Accordion';
+import { headers } from 'next/headers';
+import { JsonLdScript } from './schema';
 
-const Procedures = () => {
+const Procedures = async () => {
+  const headerStore = await headers();
+  const nonce = headerStore.get('x-nonce') ?? '';
+
   const generalDocuments = [
     'بطاقة التعريف الوطنية أو جواز السفر ساري المفعول',
     'شهادة الميلاد',
@@ -243,28 +248,26 @@ const Procedures = () => {
 
   return (
     <section id="procedures" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-gray-50">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "itemListElement": procedureTypes.map((procedure, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "item": {
-                "@type": "HowTo",
-                "name": procedure.title,
-                "description": `الإجراءات المطلوبة لـ ${procedure.title}`,
-                "step": procedure.steps.map((step, stepIndex) => ({
-                  "@type": "HowToStep",
-                  "position": stepIndex + 1,
-                  "text": step
-                }))
-              }
-            }))
-          })
+      <JsonLdScript
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": procedureTypes.map((procedure, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+              "@type": "HowTo",
+              "name": procedure.title,
+              "description": `الإجراءات المطلوبة لـ ${procedure.title}`,
+              "step": procedure.steps.map((step, stepIndex) => ({
+                "@type": "HowToStep",
+                "position": stepIndex + 1,
+                "text": step
+              }))
+            }
+          }))
         }}
+        nonce={nonce}
       />
       <div className="container mx-auto px-4">
         {/* Section Header */}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { SITE_URL } from '@/lib/constants';
+import { headers } from 'next/headers';
+import { JsonLdScript } from './schema';
 
 interface Breadcrumb {
   name: string;
@@ -13,7 +15,10 @@ interface WebPageSchemaProps {
   breadcrumbs: Breadcrumb[];
 }
 
-const WebPageSchema = ({ url, name, description, breadcrumbs }: WebPageSchemaProps) => {
+const WebPageSchema = async ({ url, name, description, breadcrumbs }: WebPageSchemaProps) => {
+  const headerStore = await headers();
+  const nonce = headerStore.get('x-nonce') ?? '';
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -33,12 +38,7 @@ const WebPageSchema = ({ url, name, description, breadcrumbs }: WebPageSchemaPro
     }
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLdScript schema={schema} nonce={nonce} />;
 };
 
 export default WebPageSchema;

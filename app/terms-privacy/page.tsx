@@ -2,8 +2,6 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { WORKING_HOURS, SITE_CONFIG, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -32,7 +30,6 @@ export const metadata: Metadata = {
 const TermsPrivacyPage = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
       <main className="bg-gray-50" dir="rtl">
       {/* Hero Section */}
       <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
@@ -326,7 +323,6 @@ const TermsPrivacyPage = () => {
         </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
