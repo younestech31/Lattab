@@ -11,6 +11,7 @@
     "indexnow": "curl http://localhost:3000/api/index-now"
   },
   "dependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@vercel/analytics": "^2.0.1",
     "@vercel/og": "^0.11.1",
     "@vis.gl/react-google-maps": "^1.8.3",
@@ -22,7 +23,6 @@
     "marked": "^18.0.3",
     "next": "^15.4.9",
     "nextjs-toploader": "^3.9.17",
-
     "postcss": "^8.5.6",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
