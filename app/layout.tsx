@@ -190,7 +190,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                     "@type": "SearchAction",
                     "target": {
                       "@type": "EntryPoint",
-                      "urlTemplate": "https://lattab.vercel.app/blog?q={search_term_string}"
+                      "urlTemplate": `${SITE_URL}/blog?q={search_term_string}`
                     },
                     "query-input": "required name=search_term_string"
                   }

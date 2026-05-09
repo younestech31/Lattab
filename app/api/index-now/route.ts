@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
+import { SITE_URL } from '@/lib/constants';
 
 const INDEX_NOW_KEY = process.env.INDEXNOW_KEY || '';
-const HOST = 'lattab.vercel.app';
+const HOST = new URL(SITE_URL).host;
 const API_URL = 'https://api.indexnow.org/indexnow';
 
 export async function GET() {
-  const base = `https://${HOST}`;
+  const base = SITE_URL;
   
   const urlList = [
     `${base}/`,

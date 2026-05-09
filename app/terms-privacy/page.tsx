@@ -4,20 +4,20 @@ import Link from 'next/link';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { WORKING_HOURS, SITE_CONFIG } from '@/lib/constants';
+import { WORKING_HOURS, SITE_CONFIG, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'الشروط والأحكام وسياسة الخصوصية',
   description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها، والتزاماتنا القانونية والمهنية تجاهك كعميل.',
   alternates: {
-    canonical: 'https://lattab.vercel.app/terms-privacy',
+    canonical: `${SITE_URL}/terms-privacy`,
   },
   openGraph: {
-    url: 'https://lattab.vercel.app/terms-privacy',
+    url: `${SITE_URL}/terms-privacy`,
     title: 'الشروط والأحكام وسياسة الخصوصية | موثق لعطب - وهران',
     description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    images: [{ url: 'https://lattab.vercel.app/og-image.jpg', width: 1200, height: 630, alt: 'الشروط والأحكام - موثق لعطب محمد وهران', type: 'image/jpeg' }],
+    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'الشروط والأحكام - موثق لعطب محمد وهران', type: 'image/jpeg' }],
     locale: 'ar_DZ',
     type: 'website',
   },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'الشروط والأحكام وسياسة الخصوصية | موثق لعطب - وهران',
     description: 'الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران.',
-    images: ['https://lattab.vercel.app/og-image.jpg'],
+    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 

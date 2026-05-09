@@ -1,4 +1,5 @@
 import React from 'react';
+import { SITE_URL } from '@/lib/constants';
 
 interface Breadcrumb {
   name: string;
@@ -20,7 +21,7 @@ const WebPageSchema = ({ url, name, description, breadcrumbs }: WebPageSchemaPro
     "url": url,
     "name": name,
     "description": description,
-    "isPartOf": { "@id": "https://lattab.vercel.app/#website" },
+    "isPartOf": { "@id": `${SITE_URL}/#website` },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": breadcrumbs.map((crumb, index) => ({

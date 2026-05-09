@@ -53,7 +53,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'LegalService'],
     name: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    url: 'https://lattab.vercel.app',
+    url: SITE_URL,
     telephone: '+213562296981',
     email: 'maitrelattabmohamed@gmail.com',
     address: {

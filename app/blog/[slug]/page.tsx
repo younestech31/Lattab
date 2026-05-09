@@ -1,4 +1,5 @@
 import { marked } from 'marked';
+import DOMPurify from 'isomorphic-dompurify';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -85,7 +86,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
   
   const content = fs.readFileSync(filePath, 'utf-8');
-  const rawHtml = await marked(content);
+  const unsafeHtml = await marked(content);
+  
+  DOMPurify.addHook('afterSanitizeAttributes', function(node) {
+    if ('target' in node && node.getAttribute('target') === '_blank') {
+      node.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+
+  const safeHtml = DOMPurify.sanitize(unsafeHtml, {
+    ALLOWED_TAGS: ['p','h1','h2','h3','h4','h5','h6','ul','ol','li','blockquote','pre','code','em','strong','a','img','table','thead','tbody','tr','th','td','br','hr','span','div'],
+    ALLOWED_ATTR: ['href','src','alt','title','class','target','rel','width','height'],
+    ALLOW_DATA_ATTR: false,
+    FORCE_BODY: false,
+    FORBID_ATTR: ['onclick', 'onerror', 'onload', 'onmouseover']
+  });
   
   const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
 
@@ -184,7 +199,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
               <div 
                 className="prose prose-lg prose-emerald max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-p:leading-relaxed prose-a:text-emerald-600 prose-li:text-gray-600"
-                dangerouslySetInnerHTML={{ __html: rawHtml }}
+                dangerouslySetInnerHTML={{ __html: safeHtml }}
               />
             </div>
             

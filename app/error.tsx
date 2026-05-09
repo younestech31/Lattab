@@ -5,10 +5,18 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-export default function ErrorPage() {
+export default function ErrorPage({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   useEffect(() => {
-    document.title = 'خطأ في الخادم | مكتب الأستاذ لعطب محمد';
-  }, []);
+    if (process.env.NODE_ENV !== 'production') {
+      console.error(error);
+    }
+  }, [error]);
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -22,7 +30,7 @@ export default function ErrorPage() {
             عذراً، حدث خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقاً.
           </p>
           <button 
-            onClick={() => window.location.reload()}
+            onClick={() => reset()}
             className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-bold transition-colors mr-4"
           >
             إعادة تحميل الصفحة

@@ -24,11 +24,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  // 4. Add security headers for all responses
-  const response = NextResponse.next();
-  response.headers.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1');
-
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {
