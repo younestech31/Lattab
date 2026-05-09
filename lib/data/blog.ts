@@ -1,5 +1,44 @@
 export const blogPosts = [
   {
+    id: "loi-11-04-promotion-immobiliere-algerie",
+    slug: "loi-11-04-promotion-immobiliere-algerie",
+    icon: "Shield",
+    title: "قانون 11-04 للترقية العقارية: دور الموثق في حماية المكتتبين",
+    description: "كل ما يجب أن تعرفه عن قانون 11-04 المنظم لنشاط الترقية العقارية في الجزائر (البيع على التصاميم VSP، عقد حفظ الحق، وصندوق الضمان).",
+    date: "12 يونيو 2026",
+    dateISO: "2026-06-12",
+    dateModified: "2026-06-12",
+    category: "قانوني",
+    readTime: "5 دقائق",
+    language: "ar"
+  },
+  {
+    id: "achat-immobilier-credit-bancaire-algerie",
+    slug: "achat-immobilier-credit-bancaire-algerie",
+    icon: "Scale",
+    title: "شراء عقار عن طريق قرض بنكي في الجزائر: دور الموثق",
+    description: "الإجراءات القانونية والمراحل الضرورية لشراء عقار عبر تمويل بنكي أو صيرفة إسلامية في الجزائر (الوعد بالبيع، الرهن التشريعي).",
+    date: "10 يونيو 2026",
+    dateISO: "2026-06-10",
+    dateModified: "2026-06-10",
+    category: "عقاري",
+    readTime: "6 دقائق",
+    language: "ar"
+  },
+  {
+    id: "promesse-de-vente-algerie",
+    slug: "promesse-de-vente-algerie",
+    icon: "FileText",
+    title: "عقد الوعد بالبيع (Promesse de vente) في الجزائر: كيف يحميك؟",
+    description: "أهمية توثيق عقد الوعد بالبيع لحماية المشتري والبائع. متى يسقط العقد؟ وما هي أحكام العربون في القانون الجزائري؟",
+    date: "08 يونيو 2026",
+    dateISO: "2026-06-08",
+    dateModified: "2026-06-08",
+    category: "عقاري",
+    readTime: "5 دقائق",
+    language: "ar"
+  },
+  {
     id: "prix-referentiel-immobilier-oran-2026",
     slug: "prix-referentiel-immobilier-oran-2026",
     icon: "FileText",

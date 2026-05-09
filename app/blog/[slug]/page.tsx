@@ -191,6 +191,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <Clock className="w-4 h-4" />
                   <span>{post.readTime} قراءة</span>
                 </div>
+                {post.dateModified && post.dateModified !== post.dateISO && (
+                  <div className="flex items-center gap-1.5 border-r pr-4 border-gray-200 text-gray-500">
+                    <span className="font-medium text-gray-400">آخر تحديث:</span>
+                    <span>{new Date(post.dateModified).toLocaleDateString('ar-DZ')}</span>
+                  </div>
+                )}
               </div>
 
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
@@ -201,6 +207,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 className="prose prose-lg prose-emerald max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-p:leading-relaxed prose-a:text-emerald-600 prose-li:text-gray-600"
                 dangerouslySetInnerHTML={{ __html: safeHtml }}
               />
+
+              <div className="mt-12 p-6 bg-gray-50 border-r-4 border-emerald-500 rounded-l-lg text-sm text-gray-600 italic">
+                <span className="font-bold flex items-center gap-2 mb-2 text-gray-800 not-italic">
+                   تنصل وإخلاء مسؤولية (Disclaimer):
+                </span>
+                هذا المقال تم إعداده لأغراض إعلامية وتوعوية فقط، وقد تتغير النصوص القانونية والجبائية أو الإجراءات بمرور الوقت وفقاً للجريدة الرسمية. يرجى التقرب من مكتب الموثق للحصول على استشارة قانونية دقيقة ومحدثة تناسب وضعيتك الخاصة.
+              </div>
             </div>
             
             <div className="bg-emerald-900 p-8 md:p-12 text-center text-white">
