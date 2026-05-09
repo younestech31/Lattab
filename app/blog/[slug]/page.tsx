@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         node.setAttribute('rel', 'noopener noreferrer');
       }
     });
-    domPurifyInit.added = true; // eslint-disable-line
+    domPurifyInit.added = true;
   }
 
   const safeHtml = DOMPurify.sanitize(unsafeHtml, {
