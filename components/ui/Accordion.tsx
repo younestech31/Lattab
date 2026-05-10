@@ -70,7 +70,7 @@ export const Accordion: React.FC<AccordionProps> = ({
                     {item.icon}
                   </div>
                 )}
-                <span className="font-bold text-gray-800 text-lg">{item.title}</span>
+                <h3 className="font-bold text-gray-800 text-lg">{item.title}</h3>
               </div>
               <div
                 className={cn(

@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران | Notaire Lattab',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
     url: `${SITE_URL}/`,
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     locale: 'ar_DZ',
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران | Notaire Lattab',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -54,7 +54,7 @@ export default async function Home() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'LegalService'],
+    '@type': ['LocalBusiness', 'LegalService', 'Notary'],
     name: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     url: SITE_URL,
     telephone: '+213562296981',

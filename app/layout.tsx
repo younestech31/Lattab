@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
     template: '%s | موثق لعطب - وهران',
   },
-  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
   keywords: [
     'موثق وهران', 'موثق معتمد وهران', 'مكتب توثيق وهران',
     'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار 2026.',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
     images: ['/og-image.jpg'],
   },
   alternates: {
@@ -107,9 +107,9 @@ export default async function RootLayout({children}: {children: React.ReactNode}
             "@context": "https://schema.org",
             "@graph": [
               {
-                "@type": "LegalService",
+                "@type": ["LegalService", "Notary"],
                 "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
-                "description": "Office notarial agréé à Oran. Actes de vente, prix de référence immobilier 2026, création de sociétés. مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة.",
+                "description": "مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.",
                 "image": {
                   "@type": "ImageObject",
                   "url": `${SITE_URL}/logo-optimized.png`
@@ -200,7 +200,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
                 "@id": `${SITE_URL}/#website`,
                 "url": SITE_URL,
                 "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
-                "description": "موثق معتمد بوهران — خدمات توثيق قانوني، عقارات، تأسيس شركات",
+                "description": "موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026",
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {
