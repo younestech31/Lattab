@@ -1,5 +1,4 @@
-import { marked } from 'marked';
-import DOMPurify from 'isomorphic-dompurify';
+import { parseMarkdown } from '@/lib/utils/parseMarkdown';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -9,12 +8,10 @@ import { blogPosts } from '@/lib/data/blog';
 import { headers } from 'next/headers';
 import { SITE_URL } from '@/lib/constants';
 import { JsonLdScript } from '@/components/schema';
-import { readFile, access } from 'node:fs/promises';
-import path from 'node:path';
+import { readFile, access } from 'fs/promises';
+import path from 'path';
 
 export const revalidate = 86400;
-
-const domPurifyInit = { added: false };
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -92,24 +89,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
   
   const content = await readFile(filePath, 'utf-8');
-  const unsafeHtml = await marked(content);
-  
-  if (!domPurifyInit.added) {
-    DOMPurify.addHook('afterSanitizeAttributes', function(node) {
-      if ('target' in node && node.getAttribute('target') === '_blank') {
-        node.setAttribute('rel', 'noopener noreferrer');
-      }
-    });
-    domPurifyInit.added = true;
-  }
-
-  const safeHtml = DOMPurify.sanitize(unsafeHtml, {
-    ALLOWED_TAGS: ['p','h1','h2','h3','h4','h5','h6','ul','ol','li','blockquote','pre','code','em','strong','a','img','table','thead','tbody','tr','th','td','br','hr','span','div'],
-    ALLOWED_ATTR: ['href','src','alt','title','class','target','rel','width','height'],
-    ALLOW_DATA_ATTR: false,
-    FORCE_BODY: false,
-    FORBID_ATTR: ['onclick', 'onerror', 'onload', 'onmouseover']
-  });
+  const safeHtml = await parseMarkdown(content);
   
   const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
 
