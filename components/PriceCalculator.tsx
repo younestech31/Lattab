@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { propertyDataMap, availableRegions, translations } from '@/lib/data/propertyPrices';
-import { oranFtrLocations } from '@/lib/data/oran_ftr_locations_data';
+import { translations } from '@/lib/data/propertyPrices';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
+import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
 import { Calculator } from 'lucide-react';
 
 const CalculatorSkeleton = () => (
@@ -17,16 +17,16 @@ const CalculatorSkeleton = () => (
 const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
-  const [regionId, setRegionId] = useState<string>('oran_est');
+  const [regionId, setRegionId] = useState<string>(oranPriceReference[0].commune);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
   const [categoryIdx, setCategoryIdx] = useState<number | ''>('');
   const [typeIdx, setTypeIdx] = useState<number | ''>('');
   const [zoneKey, setZoneKey] = useState<string>('');
   const [area, setArea] = useState<number | ''>('');
   
-  const mappedRentData = useMemo(() => getPricesForCalculator(regionId, calculationMode), [regionId, calculationMode]);
-  
-  const currentRegionData = calculationMode === 'rent' && mappedRentData ? { prix: mappedRentData.categories } : propertyDataMap[regionId];
+  const mappedData = useMemo(() => getPricesForCalculator(regionId, calculationMode), [regionId, calculationMode]);
+  const currentRegionData = mappedData ? { prix: mappedData.categories } : null;
+
   const selectedCategory = currentRegionData && categoryIdx !== '' ? currentRegionData.prix[categoryIdx] : null;
   const selectedType = selectedCategory && typeIdx !== '' ? selectedCategory.types[typeIdx] : null;
   
@@ -35,7 +35,7 @@ export default function PriceCalculator() {
     return Object.entries(selectedType.zones)
       .filter(([_, values]: [string, any]) => {
         if (calculationMode === 'sale') {
-          return values.min !== null && values.max !== null;
+          return values.min !== undefined && values.max !== undefined;
         } else {
           return values.rent_min !== null && values.rent_max !== null && values.rent_min !== undefined && values.rent_max !== undefined;
         }
@@ -148,8 +148,8 @@ export default function PriceCalculator() {
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
                     <option value="">-- اختر البلدية --</option>
-                    {availableRegions.map((region) => (
-                      <option key={region.id} value={region.id}>{region.name}</option>
+                    {oranPriceReference.map((region) => (
+                      <option key={region.commune} value={region.commune}>{region.commune}</option>
                     ))}
                   </select>
                 </div>
@@ -217,7 +217,7 @@ export default function PriceCalculator() {
                 {/* Area */}
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
-                    {selectedCategory?.unite === 'DA_Ha' ? 'المساحة (بالهكتار Ha)' : 'المساحة (بالمتر المربع m²)'}
+                    {selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? 'المساحة (بالهكتار Ha)' : 'المساحة (بالمتر المربع m²)'}
                   </label>
                   <input
                     type="number"
