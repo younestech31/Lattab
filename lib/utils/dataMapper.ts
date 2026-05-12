@@ -1,4 +1,4 @@
-import { oranFtrLocations } from '../data/oran_ftr_locations_data';
+import { oranLocationsReference } from '../data/oran-price-reference-locations';
 import { oranPriceReference } from '../data/oran-price-reference-transactions';
 
 const categoryMap = [
@@ -12,57 +12,56 @@ const categoryMap = [
 ];
 
 export const getPricesForCalculator = (regionId: string, calculationMode: 'sale' | 'rent') => {
-  if (calculationMode === 'sale') {
-    const commune = oranPriceReference.find(c => c.commune === regionId);
-    if (!commune) return null;
-
-    return {
-      categories: categoryMap.map(catMap => {
-        const catData = commune[catMap.key as keyof typeof commune];
-        if (!catData || !Array.isArray(catData)) return null;
-
-        return {
-          categorie: catMap.name,
-          types: catData.map((t: any) => {
-            const zones: Record<string, any> = {};
-            if (t.zoneResidentielle) zones['Zone résidentielle'] = { min: t.zoneResidentielle.min, max: t.zoneResidentielle.max };
-            if (t.centreVille) zones['Centre ville'] = { min: t.centreVille.min, max: t.centreVille.max };
-            if (t.zonePeripherique) zones['Zone périphérique'] = { min: t.zonePeripherique.min, max: t.zonePeripherique.max };
-            if (t.zoneEloignement) zones['Zone d\'éloignement'] = { min: t.zoneEloignement.min, max: t.zoneEloignement.max };
-
-            return {
-              type: t.label,
-              unit: t.unit,
-              zones
-            };
-          }).filter((t: any) => Object.keys(t.zones).length > 0)
-        };
-      }).filter((cat: any) => cat && cat.types && cat.types.length > 0)
-    };
-  }
-
-  // Rent mode
-  const rentCommune = oranFtrLocations.communes.find(c => {
-    const ref = regionId.toLowerCase().replace(/[^a-z]/g, '');
-    const target = c.commune.toLowerCase().replace(/[^a-z]/g, '');
-    return ref === target || target.includes(ref) || ref.includes(target);
-  });
+  const dataSource = calculationMode === 'sale' ? oranPriceReference : oranLocationsReference;
+  const commune = dataSource.find(c => c.commune === regionId);
   
-  if (!rentCommune) return null;
+  if (!commune) return null;
 
   return {
-    categories: rentCommune.categories.map(cat => ({
-      categorie: cat.nature,
-      types: cat.types.map(t => ({
-        type: t.type,
-        unit: 'DA/m²', // Rent is typically per m² unless specified
-        zones: rentCommune.zones.reduce((acc: any, zone: string, idx: number) => {
-          if (t.values[idx]?.[0] !== undefined && t.values[idx]?.[1] !== undefined) {
-             acc[zone] = { rent_min: t.values[idx][0], rent_max: t.values[idx][1] };
+    categories: categoryMap.map(catMap => {
+      const catData = commune[catMap.key as keyof typeof commune];
+      if (!catData || !Array.isArray(catData)) return null;
+
+      return {
+        categorie: catMap.name,
+        types: catData.map((t: any) => {
+          const zones: Record<string, any> = {};
+          if (t.zoneResidentielle) {
+            if (calculationMode === 'sale') {
+              zones['Zone résidentielle'] = { min: t.zoneResidentielle.min, max: t.zoneResidentielle.max };
+            } else {
+              zones['Zone résidentielle'] = { rent_min: t.zoneResidentielle.min, rent_max: t.zoneResidentielle.max };
+            }
           }
-          return acc;
-        }, {})
-      })).filter(t => Object.keys(t.zones).length > 0)
-    })).filter(cat => cat.types.length > 0)
+          if (t.centreVille) {
+            if (calculationMode === 'sale') {
+              zones['Centre ville'] = { min: t.centreVille.min, max: t.centreVille.max };
+            } else {
+              zones['Centre ville'] = { rent_min: t.centreVille.min, rent_max: t.centreVille.max };
+            }
+          }
+          if (t.zonePeripherique) {
+            if (calculationMode === 'sale') {
+              zones['Zone périphérique'] = { min: t.zonePeripherique.min, max: t.zonePeripherique.max };
+            } else {
+              zones['Zone périphérique'] = { rent_min: t.zonePeripherique.min, rent_max: t.zonePeripherique.max };
+            }
+          }
+          if (t.zoneEloignement) {
+            if (calculationMode === 'sale') {
+              zones['Zone d\'éloignement'] = { min: t.zoneEloignement.min, max: t.zoneEloignement.max };
+            } else {
+              zones['Zone d\'éloignement'] = { rent_min: t.zoneEloignement.min, rent_max: t.zoneEloignement.max };
+            }
+          }
+
+          return {
+            type: t.label,
+            unit: t.unit,
+            zones
+          };
+        }).filter((t: any) => Object.keys(t.zones).length > 0)
+      };
+    }).filter((cat: any) => cat && cat.types && cat.types.length > 0)
   };
 };

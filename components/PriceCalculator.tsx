@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { translations } from '@/lib/data/propertyPrices';
+import { translations } from '@/lib/data/translations';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
 import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
+import { oranLocationsReference } from '@/lib/data/oran-price-reference-locations';
 import { Calculator } from 'lucide-react';
 
 const CalculatorSkeleton = () => (
@@ -148,7 +149,7 @@ export default function PriceCalculator() {
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
                     <option value="">-- اختر البلدية --</option>
-                    {oranPriceReference.map((region) => (
+                    {(calculationMode === 'sale' ? oranPriceReference : oranLocationsReference).map((region) => (
                       <option key={region.commune} value={region.commune}>{region.commune}</option>
                     ))}
                   </select>
