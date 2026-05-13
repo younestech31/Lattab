@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/calculateur-prix-referentiel`,
     languages: {
       'ar-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
-      'fr-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
       'x-default': `${SITE_URL}/calculateur-prix-referentiel`,
     },
   },
@@ -60,6 +59,32 @@ const CalculatorPage = async () => {
     ]
   };
 
+  const calculatorSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "حاسبة السعر المرجعي للعقار — وهران 2026",
+    "description": "احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي للأشخاص الطبيعيين والمعنويين — بيع وإيجار، سكني وتجاري.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "DZD"
+    },
+    "provider": {
+      "@type": "LegalService",
+      "@id": `${SITE_URL}/#organization`
+    },
+    "url": `${SITE_URL}/calculateur-prix-referentiel`,
+    "inLanguage": ["ar-DZ", "fr-DZ"],
+    "featureList": [
+      "حساب السعر المرجعي للبيع والإيجار",
+      "دعم وهران والجزائر العاصمة",
+      "بيانات 2026 الرسمية",
+      "سكني وتجاري"
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <WebPageSchema
@@ -71,29 +96,7 @@ const CalculatorPage = async () => {
           { name: "حاسبة السعر المرجعي", item: `${SITE_URL}/calculateur-prix-referentiel` }
         ]}
       />
-      <JsonLdScript
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "حاسبة السعر المرجعي للعقار بوهران 2026",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
-          "url": `${SITE_URL}/calculateur-prix-referentiel`,
-          "description": "احسب السعر المرجعي الرسمي للعقارات في وهران 2026 وفق مرسوم وزارة المالية.",
-          "inLanguage": ["ar-DZ", "fr-DZ"],
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "DZD"
-          },
-          "creator": {
-            "@type": "Organization",
-            "name": "مكتب الأستاذ لعطب محمد",
-            "url": SITE_URL
-          }
-        }}
-        nonce={nonce}
-      />
+      <JsonLdScript schema={calculatorSchema} nonce={nonce} />
       <main className="bg-gray-50" dir="rtl" lang="ar">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">

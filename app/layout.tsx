@@ -11,6 +11,7 @@ import Footer from '@/components/Footer';
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL } from '@/lib/constants';
 import { JsonLdScript } from '@/components/schema';
+import type { Viewport } from 'next';
 
 const cairo = Cairo({ 
   subsets: ['arabic'], 
@@ -18,6 +19,13 @@ const cairo = Cairo({
   display: 'swap',
   preload: true,
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#059669',
+  colorScheme: 'light',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -67,7 +75,6 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
     languages: {
       'ar-DZ': SITE_URL,
-      'fr-DZ': SITE_URL,
       'x-default': SITE_URL,
     },
   },
@@ -202,7 +209,11 @@ export default async function RootLayout({children}: {children: React.ReactNode}
                     "@type": "EntryPoint",
                     "urlTemplate": `${SITE_URL}/blog?q={search_term_string}`
                   },
-                  "query-input": "required name=search_term_string"
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueName": "search_term_string",
+                    "valueRequired": true
+                  }
                 }
               },
               {

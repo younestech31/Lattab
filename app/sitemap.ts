@@ -29,7 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: {
         languages: {
           'ar-DZ': `${base}/`,
-          'fr-DZ': `${base}/`,
           'x-default': `${base}/`,
         },
       },
@@ -42,7 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: {
         languages: {
           'ar-DZ': `${base}/calculateur-prix-referentiel`,
-          'fr-DZ': `${base}/calculateur-prix-referentiel`,
           'x-default': `${base}/calculateur-prix-referentiel`,
         },
       },

@@ -91,7 +91,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const content = await readFile(filePath, 'utf-8');
   const safeHtml = await parseMarkdown(content);
   
-  const relatedPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
+  // Priority: same category first, then most recent as fallback
+  const sameCategoryPosts = blogPosts
+    .filter(p => p.slug !== slug && p.category === post.category)
+    .slice(0, 3);
+  
+  const relatedPosts = sameCategoryPosts.length >= 3
+    ? sameCategoryPosts
+    : [
+        ...sameCategoryPosts,
+        ...blogPosts
+          .filter(p => p.slug !== slug && p.category !== post.category)
+          .slice(0, 3 - sameCategoryPosts.length),
+      ];
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -234,7 +246,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           {/* Related Posts for Internal Linking */}
           <div className="mt-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">مقالات ذات صلة</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">مقالات أخرى في: {post.category}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPosts.map((related) => (
                 <Link 

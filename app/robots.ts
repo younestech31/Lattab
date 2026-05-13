@@ -6,25 +6,14 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: [
-          '/',
-          '/blog/',
-          '/calculateur-prix-referentiel',
-          '/terms-privacy',
-        ],
-        disallow: [
-          '/api/',
-          '/scripts/',
-          '/*.json$',
-        ],
+        allow: ['/', '/blog/', '/calculateur-prix-referentiel', '/terms-privacy'],
+        disallow: ['/api/', '/scripts/', '/*.json'],
       },
       {
-        // Block AI scrapers that don't respect copyright
-        userAgent: ['GPTBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai', 'Claude-Web'],
+        userAgent: ['GPTBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Bytespider', 'Omgilibot', 'peer39_crawler'],
         disallow: ['/'],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }

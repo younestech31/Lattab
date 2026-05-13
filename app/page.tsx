@@ -8,8 +8,6 @@ import WebPageSchema from '@/components/WebPageSchema';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { SITE_URL } from '@/lib/constants';
 import dynamic from 'next/dynamic';
-import { headers } from 'next/headers';
-import { JsonLdScript } from '@/components/schema';
 
 const WhyChooseUs = dynamic(() => import('@/components/WhyChooseUs'));
 const About = dynamic(() => import('@/components/About'));
@@ -23,7 +21,6 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/`,
     languages: {
       'ar-DZ': `${SITE_URL}/`,
-      'fr-DZ': `${SITE_URL}/`,
       'x-default': `${SITE_URL}/`,
     },
   },
@@ -48,31 +45,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Home() {
-  const headerStore = await headers();
-  const nonce = headerStore.get('x-nonce') ?? '';
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'LegalService', 'Notary'],
-    name: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    url: SITE_URL,
-    telephone: '+213562296981',
-    email: 'maitrelattabmohamed@gmail.com',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'وهران، الجزائر',
-      addressLocality: 'Oran',
-      addressCountry: 'DZ',
-    },
-    openingHours: 'Su-Th 08:30-12:00, Su-Th 13:30-16:00',
-    priceRange: '$$',
-    sameAs: [],
-  };
-
+export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <JsonLdScript schema={jsonLd} nonce={nonce} />
       <WebPageSchema
         url={`${SITE_URL}/`}
         name="مكتب الأستاذ لعطب محمد - موثق بوهران"
