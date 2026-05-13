@@ -118,13 +118,6 @@ export default async function RootLayout({children}: {children: React.ReactNode}
                 "url": SITE_URL,
                 "telephone": "+213562296981",
                 "priceRange": "$$",
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "5",
-                  "reviewCount": "47",
-                  "bestRating": "5",
-                  "worstRating": "1"
-                },
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "telephone": "+213562296981",
@@ -173,9 +166,11 @@ export default async function RootLayout({children}: {children: React.ReactNode}
                 "sameAs": [
                   "https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
                 ],
-                "founder": {
+                "employee": {
                   "@type": "Person",
-                  "name": "لعطب محمد"
+                  "name": "لعطب محمد",
+                  "jobTitle": "موثق معتمد",
+                  "worksFor": { "@id": `${SITE_URL}/#organization` }
                 },
                 "knowsLanguage": ["ar", "fr"],
                 "areaServed": {
