@@ -5,6 +5,8 @@ import { translations } from '@/lib/data/translations';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
 import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
 import { oranLocationsReference } from '@/lib/data/oran-price-reference-locations';
+import { algerTransactionsReference } from '@/lib/data/alger-price-reference-transactions';
+import { algerLocationsReference } from '@/lib/data/alger-price-reference-locations';
 import { Calculator } from 'lucide-react';
 
 const CalculatorSkeleton = () => (
@@ -18,6 +20,7 @@ const CalculatorSkeleton = () => (
 const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
+  const [wilaya, setWilaya] = useState<'oran' | 'alger'>('oran');
   const [regionId, setRegionId] = useState<string>(oranPriceReference[0].commune);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
   const [categoryIdx, setCategoryIdx] = useState<number | ''>('');
@@ -25,7 +28,7 @@ export default function PriceCalculator() {
   const [zoneKey, setZoneKey] = useState<string>('');
   const [area, setArea] = useState<number | ''>('');
   
-  const mappedData = useMemo(() => getPricesForCalculator(regionId, calculationMode), [regionId, calculationMode]);
+  const mappedData = useMemo(() => getPricesForCalculator(wilaya, regionId, calculationMode), [wilaya, regionId, calculationMode]);
   const currentRegionData = mappedData ? { prix: mappedData.categories } : null;
 
   const selectedCategory = currentRegionData && categoryIdx !== '' ? currentRegionData.prix[categoryIdx] : null;
@@ -45,6 +48,23 @@ export default function PriceCalculator() {
   })();
 
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
+
+  const handleWilayaChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newWilaya = e.target.value as 'oran' | 'alger';
+    setWilaya(newWilaya);
+    
+    let newDataSource;
+    if (newWilaya === 'oran') {
+      newDataSource = calculationMode === 'sale' ? oranPriceReference : oranLocationsReference;
+    } else {
+      newDataSource = calculationMode === 'sale' ? algerTransactionsReference : algerLocationsReference;
+    }
+    
+    setRegionId(newDataSource[0]?.commune || '');
+    setCategoryIdx('');
+    setTypeIdx('');
+    setZoneKey('');
+  };
 
   const handleRegionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setRegionId(e.target.value);
@@ -129,6 +149,21 @@ export default function PriceCalculator() {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Form Section */}
               <div className="space-y-6">
+                {/* Wilaya Option */}
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    الولاية
+                  </label>
+                  <select
+                    value={wilaya}
+                    onChange={handleWilayaChange}
+                    className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
+                  >
+                    <option value="oran">وهران (31)</option>
+                    <option value="alger">الجزائر (16)</option>
+                  </select>
+                </div>
+
                 {/* Region */}
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
@@ -140,7 +175,10 @@ export default function PriceCalculator() {
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
                     <option value="">-- اختر البلدية --</option>
-                    {(calculationMode === 'sale' ? oranPriceReference : oranLocationsReference).map((region) => (
+                    {(wilaya === 'alger' 
+                        ? (calculationMode === 'sale' ? algerTransactionsReference : algerLocationsReference)
+                        : (calculationMode === 'sale' ? oranPriceReference : oranLocationsReference)
+                    ).map((region) => (
                       <option key={region.commune} value={region.commune}>{region.commune}</option>
                     ))}
                   </select>
@@ -295,7 +333,7 @@ export default function PriceCalculator() {
                 </svg>
               </div>
               <p className="text-sm text-amber-800 leading-relaxed">
-                <strong>تنبيه هام:</strong> هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية وهران (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
+                <strong>تنبيه هام:</strong> هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية {wilaya === 'oran' ? 'وهران' : 'الجزائر'} (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
               </p>
             </div>
           </div>
