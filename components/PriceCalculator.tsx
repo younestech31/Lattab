@@ -101,15 +101,6 @@ export default function PriceCalculator() {
     <section id="calculator" className="py-16 bg-gradient-to-b from-white to-emerald-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center p-4 bg-emerald-100 text-emerald-600 rounded-2xl mb-6 shadow-sm">
-              <Calculator className="w-8 h-8" />
-            </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              احسب الحد الأدنى والأقصى للتصريح بثمن {calculationMode === 'sale' ? 'بيع' : 'إيجار'} العقار لتفادي المراجعات الضريبية، بناءً على جدول 2025-2026 (وهران).
-            </p>
-          </div>
-
           <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10 border border-emerald-100">
             {/* Mode Toggle */}
             <div className="flex p-1 bg-gray-100 rounded-2xl mb-8 max-w-md mx-auto">
