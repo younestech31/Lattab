@@ -2,6 +2,8 @@ import { oranLocationsReference } from '../data/oran-price-reference-locations';
 import { oranPriceReference } from '../data/oran-price-reference-transactions';
 import { algerTransactionsReference } from '../data/alger-price-reference-transactions';
 import { algerLocationsReference } from '../data/alger-price-reference-locations';
+import { adrarTransactionsReference } from '../data/adrar-price-reference-transactions';
+import { adrarLocationsReference } from '../data/adrar-price-reference-locations';
 
 const categoryMap = [
   { key: 'individuels', name: 'Individuels' },
@@ -19,6 +21,8 @@ export const getPricesForCalculator = (wilaya: string, regionId: string, calcula
     dataSource = calculationMode === 'sale' ? oranPriceReference : oranLocationsReference;
   } else if (wilaya === 'alger') {
     dataSource = calculationMode === 'sale' ? algerTransactionsReference : algerLocationsReference;
+  } else if (wilaya === 'adrar') {
+    dataSource = calculationMode === 'sale' ? adrarTransactionsReference : adrarLocationsReference;
   }
 
   const commune = dataSource.find(c => c.commune === regionId);
