@@ -44,7 +44,7 @@ const Footer = () => {
                     width={64} 
                     height={64}
                     className="w-full h-full object-contain"
-                    quality={85}
+                    quality={75}
                   />
                 </div>
                 <div>

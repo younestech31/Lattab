@@ -49,6 +49,7 @@ const nextConfig: NextConfig = {
     deviceSizes: [390, 640, 768, 1024, 1200, 1920],
     imageSizes: [48, 96, 192, 384],
     formats: ['image/avif', 'image/webp'],
+    qualities: [75],
     minimumCacheTTL: 604800,
     remotePatterns: [],
   },
