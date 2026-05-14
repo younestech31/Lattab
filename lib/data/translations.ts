@@ -19,6 +19,8 @@ export const translations: Record<string, string> = {
   "Artère secondaire": "شارع ثانوي",
   "Situé en zone urbaine": "يقع في منطقة حضرية",
   "Situé en zone rurale": "يقع في منطقة ريفية",
+  "En zone urbaine": "يقع في منطقة حضرية",
+  "En zone rurale": "يقع في منطقة ريفية",
   "Pleine propriété deux (02) façades avec raccordements": "ملكية تامة واجهتين مع توصيلات",
   "Pleine propriété une (01) façade avec raccordements": "ملكية تامة واجهة واحدة مع توصيلات",
   "Pleine propriété deux (02) façades sans raccordements": "ملكية تامة واجهتين بدون توصيلات",
@@ -37,3 +39,4 @@ export const translations: Record<string, string> = {
   "zone_eloignement": "منطقة نائية",
   "Zone d'éloignement": "منطقة نائية",
 };
+
