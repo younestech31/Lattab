@@ -2,10 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { notifyGoogleIndexing, UrlNotification } from '@/lib/seo/google-indexing';
 import { SITE_URL } from '@/lib/constants';
 import { blogPosts } from '@/lib/data/blog';
+import { pingIndexNow as notifyIndexNow } from '@/lib/utils/indexnow';
 
 /**
+ * WARNING: Google's Indexing API only officially supports JobPosting and BroadcastEvent pages.
+ * This endpoint may not produce the intended indexing results for general blog pages.
+ * It is recommended to use the IndexNow endpoint (/api/index-now) for general page submission.
+ * 
  * GET  /api/google-indexing          → submit all known indexable URLs
  * POST /api/google-indexing          → submit a specific URL (body: { url, type? })
+ * PUT  /api/google-indexing          → submit all blog posts via IndexNow (Deploy Webhook)
  */
 
 // Define which URLs are considered eligible for the Indexing API.
@@ -16,17 +22,28 @@ const INDEXABLE_URLS: string[] = [
 ];
 
 function isAuthorized(req: NextRequest): boolean {
+  if (process.env.NODE_ENV === 'development') return true;
+  
   const secret = process.env.CRON_SECRET;
-  if (!secret) return true; // Open if no secret set (e.g. dev)
+  if (!secret) return false;
 
   const auth = req.headers.get('authorization') ?? '';
   return auth === `Bearer ${secret}`;
 }
 
-export async function GET(req: NextRequest) {
+function checkAuth(req: NextRequest): NextResponse | null {
+  if (process.env.NODE_ENV !== 'development' && !process.env.CRON_SECRET) {
+    return NextResponse.json({ error: 'CRON_SECRET not configured' }, { status: 503 });
+  }
   if (!isAuthorized(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+  return null;
+}
+
+export async function GET(req: NextRequest) {
+  const authError = checkAuth(req);
+  if (authError) return authError;
 
   if (INDEXABLE_URLS.length === 0) {
     return NextResponse.json({ message: 'No URLs to index' }, { status: 200 });
@@ -47,9 +64,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!isAuthorized(req)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const authError = checkAuth(req);
+  if (authError) return authError;
 
   let body: { url?: string; type?: string };
   try {
@@ -78,3 +94,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
+
+export async function PUT(req: NextRequest) {
+  const authError = checkAuth(req);
+  if (authError) return authError;
+
+  const blogUrls = blogPosts.map(post => `${SITE_URL}/blog/${post.slug}`);
+  
+  if (blogUrls.length === 0) {
+    return NextResponse.json({ message: 'No blog posts to index' }, { status: 200 });
+  }
+
+  await notifyIndexNow(blogUrls);
+  
+  return NextResponse.json({ message: 'IndexNow submitted', count: blogUrls.length }, { status: 200 });
+}
+

@@ -1,7 +1,11 @@
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
 import WebPageSchema from '@/components/WebPageSchema';
 import BlogSearchList from '@/components/BlogSearchList';
+import BlogPostGrid from '@/components/BlogPostGrid';
+import { JsonLdScript } from '@/components/schema';
 import { SITE_URL } from '@/lib/constants';
+import { blogPosts } from '@/lib/data/blog';
 
 export const metadata: Metadata = {
   title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
@@ -31,9 +35,28 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogList() {
+export default async function BlogList() {
+  const headerStore = await headers();
+  const nonce = headerStore.get('x-nonce') ?? '';
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "المدونة القانونية والعقارية — موثق وهران",
+    "description": "قائمة مقالات قانونية وعقارية من مكتب الأستاذ لعطب محمد، موثق معتمد بوهران",
+    "url": SITE_URL + "/blog",
+    "numberOfItems": blogPosts.length,
+    "itemListElement": blogPosts.map((post, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": SITE_URL + "/blog/" + post.slug,
+      "name": post.title
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <JsonLdScript schema={itemListSchema} nonce={nonce} />
       <WebPageSchema
         url={`${SITE_URL}/blog`}
         name="المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق"
@@ -51,6 +74,10 @@ export default function BlogList() {
               دليلك الشامل للقوانين العقارية، الإجراءات التوثيقية، وأدلة تأسيس الشركات في الجزائر. 
             </p>
           </div>
+
+          <noscript>
+            <BlogPostGrid posts={blogPosts} />
+          </noscript>
 
           <BlogSearchList />
         </div>

@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next';
 import { blogPosts } from '@/lib/data/blog';
-import { SITE_URL as base, SITE_CONFIG } from '@/lib/constants';
+import { SITE_URL as base, LAST_CONTENT_UPDATED } from '@/lib/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
-  const blogEntries: MetadataRoute.Sitemap = blogPosts.map(post => ({
+  const blogEntries: MetadataRoute.Sitemap = [...blogPosts]
+    .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
+    .map(post => ({
     url: `${base}/blog/${post.slug}`,
     lastModified: new Date(post.dateModified || post.dateISO),
     changeFrequency: 'monthly' as const,
@@ -20,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${base}/`,
-      lastModified: new Date(SITE_CONFIG.lastUpdated),
+      lastModified: new Date(LAST_CONTENT_UPDATED),
       changeFrequency: 'weekly',
       priority: 1.0,
       images: [
@@ -35,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/calculateur-prix-referentiel`,
-      lastModified: new Date(SITE_CONFIG.lastUpdated),
+      lastModified: new Date(LAST_CONTENT_UPDATED),
       changeFrequency: 'monthly',
       priority: 0.9,
       alternates: {
@@ -47,9 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/blog`,
-      lastModified: blogPosts.length > 0
-        ? new Date(blogPosts[0].dateISO)   // most recent post date
-        : new Date(SITE_CONFIG.lastUpdated),
+      lastModified: new Date(LAST_CONTENT_UPDATED),
       changeFrequency: 'weekly',
       priority: 0.8,
       alternates: {

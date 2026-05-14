@@ -91,6 +91,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const content = await readFile(filePath, 'utf-8');
   const safeHtml = await parseMarkdown(content);
   
+  const wordCount = Math.round(content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
+  
   // Priority: same category first, then most recent as fallback
   const sameCategoryPosts = blogPosts
     .filter(p => p.slug !== slug && p.category === post.category)
@@ -138,15 +140,29 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <JsonLdScript
               schema={{
                 "@context": "https://schema.org",
-                "@type": "Article",
+                "@type": "BlogPosting",
                 "headline": post.title,
                 "description": post.description,
                 "datePublished": post.dateISO,
                 "dateModified": post.dateModified || post.dateISO,
+                "wordCount": wordCount,
+                "keywords": [post.category, 'قانون جزائري', 'توثيق', 'وهران', 'موثق معتمد'],
+                "articleSection": post.category,
                 "author": {
                   "@type": "Person",
                   "name": "لعطب محمد",
+                  "honorificPrefix": "الأستاذ",
                   "jobTitle": "موثق معتمد",
+                  "url": SITE_URL + '/#about',
+                  "sameAs": [SITE_URL],
+                  "hasCredential": {
+                    "@type": "EducationalOccupationalCredential",
+                    "credentialCategory": "موثق معتمد",
+                    "recognizedBy": {
+                      "@type": "GovernmentOrganization",
+                      "name": "وزارة العدل الجزائرية"
+                    }
+                  },
                   "worksFor": {
                     "@type": "LegalService",
                     "name": "مكتب الأستاذ لعطب محمد",
@@ -170,7 +186,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   "height": 512
                 },
                 "url": `${SITE_URL}/blog/${post.slug}`,
-                "inLanguage": "ar-DZ",
+                "inLanguage": post.language === 'fr' ? 'fr-DZ' : 'ar-DZ',
                 "about": {
                   "@type": "Thing",
                   "name": post.category

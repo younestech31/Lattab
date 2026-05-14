@@ -1,5 +1,11 @@
 import crypto from 'node:crypto';
 
+/**
+ * WARNING: Google's Indexing API only officially supports JobPosting and BroadcastEvent pages.
+ * This endpoint may not produce the intended indexing results for general blog pages.
+ * It is recommended to use the IndexNow endpoint (/api/index-now) for general page submission.
+ */
+
 export type NotificationType = 'URL_UPDATED' | 'URL_DELETED';
 
 export interface UrlNotification {

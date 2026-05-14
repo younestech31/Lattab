@@ -1,3 +1,5 @@
+import { blogPosts } from '@/lib/data/blog';
+
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://lattab.vercel.app';
 
 export const WORKING_HOURS = {
@@ -10,5 +12,7 @@ export const WORKING_HOURS = {
 
 export const SITE_CONFIG = {
   version: '1.2',
-  lastUpdated: '2026-04-12', // YYYY-MM-DD format
 };
+
+export const LAST_CONTENT_UPDATED = blogPosts.reduce((max, post) => 
+  post.dateISO > max ? post.dateISO : max, '2026-01-01');

@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import FAQSchema from './faq-schema';
 import Contact from '@/components/Contact';
+import ContactInfo from '@/components/ContactInfo';
 import CalculatorCTA from '@/components/CalculatorCTA';
 import WebPageSchema from '@/components/WebPageSchema';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
@@ -69,7 +70,7 @@ export default function Home() {
           <LegalUpdates />
           <FAQ />
         </div>
-        <Contact />
+        <Contact contactInfo={<ContactInfo />} />
       </main>
       <div className="no-print">
         <StickyMobileCTA />
