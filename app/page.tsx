@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     locale: 'ar_DZ',
     type: 'website',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
+    images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران | Notaire Lattab',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-    images: ['/og-image.jpg'],
+    images: [`${SITE_URL}/logo.webp`],
   },
   robots: {
     index: true,

@@ -58,18 +58,32 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
   manifest: '/manifest.json',
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+    images: [
+      {
+        url: `${SITE_URL}/logo.webp`,
+        width: 512,
+        height: 512,
+        alt: 'مكتب الأستاذ لعطب محمد — موثق معتمد بوهران',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-    images: ['/og-image.jpg'],
+    images: [`${SITE_URL}/logo.webp`],
   },
   alternates: {
     canonical: SITE_URL,
@@ -92,18 +106,26 @@ export default async function RootLayout({children}: {children: React.ReactNode}
   return (
     <html lang={resolvedLang} dir={resolvedLang === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        
-        {/* Main App Icon */}
-        <link rel="apple-touch-icon" href="/logo-optimized.png" />
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+
+        {/* Apple Touch Icon */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        
+
+        {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        
+
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-        <link rel="preload" href="/logo-optimized.png" as="image" fetchPriority="high" />
+        {/*
+          LCP critical preload — logo-small.webp is 16 KB / 256×256 px (2× retina-ready).
+          Preloading this eliminates layout shift in the Header on first paint.
+          DO NOT change this back to logo-optimized.png (3.4 MB) or logo.webp (45 KB).
+        */}
+        <link rel="preload" as="image" href="/logo-small.webp" fetchPriority="high" />
+        
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
@@ -119,7 +141,9 @@ export default async function RootLayout({children}: {children: React.ReactNode}
                 "description": "مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.",
                 "image": {
                   "@type": "ImageObject",
-                  "url": `${SITE_URL}/logo-optimized.png`
+                  "url": `${SITE_URL}/logo.webp`,
+                  "width": 512,
+                  "height": 512
                 },
                 "@id": `${SITE_URL}/#organization`,
                 "url": SITE_URL,

@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1.0,
       images: [
-        `${base}/og-image.jpg`
+        `${base}/logo.webp`
       ],
       alternates: {
         languages: {

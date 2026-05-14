@@ -54,9 +54,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       tags: [post.category, 'قانون جزائري', 'توثيق', 'وهران'],
       images: [
         {
-          url: '/og-image.jpg',
-          width: 1200,
-          height: 630,
+          url: `${SITE_URL}/logo.webp`,
+          width: 512,
+          height: 512,
           alt: post.title,
         },
       ],
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: ['/og-image.jpg'],
+      images: [`${SITE_URL}/logo.webp`],
     },
   };
 }
@@ -158,10 +158,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   "name": "مكتب الأستاذ لعطب محمد",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": `${SITE_URL}/logo-optimized.png`
+                    "url": `${SITE_URL}/logo.webp`,
+                    "width": 512,
+                    "height": 512
                   }
                 },
-                "image": `${SITE_URL}/og-image.jpg`,
+                "image": {
+                  "@type": "ImageObject",
+                  "url": `${SITE_URL}/logo.webp`,
+                  "width": 512,
+                  "height": 512
+                },
                 "url": `${SITE_URL}/blog/${post.slug}`,
                 "inLanguage": "ar-DZ",
                 "about": {

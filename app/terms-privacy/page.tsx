@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'الشروط والأحكام وسياسة الخصوصية | موثق لعطب - وهران',
     description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'الشروط والأحكام - موثق لعطب محمد وهران', type: 'image/jpeg' }],
+    images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: 'الشروط والأحكام - موثق لعطب محمد وهران', type: 'image/png' }],
     locale: 'ar_DZ',
     type: 'website',
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'الشروط والأحكام وسياسة الخصوصية | موثق لعطب - وهران',
     description: 'الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران.',
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/logo.webp`],
   },
 };
 

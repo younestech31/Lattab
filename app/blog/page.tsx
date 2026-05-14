@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
+        url: `${SITE_URL}/logo.webp`,
+        width: 512,
+        height: 512,
         alt: 'المدونة القانونية - موثق معتمد',
       },
     ],
