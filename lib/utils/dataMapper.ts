@@ -4,6 +4,8 @@ import { algerTransactionsReference } from '../data/alger-price-reference-transa
 import { algerLocationsReference } from '../data/alger-price-reference-locations';
 import { adrarTransactionsReference } from '../data/adrar-price-reference-transactions';
 import { adrarLocationsReference } from '../data/adrar-price-reference-locations';
+import { chlefTransactionsReference } from '../data/chlef-price-reference-transactions';
+import { chlefLocationsReference } from '../data/chlef-price-reference-locations';
 
 const categoryMap = [
   { key: 'individuels', name: 'Individuels' },
@@ -23,6 +25,8 @@ export const getPricesForCalculator = (wilaya: string, regionId: string, calcula
     dataSource = calculationMode === 'sale' ? algerTransactionsReference : algerLocationsReference;
   } else if (wilaya === 'adrar') {
     dataSource = calculationMode === 'sale' ? adrarTransactionsReference : adrarLocationsReference;
+  } else if (wilaya === 'chlef') {
+    dataSource = calculationMode === 'sale' ? chlefTransactionsReference : chlefLocationsReference;
   }
 
   const commune = dataSource.find(c => c.commune === regionId);

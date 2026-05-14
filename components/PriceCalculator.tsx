@@ -9,6 +9,8 @@ import { algerTransactionsReference } from '@/lib/data/alger-price-reference-tra
 import { algerLocationsReference } from '@/lib/data/alger-price-reference-locations';
 import { adrarTransactionsReference } from '@/lib/data/adrar-price-reference-transactions';
 import { adrarLocationsReference } from '@/lib/data/adrar-price-reference-locations';
+import { chlefTransactionsReference } from '@/lib/data/chlef-price-reference-transactions';
+import { chlefLocationsReference } from '@/lib/data/chlef-price-reference-locations';
 import { Calculator } from 'lucide-react';
 
 const CalculatorSkeleton = () => (
@@ -22,7 +24,7 @@ const CalculatorSkeleton = () => (
 const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
-  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar'>('oran');
+  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef'>('oran');
   const [regionId, setRegionId] = useState<string>(oranPriceReference[0].commune);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
   const [categoryIdx, setCategoryIdx] = useState<number | ''>('');
@@ -52,7 +54,7 @@ export default function PriceCalculator() {
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 
   const handleWilayaChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar';
+    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef';
     setWilaya(newWilaya);
     
     let newDataSource;
@@ -60,8 +62,10 @@ export default function PriceCalculator() {
       newDataSource = calculationMode === 'sale' ? oranPriceReference : oranLocationsReference;
     } else if (newWilaya === 'alger') {
       newDataSource = calculationMode === 'sale' ? algerTransactionsReference : algerLocationsReference;
-    } else {
+    } else if (newWilaya === 'adrar') {
       newDataSource = calculationMode === 'sale' ? adrarTransactionsReference : adrarLocationsReference;
+    } else {
+      newDataSource = calculationMode === 'sale' ? chlefTransactionsReference : chlefLocationsReference;
     }
     
     setRegionId(newDataSource[0]?.commune || '');
@@ -166,6 +170,7 @@ export default function PriceCalculator() {
                     <option value="oran">وهران (31)</option>
                     <option value="alger">الجزائر (16)</option>
                     <option value="adrar">أدرار (01)</option>
+                    <option value="chlef">الشلف (02)</option>
                   </select>
                 </div>
 
@@ -184,7 +189,10 @@ export default function PriceCalculator() {
                         ? (calculationMode === 'sale' ? algerTransactionsReference : algerLocationsReference)
                         : (wilaya === 'adrar'
                           ? (calculationMode === 'sale' ? adrarTransactionsReference : adrarLocationsReference)
-                          : (calculationMode === 'sale' ? oranPriceReference : oranLocationsReference)
+                          : (wilaya === 'chlef'
+                            ? (calculationMode === 'sale' ? chlefTransactionsReference : chlefLocationsReference)
+                            : (calculationMode === 'sale' ? oranPriceReference : oranLocationsReference)
+                          )
                         )
                     ).map((region) => (
                       <option key={region.commune} value={region.commune}>{region.commune}</option>
