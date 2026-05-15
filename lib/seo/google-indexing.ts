@@ -140,11 +140,89 @@ export async function notifyGoogleIndexing(
     );
   }
 
+  if (notifications.length === 0) {
+    return { submitted: 0, succeeded: 0, failed: 0, results: [] };
+  }
+
   const accessToken = await getAccessToken(email, privateKey);
 
-  const results = await Promise.all(
-    notifications.map((n) => notifyUrl(n, accessToken))
-  );
+  // Google's batch API allows up to 100 requests per batch.
+  const chunkSize = 100;
+  const results: NotificationResult[] = [];
+
+  for (let i = 0; i < notifications.length; i += chunkSize) {
+    const chunk = notifications.slice(i, i + chunkSize);
+    const boundary = `batch_${crypto.randomUUID()}`;
+    let body = '';
+
+    for (let j = 0; j < chunk.length; j++) {
+      const n = chunk[j];
+      const payload = JSON.stringify(n);
+      const reqId = `item-${i + j}`;
+
+      body += `--${boundary}\r\n`;
+      body += `Content-Type: application/http\r\n`;
+      body += `Content-Transfer-Encoding: binary\r\n`;
+      body += `Content-ID: <${reqId}>\r\n\r\n`;
+      body += `POST /v3/urlNotifications:publish HTTP/1.1\r\n`;
+      body += `Content-Type: application/json\r\n`;
+      body += `Accept: application/json\r\n`;
+      body += `Content-Length: ${Buffer.byteLength(payload)}\r\n\r\n`;
+      body += `${payload}\r\n`;
+    }
+    body += `--${boundary}--\r\n`;
+
+    try {
+      const res = await fetch('https://indexing.googleapis.com/batch', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': `multipart/mixed; boundary="${boundary}"`,
+        },
+        body,
+      });
+
+      const responseText = await res.text();
+
+      for (let j = 0; j < chunk.length; j++) {
+        const reqId = `item-${i + j}`;
+        const searchId = `response-${reqId}`;
+        const partStartIndex = responseText.indexOf(`Content-ID: <${searchId}>`);
+        
+        let success = false;
+        let status: number | undefined;
+
+        if (partStartIndex !== -1) {
+          const nextBoundaryMatch = responseText.indexOf(`--batch_`, partStartIndex);
+          const partEndIndex = nextBoundaryMatch !== -1 ? nextBoundaryMatch : responseText.length;
+          const partText = responseText.slice(partStartIndex, partEndIndex);
+
+          // Find the HTTP status line (e.g., "HTTP/1.1 200 OK")
+          const statusMatch = partText.match(/HTTP\/\d(?:\.\d)?\s+(\d{3})/);
+          if (statusMatch) {
+            status = parseInt(statusMatch[1], 10);
+            success = status >= 200 && status < 300;
+          }
+        }
+
+        results.push({
+          ...chunk[j],
+          success,
+          status,
+          error: success ? undefined : 'Failed in batch request',
+        });
+      }
+    } catch (err) {
+      // If the entire batch fetch fails, mark all in chunk as failed
+      for (let j = 0; j < chunk.length; j++) {
+        results.push({
+          ...chunk[j],
+          success: false,
+          error: err instanceof Error ? err.message : 'Batch request error',
+        });
+      }
+    }
+  }
 
   const succeeded = results.filter((r) => r.success).length;
 
