@@ -8,7 +8,7 @@ const MapComponent = dynamic(() => import('./MapComponent'), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center h-[400px] font-sans">
-      Loading map...
+      جاري تحميل الخريطة...
     </div>
   ),
 });
@@ -141,12 +141,13 @@ function openWhatsAppInquiry(data: {
 }
 
 // ─── دالة تسجيل الأخطاء الآمنة ──────────────────────────
+import * as Sentry from "@sentry/nextjs";
+
 function logError(message: string, error?: any) {
   if (process.env.NODE_ENV !== 'production') {
     console.error(message, error);
   } else {
-    // هنا يمكن إضافة خدمة مثل Sentry
-    // Sentry.captureException(error);
+    Sentry.captureException(error || new Error(message));
   }
 }
 
