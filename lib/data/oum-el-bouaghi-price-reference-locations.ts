@@ -54,7 +54,7 @@ export interface PriceRange {
                                                       const group4Communes = ["Ain Kercha", "Sigus", "Ouled Hamla"];
                                                       const group5Communes = ["Ain Babouche", "Meskiana", "Souk Naamane"];
                                                       const group6Communes = ["Fkirina", "Ksar Sbahi", "Berriche", "Hanchir Toumghani"];
-                                                      const group7Communes = ["Dhalaa", "Bir Chouhada", "Ouled Gacem", "El Harmilia", "Boughrara Saoudi", "Oued Nini", "Ain Zitoun", "El Amiria", "Ouled Zouai"];
+                                                      const group7Communes = ["Dhalaa", "Bir Chouhada", "Ouled Gacem", "El Harmilia", "Boughrara Saoudi", "Oued Nini", "Ain Zitoun", "El Amiria", "Ouled Zouai", "Behir Chergui", "Rahia", "El Belala", "Beida Borg", "Zorg", "Ain Diss"];
 
                                                       // ====================== GENERATORS ======================
 

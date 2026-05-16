@@ -193,7 +193,12 @@ export default function PriceCalculator() {
             {/* Mode Toggle */}
             <div className="flex p-1 bg-gray-100 rounded-2xl mb-8 max-w-md mx-auto">
               <button
-                onClick={() => setCalculationMode('sale')}
+                onClick={() => {
+                  setCalculationMode('sale');
+                  setCategoryIdx('');
+                  setTypeIdx('');
+                  setZoneKey('');
+                }}
                 className={`flex-1 py-3 px-6 rounded-xl font-bold transition-all ${
                   calculationMode === 'sale'
                     ? 'bg-white text-emerald-600 shadow-sm'
@@ -203,7 +208,12 @@ export default function PriceCalculator() {
                 بيع العقار
               </button>
               <button
-                onClick={() => setCalculationMode('rent')}
+                onClick={() => {
+                  setCalculationMode('rent');
+                  setCategoryIdx('');
+                  setTypeIdx('');
+                  setZoneKey('');
+                }}
                 className={`flex-1 py-3 px-6 rounded-xl font-bold transition-all ${
                   calculationMode === 'rent'
                     ? 'bg-white text-emerald-600 shadow-sm'
