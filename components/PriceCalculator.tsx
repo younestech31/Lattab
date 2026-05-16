@@ -38,7 +38,7 @@ export default function PriceCalculator() {
           import('@/lib/data/oran-price-reference-transactions'),
           import('@/lib/data/oran-price-reference-locations'),
         ]);
-        setPriceData({ transactions: trans.oranPriceReference, locations: locs.oranLocationsReference });
+        setFetchedWilayaData({ transactions: trans.oranPriceReference, locations: locs.oranLocationsReference });
         setRegionId(trans.oranPriceReference[0].commune);
         setIsLoadingData(false);
     };
@@ -314,6 +314,10 @@ export default function PriceCalculator() {
                       />
                     </div>
                   </>
+                )}
+                  </>
+                )}
+                </>
                 )}
               </div>
 
