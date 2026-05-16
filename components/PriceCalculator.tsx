@@ -111,8 +111,10 @@ export default function PriceCalculator() {
             setRegionId(trans.chlefTransactionsReference[0].commune);
             break;
         case 'laghouat':
-            trans = await import('@/lib/data/laghouat-price-reference-transactions');
-            locs = await import('@/lib/data/laghouat-price-reference-locations');
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/laghouat-price-reference-transactions'),
+                import('@/lib/data/laghouat-price-reference-locations'),
+            ]);
             setFetchedWilayaData({ transactions: trans.laghouatTransactionsReference, locations: locs.laghouatLocationsReference });
             setRegionId(trans.laghouatTransactionsReference[0].commune);
             break;
@@ -399,7 +401,13 @@ export default function PriceCalculator() {
                 </svg>
               </div>
               <p className="text-sm text-amber-800 leading-relaxed">
-                <strong>تنبيه هام:</strong> هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية {wilaya === 'oran' ? 'وهران' : wilaya === 'alger' ? 'الجزائر' : 'أدرار'} (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
+                <strong>تنبيه هام:</strong> هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية {
+                  wilaya === 'oran' ? 'وهران' : 
+                  wilaya === 'alger' ? 'الجزائر' : 
+                  wilaya === 'adrar' ? 'أدرار' : 
+                  wilaya === 'chlef' ? 'الشلف' : 
+                  'الأغواط'
+                } (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
               </p>
             </div>
           </div>
