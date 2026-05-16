@@ -119,10 +119,11 @@ export default function PriceCalculator() {
             setRegionId(trans.laghouatTransactionsReference[0].commune);
             break;
         case 'oum-el-bouaghi':
-            [trans] = await Promise.all([
+            [trans, locs] = await Promise.all([
                 import('@/lib/data/oum-el-bouaghi-price-reference-transactions'),
+                import('@/lib/data/oum-el-bouaghi-price-reference-locations'),
             ]);
-            setFetchedWilayaData({ transactions: trans.default, locations: [] });
+            setFetchedWilayaData({ transactions: trans.default, locations: locs.default });
             setRegionId(trans.default[0].commune);
             break;
     }
@@ -414,7 +415,8 @@ export default function PriceCalculator() {
                   wilaya === 'alger' ? 'الجزائر' : 
                   wilaya === 'adrar' ? 'أدرار' : 
                   wilaya === 'chlef' ? 'الشلف' : 
-                  'الأغواط'
+                  wilaya === 'laghouat' ? 'الأغواط' :
+                  'أم البواقي'
                 } (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
               </p>
             </div>
