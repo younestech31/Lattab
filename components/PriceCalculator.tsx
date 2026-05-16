@@ -361,7 +361,7 @@ export default function PriceCalculator() {
                     {calculationMode === 'rent' && result.taxRate > 0 && (
                       <div className="mt-6 pt-6 border-t border-emerald-500/30">
                         <p className="text-emerald-100 text-sm mb-3">
-                          الضريبة على الدخل الإجمالي (IRG) المقدرة ({result.taxRate * 100}%):
+                          الضريبة على الدخل الإجمالي (IRG) المقدرة ({parseFloat((result.taxRate * 100).toFixed(10))}%):
                         </p>
                         <div className="grid grid-cols-2 gap-4" dir="ltr">
                           <div className="bg-emerald-900/40 rounded-lg p-3">
