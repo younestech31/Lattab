@@ -21,7 +21,7 @@ const CalculatorSkeleton = () => (
 const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
-  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef'>('oran');
+  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat'>('oran');
   const [fetchedWilayaData, setFetchedWilayaData] = useState<WilayaData | null>(null);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
@@ -72,7 +72,7 @@ export default function PriceCalculator() {
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 
   const handleWilayaChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef';
+    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat';
     setWilaya(newWilaya);
     setIsLoadingData(true);
     
@@ -109,6 +109,12 @@ export default function PriceCalculator() {
             ]);
             setFetchedWilayaData({ transactions: trans.chlefTransactionsReference, locations: locs.chlefLocationsReference });
             setRegionId(trans.chlefTransactionsReference[0].commune);
+            break;
+        case 'laghouat':
+            trans = await import('@/lib/data/laghouat-price-reference-transactions');
+            locs = await import('@/lib/data/laghouat-price-reference-locations');
+            setFetchedWilayaData({ transactions: trans.laghouatTransactionsReference, locations: locs.laghouatLocationsReference });
+            setRegionId(trans.laghouatTransactionsReference[0].commune);
             break;
     }
     
@@ -215,6 +221,7 @@ export default function PriceCalculator() {
                     <option value="alger">الجزائر (16)</option>
                     <option value="adrar">أدرار (01)</option>
                     <option value="chlef">الشلف (02)</option>
+                    <option value="laghouat">الأغواط (03)</option>
                   </select>
                 </div>
                 
