@@ -231,7 +231,7 @@ export default function PriceCalculator() {
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
                     <option value="">-- اختر البلدية --</option>
-                    {(priceData ? (calculationMode === 'sale' ? priceData.transactions : priceData.locations) : []).map((region: any) => (
+                    {((fetchedWilayaData ? (calculationMode === 'sale' ? fetchedWilayaData.transactions : fetchedWilayaData.locations) : []) || []).map((region: any) => (
                       <option key={region.commune} value={region.commune}>{region.commune}</option>
                     ))}
                   </select>
