@@ -25,8 +25,7 @@ export const ReadingProgress = () => {
 
   return (
     <div 
-      style={{ width: `${progress}%` }}
-      className="fixed top-0 left-0 h-1 bg-emerald-500 z-[100] transition-all duration-150" 
+      className={`fixed top-0 left-0 h-1 bg-emerald-500 z-[100] transition-all duration-150 w-[${progress}%]`} 
     />
   );
 };

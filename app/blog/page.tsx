@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     images: [
       {
-        url: `${SITE_URL}/logo.webp`,
-        width: 512,
-        height: 512,
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
         alt: 'المدونة القانونية - موثق معتمد',
       },
     ],
@@ -79,7 +79,7 @@ export default async function BlogList() {
             <BlogPostGrid posts={blogPosts} />
           </noscript>
 
-          <BlogSearchList />
+          <BlogSearchList posts={blogPosts} />
         </div>
       </main>
     </div>

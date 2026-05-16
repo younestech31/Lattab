@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import FAQSchema from './faq-schema';
@@ -9,6 +10,10 @@ import WebPageSchema from '@/components/WebPageSchema';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { SITE_URL } from '@/lib/constants';
 import dynamic from 'next/dynamic';
+
+const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
+  <div className={`w-full ${height} bg-gray-50 animate-pulse rounded-lg`} aria-hidden="true" />
+);
 
 const WhyChooseUs = dynamic(() => import('@/components/WhyChooseUs'));
 const About = dynamic(() => import('@/components/About'));
@@ -32,13 +37,13 @@ export const metadata: Metadata = {
     siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     locale: 'ar_DZ',
     type: 'website',
-    images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
+    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران | Notaire Lattab',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-    images: [`${SITE_URL}/logo.webp`],
+    images: [`${SITE_URL}/og-image.jpg`],
   },
   robots: {
     index: true,
@@ -64,11 +69,21 @@ export default function Home() {
           <Services />
 
           <CalculatorCTA />
-          <WhyChooseUs />
-          <About />
-          <Procedures />
-          <LegalUpdates />
-          <FAQ />
+          <Suspense fallback={<SectionSkeleton height="h-64" />}>
+            <WhyChooseUs />
+          </Suspense>
+          <Suspense fallback={<SectionSkeleton height="h-80" />}>
+            <About />
+          </Suspense>
+          <Suspense fallback={<SectionSkeleton height="h-64" />}>
+            <Procedures />
+          </Suspense>
+          <Suspense fallback={<SectionSkeleton height="h-64" />}>
+            <LegalUpdates />
+          </Suspense>
+          <Suspense fallback={<SectionSkeleton height="h-48" />}>
+            <FAQ />
+          </Suspense>
         </div>
         <Contact contactInfo={<ContactInfo />} />
       </main>

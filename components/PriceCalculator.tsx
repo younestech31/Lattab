@@ -1,17 +1,14 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { translations } from '@/lib/data/translations';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
-import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
-import { oranLocationsReference } from '@/lib/data/oran-price-reference-locations';
-import { algerTransactionsReference } from '@/lib/data/alger-price-reference-transactions';
-import { algerLocationsReference } from '@/lib/data/alger-price-reference-locations';
-import { adrarTransactionsReference } from '@/lib/data/adrar-price-reference-transactions';
-import { adrarLocationsReference } from '@/lib/data/adrar-price-reference-locations';
-import { chlefTransactionsReference } from '@/lib/data/chlef-price-reference-transactions';
-import { chlefLocationsReference } from '@/lib/data/chlef-price-reference-locations';
 import { Calculator } from 'lucide-react';
+
+interface WilayaData {
+  transactions?: any[];
+  locations?: any[];
+}
 
 const CalculatorSkeleton = () => (
   <div className="animate-pulse space-y-4">
@@ -25,14 +22,35 @@ const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
   const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef'>('oran');
-  const [regionId, setRegionId] = useState<string>(oranPriceReference[0].commune);
+  const [fetchedWilayaData, setFetchedWilayaData] = useState<WilayaData | null>(null);
+  const [isLoadingData, setIsLoadingData] = useState(false);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
+  const [regionId, setRegionId] = useState<string>('');
   const [categoryIdx, setCategoryIdx] = useState<number | ''>('');
   const [typeIdx, setTypeIdx] = useState<number | ''>('');
   const [zoneKey, setZoneKey] = useState<string>('');
   const [area, setArea] = useState<number | ''>('');
   
-  const mappedData = useMemo(() => getPricesForCalculator(wilaya, regionId, calculationMode), [wilaya, regionId, calculationMode]);
+  useEffect(() => {
+    setIsLoadingData(true);
+    const loadInitialData = async () => {
+        const [trans, locs] = await Promise.all([
+          import('@/lib/data/oran-price-reference-transactions'),
+          import('@/lib/data/oran-price-reference-locations'),
+        ]);
+        setPriceData({ transactions: trans.oranPriceReference, locations: locs.oranLocationsReference });
+        setRegionId(trans.oranPriceReference[0].commune);
+        setIsLoadingData(false);
+    };
+    loadInitialData();
+  }, []);
+  
+  const mappedData = useMemo(() => {
+    if (!fetchedWilayaData) return null;
+    const dataSource = calculationMode === 'sale' ? fetchedWilayaData.transactions : fetchedWilayaData.locations;
+    if (!dataSource) return null;
+    return getPricesForCalculator(dataSource, regionId, calculationMode);
+  }, [fetchedWilayaData, regionId, calculationMode]);
   const currentRegionData = mappedData ? { prix: mappedData.categories } : null;
 
   const selectedCategory = currentRegionData && categoryIdx !== '' ? currentRegionData.prix[categoryIdx] : null;
@@ -53,25 +71,51 @@ export default function PriceCalculator() {
 
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 
-  const handleWilayaChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleWilayaChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef';
     setWilaya(newWilaya);
+    setIsLoadingData(true);
     
-    let newDataSource;
-    if (newWilaya === 'oran') {
-      newDataSource = calculationMode === 'sale' ? oranPriceReference : oranLocationsReference;
-    } else if (newWilaya === 'alger') {
-      newDataSource = calculationMode === 'sale' ? algerTransactionsReference : algerLocationsReference;
-    } else if (newWilaya === 'adrar') {
-      newDataSource = calculationMode === 'sale' ? adrarTransactionsReference : adrarLocationsReference;
-    } else {
-      newDataSource = calculationMode === 'sale' ? chlefTransactionsReference : chlefLocationsReference;
+    let trans, locs;
+    switch (newWilaya) {
+        case 'oran':
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/oran-price-reference-transactions'),
+                import('@/lib/data/oran-price-reference-locations'),
+            ]);
+            setFetchedWilayaData({ transactions: trans.oranPriceReference, locations: locs.oranLocationsReference });
+            setRegionId(trans.oranPriceReference[0].commune);
+            break;
+        case 'alger':
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/alger-price-reference-transactions'),
+                import('@/lib/data/alger-price-reference-locations'),
+            ]);
+            setFetchedWilayaData({ transactions: trans.algerTransactionsReference, locations: locs.algerLocationsReference });
+            setRegionId(trans.algerTransactionsReference[0].commune);
+            break;
+        case 'adrar':
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/adrar-price-reference-transactions'),
+                import('@/lib/data/adrar-price-reference-locations'),
+            ]);
+            setFetchedWilayaData({ transactions: trans.adrarTransactionsReference, locations: locs.adrarLocationsReference });
+            setRegionId(trans.adrarTransactionsReference[0].commune);
+            break;
+        case 'chlef':
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/chlef-price-reference-transactions'),
+                import('@/lib/data/chlef-price-reference-locations'),
+            ]);
+            setFetchedWilayaData({ transactions: trans.chlefTransactionsReference, locations: locs.chlefLocationsReference });
+            setRegionId(trans.chlefTransactionsReference[0].commune);
+            break;
     }
     
-    setRegionId(newDataSource[0]?.commune || '');
     setCategoryIdx('');
     setTypeIdx('');
     setZoneKey('');
+    setIsLoadingData(false);
   };
 
   const handleRegionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -173,7 +217,9 @@ export default function PriceCalculator() {
                     <option value="chlef">الشلف (02)</option>
                   </select>
                 </div>
-
+                
+                {isLoadingData ? <CalculatorSkeleton /> : (
+                <>
                 {/* Region */}
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
@@ -185,16 +231,7 @@ export default function PriceCalculator() {
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
                     <option value="">-- اختر البلدية --</option>
-                    {(wilaya === 'alger' 
-                        ? (calculationMode === 'sale' ? algerTransactionsReference : algerLocationsReference)
-                        : (wilaya === 'adrar'
-                          ? (calculationMode === 'sale' ? adrarTransactionsReference : adrarLocationsReference)
-                          : (wilaya === 'chlef'
-                            ? (calculationMode === 'sale' ? chlefTransactionsReference : chlefLocationsReference)
-                            : (calculationMode === 'sale' ? oranPriceReference : oranLocationsReference)
-                          )
-                        )
-                    ).map((region) => (
+                    {(priceData ? (calculationMode === 'sale' ? priceData.transactions : priceData.locations) : []).map((region: any) => (
                       <option key={region.commune} value={region.commune}>{region.commune}</option>
                     ))}
                   </select>
@@ -261,22 +298,24 @@ export default function PriceCalculator() {
                 </div>
 
                 {/* Area */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    {selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? 'المساحة (بالهكتار Ha)' : 'المساحة (بالمتر المربع m²)'}
-                  </label>
-                  <input
-                    type="number"
-                    value={area}
-                    onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
-                    placeholder="أدخل المساحة"
-                    disabled={!currentRegionData}
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
-                  />
-                </div>
-              </>
-            )}
-          </div>
+                {selectedType && (
+                  <>
+                    <div>
+                      <label className="block text-sm font-bold text-gray-700 mb-2">
+                        {selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? 'المساحة (بالهكتار Ha)' : 'المساحة (بالمتر المربع m²)'}
+                      </label>
+                      <input
+                        type="number"
+                        value={area}
+                        onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
+                        placeholder="أدخل المساحة"
+                        disabled={!currentRegionData}
+                        className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+                      />
+                    </div>
+                  </>
+                )}
+              </div>
 
               {/* Result Section */}
               <div className="flex flex-col justify-center">

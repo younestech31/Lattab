@@ -6,3 +6,6 @@ coverage/
 .env*
 !.env.example
 /scripts/
+*.test-*.ts
+public/logo-optimized.png
+public/favicon-1.ico

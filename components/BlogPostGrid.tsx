@@ -1,6 +1,7 @@
+import React from 'react';
 import Link from 'next/link';
 import { Calendar, FileText, Scale, TrendingUp, ArrowLeft } from 'lucide-react';
-import { blogPosts } from '@/lib/data/blog';
+import { BlogPost } from '@/lib/data/blog';
 
 const iconMap: Record<string, React.ReactNode> = {
   FileText: <FileText className="w-6 h-6" />,
@@ -9,11 +10,11 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 interface BlogPostGridProps {
-  posts: typeof blogPosts;
+  posts: BlogPost[];
   emptyMessage?: string;
 }
 
-export default function BlogPostGrid({ posts, emptyMessage }: BlogPostGridProps) {
+const BlogPostGrid = React.memo(function BlogPostGrid({ posts, emptyMessage }: BlogPostGridProps) {
   if (posts.length === 0) {
     return (
       <p className="text-center text-gray-500 py-12">
@@ -65,4 +66,6 @@ export default function BlogPostGrid({ posts, emptyMessage }: BlogPostGridProps)
       ))}
     </div>
   );
-}
+});
+
+export default BlogPostGrid;

@@ -36,13 +36,11 @@ const Hero = () => {
 
             {/* Title — fluid font size with clamp */}
             <h1
-              className="font-bold text-white leading-[1.2] tracking-tight"
-              style={{ fontSize: 'clamp(1.75rem, calc(6vw + 0.5rem), 4.5rem)' }}
+              className="font-bold text-white leading-[1.2] tracking-tight text-[clamp(1.75rem,calc(6vw+0.5rem),4.5rem)]"
             >
               مكتب الأستاذ لعطب محمد
               <span
-                className="block text-amber-400 mt-1"
-                style={{ fontSize: 'clamp(1.5rem, calc(5vw + 0.5rem), 3.75rem)' }}
+                className="block text-amber-400 mt-1 text-[clamp(1.5rem,calc(5vw+0.5rem),3.75rem)]"
               >
                 موثق معتمد بوهران
               </span>
@@ -50,8 +48,7 @@ const Hero = () => {
 
             {/* Subtitle */}
             <p
-              className="text-white/85 max-w-xl mx-auto leading-relaxed px-1"
-              style={{ fontSize: 'clamp(0.95rem, calc(2.5vw + 0.25rem), 1.25rem)' }}
+              className="text-white/85 max-w-xl mx-auto leading-relaxed px-1 text-[clamp(0.95rem,calc(2.5vw+0.25rem),1.25rem)]"
             >
               ثقة 15 عامًا في التوثيق القانوني — نضمن لك معاملات آمنة وسريعة وفق أحدث الأنظمة القانونية الجزائرية
             </p>

@@ -72,9 +72,9 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: `${SITE_URL}/logo.webp`,
-        width: 512,
-        height: 512,
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
         alt: 'مكتب الأستاذ لعطب محمد — موثق معتمد بوهران',
       },
     ],
@@ -83,13 +83,13 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-    images: [`${SITE_URL}/logo.webp`],
+    images: [`${SITE_URL}/og-image.jpg`],
   },
   alternates: {
-    canonical: SITE_URL,
+    canonical: `${SITE_URL}/`,
     languages: {
-      'ar-DZ': SITE_URL,
-      'x-default': SITE_URL,
+      'ar-DZ': `${SITE_URL}/`,
+      'x-default': `${SITE_URL}/`,
     },
   },
   verification: {
@@ -141,9 +141,9 @@ export default async function RootLayout({children}: {children: React.ReactNode}
                 "description": "مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.",
                 "image": {
                   "@type": "ImageObject",
-                  "url": `${SITE_URL}/logo.webp`,
-                  "width": 512,
-                  "height": 512
+                  "url": `${SITE_URL}/og-image.jpg`,
+                  "width": 1200,
+                  "height": 630
                 },
                 "@id": `${SITE_URL}/#organization`,
                 "url": SITE_URL,

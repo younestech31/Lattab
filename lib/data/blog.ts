@@ -1,4 +1,19 @@
-export const blogPosts = [
+export interface BlogPost {
+  id: string;
+  slug: string;
+  icon: string;
+  title: string;
+  description: string;
+  date: string;
+  dateISO: string;
+  dateModified: string;
+  category: string;
+  readTime: string;
+  language: string;
+  tags?: string[];
+}
+
+export const blogPosts: BlogPost[] = [
   {
     id: "loi-11-04-promotion-immobiliere-algerie",
     slug: "loi-11-04-promotion-immobiliere-algerie",

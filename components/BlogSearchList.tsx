@@ -1,18 +1,22 @@
 'use client';
 import { useState } from 'react';
-import { blogPosts } from '@/lib/data/blog';
+import { BlogPost } from '@/lib/data/blog';
 import BlogPostGrid from '@/components/BlogPostGrid';
 
-export default function BlogSearchList() {
+interface BlogSearchListProps {
+  posts: BlogPost[];
+}
+
+export default function BlogSearchList({ posts }: BlogSearchListProps) {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('الكل');
   const categories = ['الكل', 'عقاري', 'شركات', 'جبائي', 'قانوني'];
 
-  const filtered = blogPosts.filter(p => {
+  const filtered = posts.filter(p => {
     const matchesQuery = query.trim() ?
         (p.title.includes(query) ||
          p.description?.includes(query) ||
-         (p as any).tags?.some((t: string) => t.includes(query))) : true;
+         p.tags?.some((t: string) => t.includes(query))) : true;
     
     const matchesCategory = selectedCategory === 'الكل' || p.category === selectedCategory;
 

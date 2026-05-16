@@ -7,15 +7,12 @@ import { WORKING_HOURS } from '@/lib/constants';
 const MapComponent = dynamic(() => import('./MapComponent'), {
   ssr: false,
   loading: () => (
-    <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'400px',fontFamily:'sans-serif'}}>
+    <div className="flex items-center justify-center h-[400px] font-sans">
       Loading map...
     </div>
   ),
 });
 
-// ─── ثوابت تحديد معدل الإرسال (Rate Limiting) ───────────────
-const RATE_LIMIT_MAX = 3;
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 دقائق
 
 const ALGERIAN_HOLIDAYS = [
   '01-01', // رأس السنة الميلادية
