@@ -1,7 +1,8 @@
 const categoryMap = [
   { key: 'individuels', name: 'Individuels' },
   { key: 'collectifsSemiCollectifs', name: 'Collectifs et Semi-Collectifs' },
-  { key: 'locauxCommerciaux', name: 'Locaux Commerciaux et Locaux à Usage Professionnels' },
+  { key: 'locauxCommerciaux', name: 'Locaux Commerciaux' },
+  { key: 'locauxUsageProfessionnels', name: 'Locaux à Usage Professionnels' },
   { key: 'hangars', name: 'Hangars' },
   { key: 'terrainsNus', name: 'Terrains Nus' },
   { key: 'terrainsAgricolesPlaine', name: 'Terrains Agricoles en Plaine' },

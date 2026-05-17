@@ -30,8 +30,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'موثق وهران | مكتب الأستاذ لعطب محمد - Notaire Oran',
-    template: '%s | موثق لعطب - وهران',
+    default: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+    template: '%s | مكتب الأستاذ لعطب محمد - موثق وهران',
   },
   description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
   keywords: [
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
@@ -137,7 +137,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
             "@graph": [
               {
                 "@type": ["LegalService", "Notary"],
-                "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
+                "name": "مكتب الأستاذ لعطب محمد - موثق وهران",
                 "description": "مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.",
                 "image": {
                   "@type": "ImageObject",
@@ -225,7 +225,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
                 "@type": "WebSite",
                 "@id": `${SITE_URL}/#website`,
                 "url": SITE_URL,
-                "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
+                "name": "مكتب الأستاذ لعطب محمد - موثق وهران",
                 "description": "موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026",
                 "potentialAction": {
                   "@type": "SearchAction",

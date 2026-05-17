@@ -23,6 +23,7 @@ const FAQ = dynamic(() => import('@/components/FAQ'));
 
 
 export const metadata: Metadata = {
+  title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
   alternates: {
     canonical: `${SITE_URL}/`,
     languages: {
@@ -31,17 +32,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران | Notaire Lattab',
+    title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
     url: `${SITE_URL}/`,
-    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
     locale: 'ar_DZ',
     type: 'website',
     images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'مكتب الأستاذ لعطب محمد - موثق بوهران | Notaire Lattab',
+    title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
@@ -56,7 +57,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <WebPageSchema
         url={`${SITE_URL}/`}
-        name="مكتب الأستاذ لعطب محمد - موثق بوهران"
+        name="مكتب الأستاذ لعطب محمد - موثق وهران"
         description="مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة: عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار."
         breadcrumbs={[
           { name: "الرئيسية", item: `${SITE_URL}/` }

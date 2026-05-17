@@ -21,7 +21,7 @@ const CalculatorSkeleton = () => (
 const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
-  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna'>('oran');
+  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna' | 'biskra' | 'bechar' | 'blida'>('oran');
   const [fetchedWilayaData, setFetchedWilayaData] = useState<WilayaData | null>(null);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
@@ -72,7 +72,7 @@ export default function PriceCalculator() {
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 
   const handleWilayaChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna';
+    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna' | 'biskra' | 'bechar' | 'blida';
     setWilaya(newWilaya);
     setIsLoadingData(true);
     
@@ -127,11 +127,36 @@ export default function PriceCalculator() {
             setRegionId(trans.oumElBouaghiTransactionsReference[0].commune);
             break;
         case 'batna':
-            [trans] = await Promise.all([
+            [trans, locs] = await Promise.all([
                 import('@/lib/data/batna-price-reference-transactions'),
+                import('@/lib/data/batna-price-reference-locations'),
             ]);
-            setFetchedWilayaData({ transactions: trans.batnaPriceReference, locations: undefined });
+            setFetchedWilayaData({ transactions: trans.batnaPriceReference, locations: locs.batnaRentalReference });
             setRegionId(trans.batnaPriceReference[0].commune);
+            break;
+        case 'biskra':
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/biskra-price-reference-transactions'),
+                import('@/lib/data/biskra-price-reference-locations').catch(() => ({ biskraLocationsReference: undefined })),
+            ]);
+            setFetchedWilayaData({ transactions: trans.biskraPriceReference, locations: locs.biskraLocationsReference });
+            setRegionId(trans.biskraPriceReference[0].commune);
+            break;
+        case 'bechar':
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/bechar-price-reference-transactions'),
+                import('@/lib/data/bechar-price-reference-locations').catch(() => ({ becharLocationsReference: undefined })),
+            ]);
+            setFetchedWilayaData({ transactions: trans.becharPriceReference, locations: locs.becharLocationsReference });
+            setRegionId(trans.becharPriceReference[0].commune);
+            break;
+        case 'blida':
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/blida-price-reference-transactions'),
+                import('@/lib/data/blida-price-reference-locations').catch(() => ({ blidaLocationsReference: undefined })),
+            ]);
+            setFetchedWilayaData({ transactions: trans.blidaPriceReference, locations: locs.blidaLocationsReference });
+            setRegionId(trans.blidaPriceReference[0].commune);
             break;
     }
     
@@ -179,7 +204,7 @@ export default function PriceCalculator() {
       // IRG rates in Algeria: 7% for residential, 15% for commercial/professional/industrial
       if (catName === 'Individuels' || catName === 'Collectifs et Semi-Collectifs') {
         taxRate = 0.07;
-      } else if (catName === 'Locaux Commerciaux et Locaux à Usage Professionnels' || catName === 'Hangars' || catName === 'Terrains') {
+      } else if (catName === 'Locaux Commerciaux' || catName === 'Locaux à Usage Professionnels' || catName === 'Hangars' || catName === 'Terrains') {
         taxRate = 0.15;
       } else {
         taxRate = 0.15; // Default for non-residential categories
@@ -247,10 +272,13 @@ export default function PriceCalculator() {
                     <option value="adrar">أدرار (01)</option>
                     <option value="chlef">الشلف (02)</option>
                     <option value="laghouat">الأغواط (03)</option>
+                    <option value="oum-el-bouaghi">أم البواقي (04)</option>
                     <option value="batna">باتنة (05)</option>
+                    <option value="biskra">بسكرة (07)</option>
+                    <option value="bechar">بشار (08)</option>
+                    <option value="blida">البليدة (09)</option>
                     <option value="alger">الجزائر (16)</option>
                     <option value="oran">وهران (31)</option>
-                    <option value="oum-el-bouaghi">أم البواقي (04)</option>
                   </select>
                 </div>
                 
