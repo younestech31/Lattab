@@ -21,7 +21,7 @@ const CalculatorSkeleton = () => (
 const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
-  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat'>('oran');
+  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi'>('oran');
   const [fetchedWilayaData, setFetchedWilayaData] = useState<WilayaData | null>(null);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
@@ -72,7 +72,7 @@ export default function PriceCalculator() {
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 
   const handleWilayaChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat';
+    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi';
     setWilaya(newWilaya);
     setIsLoadingData(true);
     
@@ -117,6 +117,14 @@ export default function PriceCalculator() {
             ]);
             setFetchedWilayaData({ transactions: trans.laghouatTransactionsReference, locations: locs.laghouatLocationsReference });
             setRegionId(trans.laghouatTransactionsReference[0].commune);
+            break;
+        case 'oum-el-bouaghi':
+            [trans, locs] = await Promise.all([
+                import('@/lib/data/oum-el-bouaghi-price-reference-transactions'),
+                import('@/lib/data/oum-el-bouaghi-price-reference-locations'),
+            ]);
+            setFetchedWilayaData({ transactions: trans.oumElBouaghiTransactionsReference, locations: locs.oumElBouaghiLocationsReference });
+            setRegionId(trans.oumElBouaghiTransactionsReference[0].commune);
             break;
     }
     
@@ -234,6 +242,7 @@ export default function PriceCalculator() {
                     <option value="laghouat">الأغواط (03)</option>
                     <option value="alger">الجزائر (16)</option>
                     <option value="oran">وهران (31)</option>
+                    <option value="oum-el-bouaghi">أم البواقي (04)</option>
                   </select>
                 </div>
                 
@@ -416,7 +425,8 @@ export default function PriceCalculator() {
                   wilaya === 'alger' ? 'الجزائر' : 
                   wilaya === 'adrar' ? 'أدرار' : 
                   wilaya === 'chlef' ? 'الشلف' : 
-                  'الأغواط'
+                  wilaya === 'laghouat' ? 'الأغواط' :
+                  'أم البواقي'
                 } (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
               </p>
             </div>
