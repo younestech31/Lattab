@@ -1,23 +1,27 @@
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
+import { Suspense } from 'react';
 import WebPageSchema from '@/components/WebPageSchema';
-import BlogSearchList from '@/components/BlogSearchList';
+import BlogSearchInput from '@/components/BlogSearchInput';
 import BlogPostGrid from '@/components/BlogPostGrid';
 import { JsonLdScript } from '@/components/schema';
 import { SITE_URL } from '@/lib/constants';
 import { blogPosts } from '@/lib/data/blog';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
   description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
   alternates: {
-    canonical: `${SITE_URL}/blog`,    // was missing base URL — CRITICAL fix
+    canonical: `${SITE_URL}/blog`,
     languages: {
       'ar-DZ': `${SITE_URL}/blog`,
       'x-default': `${SITE_URL}/blog`,
     },
   },
-  openGraph: {
+// ... (rest of metadata)
+openGraph: {
     title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
     description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
     url: `${SITE_URL}/blog`,
@@ -35,9 +39,31 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BlogList() {
+const BlogGridSkeleton = () => (
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {[1, 2, 3, 4, 5, 6].map((i) => (
+      <div key={i} className="h-64 bg-gray-100 rounded-3xl animate-pulse" />
+    ))}
+  </div>
+);
+
+export default async function BlogList({ 
+  searchParams 
+}: { 
+  searchParams: Promise<{ q?: string }> 
+}) {
   const headerStore = await headers();
   const nonce = headerStore.get('x-nonce') ?? '';
+  
+  const { q = '' } = await searchParams;
+  
+  const filteredPosts = q 
+    ? blogPosts.filter(p => 
+        p.title.includes(q) || 
+        p.description.includes(q) || 
+        p.category.includes(q)
+      )
+    : blogPosts;
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -70,16 +96,22 @@ export default async function BlogList() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">المدونة القانونية والعقارية — موثق وهران</h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 mb-8">
               دليلك الشامل للقوانين العقارية، الإجراءات التوثيقية، وأدلة تأسيس الشركات في الجزائر. 
             </p>
+            <div className="max-w-lg mx-auto">
+              <Suspense fallback={null}>
+                <BlogSearchInput defaultValue={q} />
+              </Suspense>
+            </div>
           </div>
 
-          <noscript>
-            <BlogPostGrid posts={blogPosts} />
-          </noscript>
+          <section aria-label="قائمة المقالات" aria-live="polite" aria-busy={false}>
+            <Suspense fallback={<BlogGridSkeleton />}>
+              <BlogPostGrid posts={filteredPosts} />
+            </Suspense>
+          </section>
 
-          <BlogSearchList posts={blogPosts} />
         </div>
       </main>
     </div>

@@ -14,7 +14,7 @@ interface BlogPostGridProps {
   emptyMessage?: string;
 }
 
-const BlogPostGrid = React.memo(function BlogPostGrid({ posts, emptyMessage }: BlogPostGridProps) {
+const BlogPostGrid = function BlogPostGrid({ posts, emptyMessage }: BlogPostGridProps) {
   if (posts.length === 0) {
     return (
       <p className="text-center text-gray-500 py-12">
@@ -24,14 +24,18 @@ const BlogPostGrid = React.memo(function BlogPostGrid({ posts, emptyMessage }: B
   }
 
   return (
-    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 transition-all">
+    <div aria-live="polite" className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 transition-all">
       {posts.map((post) => (
-        <Link 
+        <article
           key={post.id}
-          href={`/blog/${post.slug}`}
+          id={post.slug}
           className="group bg-white border border-gray-100 rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
         >
-          <div className="p-8 flex-grow flex flex-col">
+          <Link 
+            href={`/blog/${post.slug}`}
+            className="p-8 flex-grow flex flex-col"
+            aria-label={`اقرأ مقال: ${post.title}`}
+          >
             <div className="flex items-center justify-between mb-6">
               <div className="p-4 bg-emerald-50 text-emerald-600 rounded-2xl group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
                 {iconMap[post.icon] || <FileText className="w-6 h-6" />}
@@ -53,7 +57,7 @@ const BlogPostGrid = React.memo(function BlogPostGrid({ posts, emptyMessage }: B
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2 text-sm text-gray-500">
                   <Calendar className="w-4 h-4" />
-                  <span>{post.date}</span>
+                  <time dateTime={post.dateISO}>{post.date}</time>
                 </div>
                 <div className="text-sm font-medium bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">{post.readTime}</div>
               </div>
@@ -61,11 +65,11 @@ const BlogPostGrid = React.memo(function BlogPostGrid({ posts, emptyMessage }: B
                 <ArrowLeft className="w-5 h-5"/>
               </span>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </article>
       ))}
     </div>
   );
-});
+};
 
 export default BlogPostGrid;

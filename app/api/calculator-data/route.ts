@@ -1,10 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
+import { z } from 'zod';
 
 export const runtime = 'nodejs';
 
-type Wilaya = 'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 
-              'oum-el-bouaghi' | 'batna' | 'biskra' | 'bechar' | 'blida';
+const QuerySchema = z.object({
+  wilaya: z.enum(['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','biskra','bechar','blida']),
+  mode: z.enum(['sale','rent']).default('sale'),
+  region: z.string().max(100).optional(),
+});
+
+type Wilaya = z.infer<typeof QuerySchema>['wilaya'];
 
 const wilayaDataLoaders: Record<Wilaya, () => Promise<{ transactions: any[]; locations: any[] }>> = {
   oran: async () => ({
@@ -59,14 +65,17 @@ const wilayaDataLoaders: Record<Wilaya, () => Promise<{ transactions: any[]; loc
 };
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const wilaya = searchParams.get('wilaya') as Wilaya;
-  const mode = searchParams.get('mode') as 'sale' | 'rent';
-  const region = searchParams.get('region');
-  
-  if (!wilaya || !wilayaDataLoaders[wilaya]) {
-    return NextResponse.json({ error: 'Invalid wilaya' }, { status: 400 });
+  const parsed = QuerySchema.safeParse({
+    wilaya: request.nextUrl.searchParams.get('wilaya'),
+    mode: request.nextUrl.searchParams.get('mode') ?? 'sale',
+    region: request.nextUrl.searchParams.get('region') ?? undefined,
+  });
+
+  if (!parsed.success) {
+    return NextResponse.json({ error: 'Invalid parameters', details: parsed.error.flatten() }, { status: 400 });
   }
+
+  const { wilaya, mode, region } = parsed.data;
   
   try {
     const data = await wilayaDataLoaders[wilaya]();
@@ -77,7 +86,7 @@ export async function GET(request: NextRequest) {
     
     let result = null;
     if (regionId) {
-        result = getPricesForCalculator(dataSource, regionId, mode ?? 'sale');
+        result = getPricesForCalculator(dataSource, regionId, mode);
     }
     
     const communes = dataSource.map((c: any) => c.commune);
@@ -86,11 +95,12 @@ export async function GET(request: NextRequest) {
         { data: result, communes, regionId },
         { 
         headers: { 
+            'Content-Type': 'application/json',
             'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=3600',
         } 
         }
     );
   } catch (e) {
-    return NextResponse.json({ error: 'Data loading failed' }, { status: 500 });
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

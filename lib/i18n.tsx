@@ -17,16 +17,18 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
   const [langState, setLangState] = useState<Language>(lang);
 
   const toggleLang = () => {
-    setLangState((prev) => {
-      const next = prev === 'ar' ? 'fr' : 'ar';
-      setLanguageCookie(next);
-      return next;
+    const nextLang = langState === 'ar' ? 'fr' : 'ar';
+    setLangState(nextLang);
+    setLanguageCookie(nextLang).then(() => {
+      window.location.reload();
     });
   };
 
   const setLang = (newLang: Language) => {
     setLangState(newLang);
-    setLanguageCookie(newLang);
+    setLanguageCookie(newLang).then(() => {
+        window.location.reload();
+    });
   };
 
   return (

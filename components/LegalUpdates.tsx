@@ -1,5 +1,3 @@
-"use client";
-
 import Link from 'next/link';
 import { Calendar, ArrowLeft, FileText, Scale, TrendingUp } from 'lucide-react';
 import { blogPosts } from '@/lib/data/blog';

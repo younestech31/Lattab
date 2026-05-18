@@ -1,3 +1,8 @@
+import 'server-only';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -9,282 +14,38 @@ export interface BlogPost {
   dateModified: string;
   category: string;
   readTime: string;
-  language: string;
+  language: 'ar' | 'fr';
   tags?: string[];
 }
 
-export const blogPosts: BlogPost[] = [
-  {
-    id: "loi-11-04-promotion-immobiliere-algerie",
-    slug: "loi-11-04-promotion-immobiliere-algerie",
-    icon: "Shield",
-    title: "قانون 11-04 للترقية العقارية: دور الموثق في حماية المكتتبين",
-    description: "كل ما يجب أن تعرفه عن قانون 11-04 المنظم لنشاط الترقية العقارية في الجزائر (البيع على التصاميم VSP، عقد حفظ الحق، وصندوق الضمان).",
-    date: "12 يونيو 2026",
-    dateISO: "2026-06-12",
-    dateModified: "2026-06-12",
-    category: "قانوني",
-    readTime: "5 دقائق",
-    language: "ar"
-  },
-  {
-    id: "achat-immobilier-credit-bancaire-algerie",
-    slug: "achat-immobilier-credit-bancaire-algerie",
-    icon: "Scale",
-    title: "شراء عقار عن طريق قرض بنكي في الجزائر: دور الموثق",
-    description: "الإجراءات القانونية والمراحل الضرورية لشراء عقار عبر تمويل بنكي أو صيرفة إسلامية في الجزائر (الوعد بالبيع، الرهن التشريعي).",
-    date: "10 يونيو 2026",
-    dateISO: "2026-06-10",
-    dateModified: "2026-06-10",
-    category: "عقاري",
-    readTime: "6 دقائق",
-    language: "ar"
-  },
-  {
-    id: "promesse-de-vente-algerie",
-    slug: "promesse-de-vente-algerie",
-    icon: "FileText",
-    title: "عقد الوعد بالبيع (Promesse de vente) في الجزائر: كيف يحميك؟",
-    description: "أهمية توثيق عقد الوعد بالبيع لحماية المشتري والبائع. متى يسقط العقد؟ وما هي أحكام العربون في القانون الجزائري؟",
-    date: "08 يونيو 2026",
-    dateISO: "2026-06-08",
-    dateModified: "2026-06-08",
-    category: "عقاري",
-    readTime: "5 دقائق",
-    language: "ar"
-  },
-  {
-    id: "prix-referentiel-immobilier-oran-2026",
-    slug: "prix-referentiel-immobilier-oran-2026",
-    icon: "FileText",
-    title: "الأسعار المرجعية للعقار بوهران 2026 — القائمة الكاملة",
-    description: "صدور الأسعار المرجعية الجديدة للعقار للأشخاص الطبيعيين والمعنويين لولاية وهران 2026، والتي تُعد الأساس لحساب الضرائب ورسوم التسجيل وتفادي التقويم الضريبي.",
-    date: "19 أبريل 2026",
-    dateISO: "2026-04-19",
-    dateModified: "2026-04-19",
-    category: "عقاري",
-    readTime: "7 دقائق",
-    language: "ar"
-  },
-  {
-    id: "comment-creer-sarl-en-algerie-2026",
-    slug: "comment-creer-sarl-en-algerie-2026",
-    icon: "TrendingUp",
-    title: "كيف تؤسس شركة ذات مسؤولية محدودة (SARL) في الجزائر 2026",
-    description: "دليل عملي خطوة بخطوة لتأسيس شركة SARL في الجزائر. الشروط، الوثائق المطلوبة، الإجراءات أمام الموثق، وتكاليف التأسيس لعام 2026.",
-    date: "12 أبريل 2026",
-    dateISO: "2026-04-12",
-    dateModified: "2026-04-12",
-    category: "شركات",
-    readTime: "6 دقائق",
-    language: "ar"
-  },
-  {
-    id: "nouvelle-loi-enregistrement-immobilier-2026",
-    slug: "nouvelle-loi-enregistrement-immobilier-2026",
-    icon: "Scale",
-    title: "تعديلات قانون التسجيل العقاري الجزائر 2026",
-    description: "أهم التعديلات التي تضمنها قانون المالية لسنة 2026 فيما يخص رسوم التسجيل ونقل الملكية والإعفاءات الجديدة للمواطنين.",
-    date: "5 أبريل 2026",
-    dateISO: "2026-04-05",
-    dateModified: "2026-04-05",
-    category: "جبائي",
-    readTime: "5 دقائق",
-    language: "ar"
-  },
-  {
-    id: "guide-acte-de-vente-immobilier",
-    slug: "guide-acte-de-vente-immobilier",
-    icon: "FileText",
-    title: "دليل عقد البيع العقاري للمبتدئين في الجزائر",
-    description: "كل ما تحتاج معرفته عن عقد البيع العقاري: شروط الصحة، الوثائق المطلوبة، وحقوق البائع والمشتري في ضوء القانون الجزائري.",
-    date: "25 مارس 2026",
-    dateISO: "2026-03-25",
-    dateModified: "2026-03-25",
-    category: "عقاري",
-    readTime: "8 دقائق",
-    language: "ar"
-  },
-  {
-    id: "procuration-generale-algerie",
-    slug: "procuration-generale-algerie",
-    icon: "FileText",
-    title: "الوكالة العامة في الجزائر — كل ما تحتاج معرفته",
-    description: "مفهوم الوكالة العامة، حدودها القانونية، كيفية استخراجها، ومخاطرها. نصائح توثيقية للحفاظ على حقوقك.",
-    date: "18 مارس 2026",
-    dateISO: "2026-03-18",
-    dateModified: "2026-03-18",
-    category: "قانوني",
-    readTime: "4 دقائق",
-    language: "ar"
-  },
-  {
-    id: "documents-vente-immobilier-algerie",
-    slug: "documents-vente-immobilier-algerie",
-    icon: "FileText",
-    title: "الوثائق المطلوبة لعقد البيع العقاري في الجزائر",
-    description: "تعرف على القائمة الكاملة للوثائق المطلوبة قانوناً لإتمام عملية بيع عقار في الجزائر، من شهادة الملكية إلى الدفتر العقاري.",
-    date: "15 يناير 2025",
-    dateISO: "2025-01-15",
-    dateModified: "2025-01-15",
-    category: "عقاري",
-    readTime: "6 دقائق",
-    language: "ar"
-  },
-  {
-    id: "wikalat-am-algerie-guide",
-    slug: "wikalat-am-algerie-guide",
-    icon: "FileText",
-    title: "دليل الوكالة العامة في القانون الجزائري",
-    description: "كل ما يجب معرفته عن الوكالة العامة، آثارها، وطرق إنهائها. وكيف تحمي نفسك من سوء استخدام التوكيل.",
-    date: "10 مارس 2025",
-    dateISO: "2025-03-10",
-    dateModified: "2025-03-10",
-    category: "قانوني",
-    readTime: "7 دقائق",
-    language: "ar"
-  },
-  {
-    id: "succession-heritage-algerie",
-    slug: "succession-heritage-algerie",
-    icon: "Scale",
-    title: "إجراءات الميراث والتركة في الجزائر",
-    description: "خطوات قسمة التركة وتوثيق الفريضة في الجزائر. الوثائق المطلوبة وكيفية التعامل مع المنازعات الإرثية قانوناً.",
-    date: "5 أبريل 2025",
-    dateISO: "2025-04-05",
-    dateModified: "2025-04-05",
-    category: "قانوني",
-    readTime: "8 دقائق",
-    language: "ar"
-  },
-  {
-    id: "contrat-location-commercial-oran",
-    slug: "contrat-location-commercial-oran",
-    icon: "TrendingUp",
-    title: "عقود الإيجار التجاري في وهران: دليل عملي",
-    description: "نظرة تفصيلية على شروط الإيجار التجاري بوهران، حقوق المستأجر والمؤجر، وأهمية تحرير العقد التوثيقي لضمان الاستقرار.",
-    date: "12 مايو 2025",
-    dateISO: "2025-05-12",
-    dateModified: "2025-05-12",
-    category: "عقاري",
-    readTime: "6 دقائق",
-    language: "ar"
-  },
-  {
-    id: "difference-contrat-sous-seing-prive-authentique-algerie",
-    slug: "difference-contrat-sous-seing-prive-authentique-algerie",
-    icon: "Scale",
-    title: "الفرق بين العقد العرفي والعقد الرسمي في الجزائر، وما هي مخاطره؟",
-    description: "مقال توعوي يجلب الكثير من الزيارات لمن يبحثون عن شراء شقق ويخافون من النصب. تعرف على أهمية العقد الرسمي لحماية ممتلكاتك.",
-    date: "10 مايو 2026",
-    dateISO: "2026-05-10",
-    dateModified: "2026-05-10",
-    category: "عقاري",
-    readTime: "5 دقائق",
-    language: "ar"
-  },
-  {
-    id: "livret-foncier-algerie-guide",
-    slug: "livret-foncier-algerie-guide",
-    icon: "FileText",
-    title: "الدفتر العقاري في الجزائر: كيفية استخراجه وأهميته القانونية",
-    description: "الدفتر العقاري في الجزائر: كيفية استخراجه، أهميته القانونية، ولماذا لا يكتمل البيع الآمن بدونه؟ التفاصيل كاملة.",
-    date: "08 مايو 2026",
-    dateISO: "2026-05-08",
-    dateModified: "2026-05-08",
-    category: "عقاري",
-    readTime: "6 دقائق",
-    language: "ar"
-  },
-  {
-    id: "donation-entre-ascendants-descendants-algerie",
-    slug: "donation-entre-ascendants-descendants-algerie",
-    icon: "TrendingUp",
-    title: "إجراءات عقد الهبة بين الأصول والفروع في الجزائر",
-    description: "إجراءات عقد الهبة بين الأصول والفروع: الوثائق المطلوبة وهل حقاً يتم الإعفاء من الضرائب؟",
-    date: "15 مايو 2026",
-    dateISO: "2026-05-15",
-    dateModified: "2026-05-15",
-    category: "عقاري",
-    readTime: "5 دقائق",
-    language: "ar"
-  },
-  {
-    id: "vente-sur-plan-vsp-promotion-immobiliere-oran",
-    slug: "vente-sur-plan-vsp-promotion-immobiliere-oran",
-    icon: "TrendingUp",
-    title: "كل ما يخص الترقية العقارية (VSP): التملك بأمان في وهران",
-    description: "كل ما يخص الترقية العقارية (Vente sur plan - VSP): كيف تشتري شقة قيد الإنجاز في وهران بأمان قانوني؟",
-    date: "20 مايو 2026",
-    dateISO: "2026-05-20",
-    dateModified: "2026-05-20",
-    category: "عقاري",
-    readTime: "7 دقائق",
-    language: "ar"
-  },
-  {
-    id: "comparaison-eurl-sarl-spa-algerie-2026",
-    slug: "comparaison-eurl-sarl-spa-algerie-2026",
-    icon: "Scale",
-    title: "مقارنة شاملة بين شركات EURL و SARL و SPA في الجزائر",
-    description: "مقارنة شاملة بين شركة EURL و SARL و SPA في القانون الجزائري: أيها الأنسب لمشروعك في 2026؟",
-    date: "22 مايو 2026",
-    dateISO: "2026-05-22",
-    dateModified: "2026-05-22",
-    category: "شركات",
-    readTime: "8 دقائق",
-    language: "ar"
-  },
-  {
-    id: "cession-fonds-de-commerce-algerie",
-    slug: "cession-fonds-de-commerce-algerie",
-    icon: "FileText",
-    title: "دليل نقل ملكية الأصل التجاري في الجزائر",
-    description: "دليل نقل ملكية (أو التنازل عن) السجل التجاري أو الأصل التجاري (Fonds de commerce) في ضوء التشريع.",
-    date: "25 مايو 2026",
-    dateISO: "2026-05-25",
-    dateModified: "2026-05-25",
-    category: "شركات",
-    readTime: "4 دقائق",
-    language: "ar"
-  },
-  {
-    id: "auto-entrepreneur-startups-algerie-avantages",
-    slug: "auto-entrepreneur-startups-algerie-avantages",
-    icon: "TrendingUp",
-    title: "التسهيلات القانونية للمقاول الذاتي والشركات الناشئة في الجزائر",
-    description: "التسهيلات القانونية والضريبية للمقاول الذاتي والشركات الناشئة (Startups) في الجزائر وتأثيرها على الشباب.",
-    date: "28 مايو 2026",
-    dateISO: "2026-05-28",
-    dateModified: "2026-05-28",
-    category: "شركات",
-    readTime: "5 دقائق",
-    language: "ar"
-  },
-  {
-    id: "fredha-succession-algerie-etapes",
-    slug: "fredha-succession-algerie-etapes",
-    icon: "FileText",
-    title: "كيفية استخراج الفريضة في الجزائر لتجنب النزاعات العائلية",
-    description: "كيفية استخراج الفريضة في الجزائر: الخطوات والوثائق لتجنب النزاعات العائلية وتقسيم الإرث قانونياً.",
-    date: "01 يونيو 2026",
-    dateISO: "2026-06-01",
-    dateModified: "2026-06-01",
-    category: "قانوني",
-    readTime: "6 دقائق",
-    language: "ar"
-  },
-  {
-    id: "contrat-mariage-chez-notaire-algerie",
-    slug: "contrat-mariage-chez-notaire-algerie",
-    icon: "Scale",
-    title: "عقد الزواج عند الموثق بدلاً من البلدية: المميزات والشروط",
-    description: "عقد الزواج عند الموثق بدلاً من البلدية: المميزات، السرعة، وكيفية إضافة شروط خاصة في عقد الزواج لحماية الطرفين.",
-    date: "05 يونيو 2026",
-    dateISO: "2026-06-05",
-    dateModified: "2026-06-05",
-    category: "قانوني",
-    readTime: "5 دقائق",
-    language: "ar"
-  }
-];
+function loadBlogPosts(): BlogPost[] {
+  const contentDir = path.join(process.cwd(), 'content', 'blog');
+  const files = fs.readdirSync(contentDir).filter(f => f.endsWith('.md'));
+
+  return files.map(file => {
+    const slug = file.replace(/\.md$/, '');
+    const raw = fs.readFileSync(path.join(contentDir, file), 'utf-8');
+    const { data } = matter(raw);
+    
+    // Helper to format date string
+    const dateObj = new Date(data.dateISO || '2026-01-01');
+    const formattedDate = dateObj.toLocaleDateString('ar-DZ', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    return {
+      id: slug, // Using slug as id for compatibility
+      slug,
+      icon: data.icon || 'FileText',
+      title: data.title ?? slug,
+      description: data.description ?? '',
+      date: formattedDate,
+      dateISO: data.dateISO ?? '2026-01-01',
+      dateModified: data.dateModified ?? data.dateISO ?? '2026-01-01',
+      category: data.category ?? 'عام',
+      readTime: data.readTime ? `${data.readTime} دقائق` : '5 دقائق',
+      language: data.language ?? 'ar',
+      tags: data.tags,
+    } satisfies BlogPost;
+  }).sort((a, b) => b.dateISO.localeCompare(a.dateISO));
+}
+
+export const blogPosts: BlogPost[] = loadBlogPosts();
