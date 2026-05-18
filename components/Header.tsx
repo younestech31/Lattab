@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLang } from '@/lib/i18n';
-import { translations } from '@/lib/i18n/translations';
+import { translations } from '@/lib/translations';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = () => {
@@ -117,7 +117,7 @@ const Header = () => {
                   href={link.href}
                   className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
                     headerActive ? 'text-gray-700' : 'text-white'
-                  } ${([text.why_us, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
+                  } ${[text.why_us, text.procedures, text.news, text.faq].includes(link.label) ? 'hidden xl:block' : ''}`}
                 >
                   {link.label}
                 </Link>
