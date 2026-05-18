@@ -22,7 +22,8 @@ const t = (key: string) => translations[key] || key;
 
 export default function PriceCalculator() {
   const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna' | 'biskra' | 'bechar' | 'blida'>('oran');
-  const [fetchedWilayaData, setFetchedWilayaData] = useState<WilayaData | null>(null);
+  const [mappedData, setMappedData] = useState<any>(null);
+  const [communes, setCommunes] = useState<string[]>([]);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
   const [regionId, setRegionId] = useState<string>('');
@@ -32,25 +33,23 @@ export default function PriceCalculator() {
   const [area, setArea] = useState<number | ''>('');
   
   useEffect(() => {
-    setIsLoadingData(true);
-    const loadInitialData = async () => {
-        const [trans, locs] = await Promise.all([
-          import('@/lib/data/oran-price-reference-transactions'),
-          import('@/lib/data/oran-price-reference-locations'),
-        ]);
-        setFetchedWilayaData({ transactions: trans.oranPriceReference, locations: locs.oranLocationsReference });
-        setRegionId(trans.oranPriceReference[0].commune);
+    const fetchApiData = async () => {
+      setIsLoadingData(true);
+      try {
+        const response = await fetch(`/api/calculator-data?wilaya=${wilaya}&mode=${calculationMode}&region=${regionId}`);
+        const result = await response.json();
+        setMappedData(result.data);
+        setCommunes(result.communes);
+        if (!regionId && result.regionId) setRegionId(result.regionId);
+      } catch (e) {
+        console.error('Failed to fetch data', e);
+      } finally {
         setIsLoadingData(false);
+      }
     };
-    loadInitialData();
-  }, []);
+    fetchApiData();
+  }, [wilaya, calculationMode, regionId]);
   
-  const mappedData = useMemo(() => {
-    if (!fetchedWilayaData) return null;
-    const dataSource = calculationMode === 'sale' ? fetchedWilayaData.transactions : fetchedWilayaData.locations;
-    if (!dataSource) return null;
-    return getPricesForCalculator(dataSource, regionId, calculationMode);
-  }, [fetchedWilayaData, regionId, calculationMode]);
   const currentRegionData = mappedData ? { prix: mappedData.categories } : null;
 
   const selectedCategory = currentRegionData && categoryIdx !== '' ? currentRegionData.prix[categoryIdx] : null;
@@ -71,99 +70,13 @@ export default function PriceCalculator() {
 
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 
-  const handleWilayaChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleWilayaChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna' | 'biskra' | 'bechar' | 'blida';
     setWilaya(newWilaya);
-    setIsLoadingData(true);
-    
-    let trans, locs;
-    switch (newWilaya) {
-        case 'oran':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/oran-price-reference-transactions'),
-                import('@/lib/data/oran-price-reference-locations'),
-            ]);
-            setFetchedWilayaData({ transactions: trans.oranPriceReference, locations: locs.oranLocationsReference });
-            setRegionId(trans.oranPriceReference[0].commune);
-            break;
-        case 'alger':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/alger-price-reference-transactions'),
-                import('@/lib/data/alger-price-reference-locations'),
-            ]);
-            setFetchedWilayaData({ transactions: trans.algerTransactionsReference, locations: locs.algerLocationsReference });
-            setRegionId(trans.algerTransactionsReference[0].commune);
-            break;
-        case 'adrar':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/adrar-price-reference-transactions'),
-                import('@/lib/data/adrar-price-reference-locations'),
-            ]);
-            setFetchedWilayaData({ transactions: trans.adrarTransactionsReference, locations: locs.adrarLocationsReference });
-            setRegionId(trans.adrarTransactionsReference[0].commune);
-            break;
-        case 'chlef':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/chlef-price-reference-transactions'),
-                import('@/lib/data/chlef-price-reference-locations'),
-            ]);
-            setFetchedWilayaData({ transactions: trans.chlefTransactionsReference, locations: locs.chlefLocationsReference });
-            setRegionId(trans.chlefTransactionsReference[0].commune);
-            break;
-        case 'laghouat':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/laghouat-price-reference-transactions'),
-                import('@/lib/data/laghouat-price-reference-locations'),
-            ]);
-            setFetchedWilayaData({ transactions: trans.laghouatTransactionsReference, locations: locs.laghouatLocationsReference });
-            setRegionId(trans.laghouatTransactionsReference[0].commune);
-            break;
-        case 'oum-el-bouaghi':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/oum-el-bouaghi-price-reference-transactions'),
-                import('@/lib/data/oum-el-bouaghi-price-reference-locations'),
-            ]);
-            setFetchedWilayaData({ transactions: trans.oumElBouaghiTransactionsReference, locations: locs.oumElBouaghiLocationsReference });
-            setRegionId(trans.oumElBouaghiTransactionsReference[0].commune);
-            break;
-        case 'batna':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/batna-price-reference-transactions'),
-                import('@/lib/data/batna-price-reference-locations'),
-            ]);
-            setFetchedWilayaData({ transactions: trans.batnaPriceReference, locations: locs.batnaRentalReference });
-            setRegionId(trans.batnaPriceReference[0].commune);
-            break;
-        case 'biskra':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/biskra-price-reference-transactions'),
-                import('@/lib/data/biskra-price-reference-locations').catch(() => ({ biskraLocationsReference: undefined })),
-            ]);
-            setFetchedWilayaData({ transactions: trans.biskraPriceReference, locations: locs.biskraLocationsReference });
-            setRegionId(trans.biskraPriceReference[0].commune);
-            break;
-        case 'bechar':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/bechar-price-reference-transactions'),
-                import('@/lib/data/bechar-price-reference-locations').catch(() => ({ becharLocationsReference: undefined })),
-            ]);
-            setFetchedWilayaData({ transactions: trans.becharPriceReference, locations: locs.becharLocationsReference });
-            setRegionId(trans.becharPriceReference[0].commune);
-            break;
-        case 'blida':
-            [trans, locs] = await Promise.all([
-                import('@/lib/data/blida-price-reference-transactions'),
-                import('@/lib/data/blida-price-reference-locations').catch(() => ({ blidaLocationsReference: undefined })),
-            ]);
-            setFetchedWilayaData({ transactions: trans.blidaPriceReference, locations: locs.blidaLocationsReference });
-            setRegionId(trans.blidaPriceReference[0].commune);
-            break;
-    }
-    
+    setRegionId('');
     setCategoryIdx('');
     setTypeIdx('');
     setZoneKey('');
-    setIsLoadingData(false);
   };
 
   const handleRegionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -295,8 +208,8 @@ export default function PriceCalculator() {
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
                     <option value="">-- اختر البلدية --</option>
-                    {((fetchedWilayaData ? (calculationMode === 'sale' ? fetchedWilayaData.transactions : fetchedWilayaData.locations) : []) || []).map((region: any) => (
-                      <option key={region.commune} value={region.commune}>{region.commune}</option>
+                    {communes.map((c) => (
+                      <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
                 </div>

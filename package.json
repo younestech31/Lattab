@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "clean": "next clean",
-    "indexnow": "curl http://localhost:3000/api/index-now",
-    "google-index": "curl http://localhost:3000/api/google-indexing -H \"Authorization: Bearer $CRON_SECRET\"",
+    "indexnow": "curl http://localhost:3000/api/index-now -H \"Authorization: Bearer $CRON_SECRET\"",
     "test:indexing:get": "curl -H \"Authorization: Bearer $CRON_SECRET\" $NEXT_PUBLIC_SITE_URL/api/google-indexing",
     "test:indexing:put": "curl -X PUT -H \"Authorization: Bearer $CRON_SECRET\" $NEXT_PUBLIC_SITE_URL/api/google-indexing"
   },

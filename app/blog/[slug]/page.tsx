@@ -3,15 +3,15 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
+import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
 import { blogPosts } from '@/lib/data/blog';
-import { headers } from 'next/headers';
 import { SITE_URL } from '@/lib/constants';
-import { JsonLdScript } from '@/components/schema';
-import { readFile, access } from 'fs/promises';
+import { readFile } from 'fs/promises';
 import path from 'path';
 
 export const revalidate = 86400;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -52,28 +52,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       authors: ['مكتب الأستاذ لعطب محمد'],
       section: post.category,
       tags: [post.category, 'قانون جزائري', 'توثيق', 'وهران'],
-      images: [
-        {
-          url: `${SITE_URL}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: [`${SITE_URL}/og-image.jpg`],
     },
   };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const headerStore = await headers();
-  const nonce = headerStore.get('x-nonce') ?? '';
   const post = blogPosts.find(p => p.slug === slug);
   
   if (!post) {
@@ -82,14 +71,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const filePath = path.join(process.cwd(), 'content', 'blog', `${slug}.md`);
   
+  let content: string;
   try {
-    await access(filePath);
-  } catch (e) {
+    content = await readFile(filePath, 'utf-8');
+  } catch {
     notFound();
   }
   
-  const content = await readFile(filePath, 'utf-8');
-  const safeHtml = await parseMarkdown(content);
+  const safeHtml = await parseMarkdown(content!);
   
   const wordCount = Math.round(content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
   
@@ -137,68 +126,58 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden"
             lang={post.language === 'fr' ? 'fr' : 'ar'}
           >
-            <JsonLdScript
-              schema={{
-                "@context": "https://schema.org",
-                "@type": "BlogPosting",
-                "headline": post.title,
-                "description": post.description,
-                "datePublished": post.dateISO,
-                "dateModified": post.dateModified || post.dateISO,
-                "wordCount": wordCount,
-                "keywords": [post.category, 'قانون جزائري', 'توثيق', 'وهران', 'موثق معتمد'],
-                "articleSection": post.category,
-                "author": {
-                  "@type": "Person",
-                  "name": "لعطب محمد",
-                  "honorificPrefix": "الأستاذ",
-                  "jobTitle": "موثق معتمد",
-                  "url": SITE_URL + '/#about',
-                  "sameAs": [SITE_URL],
-                  "hasCredential": {
-                    "@type": "EducationalOccupationalCredential",
-                    "credentialCategory": "موثق معتمد",
-                    "recognizedBy": {
-                      "@type": "GovernmentOrganization",
-                      "name": "وزارة العدل الجزائرية"
-                    }
-                  },
-                  "worksFor": {
-                    "@type": "LegalService",
-                    "name": "مكتب الأستاذ لعطب محمد",
-                    "url": SITE_URL,
-                  }
-                },
-                "publisher": {
-                  "@type": "Organization",
-                  "name": "مكتب الأستاذ لعطب محمد",
-                  "logo": {
-                    "@type": "ImageObject",
-                    "url": `${SITE_URL}/og-image.jpg`,
-                    "width": 1200,
-                    "height": 630
-                  }
-                },
-                "image": {
+            <NonceScriptLoader schemas={[{
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "@id": `${SITE_URL}/blog/${post.slug}#article`,
+              "headline": post.title,
+              "description": post.description,
+              "datePublished": post.dateISO,
+              "dateModified": post.dateModified || post.dateISO,
+              "author": {
+                "@type": "Organization",
+                "@id": `${SITE_URL}/#organization`,
+                "name": "مكتب الأستاذ لعطب محمد"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "@id": `${SITE_URL}/#organization`,
+                "name": "مكتب الأستاذ لعطب محمد",
+                "logo": {
                   "@type": "ImageObject",
-                  "url": `${SITE_URL}/og-image.jpg`,
-                  "width": 1200,
-                  "height": 630
-                },
-                "url": `${SITE_URL}/blog/${post.slug}`,
-                "inLanguage": post.language === 'fr' ? 'fr-DZ' : 'ar-DZ',
-                "about": {
-                  "@type": "Thing",
-                  "name": post.category
-                },
-                "isPartOf": {
-                  "@type": "WebSite",
-                  "url": SITE_URL,
-                  "name": "مكتب الأستاذ لعطب محمد"
+                  "url": `${SITE_URL}/logo-small.webp`,
+                  "width": 256,
+                  "height": 256
                 }
-              }}
-              nonce={nonce}
-            />
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": `${SITE_URL}/og-image.jpg`,
+                "width": 1200,
+                "height": 630
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `${SITE_URL}/blog/${post.slug}`
+              },
+              "inLanguage": "ar-DZ",
+              "about": {
+                "@type": "Thing",
+                "name": post.category
+              },
+              "wordCount": wordCount,
+              "isPartOf": {
+                "@id": `${SITE_URL}/#website`
+              }
+            }, {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": `${SITE_URL}/` },
+                { "@type": "ListItem", "position": 2, "name": "المدونة", "item": `${SITE_URL}/blog` },
+                { "@type": "ListItem", "position": 3, "name": post.title, "item": `${SITE_URL}/blog/${post.slug}` }
+              ]
+            }]} />
             <div className="p-8 md:p-12">
               <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500">
                 <span className="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full font-bold">

@@ -1,17 +1,30 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { SITE_URL } from '@/lib/constants';
+import { blogPosts } from '@/lib/data/blog';
 
 const INDEX_NOW_KEY = process.env.INDEXNOW_KEY || '';
 const HOST = new URL(SITE_URL).host;
 const API_URL = 'https://api.indexnow.org/indexnow';
 
-export async function GET() {
+function isAuthorized(req: NextRequest): boolean {
+  if (process.env.NODE_ENV === 'development') return true;
+  const secret = process.env.CRON_SECRET;
+  if (!secret) return false;
+  const auth = req.headers.get('authorization') ?? '';
+  return auth === `Bearer ${secret}`;
+}
+
+export async function GET(req: NextRequest) {
+  if (!isAuthorized(req)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const base = SITE_URL;
-  
   const urlList = [
     `${base}/`,
     `${base}/blog`,
-    `${base}/calculateur-prix-referentiel`
+    `${base}/calculateur-prix-referentiel`,
+    ...blogPosts.map(post => `${base}/blog/${post.slug}`)
   ];
 
   try {
@@ -29,7 +42,7 @@ export async function GET() {
     });
 
     if (response.ok) {
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ pinged: urlList.length, urls: urlList });
     } else {
       const errorText = await response.text();
       return NextResponse.json({ success: false, error: `${response.status} ${response.statusText}: ${errorText}` }, { status: 500 });

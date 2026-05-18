@@ -3,10 +3,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Calculator, AlertCircle, FileText, TrendingDown, Info, Loader2 } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
+import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import { SITE_URL } from '@/lib/constants';
 import dynamic from 'next/dynamic';
-import { headers } from 'next/headers';
-import { JsonLdScript } from '@/components/schema';
 
 const PriceCalculator = dynamic(() => import('@/components/PriceCalculator'), {
   loading: () => (
@@ -46,10 +45,7 @@ export const metadata: Metadata = {
   },
 };
 
-const CalculatorPage = async () => {
-  const headerStore = await headers();
-  const nonce = headerStore.get('x-nonce') ?? '';
-
+const CalculatorPage = () => {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -76,6 +72,7 @@ const CalculatorPage = async () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <NonceScriptLoader schemas={[breadcrumbSchema, toolSchema]} />
       <WebPageSchema
         url={`${SITE_URL}/calculateur-prix-referentiel`}
         name="حاسبة السعر المرجعي للعقار وهران 2026"
@@ -85,8 +82,6 @@ const CalculatorPage = async () => {
           { name: "حاسبة السعر المرجعي", item: `${SITE_URL}/calculateur-prix-referentiel` }
         ]}
       />
-      <JsonLdScript schema={breadcrumbSchema} nonce={nonce} />
-      <JsonLdScript schema={toolSchema} nonce={nonce} />
       <main className="bg-gray-50" dir="rtl" lang="ar">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">

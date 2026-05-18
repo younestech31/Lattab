@@ -4,10 +4,9 @@ import { SITE_URL } from '@/lib/constants';
 import { blogPosts } from '@/lib/data/blog';
 import { pingIndexNow as notifyIndexNow } from '@/lib/utils/indexnow';
 
-/**
- * WARNING: Google's Indexing API only officially supports JobPosting and BroadcastEvent pages.
- * This endpoint may not produce the intended indexing results for general blog pages.
- * It is recommended to use the IndexNow endpoint (/api/index-now) for general page submission.
+/** 
+ * MANUAL USE ONLY — Google Indexing API is for JobPosting/BroadcastEvent only.
+ * Do not use as a cron. Use /api/index-now for general content submission.
  * 
  * GET  /api/google-indexing          → submit all known indexable URLs
  * POST /api/google-indexing          → submit a specific URL (body: { url, type? })
