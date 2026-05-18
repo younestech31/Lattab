@@ -117,7 +117,7 @@ const Header = () => {
                   href={link.href}
                   className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
                     headerActive ? 'text-gray-700' : 'text-white'
-                  } ${[text.why_us, text.procedures, text.news, text.faq].includes(link.label) ? 'hidden xl:block' : ''}`}
+                  } ${([text.why_us, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
                 >
                   {link.label}
                 </Link>
