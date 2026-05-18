@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLang } from '@/lib/i18n';
-import { translations } from '@/lib/translations';
+import { translations } from '@/lib/i18n/translations';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = () => {

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { translations } from '@/lib/data/translations';
+import { t } from '@/lib/i18n/translations';
+import { useLang } from '@/lib/i18n';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
 import { Calculator } from 'lucide-react';
 
@@ -18,9 +19,10 @@ const CalculatorSkeleton = () => (
   </div>
 );
 
-const t = (key: string) => translations[key] || key;
+
 
 export default function PriceCalculator() {
+  const { lang } = useLang();
   const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna' | 'biskra' | 'bechar' | 'blida'>('oran');
   const [mappedData, setMappedData] = useState<any>(null);
   const [communes, setCommunes] = useState<string[]>([]);
@@ -233,7 +235,7 @@ export default function PriceCalculator() {
                       >
                         <option value="">-- اختر طبيعة العقار --</option>
                         {currentRegionData?.prix.map((cat: any, idx: number) => (
-                          <option key={idx} value={idx}>{t(cat.categorie)}</option>
+                          <option key={idx} value={idx}>{t(lang, 'calculator', cat.categorie as any)}</option>
                         ))}
                       </select>
                     </div>
@@ -251,7 +253,7 @@ export default function PriceCalculator() {
                   >
                     <option value="">-- اختر الصنف --</option>
                     {selectedCategory?.types.map((type: any, idx: number) => (
-                      <option key={idx} value={idx}>{t(type.type)}</option>
+                      <option key={idx} value={idx}>{t(lang, 'calculator', type.type as any)}</option>
                     ))}
                   </select>
                 </div>
@@ -269,7 +271,7 @@ export default function PriceCalculator() {
                   >
                     <option value="">-- اختر المنطقة --</option>
                     {availableZones.map((zone) => (
-                      <option key={zone} value={zone}>{t(zone)}</option>
+                      <option key={zone} value={zone}>{t(lang, 'calculator', zone as any)}</option>
                     ))}
                   </select>
                 </div>

@@ -1,0 +1,3299 @@
+[
+  {
+    "commune": "ADRAR",
+    "individuels": [
+      {
+        "label": "Standing",
+        "centreVille": {
+          "min": 182,
+          "max": 209,
+          "average": 196
+        },
+        "zonePeripherique": {
+          "min": 120,
+          "max": 138,
+          "average": 129
+        },
+        "zoneEloignement": {
+          "min": 80,
+          "max": 92,
+          "average": 86
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 97,
+          "max": 121,
+          "average": 109
+        },
+        "zonePeripherique": {
+          "min": 50,
+          "max": 60,
+          "average": 55
+        },
+        "zoneEloignement": {
+          "min": 40,
+          "max": 46,
+          "average": 43
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 30,
+          "max": 35,
+          "average": 33
+        },
+        "zonePeripherique": {
+          "min": 20,
+          "max": 23,
+          "average": 22
+        },
+        "zoneEloignement": {
+          "min": 20,
+          "max": 23,
+          "average": 22
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Standing",
+        "centreVille": {
+          "min": 135,
+          "max": 150,
+          "average": 143
+        },
+        "zonePeripherique": {
+          "min": 100,
+          "max": 115,
+          "average": 108
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 70,
+          "max": 80,
+          "average": 75
+        },
+        "zonePeripherique": {
+          "min": 50,
+          "max": 60,
+          "average": 55
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 800,
+          "max": 920,
+          "average": 860
+        },
+        "zonePeripherique": {
+          "min": 300,
+          "max": 350,
+          "average": 325
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère hautement commerciale",
+        "centreVille": {
+          "min": 450,
+          "max": 500,
+          "average": 475
+        },
+        "zonePeripherique": {
+          "min": 220,
+          "max": 255,
+          "average": 238
+        },
+        "zoneEloignement": {
+          "min": 130,
+          "max": 135,
+          "average": 133
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 220,
+          "max": 240,
+          "average": 230
+        },
+        "zonePeripherique": {
+          "min": 160,
+          "max": 185,
+          "average": 173
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère peu commerciale",
+        "centreVille": {
+          "min": 350,
+          "max": 405,
+          "average": 378
+        },
+        "zonePeripherique": {
+          "min": 220,
+          "max": 255,
+          "average": 238
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 220,
+          "max": 255,
+          "average": 238
+        },
+        "zonePeripherique": {
+          "min": 160,
+          "max": 185,
+          "average": 173
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère secondaire",
+        "centreVille": {
+          "min": 160,
+          "max": 185,
+          "average": 173
+        },
+        "zonePeripherique": {
+          "min": 150,
+          "max": 175,
+          "average": 163
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "En zone urbaine",
+        "centreVille": {
+          "min": 140,
+          "max": 165,
+          "average": 153
+        },
+        "zonePeripherique": {
+          "min": 130,
+          "max": 150,
+          "average": 140
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "En zone rurale",
+        "zonePeripherique": {
+          "min": 1180,
+          "max": 1350,
+          "average": 1265
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 1050,
+          "max": 1200,
+          "average": 1125
+        },
+        "zonePeripherique": {
+          "min": 840,
+          "max": 960,
+          "average": 900
+        },
+        "zoneEloignement": {
+          "min": 750,
+          "max": 860,
+          "average": 805
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 860,
+          "max": 980,
+          "average": 920
+        },
+        "zonePeripherique": {
+          "min": 700,
+          "max": 800,
+          "average": 750
+        },
+        "zoneEloignement": {
+          "min": 630,
+          "max": 720,
+          "average": 675
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 960,
+          "max": 1100,
+          "average": 1030
+        },
+        "zonePeripherique": {
+          "min": 680,
+          "max": 780,
+          "average": 730
+        },
+        "zoneEloignement": {
+          "min": 600,
+          "max": 690,
+          "average": 645
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 880,
+          "max": 1010,
+          "average": 945
+        },
+        "zonePeripherique": {
+          "min": 740,
+          "max": 850,
+          "average": 795
+        },
+        "zoneEloignement": {
+          "min": 540,
+          "max": 620,
+          "average": 580
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Dans l'indivision",
+        "centreVille": {
+          "min": 730,
+          "max": 830,
+          "average": 780
+        },
+        "zonePeripherique": {
+          "min": 640,
+          "max": 730,
+          "average": 685
+        },
+        "zoneEloignement": {
+          "min": 600,
+          "max": 690,
+          "average": 645
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité élevée",
+        "zoneEloignement": {
+          "min": 2300,
+          "max": 2650,
+          "average": 2475
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "TAMEST",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "IN-ZEGMIR",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "TIT",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "TIMOKTEN",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "TAMENTIT",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "SALI",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "AKABLI",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "OULED AHMED TIMMI",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "BOUDA",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "SBAA",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 63,
+          "max": 71,
+          "average": 67
+        },
+        "zonePeripherique": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 21,
+          "max": 23,
+          "average": 22
+        },
+        "zonePeripherique": {
+          "min": 11,
+          "max": 13,
+          "average": 12
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 8400,
+          "max": 9660,
+          "average": 9030
+        },
+        "zonePeripherique": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 5250,
+          "max": 6038,
+          "average": 5644
+        },
+        "zonePeripherique": {
+          "min": 2940,
+          "max": 3381,
+          "average": 3161
+        },
+        "zoneEloignement": {
+          "min": 2100,
+          "max": 2415,
+          "average": 2258
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 4200,
+          "max": 4830,
+          "average": 4515
+        },
+        "zonePeripherique": {
+          "min": 2625,
+          "max": 3019,
+          "average": 2822
+        },
+        "zoneEloignement": {
+          "min": 1890,
+          "max": 2174,
+          "average": 2032
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 13125,
+          "max": 15015,
+          "average": 14070
+        },
+        "zonePeripherique": {
+          "min": 6300,
+          "max": 7245,
+          "average": 6773
+        },
+        "zoneEloignement": {
+          "min": 3150,
+          "max": 3623,
+          "average": 3387
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 42,
+          "max": 47,
+          "average": 45
+        },
+        "zonePeripherique": {
+          "min": 32,
+          "max": 37,
+          "average": 35
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [
+      {
+        "label": "Situé en zone urbaine",
+        "centreVille": {
+          "min": 12500,
+          "max": 14300,
+          "average": 13400
+        },
+        "zonePeripherique": {
+          "min": 6000,
+          "max": 6900,
+          "average": 6450
+        },
+        "zoneEloignement": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsNus": [
+      {
+        "label": "Pleine propriété deux (02) façades avec raccordements",
+        "centreVille": {
+          "min": 3500,
+          "max": 4050,
+          "average": 3775
+        },
+        "zonePeripherique": {
+          "min": 1600,
+          "max": 1690,
+          "average": 1645
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade avec raccordements",
+        "centreVille": {
+          "min": 4000,
+          "max": 4600,
+          "average": 4300
+        },
+        "zonePeripherique": {
+          "min": 1700,
+          "max": 1800,
+          "average": 1750
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété deux (02) façades sans raccordements",
+        "centreVille": {
+          "min": 2500,
+          "max": 2850,
+          "average": 2675
+        },
+        "zonePeripherique": {
+          "min": 1400,
+          "max": 1460,
+          "average": 1430
+        },
+        "zoneEloignement": {
+          "min": 1400,
+          "max": 1440,
+          "average": 1420
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Pleine propriété une (01) façade sans raccordements",
+        "centreVille": {
+          "min": 3000,
+          "max": 3450,
+          "average": 3225
+        },
+        "zonePeripherique": {
+          "min": 1500,
+          "max": 1570,
+          "average": 1535
+        },
+        "zoneEloignement": {
+          "min": 1500,
+          "max": 1540,
+          "average": 1520
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 456000,
+          "max": 524400,
+          "average": 490200
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "FENOUGHIL",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 77,
+          "max": 87,
+          "average": 82
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 55,
+          "max": 62,
+          "average": 59
+        },
+        "zonePeripherique": {
+          "min": 33,
+          "max": 39,
+          "average": 36
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "zonePeripherique": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [],
+    "terrainsNus": [],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 2300,
+          "max": 2650,
+          "average": 2475
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "Reggane",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 77,
+          "max": 87,
+          "average": 82
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 55,
+          "max": 62,
+          "average": 59
+        },
+        "zonePeripherique": {
+          "min": 33,
+          "max": 39,
+          "average": 36
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "zonePeripherique": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [],
+    "terrainsNus": [],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 2300,
+          "max": 2650,
+          "average": 2475
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "Tsabit",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 77,
+          "max": 87,
+          "average": 82
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 55,
+          "max": 62,
+          "average": 59
+        },
+        "zonePeripherique": {
+          "min": 33,
+          "max": 39,
+          "average": 36
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "zonePeripherique": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [],
+    "terrainsNus": [],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 2300,
+          "max": 2650,
+          "average": 2475
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "Zaouiet Kounta",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 77,
+          "max": 87,
+          "average": 82
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 55,
+          "max": 62,
+          "average": 59
+        },
+        "zonePeripherique": {
+          "min": 33,
+          "max": 39,
+          "average": 36
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "zonePeripherique": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [],
+    "terrainsNus": [],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 2300,
+          "max": 2650,
+          "average": 2475
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  },
+  {
+    "commune": "Aoulef",
+    "individuels": [
+      {
+        "label": "Amélioré",
+        "centreVille": {
+          "min": 77,
+          "max": 87,
+          "average": 82
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Economique",
+        "centreVille": {
+          "min": 55,
+          "max": 62,
+          "average": 59
+        },
+        "zonePeripherique": {
+          "min": 33,
+          "max": 39,
+          "average": 36
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Précaire",
+        "centreVille": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "zonePeripherique": {
+          "min": 22,
+          "max": 24,
+          "average": 23
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "collectifsSemiCollectifs": [],
+    "locauxCommerciaux": [
+      {
+        "label": "Artère moyennement commerciale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      },
+      {
+        "label": "Artère principale",
+        "centreVille": {
+          "min": 66,
+          "max": 75,
+          "average": 71
+        },
+        "zonePeripherique": {
+          "min": 44,
+          "max": 50,
+          "average": 47
+        },
+        "unit": "DA/m²/Mois"
+      }
+    ],
+    "hangars": [],
+    "terrainsNus": [],
+    "terrainsAgricolesPlaine": [
+      {
+        "label": "Potentialité moyenne",
+        "zoneEloignement": {
+          "min": 2300,
+          "max": 2650,
+          "average": 2475
+        },
+        "unit": "DA/Ha/Mois"
+      }
+    ],
+    "terrainsAgricolesPente": []
+  }
+]
