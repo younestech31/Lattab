@@ -13,8 +13,8 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children, defaultLang = 'ar' }: { children: React.ReactNode, defaultLang?: Language }) {
-  const [lang, setLangState] = useState<Language>(defaultLang);
+export function LanguageProvider({ children, lang }: { children: React.ReactNode, lang: Language }) {
+  const [langState, setLangState] = useState<Language>(lang);
 
   const toggleLang = () => {
     setLangState((prev) => {
@@ -30,7 +30,7 @@ export function LanguageProvider({ children, defaultLang = 'ar' }: { children: R
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang }}>
+    <LanguageContext.Provider value={{ lang: langState, setLang, toggleLang }}>
       {children}
     </LanguageContext.Provider>
   );

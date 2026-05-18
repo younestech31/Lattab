@@ -1,6 +1,5 @@
 import NextTopLoader from 'nextjs-toploader';
 import { LanguageProvider } from '@/lib/i18n';
-import { HtmlLangUpdater } from '@/components/HtmlLangUpdater';
 import type { Metadata } from 'next';
 import { Cairo } from 'next/font/google';
 import './globals.css';
@@ -10,6 +9,7 @@ import Footer from '@/components/Footer';
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL } from '@/lib/constants';
 import type { Viewport } from 'next';
+import { headers } from 'next/headers';
 
 const cairo = Cairo({ 
   subsets: ['arabic'], 
@@ -95,33 +95,31 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default async function RootLayout({children}: {children: React.ReactNode}) {
+  const headersList = await headers();
+  const serverLang = headersList.get('x-lang') ?? 'ar';
+
   return (
-    <html lang="ar" dir="rtl" className={cairo.variable} suppressHydrationWarning>
+    <html lang={serverLang} dir={serverLang === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
-
         {/* Apple Touch Icon */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
         <link rel="preload" as="image" href="/logo-small.webp" fetchPriority="high" />
-        
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
         <meta name="indexnow-key" content="23640b5098f44acf92740b8ccee9f405" />
       </head>
       <body className="font-cairo" suppressHydrationWarning>
-        <LanguageProvider defaultLang="ar">
-          <HtmlLangUpdater />
+        <LanguageProvider lang={serverLang as 'ar' | 'fr'}>
           <a 
             href="#main-content" 
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold"
@@ -139,11 +137,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <FloatingWhatsApp />
           
           {children}
-
           <div className="no-print">
             <Footer />
           </div>
-
           <Analytics />
         </LanguageProvider>
       </body>

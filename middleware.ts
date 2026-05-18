@@ -26,6 +26,9 @@ export function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-nonce', nonce);
   requestHeaders.set('Content-Security-Policy', cspHeader);
+  
+  const lang = request.cookies.get('lang')?.value || 'ar';
+  requestHeaders.set('x-lang', lang);
 
   const response = NextResponse.next({
     request: {
@@ -34,6 +37,7 @@ export function middleware(request: NextRequest) {
   });
 
   response.headers.set('Content-Security-Policy', cspHeader);
+  response.headers.set('x-lang', lang);
 
   return response;
 }
