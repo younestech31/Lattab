@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { blogPosts } from '@/lib/data/blog';
 
-export const runtime = 'edge';
 export const revalidate = 86400;
 
 export const size = { width: 1200, height: 630 };
