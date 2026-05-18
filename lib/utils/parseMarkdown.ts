@@ -20,7 +20,18 @@ const schema = {
   },
 };
 
+export function stripFrontmatterAndLeadingH1(content: string): string {
+  // 1. Strip YAML frontmatter
+  let cleanContent = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n*/, '');
+  
+  // 2. Strip leading H1 (and any blank lines after it)
+  cleanContent = cleanContent.replace(/^\s*#\s+[^\r\n]+\r?\n*/, '');
+  
+  return cleanContent.trim();
+}
+
 export async function parseMarkdown(content: string): Promise<string> {
+  const cleanContent = stripFrontmatterAndLeadingH1(content);
   const result = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -28,6 +39,6 @@ export async function parseMarkdown(content: string): Promise<string> {
     .use(rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] })
     .use(rehypeSanitize, schema as any)
     .use(rehypeStringify)
-    .process(content);
+    .process(cleanContent);
   return String(result);
 }

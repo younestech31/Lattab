@@ -1,4 +1,4 @@
-import { parseMarkdown } from '@/lib/utils/parseMarkdown';
+import { parseMarkdown, stripFrontmatterAndLeadingH1 } from '@/lib/utils/parseMarkdown';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -80,7 +80,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   
   const safeHtml = await parseMarkdown(content!);
   
-  const wordCount = Math.round(content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
+  const cleanContentForWords = stripFrontmatterAndLeadingH1(content);
+  const wordCount = Math.round(cleanContentForWords.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
   
   // Priority: same category first, then most recent as fallback
   const sameCategoryPosts = blogPosts
