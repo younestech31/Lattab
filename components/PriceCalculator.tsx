@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { t } from '@/lib/i18n/translations';
-import { Calculator, Printer, Copy, MessageCircle, Check } from 'lucide-react';
+import { Calculator, Copy, MessageCircle, Check } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 
 export const CalculatorSkeleton = () => (
@@ -134,8 +134,6 @@ export default function PriceCalculator() {
   const result = calculatePrice();
   const formatter = new Intl.NumberFormat('fr-DZ', { style: 'currency', currency: 'DZD' });
   const [copied, setCopied] = useState(false);
-
-  const handlePrint = () => window.print();
 
   const handleCopy = async () => {
     if (!result) return;
@@ -408,10 +406,6 @@ export default function PriceCalculator() {
                     )}
                     {/* Action Bar */}
                     <div className="flex flex-wrap gap-3 mt-8 justify-end no-print" dir="rtl">
-                      <button onClick={handlePrint} aria-label="طباعة النتيجة" className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
-                        <Printer size={18} />
-                        طباعة
-                      </button>
                       <button onClick={handleCopy} aria-label="نسخ النتيجة" className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
                        {copied ? <Check size={18} /> : <Copy size={18} />}
                         {copied ? 'تم النسخ!' : 'نسخ'}
@@ -445,14 +439,6 @@ export default function PriceCalculator() {
                 <strong>تنبيه هام:</strong> هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية {wilaya === 'oran' ? 'وهران' : 'الولاية المختارة'} (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
               </p>
             </div>
-            <style jsx global>{`
-              @media print {
-                body * { visibility: hidden; }
-                #calculator, #calculator * { visibility: visible; }
-                #calculator { position: absolute; left: 0; top: 0; width: 100%; }
-                .no-print { display: none !important; }
-              }
-            `}</style>
           </div>
         </div>
       </div>
