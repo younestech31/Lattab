@@ -31,12 +31,7 @@ const nextConfig: NextConfig = {
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
         ],
       },
-      {
-        source: '/((?!api).*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=3600' },
-        ],
-      },
+
     ];
   },
   eslint: {
