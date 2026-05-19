@@ -15,41 +15,47 @@ import About from '@/components/About';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
+import type { Locale } from '@/lib/i18n-config';
 
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   <div className={`w-full ${height} bg-gray-50 animate-pulse rounded-lg`} aria-hidden="true" />
 );
 
-export const metadata: Metadata = {
-  title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-  alternates: {
-    canonical: `${SITE_URL}/`,
-    languages: {
-      'ar-DZ': `${SITE_URL}/`,
-      'x-default': `${SITE_URL}/`,
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const prefix = locale === 'ar' ? '' : `/fr`;
+  return {
+    title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+    alternates: {
+      canonical: `${SITE_URL}${prefix}/`,
+      languages: {
+        'ar-DZ': `${SITE_URL}/`,
+        'fr-DZ': `${SITE_URL}/fr/`,
+        'x-default': `${SITE_URL}/`,
+      },
     },
-  },
-  openGraph: {
-    title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-    url: `${SITE_URL}/`,
-    siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-    locale: 'ar_DZ',
-    type: 'website',
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-    images: [`${SITE_URL}/og-image.jpg`],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+    openGraph: {
+      title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+      description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
+      url: `${SITE_URL}${prefix}/`,
+      siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+      locale: locale === 'ar' ? 'ar_DZ' : 'fr_DZ',
+      type: 'website',
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+      description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
+      images: [`${SITE_URL}/og-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 const homeSchema = {
   "@context": "https://schema.org",
@@ -174,7 +180,8 @@ const homeSchema = {
   ]
 };
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return (
     <div className="min-h-screen bg-white">
       <NonceScriptLoader schemas={[homeSchema]} />
