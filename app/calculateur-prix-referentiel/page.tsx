@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Calculator, AlertCircle, FileText, TrendingDown, Info, Loader2 } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 import dynamic from 'next/dynamic';
 
 const PriceCalculator = dynamic(() => import('@/components/PriceCalculator'), {

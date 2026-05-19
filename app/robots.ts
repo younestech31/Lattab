@@ -1,16 +1,23 @@
 import { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: '*',
-        allow: ['/', '/blog/', '/calculateur-prix-referentiel', '/terms-privacy'],
-        disallow: ['/api/', '/scripts/', '/*.json'],
+        allow: ['/', '/blog/', '/services/', '/glossaire/', '/faq'],
+        disallow: ['/api/', '/scripts/', '/*.json', '/terms-privacy'],
       },
       {
-        userAgent: ['GPTBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai', 'Claude-Web', 'PerplexityBot', 'Bytespider', 'Omgilibot', 'peer39_crawler'],
+        // Allow AI crawlers to read public content for citation
+        userAgent: ['GPTBot', 'PerplexityBot', 'anthropic-ai', 'Claude-Web'],
+        allow: ['/', '/blog/', '/services/', '/faq', '/glossaire/'],
+        disallow: ['/api/', '/calculateur-prix-referentiel', '/terms-privacy'],
+      },
+      {
+        // Block scraper bots that provide no SEO value
+        userAgent: ['Bytespider', 'Omgilibot', 'peer39_crawler', 'CCBot'],
         disallow: ['/'],
       },
     ],

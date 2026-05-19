@@ -1,5 +1,5 @@
 import React from 'react';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 import { headers } from 'next/headers';
 import { JsonLdScript } from './schema';
 

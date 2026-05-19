@@ -6,7 +6,7 @@ import { ReadingProgress } from '@/components/ReadingProgress';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
 import { blogPosts } from '@/lib/data/blog';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 

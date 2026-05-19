@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { WORKING_HOURS } from '@/lib/constants';
+import { WORKING_HOURS } from '@/lib/config';
 
 const Footer = () => {
   const quickLinks = [

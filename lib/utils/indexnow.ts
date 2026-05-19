@@ -1,5 +1,5 @@
 
-import { SITE_URL } from '../constants';
+import { SITE_URL } from '../config';
 
 const INDEXNOW_KEY = '23640b5098f44acf92740b8ccee9f405';
 const HOST = new URL(SITE_URL).hostname;

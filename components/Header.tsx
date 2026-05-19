@@ -11,7 +11,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const isHomePage = !pathname || pathname === '/' || pathname === '/fr' || pathname === '/ar' || pathname === '/fr/' || pathname === '/ar/';
+  const isHomePage = pathname === '/';
   const { lang, toggleLang } = useLang();
   
   const text = translations[lang].nav;
@@ -28,7 +28,6 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);

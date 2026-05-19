@@ -7,10 +7,9 @@ import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Analytics } from "@vercel/analytics/next";
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 import type { Viewport } from 'next';
-import { locales } from '@/lib/i18n-config';
-import type { Locale } from '@/lib/i18n-config';
+import { headers } from 'next/headers';
 
 const cairo = Cairo({ 
   subsets: ['arabic'], 
@@ -84,27 +83,24 @@ export const metadata: Metadata = {
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
+  alternates: {
+    canonical: `${SITE_URL}/`,
+    languages: {
+      'ar-DZ': `${SITE_URL}/`,
+      'x-default': `${SITE_URL}/`,
+    },
+  },
   verification: {
     google: 'bb0bdf3d32a68c3f',
   },
 };
 
-export async function generateStaticParams() {
-  return locales.map(locale => ({ locale }));
-}
-
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const typedLocale = locale as Locale;
+export default async function RootLayout({children}: {children: React.ReactNode}) {
+  const headersList = await headers();
+  const serverLang = headersList.get('x-lang') ?? 'ar';
 
   return (
-    <html lang={typedLocale} dir={typedLocale === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>
+    <html lang={serverLang} dir={serverLang === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -123,7 +119,7 @@ export default async function RootLayout({
         <meta name="indexnow-key" content="23640b5098f44acf92740b8ccee9f405" />
       </head>
       <body className="font-cairo" suppressHydrationWarning>
-        <LanguageProvider lang={typedLocale}>
+        <LanguageProvider lang={serverLang as 'ar' | 'fr'}>
           <a 
             href="#main-content" 
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold"

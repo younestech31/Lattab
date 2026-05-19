@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import { WORKING_HOURS, SITE_CONFIG, SITE_URL } from '@/lib/constants';
+import { WORKING_HOURS, SITE_CONFIG, SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'الشروط والأحكام وسياسة الخصوصية',

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 import { blogPosts } from '@/lib/data/blog';
 import { validateBearerAuth } from '@/lib/utils/auth';
 

@@ -1,96 +1,82 @@
 import { MetadataRoute } from 'next';
 import { blogPosts } from '@/lib/data/blog';
-import { SITE_URL as base, LAST_CONTENT_UPDATED } from '@/lib/constants';
+import { SITE_URL as base } from '@/lib/config';
+import { LAST_CONTENT_UPDATED } from '@/lib/server-constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
-  const staticPages = [
+  const blogEntries: MetadataRoute.Sitemap = [...blogPosts]
+    .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
+    .map(post => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(post.dateModified || post.dateISO),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+    alternates: {
+      languages: {
+        'ar-DZ': `${base}/blog/${post.slug}`,
+        'fr-DZ': `${base}/blog/${post.slug}`,
+        'x-default': `${base}/blog/${post.slug}`,
+      },
+    },
+  }));
+
+  return [
     {
-      path: '',
+      url: `${base}/`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'weekly',
       priority: 1.0,
-      changeFrequency: 'weekly' as const,
-      images: [`${base}/logo.webp`]
+      images: [
+        `${base}/logo.webp`
+      ],
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/`,
+          'fr-DZ': `${base}/`,
+          'x-default': `${base}/`,
+        },
+      },
     },
     {
-      path: 'calculateur-prix-referentiel',
+      url: `${base}/calculateur-prix-referentiel`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'monthly',
       priority: 0.9,
-      changeFrequency: 'monthly' as const
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/calculateur-prix-referentiel`,
+          'fr-DZ': `${base}/calculateur-prix-referentiel`,
+          'x-default': `${base}/calculateur-prix-referentiel`,
+        },
+      },
     },
     {
-      path: 'blog',
+      url: `${base}/blog`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'weekly',
       priority: 0.8,
-      changeFrequency: 'weekly' as const
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/blog`,
+          'fr-DZ': `${base}/blog`,
+          'x-default': `${base}/blog`,
+        },
+      },
     },
     {
-      path: 'terms-privacy',
+      url: `${base}/terms-privacy`,
+      lastModified: new Date('2025-01-01'),
+      changeFrequency: 'yearly',
       priority: 0.3,
-      changeFrequency: 'yearly' as const
-    }
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/terms-privacy`,
+          'fr-DZ': `${base}/terms-privacy`,
+          'x-default': `${base}/terms-privacy`,
+        },
+      },
+    },
+    ...blogEntries,
   ];
-
-  const sitemapEntries: MetadataRoute.Sitemap = [];
-
-  // Static pages
-  staticPages.forEach(page => {
-    sitemapEntries.push({
-      url: `${base}${page.path ? '/' + page.path : ''}`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-      ...(page.images ? { images: page.images } : {}),
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}${page.path ? '/' + page.path : ''}`,
-          'fr-DZ': `${base}/fr${page.path ? '/' + page.path : ''}`,
-          'x-default': `${base}${page.path ? '/' + page.path : ''}`,
-        },
-      }
-    });
-    sitemapEntries.push({
-      url: `${base}/fr${page.path ? '/' + page.path : ''}`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-      ...(page.images ? { images: page.images } : {}),
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}${page.path ? '/' + page.path : ''}`,
-          'fr-DZ': `${base}/fr${page.path ? '/' + page.path : ''}`,
-          'x-default': `${base}${page.path ? '/' + page.path : ''}`,
-        },
-      }
-    });
-  });
-
-  // Blog posts
-  blogPosts.forEach(post => {
-    sitemapEntries.push({
-      url: `${base}/blog/${post.slug}`,
-      lastModified: new Date(post.dateModified || post.dateISO),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/blog/${post.slug}`,
-          'fr-DZ': `${base}/fr/blog/${post.slug}`,
-          'x-default': `${base}/blog/${post.slug}`,
-        },
-      },
-    });
-    sitemapEntries.push({
-      url: `${base}/fr/blog/${post.slug}`,
-      lastModified: new Date(post.dateModified || post.dateISO),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/blog/${post.slug}`,
-          'fr-DZ': `${base}/fr/blog/${post.slug}`,
-          'x-default': `${base}/blog/${post.slug}`,
-        },
-      },
-    });
-  });
-
-  return sitemapEntries;
 }

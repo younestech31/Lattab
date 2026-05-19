@@ -9,53 +9,47 @@ import CalculatorCTA from '@/components/CalculatorCTA';
 import WebPageSchema from '@/components/WebPageSchema';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import About from '@/components/About';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
-import type { Locale } from '@/lib/i18n-config';
 
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   <div className={`w-full ${height} bg-gray-50 animate-pulse rounded-lg`} aria-hidden="true" />
 );
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
-  const prefix = locale === 'ar' ? '' : `/fr`;
-  return {
+export const metadata: Metadata = {
+  title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+  alternates: {
+    canonical: `${SITE_URL}/`,
+    languages: {
+      'ar-DZ': `${SITE_URL}/`,
+      'x-default': `${SITE_URL}/`,
+    },
+  },
+  openGraph: {
     title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-    alternates: {
-      canonical: `${SITE_URL}${prefix}/`,
-      languages: {
-        'ar-DZ': `${SITE_URL}/`,
-        'fr-DZ': `${SITE_URL}/fr/`,
-        'x-default': `${SITE_URL}/`,
-      },
-    },
-    openGraph: {
-      title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-      description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-      url: `${SITE_URL}${prefix}/`,
-      siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-      locale: locale === 'ar' ? 'ar_DZ' : 'fr_DZ',
-      type: 'website',
-      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-      description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-      images: [`${SITE_URL}/og-image.jpg`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-  };
-}
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
+    url: `${SITE_URL}/`,
+    siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+    locale: 'ar_DZ',
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const homeSchema = {
   "@context": "https://schema.org",
@@ -64,13 +58,22 @@ const homeSchema = {
       "@type": ["LegalService", "Notary"],
       "name": "مكتب الأستاذ لعطب محمد - موثق وهران",
       "description": "مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.",
-      "image": {
-        "@type": "ImageObject",
-        "url": `${SITE_URL}/og-image.jpg`,
-        "width": 1200,
-        "height": 630
-      },
-      "@id": `${SITE_URL}/#organization`,
+        "image": {
+          "@type": "ImageObject",
+          "url": `${SITE_URL}/og-image.jpg`,
+          "width": 1200,
+          "height": 630
+        },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": ["#main-content h1", ".hero-description", "#contact"]
+        },
+        "mentions": [
+          { "@type": "City", "name": "وهران", "sameAs": "https://www.wikidata.org/wiki/Q183236" },
+          { "@type": "City", "name": "Oran" },
+          { "@type": "AdministrativeArea", "name": "ولاية وهران" }
+        ],
+        "@id": `${SITE_URL}/#organization`,
       "url": SITE_URL,
       "telephone": "+213562296981",
       "priceRange": "$$",
@@ -126,7 +129,15 @@ const homeSchema = {
         "@type": "Person",
         "name": "لعطب محمد",
         "jobTitle": "موثق معتمد",
-        "worksFor": { "@id": `${SITE_URL}/#organization` }
+        "worksFor": { "@id": `${SITE_URL}/#organization` },
+        "knowsAbout": [
+          "Droit immobilier algérien",
+          "Création de sociétés en Algérie",
+          "Succession et droit de la famille algérien",
+          "Prix référentiel immobilier Algérie 2026",
+          "القانون العقاري الجزائري",
+          "التوثيق في الجزائر"
+        ]
       },
       "knowsLanguage": ["ar", "fr"],
       "areaServed": {
@@ -180,8 +191,7 @@ const homeSchema = {
   ]
 };
 
-export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <NonceScriptLoader schemas={[homeSchema]} />

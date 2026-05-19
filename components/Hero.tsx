@@ -48,7 +48,7 @@ const Hero = () => {
 
             {/* Subtitle */}
             <p
-              className="text-white/85 max-w-xl mx-auto leading-relaxed px-1 text-[clamp(0.95rem,calc(2.5vw+0.25rem),1.25rem)]"
+              className="hero-description text-white/85 max-w-xl mx-auto leading-relaxed px-1 text-[clamp(0.95rem,calc(2.5vw+0.25rem),1.25rem)]"
             >
               ثقة 15 عامًا في التوثيق القانوني — نضمن لك معاملات آمنة وسريعة وفق أحدث الأنظمة القانونية الجزائرية
             </p>

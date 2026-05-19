@@ -1,43 +1,59 @@
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { Suspense } from 'react';
+import Link from 'next/link';
 import WebPageSchema from '@/components/WebPageSchema';
 import BlogSearchInput from '@/components/BlogSearchInput';
 import BlogPostGrid from '@/components/BlogPostGrid';
 import { JsonLdScript } from '@/components/schema';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 import { blogPosts } from '@/lib/data/blog';
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
-  description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
-  alternates: {
-    canonical: `${SITE_URL}/blog`,
-    languages: {
-      'ar-DZ': `${SITE_URL}/blog`,
-      'x-default': `${SITE_URL}/blog`,
-    },
-  },
-// ... (rest of metadata)
-openGraph: {
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}): Promise<Metadata> {
+  const { q } = await searchParams;
+
+  if (q) {
+    return {
+      title: `نتائج البحث عن "${q}" — المدونة القانونية`,
+      description: `نتائج البحث عن المقالات المتعلقة بـ ${q} في المدونة القانونية والعقارية لمكتب الموثق لعطب محمد.`,
+      robots: { index: false, follow: true },
+    };
+  }
+
+  return {
     title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
     description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
-    url: `${SITE_URL}/blog`,
-    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
-    images: [
-      {
-        url: `${SITE_URL}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: 'المدونة القانونية - موثق معتمد',
+    alternates: {
+      canonical: `${SITE_URL}/blog`,
+      languages: {
+        'ar-DZ': `${SITE_URL}/blog`,
+        'x-default': `${SITE_URL}/blog`,
       },
-    ],
-    locale: 'ar_DZ',
-    type: 'website',
-  },
-};
+    },
+    openGraph: {
+      title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
+      description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
+      url: `${SITE_URL}/blog`,
+      siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+      images: [
+        {
+          url: `${SITE_URL}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'المدونة القانونية - موثق معتمد',
+        },
+      ],
+      locale: 'ar_DZ',
+      type: 'website',
+    },
+  };
+}
 
 const BlogGridSkeleton = () => (
   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -59,9 +75,9 @@ export default async function BlogList({
   
   const filteredPosts = q 
     ? blogPosts.filter(p => 
-        p.title.includes(q) || 
-        p.description.includes(q) || 
-        p.category.includes(q)
+        p.title.toLowerCase().includes(q.toLowerCase()) || 
+        p.description.toLowerCase().includes(q.toLowerCase()) || 
+        p.category.toLowerCase().includes(q.toLowerCase())
       )
     : blogPosts;
 
@@ -107,9 +123,33 @@ export default async function BlogList({
           </div>
 
           <section aria-label="قائمة المقالات" aria-live="polite" aria-busy={false}>
-            <Suspense fallback={<BlogGridSkeleton />}>
-              <BlogPostGrid posts={filteredPosts} />
-            </Suspense>
+            {q && (
+              <p className="text-gray-500 mb-8 font-medium">
+                {filteredPosts.length} نتيجة بحث عن: <span className="text-gray-900">&quot;{q}&quot;</span>
+              </p>
+            )}
+
+            {filteredPosts.length > 0 ? (
+              <Suspense fallback={<BlogGridSkeleton />}>
+                <BlogPostGrid posts={filteredPosts} />
+              </Suspense>
+            ) : (
+              <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-gray-100 shadow-sm">
+                <div className="bg-gray-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl">🔍</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">لا توجد نتائج لـ &quot;{q}&quot;</h3>
+                <p className="text-gray-500 mb-8 max-w-sm mx-auto">
+                  حاول استخدام كلمات مفتاحية مختلفة أو تصفح جميع المقالات المتاحة.
+                </p>
+                <Link 
+                  href="/blog" 
+                  className="inline-flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition-colors"
+                >
+                  <span>← عرض جميع المقالات</span>
+                </Link>
+              </div>
+            )}
           </section>
 
         </div>

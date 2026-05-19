@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { notifyGoogleIndexing, UrlNotification } from '@/lib/seo/google-indexing';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/config';
 import { blogPosts } from '@/lib/data/blog';
 import { pingIndexNow as notifyIndexNow } from '@/lib/utils/indexnow';
 import { validateBearerAuth } from '@/lib/utils/auth';
