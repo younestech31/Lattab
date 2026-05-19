@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
         status: result.failed > 0 ? 207 : 200,
         headers: { 'Content-Type': 'application/json' }
     });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
         status: result.failed > 0 ? 207 : 200,
         headers: { 'Content-Type': 'application/json' }
     });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

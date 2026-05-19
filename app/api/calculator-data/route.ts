@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
         } 
         }
     );
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

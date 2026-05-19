@@ -1,8 +1,8 @@
 'use client';
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2 } from 'lucide-react';
-import { AppointmentFormData, ALGERIAN_HOLIDAYS, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOTS, getRequiredDocuments, openWhatsAppAppointment } from './types';
+import { AppointmentFormData, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOTS, getRequiredDocuments, openWhatsAppAppointment } from './types';
 import { validateAppointment } from '@/app/actions/appointment';
 
 export default function AppointmentForm({ services }: { services: string[] }) {
@@ -24,17 +24,6 @@ export default function AppointmentForm({ services }: { services: string[] }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [appointmentAgreed, setAppointmentAgreed] = useState(false);
-
-  const isWeekend = (dateString: string) => {
-    const day = new Date(dateString + 'T12:00:00').getDay();
-    return day === 5 || day === 6;
-  };
-
-  const isPublicHoliday = (dateString: string) => {
-    if (!dateString) return false;
-    const mmdd = dateString.slice(5);
-    return ALGERIAN_HOLIDAYS.includes(mmdd);
-  };
 
   const maxDateString = useMemo(() => {
     const maxDate = new Date();
@@ -98,7 +87,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
       setTimeout(() => {
         document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
-    } catch (err: unknown) {
+    } catch {
       setSubmitError('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مجدداً أو التواصل معنا عبر الهاتف.');
     } finally {
       setIsSubmitting(false);

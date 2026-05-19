@@ -33,9 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) {
     return { title: 'Article non trouvé' };
   }
-  const description = post.description.length > 155 
-    ? post.description.slice(0, 152) + '...' 
-    : post.description;
 
   const languages: Record<string, string> = {
     'fr-DZ': `${SITE_URL}/blog/fr/${post.slug}`,

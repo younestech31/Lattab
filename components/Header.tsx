@@ -12,7 +12,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
-  const { lang, toggleLang } = useLang();
+  const { lang } = useLang();
   
   const text = translations[lang].nav;
   const ticking = useRef(false);

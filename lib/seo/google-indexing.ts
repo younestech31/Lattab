@@ -86,46 +86,6 @@ async function getAccessToken(serviceAccountEmail: string, privateKey: string): 
 }
 
 /**
- * Notify Google about a single URL.
- */
-async function notifyUrl(
-  notification: UrlNotification,
-  accessToken: string
-): Promise<NotificationResult> {
-  try {
-    const res = await fetch(
-      'https://indexing.googleapis.com/v3/urlNotifications:publish',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify(notification),
-      }
-    );
-
-    if (!res.ok) {
-      const body = await res.text();
-      return {
-        ...notification,
-        success: false,
-        status: res.status,
-        error: body,
-      };
-    }
-
-    return { ...notification, success: true, status: res.status };
-  } catch (err) {
-    return {
-      ...notification,
-      success: false,
-      error: err instanceof Error ? err.message : 'Unknown error',
-    };
-  }
-}
-
-/**
  * Notify Google about one or more URLs (updated or deleted).
  */
 export async function notifyGoogleIndexing(

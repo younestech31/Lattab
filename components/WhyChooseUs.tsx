@@ -6,16 +6,6 @@ export default async function WhyChooseUs() {
   const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
   const content = translations[lang].whyChooseUs;
 
-  const iconMap = {
-    ShieldCheck: <ShieldCheck className="w-8 h-8" />,
-    Zap: <Zap className="w-8 h-8" />,
-    Award: <Award className="w-8 h-8" />,
-    FileText: <FileText className="w-8 h-8" />,
-    MapPin: <MapPin className="w-8 h-8" />,
-    Smartphone: <Smartphone className="w-8 h-8" />,
-    CheckSquare: <CheckSquare className="w-8 h-8" />,
-  };
-  
   // Mapping the icons based on original order
   const IconComponents = [ShieldCheck, Zap, Award, FileText, MapPin, Smartphone, CheckSquare];
 

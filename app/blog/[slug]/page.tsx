@@ -33,9 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) {
     return { title: 'مقال غير موجود' };
   }
-  const description = post.description.length > 155 
-    ? post.description.slice(0, 152) + '...' 
-    : post.description;
 
   return {
     title: post.title,
