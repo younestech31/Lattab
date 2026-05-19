@@ -21,6 +21,7 @@ export default async function WhyChooseUs() {
           </p>
         </div>
 
+        {/* RTL-safe: uses logical properties */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {content.features.map((feature, index) => {
             const Icon = IconComponents[index];
@@ -30,14 +31,14 @@ export default async function WhyChooseUs() {
                 className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100 hover:border-emerald-300"
               >
                 <div className="flex items-start mb-4">
-                  <div className="p-3 bg-emerald-100 text-emerald-600 rounded-lg ml-4">
+                  <div className="p-3 bg-emerald-100 text-emerald-600 rounded-lg me-4">
                     <Icon className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold text-emerald-900">
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-gray-600" style={{ textAlign: lang === 'fr' ? 'left' : 'right' }}>
+                <p className="text-gray-600 text-start">
                   {feature.description}
                 </p>
               </div>

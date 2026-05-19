@@ -8,6 +8,8 @@ import ContactInfo from '@/components/ContactInfo';
 import CalculatorCTA from '@/components/CalculatorCTA';
 import WebPageSchema from '@/components/WebPageSchema';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
+import { cookies } from 'next/headers';
+import { Language } from '@/lib/i18n/translations';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { SITE_URL } from '@/lib/config';
 import WhyChooseUs from '@/components/WhyChooseUs';
@@ -192,7 +194,9 @@ const homeSchema = {
   ]
 };
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies();
+  const lang = (cookieStore.get('lang')?.value as Language) ?? 'ar';
   return (
     <div className="min-h-screen bg-white">
       <NonceScriptLoader schemas={[homeSchema]} />
@@ -228,7 +232,7 @@ export default function Home() {
             <FAQ />
           </Suspense>
         </div>
-        <Contact contactInfo={<ContactInfo />} />
+        <Contact contactInfo={<ContactInfo lang={lang} />} />
       </main>
       <div className="no-print">
         <StickyMobileCTA />

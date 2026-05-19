@@ -9,14 +9,24 @@ export default async function FAQSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
+    "mainEntity": faqs.flatMap(faq => ([
+      {
+        "@type": "Question",
+        "name": faq.questionAr,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answerAr
+        }
+      },
+      {
+        "@type": "Question",
+        "name": faq.questionFr,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answerFr
+        }
       }
-    }))
+    ]))
   };
 
   return <JsonLdScript schema={schema} nonce={nonce} />;

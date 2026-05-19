@@ -26,19 +26,18 @@ export default async function About() {
               {content.title}
               <span className="block text-emerald-600 text-2xl mt-2">{content.subtitle}</span>
             </h2>
-            <div className="space-y-4 text-gray-600 leading-relaxed" style={{ textAlign: lang === 'fr' ? 'left' : 'right' }}>
+            <div className="space-y-4 text-gray-600 leading-relaxed text-start">
               {content.description.map((p, i) => <p key={i}>{p}</p>)}
             </div>
 
-            {/* Features Grid */}
+            {/* RTL-safe: uses logical properties */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {content.features.map((feature, index) => {
                 const Icon = IconComponents[index];
                 return (
                   <div
                     key={index}
-                    className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl"
-                    style={{ flexDirection: lang === 'fr' ? 'row' : 'row-reverse', textAlign: lang === 'fr' ? 'left' : 'right' }}
+                    className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl text-start"
                   >
                     <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 flex-shrink-0">
                       <Icon />

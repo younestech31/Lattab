@@ -1,8 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useLang } from '@/lib/i18n';
 
 // Custom SVG for WhatsApp icon for better representation.
 const FloatingWhatsApp = () => {
+  const { lang } = useLang();
+  const isAr = lang === 'ar';
+  
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
@@ -17,7 +21,7 @@ const FloatingWhatsApp = () => {
   }, [showTooltip]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-end pb-[env(safe-area-inset-bottom,0px)]">
+    <div className="fixed bottom-6 right-6 z-50 flex items-end pb-[env(safe-area-inset-bottom,0px)]" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="relative">
         <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-30" />
         <a
@@ -25,7 +29,7 @@ const FloatingWhatsApp = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="relative bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center"
-          aria-label="تواصل معنا عبر واتساب"
+          aria-label={isAr ? 'تواصل معنا عبر واتساب' : 'Contactez-nous sur WhatsApp'}
         >
           <svg 
             className="w-8 h-8 fill-current" 
@@ -36,12 +40,12 @@ const FloatingWhatsApp = () => {
           </svg>
         </a>
         {showTooltip && (
-          <div className="absolute bottom-16 right-0 bg-white text-gray-800 text-sm font-medium 
+          <div className={`absolute bottom-16 ${isAr ? 'right-0' : 'left-0'} bg-white text-gray-800 text-sm font-medium 
                           px-4 py-2 rounded-xl shadow-lg whitespace-nowrap border border-gray-100
-                          animate-fade-in"
+                          animate-fade-in`}
                aria-hidden="true">
-            💬 تحدث معنا الآن!
-            <div className="absolute -bottom-2 right-5 w-3 h-3 bg-white rotate-45 border-b border-r border-gray-100" />
+            {isAr ? '💬 تحدث معنا الآن!' : '💬 Discutons maintenant !'}
+            <div className={`absolute -bottom-2 ${isAr ? 'right-5' : 'left-5'} w-3 h-3 bg-white rotate-45 border-b border-r border-gray-100`} />
           </div>
         )}
       </div>

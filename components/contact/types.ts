@@ -73,6 +73,11 @@ export function cleanText(input: string): string {
     : '';
 }
 
+export function buildWhatsAppUrl({ service, source }: { service: string, source: string }) {
+  const text = `السلام عليكم، أود الاستفسار بخصوص ${service}. (المصدر: ${source})`;
+  return `https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`;
+}
+
 export function openWhatsAppAppointment(data: AppointmentFormData) {
   const name = cleanText(data.name);
   const phone = cleanText(data.phone);

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { t } from '@/lib/i18n/translations';
 import { Calculator, Copy, MessageCircle, Check } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
@@ -12,18 +13,6 @@ interface PriceCalculatorProps {
   initialCommunes: string[];
   initialRegionId: string;
 }
-
-export const CalculatorSkeleton = () => (
-  <div className="animate-pulse space-y-6 w-full" dir="rtl">
-    <div className="h-14 bg-gray-200 rounded-xl w-full" />
-    <div className="grid md:grid-cols-2 gap-8">
-      <div className="space-y-6">
-        {[1, 2, 3, 4, 5].map(i => <div key={i} className="h-14 bg-gray-200 rounded-xl w-full" />)}
-      </div>
-      <div className="h-full bg-gray-200 rounded-2xl w-full min-h-[300px]" />
-    </div>
-  </div>
-);
 
 export default function PriceCalculator({ initialData, initialCommunes, initialRegionId }: PriceCalculatorProps) {
   const { lang } = useLang();
@@ -260,15 +249,26 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       { v: 'in-salah', n: 'إن صالح (53)' }, { v: 'in-guezzam', n: 'إن قزام (54)' }, { v: 'touggourt', n: 'تقرت (55)' },
                       { v: 'djanet', n: 'جانت (56)' }, { v: 'el-mghaier', n: 'المغير (57)' }, { v: 'el-meniaa', n: 'المنيعة (58)' }
                     ].map(w => {
-                      const isSupported = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','biskra','bechar','blida'].includes(w.v);
+                      const isSupported = w.v === 'oran';
                       return (
-                        <option key={w.v} value={w.v} disabled={!isSupported}>{w.n} {!isSupported && '(قريبًا)'}</option>
+                        <option key={w.v} value={w.v} disabled={!isSupported} aria-disabled={!isSupported}>
+                          {w.n} {!isSupported && '(قريبًا)'}
+                        </option>
                       );
                     })}
                   </select>
                 </div>
                 
-                {isLoadingData ? <CalculatorSkeleton /> : (
+                {isLoadingData ? (
+                  <div className="space-y-6 py-4">
+                    {[1, 2, 3, 4].map(i => (
+                      <div key={i} className="animate-pulse space-y-2">
+                        <div className="h-4 bg-gray-100 rounded w-1/4" />
+                        <div className="h-14 bg-gray-100 rounded-xl w-full" />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
                 <>
                 {/* Region */}
                 <div>
@@ -279,7 +279,9 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     id="region"
                     value={regionId}
                     onChange={handleRegionChange}
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
+                    disabled={wilaya === ''}
+                    aria-disabled={wilaya === ''}
+                    className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
                     <option value="">-- اختر البلدية --</option>
                     {communes.map((c) => (
@@ -303,7 +305,8 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         id="category"
                         value={categoryIdx}
                         onChange={handleCategoryChange}
-                        disabled={!currentRegionData}
+                        disabled={!currentRegionData || regionId === ''}
+                        aria-disabled={!currentRegionData || regionId === ''}
                         className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                       >
                         <option value="">-- اختر طبيعة العقار --</option>
@@ -323,6 +326,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     value={typeIdx}
                     onChange={handleTypeChange}
                     disabled={categoryIdx === ''}
+                    aria-disabled={categoryIdx === ''}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
                     <option value="">-- اختر الصنف --</option>
@@ -342,6 +346,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     value={zoneKey}
                     onChange={(e) => setZoneKey(e.target.value)}
                     disabled={typeIdx === '' || availableZones.length === 0}
+                    aria-disabled={typeIdx === '' || availableZones.length === 0}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
                     <option value="">-- اختر المنطقة --</option>
@@ -351,25 +356,28 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                   </select>
                 </div>
 
-                {/* Area */}
-                {selectedType && (
-                  <>
-                    <div>
-                      <label htmlFor="area" className="block text-sm font-bold text-gray-700 mb-2">
-                        {selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? 'المساحة (بالهكتار Ha)' : 'المساحة (بالمتر المربع m²)'}
-                      </label>
-                      <input
-                        id="area"
-                        type="number"
-                        value={area}
-                        onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
-                        placeholder="أدخل المساحة"
-                        disabled={!currentRegionData}
-                        className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
-                      />
-                    </div>
-                  </>
-                )}
+                    {/* Area */}
+                    {selectedType && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="space-y-2"
+                      >
+                        <label htmlFor="area" className="block text-sm font-bold text-gray-700 mb-2">
+                          {selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? 'المساحة (بالهكتار Ha)' : 'المساحة (بالمتر المربع m²)'}
+                        </label>
+                        <input
+                          id="area"
+                          type="number"
+                          value={area}
+                          onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
+                          placeholder="أدخل المساحة"
+                          disabled={zoneKey === ''}
+                          aria-disabled={zoneKey === ''}
+                          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+                        />
+                      </motion.div>
+                    )}
                   </>
                 )}
                 </>
@@ -377,9 +385,17 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
               </div>
 
               {/* Result Section */}
-              <div className="flex flex-col justify-center transition-all duration-300 ease-in">
-                {result ? (
-                  <div className="p-8 bg-emerald-600 rounded-2xl text-white text-center shadow-lg h-full flex flex-col justify-center">
+              <div className="flex flex-col justify-center transition-all duration-300 ease-in min-h-[400px]">
+                <AnimatePresence mode="wait">
+                  {result ? (
+                    <motion.div 
+                      key="result"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                      className="p-8 bg-emerald-600 rounded-2xl text-white text-center shadow-lg h-full flex flex-col justify-center"
+                    >
                     <h4 className="text-xl font-bold mb-6 text-emerald-50">النتيجة التقريبية</h4>
                     
                     <div className="mb-6 bg-emerald-700/30 rounded-xl p-4">
@@ -437,17 +453,24 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         واتساب
                       </button>
                     </div>
-                  </div>
+                  </motion.div>
                 ) : (
-                  <div className="h-full min-h-[300px] border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center p-8 text-center bg-gray-50/50">
+                  <motion.div 
+                    key="placeholder"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="h-full min-h-[300px] border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center p-8 text-center bg-gray-50/50"
+                  >
                     <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-400">
                       <Calculator className="w-8 h-8" />
                     </div>
                     <p className="text-gray-500 font-medium">
                       يرجى ملء جميع الحقول أعلاه لإظهار السعر المرجعي التقريبي
                     </p>
-                  </div>
+                  </motion.div>
                 )}
+                </AnimatePresence>
               </div>
             </div>
 

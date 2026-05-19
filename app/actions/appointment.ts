@@ -16,15 +16,40 @@ const AppointmentSchema = z.object({
 
 export type AppointmentFormData = z.infer<typeof AppointmentSchema>;
 
-export async function validateAppointment(formData: unknown) {
-  const result = AppointmentSchema.safeParse(formData);
+export type AppointmentState = {
+  success: boolean;
+  errors: Record<string, string[]>;
+  data?: AppointmentFormData;
+  message?: string;
+};
+
+export async function validateAppointment(prevState: AppointmentState, formData: FormData): Promise<AppointmentState> {
+  const rawData = {
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    email: formData.get('email'),
+    service: formData.get('service'),
+    date: formData.get('date'),
+    time: formData.get('time'),
+    notes: formData.get('notes'),
+    company: formData.get('company'),
+    honeypot: formData.get('honeypot'),
+  };
+
+  const result = AppointmentSchema.safeParse(rawData);
+  
   if (!result.success) {
-    return { success: false as const, errors: result.error.flatten().fieldErrors };
+    return { 
+      success: false, 
+      errors: result.error.flatten().fieldErrors as Record<string, string[]>
+    };
   }
   
-  if (result.data.honeypot) {
-    return { success: true as const, data: result.data };
-  }
+  // Optional: Add logic here to save to database or send email
   
-  return { success: true as const, data: result.data };
+  return { 
+    success: true, 
+    errors: {}, 
+    data: result.data 
+  };
 }

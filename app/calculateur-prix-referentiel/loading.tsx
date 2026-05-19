@@ -1,4 +1,4 @@
-import { CalculatorSkeleton } from '@/components/PriceCalculator';
+import CalculatorSkeleton from '@/components/CalculatorSkeleton';
 
 export default function CalculatorLoading() {
   return (

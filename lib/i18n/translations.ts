@@ -79,8 +79,8 @@ export const translations = {
         { title: 'عقود البيع والشراء العقارية', description: 'توثيق كامل لعقود بيع وشراء العقارات مع ضمان الصحة القانونية والتحقق من الملكية والرهون.', features: ['عقود بيع عقارات سكنية', 'عقود بيع محلات تجارية', 'عقود بيع أراضي', 'عقود بيع مركبات'] },
         { title: 'عقود الإيجار والتأجير', description: 'إعداد عقود إيجار شاملة مع جميع الضمانات القانونية لحماية حقوق المؤجر والمستأجر.', features: ['إيجار سكني طويل الأمد', 'إيجار تجاري', 'عقود إيجار موسمية', 'تجديد العقود'] },
         { title: 'الوكالات والتفويضات', description: 'إعداد جميع أنواع الوكالات مع تحديد الصلاحيات بدقة لحماية حقوق الموكل.', features: ['وكالة عامة كاملة', 'وكالة خاصة محددة', 'وكالة قضائية', 'وكالة بنكية'] },
-        { title: 'تأسيس الشركات', description: 'إعداد وتوثيق عقود تأسيس الشركات التجارية والمدنية مع جميع المستندات المطلوبة.', features: ['شركات ذات مسؤولية محدودة', 'شركات تضامن', 'شركات مساهمة', 'تعديل النظام الأساسي'] },
-        { title: 'الرهن والتأمين', description: 'توثيق عقود الرهن العقاري والحيازي وكل أنواع التأمينات العينية.', features: ['رهن عقاري', 'رهن حيازي', 'رفع الرهن', 'عقود تأمين'] },
+        { title: 'تأسيس الشركات والمؤسسات', description: 'إعداد وتوثيق عقود تأسيس الشركات التجارية والمدنية مع جميع المستندات المطلوبة.', features: ['شركات ذات مسؤولية محدودة', 'شركات تضامن', 'شركات مساهمة', 'تعديل النظام الأساسي'] },
+        { title: 'الرهن والتأمينات', description: 'توثيق عقود الرهن العقاري والحيازي وكل أنواع التأمينات العينية.', features: ['رهن عقاري', 'رهن حيازي', 'رفع الرهن', 'عقود تأمين'] },
         { title: 'التصريحات والمصادقات', description: 'المصادقة على التوقيعات والتصريحات المختلفة وإعداد الشهادات الإدارية.', features: ['مصادقة التوقيع', 'تصريحات الشرف', 'شهادات الملكية', 'تصريحات الإرث'] }
       ],
       cta: 'استفسر عن خدماتنا'
@@ -129,6 +129,106 @@ export const translations = {
       description: 'إليك إجابات على الأسئلة الأكثر شيوعاً. إذا لم تجد إجابة سؤالك، لا تتردد في التواصل معنا مباشرة.',
       contact_title: 'لم تجد إجابتك؟',
       contact_description: 'نحن هنا للإجابة على جميع استفساراتكم'
+    },
+    contact: {
+      badge: 'تواصل معنا',
+      title: 'احجز موعدك الآن',
+      description: 'تواصل معنا لحجز موعد أو الاستفسار عن خدماتنا. نحن هنا لمساعدتك.',
+      tabs: {
+        appointment: 'حجز موعد',
+        inquiry: 'استفسار عام'
+      },
+      form: {
+        name: 'الاسم الكامل *',
+        name_placeholder: 'أدخل اسمك الكامل',
+        phone: 'رقم الهاتف *',
+        phone_placeholder: 'رقم الهاتف (مثل: 0555555555 أو +123...)',
+        phone_error: 'أدخل رقم هاتف صحيح',
+        email: 'البريد الإلكتروني (اختياري)',
+        email_placeholder: 'example@email.com',
+        company: 'الشركة/المؤسسة (اختياري)',
+        company_placeholder: 'اسم الشركة',
+        service: 'نوع الخدمة المطلوبة *',
+        service_select: 'اختر الخدمة',
+        required_docs: 'الوثائق الأساسية المطلوبة لهذه الخدمة:',
+        date: 'التاريخ المفضل *',
+        date_note: 'ملاحظة: المواعيد خلال الأعياد الدينية المتغيرة خاضعة للتأكيد لاحقاً.',
+        time: 'الوقت المفضل *',
+        time_morning: 'الفترة الصباحية',
+        time_afternoon: 'الفترة المسائية',
+        notes: 'ملاحظات إضافية',
+        notes_placeholder: 'أي معلومات إضافية تريد إضافتها...',
+        terms: 'أوافق على الشروط والأحكام وسياسة الخصوصية الخاصة بالمكتب.',
+        submit_appointment: 'تأكيد حجز الموعد',
+        submit_inquiry: 'إرسال الاستفسار',
+        loading: 'جاري الإرسال...',
+        success_appointment_title: 'تم استلام طلبك بنجاح ✓',
+        success_appointment_desc: 'سنتصل بك خلال أوقات العمل لتأكيد الموعد. يمكنك أيضًا التواصل معنا مباشرة عبر واتساب.',
+        success_inquiry_title: 'جاري فتح WhatsApp!',
+        success_inquiry_desc: 'إذا لم يُفتح تطبيق WhatsApp أو النافذة تلقائيًا، يمكنك النقر على الزر أدناه لإعادة المحاولة، أو تقديم استفسار جديد.',
+        retry_whatsapp: 'إعادة فتح WhatsApp',
+        new_inquiry: 'إرسال استفسار جديد',
+        another_request: 'تقديم طلب آخر',
+        error_title: 'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مجددًا أو التواصل عبر الهاتف:',
+        agree_error: 'يرجى الموافقة على الشروط والأحكام وسياسة الخصوصية للمتابعة',
+        services_list: [
+          'عقود البيع والشراء العقارية',
+          'عقود الإيجار والتأجير',
+          'الوكالات والتفويضات',
+          'عقود الزواج والمستندات العائلية',
+          'تأسيس الشركات والمؤسسات',
+          'الرهن والتأمينات',
+          'التصريحات والمصادقات',
+          'استشارة قانونية',
+          'خدمات أخرى',
+        ],
+        required_docs_hints: {
+          'عقود البيع والشراء العقارية': [
+            'سند الملكية (من البائع)',
+            'شهادة عدم الرهن أو سلبية الرهن',
+            'وثائق الهوية للطرفين',
+          ],
+          'عقود الإيجار والتأجير': [
+            'سند ملكية العقار',
+            'بطاقة الهوية للمؤجر والمستأجر',
+          ],
+          'الوكالات والتفويضات': [
+            'بطاقة الهوية للموكل والوكيل',
+            'شهادة الميلاد',
+            'معلومات دقيقة عن الغرض من الوكالة',
+          ],
+          'عقود الزواج والمستندات العائلية': [
+            'شهادات الميلاد للطرفين',
+            'بطاقات الهوية',
+            'شاهدان بالغان',
+          ],
+          'تأسيس الشركات والمؤسسات': [
+            'وثائق الهوية وشهادات الميلاد للشركاء',
+            'تسمية الشركة المرغوبة',
+            'عقد ملكية أو إيجار المقر',
+          ],
+          'الرهن والتأمينات': [
+            'سند الملكية',
+            'عقد القرض أو وثيقة الدين',
+            'وثائق الهوية',
+          ],
+          'التصريحات والمصادقات': [
+            'بطاقة الهوية',
+            'موضوع المصادقة بدقة',
+          ]
+        }
+      },
+      info: {
+        address: 'العنوان',
+        phone: 'الهاتف',
+        phone_office: '(الخاص بالمكتب)',
+        phone_support: '(للدعم خارج أوقات العمل فقط)',
+        email: 'البريد الإلكتروني',
+        working_hours: 'أوقات العمل',
+        working_hours_details: 'الأحد - الخميس 08:30–12:00 و 13:30–16:00',
+        office_name: 'مكتب الأستاذ لعطب محمد',
+        notary_title: 'موثق معتمد بوهران'
+      }
     }
   },
   fr: {
@@ -261,6 +361,106 @@ export const translations = {
       description: 'Voici les réponses aux questions les plus fréquentes. Si vous ne trouvez pas la réponse à votre question, n\'hésitez pas à nous contacter directement.',
       contact_title: 'Vous n\'avez pas trouvé votre réponse ?',
       contact_description: 'Nous sommes là pour répondre à toutes vos interrogations'
+    },
+    contact: {
+      badge: 'Contactez-nous',
+      title: 'Réservez votre rendez-vous',
+      description: 'Contactez-nous pour prendre rendez-vous ou vous renseigner sur nos services. Nous sommes là pour vous aider.',
+      tabs: {
+        appointment: 'Prendre RDV',
+        inquiry: 'Demande de renseignement'
+      },
+      form: {
+        name: 'Nom complet *',
+        name_placeholder: 'Entrez votre nom complet',
+        phone: 'Numéro de téléphone *',
+        phone_placeholder: 'N° de téléphone (ex: 0555555555 ou +123...)',
+        phone_error: 'Veuillez entrer un numéro de téléphone valide',
+        email: 'E-mail (optionnel)',
+        email_placeholder: 'exemple@email.com',
+        company: 'Société/Entreprise (optionnel)',
+        company_placeholder: 'Nom de la société',
+        service: 'Type de service requis *',
+        service_select: 'Choisissez un service',
+        required_docs: 'Documents de base requis pour ce service :',
+        date: 'Date préférée *',
+        date_note: 'Note : Les rendez-vous pendant les fêtes religieuses mobiles sont soumis à confirmation ultérieure.',
+        time: 'Heure préférée *',
+        time_morning: 'Matinée',
+        time_afternoon: 'Après-midi',
+        notes: 'Notes supplémentaires',
+        notes_placeholder: 'Toute information supplémentaire que vous souhaitez ajouter...',
+        terms: 'J\'accepte les conditions d\'utilisation et la politique de confidentialité du cabinet.',
+        submit_appointment: 'Confirmer le rendez-vous',
+        submit_inquiry: 'Envoyer la demande',
+        loading: 'Envoi en cours...',
+        success_appointment_title: 'Votre demande a été reçue avec succès ✓',
+        success_appointment_desc: 'Nous vous contacterons pendant les heures de travail pour confirmer le rendez-vous. Vous pouvez également nous contacter directement via WhatsApp.',
+        success_inquiry_title: 'Ouverture de WhatsApp !',
+        success_inquiry_desc: 'Si l\'application WhatsApp ou la fenêtre ne s\'ouvre pas automatiquement, vous pouvez cliquer sur le bouton ci-dessous pour réessayer, ou soumettre une nouvelle demande.',
+        retry_whatsapp: 'Rouvrir WhatsApp',
+        new_inquiry: 'Envoyer une nouvelle demande',
+        another_request: 'Soumettre une autre demande',
+        error_title: 'Une erreur est survenue lors de l\'envoi de votre demande. Veuillez réessayer ou nous contacter par téléphone :',
+        agree_error: 'Veuillez accepter les conditions d\'utilisation et la politique de confidentialité pour continuer',
+        services_list: [
+          'Actes de vente immobilière',
+          'Actes de location',
+          'Procurations et mandats',
+          'Actes de mariage et documents familiaux',
+          'Constitution de sociétés',
+          'Hypothèques et assurances',
+          'Déclarations et certifications',
+          'Consultation juridique',
+          'Autres services',
+        ],
+        required_docs_hints: {
+          'Actes de vente immobilière': [
+            'Acte de propriété (du vendeur)',
+            'Certificat négatif ou d\'absence d\'hypothèque',
+            'Pièces d\'identité des deux parties',
+          ],
+          'Actes de location': [
+            'Acte de propriété du bien',
+            'Carte d\'identité du bailleur et du locataire',
+          ],
+          'Procurations et mandats': [
+            'Carte d\'identité du mandant et du mandataire',
+            'Acte de naissance',
+            'Informations précises sur l\'objet de la procuration',
+          ],
+          'Actes de mariage et documents familiaux': [
+            'Actes de naissance des deux parties',
+            'Cartes d\'identité',
+            'Deux témoins majeurs',
+          ],
+          'Constitution de sociétés': [
+            'Pièces d\'identité et actes de naissance des associés',
+            'Dénomination sociale souhaitée',
+            'Acte de propriété ou de location du siège',
+          ],
+          'Hypothèques et assurances': [
+            'Acte de propriété',
+            'Contrat de prêt ou document de créance',
+            'Pièces d\'identité',
+          ],
+          'Déclarations et certifications': [
+            'Carte d\'identité',
+            'Objet précis de la certification',
+          ]
+        }
+      },
+      info: {
+        address: 'Adresse',
+        phone: 'Téléphone',
+        phone_office: '(Celle du bureau)',
+        phone_support: '(Pour assistance hors heures de travail uniquement)',
+        email: 'E-mail',
+        working_hours: 'Heures de travail',
+        working_hours_details: 'Dimanche - Jeudi 08:30–12:00 et 13:30–16:00',
+        office_name: 'Cabinet de Maître Lattab Mohamed',
+        notary_title: 'Notaire Agréé à Oran'
+      }
     }
   },
 } as const;
@@ -275,6 +475,7 @@ export type WhyChooseUsKeys = keyof TranslationKeys['whyChooseUs'];
 export type AboutKeys = keyof TranslationKeys['about'];
 export type FAQKeys = keyof TranslationKeys['faq'];
 export type LegalUpdatesKeys = keyof TranslationKeys['legalUpdates'];
+export type ContactKeys = keyof TranslationKeys['contact'];
 
 export function t(lang: Language, section: 'nav', key: NavKeys): string;
 export function t(lang: Language, section: 'calculator', key: CalculatorKeys): string;
@@ -284,6 +485,7 @@ export function t(lang: Language, section: 'whyChooseUs', key: WhyChooseUsKeys):
 export function t(lang: Language, section: 'about', key: AboutKeys): string;
 export function t(lang: Language, section: 'faq', key: FAQKeys): string;
 export function t(lang: Language, section: 'legalUpdates', key: LegalUpdatesKeys): string;
+export function t(lang: Language, section: 'contact', key: string): string;
 export function t(lang: Language, section: keyof TranslationKeys, key: string): string {
   return (translations[lang][section] as Record<string, string>)[key] ?? key;
 }

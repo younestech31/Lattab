@@ -5,7 +5,8 @@ import { Calculator, AlertCircle, TrendingDown, Info } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import { SITE_URL } from '@/lib/config';
-import PriceCalculator, { CalculatorSkeleton } from '@/components/PriceCalculator';
+import PriceCalculator from '@/components/PriceCalculator';
+import CalculatorSkeleton from '@/components/CalculatorSkeleton';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
 import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
 
