@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -84,12 +84,14 @@ export const Accordion: React.FC<AccordionProps> = ({
             </button>
             <div
               className={cn(
-                'transition-all duration-300 ease-in-out overflow-hidden',
-                isOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                'grid transition-[grid-template-rows] duration-300 ease-in-out',
+                isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
               )}
             >
-              <div className={cn('px-6 pb-6', contentClassName)}>
-                {item.content}
+              <div className="overflow-hidden">
+                <div className={cn('px-6 pb-6', contentClassName)}>
+                  {item.content}
+                </div>
               </div>
             </div>
           </div>

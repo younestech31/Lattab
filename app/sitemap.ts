@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { blogPosts } from '@/lib/data/blog';
+import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL as base } from '@/lib/config';
 import { LAST_CONTENT_UPDATED } from '@/lib/server-constants';
 
@@ -7,19 +7,54 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogEntries: MetadataRoute.Sitemap = [...blogPosts]
     .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
-    .map(post => ({
-    url: `${base}/blog/${post.slug}`,
-    lastModified: new Date(post.dateModified || post.dateISO),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-    alternates: {
-      languages: {
+    .map(post => {
+      const frEquivalent = frBlogPosts.find(fr => fr.arSlug === post.slug);
+      
+      const languages: Record<string, string> = {
         'ar-DZ': `${base}/blog/${post.slug}`,
-        'fr-DZ': `${base}/blog/${post.slug}`,
         'x-default': `${base}/blog/${post.slug}`,
-      },
-    },
-  }));
+      };
+      
+      // If we don't have a French equivalent, the Arabic post serves as the French post per previous logic, or we let Google know there's no French yet. The instructions say we should have proper cross-linking.
+      if (frEquivalent) {
+        languages['fr-DZ'] = `${base}/blog/fr/${frEquivalent.slug}`;
+      } else {
+        languages['fr-DZ'] = `${base}/blog/${post.slug}`;
+      }
+
+      return {
+        url: `${base}/blog/${post.slug}`,
+        lastModified: new Date(post.dateModified || post.dateISO),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+        alternates: {
+          languages,
+        },
+      };
+    });
+
+  const frBlogEntries: MetadataRoute.Sitemap = [...frBlogPosts]
+    .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
+    .map(post => {
+      const languages: Record<string, string> = {
+        'fr-DZ': `${base}/blog/fr/${post.slug}`,
+      };
+      
+      if (post.arSlug) {
+        languages['ar-DZ'] = `${base}/blog/${post.arSlug}`;
+        languages['x-default'] = `${base}/blog/${post.arSlug}`;
+      }
+
+      return {
+        url: `${base}/blog/fr/${post.slug}`,
+        lastModified: new Date(post.dateModified || post.dateISO),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+        alternates: {
+          languages,
+        },
+      };
+    });
 
   return [
     {
@@ -78,5 +113,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     ...blogEntries,
+    ...frBlogEntries,
   ];
 }

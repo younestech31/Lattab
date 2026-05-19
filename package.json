@@ -13,12 +13,8 @@
     "test:indexing:put": "curl -X PUT -H \"Authorization: Bearer $CRON_SECRET\" $NEXT_PUBLIC_SITE_URL/api/google-indexing"
   },
   "dependencies": {
-    "@eslint/eslintrc": "^3.3.5",
     "@vercel/analytics": "^2.0.1",
-    "@vercel/og": "^0.11.1",
-    "@vis.gl/react-google-maps": "^1.8.3",
     "autoprefixer": "^10.4.21",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.553.0",
@@ -39,6 +35,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",

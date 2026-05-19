@@ -11,12 +11,14 @@ export async function NonceScriptLoader({ schemas = [] }: { schemas?: Record<str
       {schemas.map((schema, index) => (
         <JsonLdScript key={index} schema={schema} nonce={nonce} />
       ))}
-      <Script
-        src="https://analytics.ahrefs.com/analytics.js"
-        data-key="kIcznbOizJFi9WN+OY1t/g"
-        strategy="lazyOnload"
-        nonce={nonce}
-      />
+      {process.env.NEXT_PUBLIC_AHREFS_KEY && (
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key={process.env.NEXT_PUBLIC_AHREFS_KEY}
+          strategy="lazyOnload"
+          nonce={nonce}
+        />
+      )}
     </>
   );
 }
