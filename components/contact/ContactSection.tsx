@@ -1,7 +1,15 @@
 import { cookies } from 'next/headers';
+import { Suspense } from 'react';
 import ContactTabs from './ContactTabs';
 import ClientMap from './ClientMap';
 import { Language, translations } from '@/lib/i18n/translations';
+
+const MapLoading = ({ lang }: { lang: string }) => (
+  <div className="bg-gray-100 rounded-2xl h-[400px] flex items-center justify-center text-gray-400 text-sm font-medium gap-3">
+    <div className="w-5 h-5 border-2 border-gray-300 border-t-emerald-500 rounded-full animate-spin" />
+    {lang === 'ar' ? 'جارٍ تحميل الخريطة...' : 'Chargement de la carte...'}
+  </div>
+);
 
 export default async function ContactSection({ contactInfo }: { contactInfo?: React.ReactNode }) {
   const cookieStore = await cookies();
@@ -40,7 +48,9 @@ export default async function ContactSection({ contactInfo }: { contactInfo?: Re
 
         {/* Map Section */}
         <div className="mt-12 rounded-3xl overflow-hidden border-2 border-white shadow-lg no-print">
-          <ClientMap />
+          <Suspense fallback={<MapLoading lang={lang} />}>
+            <ClientMap />
+          </Suspense>
         </div>
       </div>
     </section>

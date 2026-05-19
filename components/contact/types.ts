@@ -100,6 +100,45 @@ export function openWhatsAppAppointment(data: AppointmentFormData) {
   window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
+export function generateWhatsAppAppointmentUrl(data: AppointmentFormData): string {
+  const name = cleanText(data.name);
+  const phone = cleanText(data.phone);
+  const email = cleanText(data.email ?? '');
+  const company = cleanText(data.company ?? '');
+  const service = cleanText(data.service);
+  const notes = cleanText(data.notes ?? '');
+
+  let text = `طلب حجز موعد جديد:
+الاسم: ${name}
+الخدمة: ${service}
+التاريخ: ${data.date}
+الوقت: ${data.time}
+رقم الهاتف: \u200E${phone}\u200E`;
+
+  if (email) text += `\nالبريد الإلكتروني: ${email}`;
+  if (company) text += `\nالشركة/المؤسسة: ${company}`;
+  if (notes) text += `\nملاحظات: ${notes}`;
+
+  return `https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`;
+}
+
+export function saveLastWhatsAppUrl(url: string) {
+  try {
+    sessionStorage.setItem('lastWhatsAppUrl', url);
+  } catch (e) {
+    console.error('Failed to save lastWhatsAppUrl', e);
+  }
+}
+
+export function getLastWhatsAppUrl(): string | null {
+  try {
+    return sessionStorage.getItem('lastWhatsAppUrl');
+  } catch (e) {
+    console.error('Failed to read lastWhatsAppUrl', e);
+    return null;
+  }
+}
+
 export function openWhatsAppInquiry(data: InquiryFormData) {
   const name = cleanText(data.name);
   const phone = cleanText(data.phone);
