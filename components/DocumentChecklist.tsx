@@ -41,11 +41,114 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
   const progress = (checkedCount / total) * 100;
 
   const handlePrint = () => {
-    window.print();
+    const printContent = `
+      <html dir="rtl" lang="ar">
+        <head>
+          <title>الوثائق المطلوبة - ${contractType}</title>
+          <style>
+            body { 
+              font-family: 'Cairo', Arial, sans-serif; 
+              padding: 40px;
+              color: #111827;
+              line-height: 1.6;
+            }
+            .header {
+              border-bottom: 2px solid #059669;
+              padding-bottom: 20px;
+              margin-bottom: 30px;
+            }
+            .brand {
+              font-size: 14px;
+              color: #6b7280;
+              margin-bottom: 5px;
+            }
+            h1 {
+              color: #059669;
+              font-size: 24px;
+              margin: 0;
+            }
+            ul {
+              list-style-type: none;
+              padding: 0;
+            }
+            li {
+              padding: 12px 0;
+              border-bottom: 1px solid #f3f4f6;
+              font-size: 16px;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+            .checkbox {
+              width: 20px;
+              height: 20px;
+              border: 2px solid #d1d5db;
+              border-radius: 4px;
+              display: inline-block;
+            }
+            .checked .checkbox {
+              background-color: #059669;
+              border-color: #059669;
+              position: relative;
+            }
+            .checked .checkbox::after {
+              content: '';
+              position: absolute;
+              left: 6px;
+              top: 2px;
+              width: 5px;
+              height: 10px;
+              border: solid white;
+              border-width: 0 2px 2px 0;
+              transform: rotate(45deg);
+            }
+            .checked-text {
+              text-decoration: line-through;
+              color: #9ca3af;
+            }
+            @media print {
+              body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand">مكتب الأستاذ لعطب محمد - موثق معتمد بوهران</div>
+            <h1>الوثائق المطلوبة: ${contractType}</h1>
+          </div>
+          <ul>
+            ${documents.map((doc, idx) => `
+              <li class="${checkedState[idx] ? 'checked' : ''}">
+                <span class="checkbox"></span>
+                <span class="${checkedState[idx] ? 'checked-text' : ''}">${doc}</span>
+              </li>
+            `).join('')}
+          </ul>
+          <script>
+            window.onload = () => {
+              window.print();
+            }
+          </script>
+        </body>
+      </html>
+    `;
+
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    
+    iframe.contentDocument?.open();
+    iframe.contentDocument?.write(printContent);
+    iframe.contentDocument?.close();
+    
+    // Cleanup iframe after a delay to allow print dialog to finish
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 5000);
   };
 
   return (
-    <div className="space-y-4 printable-section" dir="rtl">
+    <div className="space-y-4" dir="rtl">
       {/* Progress Bar */}
       <div className="space-y-1">
         <div className="flex justify-between text-xs text-gray-500 font-bold">
@@ -91,15 +194,6 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       >
         تحميل PDF / طباعة
       </button>
-
-      <style jsx global>{`
-        @media print {
-          body * { visibility: hidden; }
-          .printable-section, .printable-section * { visibility: visible; }
-          .printable-section { position: absolute; left: 0; top: 0; width: 100%; padding: 20px; }
-          .print:hidden { display: none !important; }
-        }
-      `}</style>
     </div>
   );
 };

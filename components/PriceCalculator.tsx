@@ -137,7 +137,12 @@ export default function PriceCalculator() {
 
   const handleCopy = async () => {
     if (!result) return;
-    const textToCopy = `السعر المرجعي في ${regionId}: من ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/م² (حاسبة مكتب الأستاذ لعطب محمد — lattab.vercel.app)`;
+    let textToCopy = `السعر المرجعي في ${regionId}:\nمن ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/م²`;
+    if (area && Number(area) > 0) {
+      textToCopy += `\nالمساحة: ${area} م²`;
+      textToCopy += `\nالسعر الإجمالي المقدر: من ${result.totalMin.toLocaleString()} إلى ${result.totalMax.toLocaleString()} د.ج`;
+    }
+    textToCopy += `\n(حاسبة مكتب الأستاذ لعطب محمد — lattab.vercel.app)`;
     try {
       await navigator.clipboard.writeText(textToCopy);
       setCopied(true);
@@ -158,9 +163,13 @@ export default function PriceCalculator() {
 
   const handleWhatsApp = () => {
     if (!result) return;
-    const summary = `من ${result.totalMin.toLocaleString()} د.ج إلى ${result.totalMax.toLocaleString()} د.ج`;
-    const message = `السلام عليكم، قمت بحساب السعر المرجعي لعقاري على موقعكم وكانت النتيجة: ${summary}. أود الاستفسار أكثر.`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+    let textToShare = `السلام عليكم، قمت بحساب السعر المرجعي لعقاري (${regionId}) على موقعكم:\nالسعر للمتر المربع: من ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/م²`;
+    if (area && Number(area) > 0) {
+      textToShare += `\nالمساحة: ${area} م²`;
+      textToShare += `\nالسعر الإجمالي المقدر: من ${result.totalMin.toLocaleString()} إلى ${result.totalMax.toLocaleString()} د.ج`;
+    }
+    textToShare += `\nأود الاستفسار أكثر.`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(textToShare)}`, '_blank');
   };
 
   return (
@@ -405,7 +414,7 @@ export default function PriceCalculator() {
                       </div>
                     )}
                     {/* Action Bar */}
-                    <div className="flex flex-wrap gap-3 mt-8 justify-end no-print" dir="rtl">
+                    <div className="flex flex-wrap gap-3 mt-8 justify-center no-print" dir="rtl">
                       <button onClick={handleCopy} aria-label="نسخ النتيجة" className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
                        {copied ? <Check size={18} /> : <Copy size={18} />}
                         {copied ? 'تم النسخ!' : 'نسخ'}
