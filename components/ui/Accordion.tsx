@@ -8,6 +8,7 @@ interface AccordionProps {
     title: string;
     content: React.ReactNode;
     icon?: React.ReactNode;
+    headerExtra?: React.ReactNode;
   }[];
   allowMultiple?: boolean;
   className?: string;

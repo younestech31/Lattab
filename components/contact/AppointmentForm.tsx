@@ -1,14 +1,24 @@
 'use client';
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2 } from 'lucide-react';
 import { AppointmentFormData, ALGERIAN_HOLIDAYS, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOTS, getRequiredDocuments, openWhatsAppAppointment } from './types';
 
 export default function AppointmentForm({ services }: { services: string[] }) {
+  const searchParams = useSearchParams();
   const [appointmentData, setAppointmentData] = useState<AppointmentFormData>({
     name: '', phone: '', email: '', service: '',
     date: '', time: '', notes: '', company: '',
     honeypot: '',
   });
+  
+  useEffect(() => {
+    const serviceParam = searchParams.get('service');
+    if (serviceParam && services.includes(decodeURIComponent(serviceParam))) {
+      setAppointmentData(prev => ({ ...prev, service: decodeURIComponent(serviceParam) }));
+    }
+  }, [searchParams, services]);
+
   const [isAppointmentSubmitted, setIsAppointmentSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);

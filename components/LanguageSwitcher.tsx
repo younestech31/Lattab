@@ -12,13 +12,15 @@ export default function LanguageSwitcher({ headerActive, isMobile = false }: Lan
   return (
     <button
       onClick={toggleLang}
-      className={`border border-current rounded-lg font-bold transition-colors ${
-        isMobile ? 'px-2 py-1 text-sm' : 'px-3 py-1 text-sm ml-2'
+      className={`border border-current rounded-lg font-bold transition-colors flex items-center justify-center gap-1 ${
+        isMobile ? 'px-2 min-w-[2.5rem] py-1 text-sm' : 'px-3 py-1 text-sm ml-2'
       } ${
         headerActive ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
       }`}
+      aria-label={lang === 'ar' ? 'تغيير اللغة' : 'Changer la langue'}
     >
-      {lang === 'ar' ? 'FR' : 'AR'}
+      <span className={`text-xs flex-shrink-0 ${isMobile ? 'hidden' : 'inline-block'}`}>🌐</span>
+      {isMobile ? (lang === 'ar' ? 'Ar' : 'Fr') : (lang === 'ar' ? 'العربية ▾' : 'Français ▾')}
     </button>
   );
 }

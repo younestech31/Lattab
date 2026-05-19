@@ -2,26 +2,24 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { t } from '@/lib/i18n/translations';
-import { getPricesForCalculator } from '@/lib/utils/dataMapper';
-import { Calculator } from 'lucide-react';
+import { Calculator, Printer, Copy, MessageCircle, Check } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 
-interface WilayaData {
-  transactions?: any[];
-  locations?: any[];
-}
-
-const CalculatorSkeleton = () => (
-  <div className="animate-pulse space-y-4">
-    <div className="h-12 bg-gray-200 rounded-xl" />
-    <div className="h-12 bg-gray-200 rounded-xl" />
-    <div className="h-32 bg-gray-200 rounded-xl" />
+export const CalculatorSkeleton = () => (
+  <div className="animate-pulse space-y-6 w-full" dir="rtl">
+    <div className="h-14 bg-gray-200 rounded-xl w-full" />
+    <div className="grid md:grid-cols-2 gap-8">
+      <div className="space-y-6">
+        {[1, 2, 3, 4, 5].map(i => <div key={i} className="h-14 bg-gray-200 rounded-xl w-full" />)}
+      </div>
+      <div className="h-full bg-gray-200 rounded-2xl w-full min-h-[300px]" />
+    </div>
   </div>
 );
 
 export default function PriceCalculator() {
   const { lang } = useLang();
-  const [wilaya, setWilaya] = useState<'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna' | 'biskra' | 'bechar' | 'blida'>('oran');
+  const [wilaya, setWilaya] = useState<string>('oran');
   const [mappedData, setMappedData] = useState<any>(null);
   const [communes, setCommunes] = useState<string[]>([]);
   const [isLoadingData, setIsLoadingData] = useState(false);
@@ -34,6 +32,12 @@ export default function PriceCalculator() {
   
   useEffect(() => {
     const fetchApiData = async () => {
+      const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','biskra','bechar','blida'];
+      if (!supportedWilayas.includes(wilaya)) {
+        setMappedData(null);
+        setCommunes([]);
+        return;
+      }
       setIsLoadingData(true);
       try {
         const response = await fetch(`/api/calculator-data?wilaya=${wilaya}&mode=${calculationMode}&region=${regionId}`);
@@ -55,7 +59,7 @@ export default function PriceCalculator() {
   const selectedCategory = currentRegionData && categoryIdx !== '' ? currentRegionData.prix[categoryIdx] : null;
   const selectedType = selectedCategory && typeIdx !== '' ? selectedCategory.types[typeIdx] : null;
   
-  const availableZones = (() => {                
+  const availableZones = useMemo(() => {                
     if (!selectedType) return [];
     return Object.entries(selectedType.zones)
       .filter(([_, values]: [string, any]) => {
@@ -66,12 +70,12 @@ export default function PriceCalculator() {
         }
       })
       .map(([key]) => key);
-  })();
+  }, [selectedType, calculationMode]);
 
   const priceData = selectedType && zoneKey ? selectedType.zones[zoneKey as keyof typeof selectedType.zones] : null;
 
   const handleWilayaChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newWilaya = e.target.value as 'oran' | 'alger' | 'adrar' | 'chlef' | 'laghouat' | 'oum-el-bouaghi' | 'batna' | 'biskra' | 'bechar' | 'blida';
+    const newWilaya = e.target.value;
     setWilaya(newWilaya);
     setRegionId('');
     setCategoryIdx('');
@@ -129,6 +133,37 @@ export default function PriceCalculator() {
 
   const result = calculatePrice();
   const formatter = new Intl.NumberFormat('fr-DZ', { style: 'currency', currency: 'DZD' });
+  const [copied, setCopied] = useState(false);
+
+  const handlePrint = () => window.print();
+
+  const handleCopy = async () => {
+    if (!result) return;
+    const textToCopy = `السعر المرجعي في ${regionId}: من ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/م² (حاسبة مكتب الأستاذ لعطب محمد — lattab.vercel.app)`;
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      const textArea = document.createElement("textarea");
+      textArea.value = textToCopy;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (e) { console.error("Fallback clipboard failed", e); }
+      document.body.removeChild(textArea);
+    }
+  };
+
+  const handleWhatsApp = () => {
+    if (!result) return;
+    const summary = `من ${result.totalMin.toLocaleString()} د.ج إلى ${result.totalMax.toLocaleString()} د.ج`;
+    const message = `السلام عليكم، قمت بحساب السعر المرجعي لعقاري على موقعكم وكانت النتيجة: ${summary}. أود الاستفسار أكثر.`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+  };
 
   return (
     <section id="calculator" className="py-16 bg-gradient-to-b from-white to-emerald-50">
@@ -174,24 +209,42 @@ export default function PriceCalculator() {
               <div className="space-y-6">
                 {/* Wilaya Option */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                  <label htmlFor="wilaya" className="block text-sm font-bold text-gray-700 mb-2">
                     الولاية
                   </label>
                   <select
+                    id="wilaya"
                     value={wilaya}
                     onChange={handleWilayaChange}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
-                    <option value="adrar">أدرار (01)</option>
-                    <option value="chlef">الشلف (02)</option>
-                    <option value="laghouat">الأغواط (03)</option>
-                    <option value="oum-el-bouaghi">أم البواقي (04)</option>
-                    <option value="batna">باتنة (05)</option>
-                    <option value="biskra">بسكرة (07)</option>
-                    <option value="bechar">بشار (08)</option>
-                    <option value="blida">البليدة (09)</option>
-                    <option value="alger">الجزائر (16)</option>
                     <option value="oran">وهران (31)</option>
+                    {[
+                      { v: 'adrar', n: 'أدرار (01)' }, { v: 'chlef', n: 'الشلف (02)' }, { v: 'laghouat', n: 'الأغواط (03)' },
+                      { v: 'oum-el-bouaghi', n: 'أم البواقي (04)' }, { v: 'batna', n: 'باتنة (05)' }, { v: 'bejaia', n: 'بجاية (06)' },
+                      { v: 'biskra', n: 'بسكرة (07)' }, { v: 'bechar', n: 'بشار (08)' }, { v: 'blida', n: 'البليدة (09)' },
+                      { v: 'bouira', n: 'البويرة (10)' }, { v: 'tamanrasset', n: 'تمنراست (11)' }, { v: 'tebessa', n: 'تبسة (12)' },
+                      { v: 'tlemcen', n: 'تلمسان (13)' }, { v: 'tiaret', n: 'تيارت (14)' }, { v: 'tizi-ouzou', n: 'تيزي وزو (15)' },
+                      { v: 'alger', n: 'الجزائر (16)' }, { v: 'djelfa', n: 'الجلفة (17)' }, { v: 'jijel', n: 'جيجل (18)' },
+                      { v: 'setif', n: 'سطيف (19)' }, { v: 'saida', n: 'سعيدة (20)' }, { v: 'skikda', n: 'سكيكدة (21)' },
+                      { v: 'sidi-bel-abbes', n: 'سيدي بلعباس (22)' }, { v: 'annaba', n: 'عنابة (23)' }, { v: 'guelma', n: 'قالمة (24)' },
+                      { v: 'constantine', n: 'قسنطينة (25)' }, { v: 'medea', n: 'المدية (26)' }, { v: 'mostaganem', n: 'مستغانم (27)' },
+                      { v: 'msila', n: 'المسيلة (28)' }, { v: 'mascara', n: 'معسكر (29)' }, { v: 'ouargla', n: 'ورقلة (30)' },
+                      { v: 'el-bayadh', n: 'البيض (32)' }, { v: 'illizi', n: 'إليزي (33)' }, { v: 'bordj-bou-arreridj', n: 'برج بو عريريج (34)' },
+                      { v: 'boumerdes', n: 'بومرداس (35)' }, { v: 'el-taref', n: 'الطارف (36)' }, { v: 'tindouf', n: 'تندوف (37)' },
+                      { v: 'tissemsilt', n: 'تيسمسيلت (38)' }, { v: 'el-oued', n: 'الوادي (39)' }, { v: 'khenchela', n: 'خنشلة (40)' },
+                      { v: 'souk-ahras', n: 'سوق أهراس (41)' }, { v: 'tipaza', n: 'تيبازة (42)' }, { v: 'mila', n: 'ميلة (43)' },
+                      { v: 'ain-defla', n: 'عين الدفلى (44)' }, { v: 'naama', n: 'النعامة (45)' }, { v: 'ain-temouchent', n: 'عين تموشنت (46)' },
+                      { v: 'ghardaia', n: 'غرداية (47)' }, { v: 'relizane', n: 'غليزان (48)' }, { v: 'timimoun', n: 'تيميمون (49)' },
+                      { v: 'bordj-badji-mokhtar', n: 'برج باجي مختار (50)' }, { v: 'ouled-djellal', n: 'أولاد جلال (51)' }, { v: 'beni-abbes', n: 'بني عباس (52)' },
+                      { v: 'in-salah', n: 'إن صالح (53)' }, { v: 'in-guezzam', n: 'إن قزام (54)' }, { v: 'touggourt', n: 'تقرت (55)' },
+                      { v: 'djanet', n: 'جانت (56)' }, { v: 'el-mghaier', n: 'المغير (57)' }, { v: 'el-meniaa', n: 'المنيعة (58)' }
+                    ].map(w => {
+                      const isSupported = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','biskra','bechar','blida'].includes(w.v);
+                      return (
+                        <option key={w.v} value={w.v} disabled={!isSupported}>{w.n} {!isSupported && '(قريبًا)'}</option>
+                      );
+                    })}
                   </select>
                 </div>
                 
@@ -199,10 +252,11 @@ export default function PriceCalculator() {
                 <>
                 {/* Region */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                  <label htmlFor="region" className="block text-sm font-bold text-gray-700 mb-2">
                     البلدية / المنطقة
                   </label>
                   <select
+                    id="region"
                     value={regionId}
                     onChange={handleRegionChange}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
@@ -222,10 +276,11 @@ export default function PriceCalculator() {
                   <>
                     {/* Category */}
                     <div>
-                      <label className="block text-sm font-bold text-gray-700 mb-2">
+                      <label htmlFor="category" className="block text-sm font-bold text-gray-700 mb-2">
                         طبيعة العقار
                       </label>
                       <select
+                        id="category"
                         value={categoryIdx}
                         onChange={handleCategoryChange}
                         disabled={!currentRegionData}
@@ -240,10 +295,11 @@ export default function PriceCalculator() {
 
                 {/* Type */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                  <label htmlFor="type" className="block text-sm font-bold text-gray-700 mb-2">
                     صنف العقار
                   </label>
                   <select
+                    id="type"
                     value={typeIdx}
                     onChange={handleTypeChange}
                     disabled={categoryIdx === ''}
@@ -258,10 +314,11 @@ export default function PriceCalculator() {
 
                 {/* Zone */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                  <label htmlFor="zone" className="block text-sm font-bold text-gray-700 mb-2">
                     المنطقة العمرانية
                   </label>
                   <select
+                    id="zone"
                     value={zoneKey}
                     onChange={(e) => setZoneKey(e.target.value)}
                     disabled={typeIdx === '' || availableZones.length === 0}
@@ -278,10 +335,11 @@ export default function PriceCalculator() {
                 {selectedType && (
                   <>
                     <div>
-                      <label className="block text-sm font-bold text-gray-700 mb-2">
+                      <label htmlFor="area" className="block text-sm font-bold text-gray-700 mb-2">
                         {selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? 'المساحة (بالهكتار Ha)' : 'المساحة (بالمتر المربع m²)'}
                       </label>
                       <input
+                        id="area"
                         type="number"
                         value={area}
                         onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
@@ -299,7 +357,7 @@ export default function PriceCalculator() {
               </div>
 
               {/* Result Section */}
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center transition-all duration-300 ease-in">
                 {result ? (
                   <div className="p-8 bg-emerald-600 rounded-2xl text-white text-center shadow-lg h-full flex flex-col justify-center">
                     <h4 className="text-xl font-bold mb-6 text-emerald-50">النتيجة التقريبية</h4>
@@ -348,6 +406,21 @@ export default function PriceCalculator() {
                         </p>
                       </div>
                     )}
+                    {/* Action Bar */}
+                    <div className="flex flex-wrap gap-3 mt-8 justify-end no-print" dir="rtl">
+                      <button onClick={handlePrint} aria-label="طباعة النتيجة" className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
+                        <Printer size={18} />
+                        طباعة
+                      </button>
+                      <button onClick={handleCopy} aria-label="نسخ النتيجة" className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
+                       {copied ? <Check size={18} /> : <Copy size={18} />}
+                        {copied ? 'تم النسخ!' : 'نسخ'}
+                      </button>
+                      <button onClick={handleWhatsApp} aria-label="مشاركة عبر واتساب" className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
+                        <MessageCircle size={18} />
+                        واتساب
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <div className="h-full min-h-[300px] border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center p-8 text-center bg-gray-50/50">
@@ -369,17 +442,17 @@ export default function PriceCalculator() {
                 </svg>
               </div>
               <p className="text-sm text-amber-800 leading-relaxed">
-                <strong>تنبيه هام:</strong> هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية {
-                  wilaya === 'oran' ? 'وهران' : 
-                  wilaya === 'alger' ? 'الجزائر' : 
-                  wilaya === 'adrar' ? 'أدرار' : 
-                  wilaya === 'chlef' ? 'الشلف' : 
-                  wilaya === 'laghouat' ? 'الأغواط' :
-                  wilaya === 'batna' ? 'باتنة' :
-                  'أم البواقي'
-                } (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
+                <strong>تنبيه هام:</strong> هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية {wilaya === 'oran' ? 'وهران' : 'الولاية المختارة'} (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
               </p>
             </div>
+            <style jsx global>{`
+              @media print {
+                body * { visibility: hidden; }
+                #calculator, #calculator * { visibility: visible; }
+                #calculator { position: absolute; left: 0; top: 0; width: 100%; }
+                .no-print { display: none !important; }
+              }
+            `}</style>
           </div>
         </div>
       </div>

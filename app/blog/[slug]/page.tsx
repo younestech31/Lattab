@@ -9,6 +9,14 @@ import { blogPosts } from '@/lib/data/blog';
 import { SITE_URL } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
+import ArticleConversionCTA from '@/components/ArticleConversionCTA';
+
+const serviceMappings: Record<string, string> = {
+  'عقاري': 'عقود البيع والشراء العقارية',
+  'شركات': 'تأسيس الشركات والمؤسسات',
+  'جبائي': 'استشارة قانونية',
+  'قانوني': 'استشارة قانونية',
+};
 
 export const revalidate = 86400;
 export const dynamicParams = false;
@@ -268,6 +276,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </Link>
               ))}
             </div>
+          </div>
+
+          <div className="mt-12">
+            <ArticleConversionCTA 
+              serviceTag={post.category}
+              bookingServiceValue={serviceMappings[post.category] || 'خدمات أخرى'}
+              slug={slug}
+              lang={post.language as 'ar' | 'fr'}
+            />
           </div>
         </div>
       </main>

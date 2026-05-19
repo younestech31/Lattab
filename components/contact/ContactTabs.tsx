@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import AppointmentForm from './AppointmentForm';
 import InquiryForm from './InquiryForm';
 
@@ -57,7 +57,9 @@ export default function ContactTabs() {
       <noscript dangerouslySetInnerHTML={{ __html: '<div class="p-6 bg-red-50 text-red-800 rounded-xl border border-red-200 mb-6"><h3 class="font-bold mb-2">تنبيه: النموذج لا يعمل بدون JavaScript</h3><p>يرجى التواصل معنا مباشرة عبر الهاتف: <a href="tel:+213562296981" class="underline font-bold">+213 562 29 69 81</a> أو عبر البريد الإلكتروني: <a href="mailto:maitrelattabmohamed@gmail.com" class="underline font-bold">maitrelattabmohamed@gmail.com</a></p></div>' }} />
       
       {activeTab === 'appointment' ? (
-        <AppointmentForm services={services} />
+        <Suspense fallback={<div>جاري التحميل...</div>}>
+          <AppointmentForm services={services} />
+        </Suspense>
       ) : (
         <InquiryForm services={services} />
       )}

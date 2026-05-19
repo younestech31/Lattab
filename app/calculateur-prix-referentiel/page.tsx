@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Calculator, AlertCircle, FileText, TrendingDown, Info, Loader2 } from 'lucide-react';
+import { Calculator, AlertCircle, FileText, TrendingDown, Info } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import { SITE_URL } from '@/lib/config';
-import dynamic from 'next/dynamic';
+import PriceCalculator, { CalculatorSkeleton } from '@/components/PriceCalculator';
 
-const PriceCalculator = dynamic(() => import('@/components/PriceCalculator'), {
-  loading: () => (
-    <div className="w-full max-w-4xl mx-auto h-96 flex flex-col items-center justify-center bg-white rounded-3xl shadow-sm border border-gray-100">
-      <Loader2 className="w-8 h-8 text-emerald-500 animate-spin mb-4" />
-      <p className="text-gray-500 font-medium">جاري تحميل الحاسبة...</p>
-    </div>
-  )
-});
+const PriceCalculatorWrapper = () => (
+  <Suspense fallback={<CalculatorSkeleton />}>
+    <PriceCalculator />
+  </Suspense>
+);
 
 export const metadata: Metadata = {
   title: 'حاسبة السعر المرجعي للعقار بوهران 2026 — Calculateur Prix Référentiel',
@@ -108,7 +105,7 @@ const CalculatorPage = () => {
 
         {/* The Calculator Component */}
         <div className="-mt-10 relative z-20">
-          <PriceCalculator />
+          <PriceCalculatorWrapper />
         </div>
 
         {/* SEO Supporting Articles / Guides */}
