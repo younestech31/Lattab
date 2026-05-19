@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Calendar, ArrowLeft, FileText, Scale, TrendingUp } from 'lucide-react';
+import { cookies } from 'next/headers';
+import { Language, translations } from '@/lib/i18n/translations';
 import { blogPosts } from '@/lib/data/blog';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -8,27 +10,29 @@ const iconMap: Record<string, React.ReactNode> = {
   TrendingUp: <TrendingUp className="w-6 h-6" />,
 };
 
-const LegalUpdates = () => {
+export default async function LegalUpdates() {
+  const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
+  const content = translations[lang].legalUpdates;
   const latestPosts = blogPosts.slice(0, 4);
 
   return (
-    <section id="legal-updates" className="scroll-mt-20 md:scroll-mt-24 py-16 bg-white relative" dir="rtl">
+    <section id="legal-updates" className="scroll-mt-20 md:scroll-mt-24 py-16 bg-white relative" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12" style={{ textAlign: lang === 'fr' ? 'left' : 'right' }}>
           <div>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              المدونة القانونية والعقارية
+              {content.title}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl">
-              أحدث المقالات المرجعية، الشروحات القانونية، وأهم المستجدات حول العقارات وتأسيس الشركات في الجزائر.
+              {content.description}
             </p>
           </div>
           <Link 
             href="/blog" 
             className="hidden md:flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition-colors group"
           >
-            تصفح جميع المقالات
-            <ArrowLeft className="w-5 h-5 transform group-hover:-translate-x-2 transition-transform" />
+            {content.cta}
+            <ArrowLeft className="w-5 h-5 transform group-hover:translate-x-2 transition-transform" />
           </Link>
         </div>
 
@@ -74,7 +78,7 @@ const LegalUpdates = () => {
             href="/blog" 
             className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 text-emerald-700 font-bold rounded-xl transition-colors"
           >
-            عرض جميع المقالات
+            {content.cta_mobile}
             <ArrowLeft className="w-5 h-5" />
           </Link>
         </div>
@@ -82,5 +86,3 @@ const LegalUpdates = () => {
     </section>
   );
 };
-
-export default LegalUpdates;

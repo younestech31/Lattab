@@ -1,31 +1,31 @@
-'use client';
-import { Accordion } from './ui/Accordion';
+import { cookies } from 'next/headers';
 import { faqs } from '@/lib/data/faq';
+import { t, Language } from '@/lib/i18n/translations';
 
-const FAQ = () => {
+export default async function FAQ() {
+  const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
+  
   return (
     <section id="faq" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-white">
       <div className="container mx-auto px-4">
-
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Side - Info */}
           <div className="lg:col-span-1">
             <span className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
-              الأسئلة الشائعة
+              {t(lang, 'faq', 'badge')}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              هل لديك استفسار؟
+              {t(lang, 'faq', 'title')}
             </h2>
             <p className="text-gray-600 mb-6">
-              إليك إجابات على الأسئلة الأكثر شيوعاً. إذا لم تجد إجابة سؤالك، 
-              لا تتردد في التواصل معنا مباشرة.
+              {t(lang, 'faq', 'description')}
             </p>
 
             {/* Contact Card */}
             <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-6 text-white">
-              <h3 className="font-bold text-xl mb-4">لم تجد إجابتك؟</h3>
+              <h3 className="font-bold text-xl mb-4">{t(lang, 'faq', 'contact_title')}</h3>
               <p className="text-emerald-100 mb-6 text-sm">
-                نحن هنا للإجابة على جميع استفساراتكم
+                {t(lang, 'faq', 'contact_description')}
               </p>
               <div className="space-y-3">
                 <a
@@ -51,19 +51,26 @@ const FAQ = () => {
           </div>
 
           {/* Right Side - FAQ List */}
-          <div className="lg:col-span-2">
-            <Accordion 
-              items={faqs.map(faq => ({
-                title: faq.question,
-                content: <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-              }))}
-              initialOpenIndex={0}
-            />
+          <div className="lg:col-span-2 space-y-4">
+            {faqs.map((faq, index) => (
+              <details
+                key={index}
+                className="group bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 open:ring-2 open:ring-emerald-500"
+              >
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-gray-800">
+                  {faq.question}
+                  <svg className="w-6 h-6 text-gray-400 group-open:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default FAQ;
+}

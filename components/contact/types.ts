@@ -1,14 +1,6 @@
-export interface AppointmentFormData {
-  name: string;
-  phone: string;
-  email: string;
-  company: string;
-  service: string;
-  date: string;
-  time: string;
-  notes: string;
-  honeypot: string;
-}
+import { AppointmentFormData as ZodAppointmentFormData } from '@/app/actions/appointment';
+
+export type AppointmentFormData = ZodAppointmentFormData;
 
 export interface InquiryFormData {
   name: string;
@@ -84,10 +76,10 @@ export function cleanText(input: string): string {
 export function openWhatsAppAppointment(data: AppointmentFormData) {
   const name = cleanText(data.name);
   const phone = cleanText(data.phone);
-  const email = cleanText(data.email);
-  const company = cleanText(data.company);
+  const email = cleanText(data.email ?? '');
+  const company = cleanText(data.company ?? '');
   const service = cleanText(data.service);
-  const notes = cleanText(data.notes);
+  const notes = cleanText(data.notes ?? '');
 
   let text = `طلب حجز موعد جديد:
 الاسم: ${name}

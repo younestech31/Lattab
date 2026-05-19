@@ -6,12 +6,8 @@ import WebPageSchema from '@/components/WebPageSchema';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import { SITE_URL } from '@/lib/config';
 import PriceCalculator, { CalculatorSkeleton } from '@/components/PriceCalculator';
-
-const PriceCalculatorWrapper = () => (
-  <Suspense fallback={<CalculatorSkeleton />}>
-    <PriceCalculator />
-  </Suspense>
-);
+import { getPricesForCalculator } from '@/lib/utils/dataMapper';
+import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
 
 export const metadata: Metadata = {
   title: 'حاسبة السعر المرجعي للعقار بوهران 2026 — Calculateur Prix Référentiel',
@@ -43,7 +39,11 @@ export const metadata: Metadata = {
   },
 };
 
-const CalculatorPage = () => {
+export default async function CalculatorPage() {
+  const initialSaleData = getPricesForCalculator(oranPriceReference, oranPriceReference[0].commune, 'sale');
+  const initialCommunes = oranPriceReference.map((c) => c.commune);
+  const initialRegionId = oranPriceReference[0].commune;
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -106,7 +106,13 @@ const CalculatorPage = () => {
 
         {/* The Calculator Component */}
         <div className="-mt-10 relative z-20">
-          <PriceCalculatorWrapper />
+          <Suspense fallback={<CalculatorSkeleton />}>
+            <PriceCalculator 
+              initialData={initialSaleData}
+              initialCommunes={initialCommunes}
+              initialRegionId={initialRegionId}
+            />
+          </Suspense>
         </div>
 
         {/* SEO Supporting Articles / Guides */}
@@ -174,6 +180,5 @@ const CalculatorPage = () => {
       </main>
     </div>
   );
-};
+}
 
-export default CalculatorPage;

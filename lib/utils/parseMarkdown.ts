@@ -37,6 +37,7 @@ export async function parseMarkdown(content: string): Promise<string> {
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: false })
     .use(rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .use(rehypeSanitize, schema as any)
     .use(rehypeStringify)
     .process(cleanContent);

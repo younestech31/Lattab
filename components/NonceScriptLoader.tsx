@@ -2,7 +2,7 @@ import { headers } from 'next/headers';
 import Script from 'next/script';
 import { JsonLdScript } from '@/components/schema';
 
-export async function NonceScriptLoader({ schemas = [] }: { schemas?: any[] }) {
+export async function NonceScriptLoader({ schemas = [] }: { schemas?: Record<string, unknown>[] }) {
   const headerStore = await headers();
   const nonce = headerStore.get('x-nonce') ?? '';
 

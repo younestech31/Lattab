@@ -3,6 +3,7 @@ import { useState, useMemo, useRef, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2 } from 'lucide-react';
 import { AppointmentFormData, ALGERIAN_HOLIDAYS, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOTS, getRequiredDocuments, openWhatsAppAppointment } from './types';
+import { validateAppointment } from '@/app/actions/appointment';
 
 export default function AppointmentForm({ services }: { services: string[] }) {
   const searchParams = useSearchParams();
@@ -63,48 +64,22 @@ export default function AppointmentForm({ services }: { services: string[] }) {
     e.preventDefault();
     setSubmitError(null);
 
-    const phoneDigits = appointmentData.phone.replace(/\D/g, '');
-    if (phoneDigits.length < 8) {
-      setSubmitError('يرجى إدخال رقم هاتف صحيح');
-      return;
-    }
-
-    if (appointmentData.honeypot) return;
-
     if (!appointmentAgreed) {
       setSubmitError('يرجى الموافقة على الشروط والأحكام وسياسة الخصوصية للمتابعة');
       return;
     }
 
-    if (!appointmentData.time) {
-      setSubmitError('يرجى اختيار وقت الموعد');
-      return;
-    }
-    if (isWeekend(appointmentData.date)) {
-      setSubmitError('عذراً، المكتب مغلق في عطلة نهاية الأسبوع (الجمعة والسبت). يرجى اختيار يوم آخر.');
-      return;
-    }
-
-    if (isPublicHoliday(appointmentData.date)) {
-      setSubmitError('هذا اليوم عطلة وطنية. يرجى اختيار يوم عمل.');
-      return;
-    }
-
-    const selectedDate = new Date(appointmentData.date + 'T12:00:00');
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    if (selectedDate < today) {
-      setSubmitError('لا يمكن حجز موعد في تاريخ مضى. يرجى اختيار تاريخ مستقبلي.');
-      return;
-    }
-
-    if (isPastTime(appointmentData.time, appointmentData.date)) {
-      setSubmitError('لا يمكن حجز موعد في وقت مضى اليوم. يرجى اختيار وقت آخر.');
-      return;
-    }
-
     setIsSubmitting(true);
     try {
+      const validation = await validateAppointment(appointmentData);
+      if (!validation.success) {
+        const firstError = Object.values(validation.errors)[0]?.[0] ?? 'خطأ في بيانات النموذج';
+        setSubmitError(firstError);
+        setIsSubmitting(false);
+        return;
+      }
+
+      const phoneDigits = appointmentData.phone.replace(/\D/g, '');
       const rateLimitRes = await fetch('/api/rate-limit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -118,12 +93,12 @@ export default function AppointmentForm({ services }: { services: string[] }) {
         return;
       }
 
-      openWhatsAppAppointment({ ...appointmentData });
+      openWhatsAppAppointment(validation.data);
       setIsAppointmentSubmitted(true);
       setTimeout(() => {
         document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setSubmitError('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مجدداً أو التواصل معنا عبر الهاتف.');
     } finally {
       setIsSubmitting(false);
@@ -153,11 +128,11 @@ export default function AppointmentForm({ services }: { services: string[] }) {
             </div>
           </div>
           <div className="space-y-3 text-sm text-gray-700">
-            <p><span className="font-bold ml-2">الاسم:</span> {appointmentData.name}</p>
-            <p><span className="font-bold ml-2">الخدمة:</span> {appointmentData.service}</p>
-            <p><span className="font-bold ml-2">التاريخ:</span> <span dir="ltr">{appointmentData.date}</span></p>
-            <p><span className="font-bold ml-2">الوقت:</span> {appointmentData.time}</p>
-            <p><span className="font-bold ml-2">الهاتف:</span> <span dir="ltr">{appointmentData.phone}</span></p>
+            <p><span className="font-bold ms-2">الاسم:</span> {appointmentData.name}</p>
+            <p><span className="font-bold ms-2">الخدمة:</span> {appointmentData.service}</p>
+            <p><span className="font-bold ms-2">التاريخ:</span> <span dir="ltr">{appointmentData.date}</span></p>
+            <p><span className="font-bold ms-2">الوقت:</span> {appointmentData.time}</p>
+            <p><span className="font-bold ms-2">الهاتف:</span> <span dir="ltr">{appointmentData.phone}</span></p>
           </div>
           <div className="mt-4 pt-4 border-t border-gray-100 print:border-black flex justify-between items-center">
              <span className="bg-amber-100 text-amber-800 px-2 py-1 rounded text-xs font-bold border border-amber-200 print:border-black">
@@ -191,7 +166,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
     <form onSubmit={handleAppointmentSubmit} className="space-y-6">
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="appt-name" className="block text-sm font-medium text-gray-700 mb-2"><User className="inline w-4 h-4 ml-2" />الاسم الكامل *</label>
+          <label htmlFor="appt-name" className="block text-sm font-medium text-gray-700 mb-2"><User className="inline w-4 h-4 ms-2" />الاسم الكامل *</label>
           <input
             id="appt-name"
             type="text"
@@ -204,7 +179,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
           />
         </div>
         <div>
-          <label htmlFor="appt-phone" className="block text-sm font-medium text-gray-700 mb-2"><Phone className="inline w-4 h-4 ml-2" />رقم الهاتف *</label>
+          <label htmlFor="appt-phone" className="block text-sm font-medium text-gray-700 mb-2 text-start"><Phone className="inline w-4 h-4 ms-2" />رقم الهاتف *</label>
           <input
             id="appt-phone"
             type="tel"
@@ -222,7 +197,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
 
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="appt-email" className="block text-sm font-medium text-gray-700 mb-2"><Mail className="inline w-4 h-4 ml-2" />البريد الإلكتروني (اختياري)</label>
+          <label htmlFor="appt-email" className="block text-sm font-medium text-gray-700 mb-2"><Mail className="inline w-4 h-4 ms-2" />البريد الإلكتروني (اختياري)</label>
           <input
             id="appt-email"
             type="email"
@@ -235,7 +210,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
           />
         </div>
         <div>
-          <label htmlFor="appointment_company" className="block text-sm font-medium text-gray-700 mb-2"><Building className="inline w-4 h-4 ml-2" />الشركة/المؤسسة (اختياري)</label>
+          <label htmlFor="appointment_company" className="block text-sm font-medium text-gray-700 mb-2"><Building className="inline w-4 h-4 ms-2" />الشركة/المؤسسة (اختياري)</label>
           <input
             id="appointment_company"
             type="text"
@@ -275,7 +250,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
           )}
         </div>
         <div>
-          <label htmlFor="appointment_date" className="block text-sm font-medium text-gray-700 mb-2"><Calendar className="inline w-4 h-4 ml-2" />التاريخ المفضل *</label>
+          <label htmlFor="appointment_date" className="block text-sm font-medium text-gray-700 mb-2"><Calendar className="inline w-4 h-4 ms-2" />التاريخ المفضل *</label>
           <input
             id="appointment_date"
             type="date"
@@ -302,7 +277,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
       />
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2"><Clock className="inline w-4 h-4 ml-2" />الوقت المفضل *</label>
+        <label className="block text-sm font-medium text-gray-700 mb-2"><Clock className="inline w-4 h-4 ms-2" />الوقت المفضل *</label>
         
         <div className="mb-3">
           <span className="text-xs font-bold text-gray-500 mb-2 block">الفترة الصباحية</span>
@@ -352,7 +327,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
       </div>
 
       <div>
-        <label htmlFor="appt-notes" className="block text-sm font-medium text-gray-700 mb-2"><FileText className="inline w-4 h-4 ml-2" />ملاحظات إضافية</label>
+        <label htmlFor="appt-notes" className="block text-sm font-medium text-gray-700 mb-2"><FileText className="inline w-4 h-4 ms-2" />ملاحظات إضافية</label>
         <textarea
           id="appt-notes"
           rows={3}
@@ -363,7 +338,7 @@ export default function AppointmentForm({ services }: { services: string[] }) {
           placeholder="أي معلومات إضافية تريد إضافتها..."
         />
         <div className="flex justify-end mt-1">
-          <span className="text-xs text-gray-400">{appointmentData.notes.length} / 1000</span>
+          <span className="text-xs text-gray-400">{(appointmentData.notes || '').length} / 1000</span>
         </div>
       </div>
 

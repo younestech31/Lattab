@@ -1,9 +1,17 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { t } from '@/lib/i18n/translations';
 import { Calculator, Copy, MessageCircle, Check } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
+import { CalculatorResult } from '@/lib/types';
+import { CalculatorKeys } from '@/lib/i18n/translations';
+
+interface PriceCalculatorProps {
+  initialData: CalculatorResult | null;
+  initialCommunes: string[];
+  initialRegionId: string;
+}
 
 export const CalculatorSkeleton = () => (
   <div className="animate-pulse space-y-6 w-full" dir="rtl">
@@ -17,20 +25,25 @@ export const CalculatorSkeleton = () => (
   </div>
 );
 
-export default function PriceCalculator() {
+export default function PriceCalculator({ initialData, initialCommunes, initialRegionId }: PriceCalculatorProps) {
   const { lang } = useLang();
   const [wilaya, setWilaya] = useState<string>('oran');
-  const [mappedData, setMappedData] = useState<any>(null);
-  const [communes, setCommunes] = useState<string[]>([]);
+  const [mappedData, setMappedData] = useState<CalculatorResult | null>(initialData);
+  const [communes, setCommunes] = useState<string[]>(initialCommunes);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
-  const [regionId, setRegionId] = useState<string>('');
+  const [regionId, setRegionId] = useState<string>(initialRegionId);
   const [categoryIdx, setCategoryIdx] = useState<number | ''>('');
   const [typeIdx, setTypeIdx] = useState<number | ''>('');
   const [zoneKey, setZoneKey] = useState<string>('');
   const [area, setArea] = useState<number | ''>('');
+  const hasInitialized = useRef(false);
   
   useEffect(() => {
+    if (!hasInitialized.current) {
+        hasInitialized.current = true;
+        return;
+    }
     const fetchApiData = async () => {
       const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','biskra','bechar','blida'];
       if (!supportedWilayas.includes(wilaya)) {
@@ -45,8 +58,8 @@ export default function PriceCalculator() {
         setMappedData(result.data);
         setCommunes(result.communes);
         if (!regionId && result.regionId) setRegionId(result.regionId);
-      } catch (e) {
-        console.error('Failed to fetch data', e);
+      } catch (err: unknown) {
+        console.error('Failed to fetch data', err);
       } finally {
         setIsLoadingData(false);
       }
@@ -62,7 +75,7 @@ export default function PriceCalculator() {
   const availableZones = useMemo(() => {                
     if (!selectedType) return [];
     return Object.entries(selectedType.zones)
-      .filter(([_, values]: [string, any]) => {
+      .filter(([_, values]) => {
         if (calculationMode === 'sale') {
           return values.min !== undefined && values.max !== undefined;
         } else {
@@ -294,8 +307,8 @@ export default function PriceCalculator() {
                         className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                       >
                         <option value="">-- اختر طبيعة العقار --</option>
-                        {currentRegionData?.prix.map((cat: any, idx: number) => (
-                          <option key={idx} value={idx}>{t(lang, 'calculator', cat.categorie as any)}</option>
+                        {currentRegionData?.prix.map((cat, idx) => (
+                          <option key={idx} value={idx}>{t(lang, 'calculator', cat.categorie as CalculatorKeys)}</option>
                         ))}
                       </select>
                     </div>
@@ -313,8 +326,8 @@ export default function PriceCalculator() {
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
                     <option value="">-- اختر الصنف --</option>
-                    {selectedCategory?.types.map((type: any, idx: number) => (
-                      <option key={idx} value={idx}>{t(lang, 'calculator', type.type as any)}</option>
+                    {selectedCategory?.types.map((type, idx) => (
+                      <option key={idx} value={idx}>{t(lang, 'calculator', type.type as CalculatorKeys)}</option>
                     ))}
                   </select>
                 </div>
@@ -333,7 +346,7 @@ export default function PriceCalculator() {
                   >
                     <option value="">-- اختر المنطقة --</option>
                     {availableZones.map((zone) => (
-                      <option key={zone} value={zone}>{t(lang, 'calculator', zone as any)}</option>
+                      <option key={zone} value={zone}>{t(lang, 'calculator', zone as CalculatorKeys)}</option>
                     ))}
                   </select>
                 </div>

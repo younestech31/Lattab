@@ -1,4 +1,14 @@
-const categoryMap = [
+import { 
+  PriceRefCommune, 
+  CalculatorResult, 
+  CalculatorCategoryResult, 
+  TypeEntry, 
+  CalculatorZoneResult,
+  CategoryKey,
+  CalculatorTypeResult
+} from '../types';
+
+const categoryMap: { key: CategoryKey; name: string }[] = [
   { key: 'individuels', name: 'Individuels' },
   { key: 'collectifsSemiCollectifs', name: 'Collectifs et Semi-Collectifs' },
   { key: 'locauxCommerciaux', name: 'Locaux Commerciaux' },
@@ -9,56 +19,48 @@ const categoryMap = [
   { key: 'terrainsAgricolesPente', name: 'Terrains Agricoles en Pente' },
 ];
 
-export const getPricesForCalculator = (dataSource: any[], regionId: string, calculationMode: 'sale' | 'rent') => {
+export const getPricesForCalculator = (dataSource: PriceRefCommune[], regionId: string, calculationMode: 'sale' | 'rent'): CalculatorResult | null => {
   const commune = dataSource.find(c => c.commune === regionId);
   
   if (!commune) return null;
 
-  return {
-    categories: categoryMap.map(catMap => {
-      const catData = commune[catMap.key as keyof typeof commune];
-      if (!catData || !Array.isArray(catData)) return null;
+  const categories = categoryMap.map(catMap => {
+    const catData = commune[catMap.key];
+    if (!catData || !Array.isArray(catData)) return null;
 
-      return {
-        categorie: catMap.name,
-        types: catData.map((t: any) => {
-          const zones: Record<string, any> = {};
-          if (t.zoneResidentielle) {
-            if (calculationMode === 'sale') {
-              zones['Zone résidentielle'] = { min: t.zoneResidentielle.min, max: t.zoneResidentielle.max };
-            } else {
-              zones['Zone résidentielle'] = { rent_min: t.zoneResidentielle.min, rent_max: t.zoneResidentielle.max };
-            }
-          }
-          if (t.centreVille) {
-            if (calculationMode === 'sale') {
-              zones['Centre ville'] = { min: t.centreVille.min, max: t.centreVille.max };
-            } else {
-              zones['Centre ville'] = { rent_min: t.centreVille.min, rent_max: t.centreVille.max };
-            }
-          }
-          if (t.zonePeripherique) {
-            if (calculationMode === 'sale') {
-              zones['Zone périphérique'] = { min: t.zonePeripherique.min, max: t.zonePeripherique.max };
-            } else {
-              zones['Zone périphérique'] = { rent_min: t.zonePeripherique.min, rent_max: t.zonePeripherique.max };
-            }
-          }
-          if (t.zoneEloignement) {
-            if (calculationMode === 'sale') {
-              zones['Zone d\'éloignement'] = { min: t.zoneEloignement.min, max: t.zoneEloignement.max };
-            } else {
-              zones['Zone d\'éloignement'] = { rent_min: t.zoneEloignement.min, rent_max: t.zoneEloignement.max };
-            }
-          }
-
-          return {
-            type: t.label,
-            unit: t.unit,
-            zones
-          };
-        }).filter((t: any) => Object.keys(t.zones).length > 0)
+    const types = catData.map((t: TypeEntry) => {
+      const zones: Record<string, CalculatorZoneResult> = {};
+      
+      const processRange = (label: string, range?: { min: number; max: number }) => {
+        if (!range) return;
+        if (calculationMode === 'sale') {
+          zones[label] = { min: range.min, max: range.max };
+        } else {
+          zones[label] = { rent_min: range.min, rent_max: range.max };
+        }
       };
-    }).filter((cat: any) => cat && cat.types && cat.types.length > 0)
-  };
+
+      processRange('Zone résidentielle', t.zoneResidentielle);
+      processRange('Centre ville', t.centreVille);
+      processRange('Zone périphérique', t.zonePeripherique);
+      processRange('Zone d\'éloignement', t.zoneEloignement);
+
+      const result: CalculatorTypeResult = {
+        type: t.label,
+        zones
+      };
+      if (t.unit) {
+        result.unit = t.unit;
+      }
+      return result;
+    }).filter(t => Object.keys(t.zones).length > 0);
+
+    const categoryResult: CalculatorCategoryResult = {
+      categorie: catMap.name,
+      types
+    };
+    return categoryResult;
+  }).filter((cat): cat is CalculatorCategoryResult => cat !== null && cat.types.length > 0);
+  
+  return { categories };
 };

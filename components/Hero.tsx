@@ -1,6 +1,11 @@
-const Hero = () => {
+import { cookies } from 'next/headers';
+import { t, Language } from '@/lib/i18n/translations';
+
+export default async function Hero() {
+  const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
+
   return (
-    <div className="relative">
+    <div className="relative" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
       <section
         id="home"
         className="
@@ -31,18 +36,18 @@ const Hero = () => {
               <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
-              <span className="font-medium">مرخص من وزارة العدل الجزائرية</span>
+              <span className="font-medium">{t(lang, 'hero', 'badge')}</span>
             </div>
 
             {/* Title — fluid font size with clamp */}
             <h1
               className="font-bold text-white leading-[1.2] tracking-tight text-[clamp(1.75rem,calc(6vw+0.5rem),4.5rem)]"
             >
-              مكتب الأستاذ لعطب محمد
+              {t(lang, 'hero', 'title')}
               <span
                 className="block text-amber-400 mt-1 text-[clamp(1.5rem,calc(5vw+0.5rem),3.75rem)]"
               >
-                موثق معتمد بوهران
+                {t(lang, 'hero', 'subtitle')}
               </span>
             </h1>
 
@@ -50,18 +55,18 @@ const Hero = () => {
             <p
               className="hero-description text-white/85 max-w-xl mx-auto leading-relaxed px-1 text-[clamp(0.95rem,calc(2.5vw+0.25rem),1.25rem)]"
             >
-              ثقة 15 عامًا في التوثيق القانوني — نضمن لك معاملات آمنة وسريعة وفق أحدث الأنظمة القانونية الجزائرية
+              {t(lang, 'hero', 'description')}
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-3 w-full max-w-sm sm:max-w-md">
               <div className="bg-emerald-950/40 backdrop-blur-sm rounded-2xl px-4 py-3 sm:py-4 border border-emerald-800/50 text-center">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">15+</div>
-                <div className="text-emerald-100 text-xs sm:text-sm font-medium mt-0.5">سنة خبرة</div>
+                <div className="text-emerald-100 text-xs sm:text-sm font-medium mt-0.5">{t(lang, 'hero', 'stats_experience')}</div>
               </div>
               <div className="bg-emerald-950/40 backdrop-blur-sm rounded-2xl px-4 py-3 sm:py-4 border border-emerald-800/50 text-center">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">5,000+</div>
-                <div className="text-emerald-100 text-xs sm:text-sm font-medium mt-0.5">معاملة ناجحة</div>
+                <div className="text-emerald-100 text-xs sm:text-sm font-medium mt-0.5">{t(lang, 'hero', 'stats_transactions')}</div>
               </div>
             </div>
 
@@ -74,7 +79,7 @@ const Hero = () => {
                 <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                احجز موعدك الآن
+                {t(lang, 'hero', 'cta_book')}
               </a>
               <a
                 href="#services"
@@ -83,7 +88,7 @@ const Hero = () => {
                 <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-                اكتشف خدماتنا
+                {t(lang, 'hero', 'cta_services')}
               </a>
             </div>
 
@@ -102,5 +107,3 @@ const Hero = () => {
     </div>
   );
 };
-
-export default Hero;

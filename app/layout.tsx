@@ -123,7 +123,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         <LanguageProvider lang={cookieLang}>
           <a 
             href="#main-content" 
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 [html[dir=rtl]_&]:focus:right-4 [html[dir=rtl]_&]:focus:left-auto focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold"
           >
             تخطى إلى المحتوى الرئيسي
           </a>

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
+import { PriceRefCommune } from '@/lib/types';
 import { z } from 'zod';
 
 export const runtime = 'nodejs';
@@ -12,7 +13,7 @@ const QuerySchema = z.object({
 
 type Wilaya = z.infer<typeof QuerySchema>['wilaya'];
 
-const wilayaDataLoaders: Record<Wilaya, () => Promise<{ transactions: any[]; locations: any[] }>> = {
+const wilayaDataLoaders: Record<Wilaya, () => Promise<{ transactions: PriceRefCommune[]; locations: PriceRefCommune[] }>> = {
   oran: async () => ({
     transactions: (await import('@/lib/data/oran-price-reference-transactions')).oranPriceReference,
     locations: (await import('@/lib/data/oran-price-reference-locations')).oranLocationsReference,
@@ -89,7 +90,7 @@ export async function GET(request: NextRequest) {
         result = getPricesForCalculator(dataSource, regionId, mode);
     }
     
-    const communes = dataSource.map((c: any) => c.commune);
+    const communes = dataSource.map((c) => c.commune);
     
     return NextResponse.json(
         { data: result, communes, regionId },

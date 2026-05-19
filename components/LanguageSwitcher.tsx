@@ -13,7 +13,7 @@ export default function LanguageSwitcher({ headerActive, isMobile = false }: Lan
     <button
       onClick={toggleLang}
       className={`border border-current rounded-lg font-bold transition-colors flex items-center justify-center gap-1 ${
-        isMobile ? 'px-2 min-w-[2.5rem] py-1 text-sm' : 'px-3 py-1 text-sm ml-2'
+        isMobile ? 'px-2 min-w-[2.5rem] py-1 text-sm' : 'px-3 py-1 text-sm ms-2'
       } ${
         headerActive ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
       }`}
