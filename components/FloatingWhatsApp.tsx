@@ -21,7 +21,7 @@ const FloatingWhatsApp = () => {
   }, [showTooltip]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-end pb-[env(safe-area-inset-bottom,0px)]" dir={isAr ? 'rtl' : 'ltr'}>
+    <div className="fixed bottom-6 end-6 z-50 flex items-end pb-[env(safe-area-inset-bottom,0px)]" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="relative">
         <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-30" />
         <a
@@ -40,12 +40,12 @@ const FloatingWhatsApp = () => {
           </svg>
         </a>
         {showTooltip && (
-          <div className={`absolute bottom-16 ${isAr ? 'right-0' : 'left-0'} bg-white text-gray-800 text-sm font-medium 
+          <div className="absolute bottom-16 end-0 bg-white text-gray-800 text-sm font-medium 
                           px-4 py-2 rounded-xl shadow-lg whitespace-nowrap border border-gray-100
-                          animate-fade-in`}
+                          animate-fade-in"
                aria-hidden="true">
             {isAr ? '💬 تحدث معنا الآن!' : '💬 Discutons maintenant !'}
-            <div className={`absolute -bottom-2 ${isAr ? 'right-5' : 'left-5'} w-3 h-3 bg-white rotate-45 border-b border-r border-gray-100`} />
+            <div className="absolute -bottom-2 end-5 w-3 h-3 bg-white rotate-45 border-b border-r border-gray-100 [html[dir=rtl]_&]:border-l [html[dir=rtl]_&]:border-r-0" />
           </div>
         )}
       </div>

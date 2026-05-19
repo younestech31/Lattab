@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
@@ -10,36 +10,26 @@ export default function StickyMobileCTA() {
   
   const [isVisible, setIsVisible] = useState(false);
   const [isContactVisible, setIsContactVisible] = useState(false);
-  const ticking = useRef(false);
-
-  const handleScroll = useCallback(() => {
-    if (!ticking.current) {
-      requestAnimationFrame(() => {
-        setIsVisible(window.scrollY > 300);
-        ticking.current = false;
-      });
-      ticking.current = true;
-    }
-  }, []);
 
   useEffect(() => {
+    const handleScroll = () => {
+      // Show CTA only after scrolling down
+      setIsVisible(window.scrollY > 300);
+      
+      // Calculate intersection on the fly instead of relying on stateful IntersectionObserver
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        const rect = contactSection.getBoundingClientRect();
+        // Contact segment starts being visible when top arrives at viewport bottom
+        setIsContactVisible(rect.top <= window.innerHeight);
+      } else {
+        setIsContactVisible(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // initial check
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
-
-  useEffect(() => {
-    const contactSection = document.getElementById('contact');
-    if (!contactSection) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsContactVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(contactSection);
-    return () => observer.disconnect();
   }, []);
 
   const shouldShow = isVisible && !isContactVisible;
@@ -51,7 +41,7 @@ export default function StickyMobileCTA() {
       }`}
       dir={isAr ? 'rtl' : 'ltr'}
     >
-      <div className={`w-full pointer-events-auto ${isAr ? 'pr-[5.5rem]' : 'pl-[5.5rem]'}`}>
+      <div className="w-full pointer-events-auto pe-[5.5rem]">
         <Link 
           href="/#booking-form"
           className="block w-full bg-emerald-600 text-white font-bold text-center py-4 rounded-2xl shadow-[0_8px_30px_rgba(5,150,105,0.3)] hover:bg-emerald-700 transition-colors"
