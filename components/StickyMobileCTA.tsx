@@ -45,7 +45,7 @@ export default function StickyMobileCTA() {
         shouldShow ? 'translate-y-0' : 'translate-y-[200%]'
       }`}
     >
-      <div className="w-full pl-[5.5rem] pointer-events-auto">
+      <div className="w-full pr-[5.5rem] pointer-events-auto">
         <Link 
           href="/#booking-form"
           className="block w-full bg-emerald-600 text-white font-bold text-center py-4 rounded-2xl shadow-[0_8px_30px_rgba(5,150,105,0.3)] hover:bg-emerald-700 transition-colors"

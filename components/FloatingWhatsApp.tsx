@@ -17,7 +17,7 @@ const FloatingWhatsApp = () => {
   }, [showTooltip]);
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex items-end pb-[env(safe-area-inset-bottom,0px)]">
+    <div className="fixed bottom-6 right-6 z-50 flex items-end pb-[env(safe-area-inset-bottom,0px)]">
       <div className="relative">
         <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-30" />
         <a
@@ -36,11 +36,12 @@ const FloatingWhatsApp = () => {
           </svg>
         </a>
         {showTooltip && (
-          <div className="absolute bottom-16 left-0 bg-white text-gray-800 text-sm font-medium 
+          <div className="absolute bottom-16 right-0 bg-white text-gray-800 text-sm font-medium 
                           px-4 py-2 rounded-xl shadow-lg whitespace-nowrap border border-gray-100
-                          animate-fade-in">
+                          animate-fade-in"
+               aria-hidden="true">
             💬 تحدث معنا الآن!
-            <div className="absolute -bottom-2 left-5 w-3 h-3 bg-white rotate-45 border-b border-r border-gray-100" />
+            <div className="absolute -bottom-2 right-5 w-3 h-3 bg-white rotate-45 border-b border-r border-gray-100" />
           </div>
         )}
       </div>
