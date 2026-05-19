@@ -1,11 +1,12 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useTransition } from 'react';
+import { useRouter } from 'next/navigation';
 import { setLanguageCookie } from '@/app/actions/language';
 
 export type Language = 'ar' | 'fr';
 
-interface LanguageContextType {
+export interface LanguageContextType {
   lang: Language;
   setLang: (lang: Language) => void;
   toggleLang: () => void;
@@ -15,25 +16,33 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children, lang }: { children: React.ReactNode, lang: Language }) {
   const [langState, setLangState] = useState<Language>(lang);
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   const toggleLang = () => {
     const nextLang = langState === 'ar' ? 'fr' : 'ar';
     setLangState(nextLang);
     setLanguageCookie(nextLang).then(() => {
-      window.location.reload();
+      startTransition(() => {
+        router.refresh();
+      });
     });
   };
 
   const setLang = (newLang: Language) => {
     setLangState(newLang);
     setLanguageCookie(newLang).then(() => {
-        window.location.reload();
+      startTransition(() => {
+        router.refresh();
+      });
     });
   };
 
   return (
     <LanguageContext.Provider value={{ lang: langState, setLang, toggleLang }}>
-      {children}
+      <div style={{ opacity: isPending ? 0.7 : 1, transition: 'opacity 0.2s' }}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 }

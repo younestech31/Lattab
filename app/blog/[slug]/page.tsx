@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: `${SITE_URL}/blog/${post.slug}`,
       languages: {
         'ar-DZ': `${SITE_URL}/blog/${post.slug}`,
+        'fr-DZ': `${SITE_URL}/blog/${post.slug}`,
         'x-default': `${SITE_URL}/blog/${post.slug}`,
       },
     },

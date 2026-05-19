@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/calculateur-prix-referentiel`,
     languages: {
       'ar-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
+      'fr-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
       'x-default': `${SITE_URL}/calculateur-prix-referentiel`,
     },
   },
