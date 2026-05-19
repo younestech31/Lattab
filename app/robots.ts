@@ -7,13 +7,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: ['/', '/blog/', '/services/', '/glossaire/', '/faq'],
-        disallow: ['/api/', '/scripts/', '/*.json', '/terms-privacy'],
+        disallow: ['/api/', '/scripts/', '/*.json'],
       },
       {
         // Allow AI crawlers to read public content for citation
         userAgent: ['GPTBot', 'PerplexityBot', 'anthropic-ai', 'Claude-Web'],
-        allow: ['/', '/blog/', '/services/', '/faq', '/glossaire/'],
-        disallow: ['/api/', '/calculateur-prix-referentiel', '/terms-privacy'],
+        allow: ['/', '/blog/', '/services/', '/faq', '/glossaire/', '/calculateur-prix-referentiel'],
+        disallow: ['/api/'],
       },
       {
         // Block scraper bots that provide no SEO value

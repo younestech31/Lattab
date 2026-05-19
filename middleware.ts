@@ -38,6 +38,8 @@ export function middleware(request: NextRequest) {
 
   response.headers.set('Content-Security-Policy', cspHeader);
   response.headers.set('x-lang', lang);
+  response.headers.set('Vary', 'Cookie');
+  response.headers.set('Cache-Control', 'private, no-store');
 
   return response;
 }

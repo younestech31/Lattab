@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import { blogPosts, frBlogPosts } from '@/lib/data/blog';
-import { SITE_URL as base } from '@/lib/config';
-import { LAST_CONTENT_UPDATED } from '@/lib/server-constants';
+import { SITE_URL as base, LAST_CONTENT_UPDATED } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
 

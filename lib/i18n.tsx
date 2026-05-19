@@ -10,6 +10,7 @@ export interface LanguageContextType {
   lang: Language;
   setLang: (lang: Language) => void;
   toggleLang: () => void;
+  isPending: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -39,10 +40,8 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
   };
 
   return (
-    <LanguageContext.Provider value={{ lang: langState, setLang, toggleLang }}>
-      <div style={{ opacity: isPending ? 0.7 : 1, transition: 'opacity 0.2s' }}>
-        {children}
-      </div>
+    <LanguageContext.Provider value={{ lang: langState, setLang, toggleLang, isPending }}>
+      {children}
     </LanguageContext.Provider>
   );
 }

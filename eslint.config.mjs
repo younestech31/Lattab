@@ -20,7 +20,10 @@ const eslintConfig = [
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-require-imports": "off",
       "react-hooks/exhaustive-deps": "warn",
-    }
+      "no-restricted-imports": ["error", {
+        "patterns": ["@/lib/constants", "@/lib/translations", "@/lib/data/translations"]
+      }]
+    },
   }
 ];
 
