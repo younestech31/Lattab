@@ -39,11 +39,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
   
   if (post.arSlug) {
+    // Reciprocal linking: If a French post translates an Arabic post,
+    // the French post must point BOTH ar-DZ and x-default to the Arabic URL,
+    // and the Arabic URL points fr-DZ back here.
     languages['ar-DZ'] = `${SITE_URL}/blog/${post.arSlug}`;
+    languages['x-default'] = `${SITE_URL}/blog/${post.arSlug}`;
+  }
+
+  const titleValue = post.title.length > 20 ? { absolute: post.title } : post.title;
+  const renderedTitle = post.title.length > 20 ? post.title : `${post.title} | مكتب الأستاذ لعطب محمد - موثق وهران`;
+
+  if (process.env.NODE_ENV === 'development' && renderedTitle.length > 60) {
+    console.warn(`Rendered title exceeds 60 characters: "${renderedTitle}" (${renderedTitle.length} chars)`);
   }
 
   return {
-    title: post.title,
+    title: titleValue,
     description: post.description,
     authors: [{ name: 'Office Notarial de Maître Lattab Mohamed', url: SITE_URL }],
     alternates: {

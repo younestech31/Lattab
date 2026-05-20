@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
-import { blogPosts } from '@/lib/data/blog';
+import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
@@ -34,17 +34,34 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return { title: 'مقال غير موجود' };
   }
 
+  const frPost = frBlogPosts.find(fp => fp.arSlug === post.slug);
+  const languages: Record<string, string> = {
+    'ar-DZ': `${SITE_URL}/blog/${post.slug}`,
+    'x-default': `${SITE_URL}/blog/${post.slug}`,
+  };
+
+  if (frPost) {
+    languages['fr-DZ'] = `${SITE_URL}/blog/fr/${frPost.slug}`;
+  }
+
+  if (process.env.NODE_ENV === 'development' && languages['fr-DZ'] === languages['ar-DZ']) {
+    throw new Error('fr-DZ hreflang must not equal ar-DZ hreflang');
+  }
+
+  const titleValue = post.title.length > 20 ? { absolute: post.title } : post.title;
+  const renderedTitle = post.title.length > 20 ? post.title : `${post.title} | مكتب الأستاذ لعطب محمد - موثق وهران`;
+
+  if (process.env.NODE_ENV === 'development' && renderedTitle.length > 60) {
+    console.warn(`Rendered title exceeds 60 characters: "${renderedTitle}" (${renderedTitle.length} chars)`);
+  }
+
   return {
-    title: post.title,
+    title: titleValue,
     description: post.description,
     authors: [{ name: 'مكتب الأستاذ لعطب محمد', url: SITE_URL }],
     alternates: {
       canonical: `${SITE_URL}/blog/${post.slug}`,
-      languages: {
-        'ar-DZ': `${SITE_URL}/blog/${post.slug}`,
-        'fr-DZ': `${SITE_URL}/blog/${post.slug}`,
-        'x-default': `${SITE_URL}/blog/${post.slug}`,
-      },
+      languages,
     },
     openGraph: {
       title: post.title,

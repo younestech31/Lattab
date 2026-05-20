@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'الصفحة غير موجودة | مكتب الأستاذ لعطب محمد - موثق',
+  description: 'الصفحة غير موجودة — مكتب الأستاذ لعطب محمد، موثق معتمد بوهران. يمكنك العودة للرئيسية أو التواصل معنا لاستلام الاستشارة ومتابعة المعاملات.',
   robots: {
     index: false,
     follow: false,

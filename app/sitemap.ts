@@ -14,11 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         'x-default': `${base}/blog/${post.slug}`,
       };
       
-      // If we don't have a French equivalent, the Arabic post serves as the French post per previous logic, or we let Google know there's no French yet. The instructions say we should have proper cross-linking.
       if (frEquivalent) {
         languages['fr-DZ'] = `${base}/blog/fr/${frEquivalent.slug}`;
-      } else {
-        languages['fr-DZ'] = `${base}/blog/${post.slug}`;
       }
 
       return {

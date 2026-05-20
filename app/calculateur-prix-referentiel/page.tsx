@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
 import Link from 'next/link';
 import { Calculator, AlertCircle, TrendingDown, Info } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
@@ -10,35 +11,42 @@ import CalculatorSkeleton from '@/components/CalculatorSkeleton';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
 import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
 
-export const metadata: Metadata = {
-  title: 'حاسبة السعر المرجعي للعقار بوهران 2026 — Calculateur Prix Référentiel',
-  description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي. بيع وإيجار — سكني وتجاري. تجنب المراجعة الضريبية.',
-  alternates: {
-    canonical: `${SITE_URL}/calculateur-prix-referentiel`,
-    languages: {
-      'ar-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
-      'fr-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
-      'x-default': `${SITE_URL}/calculateur-prix-referentiel`,
+export async function generateMetadata(): Promise<Metadata> {
+  const headerStore = await headers();
+  const lang = (headerStore.get('x-lang') ?? 'ar') as 'ar' | 'fr';
+
+  return {
+    title: { absolute: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026' },
+    description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي. بيع وإيجار — سكني وتجاري. تجنب المراجعة الضريبية.',
+    alternates: {
+      canonical: `${SITE_URL}/calculateur-prix-referentiel`,
+      languages: {
+        'ar-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
+        'fr-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
+        'x-default': `${SITE_URL}/calculateur-prix-referentiel`,
+      },
     },
-  },
-  openGraph: {
-    title: 'حاسبة السعر المرجعي للعقار بوهران 2026',
-    description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي.',
-    url: `${SITE_URL}/calculateur-prix-referentiel`,
-    type: 'website',
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'حاسبة السعر المرجعي للعقار بوهران 2026' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'حاسبة السعر المرجعي للعقار بوهران 2026',
-    description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي.',
-    images: [`${SITE_URL}/og-image.jpg`],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+    openGraph: {
+      title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
+      description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي.',
+      url: `${SITE_URL}/calculateur-prix-referentiel`,
+      type: 'website',
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026' }],
+      locale: lang === 'ar' ? 'ar_DZ' : 'fr_DZ',
+      alternateLocale: lang === 'ar' ? ['fr_DZ'] : ['ar_DZ'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
+      description: 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي.',
+      images: [`${SITE_URL}/og-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default async function CalculatorPage() {
   const initialSaleData = getPricesForCalculator(oranPriceReference, oranPriceReference[0].commune, 'sale');

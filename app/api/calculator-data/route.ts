@@ -5,6 +5,17 @@ import { z } from 'zod';
 
 export const runtime = 'nodejs';
 
+export interface CalculatorApiResponse {
+  data: unknown;
+  communes: string[];
+  regionId: string | null;
+}
+
+export interface CalculatorApiErrorResponse {
+  error: string;
+  details?: unknown;
+}
+
 const QuerySchema = z.object({
   wilaya: z.enum(['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','biskra','bechar','blida']),
   mode: z.enum(['sale','rent']).default('sale'),
@@ -73,11 +84,33 @@ export async function GET(request: NextRequest) {
   });
 
   if (!parsed.success) {
-    return NextResponse.json({ error: 'Invalid parameters', details: parsed.error.flatten() }, { status: 400 });
+    return NextResponse.json<CalculatorApiErrorResponse>(
+      { error: 'Invalid parameters', details: parsed.error.flatten() },
+      { 
+        status: 400,
+        headers: {
+          'Cache-Control': 'no-store'
+        }
+      }
+    );
   }
 
   const { wilaya, mode, region } = parsed.data;
   
+  const etag = `"${wilaya}-${mode}-${region ?? 'default'}"`;
+  const ifNoneMatch = request.headers.get('If-None-Match');
+
+  if (ifNoneMatch === etag) {
+    return new NextResponse(null, {
+      status: 304,
+      headers: {
+        'ETag': etag,
+        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
+        'Vary': 'Accept-Encoding',
+      },
+    });
+  }
+
   try {
     const data = await wilayaDataLoaders[wilaya]();
     const dataSource = (mode === 'rent' ? data.locations : data.transactions) ?? [];
@@ -92,16 +125,26 @@ export async function GET(request: NextRequest) {
     
     const communes = dataSource.map((c) => c.commune);
     
-    return NextResponse.json(
+    return NextResponse.json<CalculatorApiResponse>(
         { data: result, communes, regionId },
         { 
-        headers: { 
+          headers: { 
             'Content-Type': 'application/json',
-            'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=3600',
-        } 
+            'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
+            'ETag': etag,
+            'Vary': 'Accept-Encoding',
+          } 
         }
     );
   } catch {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json<CalculatorApiErrorResponse>(
+      { error: 'Internal Server Error' },
+      { 
+        status: 500,
+        headers: {
+          'Cache-Control': 'no-store'
+        }
+      }
+    );
   }
 }

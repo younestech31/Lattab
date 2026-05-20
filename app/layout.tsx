@@ -25,6 +25,10 @@ export const viewport: Viewport = {
   colorScheme: 'light',
 };
 
+/**
+ * alternates (hreflang) must never be set at the layout level — it applies to all child routes and produces duplicate tags.
+ * Define alternates only in leaf page.tsx files.
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -82,14 +86,6 @@ export const metadata: Metadata = {
     title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
     images: [`${SITE_URL}/og-image.jpg`],
-  },
-  alternates: {
-    canonical: `${SITE_URL}/`,
-    languages: {
-      'ar-DZ': `${SITE_URL}/`,
-      'fr-DZ': `${SITE_URL}/`,
-      'x-default': `${SITE_URL}/`,
-    },
   },
   verification: {
     google: 'bb0bdf3d32a68c3f',

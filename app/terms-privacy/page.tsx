@@ -5,23 +5,28 @@ import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle,
 import { WORKING_HOURS, SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'الشروط والأحكام وسياسة الخصوصية',
+  title: { absolute: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران' },
   description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها، والتزاماتنا القانونية والمهنية تجاهك كعميل.',
   alternates: {
     canonical: `${SITE_URL}/terms-privacy`,
+    languages: {
+      'ar-DZ': `${SITE_URL}/terms-privacy`,
+      'fr-DZ': `${SITE_URL}/terms-privacy`,
+      'x-default': `${SITE_URL}/terms-privacy`,
+    },
   },
   openGraph: {
     url: `${SITE_URL}/terms-privacy`,
-    title: 'الشروط والأحكام وسياسة الخصوصية | موثق لعطب - وهران',
+    title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
     description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
-    siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+    siteName: 'مكتب الأستاذ لعطب محمد — موثق وهران',
     images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: 'الشروط والأحكام - موثق لعطب محمد وهران', type: 'image/png' }],
     locale: 'ar_DZ',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'الشروط والأحكام وسياسة الخصوصية | موثق لعطب - وهران',
+    title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
     description: 'الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران.',
     images: [`${SITE_URL}/logo.webp`],
   },

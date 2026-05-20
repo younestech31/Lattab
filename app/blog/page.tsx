@@ -26,8 +26,11 @@ export async function generateMetadata({
     };
   }
 
+  const headerStore = await headers();
+  const lang = (headerStore.get('x-lang') ?? 'ar') as 'ar' | 'fr';
+
   return {
-    title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
+    title: { absolute: 'المدونة القانونية والعقارية — موثق وهران' },
     description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
     alternates: {
       canonical: `${SITE_URL}/blog`,
@@ -38,7 +41,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: 'المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق',
+      title: 'المدونة القانونية والعقارية — موثق وهران',
       description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
       url: `${SITE_URL}/blog`,
       siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
@@ -50,7 +53,8 @@ export async function generateMetadata({
           alt: 'المدونة القانونية - موثق معتمد',
         },
       ],
-      locale: 'ar_DZ',
+      locale: lang === 'ar' ? 'ar_DZ' : 'fr_DZ',
+      alternateLocale: lang === 'ar' ? ['fr_DZ'] : ['ar_DZ'],
       type: 'website',
     },
   };

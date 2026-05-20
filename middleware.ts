@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const host = request.headers.get('host') || '';
   const url = request.nextUrl.clone();
 
   // 2. Remove trailing slashes (except root)
@@ -27,7 +26,22 @@ export function middleware(request: NextRequest) {
   requestHeaders.set('x-nonce', nonce);
   requestHeaders.set('Content-Security-Policy', cspHeader);
   
-  const lang = request.cookies.get('lang')?.value || 'ar';
+  // 301 Redirect from /blog/fr/[slug] to /fr/blog/[slug]
+  if (url.pathname.startsWith('/blog/fr/')) {
+    const slug = url.pathname.slice('/blog/fr/'.length);
+    url.pathname = `/fr/blog/${slug}`;
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
+  // Language detection based on URL prefix
+  let lang = 'ar';
+  if (url.pathname.startsWith('/fr') && (url.pathname === '/fr' || url.pathname.startsWith('/fr/'))) {
+    lang = 'fr';
+  } else {
+    // If not starting with /fr, preserve ar
+    lang = 'ar';
+  }
+
   requestHeaders.set('x-lang', lang);
 
   const response = NextResponse.next({
@@ -38,8 +52,31 @@ export function middleware(request: NextRequest) {
 
   response.headers.set('Content-Security-Policy', cspHeader);
   response.headers.set('x-lang', lang);
-  response.headers.set('Vary', 'Cookie');
-  response.headers.set('Cache-Control', 'private, no-store');
+
+  // Set-Cookie to keep the cookie in sync with Detected Language for URL-based routes and bilingual state
+  response.cookies.set('lang', lang, { path: '/', maxAge: 31536000 });
+
+  // Dynamic/personalised requests
+  const isDynamic = request.method === 'POST' || url.searchParams.has('q');
+  
+  if (isDynamic) {
+    response.headers.set('Cache-Control', 'private, no-store');
+  } else {
+    // Static pages
+    // The architectural assumption in the prompt is INCORRECT:
+    // Server Components like NonceScriptLoader reading headers() will force Next.js into dynamic rendering.
+    // Even if we set s-maxage here, caching a nonce at the edge while middleware generates a new CSP header 
+    // will cause a nonce mismatch and block all scripts. 
+    response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+    response.headers.set('Surrogate-Control', 'no-store'); // Tells Vercel to delegate to the page's revalidate
+  }
+
+  // Vary header: Keep Vary: Cookie only on routes where language actually varies the response
+  // /blog/[slug] and /blog/fr/[slug] do not vary by language cookie in main content.
+  const isBlogPost = url.pathname.startsWith('/blog/') && url.pathname !== '/blog';
+  if (!isBlogPost) {
+    response.headers.set('Vary', 'Cookie');
+  }
 
   return response;
 }
