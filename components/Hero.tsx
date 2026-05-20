@@ -64,6 +64,7 @@ export default async function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm sm:max-w-none sm:justify-center">
               <a
                 href="#booking-form"
+                aria-label={t(lang, 'hero', 'cta_book')}
                 className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all hover:scale-105 active:scale-95 shadow-lg shadow-amber-500/30 touch-manipulation"
               >
                 <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,6 +74,7 @@ export default async function Hero() {
               </a>
               <a
                 href="#services"
+                aria-label={t(lang, 'hero', 'cta_services')}
                 className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm text-white px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all border border-white/30 touch-manipulation"
               >
                 <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

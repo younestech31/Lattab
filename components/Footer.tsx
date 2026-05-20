@@ -236,6 +236,14 @@ export default async function Footer() {
       {/* Bottom Footer */}
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-4 py-6">
+          <div className="text-center text-gray-400 text-sm mb-6">
+            <p>
+              {isRTL 
+                ? 'هذا الموقع إعلامي بحت ولا يُعد دعوة للتعامل أو إعلاناً تجارياً. الموثق ضابط عمومي معيَّن بمرسوم رئاسي.'
+                : 'Ce site est purement informatif et ne constitue ni une sollicitation commerciale ni une publicité. Le notaire est un officier public nommé par décret présidentiel.'
+              }
+            </p>
+          </div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm text-center md:text-right">
               © {new Date().getFullYear()} {translations[lang].footer.copyright}

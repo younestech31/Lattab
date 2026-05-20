@@ -14,7 +14,7 @@ import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 // Validate this page using the Open Graph debugger:
 // https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Flattab.vercel.app%2Fcalculateur-prix-referentiel
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي. بيع وإيجار — سكني وتجاري. تجنب المراجعة الضريبية.';
+  const desc = 'السعر المرجعي الرسمي للعقار في وهران 2026. بيانات رسمية من وزارة المالية 2026 للإعلام.';
   assertDescriptionLength(desc, 'calculateur-prix-referentiel');
 
   return {
@@ -64,28 +64,22 @@ export default async function CalculatorPage() {
     ]
   };
 
-  const toolSchema = {
+  const webApplicationSchema = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "حاسبة السعر المرجعي للعقار بوهران 2026",
-    "description": "أداة رقمية لحساب الأسعار المرجعية الرسمية للعقار في ولاية وهران وباقي مناطق الوطن 2026 وفق جداول مصلحة الضرائب الجزائرية",
-    "url": SITE_URL + "/calculateur-prix-referentiel",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web Browser",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DZD", "availability": "https://schema.org/InStock" },
-    "author": { "@type": "LegalService", "name": "مكتب الأستاذ لعطب محمد", "@id": SITE_URL + "/#organization" },
-    "inLanguage": ["ar-DZ", "fr-DZ"],
-    "audience": { "@type": "Audience", "geographicArea": { "@type": "AdministrativeArea", "name": "ولاية وهران" } },
-    "featureList": ["حساب سعر البيع المرجعي", "حساب سعر الإيجار المرجعي", "دعم العقارات السكنية والتجارية", "تغطية جميع مناطق الوطن 2026"]
+    "@type": "WebApplication",
+    "name": "حاسبة السعر المرجعي العقاري — ولاية وهران",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DZD" }
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <NonceScriptLoader schemas={[breadcrumbSchema, toolSchema]} />
+      <NonceScriptLoader schemas={[breadcrumbSchema, webApplicationSchema]} />
       <WebPageSchema
         url={`${SITE_URL}/calculateur-prix-referentiel`}
         name="حاسبة السعر المرجعي للعقار 2026"
-        description="احسب السعر المرجعي الرسمي لعقارك في وهران مجاناً. بيانات رسمية من وزارة المالية 2026."
+        description="السعر المرجعي الرسمي للعقار في وهران 2026. بيانات رسمية من وزارة المالية."
         breadcrumbs={[
           { name: "الرئيسية", item: `${SITE_URL}/` },
           { name: "حاسبة السعر المرجعي", item: `${SITE_URL}/calculateur-prix-referentiel` }
@@ -110,7 +104,7 @@ export default async function CalculatorPage() {
               حاسبة السعر المرجعي للعقار 2026
             </h1>
             <p className="text-xl text-emerald-100 max-w-2xl mx-auto text-center leading-relaxed">
-              الأداة الأولى مجاناً في الجزائر لحساب القيم المرجعية لبيع وإيجار العقارات بناءً على الجداول الرسمية المعتمدة لتجنب الضرائب الإضافية والتسويات الإدارية.
+              حاسبة السعر المرجعي العقاري — أداة إعلامية استرشادية بناءً على الجداول الرسمية المعتمدة من المديرية العامة للضرائب.
             </p>
           </div>
         </div>

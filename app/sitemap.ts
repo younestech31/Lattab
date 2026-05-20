@@ -58,25 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(LAST_CONTENT_UPDATED),
       changeFrequency: 'weekly',
       priority: 1.0,
-      images: [
-        `${base}/logo.webp`
-      ],
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/`,
-          'fr-DZ': `${base}/fr`,
-          'x-default': `${base}/`,
-        },
-      },
-    },
-    {
-      url: `${base}/fr`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-      images: [
-        `${base}/logo.webp`
-      ],
       alternates: {
         languages: {
           'ar-DZ': `${base}/`,
@@ -96,39 +77,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(LAST_CONTENT_UPDATED),
       changeFrequency: 'weekly',
       priority: 0.8,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/blog`,
-          'fr-DZ': `${base}/fr/blog`,
-          'x-default': `${base}/blog`,
-        },
-      },
-    },
-    {
-      url: `${base}/fr/blog`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/blog`,
-          'fr-DZ': `${base}/fr/blog`,
-          'x-default': `${base}/blog`,
-        },
-      },
     },
     {
       url: `${base}/terms-privacy`,
       lastModified: new Date('2025-01-01'),
       changeFrequency: 'yearly',
       priority: 0.3,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/terms-privacy`,
-          'fr-DZ': `${base}/terms-privacy`,
-          'x-default': `${base}/terms-privacy`,
-        },
-      },
     },
     ...blogEntries,
     ...frBlogEntries,

@@ -157,14 +157,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               "datePublished": post.dateISO,
               "dateModified": post.dateModified || post.dateISO,
               "author": {
-                "@type": "Organization",
-                "@id": `${SITE_URL}/#organization`,
-                "name": "مكتب الأستاذ لعطب محمد"
+                "@type": "Person",
+                "name": "الأستاذ لعطب محمد"
               },
               "publisher": {
                 "@type": "Organization",
-                "@id": `${SITE_URL}/#organization`,
-                "name": "مكتب الأستاذ لعطب محمد",
+                "name": "الديوان العمومي للتوثيق",
                 "logo": {
                   "@type": "ImageObject",
                   "url": `${SITE_URL}/logo.webp`

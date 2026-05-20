@@ -6,7 +6,8 @@ import './globals.css';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Analytics } from "@vercel/analytics/next";
+import { AnalyticsWrapper } from "@/components/AnalyticsWrapper";
+import CookieBanner from '@/components/CookieBanner';
 import { SITE_URL } from '@/lib/config';
 import type { Viewport } from 'next';
 import { cookies, headers } from 'next/headers';
@@ -140,7 +141,8 @@ export default async function RootLayout({children}: {children: React.ReactNode}
           <div className="no-print">
             <Footer />
           </div>
-          <Analytics />
+          <AnalyticsWrapper />
+          <CookieBanner />
         </LanguageProvider>
       </body>
     </html>

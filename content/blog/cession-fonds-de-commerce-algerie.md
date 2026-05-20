@@ -1,8 +1,8 @@
 ---
 title: "بيع أو التنازل عن الأصل التجاري في الجزائر 2026: الدليل القانوني"
 description: "دليل قانوني شامل لإجراءات بيع أو التنازل عن الأصل التجاري (Fonds de commerce) في الجزائر، وحماية حقوق الدائنين."
-dateISO: "2026-05-25"
-dateModified: "2026-05-25"
+dateISO: "2026-05-20"
+dateModified: "2026-05-20"
 category: "شركات"
 language: "ar"
 readingTime: 4

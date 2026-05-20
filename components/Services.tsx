@@ -59,18 +59,8 @@ export default async function Services() {
                 ))}
               </ul>
 
-              {/* Service Booking CTA */}
+              {/* Service Info Link */}
               <div className="border-t border-gray-100 mt-4 pt-4 flex flex-col gap-2">
-                <Link
-                  href={`/#booking-form?service=${encodeURIComponent(service.title)}`}
-                  className="group/cta w-full sm:w-auto text-center sm:text-start min-h-[44px] flex items-center justify-center sm:justify-start text-emerald-600 hover:text-emerald-800 font-semibold text-sm transition-colors group-hover:underline"
-                >
-                  {lang === 'ar' ? (
-                    <>احجز لهذه الخدمة <span className="mr-1 group-hover/cta:-translate-x-1 transition-transform inline-block">←</span></>
-                  ) : (
-                    <>Prendre RDV pour ce service <span className="ml-1 group-hover/cta:translate-x-1 transition-transform inline-block">→</span></>
-                  )}
-                </Link>
                 {SERVICE_TO_BLOG_MAP[service.title] && (
                   <Link
                     href={lang === 'ar' ? `/blog/${SERVICE_TO_BLOG_MAP[service.title]}` : `/fr/blog/${SERVICE_TO_BLOG_MAP[service.title]}`}

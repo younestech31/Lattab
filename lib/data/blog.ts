@@ -48,7 +48,7 @@ function loadBlogPosts(): BlogPost[] {
       tags: data.tags,
       arSlug: data.arSlug,
     } satisfies BlogPost;
-  }).sort((a, b) => b.dateISO.localeCompare(a.dateISO));
+  }).filter(post => post.dateISO <= new Date().toISOString().split('T')[0]).sort((a, b) => b.dateISO.localeCompare(a.dateISO));
 }
 
 function loadFrenchBlogPosts(): BlogPost[] {
@@ -80,7 +80,7 @@ function loadFrenchBlogPosts(): BlogPost[] {
       tags: data.tags,
       arSlug: data.arSlug,
     } satisfies BlogPost;
-  }).sort((a, b) => b.dateISO.localeCompare(a.dateISO));
+  }).filter(post => post.dateISO <= new Date().toISOString().split('T')[0]).sort((a, b) => b.dateISO.localeCompare(a.dateISO));
 }
 
 export const blogPosts: BlogPost[] = loadBlogPosts();

@@ -5,6 +5,7 @@
 /* Custom Font */
 .font-cairo {
   font-family: var(--font-cairo), 'Cairo', sans-serif;
+  line-height: 1.8;
 }
 
 /* Smooth Scrolling */

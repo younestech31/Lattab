@@ -135,7 +135,9 @@ const Header = () => {
               ))}
               <Link
                 href={getHref('/#booking-form')}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-lg font-medium transition-colors text-sm"
+                className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
+                  headerActive ? 'text-gray-700' : 'text-white'
+                }`}
               >
                 {text.book}
               </Link>

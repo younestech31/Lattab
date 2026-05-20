@@ -9,8 +9,8 @@ export const translations = {
       procedures: 'الإجراءات',
       news: 'أخبار قانونية',
       faq: 'الأسئلة الشائعة',
-      contact: 'اتصل بنا',
-      book: 'احجز موعد',
+      contact: 'معلومات الاتصال',
+      book: 'حجز موعد',
       notary: 'موثق',
       name: 'الأستاذ لعطب محمد'
     },
@@ -64,24 +64,24 @@ export const translations = {
       badge: 'موثق لدى محكمة فلاوسن وهران',
       title: 'الديوان العمومي للتوثيق',
       subtitle: 'الأستاذ لعطب محمد — موثق بوهران',
-      description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران — لتوثيق عقودكم وفق أحكام القانون الجزائري',
+      description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران — للإعلام حول الإجراءات التوثيقية وفق القانون الجزائري',
       // REMOVED: prohibited advertising: stats_experience
       // REMOVED: prohibited advertising: stats_transactions
-      cta_book: 'طلب موعد',
-      cta_services: 'اختصاصات المكتب'
+      cta_book: 'حجز موعد إداري',
+      cta_services: 'الاختصاصات التوثيقية للمكتب'
     },
     services: {
-      title: 'خدماتنا',
-      heading: 'خدمات توثيقية شاملة',
+      title: 'الاختصاصات التوثيقية للمكتب',
+      heading: 'الاختصاصات التوثيقية للمكتب',
       items: [
-        { title: 'عقود البيع والشراء العقارية', description: 'توثيق كامل لعقود بيع وشراء العقارات مع ضمان الصحة القانونية والتحقق من الملكية والرهون.', features: ['عقود بيع عقارات سكنية', 'عقود بيع محلات تجارية', 'عقود بيع أراضي', 'عقود بيع مركبات'] },
-        { title: 'عقود الإيجار والتأجير', description: 'إعداد عقود إيجار شاملة مع جميع الضمانات القانونية لحماية حقوق المؤجر والمستأجر.', features: ['إيجار سكني طويل الأمد', 'إيجار تجاري', 'عقود إيجار موسمية', 'تجديد العقود'] },
-        { title: 'الوكالات والتفويضات', description: 'إعداد جميع أنواع الوكالات مع تحديد الصلاحيات بدقة لحماية حقوق الموكل.', features: ['وكالة عامة كاملة', 'وكالة خاصة محددة', 'وكالة قضائية', 'وكالة بنكية'] },
-        { title: 'تأسيس الشركات والمؤسسات', description: 'إعداد وتوثيق عقود تأسيس الشركات التجارية والمدنية مع جميع المستندات المطلوبة.', features: ['شركات ذات مسؤولية محدودة', 'شركات تضامن', 'شركات مساهمة', 'تعديل النظام الأساسي'] },
-        { title: 'الرهن والتأمينات', description: 'توثيق عقود الرهن العقاري والحيازي وكل أنواع التأمينات العينية.', features: ['رهن عقاري', 'رهن حيازي', 'رفع الرهن', 'عقود تأمين'] },
-        { title: 'التصريحات والمصادقات', description: 'المصادقة على التوقيعات والتصريحات المختلفة وإعداد الشهادات الإدارية.', features: ['مصادقة التوقيع', 'تصريحات الشرف', 'شهادات الملكية', 'تصريحات الإرث'] }
+        { title: 'عقود البيع والشراء العقارية', description: 'يتولى الموثق تحرير عقود البيع والشراء العقارية وفق الإجراءات القانونية المعمول بها، بما في ذلك التحقق من الملكية والوضعية القانونية.', features: ['عقود بيع عقارات سكنية', 'عقود بيع محلات تجارية', 'عقود بيع أراضي', 'عقود بيع مركبات'] },
+        { title: 'عقود الإيجار والتأجير', description: 'يتولى الموثق إعداد عقود الإيجار وفقاً للتشريع الساري لحماية حقوق الطرفين المتعاقدين.', features: ['إيجار سكني طويل الأمد', 'إيجار تجاري', 'عقود إيجار موسمية', 'تجديد العقود'] },
+        { title: 'الوكالات والتفويضات', description: 'يُحرر الموثق الوكالات القانونية مع تحديد دقيق لنطاق الصلاحيات التفويضية.', features: ['وكالة عامة كاملة', 'وكالة خاصة محددة', 'وكالة قضائية', 'وكالة بنكية'] },
+        { title: 'تأسيس الشركات والمؤسسات', description: 'يتولى الموثق تحرير العقود التأسيسية للشركات التجارية وفق أحكام القانون التجاري.', features: ['شركات ذات مسؤولية محدودة', 'شركات تضامن', 'شركات مساهمة', 'تعديل النظام الأساسي'] },
+        { title: 'الرهن والتأمينات', description: 'يُوثق المكتب عقود الرهن والتأمينات العينية وفق القواعد القانونية.', features: ['رهن عقاري', 'رهن حيازي', 'رفع الرهن', 'عقود تأمين'] },
+        { title: 'التصريحات والمصادقات', description: 'يُحرر المكتب التصريحات والمصادقات القانونية طبقاً للتشريعات السارية.', features: ['مصادقة التوقيع', 'تصريحات الشرف', 'شهادات الملكية', 'تصريحات الإرث'] }
       ],
-      cta: 'استفسر عن خدماتنا'
+      cta: 'الاستفسار حول الإجراءات'
     },
     notaryRole: {
       title: 'دور الموثق العمومي في حماية حقوقكم',
@@ -102,16 +102,15 @@ export const translations = {
       cta_mobile: 'عرض جميع المقالات'
     },
     faq: {
-      badge: 'الأسئلة الشائعة',
-      title: 'هل لديك استفسار؟',
-      description: 'إليك إجابات على الأسئلة الأكثر شيوعاً. إذا لم تجد إجابة سؤالك، لا تتردد في التواصل معنا مباشرة.',
-      contact_title: 'لم تجد إجابتك؟',
-      contact_description: 'نحن هنا للإجابة على جميع استفساراتكم'
+      title: 'معلومات حول الإجراءات التوثيقية',
+      description: 'للمزيد من المعلومات حول الإجراءات، يمكنكم التواصل مع الديوان عبر القنوات الرسمية.',
+      contact_title: 'المزيد من المعلومات',
+      contact_description: 'للمزيد من المعلومات، يمكنكم التواصل مع الديوان عبر القنوات الرسمية.'
     },
     contact: {
-      badge: 'تواصل معنا',
-      title: 'احجز موعدك الآن',
-      description: 'تواصل معنا لحجز موعد أو الاستفسار عن خدماتنا. نحن هنا لمساعدتك.',
+      badge: 'الديوان العمومي للتوثيق',
+      title: 'حجز موعد إداري',
+      description: 'يمكنكم التواصل مع الديوان العمومي للتوثيق للاستفسار حول الإجراءات والمستندات المطلوبة أو لتنظيم المواعيد الإدارية.',
       tabs: {
         appointment: 'طلب موعد',
         inquiry: 'استفسار عام'
@@ -160,8 +159,6 @@ export const translations = {
           'تأسيس الشركات والمؤسسات',
           'الرهن والتأمينات',
           'التصريحات والمصادقات',
-          'استشارة قانونية',
-          'خدمات أخرى',
         ],
         required_docs_hints: {
           'عقود البيع والشراء العقارية': [
@@ -219,6 +216,11 @@ export const translations = {
       copyright: 'جميع الحقوق محفوظة — الديوان العمومي للتوثيق',
       terms_link: 'الشروط والأحكام',
       privacy_link: 'سياسة الخصوصية'
+    },
+    cookie_banner: {
+      message: 'يستخدم هذا الموقع خدمات استضافة سحابية (Firebase) لمعالجة بيانات حجز المواعيد. بالاستمرار في التصفح، فإنك توافق على سياسة الخصوصية ومعالجة بياناتك وفق القانون رقم 18-07 المعدل والمتمم.',
+      privacy_policy: 'الاطلاع على سياسة الخصوصية',
+      accept: 'موافقة'
     }
   },
   fr: {
@@ -232,7 +234,7 @@ export const translations = {
       news: 'Actualités',
       faq: 'FAQ',
       contact: 'Contact',
-      book: 'Prendre RDV',
+      book: 'Demande de RDV',
       notary: 'Notaire',
       name: 'Maitre Lattab Mohamed'
     },
@@ -286,24 +288,24 @@ export const translations = {
       badge: 'Notaire près le Tribunal de Felaoucene Oran',
       title: 'Étude Public Notarial',
       subtitle: 'Maître Lattab Mohamed — Notaire à Oran',
-      description: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran — pour la rédaction de vos actes conformément au droit algérien',
+      description: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran — pour l\'information sur les procédures notariales selon le droit algérien',
       // REMOVED: prohibited advertising: stats_experience
       // REMOVED: prohibited advertising: stats_transactions
-      cta_book: 'Demande de rendez-vous',
-      cta_services: 'Champs d\'intervention'
+      cta_book: 'Demande de RDV',
+      cta_services: 'Compétences de l\'Étude'
     },
     services: {
-      title: 'Nos services',
-      heading: 'Services notariaux complets',
+      title: 'Compétences de l\'Étude',
+      heading: 'Compétences notariales',
       items: [
-        { title: 'Actes de vente immobilière', description: 'Documentation complète des actes de vente immobilière avec garantie de validité juridique et vérification de la propriété et des hypothèques.', features: ['Actes de vente de logements', 'Actes de vente de locaux commerciaux', 'Actes de vente de terrains', 'Actes de vente de véhicules'] },
-        { title: 'Actes de location', description: 'Préparation d\'actes de location complets avec toutes les garanties juridiques pour protéger les droits du bailleur et du locataire.', features: ['Location résidentielle longue durée', 'Location commerciale', 'Contrats de location saisonnière', 'Renouvellement de contrats'] },
-        { title: 'Procurations et mandats', description: 'Préparation de tous types de procurations avec définition précise des pouvoirs pour protéger les droits du mandant.', features: ['Procuration générale complète', 'Procuration spéciale spécifique', 'Procuration judiciaire', 'Procuration bancaire'] },
-        { title: 'Constitution de sociétés', description: 'Préparation et documentation des statuts de sociétés commerciales et civiles avec tous les documents requis.', features: ['SARL', 'Société de personnes', 'Société par actions', 'Modification des statuts'] },
-        { title: 'Hypothèques et assurances', description: 'Documentation des actes d\'hypothèque immobilière et possessive et tous types de sûretés réelles.', features: ['Hypothèque immobilière', 'Hypothèque possessive', 'Mainlevée d\'hypothèque', 'Actes d\'assurance'] },
-        { title: 'Déclarations et certifications', description: 'Certification de signatures, diverses déclarations et préparation d\'attestations administratives.', features: ['Certification de signature', 'Déclarations sur l\'honneur', 'Attestations de propriété', 'Déclarations de succession'] }
+        { title: 'Actes de vente immobilière', description: 'Le notaire rédige les actes de vente immobilière conformément aux procédures légales en vigueur, incluant la vérification du titre et de la situation juridique.', features: ['Actes de vente de logements', 'Actes de vente de locaux commerciaux', 'Actes de vente de terrains', 'Actes de vente de véhicules'] },
+        { title: 'Actes de location', description: 'Le notaire prépare les actes de location selon la législation en vigueur pour protéger les droits des parties contractantes.', features: ['Location résidentielle longue durée', 'Location commerciale', 'Contrats de location saisonnière', 'Renouvellement de contrats'] },
+        { title: 'Procurations et mandats', description: 'Le notaire rédige les procurations légales avec une définition précise de l\'étendue des pouvoirs de représentation.', features: ['Procuration générale complète', 'Procuration spéciale spécifique', 'Procuration judiciaire', 'Procuration bancaire'] },
+        { title: 'Constitution de sociétés', description: 'Le notaire rédige les statuts de sociétés commerciales conformément aux dispositions du Code de Commerce.', features: ['SARL', 'Société de personnes', 'Société par actions', 'Modification des statuts'] },
+        { title: 'Hypothèques et assurances', description: 'L\'Étude documente les actes d\'hypothèque et les sûretés réelles selon les règles juridiques.', features: ['Hypothèque immobilière', 'Hypothèque possessive', 'Mainlevée d\'hypothèque', 'Actes d\'assurance'] },
+        { title: 'Déclarations et certifications', description: 'L\'Étude rédige les déclarations et certifications légales conformément aux législations en vigueur.', features: ['Certification de signature', 'Déclarations sur l\'honneur', 'Attestations de propriété', 'Déclarations de succession'] }
       ],
-      cta: 'Renseignez-vous sur nos services'
+      cta: 'Renseignez-vous sur les procédures'
     },
     notaryRole: {
       title: 'Le rôle du Notaire Public dans la protection de vos droits',
@@ -324,16 +326,15 @@ export const translations = {
       cta_mobile: 'Voir tous les articles'
     },
     faq: {
-      badge: 'FAQ',
-      title: 'Avez-vous une question ?',
-      description: 'Voici les réponses aux questions les plus fréquentes. Si vous ne trouvez pas la réponse à votre question, n\'hésitez pas à nous contacter directement.',
-      contact_title: 'Vous n\'avez pas trouvé votre réponse ?',
-      contact_description: 'Nous sommes là pour répondre à toutes vos interrogations'
+      title: 'Information sur les procédures notariales',
+      description: 'Pour plus d\'informations, vous pouvez contacter l\'Étude via les canaux officiels.',
+      contact_title: 'Plus d\'informations',
+      contact_description: 'Pour plus d\'informations, vous pouvez contacter l\'Étude via les canaux officiels.'
     },
     contact: {
-      badge: 'Contactez-nous',
-      title: 'Réservez votre rendez-vous',
-      description: 'Contactez-nous pour prendre rendez-vous ou vous renseigner sur nos services. Nous sommes là pour vous aider.',
+      badge: 'Étude Public Notarial',
+      title: 'Demande de rendez-vous',
+      description: 'Vous pouvez contacter l\'Étude Public Notarial pour vous renseigner sur les procédures et documents requis ou pour organiser des rendez-vous administratifs.',
       tabs: {
         appointment: 'Demande de rendez-vous',
         inquiry: 'Demande de renseignement'
@@ -382,8 +383,6 @@ export const translations = {
           'Constitution de sociétés',
           'Hypothèques et assurances',
           'Déclarations et certifications',
-          'Consultation juridique',
-          'Autres services',
         ],
         required_docs_hints: {
           'Actes de vente immobilière': [
@@ -441,6 +440,11 @@ export const translations = {
       copyright: 'Tous droits réservés — Étude Public Notarial',
       terms_link: 'Conditions d\'utilisation',
       privacy_link: 'Politique de confidentialité'
+    },
+    cookie_banner: {
+      message: 'Ce site utilise des services d\'hébergement cloud (Firebase) pour traiter les données de réservation de rendez-vous. En poursuivant votre navigation, vous acceptez notre politique de confidentialité et le traitement de vos données conformément à la législation en vigueur.',
+      privacy_policy: 'Voir la politique de confidentialité',
+      accept: 'Accepter'
     }
   },
 } as const;
@@ -465,6 +469,7 @@ export function t(lang: Language, section: 'notaryRole', key: NotaryRoleKeys): s
 export function t(lang: Language, section: 'faq', key: FAQKeys): string;
 export function t(lang: Language, section: 'legalUpdates', key: LegalUpdatesKeys): string;
 export function t(lang: Language, section: 'footer', key: FooterKeys): string;
+export function t(lang: Language, section: 'cookie_banner', key: 'message' | 'privacy_policy' | 'accept'): string;
 export function t(lang: Language, section: 'contact', key: string): string;
 export function t(lang: Language, section: keyof TranslationKeys, key: string): string {
   return (translations[lang][section] as Record<string, string>)[key] ?? key;
