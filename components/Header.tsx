@@ -60,6 +60,18 @@ const Header = () => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen]);
 
+  const getHref = (href: string) => {
+    if (lang === 'fr') {
+      if (href.startsWith('/#')) {
+        return `/fr#${href.slice(2)}`;
+      }
+      if (href === '/blog') {
+        return '/fr/blog';
+      }
+    }
+    return href;
+  };
+
   const navLinks = [
     { href: '/#home', label: text.home },
     { href: '/#services', label: text.services },
@@ -86,7 +98,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/#home" className="flex items-center gap-3">
+          <Link href={getHref('/#home')} className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
               <Image
                 src="/logo-small.webp"
@@ -114,7 +126,7 @@ const Header = () => {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={getHref(link.href)}
                   className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
                     headerActive ? 'text-gray-700' : 'text-white'
                   } ${([text.why_us, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
@@ -123,7 +135,7 @@ const Header = () => {
                 </Link>
               ))}
               <Link
-                href="/#booking-form"
+                href={getHref('/#booking-form')}
                 className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-lg font-medium transition-colors text-sm"
               >
                 {text.book}
@@ -178,7 +190,7 @@ const Header = () => {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={getHref(link.href)}
                   onClick={() => setIsMenuOpen(false)}
                   className={`font-medium text-gray-700`}
                 >

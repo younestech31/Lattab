@@ -19,6 +19,13 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
+  React.useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+  }, [lang]);
+
   const handleLanguageChange = (nextLang: Language) => {
     let targetPath = pathname;
     
