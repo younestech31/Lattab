@@ -8,6 +8,73 @@ import { useLang } from '@/lib/i18n';
 import { CalculatorResult } from '@/lib/types';
 import { CalculatorKeys } from '@/lib/i18n/translations';
 
+const uiTranslations = {
+  ar: {
+    saleMode: 'بيع العقار',
+    rentMode: 'إيجار العقار',
+    wilaya: 'الولاية',
+    region: 'البلدية / المنطقة',
+    chooseRegion: '-- اختر البلدية --',
+    category: 'طبيعة العقار',
+    chooseCategory: '-- اختر طبيعة العقار --',
+    subType: 'صنف العقار',
+    chooseSubType: '-- اختر الصنف --',
+    urbanZone: 'المنطقة العمرانية',
+    chooseUrbanZone: '-- اختر المنطقة --',
+    areaSq: 'المساحة (بالمتر المربع m²)',
+    areaHa: 'المساحة (بالهكتار Ha)',
+    areaPlaceholder: 'أدخل المساحة',
+    resultTitle: 'النتيجة التقريبية',
+    rateLabel: 'السعر للمتر المرجعي:',
+    rentRateLabel: 'مبلغ الإيجار المرجعي للمتر:',
+    declarationLabel: 'إجمالي التصريح المرجعي:',
+    rentTotalLabel: 'إجمالي مبلغ الإيجار الشهري المرجعي:',
+    irgLabel: 'الضريبة على الدخل الإجمالي (IRG) المقدرة',
+    minLimit: 'الحد الأدنى',
+    maxLimit: 'الحد الأقصى',
+    irgNote: '* هذه الضريبة تُدفع شهرياً أو سنوياً حسب الحالة.',
+    copy: 'نسخ',
+    copied: 'تم النسخ!',
+    whatsapp: 'واتساب',
+    placeholderText: 'يرجى ملء جميع الحقول أعلاه لإظهار السعر المرجعي التقريبي',
+    warningTitle: 'تنبيه هام:',
+    warningText: 'هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية وهران (الفترة 2012-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.',
+    notSupportedMessage: 'بيانات هذه البلدية قيد التحديث وسيتم إضافتها قريباً. يرجى اختيار بلدية أخرى أو المحاولة لاحقاً.'
+  },
+  fr: {
+    saleMode: 'Vente immobilière',
+    rentMode: 'Location immobilière',
+    wilaya: 'Wilaya',
+    region: 'Commune / Secteur',
+    chooseRegion: '-- Choisir la commune --',
+    category: 'Nature du bien',
+    chooseCategory: '-- Choisir la nature du bien --',
+    subType: 'Catégorie du bien',
+    chooseSubType: '-- Choisir la catégorie --',
+    urbanZone: 'Zone urbaine / Situation',
+    chooseUrbanZone: '-- Choisir la zone --',
+    areaSq: 'Superficie (en mètre carré m²)',
+    areaHa: 'Superficie (en Hectare Ha)',
+    areaPlaceholder: 'Entrez la superficie',
+    resultTitle: 'Estimation Approximative',
+    rateLabel: 'Prix de référence par m² :',
+    rentRateLabel: 'Loyer de référence par m² :',
+    declarationLabel: 'Valeur totale réglementaire estimée :',
+    rentTotalLabel: 'Loyer mensuel total réglementaire estimé :',
+    irgLabel: 'Impôt sur le Revenu Global (IRG) estimé',
+    minLimit: 'Limite min',
+    maxLimit: 'Limite max',
+    irgNote: '* Cet impôt est payé mensuellement ou annuellement selon le cas.',
+    copy: 'Copier',
+    copied: 'Copié !',
+    whatsapp: 'WhatsApp',
+    placeholderText: 'Veuillez remplir tous les champs ci-dessus pour afficher l\'estimation du prix de référence',
+    warningTitle: 'Avis important :',
+    warningText: 'Ce calculateur fournit une estimation basée sur les prix de référence approuvés par la Direction Générale des Impôts de la wilaya d\'Oran (période 2012-2026). Les prix sont susceptibles d\'être mis à jour ou modifiés en fonction de la situation réelle du bien. Les chiffres obtenus sont indicatifs, et le cabinet n\'assume aucune responsabilité quant à leur exactitude finale lors de la conclusion du contrat.',
+    notSupportedMessage: 'Les données de cette commune sont en cours de mise à jour. Veuillez sélectionner une autre commune.'
+  }
+};
+
 interface PriceCalculatorProps {
   initialData: CalculatorResult | null;
   initialCommunes: string[];
@@ -16,6 +83,8 @@ interface PriceCalculatorProps {
 
 export default function PriceCalculator({ initialData, initialCommunes, initialRegionId }: PriceCalculatorProps) {
   const { lang } = useLang();
+  const isAr = lang === 'ar';
+  const ui = uiTranslations[lang];
   const [wilaya, setWilaya] = useState<string>('oran');
   const [mappedData, setMappedData] = useState<CalculatorResult | null>(initialData);
   const [communes, setCommunes] = useState<string[]>(initialCommunes);
@@ -139,12 +208,26 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
 
   const handleCopy = async () => {
     if (!result) return;
-    let textToCopy = `السعر المرجعي في ${regionId}:\nمن ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/م²`;
+    const unitLabel = selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? (isAr ? 'هكتار' : 'Ha') : (isAr ? 'م²' : 'm²');
+    
+    let textToCopy = isAr 
+      ? `السعر المرجعي في ${regionId}:\nمن ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/${unitLabel}`
+      : `Prix de référence à ${regionId} :\nDe ${result.min.toLocaleString()} à ${result.max.toLocaleString()} DZD/${unitLabel}`;
+      
     if (area && Number(area) > 0) {
-      textToCopy += `\nالمساحة: ${area} م²`;
-      textToCopy += `\nالسعر الإجمالي المقدر: من ${result.totalMin.toLocaleString()} إلى ${result.totalMax.toLocaleString()} د.ج`;
+      textToCopy += isAr 
+        ? `\nالمساحة: ${area} ${unitLabel}`
+        : `\nSuperficie : ${area} ${unitLabel}`;
+        
+      textToCopy += isAr
+        ? `\nالسعر الإجمالي المقدر: من ${result.totalMin.toLocaleString()} إلى ${result.totalMax.toLocaleString()} د.ج`
+        : `\nValeur totale estimée : De ${result.totalMin.toLocaleString()} à ${result.totalMax.toLocaleString()} DZD`;
     }
-    textToCopy += `\n(حاسبة مكتب الأستاذ لعطب محمد — lattab.vercel.app)`;
+    
+    textToCopy += isAr 
+      ? `\n(حاسبة مكتب الأستاذ لعطب محمد — lattab.vercel.app)`
+      : `\n(Calculateur de l'Office Notarial de Maître Lattab Mohamed — lattab.vercel.app)`;
+      
     try {
       await navigator.clipboard.writeText(textToCopy);
       setCopied(true);
@@ -165,17 +248,31 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
 
   const handleWhatsApp = () => {
     if (!result) return;
-    let textToShare = `السلام عليكم، قمت بحساب السعر المرجعي لعقاري (${regionId}) على موقعكم:\nالسعر للمتر المربع: من ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/م²`;
+    const unitLabel = selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? (isAr ? 'هكتار' : 'Ha') : (isAr ? 'م²' : 'm²');
+    
+    let textToShare = isAr
+      ? `السلام عليكم، قمت بحساب السعر المرجعي لعقاري (${regionId}) على موقعكم:\nالسعر للمتر المربع: من ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/${unitLabel}`
+      : `Bonjour, j'ai calculé le prix de référence de mon bien (${regionId}) sur votre site :\nPrix unitaire : De ${result.min.toLocaleString()} à ${result.max.toLocaleString()} DZD/${unitLabel}`;
+      
     if (area && Number(area) > 0) {
-      textToShare += `\nالمساحة: ${area} م²`;
-      textToShare += `\nالسعر الإجمالي المقدر: من ${result.totalMin.toLocaleString()} إلى ${result.totalMax.toLocaleString()} د.ج`;
+      textToShare += isAr
+        ? `\nالمساحة: ${area} ${unitLabel}`
+        : `\nSuperficie : ${area} ${unitLabel}`;
+        
+      textToShare += isAr
+        ? `\nالسعر الإجمالي المقدر: من ${result.totalMin.toLocaleString()} إلى ${result.totalMax.toLocaleString()} د.ج`
+        : `\nValeur totale estimée : De ${result.totalMin.toLocaleString()} à ${result.totalMax.toLocaleString()} DZD`;
     }
-    textToShare += `\nأود الاستفسار أكثر.`;
+    
+    textToShare += isAr
+      ? `\nأود الاستفسار أكثر.`
+      : `\nJe souhaite avoir plus d'informations.`;
+      
     window.open(`https://wa.me/?text=${encodeURIComponent(textToShare)}`, '_blank');
   };
 
   return (
-    <section id="calculator" className="py-16 bg-gradient-to-b from-white to-emerald-50">
+    <section id="calculator" className="py-16 bg-gradient-to-b from-white to-emerald-50" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10 border border-emerald-100">
@@ -194,7 +291,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
-                بيع العقار
+                {ui.saleMode}
               </button>
               <button
                 onClick={() => {
@@ -209,7 +306,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
-                إيجار العقار
+                {ui.rentMode}
               </button>
             </div>
 
@@ -219,7 +316,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                 {/* Wilaya Option */}
                 <div>
                   <label htmlFor="wilaya" className="block text-sm font-bold text-gray-700 mb-2">
-                    الولاية
+                    {ui.wilaya}
                   </label>
                   <select
                     id="wilaya"
@@ -227,32 +324,70 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     onChange={handleWilayaChange}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
-                    <option value="oran">وهران (31)</option>
+                    <option value="oran">{isAr ? 'وهران (31)' : 'Oran (31)'}</option>
                     {[
-                      { v: 'adrar', n: 'أدرار (01)' }, { v: 'chlef', n: 'الشلف (02)' }, { v: 'laghouat', n: 'الأغواط (03)' },
-                      { v: 'oum-el-bouaghi', n: 'أم البواقي (04)' }, { v: 'batna', n: 'باتنة (05)' }, { v: 'bejaia', n: 'بجاية (06)' },
-                      { v: 'biskra', n: 'بسكرة (07)' }, { v: 'bechar', n: 'بشار (08)' }, { v: 'blida', n: 'البليدة (09)' },
-                      { v: 'bouira', n: 'البويرة (10)' }, { v: 'tamanrasset', n: 'تمنراست (11)' }, { v: 'tebessa', n: 'تبسة (12)' },
-                      { v: 'tlemcen', n: 'تلمسان (13)' }, { v: 'tiaret', n: 'تيارت (14)' }, { v: 'tizi-ouzou', n: 'تيزي وزو (15)' },
-                      { v: 'alger', n: 'الجزائر (16)' }, { v: 'djelfa', n: 'الجلفة (17)' }, { v: 'jijel', n: 'جيجل (18)' },
-                      { v: 'setif', n: 'سطيف (19)' }, { v: 'saida', n: 'سعيدة (20)' }, { v: 'skikda', n: 'سكيكدة (21)' },
-                      { v: 'sidi-bel-abbes', n: 'سيدي بلعباس (22)' }, { v: 'annaba', n: 'عنابة (23)' }, { v: 'guelma', n: 'قالمة (24)' },
-                      { v: 'constantine', n: 'قسنطينة (25)' }, { v: 'medea', n: 'المدية (26)' }, { v: 'mostaganem', n: 'مستغانم (27)' },
-                      { v: 'msila', n: 'المسيلة (28)' }, { v: 'mascara', n: 'معسكر (29)' }, { v: 'ouargla', n: 'ورقلة (30)' },
-                      { v: 'el-bayadh', n: 'البيض (32)' }, { v: 'illizi', n: 'إليزي (33)' }, { v: 'bordj-bou-arreridj', n: 'برج بو عريريج (34)' },
-                      { v: 'boumerdes', n: 'بومرداس (35)' }, { v: 'el-taref', n: 'الطارف (36)' }, { v: 'tindouf', n: 'تندوف (37)' },
-                      { v: 'tissemsilt', n: 'تيسمسيلت (38)' }, { v: 'el-oued', n: 'الوادي (39)' }, { v: 'khenchela', n: 'خنشلة (40)' },
-                      { v: 'souk-ahras', n: 'سوق أهراس (41)' }, { v: 'tipaza', n: 'تيبازة (42)' }, { v: 'mila', n: 'ميلة (43)' },
-                      { v: 'ain-defla', n: 'عين الدفلى (44)' }, { v: 'naama', n: 'النعامة (45)' }, { v: 'ain-temouchent', n: 'عين تموشنت (46)' },
-                      { v: 'ghardaia', n: 'غرداية (47)' }, { v: 'relizane', n: 'غليزان (48)' }, { v: 'timimoun', n: 'تيميمون (49)' },
-                      { v: 'bordj-badji-mokhtar', n: 'برج باجي مختار (50)' }, { v: 'ouled-djellal', n: 'أولاد جلال (51)' }, { v: 'beni-abbes', n: 'بني عباس (52)' },
-                      { v: 'in-salah', n: 'إن صالح (53)' }, { v: 'in-guezzam', n: 'إن قزام (54)' }, { v: 'touggourt', n: 'تقرت (55)' },
-                      { v: 'djanet', n: 'جانت (56)' }, { v: 'el-mghaier', n: 'المغير (57)' }, { v: 'el-meniaa', n: 'المنيعة (58)' }
+                      { v: 'adrar', n: isAr ? 'أدرار (01)' : 'Adrar (01)' }, 
+                      { v: 'chlef', n: isAr ? 'الشلف (02)' : 'Chlef (02)' }, 
+                      { v: 'laghouat', n: isAr ? 'الأغواط (03)' : 'Laghouat (03)' },
+                      { v: 'oum-el-bouaghi', n: isAr ? 'أم البواقي (04)' : 'Oum El Bouaghi (04)' }, 
+                      { v: 'batna', n: isAr ? 'باتنة (05)' : 'Batna (05)' }, 
+                      { v: 'bejaia', n: isAr ? 'بجاية (06)' : 'Béjaïa (06)' },
+                      { v: 'biskra', n: isAr ? 'بسكرة (07)' : 'Biskra (07)' }, 
+                      { v: 'bechar', n: isAr ? 'بشار (08)' : 'Béchar (08)' }, 
+                      { v: 'blida', n: isAr ? 'البليدة (09)' : 'Blida (09)' },
+                      { v: 'bouira', n: isAr ? 'البويرة (10)' : 'Bouira (10)' }, 
+                      { v: 'tamanrasset', n: isAr ? 'تمنراست (11)' : 'Tamanrasset (11)' }, 
+                      { v: 'tebessa', n: isAr ? 'تبسة (12)' : 'Tébessa (12)' },
+                      { v: 'tlemcen', n: isAr ? 'تلمسان (13)' : 'Tlemcen (13)' }, 
+                      { v: 'tiaret', n: isAr ? 'تيارت (14)' : 'Tiaret (14)' }, 
+                      { v: 'tizi-ouzou', n: isAr ? 'تيزي وزو (15)' : 'Tizi Ouzou (15)' },
+                      { v: 'alger', n: isAr ? 'الجزائر (16)' : 'Alger (16)' }, 
+                      { v: 'djelfa', n: isAr ? 'الجلفة (17)' : 'Djelfa (17)' }, 
+                      { v: 'jijel', n: isAr ? 'جيجل (18)' : 'Jijel (18)' },
+                      { v: 'setif', n: isAr ? 'سطيف (19)' : 'Sétif (19)' }, 
+                      { v: 'saida', n: isAr ? 'سعيدة (20)' : 'Saïda (20)' }, 
+                      { v: 'skikda', n: isAr ? 'سكيكدة (21)' : 'Skikda (21)' },
+                      { v: 'sidi-bel-abbes', n: isAr ? 'سيدي بلعباس (22)' : 'Sidi Bel Abbès (22)' }, 
+                      { v: 'annaba', n: isAr ? 'عنابة (23)' : 'Annaba (23)' }, 
+                      { v: 'guelma', n: isAr ? 'قالمة (24)' : 'Guelma (24)' },
+                      { v: 'constantine', n: isAr ? 'قسنطينة (25)' : 'Constantine (25)' }, 
+                      { v: 'medea', n: isAr ? 'المدية (26)' : 'Médéa (26)' }, 
+                      { v: 'mostaganem', n: isAr ? 'مستغانم (27)' : 'Mostaganem (27)' },
+                      { v: 'msila', n: isAr ? 'المسيلة (28)' : 'M\'Sila (28)' }, 
+                      { v: 'mascara', n: isAr ? 'معسكر (29)' : 'Mascara (29)' }, 
+                      { v: 'ouargla', n: isAr ? 'ورقلة (30)' : 'Ouargla (30)' },
+                      { v: 'el-bayadh', n: isAr ? 'البيض (32)' : 'El Bayadh (32)' }, 
+                      { v: 'illizi', n: isAr ? 'إليزي (33)' : 'Illizi (33)' }, 
+                      { v: 'bordj-bou-arreridj', n: isAr ? 'برج بو عريريج (34)' : 'Bordj Bou Arreridj (34)' },
+                      { v: 'boumerdes', n: isAr ? 'بومرداس (35)' : 'Boumerdès (35)' }, 
+                      { v: 'el-taref', n: isAr ? 'الطارف (36)' : 'El Tarf (36)' }, 
+                      { v: 'tindouf', n: isAr ? 'تندوف (37)' : 'Tindouf (37)' },
+                      { v: 'tissemsilt', n: isAr ? 'تيسمسيلت (38)' : 'Tissemsilt (38)' }, 
+                      { v: 'el-oued', n: isAr ? 'الوادي (39)' : 'El Oued (39)' }, 
+                      { v: 'khenchela', n: isAr ? 'خنشلة (40)' : 'Khenchela (40)' },
+                      { v: 'souk-ahras', n: isAr ? 'سوق أهراس (41)' : 'Souk Ahras (41)' }, 
+                      { v: 'tipaza', n: isAr ? 'تيبازة (42)' : 'Tipaza (42)' }, 
+                      { v: 'mila', n: isAr ? 'ميلة (43)' : 'Mila (43)' },
+                      { v: 'ain-defla', n: isAr ? 'عين الدفلى (44)' : 'Aïn Defla (44)' }, 
+                      { v: 'naama', n: isAr ? 'النعامة (45)' : 'Naâma (45)' }, 
+                      { v: 'ain-temouchent', n: isAr ? 'عين تموشنت (46)' : 'Aïn Témouchent (46)' },
+                      { v: 'ghardaia', n: isAr ? 'غرداية (47)' : 'Ghardaïa (47)' }, 
+                      { v: 'relizane', n: isAr ? 'غليزان (48)' : 'Relizane (48)' }, 
+                      { v: 'timimoun', n: isAr ? 'تيميمون (49)' : 'Timimoun (49)' },
+                      { v: 'bordj-badji-mokhtar', n: isAr ? 'برج باجي مختار (50)' : 'Bordj Badji Mokhtar (50)' }, 
+                      { v: 'ouled-djellal', n: isAr ? 'أولاد جلال (51)' : 'Ouled Djellal (51)' }, 
+                      { v: 'beni-abbes', n: isAr ? 'بني عباس (52)' : 'Béni Abbès (52)' },
+                      { v: 'in-salah', n: isAr ? 'إن صالح (53)' : 'In Salah (53)' }, 
+                      { v: 'in-guezzam', n: isAr ? 'إن قزام (54)' : 'In Guezzam (54)' }, 
+                      { v: 'touggourt', n: isAr ? 'تقرت (55)' : 'Touggourt (55)' },
+                      { v: 'djanet', n: isAr ? 'جانت (56)' : 'Djanet (56)' }, 
+                      { v: 'el-mghaier', n: isAr ? 'المغير (57)' : 'El M\'Ghair (57)' }, 
+                      { v: 'el-meniaa', n: isAr ? 'المنيعة (58)' : 'El Meniaâ (58)' }
                     ].map(w => {
                       const isSupported = w.v === 'oran';
                       return (
                         <option key={w.v} value={w.v} disabled={!isSupported} aria-disabled={!isSupported}>
-                          {w.n} {!isSupported && '(قريبًا)'}
+                          {w.n} {!isSupported && (isAr ? '(قريبًا)' : '(Bientôt)')}
                         </option>
                       );
                     })}
@@ -273,7 +408,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                 {/* Region */}
                 <div>
                   <label htmlFor="region" className="block text-sm font-bold text-gray-700 mb-2">
-                    البلدية / المنطقة
+                    {ui.region}
                   </label>
                   <select
                     id="region"
@@ -283,7 +418,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     aria-disabled={wilaya === ''}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
-                    <option value="">-- اختر البلدية --</option>
+                    <option value="">{ui.chooseRegion}</option>
                     {communes.map((c) => (
                       <option key={c} value={c}>{c}</option>
                     ))}
@@ -292,14 +427,14 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
 
                 {!currentRegionData && regionId !== '' ? (
                   <div className="p-4 bg-amber-50 text-amber-700 rounded-xl mt-4 border border-amber-200 text-sm">
-                    بيانات هذه البلدية قيد التحديث وسيتم إضافتها قريباً. يرجى اختيار بلدية أخرى أو المحاولة لاحقاً.
+                    {ui.notSupportedMessage}
                   </div>
                 ) : (
                   <>
                     {/* Category */}
                     <div>
                       <label htmlFor="category" className="block text-sm font-bold text-gray-700 mb-2">
-                        طبيعة العقار
+                        {ui.category}
                       </label>
                       <select
                         id="category"
@@ -309,7 +444,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         aria-disabled={!currentRegionData || regionId === ''}
                         className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                       >
-                        <option value="">-- اختر طبيعة العقار --</option>
+                        <option value="">{ui.chooseCategory}</option>
                         {currentRegionData?.prix.map((cat, idx) => (
                           <option key={idx} value={idx}>{t(lang, 'calculator', cat.categorie as CalculatorKeys)}</option>
                         ))}
@@ -319,7 +454,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                 {/* Type */}
                 <div>
                   <label htmlFor="type" className="block text-sm font-bold text-gray-700 mb-2">
-                    صنف العقار
+                    {ui.subType}
                   </label>
                   <select
                     id="type"
@@ -329,7 +464,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     aria-disabled={categoryIdx === ''}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
-                    <option value="">-- اختر الصنف --</option>
+                    <option value="">{ui.chooseSubType}</option>
                     {selectedCategory?.types.map((type, idx) => (
                       <option key={idx} value={idx}>{t(lang, 'calculator', type.type as CalculatorKeys)}</option>
                     ))}
@@ -339,7 +474,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                 {/* Zone */}
                 <div>
                   <label htmlFor="zone" className="block text-sm font-bold text-gray-700 mb-2">
-                    المنطقة العمرانية
+                    {ui.urbanZone}
                   </label>
                   <select
                     id="zone"
@@ -349,7 +484,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     aria-disabled={typeIdx === '' || availableZones.length === 0}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                   >
-                    <option value="">-- اختر المنطقة --</option>
+                    <option value="">{ui.chooseUrbanZone}</option>
                     {availableZones.map((zone) => (
                       <option key={zone} value={zone}>{t(lang, 'calculator', zone as CalculatorKeys)}</option>
                     ))}
@@ -364,14 +499,14 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         className="space-y-2"
                       >
                         <label htmlFor="area" className="block text-sm font-bold text-gray-700 mb-2">
-                          {selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? 'المساحة (بالهكتار Ha)' : 'المساحة (بالمتر المربع m²)'}
+                          {selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? ui.areaHa : ui.areaSq}
                         </label>
                         <input
                           id="area"
                           type="number"
                           value={area}
                           onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
-                          placeholder="أدخل المساحة"
+                          placeholder={ui.areaPlaceholder}
                           disabled={zoneKey === ''}
                           aria-disabled={zoneKey === ''}
                           className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
@@ -396,26 +531,30 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       transition={{ duration: 0.3, ease: 'easeOut' }}
                       className="p-8 bg-emerald-600 rounded-2xl text-white text-center shadow-lg h-full flex flex-col justify-center"
                     >
-                    <h4 className="text-xl font-bold mb-6 text-emerald-50">النتيجة التقريبية</h4>
+                    <h4 className="text-xl font-bold mb-6 text-emerald-50">{ui.resultTitle}</h4>
                     
                     <div className="mb-6 bg-emerald-700/30 rounded-xl p-4">
                       <p className="text-sm text-emerald-100 mb-2">
-                        {calculationMode === 'sale' ? 'السعر للمتر المرجعي:' : 'مبلغ الإيجار المرجعي للمتر:'}
+                        {calculationMode === 'sale' ? ui.rateLabel : ui.rentRateLabel}
                       </p>
                       <p className="font-medium text-lg">
-                        من <span className="font-bold text-amber-300">{result.min.toLocaleString()}</span> إلى <span className="font-bold text-amber-300">{result.max.toLocaleString()}</span> د.ج
+                        {isAr ? (
+                          <>من <span className="font-bold text-amber-300">{result.min.toLocaleString()}</span> إلى <span className="font-bold text-amber-300">{result.max.toLocaleString()}</span> د.ج</>
+                        ) : (
+                          <>De <span className="font-bold text-amber-300">{result.min.toLocaleString()}</span> à <span className="font-bold text-amber-300">{result.max.toLocaleString()}</span> DZD</>
+                        )}
                       </p>
                     </div>
 
                     <div className="bg-emerald-800/40 rounded-xl p-6 border border-emerald-500/30">
                       <p className="text-emerald-100 font-medium mb-3">
-                        {calculationMode === 'sale' ? 'إجمالي التصريح المرجعي:' : 'إجمالي مبلغ الإيجار الشهري المرجعي:'}
+                        {calculationMode === 'sale' ? ui.declarationLabel : ui.rentTotalLabel}
                       </p>
                       <div className="space-y-2" dir="ltr">
                         <p className="text-2xl md:text-3xl font-bold text-white">
                           {formatter.format(result.totalMin)}
                         </p>
-                        <p className="text-emerald-300 text-sm font-medium">إلى</p>
+                        <p className="text-emerald-300 text-sm font-medium">{isAr ? 'إلى' : 'à'}</p>
                         <p className="text-2xl md:text-3xl font-bold text-white">
                           {formatter.format(result.totalMax)}
                         </p>
@@ -425,32 +564,32 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     {calculationMode === 'rent' && result.taxRate > 0 && (
                       <div className="mt-6 pt-6 border-t border-emerald-500/30">
                         <p className="text-emerald-100 text-sm mb-3">
-                          الضريبة على الدخل الإجمالي (IRG) المقدرة ({parseFloat((result.taxRate * 100).toFixed(10))}%):
+                          {ui.irgLabel} ({parseFloat((result.taxRate * 100).toFixed(10))}%):
                         </p>
                         <div className="grid grid-cols-2 gap-4" dir="ltr">
                           <div className="bg-emerald-900/40 rounded-lg p-3">
-                            <p className="text-xs text-emerald-300 mb-1">الحد الأدنى</p>
+                            <p className="text-xs text-emerald-300 mb-1">{ui.minLimit}</p>
                             <p className="font-bold text-white">{formatter.format(result.totalMin * result.taxRate)}</p>
                           </div>
                           <div className="bg-emerald-900/40 rounded-lg p-3">
-                            <p className="text-xs text-emerald-300 mb-1">الحد الأقصى</p>
+                            <p className="text-xs text-emerald-300 mb-1">{ui.maxLimit}</p>
                             <p className="font-bold text-white">{formatter.format(result.totalMax * result.taxRate)}</p>
                           </div>
                         </div>
-                        <p className="text-[10px] text-emerald-200 mt-3 text-right" dir="rtl">
-                          * هذه الضريبة تُدفع شهرياً أو سنوياً حسب الحالة.
+                        <p className="text-[10px] text-emerald-200 mt-3 text-right" dir={isAr ? 'rtl' : 'ltr'}>
+                          {ui.irgNote}
                         </p>
                       </div>
                     )}
                     {/* Action Bar */}
-                    <div className="flex flex-wrap gap-3 mt-8 justify-center no-print" dir="rtl">
-                      <button onClick={handleCopy} aria-label="نسخ النتيجة" className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
+                    <div className="flex flex-wrap gap-3 mt-8 justify-center no-print" dir={isAr ? 'rtl' : 'ltr'}>
+                      <button onClick={handleCopy} aria-label={ui.copy} className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
                        {copied ? <Check size={18} /> : <Copy size={18} />}
-                        {copied ? 'تم النسخ!' : 'نسخ'}
+                        {copied ? ui.copied : ui.copy}
                       </button>
-                      <button onClick={handleWhatsApp} aria-label="مشاركة عبر واتساب" className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
+                      <button onClick={handleWhatsApp} aria-label={ui.whatsapp} className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
                         <MessageCircle size={18} />
-                        واتساب
+                        {ui.whatsapp}
                       </button>
                     </div>
                   </motion.div>
@@ -466,7 +605,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       <Calculator className="w-8 h-8" />
                     </div>
                     <p className="text-gray-500 font-medium">
-                      يرجى ملء جميع الحقول أعلاه لإظهار السعر المرجعي التقريبي
+                      {ui.placeholderText}
                     </p>
                   </motion.div>
                 )}
@@ -481,7 +620,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                 </svg>
               </div>
               <p className="text-sm text-amber-800 leading-relaxed">
-                <strong>تنبيه هام:</strong> هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية {wilaya === 'oran' ? 'وهران' : 'الولاية المختارة'} (الفترة 2025-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.
+                <strong>{ui.warningTitle}</strong> {ui.warningText}
               </p>
             </div>
           </div>
