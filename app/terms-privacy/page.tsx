@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { headers } from 'next/headers';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
 import { WORKING_HOURS, SITE_URL } from '@/lib/config';
 
@@ -20,22 +21,18 @@ export const metadata: Metadata = {
     title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
     description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
     siteName: 'مكتب الأستاذ لعطب محمد — موثق وهران',
-    images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: 'الشروط والأحكام - موثق لعطب محمد وهران', type: 'image/png' }],
-    locale: 'ar_DZ',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
-    description: 'الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران.',
-    images: [`${SITE_URL}/logo.webp`],
+    images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: 'الشروط والأحكام وسياسة الخصوصية' }],
   },
 };
 
-const TermsPrivacyPage = () => {
+const TermsPrivacyPage = async () => {
+  const headerList = await headers();
+  const lang = (headerList.get('x-lang') ?? 'ar') as 'ar' | 'fr';
+  const isAr = lang === 'ar';
+
   return (
     <div className="min-h-screen bg-white">
-      <main className="bg-gray-50" dir="rtl">
+      <main className="bg-gray-50" dir={isAr ? 'rtl' : 'ltr'}>
       {/* Hero Section */}
       <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
         {/* Decorative background pattern */}
@@ -43,22 +40,27 @@ const TermsPrivacyPage = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           {/* Back to Home Button inside Hero */}
-          <div className="mb-8 text-right">
+          <div className={isAr ? "mb-8 text-right" : "mb-8 text-left"}>
             <Link 
               href="/" 
               className="inline-flex items-center gap-2 text-emerald-400 hover:text-white font-bold transition-colors group"
             >
-              <svg className="w-5 h-5 transform rotate-180 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 transform ${isAr ? 'rotate-180 group-hover:translate-x-1' : 'group-hover:-translate-x-1'} transition-transform`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              العودة إلى الصفحة الرئيسية
+              {isAr ? "العودة إلى الصفحة الرئيسية" : "Retour à l'accueil"}
             </Link>
           </div>
 
-          <Shield className="w-20 h-20 mx-auto mb-6 text-emerald-400" />
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">الشروط والأحكام وسياسة الخصوصية</h1>
-          <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed">
-            مكتب الموثق الأستاذ لعطب محمد - نلتزم بالشفافية والسر المهني وحماية بياناتك وفقاً للتشريعات الجزائرية
+          <Shield className="w-20 h-20 mx-auto mb-6 text-emerald-400 animate-pulse" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-center">
+            {isAr ? "الشروط والأحكام وسياسة الخصوصية" : "Conditions d'Utilisation et Politique de Confidentialité"}
+          </h1>
+          <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed text-center font-sans">
+            {isAr 
+              ? "مكتب الموثق الأستاذ لعطب محمد - نلتزم بالشفافية والسر المهني وحماية بياناتك وفقاً للتشريعات الجزائرية"
+              : "Office Notarial de Maître Lattab Mohamed - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne."
+            }
           </p>
         </div>
       </div>

@@ -5,12 +5,12 @@ import { notFound } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { NonceScriptLoader } from '@/components/NonceScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
-import { blogPosts, frBlogPosts } from '@/lib/data/blog';
-import { SITE_URL } from '@/lib/config';
+import { blogPosts, frBlogPosts, getBlogPosts } from '@/lib/data/blog';
+import { SITE_URL, TITLE_TEMPLATE_SUFFIX } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleConversionCTA from '@/components/ArticleConversionCTA';
-import { enrichDescription, AR_DESCRIPTION_SUFFIX, assertDescriptionLength } from '@/lib/utils/metaDescription';
+import { enrichDescription, AR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
 
 const serviceMappings: Record<string, string> = {
   'عقاري': 'عقود البيع والشراء العقارية',
@@ -49,12 +49,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     throw new Error('fr-DZ hreflang must not equal ar-DZ hreflang');
   }
 
-  const titleValue = post.title.length > 20 ? { absolute: post.title } : post.title;
-  const renderedTitle = post.title.length > 20 ? post.title : `${post.title} | مكتب الأستاذ لعطب محمد - موثق وهران`;
+  const hasSuffix = post.title.length + TITLE_TEMPLATE_SUFFIX.length <= 60;
+  const titleValue = hasSuffix ? post.title : { absolute: post.title };
+  const renderedTitle = hasSuffix ? `${post.title}${TITLE_TEMPLATE_SUFFIX}` : post.title;
 
-  if (process.env.NODE_ENV === 'development' && renderedTitle.length > 60) {
-    console.warn(`Rendered title exceeds 60 characters: "${renderedTitle}" (${renderedTitle.length} chars)`);
-  }
+  assertTitleLength(renderedTitle, `blog slug: ${slug}`);
 
   if (process.env.NODE_ENV === 'development' && post.description.length < 70) {
     console.warn(`[SEO] Short description on slug "${slug}": ${post.description.length} chars`);
@@ -114,19 +113,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const cleanContentForWords = stripFrontmatterAndLeadingH1(content);
   const wordCount = Math.round(cleanContentForWords.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
   
-  // Priority: same category first, then most recent as fallback
-  const sameCategoryPosts = blogPosts
+  const relatedPosts = getBlogPosts()
     .filter(p => p.slug !== slug && p.category === post.category)
-    .slice(0, 3);
-  
-  const relatedPosts = sameCategoryPosts.length >= 3
-    ? sameCategoryPosts
-    : [
-        ...sameCategoryPosts,
-        ...blogPosts
-          .filter(p => p.slug !== slug && p.category !== post.category)
-          .slice(0, 3 - sameCategoryPosts.length),
-      ];
+    .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
+    .slice(0, 2);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -177,9 +167,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 "name": "مكتب الأستاذ لعطب محمد",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": `${SITE_URL}/logo-small.webp`,
-                  "width": 256,
-                  "height": 256
+                  "url": `${SITE_URL}/logo.webp`
                 }
               },
               "image": {
@@ -279,27 +267,29 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
 
           {/* Related Posts for Internal Linking */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">مقالات أخرى في: {post.category}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedPosts.map((related) => (
-                <Link 
-                  key={related.id}
-                  href={`/blog/${related.slug}`}
-                  className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group block"
-                >
-                  <p className="text-sm font-bold text-emerald-600 mb-2">{related.category}</p>
-                  <h4 className="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2 mb-2">
-                    {related.title}
-                  </h4>
-                  <p className="text-xs text-gray-500 flex items-center gap-1">
-                    <Calendar className="w-3 h-3" />
-                    {related.date}
-                  </p>
-                </Link>
-              ))}
+          {relatedPosts.length > 0 && (
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-sans">مقالات أخرى في: {post.category}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {relatedPosts.map((related) => (
+                  <Link 
+                    key={related.id}
+                    href={`/blog/${related.slug}`}
+                    className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group block"
+                  >
+                    <p className="text-sm font-bold text-emerald-600 mb-2">{related.category}</p>
+                    <h4 className="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2 mb-2">
+                      {related.title}
+                    </h4>
+                    <p className="text-xs text-gray-500 flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      {related.date}
+                    </p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="mt-12">
             <ArticleConversionCTA 
@@ -307,6 +297,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               bookingServiceValue={serviceMappings[post.category] || 'خدمات أخرى'}
               slug={slug}
               lang={post.language as 'ar' | 'fr'}
+              category={post.category}
             />
           </div>
         </div>

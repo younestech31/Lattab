@@ -9,7 +9,7 @@ import PriceCalculator from '@/components/PriceCalculator';
 import CalculatorSkeleton from '@/components/CalculatorSkeleton';
 import { getPricesForCalculator } from '@/lib/utils/dataMapper';
 import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
-import { assertDescriptionLength } from '@/lib/utils/metaDescription';
+import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 export async function generateMetadata(): Promise<Metadata> {
   const desc = 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي. بيع وإيجار — سكني وتجاري. تجنب المراجعة الضريبية.';

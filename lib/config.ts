@@ -1,5 +1,8 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://lattab.vercel.app';
 
+export const TITLE_TEMPLATE_SUFFIX = ' — موثق وهران' as const;
+export const FR_TITLE_SUFFIX = ' — Notaire Oran' as const;
+
 export const WORKING_HOURS = {
   days: 'الأحد - الخميس',
   morning: '08:30 - 12:00',

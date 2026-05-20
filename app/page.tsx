@@ -17,7 +17,7 @@ import FAQ from '@/components/FAQ';
 import { faqs } from '@/lib/data/faq';
 import { JsonLdScript } from '@/components/schema';
 import { NonceAnalyticsLoader } from '@/components/NonceAnalyticsLoader';
-import { assertDescriptionLength } from '@/lib/utils/metaDescription';
+import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   <div className={`w-full ${height} bg-gray-50 animate-pulse rounded-lg`} aria-hidden="true" />
@@ -60,13 +60,16 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+// Validate these schema changes using Google's Rich Results Test tool:
+// https://search.google.com/test/rich-results
+// Dynamic testing URL: https://search.google.com/test/rich-results?url=https://lattab.vercel.app/
 async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknown>> {
   const headerStore = await headers();
   const currentLang = (headerStore.get('x-lang') ?? lang ?? 'ar') as 'ar' | 'fr';
 
   const graph: Array<Record<string, unknown>> = [
     {
-      "@type": ["LegalService", "Notary"],
+      "@type": "Notary",
       "@id": `${SITE_URL}/#organization`,
       "name": "مكتب الأستاذ لعطب محمد - موثق وهران",
       "description": "مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.",
@@ -121,21 +124,11 @@ async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknow
           "closes": "16:00"
         }
       ],
-      "sameAs": ["https://maps.app.goo.gl/NwPD6ik2evPreyCc7"],
-      "employee": {
-        "@type": "Person",
-        "name": "لعطب محمد",
-        "jobTitle": "موثق معتمد",
-        "worksFor": { "@id": `${SITE_URL}/#organization` },
-        "knowsAbout": [
-          "Droit immobilier algérien",
-          "Création de sociétés en Algérie",
-          "Succession et droit de la famille algérien",
-          "Prix référentiel immobilier Algérie 2026",
-          "القانون العقاري الجزائري",
-          "التوثيق في الجزائر"
-        ]
-      },
+      "hasMap": "https://maps.app.goo.gl/NwPD6ik2evPreyCc7",
+      "currenciesAccepted": "DZD",
+      "paymentAccepted": "Cash",
+      "founder": { "@id": `${SITE_URL}/#person-mohamed-lattab` },
+      "employee": { "@id": `${SITE_URL}/#person-mohamed-lattab` },
       "knowsLanguage": ["ar", "fr"],
       "areaServed": {
         "@type": "City",
@@ -153,6 +146,21 @@ async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknow
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "الرهن والتأمين العقاري" } }
         ]
       }
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person-mohamed-lattab`,
+      "name": "لعطب محمد",
+      "jobTitle": "موثق معتمد",
+      "worksFor": { "@id": `${SITE_URL}/#organization` },
+      "knowsAbout": [
+        "Droit immobilier algérien",
+        "Création de sociétés en Algérie",
+        "Succession et droit de la famille algérien",
+        "Prix référentiel immobilier Algérie 2026",
+        "القانون العقاري الجزائري",
+        "التوثيق في الجزائر"
+      ]
     },
     {
       "@type": "WebSite",
@@ -198,6 +206,7 @@ async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknow
     {
       "@type": "FAQPage",
       "@id": `${SITE_URL}/#faq`,
+      "mainEntityOfPage": { "@id": `${SITE_URL}/#webpage` },
       "inLanguage": currentLang === 'ar' ? 'ar-DZ' : 'fr-DZ',
       "mainEntity": faqs.map(faq => {
         if (currentLang === 'ar') {

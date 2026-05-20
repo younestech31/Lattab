@@ -32,8 +32,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'مكتب الأستاذ لعطب محمد - موثق وهران',
-    template: '%s | مكتب الأستاذ لعطب محمد - موثق وهران',
+    default: 'مكتب الأستاذ لعطب محمد — موثق وهران',
+    template: '%s — موثق وهران',
   },
   description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ توثيق عقارات، وكالات، تأسيس شركات وحاسبة الأسعار المرجعية 2026. احجز موعدك.', // 128 chars
   keywords: [
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+    title: 'مكتب الأستاذ لعطب محمد — موثق وهران',
     description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ توثيق عقارات، وكالات، تأسيس شركات وحاسبة الأسعار المرجعية 2026. احجز موعدك.',
     images: [`${SITE_URL}/og-image.jpg`],
   },

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Home from '../page';
 import { SITE_URL } from '@/lib/config';
-import { assertDescriptionLength } from '@/lib/utils/metaDescription';
+import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 export async function generateMetadata(): Promise<Metadata> {
   const desc = 'Office de Maître Lattab Mohamed, notaire agréé à Oran ⚖️ Immobilier, création de sociétés, procurations et calculateur de prix de référence 2026.'; // 147 chars

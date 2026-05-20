@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . && node scripts/check-internal-links.mjs",
+    "lint": "eslint .",
     "clean": "next clean",
     "indexnow": "curl http://localhost:3000/api/index-now -H \"Authorization: Bearer $CRON_SECRET\"",
     "test:indexing:get": "curl -H \"Authorization: Bearer $CRON_SECRET\" $NEXT_PUBLIC_SITE_URL/api/google-indexing",

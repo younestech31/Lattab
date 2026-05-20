@@ -52,3 +52,14 @@ export function assertDescriptionLength(
     throw new Error(`[SEO] Description too long (${description.length} chars) in: ${context}`);
   }
 }
+
+export function assertTitleLength(
+  title: string,
+  context: string
+): void {
+  if (process.env.NODE_ENV !== 'production') {
+    if (title.length > 60) {
+      console.warn(`[SEO Warn] Rendered title exceeds 60 characters in: ${context}. Got: "${title}" (${title.length} chars)`);
+    }
+  }
+}

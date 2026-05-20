@@ -8,7 +8,7 @@ import BlogPostGrid from '@/components/BlogPostGrid';
 import { JsonLdScript } from '@/components/schema';
 import { SITE_URL } from '@/lib/config';
 import { frBlogPosts } from '@/lib/data/blog';
-import { assertDescriptionLength } from '@/lib/utils/metaDescription';
+import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 export const revalidate = 3600;
 

@@ -2,9 +2,11 @@ export default function BlogLoading() {
   return (
     <div className="min-h-screen bg-gray-50 pt-32 pb-20" dir="rtl">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-16 animate-pulse">
-          <div className="h-12 bg-gray-200 rounded-xl w-2/3 mx-auto mb-6" />
-          <div className="h-6 bg-gray-200 rounded-lg w-1/2 mx-auto" />
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h1 className="text-3xl font-bold text-center text-gray-900 mb-8">
+            المدونة القانونية والعقارية
+          </h1>
+          <div className="h-6 bg-gray-200 rounded-lg w-1/2 mx-auto animate-pulse" />
         </div>
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" role="presentation" aria-hidden="true">
           {Array.from({ length: 6 }).map((_, i) => (

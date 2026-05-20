@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { Language, translations } from '@/lib/i18n/translations';
+import { SERVICE_TO_BLOG_MAP } from '@/lib/data/serviceBlogMap';
 
 export default async function Services() {
   const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
@@ -62,7 +63,7 @@ export default async function Services() {
               </ul>
 
               {/* Service Booking CTA */}
-              <div className="border-t border-gray-100 mt-4 pt-4">
+              <div className="border-t border-gray-100 mt-4 pt-4 flex flex-col gap-2">
                 <Link
                   href={`/#booking-form?service=${encodeURIComponent(service.title)}`}
                   className="group/cta w-full sm:w-auto text-center sm:text-start min-h-[44px] flex items-center justify-center sm:justify-start text-emerald-600 hover:text-emerald-800 font-semibold text-sm transition-colors group-hover:underline"
@@ -73,6 +74,14 @@ export default async function Services() {
                     <>Prendre RDV pour ce service <span className="ml-1 group-hover/cta:translate-x-1 transition-transform inline-block">→</span></>
                   )}
                 </Link>
+                {SERVICE_TO_BLOG_MAP[service.title] && (
+                  <Link
+                    href={lang === 'ar' ? `/blog/${SERVICE_TO_BLOG_MAP[service.title]}` : `/fr/blog/${SERVICE_TO_BLOG_MAP[service.title]}`}
+                    className="text-gray-500 hover:text-emerald-600 text-xs font-semibold flex items-center justify-center sm:justify-start gap-1 transition-colors mt-1"
+                  >
+                    {lang === 'ar' ? 'معرفة المزيد ←' : 'En savoir plus →'}
+                  </Link>
+                )}
               </div>
             </div>
           ))}
