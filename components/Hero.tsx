@@ -58,17 +58,7 @@ export default async function Hero() {
               {t(lang, 'hero', 'description')}
             </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-3 w-full max-w-sm sm:max-w-md">
-              <div className="bg-emerald-950/40 backdrop-blur-sm rounded-2xl px-4 py-3 sm:py-4 border border-emerald-800/50 text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">15+</div>
-                <div className="text-emerald-100 text-xs sm:text-sm font-medium mt-0.5">{t(lang, 'hero', 'stats_experience')}</div>
-              </div>
-              <div className="bg-emerald-950/40 backdrop-blur-sm rounded-2xl px-4 py-3 sm:py-4 border border-emerald-800/50 text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">5,000+</div>
-                <div className="text-emerald-100 text-xs sm:text-sm font-medium mt-0.5">{t(lang, 'hero', 'stats_transactions')}</div>
-              </div>
-            </div>
+            {/* Stats removed: prohibited advertising */}
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm sm:max-w-none sm:justify-center">

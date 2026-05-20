@@ -4,11 +4,11 @@ import { SITE_URL } from '@/lib/config';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'Office de Maître Lattab Mohamed, notaire agréé à Oran ⚖️ Immobilier, création de sociétés, procurations et calculateur de prix de référence 2026.'; // 147 chars
+  const desc = 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran ⚖️ Rédaction d\'actes, contrat de vente immobilière, constitution de sociétés et calcul de prix de référence.';
   assertDescriptionLength(desc, 'French Home Page / app/fr/page.tsx');
 
   return {
-    title: { absolute: 'Office Notarial de Maître Lattab Mohamed — Notaire à Oran' },
+    title: { absolute: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/fr`,
@@ -19,17 +19,17 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'Office Notarial de Maître Lattab Mohamed — Notaire à Oran',
+      title: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran',
       description: desc,
       url: `${SITE_URL}/fr`,
-      siteName: 'Office Notarial de Maître Lattab Mohamed — Notaire à Oran',
+      siteName: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran',
       locale: 'fr_DZ',
       type: 'website',
-      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Office Notarial de Maître Lattab Mohamed — Notaire à Oran' }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran' }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Office Notarial de Maître Lattab Mohamed — Notaire à Oran',
+      title: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran',
       description: desc,
       images: [`${SITE_URL}/og-image.jpg`],
     },

@@ -1,23 +1,23 @@
 import { cookies } from 'next/headers';
 import { Language, translations } from '@/lib/i18n/translations';
-import { ShieldCheck, Zap, Award, FileText, MapPin, Smartphone, CheckSquare } from 'lucide-react';
+import { Shield, Search, Archive, Scale, Receipt, BookOpen } from 'lucide-react';
 
-export default async function WhyChooseUs() {
+export default async function NotaryRole() {
   const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
-  const content = translations[lang].whyChooseUs;
+  const content = translations[lang].notaryRole;
 
-  // Mapping the icons based on original order
-  const IconComponents = [ShieldCheck, Zap, Award, FileText, MapPin, Smartphone, CheckSquare];
+  // Mapping the icons based on new order
+  const IconComponents = [Shield, Search, Archive, Scale, Receipt, BookOpen];
 
   return (
-    <section id="why-choose-us" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-gradient-to-b from-emerald-50 to-white" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
+    <section id="notary-role" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-slate-50" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-emerald-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             {content.title}
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            {content.description}
+            {content.subtitle}
           </p>
         </div>
 
@@ -28,13 +28,13 @@ export default async function WhyChooseUs() {
             return (
               <div 
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100 hover:border-emerald-300"
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-amber-500"
               >
                 <div className="flex items-start mb-4">
-                  <div className="p-3 bg-emerald-100 text-emerald-600 rounded-lg me-4">
+                  <div className="p-3 bg-amber-50 text-amber-600 rounded-lg me-4">
                     <Icon className="w-8 h-8" />
                   </div>
-                  <h3 className="text-xl font-bold text-emerald-900">
+                  <h3 className="text-xl font-bold text-gray-900">
                     {feature.title}
                   </h3>
                 </div>

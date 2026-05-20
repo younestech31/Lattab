@@ -5,14 +5,13 @@ export const translations = {
       services: 'خدماتنا',
       calculator: 'حاسبة السعر المرجعي',
       blog: 'المدونة',
-      why_us: 'لماذا نحن',
-      about: 'عن الموثق',
+      why_us: 'دور الموثق',
       procedures: 'الإجراءات',
       news: 'أخبار قانونية',
       faq: 'الأسئلة الشائعة',
       contact: 'اتصل بنا',
       book: 'احجز موعد',
-      notary: 'موثق معتمد',
+      notary: 'موثق',
       name: 'الأستاذ لعطب محمد'
     },
     calculator: {
@@ -62,19 +61,18 @@ export const translations = {
       retry: 'إعادة المحاولة',
     },
     hero: {
-      badge: 'مرخص من وزارة العدل الجزائرية',
-      title: 'مكتب الأستاذ لعطب محمد',
-      subtitle: 'موثق معتمد بوهران',
-      description: 'ثقة 15 عامًا في التوثيق القانوني — نضمن لك معاملات آمنة وسريعة وفق أحدث الأنظمة القانونية الجزائرية',
-      stats_experience: 'سنة خبرة',
-      stats_transactions: 'معاملة ناجحة',
-      cta_book: 'احجز موعدك الآن',
-      cta_services: 'اكتشف خدماتنا'
+      badge: 'موثق لدى محكمة فلاوسن وهران',
+      title: 'الديوان العمومي للتوثيق',
+      subtitle: 'الأستاذ لعطب محمد — موثق بوهران',
+      description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران — لتوثيق عقودكم وفق أحكام القانون الجزائري',
+      // REMOVED: prohibited advertising: stats_experience
+      // REMOVED: prohibited advertising: stats_transactions
+      cta_book: 'طلب موعد',
+      cta_services: 'اختصاصات المكتب'
     },
     services: {
       title: 'خدماتنا',
       heading: 'خدمات توثيقية شاملة',
-      description: 'نقدم جميع الخدمات التوثيقية التي تحتاجها وفق القانون الجزائري مع ضمان السرية والمهنية العالية',
       items: [
         { title: 'عقود البيع والشراء العقارية', description: 'توثيق كامل لعقود بيع وشراء العقارات مع ضمان الصحة القانونية والتحقق من الملكية والرهون.', features: ['عقود بيع عقارات سكنية', 'عقود بيع محلات تجارية', 'عقود بيع أراضي', 'عقود بيع مركبات'] },
         { title: 'عقود الإيجار والتأجير', description: 'إعداد عقود إيجار شاملة مع جميع الضمانات القانونية لحماية حقوق المؤجر والمستأجر.', features: ['إيجار سكني طويل الأمد', 'إيجار تجاري', 'عقود إيجار موسمية', 'تجديد العقود'] },
@@ -85,37 +83,17 @@ export const translations = {
       ],
       cta: 'استفسر عن خدماتنا'
     },
-    whyChooseUs: {
-      title: 'لماذا تختار مكتبنا للتوثيق؟',
-      description: 'نحن نقدم أكثر من مجرد خدمات توثيقية - نقدم حلولاً قانونية متكاملة مع ضمان الجودة والسرعة والدقة',
+    notaryRole: {
+      title: 'دور الموثق العمومي في حماية حقوقكم',
+      subtitle: 'الموثق مسؤول قانوني معيَّن من الدولة — دوره توثيق عقودكم وحفظ حقوقكم',
       features: [
-        { title: 'موثق معتمد من الدولة', description: 'مكتبنا مرخص ومعتمد من وزارة العدل الجزائرية، مما يضمن صحة وكفاءة جميع المعاملات التوثيقية.' },
-        { title: 'خدمة سريعة وفورية', description: 'نقدم خدمات توثيقية سريعة مع إمكانية إنجاز المعاملات في نفس اليوم للخدمات العاجلة.' },
-        { title: 'خبرة 15+ سنة', description: 'أكثر من 15 عامًا من الخبرة في مجال التوثيق والقانون، مع آلاف المعاملات الناجحة.' },
-        { title: 'دقة في التفاصيل', description: 'نحرص على الدقة القانونية في كل وثيقة، مع مراجعة شاملة لكل التفاصيل قبل التوقيع.' },
-        { title: 'موقع مركزي', description: 'مكتبنا يقع في موقع مركزي ومميز في وهران، مع مواقف مجانية للسيارات.' },
-        { title: 'خدمات إلكترونية', description: 'نقدم خدمات توثيقية إلكترونية وحجز مواعيد عبر الإنترنت لتسهيل العملية على العملاء.' },
-        { title: 'ضمان الجودة', description: 'نضمن صحة وسلامة جميع الوثائق الموثقة، مع متابعة ما بعد التوثيق إذا لزم الأمر.' }
+        { title: 'القوة التنفيذية للعقود', description: 'العقد الموثق قابل للتنفيذ الفوري دون الحاجة إلى حكم قضائي' },
+        { title: 'التحقق من الملكية', description: 'يتحقق الموثق من صحة الملكية وخلوّها من الرهون والتعقيدات القانونية قبل التوثيق' },
+        { title: 'حفظ الوثائق الرسمية', description: 'تُحفَظ الوثائق الموثقة في سجلات المكتب وفق الأرشيف الوطني للتوثيق' },
+        { title: 'المساواة بين الطرفين', description: 'الموثق محايد — يحمي حقوق جميع أطراف العقد دون تمييز' },
+        { title: 'الإجراءات الضريبية', description: 'يتولى المكتب حساب وتسديد الرسوم التسجيلية والضرائب العقارية المستحقة' },
+        { title: 'الإشهار العقاري', description: 'يُشهَر العقد الموثق في المحافظة العقارية — ضمان رسمي للملكية' }
       ]
-    },
-    about: {
-      badge: 'عن المكتب',
-      title: 'الموثق: الأستاذ لعطب محمد',
-      subtitle: 'موثق معتمد منذ 2008',
-      description: [
-        'موثق معتمد من وزارة العدل الجزائرية، حاصل على شهادة الماجستير في القانون الخاص من جامعة الجزائر. يتمتع بخبرة تزيد عن 15 عاماً في مجال التوثيق والقانون، مع آلاف المعاملات الناجحة في مختلف المجالات القانونية.',
-        'عضو في جمعية الموثقين الجزائريين، ومشارك في العديد من المؤتمرات القانونية المحلية والدولية. يحرص على مواكبة أحدث التطورات القانونية والتشريعية لضمان تقديم خدمات توثيقية عالية الجودة.',
-        'نؤمن بأهمية الشفافية والمصداقية في عملنا، ولذلك نحرص على شرح كل التفاصيل لعملائنا والإجابة على جميع استفساراتهم بوضوح تام.'
-      ],
-      features: [
-        { title: 'موثق معتمد', description: 'مرخص من وزارة العدل الجزائرية' },
-        { title: 'خبرة 15+ سنة', description: 'سنوات من الخبرة في التوثيق' },
-        { title: '+3000 عميل', description: 'قاعدة عملاء واسعة ومتنوعة' },
-        { title: 'جودة عالية', description: 'دقة متناهية في كل المعاملات' }
-      ],
-      quote: 'نلتزم بتقديم خدمات توثيقية متميزة تجمع بين الأصالة القانونية والحداثة في التعامل، مع الحفاظ على ثقة عملائنا الكريمة.',
-      quote_author: '- الموثق المعتمد',
-      certifications: ['مرخص رسمياً', 'معتمد من وزارة العدل']
     },
     legalUpdates: {
       title: 'المدونة القانونية والعقارية',
@@ -135,7 +113,7 @@ export const translations = {
       title: 'احجز موعدك الآن',
       description: 'تواصل معنا لحجز موعد أو الاستفسار عن خدماتنا. نحن هنا لمساعدتك.',
       tabs: {
-        appointment: 'حجز موعد',
+        appointment: 'طلب موعد',
         inquiry: 'استفسار عام'
       },
       form: {
@@ -158,7 +136,7 @@ export const translations = {
         time_afternoon: 'الفترة المسائية',
         notes: 'ملاحظات إضافية',
         notes_placeholder: 'أي معلومات إضافية تريد إضافتها...',
-        terms: 'أوافق على الشروط والأحكام وسياسة الخصوصية الخاصة بالمكتب.',
+        terms: 'أوافق على الشروط والأحكام وسياسة الخصوصية الخاصة بالديوان.',
         submit_appointment: 'تأكيد حجز الموعد',
         submit_inquiry: 'إرسال الاستفسار',
         loading: 'جاري الإرسال...',
@@ -224,14 +202,23 @@ export const translations = {
       info: {
         address: 'العنوان',
         phone: 'الهاتف',
-        phone_office: '(الخاص بالمكتب)',
+        phone_office: '(الخاص بالديوان)',
         phone_support: '(للدعم خارج أوقات العمل فقط)',
         email: 'البريد الإلكتروني',
         working_hours: 'أوقات العمل',
         working_hours_details: 'الأحد - الخميس 08:30–12:00 و 13:30–16:00',
-        office_name: 'مكتب الأستاذ لعطب محمد',
-        notary_title: 'موثق معتمد بوهران'
+        office_name: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
+        notary_title: 'الأستاذ لعطب محمد — موثق بوهران'
       }
+    },
+    footer: {
+      quick_links_title: 'روابط سريعة',
+      services_title: 'اختصاصات المكتب',
+      tools_title: 'أدوات',
+      contact_title: 'التواصل',
+      copyright: 'جميع الحقوق محفوظة — الديوان العمومي للتوثيق',
+      terms_link: 'الشروط والأحكام',
+      privacy_link: 'سياسة الخصوصية'
     }
   },
   fr: {
@@ -240,14 +227,13 @@ export const translations = {
       services: 'Services',
       calculator: 'Calculateur Prix',
       blog: 'Blog',
-      why_us: 'Pourquoi nous ?',
-      about: 'À propos',
+      why_us: 'Rôle du Notaire',
       procedures: 'Démarches',
       news: 'Actualités',
       faq: 'FAQ',
       contact: 'Contact',
       book: 'Prendre RDV',
-      notary: 'Notaire Agréé',
+      notary: 'Notaire',
       name: 'Maitre Lattab Mohamed'
     },
     calculator: {
@@ -297,19 +283,18 @@ export const translations = {
       retry: 'Réessayer',
     },
     hero: {
-      badge: 'Agréé par le Ministère de la Justice Algérien',
-      title: 'Cabinet du Maître Lattab Mohamed',
-      subtitle: 'Notaire Agréé à Oran',
-      description: '15 ans de confiance en matière de notariat — Nous vous garantissons des transactions sécurisées et rapides selon les dernières lois algériennes',
-      stats_experience: 'Années d\'expérience',
-      stats_transactions: 'Transactions réussies',
-      cta_book: 'Prendre RDV maintenant',
-      cta_services: 'Découvrir nos services'
+      badge: 'Notaire près le Tribunal de Felaoucene Oran',
+      title: 'Étude Public Notarial',
+      subtitle: 'Maître Lattab Mohamed — Notaire à Oran',
+      description: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran — pour la rédaction de vos actes conformément au droit algérien',
+      // REMOVED: prohibited advertising: stats_experience
+      // REMOVED: prohibited advertising: stats_transactions
+      cta_book: 'Demande de rendez-vous',
+      cta_services: 'Champs d\'intervention'
     },
     services: {
       title: 'Nos services',
       heading: 'Services notariaux complets',
-      description: 'Nous proposons tous les services notariaux dont vous avez besoin selon la loi algérienne, avec garantie de confidentialité et un professionnalisme élevé.',
       items: [
         { title: 'Actes de vente immobilière', description: 'Documentation complète des actes de vente immobilière avec garantie de validité juridique et vérification de la propriété et des hypothèques.', features: ['Actes de vente de logements', 'Actes de vente de locaux commerciaux', 'Actes de vente de terrains', 'Actes de vente de véhicules'] },
         { title: 'Actes de location', description: 'Préparation d\'actes de location complets avec toutes les garanties juridiques pour protéger les droits du bailleur et du locataire.', features: ['Location résidentielle longue durée', 'Location commerciale', 'Contrats de location saisonnière', 'Renouvellement de contrats'] },
@@ -320,37 +305,17 @@ export const translations = {
       ],
       cta: 'Renseignez-vous sur nos services'
     },
-    whyChooseUs: {
-      title: 'Pourquoi choisir notre cabinet ?',
-      description: 'Nous offrons plus que des services notariaux - nous offrons des solutions juridiques intégrées garantissant qualité, rapidité et précision.',
+    notaryRole: {
+      title: 'Le rôle du Notaire Public dans la protection de vos droits',
+      subtitle: 'Le notaire est un officier public nommé par l\'État — son rôle est d\'authentifier vos actes et protéger vos droits',
       features: [
-        { title: 'Notaire agréé par l\'État', description: 'Notre cabinet est agréé par le ministère algérien de la Justice, garantissant la validité et la compétence de toutes les transactions.' },
-        { title: 'Service rapide', description: 'Nous offrons des services notariaux rapides avec la possibilité de réaliser les transactions le jour même pour les services urgents.' },
-        { title: '15+ ans d\'expérience', description: 'Plus de 15 ans d\'expérience dans le domaine du notariat et du droit, avec des milliers de transactions réussies.' },
-        { title: 'Précision du détail', description: 'Nous attachons une grande importance à la rigueur juridique dans chaque document, avec une revue complète de tous les détails avant signature.' },
-        { title: 'Emplacement central', description: 'Notre cabinet est idéalement situé au centre d\'Oran, avec un parking gratuit pour les clients.' },
-        { title: 'Services électroniques', description: 'Nous proposons des services notariaux électroniques et la prise de rendez-vous en ligne pour faciliter le processus.' },
-        { title: 'Garantie de qualité', description: 'Nous garantissons l\'exactitude et la sécurité de tous les documents notariés, avec un suivi après-notariat si nécessaire.' }
+        { title: 'Force exécutoire des actes', description: 'L\'acte notarié est immédiatement exécutoire sans nécessité de jugement judiciaire' },
+        { title: 'Vérification de la propriété', description: 'Le notaire vérifie la validité du titre de propriété, l\'absence d\'hypothèques et de complications juridiques avant l\'authentification' },
+        { title: 'Conservation des documents officiels', description: 'Les actes authentiques sont conservés dans les registres de l\'étude conformément aux archives nationales du notariat' },
+        { title: 'Équité entre les parties', description: 'Le notaire est impartial — il protège les droits de toutes les parties à l\'acte sans discrimination' },
+        { title: 'Procédures fiscales', description: 'L\'Étude se charge du calcul et du paiement des droits d\'enregistrement et des taxes immobilières dues' },
+        { title: 'Publicité foncière', description: 'L\'acte notarié est publié à la Conservation Foncière — une garantie officielle de la propriété' }
       ]
-    },
-    about: {
-      badge: 'À propos du cabinet',
-      title: 'Notaire : Maître Lattab Mohamed',
-      subtitle: 'Notaire agréé depuis 2008',
-      description: [
-        'Notaire agréé par le ministère algérien de la Justice, titulaire d\'un master en droit privé de l\'université d\'Alger. Il possède plus de 15 ans d\'expérience dans le domaine du notariat et du droit, avec des milliers de transactions réussies dans divers domaines juridiques.',
-        'Membre de l\'association des notaires algériens, et participant à de nombreuses conférences juridiques locales et internationales. Il veille à suivre les derniers développements juridiques et législatifs pour garantir des services notariaux de haute qualité.',
-        'Nous croyons en l\'importance de la transparence et de la crédibilité dans notre travail, c\'est pourquoi nous tenons à expliquer tous les détails à nos clients et à répondre à toutes leurs questions avec une clarté totale.'
-      ],
-      features: [
-        { title: 'Notaire agréé', description: 'Agréé par le ministère de la Justice algérien' },
-        { title: '15+ ans d\'expérience', description: 'Années d\'expérience en notariat' },
-        { title: '+3000 clients', description: 'Base de clients large et variée' },
-        { title: 'Haute qualité', description: 'Précision extrême dans toutes les transactions' }
-      ],
-      quote: 'Nous nous engageons à offrir des services notariaux distingués alliant authenticité juridique et modernité, tout en préservant la confiance de notre chère clientèle.',
-      quote_author: '- Notaire agréé',
-      certifications: ['Officiellement agréé', 'Certifié par le Ministère de la Justice']
     },
     legalUpdates: {
       title: 'Blog juridique et immobilier',
@@ -370,7 +335,7 @@ export const translations = {
       title: 'Réservez votre rendez-vous',
       description: 'Contactez-nous pour prendre rendez-vous ou vous renseigner sur nos services. Nous sommes là pour vous aider.',
       tabs: {
-        appointment: 'Prendre RDV',
+        appointment: 'Demande de rendez-vous',
         inquiry: 'Demande de renseignement'
       },
       form: {
@@ -393,7 +358,7 @@ export const translations = {
         time_afternoon: 'Après-midi',
         notes: 'Notes supplémentaires',
         notes_placeholder: 'Toute information supplémentaire que vous souhaitez ajouter...',
-        terms: 'J\'accepte les conditions d\'utilisation et la politique de confidentialité du cabinet.',
+        terms: 'J\'accepte les conditions d\'utilisation et la politique de confidentialité de l\'étude.',
         submit_appointment: 'Confirmer le rendez-vous',
         submit_inquiry: 'Envoyer la demande',
         loading: 'Envoi en cours...',
@@ -459,14 +424,23 @@ export const translations = {
       info: {
         address: 'Adresse',
         phone: 'Téléphone',
-        phone_office: '(Celle du bureau)',
+        phone_office: '(Celle de l\'étude)',
         phone_support: '(Pour assistance hors heures de travail uniquement)',
         email: 'E-mail',
         working_hours: 'Heures de travail',
         working_hours_details: 'Dimanche - Jeudi 08:30–12:00 et 13:30–16:00',
-        office_name: 'Cabinet de Maître Lattab Mohamed',
-        notary_title: 'Notaire Agréé à Oran'
+        office_name: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran',
+        notary_title: 'Maître Lattab Mohamed — Notaire à Oran'
       }
+    },
+    footer: {
+      quick_links_title: 'Liens rapides',
+      services_title: 'Compétences notariales',
+      tools_title: 'Outils',
+      contact_title: 'Contact',
+      copyright: 'Tous droits réservés — Étude Public Notarial',
+      terms_link: 'Conditions d\'utilisation',
+      privacy_link: 'Politique de confidentialité'
     }
   },
 } as const;
@@ -477,20 +451,20 @@ export type NavKeys = keyof TranslationKeys['nav'];
 export type CalculatorKeys = keyof TranslationKeys['calculator'];
 export type HeroKeys = keyof TranslationKeys['hero'];
 export type ServicesKeys = keyof TranslationKeys['services'];
-export type WhyChooseUsKeys = keyof TranslationKeys['whyChooseUs'];
-export type AboutKeys = keyof TranslationKeys['about'];
+export type NotaryRoleKeys = keyof TranslationKeys['notaryRole'];
 export type FAQKeys = keyof TranslationKeys['faq'];
 export type LegalUpdatesKeys = keyof TranslationKeys['legalUpdates'];
 export type ContactKeys = keyof TranslationKeys['contact'];
+export type FooterKeys = keyof TranslationKeys['footer'];
 
 export function t(lang: Language, section: 'nav', key: NavKeys): string;
 export function t(lang: Language, section: 'calculator', key: CalculatorKeys): string;
 export function t(lang: Language, section: 'hero', key: HeroKeys): string;
 export function t(lang: Language, section: 'services', key: ServicesKeys): string;
-export function t(lang: Language, section: 'whyChooseUs', key: WhyChooseUsKeys): string;
-export function t(lang: Language, section: 'about', key: AboutKeys): string;
+export function t(lang: Language, section: 'notaryRole', key: NotaryRoleKeys): string;
 export function t(lang: Language, section: 'faq', key: FAQKeys): string;
 export function t(lang: Language, section: 'legalUpdates', key: LegalUpdatesKeys): string;
+export function t(lang: Language, section: 'footer', key: FooterKeys): string;
 export function t(lang: Language, section: 'contact', key: string): string;
 export function t(lang: Language, section: keyof TranslationKeys, key: string): string {
   return (translations[lang][section] as Record<string, string>)[key] ?? key;

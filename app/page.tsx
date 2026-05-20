@@ -9,8 +9,7 @@ import { cookies, headers } from 'next/headers';
 import { Language } from '@/lib/i18n/translations';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { SITE_URL } from '@/lib/config';
-import WhyChooseUs from '@/components/WhyChooseUs';
-import About from '@/components/About';
+import NotaryRole from '@/components/WhyChooseUs';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
@@ -24,11 +23,11 @@ const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
 );
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ توثيق عقارات، وكالات، تأسيس شركات وحاسبة الأسعار المرجعية 2026. احجز موعدك.'; // 128 chars
+  const desc = 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران ⚖️ لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.';
   assertDescriptionLength(desc, 'Home Page / app/page.tsx');
 
   return {
-    title: { absolute: 'مكتب الأستاذ لعطب محمد — موثق وهران' },
+    title: { absolute: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/`,
@@ -39,17 +38,17 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'مكتب الأستاذ لعطب محمد — موثق وهران',
+      title: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
       description: desc,
       url: `${SITE_URL}/`,
-      siteName: 'مكتب الأستاذ لعطب محمد — موثق وهران',
+      siteName: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
       locale: 'ar_DZ',
       type: 'website',
-      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'الديوان العمومي للتوثيق - الأستاذ لعطب محمد موثق بوهران' }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'مكتب الأستاذ لعطب محمد — موثق وهران',
+      title: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
       description: desc,
       images: [`${SITE_URL}/og-image.jpg`],
     },
@@ -71,17 +70,13 @@ async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknow
     {
       "@type": "Notary",
       "@id": `${SITE_URL}/#organization`,
-      "name": "مكتب الأستاذ لعطب محمد - موثق وهران",
-      "description": "مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.",
+      "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران",
+      "description": "الديوان العمومي للتوثيق تحت إشراف الأستاذ لعطب محمد، موثق معتمد، يقدم خدمات توثيقية شاملة للعقود والممتلكات وفق أحكام القانون الجزائري.",
       "image": {
         "@type": "ImageObject",
         "url": `${SITE_URL}/og-image.jpg`,
         "width": 1200,
         "height": 630
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": ["#main-content h1", ".hero-description", "#contact"]
       },
       "mentions": [
         { "@type": "City", "name": "وهران", "sameAs": "https://www.wikidata.org/wiki/Q183236" },
@@ -90,11 +85,10 @@ async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknow
       ],
       "url": SITE_URL,
       "telephone": "+213562296981",
-      "priceRange": "$$",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+213562296981",
-        "contactType": "customer service",
+        "contactType": "reservations",
         "availableLanguage": ["Arabic", "French"],
         "areaServed": "DZ"
       },
@@ -150,14 +144,13 @@ async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknow
     {
       "@type": "Person",
       "@id": `${SITE_URL}/#person-mohamed-lattab`,
-      "name": "لعطب محمد",
-      "jobTitle": "موثق معتمد",
+      "name": "الأستاذ لعطب محمد",
+      "jobTitle": "موثق بوهران — معيَّن بمرسوم وزاري",
       "worksFor": { "@id": `${SITE_URL}/#organization` },
       "knowsAbout": [
         "Droit immobilier algérien",
         "Création de sociétés en Algérie",
         "Succession et droit de la famille algérien",
-        "Prix référentiel immobilier Algérie 2026",
         "القانون العقاري الجزائري",
         "التوثيق في الجزائر"
       ]
@@ -166,8 +159,8 @@ async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknow
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       "url": SITE_URL,
-      "name": "مكتب الأستاذ لعطب محمد - موثق وهران",
-      "description": "موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026",
+      "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
+      "description": "ديوان عمومي للتوثيق يقدم خدمات عقارية وقانونية شاملة وفق القانون الجزائري.",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
@@ -185,8 +178,8 @@ async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknow
       "@type": "WebPage",
       "@id": `${SITE_URL}/#webpage`,
       "url": `${SITE_URL}/`,
-      "name": "مكتب الأستاذ لعطب محمد - موثق وهران",
-      "description": "مكتب توثيق معتمد في وهران يقدم خدمات عقارية وقانونية شاملة: عقود البيع، تأسيس الشركات، وحساب السعر المرجعي للعقار.",
+      "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
+      "description": "ديوان عمومي للتوثيق في وهران يقدم خدمات عقارية وقانونية شاملة وفق القانون الجزائري.",
       "isPartOf": { "@id": `${SITE_URL}/#website` },
       "inLanguage": currentLang === 'ar' ? 'ar-DZ' : 'fr-DZ',
       "breadcrumb": { "@id": `${SITE_URL}/#breadcrumb` }
@@ -259,10 +252,7 @@ export default async function Home() {
 
           <CalculatorCTA />
           <Suspense fallback={<SectionSkeleton height="h-64" />}>
-            <WhyChooseUs />
-          </Suspense>
-          <Suspense fallback={<SectionSkeleton height="h-80" />}>
-            <About />
+            <NotaryRole />
           </Suspense>
           <Suspense fallback={<SectionSkeleton height="h-64" />}>
             <Procedures />

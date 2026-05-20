@@ -32,21 +32,21 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'مكتب الأستاذ لعطب محمد — موثق وهران',
-    template: '%s — موثق وهران',
+    default: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
+    template: '%s — الديوان العمومي للتوثيق',
   },
-  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ توثيق عقارات، وكالات، تأسيس شركات وحاسبة الأسعار المرجعية 2026. احجز موعدك.', // 128 chars
+  description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران ⚖️ لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.',
   keywords: [
-    'موثق وهران', 'موثق معتمد وهران', 'مكتب توثيق وهران',
+    'الديوان العمومي للتوثيق', 'موثق وهران', 'موثق معتمد وهران', 'الديوان العمومي للتوثيق وهران',
     'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026',
     'عقود عقارية', 'تأسيس شركات الجزائر',
-    'notaire Oran', 'notaire agréé Oran', 'office notarial Oran',
+    'notaire Oran', 'notaire agréé Oran', 'Etude Public Notarial Oran',
     'acte de vente Oran', 'prix référence immobilier Algérie 2026',
     'création société Algérie', 'Maître Lattab Mohamed',
   ],
-  authors: [{ name: 'مكتب الأستاذ لعطب محمد', url: SITE_URL }],
-  creator: 'مكتب الأستاذ لعطب محمد',
-  publisher: 'مكتب الأستاذ لعطب محمد',
+  authors: [{ name: 'الديوان العمومي للتوثيق', url: SITE_URL }],
+  creator: 'الديوان العمومي للتوثيق',
+  publisher: 'الديوان العمومي للتوثيق',
   category: 'legal services',
   robots: {
     index: true,
@@ -77,14 +77,14 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'مكتب الأستاذ لعطب محمد — موثق معتمد بوهران',
+        alt: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'مكتب الأستاذ لعطب محمد — موثق وهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ توثيق عقارات، وكالات، تأسيس شركات وحاسبة الأسعار المرجعية 2026. احجز موعدك.',
+    title: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
+    description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران ⚖️ لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
   verification: {
