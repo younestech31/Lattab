@@ -102,7 +102,8 @@ export const translations = {
       cta_mobile: 'عرض جميع المقالات'
     },
     faq: {
-      title: 'معلومات حول الإجراءات التوثيقية',
+      title: 'الأسئلة الشائعة',
+      badge: 'الأسئلة الشائعة',
       description: 'للمزيد من المعلومات حول الإجراءات، يمكنكم التواصل مع الديوان عبر القنوات الرسمية.',
       contact_title: 'المزيد من المعلومات',
       contact_description: 'للمزيد من المعلومات، يمكنكم التواصل مع الديوان عبر القنوات الرسمية.'
@@ -326,7 +327,8 @@ export const translations = {
       cta_mobile: 'Voir tous les articles'
     },
     faq: {
-      title: 'Information sur les procédures notariales',
+      title: 'Questions fréquentes',
+      badge: 'Questions fréquentes',
       description: 'Pour plus d\'informations, vous pouvez contacter l\'Étude via les canaux officiels.',
       contact_title: 'Plus d\'informations',
       contact_description: 'Pour plus d\'informations, vous pouvez contacter l\'Étude via les canaux officiels.'

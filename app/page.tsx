@@ -13,7 +13,6 @@ import NotaryRole from '@/components/WhyChooseUs';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
-import { faqs } from '@/lib/data/faq';
 import { JsonLdScript } from '@/components/schema';
 import { NonceAnalyticsLoader } from '@/components/NonceAnalyticsLoader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
@@ -56,10 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
 // Validate these schema changes using Google's Rich Results Test tool:
 // https://search.google.com/test/rich-results
 // Dynamic testing URL: https://search.google.com/test/rich-results?url=https://lattab.vercel.app/
-async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknown>> {
-  const headerStore = await headers();
-  const currentLang = (headerStore.get('x-lang') ?? lang ?? 'ar') as 'ar' | 'fr';
-
+async function buildHomeSchema(): Promise<Record<string, unknown>> {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "GovernmentOffice",
@@ -99,8 +95,7 @@ export default async function Home() {
   
   const headerStore = await headers();
   const nonce = headerStore.get('x-nonce') ?? '';
-  const currentLang = (headerStore.get('x-lang') ?? lang) as 'ar' | 'fr';
-  const consolidatedSchema = await buildHomeSchema(currentLang);
+  const consolidatedSchema = await buildHomeSchema();
 
   return (
     <div className="min-h-screen bg-white">
