@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL } from '@/lib/config';
 import type { Viewport } from 'next';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 
 const cairo = Cairo({ 
   subsets: ['arabic'], 
@@ -93,11 +93,14 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({children}: {children: React.ReactNode}) {
+  const headerStore = await headers();
+  const headerLang = headerStore.get('x-lang') as 'ar' | 'fr' | null;
   const cookieStore = await cookies();
   const cookieLang = (cookieStore.get('lang')?.value as 'ar' | 'fr') ?? 'ar';
+  const resolvedLang = headerLang || cookieLang;
 
   return (
-    <html lang={cookieLang} dir={cookieLang === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>
+    <html lang={resolvedLang} dir={resolvedLang === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -116,7 +119,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         <meta name="indexnow-key" content="23640b5098f44acf92740b8ccee9f405" />
       </head>
       <body className="font-cairo" suppressHydrationWarning>
-        <LanguageProvider lang={cookieLang}>
+        <LanguageProvider lang={resolvedLang}>
           <a 
             href="#main-content" 
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 [html[dir=rtl]_&]:focus:right-4 [html[dir=rtl]_&]:focus:left-auto focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold"
