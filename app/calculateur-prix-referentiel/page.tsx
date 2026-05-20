@@ -11,6 +11,8 @@ import { getPricesForCalculator } from '@/lib/utils/dataMapper';
 import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
+// Validate this page using the Open Graph debugger:
+// https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Flattab.vercel.app%2Fcalculateur-prix-referentiel
 export async function generateMetadata(): Promise<Metadata> {
   const desc = 'احسب السعر المرجعي لعقارك في وهران 2026 وفق الجدول الرسمي. بيع وإيجار — سكني وتجاري. تجنب المراجعة الضريبية.';
   assertDescriptionLength(desc, 'calculateur-prix-referentiel');
@@ -25,15 +27,21 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
       description: desc,
       url: `${SITE_URL}/calculateur-prix-referentiel`,
+      siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
       type: 'website',
-      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026' }],
+      images: [{ 
+        url: `${SITE_URL}/og-calculator.jpg`, 
+        width: 1200, 
+        height: 630, 
+        alt: 'حاسبة السعر المرجعي العقاري وهران' 
+      }],
       locale: 'ar_DZ',
     },
     twitter: {
       card: 'summary_large_image',
       title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
       description: desc,
-      images: [`${SITE_URL}/og-image.jpg`],
+      images: [`${SITE_URL}/og-calculator.jpg`],
     },
     robots: {
       index: true,
