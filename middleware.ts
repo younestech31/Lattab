@@ -33,13 +33,18 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  // Language detection based on URL prefix
+  // Language detection based on URL prefix or cookie
   let lang = 'ar';
   if (url.pathname.startsWith('/fr') && (url.pathname === '/fr' || url.pathname.startsWith('/fr/'))) {
     lang = 'fr';
   } else {
-    // If not starting with /fr, preserve ar
-    lang = 'ar';
+    // Check if the page is one of the neutral paths (for core routes / and /blog, path strictly defines language)
+    const isMainOrBlog = url.pathname === '/' || url.pathname.startsWith('/blog');
+    if (!isMainOrBlog) {
+      lang = request.cookies.get('lang')?.value === 'fr' ? 'fr' : 'ar';
+    } else {
+      lang = 'ar';
+    }
   }
 
   requestHeaders.set('x-lang', lang);

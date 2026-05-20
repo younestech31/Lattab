@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 
   if (frPost) {
-    languages['fr-DZ'] = `${SITE_URL}/blog/fr/${frPost.slug}`;
+    languages['fr-DZ'] = `${SITE_URL}/fr/blog/${frPost.slug}`;
   }
 
   if (process.env.NODE_ENV === 'development' && languages['fr-DZ'] === languages['ar-DZ']) {

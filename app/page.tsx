@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/`,
     languages: {
       'ar-DZ': `${SITE_URL}/`,
-      'fr-DZ': `${SITE_URL}/`,
+      'fr-DZ': `${SITE_URL}/fr`,
       'x-default': `${SITE_URL}/`,
     },
   },

@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
       
       if (frEquivalent) {
-        languages['fr-DZ'] = `${base}/blog/fr/${frEquivalent.slug}`;
+        languages['fr-DZ'] = `${base}/fr/blog/${frEquivalent.slug}`;
       }
 
       return {
@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
     .map(post => {
       const languages: Record<string, string> = {
-        'fr-DZ': `${base}/blog/fr/${post.slug}`,
+        'fr-DZ': `${base}/fr/blog/${post.slug}`,
       };
       
       if (post.arSlug) {
@@ -42,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
 
       return {
-        url: `${base}/blog/fr/${post.slug}`,
+        url: `${base}/fr/blog/${post.slug}`,
         lastModified: new Date(post.dateModified || post.dateISO),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
@@ -64,7 +64,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: {
         languages: {
           'ar-DZ': `${base}/`,
-          'fr-DZ': `${base}/`,
+          'fr-DZ': `${base}/fr`,
+          'x-default': `${base}/`,
+        },
+      },
+    },
+    {
+      url: `${base}/fr`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+      images: [
+        `${base}/logo.webp`
+      ],
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/`,
+          'fr-DZ': `${base}/fr`,
           'x-default': `${base}/`,
         },
       },
@@ -90,7 +106,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: {
         languages: {
           'ar-DZ': `${base}/blog`,
-          'fr-DZ': `${base}/blog`,
+          'fr-DZ': `${base}/fr/blog`,
+          'x-default': `${base}/blog`,
+        },
+      },
+    },
+    {
+      url: `${base}/fr/blog`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/blog`,
+          'fr-DZ': `${base}/fr/blog`,
           'x-default': `${base}/blog`,
         },
       },

@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useTransition } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { setLanguageCookie } from '@/app/actions/language';
 
 export type Language = 'ar' | 'fr';
 
@@ -32,18 +33,31 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
     // Check if current page is structured as /fr/...
     const isFrPage = pathname.startsWith('/fr') && (pathname === '/fr' || pathname.startsWith('/fr/'));
 
+    let isPathChanging = false;
+
     if (nextLang === 'fr') {
       if (!isFrPage) {
-        targetPath = `/fr${pathname === '/' ? '' : pathname}`;
+        // Only prefix if it's the home page or a blog page
+        if (pathname === '/' || pathname.startsWith('/blog')) {
+          targetPath = `/fr${pathname === '/' ? '' : pathname}`;
+          isPathChanging = true;
+        }
       }
     } else {
       if (isFrPage) {
         targetPath = pathname === '/fr' ? '/' : pathname.replace(/^\/fr/, '');
+        isPathChanging = true;
       }
     }
 
     startTransition(() => {
-      router.push(targetPath);
+      setLanguageCookie(nextLang).then(() => {
+        if (isPathChanging) {
+          router.push(targetPath);
+        } else {
+          router.refresh();
+        }
+      });
     });
   };
 
