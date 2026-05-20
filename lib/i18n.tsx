@@ -1,8 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useState, useTransition } from 'react';
-import { useRouter } from 'next/navigation';
-import { setLanguageCookie } from '@/app/actions/language';
+import React, { createContext, useContext, useTransition } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 
 export type Language = 'ar' | 'fr';
 
@@ -16,31 +15,42 @@ export interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children, lang }: { children: React.ReactNode, lang: Language }) {
-  const [langState, setLangState] = useState<Language>(lang);
   const router = useRouter();
+  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
-  const toggleLang = () => {
-    const nextLang = langState === 'ar' ? 'fr' : 'ar';
-    setLangState(nextLang);
-    setLanguageCookie(nextLang).then(() => {
-      startTransition(() => {
-        router.refresh();
-      });
+  const handleLanguageChange = (nextLang: Language) => {
+    let targetPath = pathname;
+    
+    // Check if current page is structured as /fr/...
+    const isFrPage = pathname.startsWith('/fr') && (pathname === '/fr' || pathname.startsWith('/fr/'));
+
+    if (nextLang === 'fr') {
+      if (!isFrPage) {
+        targetPath = `/fr${pathname === '/' ? '' : pathname}`;
+      }
+    } else {
+      if (isFrPage) {
+        targetPath = pathname === '/fr' ? '/' : pathname.replace(/^\/fr/, '');
+      }
+    }
+
+    startTransition(() => {
+      router.push(targetPath);
     });
+  };
+
+  const toggleLang = () => {
+    const nextLang = lang === 'ar' ? 'fr' : 'ar';
+    handleLanguageChange(nextLang);
   };
 
   const setLang = (newLang: Language) => {
-    setLangState(newLang);
-    setLanguageCookie(newLang).then(() => {
-      startTransition(() => {
-        router.refresh();
-      });
-    });
+    handleLanguageChange(newLang);
   };
 
   return (
-    <LanguageContext.Provider value={{ lang: langState, setLang, toggleLang, isPending }}>
+    <LanguageContext.Provider value={{ lang, setLang, toggleLang, isPending }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -53,3 +63,4 @@ export function useLang() {
   }
   return context;
 }
+

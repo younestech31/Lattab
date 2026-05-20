@@ -35,13 +35,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const languages: Record<string, string> = {
-    'fr-DZ': `${SITE_URL}/blog/fr/${post.slug}`,
+    'fr-DZ': `${SITE_URL}/fr/blog/${post.slug}`,
   };
   
   if (post.arSlug) {
-    // Reciprocal linking: If a French post translates an Arabic post,
-    // the French post must point BOTH ar-DZ and x-default to the Arabic URL,
-    // and the Arabic URL points fr-DZ back here.
     languages['ar-DZ'] = `${SITE_URL}/blog/${post.arSlug}`;
     languages['x-default'] = `${SITE_URL}/blog/${post.arSlug}`;
   }
@@ -58,13 +55,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: post.description,
     authors: [{ name: 'Office Notarial de Maître Lattab Mohamed', url: SITE_URL }],
     alternates: {
-      canonical: `${SITE_URL}/blog/fr/${post.slug}`,
+      canonical: `${SITE_URL}/fr/blog/${post.slug}`,
       languages: languages,
     },
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `${SITE_URL}/blog/fr/${post.slug}`,
+      url: `${SITE_URL}/fr/blog/${post.slug}`,
       siteName: 'Office Notarial de Maître Lattab Mohamed - Notaire à Oran',
       locale: 'fr_DZ',
       type: 'article',
@@ -104,7 +101,6 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
   const cleanContentForWords = stripFrontmatterAndLeadingH1(content);
   const wordCount = Math.round(cleanContentForWords.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
   
-  // Priority: same category first, then most recent as fallback
   const sameCategoryPosts = frBlogPosts
     .filter(p => p.slug !== slug && p.category === post.category)
     .slice(0, 3);
@@ -150,7 +146,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
             <NonceScriptLoader schemas={[{
               "@context": "https://schema.org",
               "@type": "Article",
-              "@id": `${SITE_URL}/blog/fr/${post.slug}#article`,
+              "@id": `${SITE_URL}/fr/blog/${post.slug}#article`,
               "headline": post.title,
               "description": post.description,
               "datePublished": post.dateISO,
@@ -179,7 +175,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               },
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": `${SITE_URL}/blog/fr/${post.slug}`
+                "@id": `${SITE_URL}/fr/blog/${post.slug}`
               },
               "inLanguage": "fr-DZ",
               "about": {
@@ -196,7 +192,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               "itemListElement": [
                 { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${SITE_URL}/` },
                 { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blog` },
-                { "@type": "ListItem", "position": 3, "name": post.title, "item": `${SITE_URL}/blog/fr/${post.slug}` }
+                { "@type": "ListItem", "position": 3, "name": post.title, "item": `${SITE_URL}/fr/blog/${post.slug}` }
               ]
             }]} />
             <div className="p-8 md:p-12">
@@ -237,7 +233,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               </div>
             </div>
             
-            <div className="bg-emerald-900 p-8 md:p-12 text-center text-white">
+            <div className="bg-emerald-950 p-8 md:p-12 text-center text-white">
               <h3 className="text-2xl font-bold mb-4">Avez-vous besoin d&apos;un accompagnement juridique et notarial sur ce sujet ?</h3>
               <p className="text-emerald-100 mb-8 max-w-2xl mx-auto">
                 L&apos;Office Notarial de Maître Lattab Mohamed est prêt à étudier votre dossier et rassurer vos procédures en toute sécurité et dans les meilleurs délais.
@@ -267,14 +263,13 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
             </ul>
           </div>
 
-          {/* Related Posts for Internal Linking */}
           <div className="mt-12">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Autres articles dans : {post.category}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPosts.map((related) => (
                 <Link 
                   key={related.id}
-                  href={`/blog/fr/${related.slug}`}
+                  href={`/fr/blog/${related.slug}`}
                   className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group block"
                 >
                   <p className="text-sm font-bold text-emerald-600 mb-2">{related.category}</p>
