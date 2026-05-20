@@ -85,3 +85,11 @@ function loadFrenchBlogPosts(): BlogPost[] {
 
 export const blogPosts: BlogPost[] = loadBlogPosts();
 export const frBlogPosts: BlogPost[] = loadFrenchBlogPosts();
+
+export function getBlogPosts(): BlogPost[] {
+  return loadBlogPosts();
+}
+
+export function getFrBlogPosts(): BlogPost[] {
+  return loadFrenchBlogPosts();
+}

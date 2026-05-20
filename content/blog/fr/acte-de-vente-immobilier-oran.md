@@ -1,6 +1,6 @@
 ---
 title: "Guide de l'Acte de Vente Immobilier à Oran"
-description: "Découvrez les étapes clés, les documents nécessaires et le rôle du notaire dans la conclusion d'un acte de vente immobilier à Oran, en Algérie. Guide professionnel pour les acquéreurs et vendeurs."
+description: "Découvrez les étapes clés, les documents requis et le rôle du notaire dans la conclusion d'un acte de vente immobilier à Oran, en Algérie."
 dateISO: "2026-05-19"
 category: "Immobilier"
 language: "fr"

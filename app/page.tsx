@@ -17,41 +17,48 @@ import FAQ from '@/components/FAQ';
 import { faqs } from '@/lib/data/faq';
 import { JsonLdScript } from '@/components/schema';
 import { NonceAnalyticsLoader } from '@/components/NonceAnalyticsLoader';
+import { assertDescriptionLength } from '@/lib/utils/metaDescription';
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   <div className={`w-full ${height} bg-gray-50 animate-pulse rounded-lg`} aria-hidden="true" />
 );
 
-export const metadata: Metadata = {
-  title: { absolute: 'مكتب الأستاذ لعطب محمد — موثق وهران' },
-  alternates: {
-    canonical: `${SITE_URL}/`,
-    languages: {
-      'ar-DZ': `${SITE_URL}/`,
-      'fr-DZ': `${SITE_URL}/fr`,
-      'x-default': `${SITE_URL}/`,
+export async function generateMetadata(): Promise<Metadata> {
+  const desc = 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ توثيق عقارات، وكالات، تأسيس شركات وحاسبة الأسعار المرجعية 2026. احجز موعدك.'; // 128 chars
+  assertDescriptionLength(desc, 'Home Page / app/page.tsx');
+
+  return {
+    title: { absolute: 'مكتب الأستاذ لعطب محمد — موثق وهران' },
+    description: desc,
+    alternates: {
+      canonical: `${SITE_URL}/`,
+      languages: {
+        'ar-DZ': `${SITE_URL}/`,
+        'fr-DZ': `${SITE_URL}/fr`,
+        'x-default': `${SITE_URL}/`,
+      },
     },
-  },
-  openGraph: {
-    title: 'مكتب الأستاذ لعطب محمد — موثق وهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-    url: `${SITE_URL}/`,
-    siteName: 'مكتب الأستاذ لعطب محمد — موثق وهران',
-    locale: 'ar_DZ',
-    type: 'website',
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'مكتب الأستاذ لعطب محمد — موثق وهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد بوهران ⚖️ خدمات توثيق عقاري، وكالات، تأسيس شركات، وحاسبة الأسعار المرجعية 2026. حجز موعد سريع.',
-    images: [`${SITE_URL}/og-image.jpg`],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+    openGraph: {
+      title: 'مكتب الأستاذ لعطب محمد — موثق وهران',
+      description: desc,
+      url: `${SITE_URL}/`,
+      siteName: 'مكتب الأستاذ لعطب محمد — موثق وهران',
+      locale: 'ar_DZ',
+      type: 'website',
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'مكتب الأستاذ لعطب محمد — موثق وهران',
+      description: desc,
+      images: [`${SITE_URL}/og-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 async function buildHomeSchema(lang: 'ar' | 'fr'): Promise<Record<string, unknown>> {
   const headerStore = await headers();

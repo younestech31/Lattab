@@ -8,6 +8,7 @@ import BlogPostGrid from '@/components/BlogPostGrid';
 import { JsonLdScript } from '@/components/schema';
 import { SITE_URL } from '@/lib/config';
 import { frBlogPosts } from '@/lib/data/blog';
+import { assertDescriptionLength } from '@/lib/utils/metaDescription';
 
 export const revalidate = 3600;
 
@@ -19,16 +20,21 @@ export async function generateMetadata({
   const { q } = await searchParams;
 
   if (q) {
+    const searchDesc = `Résultats de recherche pour les articles concernant "${q.slice(0, 30)}" sur le blog de Maître Lattab Mohamed.`;
+    assertDescriptionLength(searchDesc, 'French blog page search');
     return {
       title: `Résultats de recherche pour "${q}" — Blog Juridique`,
-      description: `Résultats de recherche pour les articles concernant "${q}" sur le blog juridique de l'Office Notarial de Maître Lattab Mohamed Oran.`,
+      description: searchDesc,
       robots: { index: false, follow: true },
     };
   }
 
+  const desc = 'Un guide complet des lois immobilières et des procédures notariales en Algérie. Articles spécialisés de l’Office de Maître Lattab Mohamed.';
+  assertDescriptionLength(desc, 'French blog page main');
+
   return {
     title: { absolute: 'Blog Juridique et Immobilier — Notaire à Oran' },
-    description: 'Un guide complet des lois immobilières et des procédures notariales en Algérie. Articles spécialisés de l’Office de Maître Lattab Mohamed.',
+    description: desc,
     alternates: {
       canonical: `${SITE_URL}/fr/blog`,
       languages: {
@@ -39,7 +45,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: 'Blog Juridique et Immobilier — Notaire à Oran',
-      description: 'Un guide complet des lois immobilières et des procédures notariales en Algérie. Articles spécialisés de l’Office de Maître Lattab Mohamed.',
+      description: desc,
       url: `${SITE_URL}/fr/blog`,
       siteName: 'Office Notarial de Maître Lattab Mohamed — Notaire à Oran',
       images: [

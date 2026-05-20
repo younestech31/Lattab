@@ -8,6 +8,7 @@ import BlogPostGrid from '@/components/BlogPostGrid';
 import { JsonLdScript } from '@/components/schema';
 import { SITE_URL } from '@/lib/config';
 import { blogPosts } from '@/lib/data/blog';
+import { assertDescriptionLength } from '@/lib/utils/metaDescription';
 
 export const revalidate = 3600;
 
@@ -19,19 +20,23 @@ export async function generateMetadata({
   const { q } = await searchParams;
 
   if (q) {
+    const searchDesc = `نتائج البحث عن المقالات المتعلقة بـ ${q} في المدونة القانونية والعقارية لمكتب الموثق لعطب محمد.`;
+    assertDescriptionLength(searchDesc, 'blog page search');
     return {
       title: `نتائج البحث عن "${q}" — المدونة القانونية`,
-      description: `نتائج البحث عن المقالات المتعلقة بـ ${q} في المدونة القانونية والعقارية لمكتب الموثق لعطب محمد.`,
+      description: searchDesc,
       robots: { index: false, follow: true },
     };
   }
 
   const headerStore = await headers();
   const lang = (headerStore.get('x-lang') ?? 'ar') as 'ar' | 'fr';
+  const desc = 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.';
+  assertDescriptionLength(desc, 'blog page main');
 
   return {
     title: { absolute: 'المدونة القانونية والعقارية — موثق وهران' },
-    description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
+    description: desc,
     alternates: {
       canonical: `${SITE_URL}/blog`,
       languages: {
@@ -42,7 +47,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: 'المدونة القانونية والعقارية — موثق وهران',
-      description: 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.',
+      description: desc,
       url: `${SITE_URL}/blog`,
       siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
       images: [

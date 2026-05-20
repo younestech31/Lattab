@@ -10,6 +10,7 @@ import { SITE_URL } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleConversionCTA from '@/components/ArticleConversionCTA';
+import { enrichDescription, AR_DESCRIPTION_SUFFIX, assertDescriptionLength } from '@/lib/utils/metaDescription';
 
 const serviceMappings: Record<string, string> = {
   'عقاري': 'عقود البيع والشراء العقارية',
@@ -55,9 +56,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     console.warn(`Rendered title exceeds 60 characters: "${renderedTitle}" (${renderedTitle.length} chars)`);
   }
 
+  if (process.env.NODE_ENV === 'development' && post.description.length < 70) {
+    console.warn(`[SEO] Short description on slug "${slug}": ${post.description.length} chars`);
+  }
+
+  const enrichedDesc = enrichDescription(post.description, AR_DESCRIPTION_SUFFIX);
+  assertDescriptionLength(enrichedDesc, `blog slug: ${slug}`);
+
   return {
     title: titleValue,
-    description: post.description,
+    description: enrichedDesc,
     authors: [{ name: 'مكتب الأستاذ لعطب محمد', url: SITE_URL }],
     alternates: {
       canonical: `${SITE_URL}/blog/${post.slug}`,
@@ -65,7 +73,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
     openGraph: {
       title: post.title,
-      description: post.description,
+      description: enrichedDesc,
       url: `${SITE_URL}/blog/${post.slug}`,
       siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
       locale: 'ar_DZ',
@@ -79,7 +87,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.description,
+      description: enrichedDesc,
     },
   };
 }

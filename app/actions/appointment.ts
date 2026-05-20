@@ -1,6 +1,7 @@
 'use server';
 
 import { z } from 'zod';
+import { headers } from 'next/headers';
 
 const AppointmentSchema = z.object({
   name: z.string().min(2, 'الاسم يجب أن يكون على الأقل حرفين').max(100),
@@ -38,10 +39,24 @@ export async function validateAppointment(prevState: AppointmentState, formData:
 
   const result = AppointmentSchema.safeParse(rawData);
   
+  if (result.success && result.data.honeypot && result.data.honeypot.trim() !== '') {
+    const reqHeaders = await headers();
+    const ip = reqHeaders.get('x-forwarded-for') || '127.0.0.1';
+    console.warn('[honeypot]', ip, new Date().toISOString());
+    return { success: false, errors: {} };
+  }
+  
   if (!result.success) {
+    const errors: Record<string, string[]> = {};
+    const fieldErrors = result.error.flatten().fieldErrors;
+    for (const [key, messages] of Object.entries(fieldErrors)) {
+      if (messages) {
+        errors[key] = messages;
+      }
+    }
     return { 
       success: false, 
-      errors: result.error.flatten().fieldErrors as Record<string, string[]>
+      errors
     };
   }
   
@@ -53,3 +68,4 @@ export async function validateAppointment(prevState: AppointmentState, formData:
     data: result.data 
   };
 }
+
