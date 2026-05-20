@@ -10,7 +10,7 @@ const CalculatorCTA = () => {
           <div className="flex-1 text-center md:text-right">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
               حاسبة السعر المرجعي للعقار
-              <span className="block text-emerald-400 mt-1">وهران 2026</span>
+              <span className="block text-emerald-400 mt-1">2026</span>
             </h2>
             <p className="text-emerald-50 text-sm md:text-base leading-relaxed mb-6">
               تجنب غرامات التقويم الضريبي. احسب الحد الأدنى للتصريح الرسمي بأسعار البيع والإيجار لولاية وهران بضغطة زر واحدة.

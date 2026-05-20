@@ -84,7 +84,7 @@ export default async function CalculatorPage() {
       <NonceScriptLoader schemas={[breadcrumbSchema, toolSchema]} />
       <WebPageSchema
         url={`${SITE_URL}/calculateur-prix-referentiel`}
-        name="حاسبة السعر المرجعي للعقار وهران 2026"
+        name="حاسبة السعر المرجعي للعقار 2026"
         description="احسب السعر المرجعي الرسمي لعقارك في وهران مجاناً. بيانات رسمية من وزارة المالية 2026."
         breadcrumbs={[
           { name: "الرئيسية", item: `${SITE_URL}/` },
@@ -107,7 +107,7 @@ export default async function CalculatorPage() {
             
             <Calculator className="w-20 h-20 mx-auto mb-6 text-emerald-400" />
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center leading-tight">
-              حاسبة السعر المرجعي للعقار (وهران 2026)
+              حاسبة السعر المرجعي للعقار 2026
             </h1>
             <p className="text-xl text-emerald-100 max-w-2xl mx-auto text-center leading-relaxed">
               الأداة الأولى مجاناً في الجزائر لحساب القيم المرجعية لبيع وإيجار العقارات بناءً على الجداول الرسمية المعتمدة لتجنب الضرائب الإضافية والتسويات الإدارية.
