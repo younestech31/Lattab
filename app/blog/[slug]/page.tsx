@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
-import { NonceScriptLoader } from '@/components/NonceScriptLoader';
+import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
 import { blogPosts, frBlogPosts, getBlogPosts } from '@/lib/data/blog';
 import { SITE_URL, TITLE_TEMPLATE_SUFFIX } from '@/lib/config';
@@ -148,7 +148,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden"
             lang={post.language === 'fr' ? 'fr' : 'ar'}
           >
-            <NonceScriptLoader schemas={[{
+            <SchemaScriptLoader schemas={[{
               "@context": "https://schema.org",
               "@type": "Article",
               "@id": `${SITE_URL}/blog/${post.slug}#article`,

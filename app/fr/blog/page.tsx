@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import WebPageSchema from '@/components/WebPageSchema';
@@ -10,7 +9,7 @@ import { SITE_URL } from '@/lib/config';
 import { frBlogPosts } from '@/lib/data/blog';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export async function generateMetadata({
   searchParams,
@@ -76,9 +75,6 @@ export default async function FrenchBlogList({
 }: { 
   searchParams: Promise<{ q?: string }> 
 }) {
-  const headerStore = await headers();
-  const nonce = headerStore.get('x-nonce') ?? '';
-  
   const { q = '' } = await searchParams;
   
   const filteredPosts = q 
@@ -106,7 +102,7 @@ export default async function FrenchBlogList({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <JsonLdScript schema={itemListSchema} nonce={nonce} />
+      <JsonLdScript schema={itemListSchema} />
       <WebPageSchema
         url={`${SITE_URL}/fr/blog`}
         name="Blog Juridique et Immobilier | Maître Lattab Mohamed - Notaire"

@@ -22,7 +22,8 @@ const SERVICE_ICON_MAP: Record<string, React.ReactNode> = {
 };
 
 export default async function Services() {
-  const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
+  const rawLang = (await cookies()).get('lang')?.value;
+  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
   const content = translations[lang].services;
 
   return (

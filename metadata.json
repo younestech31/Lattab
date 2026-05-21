@@ -1,5 +1,6 @@
 {
   "name": "مكتب الأستاذ لعطب محمد - موثق بوهران",
   "description": "مكتب الأستاذ لعطب محمد، موثق معتمد في وهران، يقدم خدمات توثيق العقود القانونية، وعقود البيع والإيجار، وتأسيس الشركات، مع حاسبة ذكية لتحديد السعر المرجعي للعقار في وهران وفقاً لآخر تحديثات 2026.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

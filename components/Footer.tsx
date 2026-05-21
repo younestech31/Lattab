@@ -5,7 +5,8 @@ import { Language, translations } from '@/lib/i18n/translations';
 import { OFFICE_INFO } from '@/lib/config';
 
 export default async function Footer() {
-  const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
+  const rawLang = (await cookies()).get('lang')?.value;
+  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
   const isRTL = lang === 'ar';
 
   const getHref = (href: string) => {

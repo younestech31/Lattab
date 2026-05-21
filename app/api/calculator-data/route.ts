@@ -17,7 +17,7 @@ export interface CalculatorApiErrorResponse {
 }
 
 const QuerySchema = z.object({
-  wilaya: z.enum(['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','biskra','bechar','blida']),
+  wilaya: z.enum(['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida']),
   mode: z.enum(['sale','rent']).default('sale'),
   region: z.string().max(100).optional(),
 });
@@ -29,51 +29,43 @@ const wilayaDataLoaders: Record<Wilaya, () => Promise<{ transactions: PriceRefCo
     transactions: (await import('@/lib/data/oran-price-reference-transactions')).oranPriceReference,
     locations: (await import('@/lib/data/oran-price-reference-locations')).oranLocationsReference,
   }),
-  alger: async () => {
-    const data = await import('@/lib/data/alger-price-reference-transactions');
-    const locs = await import('@/lib/data/alger-price-reference-locations');
-    return { transactions: data.algerTransactionsReference, locations: locs.algerLocationsReference };
-  },
-  adrar: async () => {
-    const data = await import('@/lib/data/adrar-price-reference-transactions');
-    const locs = await import('@/lib/data/adrar-price-reference-locations');
-    return { transactions: data.adrarTransactionsReference, locations: locs.adrarLocationsReference };
-  },
-  chlef: async () => {
-    const data = await import('@/lib/data/chlef-price-reference-transactions');
-    const locs = await import('@/lib/data/chlef-price-reference-locations');
-    return { transactions: data.chlefTransactionsReference, locations: locs.chlefLocationsReference };
-  },
-  laghouat: async () => {
-    const data = await import('@/lib/data/laghouat-price-reference-transactions');
-    const locs = await import('@/lib/data/laghouat-price-reference-locations');
-    return { transactions: data.laghouatTransactionsReference, locations: locs.laghouatLocationsReference };
-  },
-  'oum-el-bouaghi': async () => {
-    const data = await import('@/lib/data/oum-el-bouaghi-price-reference-transactions');
-    const locs = await import('@/lib/data/oum-el-bouaghi-price-reference-locations');
-    return { transactions: data.oumElBouaghiTransactionsReference, locations: locs.oumElBouaghiLocationsReference };
-  },
-  batna: async () => {
-    const data = await import('@/lib/data/batna-price-reference-transactions');
-    const locs = await import('@/lib/data/batna-price-reference-locations');
-    return { transactions: data.batnaPriceReference, locations: locs.batnaRentalReference };
-  },
-  biskra: async () => {
-    const data = await import('@/lib/data/biskra-price-reference-transactions');
-    const locs = await import('@/lib/data/biskra-price-reference-locations').catch(() => ({ biskraLocationsReference: [] }));
-    return { transactions: data.biskraPriceReference, locations: locs.biskraLocationsReference ?? [] };
-  },
-  bechar: async () => {
-    const data = await import('@/lib/data/bechar-price-reference-transactions');
-    const locs = await import('@/lib/data/bechar-price-reference-locations').catch(() => ({ becharLocationsReference: [] }));
-    return { transactions: data.becharPriceReference, locations: locs.becharLocationsReference ?? [] };
-  },
-  blida: async () => {
-    const data = await import('@/lib/data/blida-price-reference-transactions');
-    const locs = await import('@/lib/data/blida-price-reference-locations').catch(() => ({ blidaLocationsReference: [] }));
-    return { transactions: data.blidaPriceReference, locations: locs.blidaLocationsReference ?? [] };
-  },
+  alger: async () => ({ transactions: [], locations: [] }),
+  adrar: async () => ({
+    transactions: (await import('@/lib/data/adrar-price-reference-transactions')).adrarPriceReferenceTransactions,
+    locations: (await import('@/lib/data/adrar-price-reference-locations')).adrarPriceReferenceLocations,
+  }),
+  chlef: async () => ({
+    transactions: (await import('@/lib/data/chlef-price-reference-transactions')).chlefPriceReferenceTransactions,
+    locations: (await import('@/lib/data/chlef-price-reference-locations')).chlefPriceReferenceLocations,
+  }),
+  laghouat: async () => ({
+    transactions: (await import('@/lib/data/laghouat-price-reference-transactions')).laghouatPriceReferenceTransactions,
+    locations: (await import('@/lib/data/laghouat-price-reference-locations')).laghouatPriceReferenceLocations,
+  }),
+  'oum-el-bouaghi': async () => ({
+    transactions: (await import('@/lib/data/oum-el-bouaghi-price-reference-transactions')).oumElBouaghiPriceReferenceTransactions,
+    locations: (await import('@/lib/data/oum-el-bouaghi-price-reference-locations')).oumElBouaghiPriceReferenceLocations,
+  }),
+  batna: async () => ({
+    transactions: (await import('@/lib/data/batna-price-reference-transactions')).batnaPriceReferenceTransactions,
+    locations: (await import('@/lib/data/batna-price-reference-locations')).batnaPriceReferenceLocations,
+  }),
+  bejaia: async () => ({
+    transactions: (await import('@/lib/data/bejaia-price-reference-transactions')).bejaiaPriceReferenceTransactions,
+    locations: (await import('@/lib/data/bejaia-price-reference-locations')).bejaiaRentalReferenceTransactions,
+  }),
+  biskra: async () => ({
+    transactions: (await import('@/lib/data/biskra-price-reference-transactions')).biskraPriceReferenceTransactions,
+    locations: (await import('@/lib/data/biskra-price-reference-locations')).biskraRentalReferenceTransactions,
+  }),
+  bechar: async () => ({
+    transactions: (await import('@/lib/data/bechar-price-reference-transactions')).becharPriceReferenceTransactions,
+    locations: (await import('@/lib/data/bechar-price-reference-locations')).becharRentalReferenceTransactions,
+  }),
+  blida: async () => ({
+    transactions: (await import('@/lib/data/blida-price-reference-transactions')).blidaPriceReferenceTransactions,
+    locations: [],
+  }),
 };
 
 export async function GET(request: NextRequest) {

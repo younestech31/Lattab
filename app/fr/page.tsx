@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+export const revalidate = 3600;
 import Home from '../page';
 import { SITE_URL } from '@/lib/config';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
+import { headers } from 'next/headers';
 
 export async function generateMetadata(): Promise<Metadata> {
   const desc = 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran ⚖️ Rédaction d\'actes, contrat de vente immobilière, constitution de sociétés et calcul de prix de référence.';
@@ -40,4 +42,13 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default Home;
+export default async function FrenchHome() {
+  if (process.env.NODE_ENV === 'development') {
+    const resolvedLang = (await headers()).get('x-lang');
+    if (resolvedLang !== 'fr') {
+      throw new Error('[FR page] x-lang header is not fr — middleware routing broken');
+    }
+  }
+
+  return <Home lang="fr" />;
+}

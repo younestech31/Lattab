@@ -10,7 +10,7 @@ import { AnalyticsWrapper } from "@/components/AnalyticsWrapper";
 import CookieBanner from '@/components/CookieBanner';
 import { SITE_URL } from '@/lib/config';
 import type { Viewport } from 'next';
-import { cookies, headers } from 'next/headers';
+import { headers } from 'next/headers';
 
 const cairo = Cairo({ 
   subsets: ['arabic'], 
@@ -94,11 +94,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({children}: {children: React.ReactNode}) {
-  const headerStore = await headers();
-  const headerLang = headerStore.get('x-lang') as 'ar' | 'fr' | null;
-  const cookieStore = await cookies();
-  const cookieLang = (cookieStore.get('lang')?.value as 'ar' | 'fr') ?? 'ar';
-  const resolvedLang = headerLang || cookieLang;
+  const resolvedLang = (await headers()).get('x-lang') as 'ar' | 'fr' ?? 'ar';
 
   return (
     <html lang={resolvedLang} dir={resolvedLang === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>

@@ -8,7 +8,10 @@ export const runtime = 'nodejs';
 
 export async function POST(request: Request): Promise<Response> {
   const secret = process.env.DEPLOY_HOOK_SECRET;
-  if (!secret || !validateBearerAuth(request, secret)) {
+  if (!secret) {
+    return NextResponse.json({ error: 'DEPLOY_HOOK_SECRET not configured' }, { status: 503 });
+  }
+  if (!validateBearerAuth(request, secret)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

@@ -3,7 +3,8 @@ import { t, Language } from '@/lib/i18n/translations';
 import FAQAccordion from './FAQAccordion';
 
 export default async function FAQ() {
-  const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
+  const rawLang = (await cookies()).get('lang')?.value;
+  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
   
   return (
     <section id="faq" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-white">

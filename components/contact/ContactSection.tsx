@@ -13,7 +13,8 @@ const MapLoading = ({ lang }: { lang: string }) => (
 
 export default async function ContactSection({ contactInfo }: { contactInfo?: React.ReactNode }) {
   const cookieStore = await cookies();
-  const lang = (cookieStore.get('lang')?.value as Language) || 'ar';
+  const rawLang = cookieStore.get('lang')?.value;
+  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
   const isRtl = lang === 'ar';
   const t_contact = translations[lang].contact;
 

@@ -98,12 +98,15 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
   const hasInitialized = useRef(false);
   
   useEffect(() => {
-    if (!hasInitialized.current) {
+    // If we have initial data and we haven't tried to fetch yet, we can skip the first fetch
+    // BUT since we want to support switching wilayas, we should only skip if regionId is set
+    if (!hasInitialized.current && initialData && initialRegionId) {
         hasInitialized.current = true;
         return;
     }
+    
     const fetchApiData = async () => {
-      const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','biskra','bechar','blida'];
+      const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida'];
       if (!supportedWilayas.includes(wilaya)) {
         setMappedData(null);
         setCommunes([]);
@@ -120,6 +123,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
         console.error('Failed to fetch data', err);
       } finally {
         setIsLoadingData(false);
+        hasInitialized.current = true;
       }
     };
     fetchApiData();
@@ -384,7 +388,8 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       { v: 'el-mghaier', n: isAr ? 'المغير (57)' : 'El M\'Ghair (57)' }, 
                       { v: 'el-meniaa', n: isAr ? 'المنيعة (58)' : 'El Meniaâ (58)' }
                     ].map(w => {
-                      const isSupported = w.v === 'oran';
+                      const supportedWilayas = ['oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida'];
+                      const isSupported = supportedWilayas.includes(w.v);
                       return (
                         <option key={w.v} value={w.v} disabled={!isSupported} aria-disabled={!isSupported}>
                           {w.n} {!isSupported && (isAr ? '(قريبًا)' : '(Bientôt)')}

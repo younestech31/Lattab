@@ -1,14 +1,13 @@
 import React, { Suspense } from 'react';
 import { Metadata } from 'next';
+export const revalidate = 86400;
 import Link from 'next/link';
 import { Calculator, AlertCircle, TrendingDown, Info } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
-import { NonceScriptLoader } from '@/components/NonceScriptLoader';
+import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { SITE_URL } from '@/lib/config';
 import PriceCalculator from '@/components/PriceCalculator';
 import CalculatorSkeleton from '@/components/CalculatorSkeleton';
-import { getPricesForCalculator } from '@/lib/utils/dataMapper';
-import { oranPriceReference } from '@/lib/data/oran-price-reference-transactions';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 // Validate this page using the Open Graph debugger:
@@ -50,11 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function CalculatorPage() {
-  const initialSaleData = getPricesForCalculator(oranPriceReference, oranPriceReference[0].commune, 'sale');
-  const initialCommunes = oranPriceReference.map((c) => c.commune);
-  const initialRegionId = oranPriceReference[0].commune;
-
+export default function CalculatorPage() {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -75,7 +70,7 @@ export default async function CalculatorPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <NonceScriptLoader schemas={[breadcrumbSchema, webApplicationSchema]} />
+      <SchemaScriptLoader schemas={[breadcrumbSchema, webApplicationSchema]} />
       <WebPageSchema
         url={`${SITE_URL}/calculateur-prix-referentiel`}
         name="حاسبة السعر المرجعي للعقار 2026"
@@ -113,9 +108,9 @@ export default async function CalculatorPage() {
         <div className="-mt-10 relative z-20">
           <Suspense fallback={<CalculatorSkeleton />}>
             <PriceCalculator 
-              initialData={initialSaleData}
-              initialCommunes={initialCommunes}
-              initialRegionId={initialRegionId}
+              initialData={null}
+              initialCommunes={[]}
+              initialRegionId=""
             />
           </Suspense>
         </div>

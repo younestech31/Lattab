@@ -3,7 +3,8 @@ import { Language, translations } from '@/lib/i18n/translations';
 import { Shield, Search, Archive, Scale, Receipt, BookOpen } from 'lucide-react';
 
 export default async function NotaryRole() {
-  const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
+  const rawLang = (await cookies()).get('lang')?.value;
+  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
   const content = translations[lang].notaryRole;
 
   // Mapping the icons based on new order

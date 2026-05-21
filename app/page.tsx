@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
+export const revalidate = 3600;
 import { Suspense } from 'react';
+import { headers, cookies } from 'next/headers';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Contact from '@/components/contact';
 import ContactInfo from '@/components/ContactInfo';
 import CalculatorCTA from '@/components/CalculatorCTA';
-import { cookies, headers } from 'next/headers';
 import { Language } from '@/lib/i18n/translations';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { SITE_URL } from '@/lib/config';
@@ -14,7 +15,7 @@ import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
 import { JsonLdScript } from '@/components/schema';
-import { NonceAnalyticsLoader } from '@/components/NonceAnalyticsLoader';
+import { AnalyticsScriptLoader } from '@/components/AnalyticsScriptLoader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
@@ -93,21 +94,26 @@ async function buildHomeSchema(): Promise<Record<string, unknown>> {
   return schema;
 }
 
-export default async function Home() {
-  const cookieStore = await cookies();
-  const lang = (cookieStore.get('lang')?.value as Language) ?? 'ar';
-  
+export default async function Home(props?: {
+  params?: Promise<Record<string, string | string[] | undefined>>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+  lang?: Language;
+}) {
+  const propLang = props?.lang;
   const headerStore = await headers();
-  const nonce = headerStore.get('x-nonce') ?? '';
+  const lang = propLang ?? 
+               (headerStore.get('x-lang') as Language) ?? 
+               ((await cookies()).get('lang')?.value as Language) ?? 
+               'ar';
   const consolidatedSchema = await buildHomeSchema();
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLdScript schema={consolidatedSchema} nonce={nonce} />
-      <NonceAnalyticsLoader />
+      <JsonLdScript schema={consolidatedSchema} />
+      <AnalyticsScriptLoader />
       <main id="main-content">
         <div className="no-print">
-          <Hero />
+          <Hero lang={lang} />
           <Services />
 ...
 
@@ -118,7 +124,7 @@ export default async function Home() {
           </Suspense>
 
           <Suspense fallback={<SectionSkeleton height="min-h-[600px]" />}>
-            <Procedures />
+            <Procedures lang={lang} />
           </Suspense>
 
           <Suspense fallback={<SectionSkeleton height="min-h-[720px]" />}>

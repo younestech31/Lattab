@@ -1,8 +1,6 @@
-import { cookies } from 'next/headers';
 import { t, Language } from '@/lib/i18n/translations';
 
-export default async function Hero() {
-  const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
+export default function Hero({ lang }: { lang: Language }) {
 
   return (
     <div className="relative" dir={lang === 'fr' ? 'ltr' : 'rtl'}>

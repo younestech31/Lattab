@@ -4,7 +4,6 @@ import { JsonLdScript } from '@/components/schema';
 
 export default async function FAQSchema() {
   const headerStore = await headers();
-  const nonce = headerStore.get('x-nonce') ?? '';
   const lang = (headerStore.get('x-lang') ?? 'ar') as 'ar' | 'fr';
 
   const schema = {
@@ -34,5 +33,5 @@ export default async function FAQSchema() {
     })
   };
 
-  return <JsonLdScript schema={schema} nonce={nonce} />;
+  return <JsonLdScript schema={schema} />;
 }

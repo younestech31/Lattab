@@ -8,6 +8,9 @@ const HOST = new URL(SITE_URL).host;
 const API_URL = 'https://api.indexnow.org/indexnow';
 
 export async function GET(req: NextRequest) {
+  if (!process.env.CRON_SECRET) {
+    return NextResponse.json({ error: 'CRON_SECRET not configured' }, { status: 503 });
+  }
   if (!validateBearerAuth(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

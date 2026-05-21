@@ -1,6 +1,5 @@
 import React from 'react';
 import { Accordion } from './ui/Accordion';
-import { headers, cookies } from 'next/headers';
 import { JsonLdScript } from './schema';
 import { DocumentChecklist } from './DocumentChecklist';
 import { procedureTypes, generalDocumentsAr, generalDocumentsFr } from '@/lib/data/procedures';
@@ -106,11 +105,7 @@ const uiTranslations = {
   }
 };
 
-const Procedures = async () => {
-  const headerStore = await headers();
-  const nonce = headerStore.get('x-nonce') ?? '';
-  const cookieStore = await cookies();
-  const lang = (cookieStore.get('lang')?.value as Language) || 'ar';
+const Procedures = async ({ lang = 'ar' }: { lang?: Language }) => {
   const isAr = lang === 'ar';
   
   const ui = uiTranslations[lang];
@@ -137,7 +132,6 @@ const Procedures = async () => {
             }
           }))
         }}
-        nonce={nonce}
       />
       <div className="container mx-auto px-4">
         {/* Section Header */}
