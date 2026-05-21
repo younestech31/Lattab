@@ -214,7 +214,7 @@ const createKsarElHiraneScale = (name: string): PriceRefCommune => ({
   terrainsAgricolesPlaine: terrainsAgricolesPlaineCommun
 });
 
-const createSidiMakhloufBase = (name: string) => ({
+const createSidiMakhloufBase = (_name: string) => ({
   individuels: [
     {
       label: "Standing",

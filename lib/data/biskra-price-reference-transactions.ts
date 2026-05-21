@@ -7,7 +7,7 @@ const createRange = (min: number, max: number) => ({ min, max });
 // ============================================================================
 
 // Standard Agricultural Scale (e.g., Biskra city, Khanguet)
-const agScaleStandard = (isPente = false) => [
+const agScaleStandard = () => [
   { label: "Potentialité élevée", unit: "DA/Ha", zonePeripherique: createRange(395850, 455000), zoneEloignement: createRange(318500, 364000) },
   { label: "Potentialité moyenne", unit: "DA/Ha", zonePeripherique: createRange(277550, 318500), zoneEloignement: createRange(158340, 182000) },
   { label: "Potentialité faible", unit: "DA/Ha", zonePeripherique: createRange(198380, 277500), zoneEloignement: createRange(79170, 91000) }
