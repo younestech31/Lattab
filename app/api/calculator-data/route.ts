@@ -128,11 +128,16 @@ export async function GET(request: NextRequest) {
     const dataSource = (mode === 'rent' ? data.locations : data.transactions) ?? [];
     
     // If no region set, get the first one for initialization
-    const regionId = region || (dataSource[0] ? dataSource[0].commune : null);
+    let regionId = region || (dataSource[0] ? dataSource[0].commune : null);
     
     let result = null;
     if (regionId) {
         result = getPricesForCalculator(dataSource, regionId, mode);
+        // Fallback if regionId has mismatched spelling between rent/sale or was not found
+        if (!result && dataSource[0]) {
+            regionId = dataSource[0].commune;
+            result = getPricesForCalculator(dataSource, regionId, mode);
+        }
     }
     
     const communes = dataSource.map((c) => c.commune);

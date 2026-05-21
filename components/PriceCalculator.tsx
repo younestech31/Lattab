@@ -96,7 +96,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
   const [zoneKey, setZoneKey] = useState<string>('');
   const [area, setArea] = useState<number | ''>('');
   const hasInitialized = useRef(false);
-  const cache = useRef<Record<string, { data: CalculatorResult | null; communes: string[] }>>({});
+  const cache = useRef<Record<string, { data: CalculatorResult | null; communes: string[]; regionId?: string }>>({});
   
   useEffect(() => {
     const cacheKey = `${wilaya}-${calculationMode}-${regionId}`;
@@ -104,6 +104,9 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       const cached = cache.current[cacheKey];
       setMappedData(cached.data);
       setCommunes(cached.communes);
+      if (cached.regionId && cached.regionId !== regionId) {
+        setRegionId(cached.regionId);
+      }
       return;
     }
     
@@ -112,7 +115,8 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
         hasInitialized.current = true;
         cache.current[`${wilaya}-${calculationMode}-${regionId}`] = {
           data: initialData,
-          communes: initialCommunes
+          communes: initialCommunes,
+          regionId: initialRegionId
         };
         return;
     }
@@ -126,24 +130,28 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       }
       setIsLoadingData(true);
       try {
-        const response = await fetch(`/api/calculator-data?wilaya=${wilaya}&mode=${calculationMode}&region=${regionId}`);
+        const response = await fetch(`/api/calculator-data?wilaya=${wilaya}&mode=${calculationMode}&region=${encodeURIComponent(regionId)}`);
         const result = await response.json();
         
         // Cache the result
         cache.current[cacheKey] = {
           data: result.data,
-          communes: result.communes
+          communes: result.communes,
+          regionId: result.regionId
         };
-        if (!regionId && result.regionId) {
+        if (result.regionId && result.regionId !== regionId) {
           cache.current[`${wilaya}-${calculationMode}-${result.regionId}`] = {
             data: result.data,
-            communes: result.communes
+            communes: result.communes,
+            regionId: result.regionId
           };
         }
         
         setMappedData(result.data);
         setCommunes(result.communes);
-        if (!regionId && result.regionId) setRegionId(result.regionId);
+        if (result.regionId && result.regionId !== regionId) {
+          setRegionId(result.regionId);
+        }
       } catch (err: unknown) {
         console.error('Failed to fetch data', err);
       } finally {
