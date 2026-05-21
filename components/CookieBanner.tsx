@@ -19,7 +19,7 @@ export default function CookieBanner() {
   const accept = () => {
     localStorage.setItem('cookie-consent', 'true');
     setIsVisible(false);
-    window.location.reload(); // Reload to trigger analytics load
+    window.dispatchEvent(new CustomEvent('cookie-consent-granted'));
   };
 
   if (!isVisible) return null;

@@ -96,12 +96,24 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
   const [zoneKey, setZoneKey] = useState<string>('');
   const [area, setArea] = useState<number | ''>('');
   const hasInitialized = useRef(false);
+  const cache = useRef<Record<string, { data: CalculatorResult | null; communes: string[] }>>({});
   
   useEffect(() => {
+    const cacheKey = `${wilaya}-${calculationMode}-${regionId}`;
+    if (cache.current[cacheKey]) {
+      const cached = cache.current[cacheKey];
+      setMappedData(cached.data);
+      setCommunes(cached.communes);
+      return;
+    }
+    
     // If we have initial data and we haven't tried to fetch yet, we can skip the first fetch
-    // BUT since we want to support switching wilayas, we should only skip if regionId is set
     if (!hasInitialized.current && initialData && initialRegionId) {
         hasInitialized.current = true;
+        cache.current[`${wilaya}-${calculationMode}-${regionId}`] = {
+          data: initialData,
+          communes: initialCommunes
+        };
         return;
     }
     
@@ -116,6 +128,19 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       try {
         const response = await fetch(`/api/calculator-data?wilaya=${wilaya}&mode=${calculationMode}&region=${regionId}`);
         const result = await response.json();
+        
+        // Cache the result
+        cache.current[cacheKey] = {
+          data: result.data,
+          communes: result.communes
+        };
+        if (!regionId && result.regionId) {
+          cache.current[`${wilaya}-${calculationMode}-${result.regionId}`] = {
+            data: result.data,
+            communes: result.communes
+          };
+        }
+        
         setMappedData(result.data);
         setCommunes(result.communes);
         if (!regionId && result.regionId) setRegionId(result.regionId);
@@ -127,7 +152,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       }
     };
     fetchApiData();
-  }, [wilaya, calculationMode, regionId]);
+  }, [wilaya, calculationMode, regionId, initialData, initialCommunes, initialRegionId]);
   
   const currentRegionData = mappedData ? { prix: mappedData.categories } : null;
 
@@ -399,43 +424,50 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                   </select>
                 </div>
                 
-                {isLoadingData ? (
-                  <div className="space-y-6 py-4">
-                    {[1, 2, 3, 4].map(i => (
-                      <div key={i} className="animate-pulse space-y-2">
-                        <div className="h-4 bg-gray-100 rounded w-1/4" />
-                        <div className="h-14 bg-gray-100 rounded-xl w-full" />
-                      </div>
-                    ))}
+                <div className="relative">
+                  {/* Region */}
+                  <div>
+                    <label htmlFor="region" className="block text-sm font-bold text-gray-700 mb-2">
+                      {ui.region}
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="region"
+                        value={regionId}
+                        onChange={handleRegionChange}
+                        disabled={wilaya === ''}
+                        aria-disabled={wilaya === ''}
+                        className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed pr-10"
+                      >
+                        <option value="">{ui.chooseRegion}</option>
+                        {communes.map((c) => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </select>
+                      {isLoadingData && (
+                        <div className={`absolute flex items-center top-1/2 -translate-y-1/2 ${isAr ? 'left-4' : 'right-4'}`}>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-emerald-600" />
+                        </div>
+                      )}
+                    </div>
                   </div>
-                ) : (
-                <>
-                {/* Region */}
-                <div>
-                  <label htmlFor="region" className="block text-sm font-bold text-gray-700 mb-2">
-                    {ui.region}
-                  </label>
-                  <select
-                    id="region"
-                    value={regionId}
-                    onChange={handleRegionChange}
-                    disabled={wilaya === ''}
-                    aria-disabled={wilaya === ''}
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
-                  >
-                    <option value="">{ui.chooseRegion}</option>
-                    {communes.map((c) => (
-                      <option key={c} value={c}>{c}</option>
-                    ))}
-                  </select>
                 </div>
 
-                {!currentRegionData && regionId !== '' ? (
+                {!currentRegionData && regionId !== '' && !isLoadingData ? (
                   <div className="p-4 bg-amber-50 text-amber-700 rounded-xl mt-4 border border-amber-200 text-sm">
                     {ui.notSupportedMessage}
                   </div>
                 ) : (
-                  <>
+                  <div className="space-y-6 relative min-h-[100px]">
+                    {isLoadingData && (
+                      <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px] z-10 flex flex-col items-center justify-center rounded-xl py-6">
+                        <div className="space-y-3 text-center">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600 mx-auto" />
+                          <p className="text-xs text-emerald-600 font-semibold">{isAr ? 'جاري تحميل البيانات...' : 'Chargement...'}</p>
+                        </div>
+                      </div>
+                    )}
+                    
                     {/* Category */}
                     <div>
                       <label htmlFor="category" className="block text-sm font-bold text-gray-700 mb-2">
@@ -445,8 +477,8 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         id="category"
                         value={categoryIdx}
                         onChange={handleCategoryChange}
-                        disabled={!currentRegionData || regionId === ''}
-                        aria-disabled={!currentRegionData || regionId === ''}
+                        disabled={!currentRegionData || regionId === '' || isLoadingData}
+                        aria-disabled={!currentRegionData || regionId === '' || isLoadingData}
                         className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                       >
                         <option value="">{ui.chooseCategory}</option>
@@ -456,45 +488,45 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       </select>
                     </div>
 
-                {/* Type */}
-                <div>
-                  <label htmlFor="type" className="block text-sm font-bold text-gray-700 mb-2">
-                    {ui.subType}
-                  </label>
-                  <select
-                    id="type"
-                    value={typeIdx}
-                    onChange={handleTypeChange}
-                    disabled={categoryIdx === ''}
-                    aria-disabled={categoryIdx === ''}
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
-                  >
-                    <option value="">{ui.chooseSubType}</option>
-                    {selectedCategory?.types.map((type, idx) => (
-                      <option key={idx} value={idx}>{t(lang, 'calculator', type.type as CalculatorKeys)}</option>
-                    ))}
-                  </select>
-                </div>
+                    {/* Type */}
+                    <div>
+                      <label htmlFor="type" className="block text-sm font-bold text-gray-700 mb-2">
+                        {ui.subType}
+                      </label>
+                      <select
+                        id="type"
+                        value={typeIdx}
+                        onChange={handleTypeChange}
+                        disabled={categoryIdx === '' || isLoadingData}
+                        aria-disabled={categoryIdx === '' || isLoadingData}
+                        className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+                      >
+                        <option value="">{ui.chooseSubType}</option>
+                        {selectedCategory?.types.map((type, idx) => (
+                          <option key={idx} value={idx}>{t(lang, 'calculator', type.type as CalculatorKeys)}</option>
+                        ))}
+                      </select>
+                    </div>
 
-                {/* Zone */}
-                <div>
-                  <label htmlFor="zone" className="block text-sm font-bold text-gray-700 mb-2">
-                    {ui.urbanZone}
-                  </label>
-                  <select
-                    id="zone"
-                    value={zoneKey}
-                    onChange={(e) => setZoneKey(e.target.value)}
-                    disabled={typeIdx === '' || availableZones.length === 0}
-                    aria-disabled={typeIdx === '' || availableZones.length === 0}
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
-                  >
-                    <option value="">{ui.chooseUrbanZone}</option>
-                    {availableZones.map((zone) => (
-                      <option key={zone} value={zone}>{t(lang, 'calculator', zone as CalculatorKeys)}</option>
-                    ))}
-                  </select>
-                </div>
+                    {/* Zone */}
+                    <div>
+                      <label htmlFor="zone" className="block text-sm font-bold text-gray-700 mb-2">
+                        {ui.urbanZone}
+                      </label>
+                      <select
+                        id="zone"
+                        value={zoneKey}
+                        onChange={(e) => setZoneKey(e.target.value)}
+                        disabled={typeIdx === '' || availableZones.length === 0 || isLoadingData}
+                        aria-disabled={typeIdx === '' || availableZones.length === 0 || isLoadingData}
+                        className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+                      >
+                        <option value="">{ui.chooseUrbanZone}</option>
+                        {availableZones.map((zone) => (
+                          <option key={zone} value={zone}>{t(lang, 'calculator', zone as CalculatorKeys)}</option>
+                        ))}
+                      </select>
+                    </div>
 
                     {/* Area */}
                     {selectedType && (
@@ -512,15 +544,13 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                           value={area}
                           onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
                           placeholder={ui.areaPlaceholder}
-                          disabled={zoneKey === ''}
-                          aria-disabled={zoneKey === ''}
+                          disabled={zoneKey === '' || isLoadingData}
+                          aria-disabled={zoneKey === '' || isLoadingData}
                           className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                         />
                       </motion.div>
                     )}
-                  </>
-                )}
-                </>
+                  </div>
                 )}
               </div>
 
