@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { cookies } from 'next/headers';
 import { Language, translations } from '@/lib/i18n/translations';
 import { SERVICE_TO_BLOG_MAP } from '@/lib/data/serviceBlogMap';
 import { Home, FileText, Users, Building2, Lock, Stamp } from 'lucide-react';
@@ -21,9 +20,11 @@ const SERVICE_ICON_MAP: Record<string, React.ReactNode> = {
   'Déclarations et certifications': <Stamp className="w-8 h-8" />,
 };
 
-export default async function Services() {
-  const rawLang = (await cookies()).get('lang')?.value;
-  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
+interface ServicesProps {
+  lang: Language;
+}
+
+export default function Services({ lang }: ServicesProps) {
   const content = translations[lang].services;
 
   return (

@@ -38,7 +38,7 @@ const uiTranslations = {
     whatsapp: 'واتساب',
     placeholderText: 'يرجى ملء جميع الحقول أعلاه لإظهار السعر المرجعي التقريبي',
     warningTitle: 'تنبيه هام:',
-    warningText: 'هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لولاية وهران (الفترة 2012-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.',
+    warningText: 'هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لمختلف الولايات (الفترة 2012-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.',
     notSupportedMessage: 'بيانات هذه البلدية قيد التحديث وسيتم إضافتها قريباً. يرجى اختيار بلدية أخرى أو المحاولة لاحقاً.'
   },
   fr: {
@@ -70,7 +70,7 @@ const uiTranslations = {
     whatsapp: 'WhatsApp',
     placeholderText: 'Veuillez remplir tous les champs ci-dessus pour afficher l\'estimation du prix de référence',
     warningTitle: 'Avis important :',
-    warningText: 'Ce calculateur fournit une estimation basée sur les prix de référence approuvés par la Direction Générale des Impôts de la wilaya d\'Oran (période 2012-2026). Les prix sont susceptibles d\'être mis à jour ou modifiés en fonction de la situation réelle du bien. Les chiffres obtenus sont indicatifs, et le cabinet n\'assume aucune responsabilité quant à leur exactitude finale lors de la conclusion du contrat.',
+    warningText: 'Ce calculateur fournit une estimation basée sur les prix de référence approuvés par la Direction Générale des Impôts (période 2012-2026). Les prix sont susceptibles d\'être mis à jour ou modifiés en fonction de la situation réelle du bien. Les chiffres obtenus sont indicatifs, et le cabinet n\'assume aucune responsabilité quant à leur exactitude finale lors de la conclusion du contrat.',
     notSupportedMessage: 'Les données de cette commune sont en cours de mise à jour. Veuillez sélectionner une autre commune.'
   }
 };
@@ -118,7 +118,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     }
     
     const fetchApiData = async () => {
-      const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida'];
+      const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida','bouira','tamanrasset','tebessa','tiaret','tlemcen'];
       if (!supportedWilayas.includes(wilaya)) {
         setMappedData(null);
         setCommunes([]);
@@ -413,7 +413,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       { v: 'el-mghaier', n: isAr ? 'المغير (57)' : 'El M\'Ghair (57)' }, 
                       { v: 'el-meniaa', n: isAr ? 'المنيعة (58)' : 'El Meniaâ (58)' }
                     ].map(w => {
-                      const supportedWilayas = ['oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida'];
+                      const supportedWilayas = ['oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida', 'bouira', 'tamanrasset', 'tebessa', 'tiaret', 'tlemcen'];
                       const isSupported = supportedWilayas.includes(w.v);
                       return (
                         <option key={w.v} value={w.v} disabled={!isSupported} aria-disabled={!isSupported}>

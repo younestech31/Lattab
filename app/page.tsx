@@ -100,11 +100,15 @@ export default async function Home(props?: {
   lang?: Language;
 }) {
   const propLang = props?.lang;
-  const headerStore = await headers();
-  const lang = propLang ?? 
-               (headerStore.get('x-lang') as Language) ?? 
-               ((await cookies()).get('lang')?.value as Language) ?? 
-               'ar';
+  let lang: Language = propLang as Language;
+
+  if (!lang) {
+    const headerStore = await headers();
+    lang = (headerStore.get('x-lang') as Language) ?? 
+           ((await cookies()).get('lang')?.value as Language) ?? 
+           'ar';
+  }
+
   const consolidatedSchema = await buildHomeSchema();
 
   return (
@@ -114,13 +118,11 @@ export default async function Home(props?: {
       <main id="main-content">
         <div className="no-print">
           <Hero lang={lang} />
-          <Services />
-...
-
+          <Services lang={lang} />
           <CalculatorCTA lang={lang} />
           
           <Suspense fallback={<SectionSkeleton height="min-h-[480px]" />}>
-            <NotaryRole />
+            <NotaryRole lang={lang} />
           </Suspense>
 
           <Suspense fallback={<SectionSkeleton height="min-h-[600px]" />}>
@@ -128,14 +130,14 @@ export default async function Home(props?: {
           </Suspense>
 
           <Suspense fallback={<SectionSkeleton height="min-h-[720px]" />}>
-            <LegalUpdates />
+            <LegalUpdates lang={lang} />
           </Suspense>
 
           <Suspense fallback={<SectionSkeleton height="min-h-[520px]" />}>
-            <FAQ />
+            <FAQ lang={lang} />
           </Suspense>
         </div>
-        <Contact contactInfo={<ContactInfo lang={lang} />} />
+        <Contact contactInfo={<ContactInfo lang={lang} />} lang={lang} />
       </main>
       <div className="no-print">
         <StickyMobileCTA />

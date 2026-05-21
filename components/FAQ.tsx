@@ -1,11 +1,11 @@
-import { cookies } from 'next/headers';
 import { t, Language } from '@/lib/i18n/translations';
 import FAQAccordion from './FAQAccordion';
 
-export default async function FAQ() {
-  const rawLang = (await cookies()).get('lang')?.value;
-  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
-  
+interface FAQProps {
+  lang: Language;
+}
+
+export default function FAQ({ lang }: FAQProps) {
   return (
     <section id="faq" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-white">
       <div className="container mx-auto px-4">

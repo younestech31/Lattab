@@ -17,7 +17,7 @@ export interface CalculatorApiErrorResponse {
 }
 
 const QuerySchema = z.object({
-  wilaya: z.enum(['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida']),
+  wilaya: z.enum(['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida','bouira','tamanrasset','tebessa','tiaret','tlemcen']),
   mode: z.enum(['sale','rent']).default('sale'),
   region: z.string().max(100).optional(),
 });
@@ -64,7 +64,27 @@ const wilayaDataLoaders: Record<Wilaya, () => Promise<{ transactions: PriceRefCo
   }),
   blida: async () => ({
     transactions: (await import('@/lib/data/blida-price-reference-transactions')).blidaPriceReferenceTransactions,
-    locations: [],
+    locations: (await import('@/lib/data/blida-price-reference-locations')).blidaRentalReferenceTransactions,
+  }),
+  bouira: async () => ({
+    transactions: (await import('@/lib/data/bouira-price-reference-transactions')).bouiraPriceReferenceTransactions,
+    locations: (await import('@/lib/data/bouira-price-reference-locations')).bouiraRentalReferenceTransactions,
+  }),
+  tamanrasset: async () => ({
+    transactions: (await import('@/lib/data/tamanrasset-price-reference-transactions')).tamenghassetPriceReferenceTransactions,
+    locations: (await import('@/lib/data/tamanrasset-price-reference-locations')).tamenghassetRentalReferenceTransactions,
+  }),
+  tebessa: async () => ({
+    transactions: (await import('@/lib/data/tebessa-price-reference-transactions')).tebessaPriceReferenceTransactions,
+    locations: (await import('@/lib/data/tebessa-price-reference-locations')).tebessaRentalReferenceTransactions,
+  }),
+  tiaret: async () => ({
+    transactions: (await import('@/lib/data/tiaret-price-reference-transactions')).tiaretPriceReferenceTransactions,
+    locations: (await import('@/lib/data/tiaret-price-reference-locations')).tiaretRentalReferenceTransactions,
+  }),
+  tlemcen: async () => ({
+    transactions: (await import('@/lib/data/tlemcen-price-reference-transactions')).tlemcenPriceReferenceTransactions,
+    locations: (await import('@/lib/data/tlemcen-price-reference-locations')).tlemcenRentalReferenceTransactions,
   }),
 };
 

@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 import { Suspense } from 'react';
 import ContactTabs from './ContactTabs';
 import ClientMap from './ClientMap';
@@ -11,10 +10,12 @@ const MapLoading = ({ lang }: { lang: string }) => (
   </div>
 );
 
-export default async function ContactSection({ contactInfo }: { contactInfo?: React.ReactNode }) {
-  const cookieStore = await cookies();
-  const rawLang = cookieStore.get('lang')?.value;
-  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
+interface ContactSectionProps {
+  contactInfo?: React.ReactNode;
+  lang: Language;
+}
+
+export default function ContactSection({ contactInfo, lang }: ContactSectionProps) {
   const isRtl = lang === 'ar';
   const t_contact = translations[lang].contact;
 

@@ -28,12 +28,19 @@ export async function generateMetadata(): Promise<Metadata> {
       url: `${SITE_URL}/calculateur-prix-referentiel`,
       siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
       type: 'website',
+      images: [{ 
+        url: `${SITE_URL}/og-calculator.jpg`, 
+        width: 1200, 
+        height: 630, 
+        alt: 'حاسبة السعر المرجعي العقاري وهران' 
+      }],
       locale: 'ar_DZ',
     },
     twitter: {
       card: 'summary_large_image',
       title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
       description: desc,
+      images: [`${SITE_URL}/og-calculator.jpg`],
     },
     robots: {
       index: true,

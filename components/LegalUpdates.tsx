@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Calendar, FileText, Scale, TrendingUp } from 'lucide-react';
 import { DirectionalArrow } from '@/components/ui/DirectionalArrow';
-import { cookies } from 'next/headers';
 import { Language, translations } from '@/lib/i18n/translations';
 import { blogPosts } from '@/lib/data/blog';
 
@@ -11,9 +10,11 @@ const iconMap: Record<string, React.ReactNode> = {
   TrendingUp: <TrendingUp className="w-6 h-6" />,
 };
 
-export default async function LegalUpdates() {
-  const rawLang = (await cookies()).get('lang')?.value;
-  const lang: Language = (rawLang === 'fr' ? 'fr' : 'ar');
+interface LegalUpdatesProps {
+  lang: Language;
+}
+
+export default function LegalUpdates({ lang }: LegalUpdatesProps) {
   const content = translations[lang].legalUpdates;
   const latestPosts = blogPosts.slice(0, 4);
 

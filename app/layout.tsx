@@ -135,7 +135,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
           
           {children}
           <div className="no-print">
-            <Footer />
+            <Footer lang={resolvedLang} />
           </div>
           <AnalyticsWrapper />
           <CookieBanner />
