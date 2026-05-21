@@ -7,7 +7,7 @@ const FloatingWhatsApp = () => {
   const isAr = lang === 'ar';
 
   return (
-    <div className="fixed bottom-4 end-4 z-50 flex items-end pb-[env(safe-area-inset-bottom,0px)]" dir={isAr ? 'rtl' : 'ltr'}>
+    <div className="fixed bottom-4 end-4 z-50 hidden md:flex items-end pb-[env(safe-area-inset-bottom,0px)]" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="relative">
         <a
           href="https://wa.me/213562296981"
