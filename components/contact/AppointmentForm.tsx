@@ -1,8 +1,8 @@
 'use client';
-import { useState, useMemo, useEffect, useActionState, useRef } from 'react';
+import { useState, useEffect, useActionState, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Calendar, Clock, User, Phone, Mail, FileText, Building, CheckCircle, Loader2, AlertTriangle, Printer, ExternalLink } from 'lucide-react';
-import { AppointmentFormData, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOTS, generateWhatsAppAppointmentUrl, saveLastWhatsAppUrl, getLastWhatsAppUrl } from './types';
+import { Calendar, Clock, User, Phone, FileText, Building, CheckCircle, Loader2, AlertTriangle, Printer, ExternalLink } from 'lucide-react';
+import { AppointmentFormData, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOTS, generateWhatsAppAppointmentUrl } from './types';
 import { validateAppointment, AppointmentState } from '@/app/actions/appointment';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
@@ -17,15 +17,26 @@ export default function AppointmentForm({ services }: { services: readonly strin
   const [state, formAction, isPending] = useActionState(validateAppointment, initialState);
 
   const [appointmentData, setAppointmentData] = useState<AppointmentFormData>({
-    name: '', phone: '', email: '', service: '',
+    name: '', phone: '', service: '',
     date: '', time: '', notes: '', company: '',
     honeypot: '',
   });
 
   const [appointmentAgreed, setAppointmentAgreed] = useState(false);
   const [isAppointmentSubmitted, setIsAppointmentSubmitted] = useState(false);
+  const [minDate, setMinDate] = useState<string>('');
+  const [maxDate, setMaxDate] = useState<string>('');
   const whatsappUrlRef = useRef<string | null>(null);
   
+  useEffect(() => {
+    const now = new Date();
+    setMinDate(now.toISOString().split('T')[0]);
+    
+    const max = new Date();
+    max.setDate(max.getDate() + 90);
+    setMaxDate(max.toISOString().split('T')[0]);
+  }, []);
+
   useEffect(() => {
     const serviceParam = searchParams.get('service');
     if (serviceParam && services.includes(decodeURIComponent(serviceParam))) {
@@ -37,17 +48,10 @@ export default function AppointmentForm({ services }: { services: readonly strin
   useEffect(() => {
     if (state.success && !isAppointmentSubmitted) {
       setIsAppointmentSubmitted(true);
-      const url = whatsappUrlRef.current || generateWhatsAppAppointmentUrl(appointmentData);
-      saveLastWhatsAppUrl(url);
+      const url = whatsappUrlRef.current || generateWhatsAppAppointmentUrl(appointmentData, lang);
       window.location.href = url;
     }
-  }, [state.success, isAppointmentSubmitted, appointmentData]);
-
-  const maxDateString = useMemo(() => {
-    const maxDate = new Date();
-    maxDate.setDate(maxDate.getDate() + 90);
-    return maxDate.toISOString().split('T')[0];
-  }, []);
+  }, [state.success, isAppointmentSubmitted, appointmentData, lang]);
 
   const getRequiredDocsForService = (service: string) => {
     const hints = t_form.required_docs_hints as Record<string, readonly string[]>;
@@ -78,7 +82,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
   };
 
   const handleManualWhatsAppOpen = () => {
-    const url = getLastWhatsAppUrl() || generateWhatsAppAppointmentUrl(appointmentData);
+    const url = whatsappUrlRef.current || generateWhatsAppAppointmentUrl(appointmentData, lang);
     window.location.href = url;
   };
 
@@ -154,7 +158,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
   return (
     <form 
       action={async (formData) => {
-        const url = generateWhatsAppAppointmentUrl(appointmentData);
+        const url = generateWhatsAppAppointmentUrl(appointmentData, lang);
         whatsappUrlRef.current = url;
         await formAction(formData);
       }}
@@ -213,24 +217,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="appt-email" className="block text-sm font-medium text-gray-700 mb-2">
-            <Mail className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
-            {t_form.email}
-          </label>
-          <input
-            id="appt-email"
-            name="email"
-            type="email"
-            maxLength={100}
-            value={appointmentData.email}
-            onChange={(e) => setAppointmentData({ ...appointmentData, email: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
-            placeholder={t_form.email_placeholder}
-            dir="ltr"
-          />
-        </div>
+      <div className="grid md:grid-cols-1 gap-6">
         <div>
           <label htmlFor="appointment_company" className="block text-sm font-medium text-gray-700 mb-2">
             <Building className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
@@ -290,8 +277,8 @@ export default function AppointmentForm({ services }: { services: readonly strin
             required
             value={appointmentData.date}
             onChange={(e) => setAppointmentData({ ...appointmentData, date: e.target.value })}
-            min={new Date().toISOString().split('T')[0]}
-            max={maxDateString}
+            min={minDate}
+            max={maxDate}
             className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
           />
           <p className="text-xs text-gray-500 mt-2 text-start">{t_form.date_note}</p>

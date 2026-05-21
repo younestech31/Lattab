@@ -9,7 +9,7 @@ import { blogPosts, frBlogPosts, getBlogPosts } from '@/lib/data/blog';
 import { SITE_URL, TITLE_TEMPLATE_SUFFIX } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
-import ArticleConversionCTA from '@/components/ArticleConversionCTA';
+import ArticleActionLinks from '@/components/ArticleActionLinks';
 import { enrichDescription, AR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
 
 const serviceMappings: Record<string, string> = {
@@ -290,7 +290,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           )}
 
           <div className="mt-12">
-            <ArticleConversionCTA 
+            <ArticleActionLinks 
               serviceTag={post.category}
               bookingServiceValue={serviceMappings[post.category] || 'خدمات أخرى'}
               slug={slug}

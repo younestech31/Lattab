@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Calendar, FileText, Scale, TrendingUp, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Calendar, FileText, Scale, TrendingUp } from 'lucide-react';
+import { DirectionalArrow } from '@/components/ui/DirectionalArrow';
 import { BlogPost } from '@/lib/data/blog';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -65,7 +66,7 @@ const BlogPostGrid = function BlogPostGrid({ posts, emptyMessage }: BlogPostGrid
                   <div className="text-sm font-medium bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">{post.readTime}</div>
                 </div>
                 <span className="text-emerald-600 font-bold group-hover:translate-x-[4px] [html[dir=rtl]_&]:group-hover:translate-x-[-8px] transition-transform flex items-center gap-1">
-                  {isFr ? <ArrowRight className="w-5 h-5"/> : <ArrowLeft className="w-5 h-5"/>}
+                  <DirectionalArrow lang={isFr ? 'fr' : 'ar'} className="w-5 h-5" />
                 </span>
               </div>
             </Link>

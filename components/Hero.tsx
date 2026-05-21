@@ -88,7 +88,7 @@ export default async function Hero() {
         </div>
 
         {/* Scroll indicator — hidden on very short screens */}
-        <div className="absolute bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] left-1/2 -translate-x-1/2 animate-bounce will-change-transform hidden sm:block">
+        <div className="absolute bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] left-1/2 -translate-x-1/2 animate-bounce motion-reduce:animate-none will-change-transform hidden sm:block">
           <a href="#services" className="text-white/40 hover:text-white/80 transition-colors">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />

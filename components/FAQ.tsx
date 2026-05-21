@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
-import { faqs } from '@/lib/data/faq';
 import { t, Language } from '@/lib/i18n/translations';
+import FAQAccordion from './FAQAccordion';
 
 export default async function FAQ() {
   const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
@@ -51,24 +51,7 @@ export default async function FAQ() {
           </div>
 
           {/* Right Side - FAQ List */}
-          <div className="lg:col-span-2 space-y-4" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
-            {faqs.map((faq, index) => (
-              <details
-                key={index}
-                className="group bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 open:ring-2 open:ring-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500"
-              >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-bold text-gray-800 outline-none">
-                  {lang === 'ar' ? faq.questionAr : faq.questionFr}
-                  <svg className="w-6 h-6 text-gray-400 group-open:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-                  {lang === 'ar' ? faq.answerAr : faq.answerFr}
-                </div>
-              </details>
-            ))}
-          </div>
+          <FAQAccordion lang={lang} />
         </div>
       </div>
     </section>

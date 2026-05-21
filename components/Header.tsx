@@ -16,6 +16,8 @@ const Header = () => {
   
   const text = translations[lang].nav;
   const ticking = useRef(false);
+  const mobileNavRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleScroll = useCallback(() => {
     if (!ticking.current) {
@@ -54,8 +56,44 @@ const Header = () => {
   useEffect(() => {
     if (!isMenuOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMenuOpen(false);
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
     };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen || !mobileNavRef.current) return;
+    
+    const nav = mobileNavRef.current;
+    const focusableSelectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const focusableElements = Array.from(nav.querySelectorAll<HTMLElement>(focusableSelectors));
+    const firstEl = focusableElements[0];
+    const lastEl = focusableElements[focusableElements.length - 1];
+    
+    // Focus first element when menu opens
+    firstEl?.focus();
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      if (focusableElements.length === 0) { e.preventDefault(); return; }
+      
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl?.focus();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl?.focus();
+        }
+      }
+    };
+    
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen]);
@@ -77,7 +115,7 @@ const Header = () => {
     { href: '/#services', label: text.services },
     { href: '/calculateur-prix-referentiel', label: text.calculator },
     { href: '/blog', label: text.blog },
-    { href: '/#notary-role', label: text.why_us },
+    { href: '/#notary-role', label: text.notary_role },
     { href: '/#procedures', label: text.procedures },
     { href: '/#legal-updates', label: text.news },
     { href: '/#faq', label: text.faq },
@@ -128,7 +166,7 @@ const Header = () => {
                   href={getHref(link.href)}
                   className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
                     headerActive ? 'text-gray-700' : 'text-white'
-                  } ${([text.why_us, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
+                  } ${([text.notary_role, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
                 >
                   {link.label}
                 </Link>
@@ -149,6 +187,7 @@ const Header = () => {
           <div className="flex items-center gap-3 lg:hidden">
             <LanguageSwitcher headerActive={headerActive} isMobile={true} />
             <button
+              ref={menuButtonRef}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
 
               aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
@@ -186,7 +225,14 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav id="mobile-nav" className={`lg:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}>
+          <nav
+            id="mobile-nav"
+            ref={mobileNavRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={lang === 'ar' ? 'قائمة التنقل' : 'Menu de navigation'}
+            className={`lg:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}
+          >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link

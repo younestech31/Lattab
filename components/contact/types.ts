@@ -5,7 +5,6 @@ export type AppointmentFormData = ZodAppointmentFormData;
 export interface InquiryFormData {
   name: string;
   phone: string;
-  email: string;
   service: string;
   message: string;
 }
@@ -73,88 +72,94 @@ export function cleanText(input: string): string {
     : '';
 }
 
-export function buildWhatsAppUrl({ service, source }: { service: string, source: string }) {
-  const text = `السلام عليكم، أود الاستفسار بخصوص ${service}. (المصدر: ${source})`;
-  return `https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`;
+export function buildWhatsAppUrl({ service, source }: { service: string, source: string }, lang: 'ar' | 'fr' = 'ar') {
+  const text = lang === 'ar'
+    ? `السلام عليكم، أود الاستفسار بخصوص ${service}. (المصدر: ${source})`
+    : `Bonjour, je souhaite me renseigner concernant: ${service}. (Source: ${source})`;
+  return `https://wa.me/213562296981?text=${encodeURIComponent(text)}`;
 }
 
-export function openWhatsAppAppointment(data: AppointmentFormData) {
+export function openWhatsAppAppointment(data: AppointmentFormData, lang: 'ar' | 'fr' = 'ar') {
   const name = cleanText(data.name);
   const phone = cleanText(data.phone);
-  const email = cleanText(data.email ?? '');
   const company = cleanText(data.company ?? '');
   const service = cleanText(data.service);
   const notes = cleanText(data.notes ?? '');
 
-  let text = `طلب حجز موعد جديد:
+  let text = lang === 'ar' 
+    ? `طلب حجز موعد جديد:
 الاسم: ${name}
 الخدمة: ${service}
 التاريخ: ${data.date}
 الوقت: ${data.time}
-رقم الهاتف: \u200E${phone}\u200E`;
+رقم الهاتف: \u200E${phone}\u200E`
+    : `Nouvelle demande de rendez-vous:
+Nom: ${name}
+Service: ${service}
+Date: ${data.date}
+Heure: ${data.time}
+Téléphone: ${phone}`;
 
-  if (email) text += `\nالبريد الإلكتروني: ${email}`;
-  if (company) text += `\nالشركة/المؤسسة: ${company}`;
-  if (notes) text += `\nملاحظات: ${notes}`;
+  if (company) {
+    text += lang === 'ar' ? `\nالشركة/المؤسسة: ${company}` : `\nEntreprise: ${company}`;
+  }
+  if (notes) {
+    text += lang === 'ar' ? `\nملاحظات: ${notes}` : `\nNotes: ${notes}`;
+  }
 
-  window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  window.open(`https://wa.me/213562296981?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
-export function generateWhatsAppAppointmentUrl(data: AppointmentFormData): string {
+export function generateWhatsAppAppointmentUrl(data: AppointmentFormData, lang: 'ar' | 'fr' = 'ar'): string {
   const name = cleanText(data.name);
   const phone = cleanText(data.phone);
-  const email = cleanText(data.email ?? '');
   const company = cleanText(data.company ?? '');
   const service = cleanText(data.service);
   const notes = cleanText(data.notes ?? '');
 
-  let text = `طلب حجز موعد جديد:
+  let text = lang === 'ar' 
+    ? `طلب حجز موعد جديد:
 الاسم: ${name}
 الخدمة: ${service}
 التاريخ: ${data.date}
 الوقت: ${data.time}
-رقم الهاتف: \u200E${phone}\u200E`;
+رقم الهاتف: \u200E${phone}\u200E`
+    : `Nouvelle demande de rendez-vous:
+Nom: ${name}
+Service: ${service}
+Date: ${data.date}
+Heure: ${data.time}
+Téléphone: ${phone}`;
 
-  if (email) text += `\nالبريد الإلكتروني: ${email}`;
-  if (company) text += `\nالشركة/المؤسسة: ${company}`;
-  if (notes) text += `\nملاحظات: ${notes}`;
-
-  return `https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`;
-}
-
-export function saveLastWhatsAppUrl(url: string) {
-  try {
-    sessionStorage.setItem('lastWhatsAppUrl', url);
-  } catch (e) {
-    console.error('Failed to save lastWhatsAppUrl', e);
+  if (company) {
+    text += lang === 'ar' ? `\nالشركة/المؤسسة: ${company}` : `\nEntreprise: ${company}`;
   }
-}
-
-export function getLastWhatsAppUrl(): string | null {
-  try {
-    return sessionStorage.getItem('lastWhatsAppUrl');
-  } catch (e) {
-    console.error('Failed to read lastWhatsAppUrl', e);
-    return null;
+  if (notes) {
+    text += lang === 'ar' ? `\nملاحظات: ${notes}` : `\nNotes: ${notes}`;
   }
+
+  return `https://wa.me/213562296981?text=${encodeURIComponent(text)}`;
 }
 
-export function openWhatsAppInquiry(data: InquiryFormData) {
+export function openWhatsAppInquiry(data: InquiryFormData, lang: 'ar' | 'fr' = 'ar') {
   const name = cleanText(data.name);
   const phone = cleanText(data.phone);
-  const email = cleanText(data.email);
   const service = cleanText(data.service);
   const message = cleanText(data.message);
 
-  let text = `استفسار عام:
+  const text = lang === 'ar'
+    ? `استفسار عام:
 الاسم: ${name}
 الخدمة: ${service}
-رقم الهاتف: \u200E${phone}\u200E`;
+رقم الهاتف: \u200E${phone}\u200E
+الرسالة: ${message}`
+    : `Demande de renseignement:
+Nom: ${name}
+Service: ${service}
+Téléphone: ${phone}
+Message: ${message}`;
 
-  if (email) text += `\nالبريد الإلكتروني: ${email}`;
-  text += `\nالرسالة: ${message}`;
-
-  window.open(`https://api.whatsapp.com/send/?phone=213562296981&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  window.open(`https://wa.me/213562296981?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
 export function getRequiredDocuments(service: string) {

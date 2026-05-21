@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { Language, translations } from '@/lib/i18n/translations';
+import { OFFICE_INFO } from '@/lib/config';
 
 export default async function Footer() {
   const lang = ((await cookies()).get('lang')?.value ?? 'ar') as Language;
@@ -81,10 +82,32 @@ export default async function Footer() {
                 </div>
               </Link>
             </div>
+            
+            {/* Institutional Information */}
+            <div className="mb-6" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
+              <h3 className="font-bold text-white text-sm mb-3">
+                {lang === 'ar' ? 'المعلومات المؤسسية' : 'Informations institutionnelles'}
+              </h3>
+              <dl className="space-y-1.5 text-emerald-200 text-xs">
+                <div>
+                  <dt className="sr-only">{lang === 'ar' ? 'الصفة الرسمية' : 'Qualité officielle'}</dt>
+                  <dd>{OFFICE_INFO.officialDesignation[lang]}</dd>
+                </div>
+                <div>
+                  <dt className="sr-only">{lang === 'ar' ? 'الاختصاص القضائي' : 'Juridiction'}</dt>
+                  <dd>{OFFICE_INFO.title[lang]}</dd>
+                </div>
+                <div>
+                  <dt className="sr-only">{lang === 'ar' ? 'الإطار القانوني' : 'Cadre légal'}</dt>
+                  <dd className="text-emerald-300/70 text-[11px]">{OFFICE_INFO.legalBasis[lang]}</dd>
+                </div>
+              </dl>
+            </div>
+
             {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://api.whatsapp.com/send/?phone=213562296981"
+                href="https://wa.me/213562296981"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 hover:bg-green-600 rounded-lg flex items-center justify-center transition-colors tooltip-trigger relative group"

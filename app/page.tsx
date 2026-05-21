@@ -9,7 +9,7 @@ import { cookies, headers } from 'next/headers';
 import { Language } from '@/lib/i18n/translations';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { SITE_URL } from '@/lib/config';
-import NotaryRole from '@/components/WhyChooseUs';
+import NotaryRole from '@/components/NotaryRole';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
@@ -18,7 +18,11 @@ import { NonceAnalyticsLoader } from '@/components/NonceAnalyticsLoader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
-  <div className={`w-full ${height} bg-gray-50 animate-pulse rounded-lg`} aria-hidden="true" />
+  <div
+    className={`w-full ${height.replace(/^h-/, 'min-h-')} bg-gray-50 animate-pulse rounded-lg`}
+    aria-hidden="true"
+    role="presentation"
+  />
 );
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -107,17 +111,21 @@ export default async function Home() {
           <Services />
 ...
 
-          <CalculatorCTA />
-          <Suspense fallback={<SectionSkeleton height="h-64" />}>
+          <CalculatorCTA lang={lang} />
+          
+          <Suspense fallback={<SectionSkeleton height="min-h-[480px]" />}>
             <NotaryRole />
           </Suspense>
-          <Suspense fallback={<SectionSkeleton height="h-64" />}>
+
+          <Suspense fallback={<SectionSkeleton height="min-h-[600px]" />}>
             <Procedures />
           </Suspense>
-          <Suspense fallback={<SectionSkeleton height="h-64" />}>
+
+          <Suspense fallback={<SectionSkeleton height="min-h-[720px]" />}>
             <LegalUpdates />
           </Suspense>
-          <Suspense fallback={<SectionSkeleton height="h-48" />}>
+
+          <Suspense fallback={<SectionSkeleton height="min-h-[520px]" />}>
             <FAQ />
           </Suspense>
         </div>

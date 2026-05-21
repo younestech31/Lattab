@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { User, Phone, Mail, FileText, CheckCircle } from 'lucide-react';
+import { User, Phone, FileText, CheckCircle } from 'lucide-react';
 import { InquiryFormData, openWhatsAppInquiry } from './types';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
@@ -11,7 +11,7 @@ export default function InquiryForm({ services }: { services: readonly string[] 
   const isAr = lang === 'ar';
 
   const [inquiryData, setInquiryData] = useState<InquiryFormData>({
-    name: '', phone: '', email: '', service: '', message: '',
+    name: '', phone: '', service: '', message: '',
   });
   const [isInquirySubmitted, setIsInquirySubmitted] = useState(false);
   const [inquiryAgreed, setInquiryAgreed] = useState(false);
@@ -41,7 +41,7 @@ export default function InquiryForm({ services }: { services: readonly string[] 
       return;
     }
 
-    openWhatsAppInquiry(inquiryData);
+    openWhatsAppInquiry(inquiryData, lang);
     setIsInquirySubmitted(true);
   };
 
@@ -58,7 +58,7 @@ export default function InquiryForm({ services }: { services: readonly string[] 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             ref={retryButtonRef}
-            onClick={() => openWhatsAppInquiry(inquiryData)}
+            onClick={() => openWhatsAppInquiry(inquiryData, lang)}
             className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 touch-manipulation"
           >
             {t_form.retry_whatsapp}
@@ -66,7 +66,7 @@ export default function InquiryForm({ services }: { services: readonly string[] 
           <button
             onClick={() => {
               setIsInquirySubmitted(false);
-              setInquiryData({ name: '', phone: '', email: '', service: '', message: '' });
+              setInquiryData({ name: '', phone: '', service: '', message: '' });
               setInquiryAgreed(false);
             }}
             className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 px-6 rounded-xl transition-colors text-sm touch-manipulation"
@@ -118,23 +118,7 @@ export default function InquiryForm({ services }: { services: readonly string[] 
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="inq-email" className="block text-sm font-medium text-gray-700 mb-2">
-            <Mail className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
-            {t_form.email}
-          </label>
-          <input
-            id="inq-email"
-            type="email"
-            maxLength={100}
-            value={inquiryData.email}
-            onChange={(e) => setInquiryData({ ...inquiryData, email: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
-            placeholder={t_form.email_placeholder}
-            dir="ltr"
-          />
-        </div>
+      <div className="grid md:grid-cols-1 gap-6">
         <div>
           <label htmlFor="inq-service" className="block text-sm font-medium text-gray-700 mb-2">
             <FileText className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />

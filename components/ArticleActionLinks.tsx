@@ -10,18 +10,18 @@ interface Props {
   category: string;
 }
 
-export default function ArticleConversionCTA({ serviceTag, bookingServiceValue, slug, lang, category }: Props) {
+export default function ArticleActionLinks({ serviceTag, bookingServiceValue, slug, lang, category }: Props) {
   const isRtl = lang === 'ar';
   const showCalculator = category === 'عقاري' || category === 'Immobilier';
   
   return (
-    <div className={`rounded-3xl border border-emerald-100 p-8 md:p-12 ${isRtl ? 'dir-rtl' : 'dir-ltr'}`}>
+    <div className="rounded-3xl border border-emerald-100 p-8 md:p-12" dir={isRtl ? 'rtl' : 'ltr'}>
       <div className={`grid md:grid-cols-2 ${showCalculator ? 'lg:grid-cols-3' : ''} gap-8`}>
         {/* Booking */}
         <div className="bg-white p-6 rounded-2xl border border-emerald-50 shadow-sm flex flex-col justify-between">
           <div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">
-              {isRtl ? `هل تحتاج إلى موثق لـ ${serviceTag}؟` : `Besoin d'un notaire pour ${serviceTag}?`}
+              {isRtl ? `طلب موعد بخصوص ${serviceTag}` : `Demande de rendez-vous — ${serviceTag}`}
             </h3>
             <p className="text-gray-600 mb-6 font-medium">
               {isRtl ? "يمكنك تقديم طلب موعد عبر الموقع الرسمي." : "Vous pouvez soumettre une demande de rendez-vous via le site officiel."}
@@ -41,14 +41,14 @@ export default function ArticleConversionCTA({ serviceTag, bookingServiceValue, 
         <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 flex flex-col justify-between">
           <div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">
-              {isRtl ? "أو تواصل عبر واتساب" : "Ou contactez-nous via WhatsApp"}
+              {isRtl ? "الاستفسار عبر واتساب" : "Renseignements via WhatsApp"}
             </h3>
             <p className="text-gray-600 mb-6 font-medium">
-              {isRtl ? "نحن متاحون للرد على استفساراتك مباشرة." : "Nous sommes disponibles pour répondre à vos questions."}
+              {isRtl ? "يمكنكم إرسال استفساركم حول الإجراءات والوثائق المطلوبة." : "Envoyez vos questions sur les procédures et documents requis."}
             </p>
           </div>
           <a 
-            href={buildWhatsAppUrl({ service: bookingServiceValue, source: (isRtl ? 'مقال: ' : 'Article: ') + slug })}
+            href={buildWhatsAppUrl({ service: bookingServiceValue, source: (isRtl ? 'مقال: ' : 'Article: ') + slug }, lang)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center w-full py-3 px-6 bg-emerald-600 text-white rounded-xl font-bold hover:bg-emerald-700 transition-colors gap-2"

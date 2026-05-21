@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Calendar, ArrowLeft, FileText, Scale, TrendingUp } from 'lucide-react';
+import { Calendar, FileText, Scale, TrendingUp } from 'lucide-react';
+import { DirectionalArrow } from '@/components/ui/DirectionalArrow';
 import { cookies } from 'next/headers';
 import { Language, translations } from '@/lib/i18n/translations';
 import { blogPosts } from '@/lib/data/blog';
@@ -32,7 +33,7 @@ export default async function LegalUpdates() {
             className="hidden md:flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition-colors group"
           >
             {content.cta}
-            <ArrowLeft className="w-5 h-5 transform group-hover:translate-x-2 transition-transform" />
+            <DirectionalArrow lang={lang} className="w-5 h-5" rtlClassName="group-hover:-translate-x-2" ltrClassName="group-hover:translate-x-2" />
           </Link>
         </div>
 
@@ -79,7 +80,7 @@ export default async function LegalUpdates() {
             className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 text-emerald-700 font-bold rounded-xl transition-colors"
           >
             {content.cta_mobile}
-            <ArrowLeft className="w-5 h-5" />
+            <DirectionalArrow lang={lang} className="w-5 h-5" />
           </Link>
         </div>
       </div>

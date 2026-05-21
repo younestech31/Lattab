@@ -6,7 +6,6 @@ import { headers } from 'next/headers';
 const AppointmentSchema = z.object({
   name: z.string().min(2, 'الاسم يجب أن يكون على الأقل حرفين').max(100),
   phone: z.string().regex(/^[\d\s\+\-\(\)]{8,20}$/, 'رقم هاتف غير صحيح'),
-  email: z.string().email('بريد إلكتروني غير صحيح').optional().or(z.literal('')),
   service: z.string().min(1, 'يرجى اختيار الخدمة'),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(d => new Date(d) >= new Date(new Date().toDateString()), 'تاريخ غير صحيح'),
   time: z.string().min(1, 'يرجى اختيار وقت الموعد'),
@@ -28,7 +27,6 @@ export async function validateAppointment(prevState: AppointmentState, formData:
   const rawData = {
     name: formData.get('name'),
     phone: formData.get('phone'),
-    email: formData.get('email'),
     service: formData.get('service'),
     date: formData.get('date'),
     time: formData.get('time'),
