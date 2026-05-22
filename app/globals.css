@@ -3,8 +3,12 @@
 @import "tw-animate-css";
 
 @layer base {
-  html, body {
+  html {
     overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
+    position: relative;
     scroll-behavior: smooth;
   }
 }

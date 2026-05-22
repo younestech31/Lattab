@@ -3,7 +3,7 @@ import { t, Language } from '@/lib/i18n/translations';
 export default function Hero({ lang }: { lang: Language }) {
 
   return (
-    <div className="relative" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
+    <div className="relative overflow-hidden" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
       <section
         id="home"
         className="
