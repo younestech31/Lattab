@@ -151,17 +151,17 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               "datePublished": post.dateISO,
               "dateModified": post.dateModified || post.dateISO,
               "author": {
-                "@type": "Organization",
-                "@id": `${SITE_URL}/#organization`,
-                "name": "Office Notarial de Maître Lattab Mohamed"
+                "@type": "Person",
+                "name": "Maître Lattab Mohamed"
               },
               "publisher": {
                 "@type": "Organization",
-                "@id": `${SITE_URL}/#organization`,
                 "name": "Office Notarial de Maître Lattab Mohamed",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": `${SITE_URL}/logo.webp`
+                  "url": `${SITE_URL}/logo.webp`,
+                  "width": 180,
+                  "height": 180
                 }
               },
               "image": {
@@ -181,14 +181,16 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               },
               "wordCount": wordCount,
               "isPartOf": {
-                "@id": `${SITE_URL}/#website`
+                "@type": "WebSite",
+                "url": SITE_URL,
+                "name": "Office Notarial de Maître Lattab Mohamed — Notaire à Oran"
               }
             }, {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blog` },
+                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${SITE_URL}/fr` },
+                { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/fr/blog` },
                 { "@type": "ListItem", "position": 3, "name": post.title, "item": `${SITE_URL}/fr/blog/${post.slug}` }
               ]
             }]} />

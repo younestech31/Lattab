@@ -165,7 +165,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 "name": "الديوان العمومي للتوثيق",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": `${SITE_URL}/logo.webp`
+                  "url": `${SITE_URL}/logo.webp`,
+                  "width": 180,
+                  "height": 180
                 }
               },
               "image": {
@@ -185,7 +187,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               },
               "wordCount": wordCount,
               "isPartOf": {
-                "@id": `${SITE_URL}/#website`
+                "@type": "WebSite",
+                "url": SITE_URL,
+                "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران"
               }
             }, {
               "@context": "https://schema.org",

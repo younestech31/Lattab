@@ -95,8 +95,12 @@ export default async function FrenchBlogList({
     "itemListElement": frBlogPosts.map((post, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": SITE_URL + "/fr/blog/" + post.slug,
-      "name": post.title
+      "item": {
+        "@type": "BlogPosting",
+        "url": SITE_URL + "/fr/blog/" + post.slug,
+        "name": post.title,
+        "headline": post.title
+      }
     }))
   };
 

@@ -55,19 +55,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function CalculatorPage() {
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": `${SITE_URL}/` },
-      { "@type": "ListItem", "position": 2, "name": "حاسبة السعر المرجعي", "item": `${SITE_URL}/calculateur-prix-referentiel` }
-    ]
-  };
-
   const webApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "حاسبة السعر المرجعي العقاري — ولاية وهران",
+    "url": `${SITE_URL}/calculateur-prix-referentiel`,
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Web",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DZD" }
@@ -75,7 +67,7 @@ export default function CalculatorPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <SchemaScriptLoader schemas={[breadcrumbSchema, webApplicationSchema]} />
+      <SchemaScriptLoader schemas={[webApplicationSchema]} />
       <WebPageSchema
         url={`${SITE_URL}/calculateur-prix-referentiel`}
         name="حاسبة السعر المرجعي للعقار 2026"

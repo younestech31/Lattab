@@ -23,7 +23,11 @@ const WebPageSchema = async ({ url, name, description, breadcrumbs }: WebPageSch
     "url": url,
     "name": name,
     "description": description,
-    "isPartOf": { "@id": `${SITE_URL}/#website` },
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": SITE_URL,
+      "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران"
+    },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": breadcrumbs.map((crumb, index) => ({

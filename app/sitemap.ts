@@ -67,6 +67,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${base}/fr`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/`,
+          'fr-DZ': `${base}/fr`,
+          'x-default': `${base}/`,
+        },
+      },
+    },
+    {
       url: `${base}/calculateur-prix-referentiel`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
@@ -97,6 +110,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(LAST_CONTENT_UPDATED),
       changeFrequency: 'weekly',
       priority: 0.8,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/blog`,
+          'fr-DZ': `${base}/fr/blog`,
+          'x-default': `${base}/blog`,
+        },
+      },
+    },
+    {
+      url: `${base}/fr/blog`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/blog`,
+          'fr-DZ': `${base}/fr/blog`,
+          'x-default': `${base}/blog`,
+        },
+      },
     },
     {
       url: `${base}/terms-privacy`,

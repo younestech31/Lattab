@@ -6,6 +6,8 @@ import { SITE_URL } from '@/lib/config';
 import PriceCalculator from '@/components/PriceCalculator';
 import CalculatorSkeleton from '@/components/CalculatorSkeleton';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
+import WebPageSchema from '@/components/WebPageSchema';
+import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 
 export async function generateMetadata(): Promise<Metadata> {
   const desc = 'Calculateur des prix de référence officiels du Ministère des Finances 2026 pour immobilier à Oran.';
@@ -47,8 +49,28 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function CalculatorPageFR() {
+  const webApplicationSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculateur des prix de référence immobilier — Oran, Algérie",
+    "url": `${SITE_URL}/fr/calculateur-prix-referentiel`,
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DZD" }
+  };
+
   return (
     <div className="min-h-screen bg-white" dir="ltr" lang="fr">
+      <SchemaScriptLoader schemas={[webApplicationSchema]} />
+      <WebPageSchema
+        url={`${SITE_URL}/fr/calculateur-prix-referentiel`}
+        name="Calculateur des prix de référence immobilier 2026"
+        description="Calculateur des prix de référence officiels du Ministère des Finances 2026 pour immobilier à Oran."
+        breadcrumbs={[
+          { name: "Accueil", item: `${SITE_URL}/fr` },
+          { name: "Calculateur prix de référence", item: `${SITE_URL}/fr/calculateur-prix-referentiel` }
+        ]}
+      />
       <main className="bg-gray-50">
         <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10 text-center">

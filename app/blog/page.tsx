@@ -96,8 +96,12 @@ export default async function BlogList({
     "itemListElement": blogPosts.map((post, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": SITE_URL + "/blog/" + post.slug,
-      "name": post.title
+      "item": {
+        "@type": "BlogPosting",
+        "url": SITE_URL + "/blog/" + post.slug,
+        "name": post.title,
+        "headline": post.title
+      }
     }))
   };
 

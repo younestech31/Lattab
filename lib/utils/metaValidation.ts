@@ -32,7 +32,7 @@ export const FR_DESCRIPTION_SUFFIX = 'Office Notarial de Maître Lattab Mohamed 
 export function enrichDescription(
   description: string,
   fallbackSuffix: string,
-  targetMin: number = 70,
+  targetMin: number = 115,
   targetMax: number = 160
 ): string {
   if (description.length >= targetMin) {

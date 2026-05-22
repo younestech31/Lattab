@@ -10,11 +10,6 @@ export const metadata: Metadata = {
   description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها، والتزاماتنا القانونية والمهنية تجاهك كعميل.',
   alternates: {
     canonical: `${SITE_URL}/terms-privacy`,
-    languages: {
-      'ar-DZ': `${SITE_URL}/terms-privacy`,
-      'fr-DZ': `${SITE_URL}/terms-privacy`,
-      'x-default': `${SITE_URL}/terms-privacy`,
-    },
   },
   openGraph: {
     url: `${SITE_URL}/terms-privacy`,
