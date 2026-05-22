@@ -26,7 +26,7 @@ export default function NotaryRole({ lang }: NotaryRoleProps) {
         {/* RTL-safe: uses logical properties */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {content.features.map((feature, index) => {
-            const Icon = IconComponents[index];
+            const Icon = IconComponents[index] || BookOpen;
             return (
               <div 
                 key={index}
