@@ -121,7 +121,7 @@ export default async function FrenchBlogList({
             </p>
             <div className="max-w-lg mx-auto">
               <Suspense fallback={null}>
-                <BlogSearchInput defaultValue={q} />
+                <BlogSearchInput defaultValue={q} resultsCount={filteredPosts.length} />
               </Suspense>
             </div>
           </div>

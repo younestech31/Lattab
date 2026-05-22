@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
       type: 'website',
       images: [{ 
-        url: `${SITE_URL}/og-calculator.jpg`, 
+        url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 
         width: 1200, 
         height: 630, 
         alt: 'حاسبة السعر المرجعي العقاري وهران' 
@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
       description: desc,
-      images: [`${SITE_URL}/og-calculator.jpg`],
+      images: [`${SITE_URL}/calculateur-prix-referentiel/opengraph-image`],
     },
     robots: {
       index: true,

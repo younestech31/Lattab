@@ -1,134 +1,34 @@
-'use client';
-import { useState, useEffect, useRef, useCallback } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useLang } from '@/lib/i18n';
-import { translations } from '@/lib/i18n/translations';
-import LanguageSwitcher from './LanguageSwitcher';
+import HeaderShell from './header/HeaderShell';
+import HeaderClient from './header/HeaderClient';
+import { headers } from 'next/headers';
+import { Language } from '@/lib/i18n/translations';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
-  const isHomePage = pathname === '/' || pathname === '/fr';
-  const { lang } = useLang();
+/**
+ * Interface representing the props for the Header parent component.
+ */
+export interface HeaderProps {
+  lang?: Language;
+}
+
+/**
+ * Composition-layer Server Component representing the layout header.
+ * Orchestrates the Server-rendered static structures (HeaderShell) and the 
+ * interactive islands (HeaderClient) side by side under a single server-rendered <header>.
+ * 
+ * Written justification for client partition: Required for scroll event listeners,
+ * active mobile modal toggle states, and focus trap keydown managers which cannot run on the server.
+ */
+export default async function Header({ lang = 'ar' }: HeaderProps) {
+  const headersList = await headers();
+  const pathname = headersList.get('x-lang') === 'fr' ? `/fr${headersList.get('x-pathname') || ''}` : (headersList.get('x-pathname') || '/');
   
-  const text = translations[lang].nav;
-  const ticking = useRef(false);
-  const mobileNavRef = useRef<HTMLElement>(null);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-
-  const handleScroll = useCallback(() => {
-    if (!ticking.current) {
-      requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 50);
-        ticking.current = false;
-      });
-      ticking.current = true;
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
-
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      const header = document.querySelector('header');
-      if (header && !header.contains(e.target as Node)) {
-        setIsMenuOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsMenuOpen(false);
-        menuButtonRef.current?.focus();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (!isMenuOpen || !mobileNavRef.current) return;
-    
-    const nav = mobileNavRef.current;
-    const focusableSelectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
-    const focusableElements = Array.from(nav.querySelectorAll<HTMLElement>(focusableSelectors));
-    const firstEl = focusableElements[0];
-    const lastEl = focusableElements[focusableElements.length - 1];
-    
-    // Focus first element when menu opens
-    firstEl?.focus();
-    
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== 'Tab') return;
-      if (focusableElements.length === 0) { e.preventDefault(); return; }
-      
-      if (e.shiftKey) {
-        if (document.activeElement === firstEl) {
-          e.preventDefault();
-          lastEl?.focus();
-        }
-      } else {
-        if (document.activeElement === lastEl) {
-          e.preventDefault();
-          firstEl?.focus();
-        }
-      }
-    };
-    
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isMenuOpen]);
-
-  const getHref = (href: string) => {
-    if (lang === 'fr') {
-      if (href.startsWith('/#')) {
-        return `/fr#${href.slice(2)}`;
-      }
-      if (href === '/blog') {
-        return '/fr/blog';
-      }
-      if (href === '/calculateur-prix-referentiel') {
-        return '/fr/calculateur-prix-referentiel';
-      }
-    }
-    return href;
-  };
-
-  const navLinks = [
-    { href: '/#home', label: text.home },
-    { href: '/#services', label: text.services },
-    { href: '/calculateur-prix-referentiel', label: text.calculator },
-    { href: '/blog', label: text.blog },
-    { href: '/#notary-role', label: text.notary_role },
-    { href: '/#procedures', label: text.procedures },
-    { href: '/#legal-updates', label: text.news },
-    { href: '/#faq', label: text.faq },
-    { href: '/#contact', label: text.contact },
-  ];
-
-  const headerActive = !isHomePage || isScrolled || isMenuOpen;
+  const isHomePage = pathname === '/' || pathname === '/fr';
+  const headerActive = !isHomePage;
 
   return (
     <header
+      id="main-header"
+      role="banner"
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         headerActive
           ? 'bg-white shadow-lg py-2'
@@ -137,122 +37,10 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href={getHref('/#home')} className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
-              <Image
-                src="/logo-small.webp"
-                alt="شعار مكتب الأستاذ لعطب محمد"
-                width={48}
-                height={48}
-                quality={75}
-                priority={true}
-                unoptimized={false}
-              />
-            </div>
-            <div>
-              <span className={`block text-xl font-bold ${headerActive ? 'text-gray-800' : 'text-white'}`}>
-               {text.name}
-              </span>
-              <p className={`text-xs ${headerActive ? 'text-emerald-600' : 'text-emerald-200'}`}>
-                {text.notary}
-              </p>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
-            <nav className="flex items-center gap-3 xl:gap-5">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={getHref(link.href)}
-                  className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
-                    headerActive ? 'text-gray-700' : 'text-white'
-                  } ${([text.notary_role, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                href={getHref('/#booking-form')}
-                className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm ${
-                  headerActive ? 'text-gray-700' : 'text-white'
-                }`}
-              >
-                {text.book}
-              </Link>
-              <LanguageSwitcher headerActive={headerActive} />
-            </nav>
-          </div>
-
-          {/* Mobile Menu Button & Lang Toggle */}
-          <div className="flex items-center gap-3 lg:hidden">
-            <LanguageSwitcher headerActive={headerActive} isMobile={true} />
-            <button
-              ref={menuButtonRef}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-
-              aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-nav"
-              className={`p-2 rounded-lg ${
-                headerActive ? 'text-gray-700' : 'text-white'
-              }`}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
+          <HeaderShell lang={lang} pathname={pathname} />
+          <HeaderClient lang={lang} pathname={pathname} />
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav
-            id="mobile-nav"
-            ref={mobileNavRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label={lang === 'ar' ? 'قائمة التنقل' : 'Menu de navigation'}
-            className={`lg:hidden mt-4 pb-4 border-t pt-4 border-gray-200`}
-          >
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={getHref(link.href)}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`font-medium text-gray-700`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
-        )}
       </div>
     </header>
   );
-};
-
-export default Header;
+}

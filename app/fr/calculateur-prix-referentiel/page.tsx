@@ -28,7 +28,19 @@ export async function generateMetadata(): Promise<Metadata> {
       url: `${SITE_URL}/fr/calculateur-prix-referentiel`,
       siteName: 'Étude Public Notarial — Maître Lattab Mohamed',
       type: 'website',
+      images: [{ 
+        url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 
+        width: 1200, 
+        height: 630, 
+        alt: 'Calculateur des prix de référence immobilier Oran' 
+      }],
       locale: 'fr_DZ',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Calculateur des prix de référence immobilier — Oran, Algérie',
+      description: desc,
+      images: [`${SITE_URL}/calculateur-prix-referentiel/opengraph-image`],
     },
     robots: { index: true, follow: true },
   };

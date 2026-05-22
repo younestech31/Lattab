@@ -225,7 +225,8 @@ export const translations = {
     cookie_banner: {
       message: 'يستخدم هذا الموقع خدمات استضافة سحابية (Firebase) لمعالجة بيانات حجز المواعيد. بالاستمرار في التصفح، فإنك توافق على سياسة الخصوصية ومعالجة بياناتك وفق القانون رقم 18-07 المعدل والمتمم.',
       privacy_policy: 'الاطلاع على سياسة الخصوصية',
-      accept: 'موافقة'
+      accept: 'موافقة',
+      reject: 'رفض'
     }
   },
   fr: {
@@ -454,7 +455,8 @@ export const translations = {
     cookie_banner: {
       message: 'Ce site utilise des services d\'hébergement cloud (Firebase) pour traiter les données de réservation de rendez-vous. En poursuivant votre navigation, vous acceptez notre politique de confidentialité et le traitement de vos données conformément à la législation en vigueur.',
       privacy_policy: 'Voir la politique de confidentialité',
-      accept: 'Accepter'
+      accept: 'Accepter',
+      reject: 'Refuser'
     }
   },
 } as const;
@@ -479,7 +481,7 @@ export function t(lang: Language, section: 'notaryRole', key: NotaryRoleKeys): s
 export function t(lang: Language, section: 'faq', key: FAQKeys): string;
 export function t(lang: Language, section: 'legalUpdates', key: LegalUpdatesKeys): string;
 export function t(lang: Language, section: 'footer', key: FooterKeys): string;
-export function t(lang: Language, section: 'cookie_banner', key: 'message' | 'privacy_policy' | 'accept'): string;
+export function t(lang: Language, section: 'cookie_banner', key: 'message' | 'privacy_policy' | 'accept' | 'reject'): string;
 export function t(lang: Language, section: 'contact', key: string): string;
 export function t(lang: Language, section: keyof TranslationKeys, key: string): string {
   return (translations[lang][section] as Record<string, string>)[key] ?? key;

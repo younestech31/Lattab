@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 export const revalidate = 86400; // 24h ISR
-import { HomeContent } from '../page';
+import { HomeContent } from '@/components/HomeContent';
 import { SITE_URL } from '@/lib/config';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
