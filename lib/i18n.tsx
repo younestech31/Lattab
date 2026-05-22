@@ -37,11 +37,8 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
 
     if (nextLang === 'fr') {
       if (!isFrPage) {
-        // Only prefix if it's the home page or a blog page
-        if (pathname === '/' || pathname.startsWith('/blog')) {
-          targetPath = `/fr${pathname === '/' ? '' : pathname}`;
-          isPathChanging = true;
-        }
+        targetPath = pathname === '/' ? '/fr' : `/fr${pathname}`;
+        isPathChanging = true;
       }
     } else {
       if (isFrPage) {

@@ -19,6 +19,9 @@ export default function Footer({ lang }: FooterProps) {
       if (href === '/blog') {
         return '/fr/blog';
       }
+      if (href === '/calculateur-prix-referentiel') {
+        return '/fr/calculateur-prix-referentiel';
+      }
       if (href === '/terms-privacy') {
         return '/fr/terms-privacy';
       }

@@ -43,18 +43,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  // Language detection based on URL prefix or cookie
+  // Language detection based on URL prefix
   let lang = 'ar';
   if (url.pathname.startsWith('/fr') && (url.pathname === '/fr' || url.pathname.startsWith('/fr/'))) {
     lang = 'fr';
   } else {
-    // Check if the page is one of the neutral paths (for core routes / and /blog, path strictly defines language)
-    const isMainOrBlogOrCalc = url.pathname === '/' || url.pathname.startsWith('/blog') || url.pathname.startsWith('/calculateur-prix-referentiel');
-    if (!isMainOrBlogOrCalc) {
-      lang = request.cookies.get('lang')?.value === 'fr' ? 'fr' : 'ar';
-    } else {
-      lang = 'ar';
-    }
+    lang = 'ar';
   }
 
   requestHeaders.set('x-lang', lang);
