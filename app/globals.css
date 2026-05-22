@@ -1,9 +1,13 @@
-:root {
-}
-
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
+
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+}
 
 /* Custom Font */
 html[lang="fr"] body, html[lang="fr"] .font-cairo {
@@ -16,10 +20,6 @@ html[lang="ar"] body, html[lang="ar"] .font-cairo {
   line-height: 1.8;
 }
 
-/* Smooth Scrolling */
-html, body {
-  scroll-behavior: smooth;
-}
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
