@@ -11,7 +11,6 @@ import CookieBanner from '@/components/CookieBanner';
 import { SITE_URL } from '@/lib/config';
 import type { Viewport } from 'next';
 import { headers } from 'next/headers';
-import Script from 'next/script';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
 
 const cairo = Cairo({ 
@@ -106,7 +105,6 @@ export const metadata: Metadata = {
 export default async function RootLayout({children}: {children: React.ReactNode}) {
   /* NOTE: headers() here forces dynamic rendering for the layout. Child page segments (app/page.tsx, app/fr/page.tsx) are separately statically rendered. In Next.js 15, Page-level static rendering is still achievable because each page segment is independently optimised — the layout being dynamic does not force pages to be dynamic when pages themselves do not call dynamic functions. See Next.js 15 partial prerendering docs. */
   const resolvedLang = (await headers()).get('x-lang') as 'ar' | 'fr' ?? 'ar';
-  const nonce = (await headers()).get('x-nonce') || 'development-nonce';
 
   return (
     <html lang={resolvedLang} dir={resolvedLang === 'ar' ? 'rtl' : 'ltr'} className={`${cairo.variable} ${resolvedLang === 'fr' ? ibmPlexSans.variable : ''}`} suppressHydrationWarning>
