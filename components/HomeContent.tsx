@@ -10,7 +10,6 @@ import NotaryRole from '@/components/NotaryRole';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
-import { AnalyticsScriptLoader } from '@/components/AnalyticsScriptLoader';
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   <div
@@ -23,7 +22,6 @@ const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
 export async function HomeContent({ lang }: { lang: Language }) {
   return (
     <div className="min-h-screen bg-white">
-      <AnalyticsScriptLoader />
       <main id="main-content">
         <div className="no-print">
           <Hero lang={lang} />

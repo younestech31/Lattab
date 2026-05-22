@@ -1,5 +1,9 @@
 import { ImageResponse } from 'next/og';
 
+// Edge runtime is required for next/og ImageResponse.
+// Static generation is intentionally disabled for this OG image
+// to allow content updates without a full rebuild.
+// See: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
 export const runtime = 'edge';
 export const revalidate = false;
 
