@@ -1,4 +1,5 @@
 import { AppointmentFormData as ZodAppointmentFormData } from '@/app/actions/appointment';
+import { OFFICE_WHATSAPP_NUMBER } from '@/lib/config/contact';
 
 export type AppointmentFormData = ZodAppointmentFormData;
 
@@ -76,7 +77,7 @@ export function buildWhatsAppUrl({ service, source }: { service: string, source:
   const text = lang === 'ar'
     ? `السلام عليكم، أود الاستفسار بخصوص ${service}. (المصدر: ${source})`
     : `Bonjour, je souhaite me renseigner concernant: ${service}. (Source: ${source})`;
-  return `https://wa.me/213562296981?text=${encodeURIComponent(text)}`;
+  return `https://wa.me/${OFFICE_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 
 export function openWhatsAppAppointment(data: AppointmentFormData, lang: 'ar' | 'fr' = 'ar') {
@@ -107,7 +108,7 @@ Téléphone: ${phone}`;
     text += lang === 'ar' ? `\nملاحظات: ${notes}` : `\nNotes: ${notes}`;
   }
 
-  window.open(`https://wa.me/213562296981?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  window.open(`https://wa.me/${OFFICE_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
 export function generateWhatsAppAppointmentUrl(data: AppointmentFormData, lang: 'ar' | 'fr' = 'ar'): string {
@@ -138,7 +139,7 @@ Téléphone: ${phone}`;
     text += lang === 'ar' ? `\nملاحظات: ${notes}` : `\nNotes: ${notes}`;
   }
 
-  return `https://wa.me/213562296981?text=${encodeURIComponent(text)}`;
+  return `https://wa.me/${OFFICE_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 
 export function openWhatsAppInquiry(data: InquiryFormData, lang: 'ar' | 'fr' = 'ar') {
@@ -159,7 +160,7 @@ Service: ${service}
 Téléphone: ${phone}
 Message: ${message}`;
 
-  window.open(`https://wa.me/213562296981?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  window.open(`https://wa.me/${OFFICE_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
 }
 
 export function getRequiredDocuments(service: string) {

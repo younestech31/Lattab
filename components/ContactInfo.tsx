@@ -1,5 +1,6 @@
 import React from 'react';
 import { Language, translations } from '@/lib/i18n/translations';
+import { OFFICE_PHONE_INTL } from '@/lib/config/contact';
 import ObfuscatedPhone from './ui/ObfuscatedPhone';
 
 export default function ContactInfo({ lang }: { lang: Language }) {
@@ -58,7 +59,7 @@ export default function ContactInfo({ lang }: { lang: Language }) {
             <h3 className="font-bold text-gray-800 mb-1">{t_info.phone}</h3>
             <div className="text-gray-600 text-sm space-y-2">
               <div className="flex items-center gap-2">
-                <ObfuscatedPhone number="+213562296981" display="+213 562 29 69 81" lang={lang} className="hover:text-emerald-600 transition-colors font-medium" />
+                <ObfuscatedPhone number={OFFICE_PHONE_INTL} display="+213 562 29 69 81" lang={lang} className="hover:text-emerald-600 transition-colors font-medium" />
                 <span className="text-gray-400 text-xs ms-2">{t_info.phone_office}</span>
               </div>
               <div className="flex items-center gap-2">

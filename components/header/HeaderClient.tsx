@@ -96,6 +96,9 @@ export default function HeaderClient({ lang, pathname }: HeaderClientProps) {
       if (href === '/blog') {
         return '/fr/blog';
       }
+      if (href === '/liens-utiles') {
+        return '/fr/liens-utiles';
+      }
       if (href === '/calculateur-prix-referentiel') {
         return '/fr/calculateur-prix-referentiel';
       }
@@ -107,6 +110,7 @@ export default function HeaderClient({ lang, pathname }: HeaderClientProps) {
     { href: '/#home', label: text.home },
     { href: '/#services', label: text.services },
     { href: '/calculateur-prix-referentiel', label: text.calculator },
+    { href: '/liens-utiles', label: text.useful_links },
     { href: '/blog', label: text.blog },
     { href: '/#notary-role', label: text.notary_role },
     { href: '/#procedures', label: text.procedures },

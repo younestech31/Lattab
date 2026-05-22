@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Language, translations } from '@/lib/i18n/translations';
 import { OFFICE_INFO } from '@/lib/config';
 import ObfuscatedPhone from './ui/ObfuscatedPhone';
+import UsefulLinks from './UsefulLinks';
 
 interface FooterProps {
   lang: Language;
@@ -70,7 +71,7 @@ export default function Footer({ lang }: FooterProps) {
 
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* About */}
           <div>
             <div className="flex items-center gap-3 mb-6">
@@ -195,6 +196,11 @@ export default function Footer({ lang }: FooterProps) {
                 </Link>
               </li>
             </ul>
+          </div>
+
+          {/* Useful Links */}
+          <div>
+            <UsefulLinks lang={lang} variant="compact" />
           </div>
 
           {/* Contact Info */}

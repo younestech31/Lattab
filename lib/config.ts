@@ -27,12 +27,25 @@ export const TITLE_TEMPLATE_SUFFIX = ' — موثق وهران' as const;
 export const FR_TITLE_SUFFIX = ' — Notaire Oran' as const;
 
 export const WORKING_HOURS = {
-  days: 'الأحد - الخميس',
-  morning: '08:30 - 12:00',
-  afternoon: '13:30 - 16:00',
-  full: 'الأحد - الخميس: 08:30 - 12:00 و 13:30 - 16:00',
-  closed: 'الجمعة والسبت: مغلق'
+  ar: {
+    days: 'الأحد - الخميس',
+    morning: '08:30 - 12:00',
+    afternoon: '13:30 - 16:00',
+    full: 'الأحد - الخميس: 08:30 - 12:00 و 13:30 - 16:00',
+    closed: 'الجمعة والسبت: مغلق'
+  },
+  fr: {
+    days: 'Dimanche - Jeudi',
+    morning: '08h30 - 12h00',
+    afternoon: '13h30 - 16h00',
+    full: 'Dimanche - Jeudi : 08h30-12h00 et 13h30-16h00',
+    closed: 'Vendredi et Samedi : Fermé'
+  }
 } as const;
+
+export function getWorkingHours(lang: 'ar' | 'fr') {
+  return WORKING_HOURS[lang];
+}
 
 export const SITE_CONFIG = {
   version: '1.2',

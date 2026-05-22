@@ -93,6 +93,9 @@ export default function Hero({ lang }: { lang: Language }) {
             </svg>
           </a>
         </div>
+
+        {/* Sentinel pour StickyMobileCTA */}
+        <div id="cta-sentinel" className="absolute bottom-0 w-full h-px pointer-events-none" />
       </section>
     </div>
   );

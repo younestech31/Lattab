@@ -18,12 +18,12 @@ export function middleware(request: NextRequest) {
   }
 
   const isDev = process.env.NODE_ENV !== 'production';
-  // Last updated: 2026-05-22 — includes Google Maps, Ahrefs Analytics, Vercel Analytics
-  // wa.me is navigational (<a href> / window.location.href), not a fetch target — not needed in connect-src.
+  // Nonce generation
+  const nonce = crypto.randomUUID();
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://analytics.ahrefs.com https://va.vercel-insights.com https://maps.googleapis.com${isDev ? " 'unsafe-eval'" : ""};
-    style-src 'self' 'unsafe-inline' https://maps.googleapis.com https://fonts.googleapis.com;
+    script-src 'self' 'nonce-${nonce}' https://analytics.ahrefs.com https://va.vercel-insights.com https://maps.googleapis.com${isDev ? " 'unsafe-eval'" : ""};
+    style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://maps.googleapis.com https://fonts.googleapis.com;
     img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://maps.gstatic.com;
     font-src 'self' data:;
     connect-src 'self' ws: wss: https://analytics.ahrefs.com https://va.vercel-insights.com https://api.indexnow.org https://maps.googleapis.com https://maps.gstatic.com;
@@ -35,6 +35,7 @@ export function middleware(request: NextRequest) {
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('Content-Security-Policy', cspHeader);
+  requestHeaders.set('x-nonce', nonce);
   
   // 301 Redirect from /blog/fr/[slug] to /fr/blog/[slug]
   if (url.pathname.startsWith('/blog/fr/')) {

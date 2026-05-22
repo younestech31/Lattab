@@ -3,6 +3,7 @@ export const revalidate = 86400; // 24h ISR
 import { HomeContent } from '@/components/HomeContent';
 import { SITE_URL } from '@/lib/config';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
+import { NotaryOfficeSchema } from '@/components/schema/NotaryOfficeSchema';
 
 export async function generateMetadata(): Promise<Metadata> {
   const desc = "Étude Notariale — Maître Lattab Mohamed, Notaire Oran ⚖️ Contrat de vente, constitution de sociétés, procurations et calcul du prix de référence 2026.";
@@ -42,5 +43,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FrenchHome() {
-  return <HomeContent lang="fr" />;
+  return (
+    <>
+      <NotaryOfficeSchema lang="fr" />
+      <HomeContent lang="fr" />
+    </>
+  );
 }

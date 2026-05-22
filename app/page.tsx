@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/config';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 import { HomeContent } from '@/components/HomeContent';
+import { NotaryOfficeSchema } from '@/components/schema/NotaryOfficeSchema';
 
 export const revalidate = 86400; // 24h ISR
 
@@ -37,5 +38,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  return <HomeContent lang="ar" />;
+  return (
+    <>
+      <NotaryOfficeSchema lang="ar" />
+      <HomeContent lang="ar" />
+    </>
+  );
 }

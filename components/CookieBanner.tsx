@@ -4,26 +4,42 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLang } from '@/lib/i18n';
 import { t } from '@/lib/i18n/translations';
+import { setConsentCookie } from '@/app/actions/consent';
 
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const { lang } = useLang();
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
+    try {
+      const match = document.cookie.match(/(^| )cookie-consent=([^;]+)/);
+      if (!match) {
+        setIsVisible(true);
+      }
+    } catch (e) {
+      console.warn("Could not read document.cookie", e);
       setIsVisible(true);
     }
   }, []);
 
-  const accept = () => {
-    localStorage.setItem('cookie-consent', 'true');
+  const accept = async () => {
+    try {
+      await setConsentCookie(true);
+      localStorage.setItem('cookie-consent', 'true');
+    } catch (e) {
+      console.warn("localStorage inaccessible", e);
+    }
     setIsVisible(false);
     window.dispatchEvent(new CustomEvent('cookie-consent-granted'));
   };
 
-  const reject = () => {
-    localStorage.setItem('cookie-consent', 'false');
+  const reject = async () => {
+    try {
+      await setConsentCookie(false);
+      localStorage.setItem('cookie-consent', 'false');
+    } catch (e) {
+      console.warn("localStorage inaccessible", e);
+    }
     setIsVisible(false);
   };
 

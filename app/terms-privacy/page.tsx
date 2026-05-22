@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { headers } from 'next/headers';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import { WORKING_HOURS, SITE_URL } from '@/lib/config';
+import { getWorkingHours, SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: { absolute: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران' },
@@ -307,7 +307,7 @@ const TermsPrivacyPage = async () => {
                     </div>
                     <div className="flex items-center gap-4 text-gray-700">
                       <Clock className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span>{WORKING_HOURS.full}</span>
+                      <span>{getWorkingHours(lang).full}</span>
                     </div>
                   </div>
                 </div>

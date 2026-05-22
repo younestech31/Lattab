@@ -1,7 +1,7 @@
 import NextTopLoader from 'nextjs-toploader';
 import { LanguageProvider } from '@/lib/i18n';
 import type { Metadata } from 'next';
-import { Cairo } from 'next/font/google';
+import { Cairo, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import Header from '@/components/Header';
@@ -11,12 +11,22 @@ import CookieBanner from '@/components/CookieBanner';
 import { SITE_URL } from '@/lib/config';
 import type { Viewport } from 'next';
 import { headers } from 'next/headers';
+import Script from 'next/script';
+import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
 
 const cairo = Cairo({ 
   subsets: ['arabic'], 
   variable: '--font-cairo',
   display: 'swap',
   preload: true,
+});
+
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-ibm-plex',
+  display: 'swap',
+  preload: false,
 });
 
 export const viewport: Viewport = {
@@ -96,9 +106,10 @@ export const metadata: Metadata = {
 export default async function RootLayout({children}: {children: React.ReactNode}) {
   /* NOTE: headers() here forces dynamic rendering for the layout. Child page segments (app/page.tsx, app/fr/page.tsx) are separately statically rendered. In Next.js 15, Page-level static rendering is still achievable because each page segment is independently optimised — the layout being dynamic does not force pages to be dynamic when pages themselves do not call dynamic functions. See Next.js 15 partial prerendering docs. */
   const resolvedLang = (await headers()).get('x-lang') as 'ar' | 'fr' ?? 'ar';
+  const nonce = (await headers()).get('x-nonce') || 'development-nonce';
 
   return (
-    <html lang={resolvedLang} dir={resolvedLang === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>
+    <html lang={resolvedLang} dir={resolvedLang === 'ar' ? 'rtl' : 'ltr'} className={`${cairo.variable} ${resolvedLang === 'fr' ? ibmPlexSans.variable : ''}`} suppressHydrationWarning>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -114,28 +125,13 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         {/* next/font/google self-hosts Cairo at build time — no runtime Google Fonts connection occurs */}
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
         <meta name="indexnow-key" content="fa0c5260a1b1458b87b8ff3e7df53cf2" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                    console.log('SW registered successfully:', reg.scope);
-                  }).catch(function(err) {
-                    console.error('SW registration failed:', err);
-                  });
-                });
-              }
-            `
-          }}
-        />
       </head>
       <body className="font-cairo" suppressHydrationWarning>
         <LanguageProvider lang={resolvedLang}>
           <a 
             href="#main-content" 
             lang={resolvedLang}
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 [html[dir=rtl]_&]:focus:right-4 [html[dir=rtl]_&]:focus:left-auto focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold"
+            className="skip-link"
           >
             {resolvedLang === 'ar' ? 'تخطى إلى المحتوى الرئيسي' : 'Passer au contenu principal'}
           </a>
@@ -144,6 +140,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
             showSpinner={false}
             height={3}
           />
+          <ServiceWorkerRegister />
           <div className="no-print">
             <Header lang={resolvedLang} />
           </div>

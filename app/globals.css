@@ -6,7 +6,12 @@
 @import "tw-animate-css";
 
 /* Custom Font */
-.font-cairo {
+html[lang="fr"] body, html[lang="fr"] .font-cairo {
+  font-family: var(--font-ibm-plex), var(--font-cairo), sans-serif;
+  line-height: 1.6;
+}
+
+html[lang="ar"] body, html[lang="ar"] .font-cairo {
   font-family: var(--font-cairo), sans-serif;
   line-height: 1.8;
 }
@@ -103,4 +108,31 @@ input[type="tel"] {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  z-index: 9999;
+  background: #059669;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+[dir="rtl"] .skip-link:focus {
+  left: auto;
+  right: 1rem;
 }
