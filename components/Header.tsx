@@ -106,6 +106,9 @@ const Header = () => {
       if (href === '/blog') {
         return '/fr/blog';
       }
+      if (href === '/calculateur-prix-referentiel') {
+        return '/fr/calculateur-prix-referentiel';
+      }
     }
     return href;
   };

@@ -21,6 +21,11 @@ export async function generateMetadata(): Promise<Metadata> {
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/calculateur-prix-referentiel`,
+      languages: {
+        'ar-DZ': `${SITE_URL}/calculateur-prix-referentiel`,
+        'fr-DZ': `${SITE_URL}/fr/calculateur-prix-referentiel`,
+        'x-default': `${SITE_URL}/calculateur-prix-referentiel`,
+      },
     },
     openGraph: {
       title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
@@ -108,6 +113,7 @@ export default function CalculatorPage() {
         <div className="-mt-10 relative z-20">
           <Suspense fallback={<CalculatorSkeleton />}>
             <PriceCalculator 
+              lang="ar"
               initialData={null}
               initialCommunes={[]}
               initialRegionId=""

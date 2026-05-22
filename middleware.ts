@@ -19,7 +19,7 @@ export function middleware(request: NextRequest) {
 
   const isDev = process.env.NODE_ENV !== 'production';
   // Last updated: 2026-05-14 — includes Google Maps, Ahrefs Analytics, Vercel Analytics
-  const cspHeader = `default-src 'self'; script-src 'self' 'unsafe-inline' https://analytics.ahrefs.com https://va.vercel-insights.com https://maps.googleapis.com${isDev ? " 'unsafe-eval'" : ""}; style-src 'self' 'unsafe-inline' https://maps.googleapis.com https://fonts.googleapis.com; img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://maps.gstatic.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://analytics.ahrefs.com https://va.vercel-insights.com https://api.indexnow.org https://wa.me https://maps.googleapis.com https://maps.gstatic.com; frame-src 'self' https://www.google.com https://maps.google.com https://maps.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'self';`;
+  const cspHeader = `default-src 'self'; script-src 'self' https://analytics.ahrefs.com https://va.vercel-insights.com https://maps.googleapis.com${isDev ? " 'unsafe-eval' 'unsafe-inline'" : ""}; style-src 'self' 'unsafe-inline' /* unsafe-inline required for Tailwind CSS v4 build-time style block */ https://maps.googleapis.com https://fonts.googleapis.com; img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://maps.gstatic.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' ws: wss: https://analytics.ahrefs.com https://va.vercel-insights.com https://api.indexnow.org https://wa.me https://maps.googleapis.com https://maps.gstatic.com; frame-src 'self' https://www.google.com https://maps.google.com https://maps.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'self';`;
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('Content-Security-Policy', cspHeader);
@@ -37,8 +37,8 @@ export function middleware(request: NextRequest) {
     lang = 'fr';
   } else {
     // Check if the page is one of the neutral paths (for core routes / and /blog, path strictly defines language)
-    const isMainOrBlog = url.pathname === '/' || url.pathname.startsWith('/blog');
-    if (!isMainOrBlog) {
+    const isMainOrBlogOrCalc = url.pathname === '/' || url.pathname.startsWith('/blog') || url.pathname.startsWith('/calculateur-prix-referentiel');
+    if (!isMainOrBlogOrCalc) {
       lang = request.cookies.get('lang')?.value === 'fr' ? 'fr' : 'ar';
     } else {
       lang = 'ar';

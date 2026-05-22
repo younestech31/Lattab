@@ -257,7 +257,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
           {(appointmentData.service && getRequiredDocsForService(appointmentData.service)) && (
             <div className={`mt-3 bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100 text-sm animate-in fade-in slide-in-from-top-2 text-start`}>
               <p className="font-bold mb-1">{t_form.required_docs}</p>
-              <ul className={`list-disc list-inside space-y-1 text-blue-700 ${isAr ? 'mr-2' : 'ml-2'}`}>
+              <ul className="list-disc list-inside space-y-1 text-blue-700 ms-2">
                 {getRequiredDocsForService(appointmentData.service)?.map((doc, idx) => (
                   <li key={idx}>{doc}</li>
                 ))}

@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { t } from '@/lib/i18n/translations';
+import { t, Language } from '@/lib/i18n/translations';
 import { Calculator, Copy, MessageCircle, Check } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 import { CalculatorResult } from '@/lib/types';
@@ -79,10 +79,12 @@ interface PriceCalculatorProps {
   initialData: CalculatorResult | null;
   initialCommunes: string[];
   initialRegionId: string;
+  lang?: Language;
 }
 
-export default function PriceCalculator({ initialData, initialCommunes, initialRegionId }: PriceCalculatorProps) {
-  const { lang } = useLang();
+export default function PriceCalculator({ initialData, initialCommunes, initialRegionId, lang: propLang }: PriceCalculatorProps) {
+  const { lang: contextLang } = useLang();
+  const lang = propLang ?? contextLang;
   const isAr = lang === 'ar';
   const ui = uiTranslations[lang];
   const [wilaya, setWilaya] = useState<string>('oran');
@@ -283,6 +285,8 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     }
   };
 
+  const OFFICE_WHATSAPP = '213562296981';
+
   const handleWhatsApp = () => {
     if (!result) return;
     const unitLabel = selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? (isAr ? 'هكتار' : 'Ha') : (isAr ? 'م²' : 'm²');
@@ -305,7 +309,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       ? `\nأود الاستفسار أكثر.`
       : `\nJe souhaite avoir plus d'informations.`;
       
-    window.open(`https://wa.me/?text=${encodeURIComponent(textToShare)}`, '_blank');
+    window.open(`https://wa.me/${OFFICE_WHATSAPP}?text=${encodeURIComponent(textToShare)}`, '_blank', 'noopener,noreferrer');
   };
 
   return (

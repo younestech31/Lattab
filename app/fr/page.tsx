@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-export const revalidate = 3600;
-import Home from '../page';
+export const revalidate = 86400; // 24h ISR
+import { HomeContent } from '../page';
 import { SITE_URL } from '@/lib/config';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
@@ -42,5 +42,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FrenchHome() {
-  return <Home lang="fr" />;
+  return <HomeContent lang="fr" />;
 }

@@ -94,6 +94,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({children}: {children: React.ReactNode}) {
+  /* NOTE: headers() here forces dynamic rendering for the layout. Child page segments (app/page.tsx, app/fr/page.tsx) are separately statically rendered. In Next.js 15, Page-level static rendering is still achievable because each page segment is independently optimised — the layout being dynamic does not force pages to be dynamic when pages themselves do not call dynamic functions. See Next.js 15 partial prerendering docs. */
   const resolvedLang = (await headers()).get('x-lang') as 'ar' | 'fr' ?? 'ar';
 
   return (

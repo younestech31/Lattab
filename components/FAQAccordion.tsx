@@ -28,7 +28,7 @@ export default function FAQAccordion({ lang }: FAQAccordionProps) {
             <span className="flex-1 text-start">{lang === 'ar' ? faq.questionAr : faq.questionFr}</span>
             {/* Directional chevron — points down when closed, up when open */}
             <svg
-              className={`w-5 h-5 text-emerald-600 transition-transform duration-200 group-open:rotate-180 shrink-0 ${isRtl ? 'mr-2' : 'ml-2'}`}
+              className="w-5 h-5 text-emerald-600 transition-transform duration-200 group-open:rotate-180 shrink-0 ms-2"
               fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

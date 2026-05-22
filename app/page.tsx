@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
-export const revalidate = 3600;
 import { Suspense } from 'react';
-import { headers, cookies } from 'next/headers';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Contact from '@/components/contact';
@@ -17,6 +15,8 @@ import FAQ from '@/components/FAQ';
 import { JsonLdScript } from '@/components/schema';
 import { AnalyticsScriptLoader } from '@/components/AnalyticsScriptLoader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
+
+export const revalidate = 86400; // 24h ISR
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   <div
@@ -57,9 +57,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-// Validate these schema changes using Google's Rich Results Test tool:
-// https://search.google.com/test/rich-results
-// Dynamic testing URL: https://search.google.com/test/rich-results?url=https://lattab.vercel.app/
 async function buildHomeSchema(): Promise<Record<string, unknown>> {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -94,21 +91,11 @@ async function buildHomeSchema(): Promise<Record<string, unknown>> {
   return schema;
 }
 
-export default async function Home(props?: {
-  params?: Promise<Record<string, string | string[] | undefined>>;
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-  lang?: Language;
-}) {
-  const propLang = props?.lang;
-  let lang: Language = propLang as Language;
+export default async function Home() {
+  return <HomeContent lang="ar" />;
+}
 
-  if (!lang) {
-    const headerStore = await headers();
-    lang = (headerStore.get('x-lang') as Language) ?? 
-           ((await cookies()).get('lang')?.value as Language) ?? 
-           'ar';
-  }
-
+export async function HomeContent({ lang }: { lang: Language }) {
   const consolidatedSchema = await buildHomeSchema();
 
   return (

@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { headers } from 'next/headers';
+import { notifyAppointment } from '@/lib/utils/notify';
 
 const AppointmentSchema = z.object({
   name: z.string().min(2, 'الاسم يجب أن يكون على الأقل حرفين').max(100),
@@ -58,7 +59,20 @@ export async function validateAppointment(prevState: AppointmentState, formData:
     };
   }
   
-  // Optional: Add logic here to save to database or send email
+  // Send notification server-side
+  try {
+    await notifyAppointment({
+      timestamp: new Date().toISOString(),
+      name: result.data.name,
+      service: result.data.service,
+      date: result.data.date,
+      time: result.data.time,
+      phone: result.data.phone,
+      notes: result.data.notes,
+    });
+  } catch (error) {
+    console.error('[APPOINTMENT] Notification error:', error);
+  }
   
   return { 
     success: true, 

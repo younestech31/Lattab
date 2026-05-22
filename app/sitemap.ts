@@ -71,6 +71,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/calculateur-prix-referentiel`,
+          'fr-DZ': `${base}/fr/calculateur-prix-referentiel`,
+          'x-default': `${base}/calculateur-prix-referentiel`,
+        },
+      },
+    },
+    {
+      url: `${base}/fr/calculateur-prix-referentiel`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/calculateur-prix-referentiel`,
+          'fr-DZ': `${base}/fr/calculateur-prix-referentiel`,
+          'x-default': `${base}/calculateur-prix-referentiel`,
+        },
+      },
     },
     {
       url: `${base}/blog`,
