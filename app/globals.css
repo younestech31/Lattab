@@ -7,7 +7,7 @@
 
 /* Custom Font */
 .font-cairo {
-  font-family: var(--font-cairo), 'Cairo', sans-serif;
+  font-family: var(--font-cairo), sans-serif;
   line-height: 1.8;
 }
 

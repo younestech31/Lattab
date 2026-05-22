@@ -58,11 +58,22 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function buildHomeSchema(): Promise<Record<string, unknown>> {
+  // NOTE: aggregateRating, priceRange, hasOfferCatalog intentionally omitted.
+  // Algerian notarial deontological rules prohibit fee listings, ratings, and
+  // service catalogues framed as commercial offers. Law No. 06-02, Art. 17.
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "GovernmentOffice",
+    "@id": `${SITE_URL}/#notary-office`,
+    "url": SITE_URL,
     "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
     "description": "الديوان العمومي للتوثيق — موثق محكمة فلاوسن وهران",
+    "image": {
+      "@type": "ImageObject",
+      "url": `${SITE_URL}/logo.webp`,
+      "width": 512,
+      "height": 512
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي",
@@ -72,6 +83,11 @@ async function buildHomeSchema(): Promise<Record<string, unknown>> {
       "addressCountry": "DZ"
     },
     "telephone": "+213562296981",
+    "hasMap": "https://www.google.com/maps/place/NOTAIRE+LATTAB+MOHAMED/@35.7277124,-0.5931358,17z",
+    "sameAs": [
+      "https://www.google.com/maps/place/NOTAIRE+LATTAB+MOHAMED/@35.7277124,-0.5931358,17z"
+    ],
+    "priceRange": undefined,
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
