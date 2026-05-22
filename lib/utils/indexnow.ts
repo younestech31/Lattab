@@ -1,7 +1,7 @@
 
 import { SITE_URL } from '../config';
 
-const INDEXNOW_KEY = '23640b5098f44acf92740b8ccee9f405';
+const INDEXNOW_KEY = 'fa0c5260a1b1458b87b8ff3e7df53cf2';
 const HOST = new URL(SITE_URL).hostname;
 
 export async function pingIndexNow(urls: string[]) {

@@ -113,7 +113,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         <link rel="preload" as="image" href="/logo-small.webp" fetchPriority="high" />
         {/* next/font/google self-hosts Cairo at build time — no runtime Google Fonts connection occurs */}
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
-        <meta name="indexnow-key" content="23640b5098f44acf92740b8ccee9f405" />
+        <meta name="indexnow-key" content="fa0c5260a1b1458b87b8ff3e7df53cf2" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
