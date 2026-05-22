@@ -130,7 +130,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
             height={3}
           />
           <div className="no-print">
-            <Header />
+            <Header lang={resolvedLang} />
           </div>
           <FloatingWhatsApp />
           

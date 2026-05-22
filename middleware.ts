@@ -58,6 +58,7 @@ export function middleware(request: NextRequest) {
   }
 
   requestHeaders.set('x-lang', lang);
+  requestHeaders.set('x-pathname', url.pathname);
 
   const response = NextResponse.next({
     request: {
