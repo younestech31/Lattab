@@ -71,9 +71,9 @@ export default function Footer({ lang }: FooterProps) {
 
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-8">
           {/* About */}
-          <div>
+          <div className="md:col-span-2 lg:col-span-4" dir={isRTL ? 'rtl' : 'ltr'}>
             <div className="flex items-center gap-3 mb-6">
               <Link href={getHref('/#home')} className="flex items-center gap-3">
                 <div className="w-16 h-16 bg-white rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
@@ -135,7 +135,7 @@ export default function Footer({ lang }: FooterProps) {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:col-span-2" dir={isRTL ? 'rtl' : 'ltr'}>
             <h4 className="text-lg font-bold mb-6">{translations[lang].footer.quick_links_title}</h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
@@ -161,7 +161,7 @@ export default function Footer({ lang }: FooterProps) {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="lg:col-span-2" dir={isRTL ? 'rtl' : 'ltr'}>
             <h4 className="text-lg font-bold mb-6">{translations[lang].footer.services_title}</h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
@@ -180,31 +180,14 @@ export default function Footer({ lang }: FooterProps) {
             </ul>
           </div>
 
-          {/* Tools */}
-          <div>
-            <h4 className="text-lg font-bold mb-4">{translations[lang].footer.tools_title}</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href={getHref('/calculateur-prix-referentiel')}
-                  className="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2"
-                >
-                  <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 11h.01M12 14h.01M15 11h.01M12 7h.01M15 7h.01M15 14h.01M9 11h.01M12 17h.01M15 17h.01" />
-                  </svg>
-                  {translations[lang].nav.calculator}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
           {/* Useful Links */}
-          <div>
+          <div className="lg:col-span-2" dir={isRTL ? 'rtl' : 'ltr'}>
+            <h4 className="text-lg font-bold mb-6">{translations[lang].footer.tools_title}</h4>
             <UsefulLinks lang={lang} variant="compact" />
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="md:col-span-2 lg:col-span-2" dir={isRTL ? 'rtl' : 'ltr'}>
             <h4 className="text-lg font-bold mb-6">{translations[lang].footer.contact_title}</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
