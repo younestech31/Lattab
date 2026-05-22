@@ -9,7 +9,7 @@ export default function Hero({ lang }: { lang: Language }) {
         className="
           scroll-mt-20 md:scroll-mt-24
           relative flex items-center justify-center bg-emerald-900
-          min-h-[100svh]
+          min-h-[100svh] overflow-hidden
           pt-[calc(4rem+env(safe-area-inset-top,0px))]
           pb-[calc(5rem+env(safe-area-inset-bottom,0px))]
           md:min-h-screen md:pt-24 md:pb-16
