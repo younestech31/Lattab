@@ -37,7 +37,7 @@ export default function CookieBanner() {
         </p>
         <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 shrink-0">
           <Link 
-            href="/terms-privacy" 
+            href={lang === 'fr' ? "/fr/terms-privacy" : "/terms-privacy"} 
             className="text-sm text-gray-600 hover:text-emerald-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded p-1"
           >
             {t(lang, 'cookie_banner', 'privacy_policy')}

@@ -179,7 +179,7 @@ export default function InquiryForm({ services }: { services: readonly string[] 
               return word + ' ';
             })}
           </label>
-          <a href="/terms-privacy" target="_blank" rel="noopener noreferrer" className="sr-only">Terms and Privacy</a>
+          <a href={lang === 'fr' ? "/fr/terms-privacy" : "/terms-privacy"} target="_blank" rel="noopener noreferrer" className="sr-only">Terms and Privacy</a>
         </div>
       </div>
 

@@ -136,6 +136,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date('2025-01-01'),
       changeFrequency: 'yearly',
       priority: 0.3,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/terms-privacy`,
+          'fr-DZ': `${base}/fr/terms-privacy`,
+          'x-default': `${base}/terms-privacy`,
+        },
+      },
+    },
+    {
+      url: `${base}/fr/terms-privacy`,
+      lastModified: new Date('2025-01-01'),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/terms-privacy`,
+          'fr-DZ': `${base}/fr/terms-privacy`,
+          'x-default': `${base}/terms-privacy`,
+        },
+      },
     },
     ...blogEntries,
     ...frBlogEntries,
