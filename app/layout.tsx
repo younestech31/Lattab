@@ -114,6 +114,21 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         {/* next/font/google self-hosts Cairo at build time — no runtime Google Fonts connection occurs */}
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
         <meta name="indexnow-key" content="23640b5098f44acf92740b8ccee9f405" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                    console.log('SW registered successfully:', reg.scope);
+                  }).catch(function(err) {
+                    console.error('SW registration failed:', err);
+                  });
+                });
+              }
+            `
+          }}
+        />
       </head>
       <body className="font-cairo" suppressHydrationWarning>
         <LanguageProvider lang={resolvedLang}>
