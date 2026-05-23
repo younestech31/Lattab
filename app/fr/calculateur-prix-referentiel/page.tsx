@@ -11,11 +11,11 @@ import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'Calculateur des prix de référence officiels du Ministère des Finances 2026 pour immobilier à Oran.';
+  const desc = "Calculateur officiel des prix de référence immobiliers 2026 à Oran. Outil d'estimation basé sur les grilles de la Direction Générale des Impôts d'Algérie.";
   assertDescriptionLength(desc, 'calculateur-prix-referentiel-fr');
 
   return {
-    title: { absolute: 'Calculateur des prix de référence immobilier — Oran, Algérie' },
+    title: { absolute: 'Calculateur Prix Référence Immobilier 2026 — Oran' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/fr/calculateur-prix-referentiel`,
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'Calculateur des prix de référence immobilier — Oran, Algérie',
+      title: 'Calculateur Prix Référence Immobilier 2026 — Oran',
       description: desc,
       url: `${SITE_URL}/fr/calculateur-prix-referentiel`,
       siteName: 'Étude Public Notarial — Maître Lattab Mohamed',

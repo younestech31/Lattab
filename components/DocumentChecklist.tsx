@@ -589,7 +589,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       {/* Print-Only Header */}
       <div className="hidden print-header" dir={isAr ? 'rtl' : 'ltr'}>
         <div className="print-subtitle font-medium">{t.brand}</div>
-        <h1 className="print-title mt-1 font-bold">{t.title}</h1>
+        <h2 className="print-title mt-1 font-bold text-xl">{t.title}</h2>
         <div className="text-xs text-gray-500 mt-1">
           {t.date}: {new Date().toLocaleDateString(isAr ? 'ar-DZ' : 'fr-FR', {
             year: 'numeric',

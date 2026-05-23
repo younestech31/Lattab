@@ -13,7 +13,7 @@ import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 // Validate this page using the Open Graph debugger:
 // https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Flattab.vercel.app%2Fcalculateur-prix-referentiel
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'السعر المرجعي الرسمي للعقار في وهران 2026. بيانات رسمية من وزارة المالية 2026 للإعلام.';
+  const desc = 'حاسبة السعر المرجعي الرسمي للعقار بوهران 2026. تقدير فوري لقيمة العقارات التجارية والسكنية بناءً على جداول وزارة المالية والمديرية العامة للضرائب بالجزائر.';
   assertDescriptionLength(desc, 'calculateur-prix-referentiel');
 
   return {

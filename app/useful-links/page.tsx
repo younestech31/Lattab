@@ -29,6 +29,14 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
       locale: 'ar_DZ',
       type: 'website',
+      images: [
+        {
+          url: `${SITE_URL}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'المصادر والروابط الإدارية والقانونية المفيدة | موثق وهران',
+        },
+      ],
     },
     robots: {
       index: true,

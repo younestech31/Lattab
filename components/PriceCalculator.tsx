@@ -231,7 +231,11 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       // IRG rates in Algeria: 7% for residential, 15% for commercial/professional/industrial
       if (catName === 'Individuels' || catName === 'Collectifs et Semi-Collectifs') {
         taxRate = 0.07;
-      } else if (catName === 'Locaux Commerciaux' || catName === 'Locaux à Usage Professionnels' || catName === 'Hangars' || catName === 'Terrains') {
+      } else if (
+        catName?.includes('Locaux') || 
+        catName === 'Hangars' || 
+        catName?.includes('Terrains')
+      ) {
         taxRate = 0.15;
       } else {
         taxRate = 0.15; // Default for non-residential categories

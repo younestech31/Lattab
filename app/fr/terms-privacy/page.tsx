@@ -5,7 +5,7 @@ import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle,
 import { WORKING_HOURS, SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: { absolute: "Conditions d'Utilisation et Politique de Confidentialité — Notaire Oran" },
+  title: { absolute: "Conditions & Confidentialité — Office Notarial" },
   description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Maître Lattab Mohamed à Oran: traitement de vos données, obligations juridiques et secret professionnel.",
   alternates: {
     canonical: `${SITE_URL}/fr/terms-privacy`,
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: `${SITE_URL}/fr/terms-privacy`,
-    title: "Conditions d'Utilisation et Politique de Confidentialité — Notaire Oran",
+    title: "Conditions & Confidentialité — Office Notarial",
     description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Maître Lattab Mohamed à Oran.",
     siteName: 'Étude Public Notarial — Maître Lattab Mohamed',
     images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: "Conditions d'Utilisation" }],

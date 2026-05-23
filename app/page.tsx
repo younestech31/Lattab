@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   assertDescriptionLength(desc, 'Home Page / app/page.tsx');
 
   return {
-    title: 'الديوان العمومي للتوثيق — موثق محكمة فلاوسن وهران | الأستاذ لعطب محمد',
+    title: 'الديوان العمومي للتوثيق وهران — الأستاذ لعطب محمد',
     description: desc,
     keywords: 'موثق وهران, توثيق عقود, بيع عقار الجزائر, تأسيس شركة, وكالة, رهن عقاري, السعر المرجعي العقاري',
     alternates: {
@@ -28,6 +28,14 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
       locale: 'ar_DZ',
       type: 'website',
+      images: [
+        {
+          url: `${SITE_URL}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
+        },
+      ],
     },
     robots: {
       index: true,

@@ -29,7 +29,7 @@ async function buildHomeSchema(): Promise<Record<string, unknown>> {
   // service catalogues framed as commercial offers. Law No. 06-02, Art. 17.
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": ["LegalService", "NotaryOffice"],
+    "@type": ["LegalService", "Notary"],
     "@id": `${SITE_URL}/#notary-office`,
     "url": SITE_URL,
     "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
@@ -69,7 +69,7 @@ async function buildHomeSchema(): Promise<Record<string, unknown>> {
       "Transactions immobilières",
       "Procurations et hypothèques"
     ],
-    "priceRange": undefined,
+    "priceRange": "⚖️",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",

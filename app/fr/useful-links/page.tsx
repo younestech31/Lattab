@@ -29,6 +29,14 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: 'Étude Notariale — Maître Lattab Mohamed, Notaire Oran',
       locale: 'fr_DZ',
       type: 'website',
+      images: [
+        {
+          url: `${SITE_URL}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'Liens et Institutions Utiles en Algérie | Notaire Oran',
+        },
+      ],
     },
     robots: {
       index: true,

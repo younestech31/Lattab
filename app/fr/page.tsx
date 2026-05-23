@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   assertDescriptionLength(desc, 'French Home Page / app/fr/page.tsx');
 
   return {
-    title: { absolute: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran' },
+    title: { absolute: 'Office Notarial de Me Lattab Mohamed — Oran' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/fr`,

@@ -4,6 +4,7 @@ import { JsonLdScript } from './schema';
 import { DocumentChecklist } from './DocumentChecklist';
 import { procedureTypes, generalDocumentsAr, generalDocumentsFr } from '@/lib/data/procedures';
 import { Language } from '@/lib/i18n/translations';
+import { SITE_URL } from '@/lib/config';
 
 const IconComponents = [
   (props: React.SVGProps<SVGSVGElement>) => (
@@ -124,6 +125,8 @@ const Procedures = async ({ lang = 'ar' }: { lang?: Language }) => {
               "@type": "HowTo",
               "name": isAr ? procedure.titleAr : procedure.titleFr,
               "description": isAr ? `الإجراءات المطلوبة لـ ${procedure.titleAr}` : `Procédures requises pour ${procedure.titleFr}`,
+              "url": `${SITE_URL}/${isAr ? '' : 'fr'}#procedures`,
+              "totalTime": "P1D",
               "step": (isAr ? procedure.stepsAr : procedure.stepsFr).map((step, stepIndex) => ({
                 "@type": "HowToStep",
                 "position": stepIndex + 1,

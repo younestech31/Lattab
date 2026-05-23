@@ -157,6 +157,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${base}/useful-links`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/useful-links`,
+          'fr-DZ': `${base}/fr/useful-links`,
+          'x-default': `${base}/useful-links`,
+        },
+      },
+    },
+    {
+      url: `${base}/fr/useful-links`,
+      lastModified: new Date(LAST_CONTENT_UPDATED),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+      alternates: {
+        languages: {
+          'ar-DZ': `${base}/useful-links`,
+          'fr-DZ': `${base}/fr/useful-links`,
+          'x-default': `${base}/useful-links`,
+        },
+      },
+    },
     ...blogEntries,
     ...frBlogEntries,
   ];
