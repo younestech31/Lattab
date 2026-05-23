@@ -110,7 +110,6 @@ export default async function RootLayout({children}: {children: React.ReactNode}
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <link rel="preload" as="image" href="/logo-small.webp" fetchPriority="high" />
         {/* next/font/google self-hosts Cairo at build time — no runtime Google Fonts connection occurs */}
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
         <meta name="indexnow-key" content="fa0c5260a1b1458b87b8ff3e7df53cf2" />
