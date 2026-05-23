@@ -7,17 +7,17 @@ const FloatingWhatsApp = () => {
   const isAr = lang === 'ar';
 
   return (
-    <div className="fixed bottom-4 end-4 z-50 hidden md:flex items-end pb-[env(safe-area-inset-bottom,0px)]" dir={isAr ? 'rtl' : 'ltr'}>
-      <div className="relative">
+    <div className="fixed bottom-4 inset-x-0 z-50 hidden md:block pb-[env(safe-area-inset-bottom,0px)] pointer-events-none" dir={isAr ? 'rtl' : 'ltr'}>
+      <div className="container mx-auto px-4 flex justify-end">
         <a
           href="https://wa.me/213562296981"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center pointer-events-auto"
+          className="w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center pointer-events-auto"
           aria-label={isAr ? 'الاتصال بالمكتب عبر واتساب' : 'Contacter l\'office par WhatsApp'}
         >
           <svg 
-            className="w-6 h-6 fill-current" 
+            className="w-8 h-8 fill-current" 
             viewBox="0 0 24 24" 
             xmlns="http://www.w3.org/2000/svg"
           >

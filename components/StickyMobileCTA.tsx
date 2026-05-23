@@ -43,11 +43,11 @@ export default function StickyMobileCTA() {
       }`}
       dir={isAr ? 'rtl' : 'ltr'}
     >
-      <div className="px-4 flex items-center gap-2 pb-[env(safe-area-inset-bottom,0px)]">
+      <div className="container mx-auto px-4 flex items-center gap-2 pb-[env(safe-area-inset-bottom,0px)]">
         {/* Appointment Bar */}
         <Link 
           href="/#booking-form"
-          className="grow pointer-events-auto bg-emerald-600 text-white font-bold text-center h-11 flex items-center justify-center rounded-xl shadow-lg hover:bg-emerald-700 transition-colors text-sm"
+          className="grow pointer-events-auto bg-emerald-600 text-white font-bold text-center h-14 flex items-center justify-center rounded-xl shadow-lg hover:bg-emerald-700 transition-colors text-base"
           aria-label={isAr ? 'طلب موعد إداري — الانتقال إلى نموذج الحجز' : 'Demande de RDV — Accéder au formulaire'}
         >
           {translations[lang].contact.tabs.appointment}
@@ -58,11 +58,11 @@ export default function StickyMobileCTA() {
           href="https://wa.me/213562296981"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-11 h-11 shrink-0 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-105 flex items-center justify-center pointer-events-auto"
+          className="w-14 h-14 shrink-0 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-105 flex items-center justify-center pointer-events-auto"
           aria-label={isAr ? 'الاتصال بالمكتب عبر واتساب' : 'Contacter l\'office par WhatsApp'}
         >
           <svg 
-            className="w-5 h-5 fill-current" 
+            className="w-7 h-7 fill-current" 
             viewBox="0 0 24 24" 
             xmlns="http://www.w3.org/2000/svg"
           >
