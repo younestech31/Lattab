@@ -1,65 +1,38 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
 
 export default function StickyMobileCTA() {
-  const { lang } = useLang();
+  const { lang} = useLang();
   const isAr = lang === 'ar';
   
   const [isVisible, setIsVisible] = useState(false);
   const [isContactVisible, setIsContactVisible] = useState(false);
 
-  const handleSentinelIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
-    const entry = entries[0];
-    setIsVisible(prev => {
-      const scrolledPast = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-      return scrolledPast !== prev ? scrolledPast : prev;
-    });
-  }, []);
-
-  const handleContactIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
-    const entry = entries[0];
-    setIsContactVisible(prev => {
-      return entry.isIntersecting !== prev ? entry.isIntersecting : prev;
-    });
-  }, []);
-
   useEffect(() => {
-    // We create observers
-    const heroObserver = new IntersectionObserver(handleSentinelIntersection, {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0
-    });
-
-    const contactObserver = new IntersectionObserver(handleContactIntersection, {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0
-    });
-
-    const sentinel = document.getElementById('cta-sentinel');
-    const contactSection = document.getElementById('contact');
-
-    if (sentinel) {
-      heroObserver.observe(sentinel);
-    } else {
-      // Fallback if no sentinel, observe #home instead
-      const home = document.getElementById('home');
-      if (home) heroObserver.observe(home);
-    }
-
-    if (contactSection) {
-      contactObserver.observe(contactSection);
-    }
-
-    return () => {
-      heroObserver.disconnect();
-      contactObserver.disconnect();
+    const handleScroll = () => {
+      requestAnimationFrame(() => {
+        // Show CTA only after scrolling down
+        setIsVisible(window.scrollY > 300);
+        
+        // Calculate intersection on the fly instead of relying on stateful IntersectionObserver
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          const rect = contactSection.getBoundingClientRect();
+          // Contact segment starts being visible when top arrives at viewport bottom
+          setIsContactVisible(rect.top <= window.innerHeight);
+        } else {
+          setIsContactVisible(false);
+        }
+      });
     };
-  }, [handleSentinelIntersection, handleContactIntersection]);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const shouldShow = isVisible && !isContactVisible;
 

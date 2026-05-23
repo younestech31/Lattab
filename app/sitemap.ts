@@ -106,32 +106,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: `${base}/liens-utiles`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/liens-utiles`,
-          'fr-DZ': `${base}/fr/liens-utiles`,
-          'x-default': `${base}/liens-utiles`,
-        },
-      },
-    },
-    {
-      url: `${base}/fr/liens-utiles`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/liens-utiles`,
-          'fr-DZ': `${base}/fr/liens-utiles`,
-          'x-default': `${base}/liens-utiles`,
-        },
-      },
-    },
-    {
       url: `${base}/blog`,
       lastModified: new Date(LAST_CONTENT_UPDATED),
       changeFrequency: 'weekly',

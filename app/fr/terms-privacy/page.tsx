@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import { getWorkingHours, SITE_URL } from '@/lib/config';
+import { WORKING_HOURS, SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: { absolute: "Conditions d'Utilisation et Politique de Confidentialité — Notaire Oran" },
@@ -300,7 +300,7 @@ const TermsPrivacyPageFR = () => {
                       </div>
                       <div className="flex items-center gap-4 text-gray-700">
                         <Clock className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                        <span>{getWorkingHours('fr').full}</span>
+                        <span>Dimanche - Jeudi: {WORKING_HOURS.full}</span>
                       </div>
                     </div>
                   </div>

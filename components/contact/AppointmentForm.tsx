@@ -6,8 +6,6 @@ import { AppointmentFormData, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOT
 import { validateAppointment, AppointmentState } from '@/app/actions/appointment';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
-import ObfuscatedPhone from '@/components/ui/ObfuscatedPhone';
-import { OFFICE_PHONE_INTL } from '@/lib/config/contact';
 
 export default function AppointmentForm({ services }: { services: readonly string[] }) {
   const { lang } = useLang();
@@ -50,15 +48,8 @@ export default function AppointmentForm({ services }: { services: readonly strin
   useEffect(() => {
     if (state.success && !isAppointmentSubmitted) {
       setIsAppointmentSubmitted(true);
-      // Fallback to appointmentData if ref is null, though state.data (if we exported it from action) could be better.
-      const url = whatsappUrlRef.current !== null 
-        ? whatsappUrlRef.current 
-        : generateWhatsAppAppointmentUrl(appointmentData, lang);
-        
-      const timer = setTimeout(() => {
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }, 1500);
-      return () => clearTimeout(timer);
+      const url = whatsappUrlRef.current || generateWhatsAppAppointmentUrl(appointmentData, lang);
+      window.location.href = url;
     }
   }, [state.success, isAppointmentSubmitted, appointmentData, lang]);
 
@@ -91,10 +82,8 @@ export default function AppointmentForm({ services }: { services: readonly strin
   };
 
   const handleManualWhatsAppOpen = () => {
-    const url = whatsappUrlRef.current !== null 
-      ? whatsappUrlRef.current 
-      : generateWhatsAppAppointmentUrl(appointmentData, lang);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    const url = whatsappUrlRef.current || generateWhatsAppAppointmentUrl(appointmentData, lang);
+    window.location.href = url;
   };
 
   if (state.success || isAppointmentSubmitted) {
@@ -150,7 +139,9 @@ export default function AppointmentForm({ services }: { services: readonly strin
             <p className="text-blue-800 font-medium mb-2">
               {t_form.fallback_call}
             </p>
-            <ObfuscatedPhone number={OFFICE_PHONE_INTL} display="+213 562 29 69 81" lang={lang} className="text-lg font-bold text-blue-900 underline block" />
+            <a href="tel:+213562296981" className="text-lg font-bold text-blue-900 underline block" dir="ltr">
+              +213 562 29 69 81
+            </a>
           </div>
 
           <button
@@ -181,7 +172,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
             <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
             <div className="text-red-700 font-medium text-start">
               <p>{t_form.error_title}</p>
-              <ObfuscatedPhone number={OFFICE_PHONE_INTL} display="+213 562 29 69 81" lang={lang} className="font-bold underline block mt-1" />
+              <a href="tel:+213562296981" className="font-bold underline block mt-1" dir="ltr">+213 562 29 69 81</a>
             </div>
           </div>
         </div>
@@ -313,29 +304,14 @@ export default function AppointmentForm({ services }: { services: readonly strin
           {t_form.time}
         </label>
         
-        <div className="mb-3" role="radiogroup" aria-labelledby="morning-slots-label">
-          <span id="morning-slots-label" className="text-xs font-bold text-gray-500 mb-2 block">{t_form.time_morning}</span>
+        <div className="mb-3">
+          <span className="text-xs font-bold text-gray-500 mb-2 block">{t_form.time_morning}</span>
           <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
             {MORNING_SLOTS.map((slot, index) => (
               <button
                 key={`morning-${index}`}
                 type="button"
-                role="radio"
-                aria-checked={appointmentData.time === slot}
-                aria-disabled={isPastTime(slot, appointmentData.date)}
-                aria-label={`${localizeTimeSlot(slot)} ${isPastTime(slot, appointmentData.date) ? (isAr ? 'منتهي' : 'passé') : ''}`}
                 onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
-                onKeyDown={(e) => {
-                  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    const next = MORNING_SLOTS[(index + 1) % MORNING_SLOTS.length];
-                    setAppointmentData({ ...appointmentData, time: next });
-                  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    const prev = MORNING_SLOTS[(index - 1 + MORNING_SLOTS.length) % MORNING_SLOTS.length];
-                    setAppointmentData({ ...appointmentData, time: prev });
-                  }
-                }}
                 disabled={isPastTime(slot, appointmentData.date)}
                 className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors touch-manipulation ${
                   appointmentData.time === slot
@@ -351,29 +327,14 @@ export default function AppointmentForm({ services }: { services: readonly strin
           </div>
         </div>
 
-        <div role="radiogroup" aria-labelledby="afternoon-slots-label">
-          <span id="afternoon-slots-label" className="text-xs font-bold text-gray-500 mb-2 block">{t_form.time_afternoon}</span>
+        <div>
+          <span className="text-xs font-bold text-gray-500 mb-2 block">{t_form.time_afternoon}</span>
           <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
             {AFTERNOON_SLOTS.map((slot, index) => (
               <button
                 key={`afternoon-${index}`}
                 type="button"
-                role="radio"
-                aria-checked={appointmentData.time === slot}
-                aria-disabled={isPastTime(slot, appointmentData.date)}
-                aria-label={`${localizeTimeSlot(slot)} ${isPastTime(slot, appointmentData.date) ? (isAr ? 'منتهي' : 'passé') : ''}`}
                 onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
-                onKeyDown={(e) => {
-                  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    const next = AFTERNOON_SLOTS[(index + 1) % AFTERNOON_SLOTS.length];
-                    setAppointmentData({ ...appointmentData, time: next });
-                  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    const prev = AFTERNOON_SLOTS[(index - 1 + AFTERNOON_SLOTS.length) % AFTERNOON_SLOTS.length];
-                    setAppointmentData({ ...appointmentData, time: prev });
-                  }
-                }}
                 disabled={isPastTime(slot, appointmentData.date)}
                 className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors touch-manipulation ${
                   appointmentData.time === slot

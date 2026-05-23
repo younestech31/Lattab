@@ -1,11 +1,7 @@
 import { ImageResponse } from 'next/og';
 
-// Edge runtime is required for next/og ImageResponse.
-// Static generation is intentionally disabled for this OG image
-// to allow content updates without a full rebuild.
-// See: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
 export const runtime = 'edge';
-export const revalidate = false;
+export const revalidate = 86400;
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';

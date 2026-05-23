@@ -3,13 +3,13 @@ import { t, Language } from '@/lib/i18n/translations';
 export default function Hero({ lang }: { lang: Language }) {
 
   return (
-    <div className="relative overflow-hidden" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
+    <div className="relative" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
       <section
         id="home"
         className="
           scroll-mt-20 md:scroll-mt-24
           relative flex items-center justify-center bg-emerald-900
-          min-h-[100svh] overflow-hidden
+          min-h-[100svh]
           pt-[calc(4rem+env(safe-area-inset-top,0px))]
           pb-[calc(5rem+env(safe-area-inset-bottom,0px))]
           md:min-h-screen md:pt-24 md:pb-16
@@ -93,9 +93,6 @@ export default function Hero({ lang }: { lang: Language }) {
             </svg>
           </a>
         </div>
-
-        {/* Sentinel pour StickyMobileCTA */}
-        <div id="cta-sentinel" className="absolute bottom-0 w-full h-px pointer-events-none" />
       </section>
     </div>
   );

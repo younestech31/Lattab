@@ -3,7 +3,6 @@
 import { z } from 'zod';
 import { headers } from 'next/headers';
 import { notifyAppointment } from '@/lib/utils/notify';
-import { checkRateLimit } from '@/lib/utils/rateLimiter';
 
 const AppointmentSchema = z.object({
   name: z.string().min(2, 'الاسم يجب أن يكون على الأقل حرفين').max(100),
@@ -26,22 +25,6 @@ export type AppointmentState = {
 };
 
 export async function validateAppointment(prevState: AppointmentState, formData: FormData): Promise<AppointmentState> {
-  const reqHeaders = await headers();
-  const ip = reqHeaders.get('x-forwarded-for') || reqHeaders.get('x-real-ip') || '127.0.0.1';
-  const country = reqHeaders.get('x-vercel-ip-country') ?? 'unknown';
-  const clientKey = `${ip}:${country}`;
-
-  const limitResult = checkRateLimit(clientKey);
-  if (!limitResult.success) {
-    return {
-      success: false,
-      errors: {
-        global: [`الرجاء المحاولة بعد ${limitResult.retryAfter} ثانية. لقد تجاوزت حد تقديم الطلبات.`]
-      },
-      message: `الرجاء المحاولة بعد ${limitResult.retryAfter} ثانية. لقد تجاوزت حد تقديم الطلبات.`
-    };
-  }
-
   const rawData = {
     name: formData.get('name'),
     phone: formData.get('phone'),

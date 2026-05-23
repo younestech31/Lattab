@@ -1,6 +1,5 @@
 'use client';
 import { useLang } from '@/lib/i18n';
-import { OFFICE_WHATSAPP_NUMBER } from '@/lib/config/contact';
 
 // Custom SVG for WhatsApp icon for better representation.
 const FloatingWhatsApp = () => {
@@ -11,7 +10,7 @@ const FloatingWhatsApp = () => {
     <div className="fixed bottom-4 end-4 z-50 hidden md:flex items-end pb-[env(safe-area-inset-bottom,0px)]" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="relative">
         <a
-          href={`https://wa.me/${OFFICE_WHATSAPP_NUMBER}`}
+          href="https://wa.me/213562296981"
           target="_blank"
           rel="noopener noreferrer"
           className="w-12 h-12 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center pointer-events-auto"

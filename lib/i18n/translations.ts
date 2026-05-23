@@ -11,7 +11,6 @@ export const translations = {
       faq: 'الأسئلة الشائعة',
       contact: 'معلومات الاتصال',
       book: 'حجز موعد',
-      useful_links: 'روابط مفيدة',
       notary: 'موثق',
       name: 'الأستاذ لعطب محمد'
     },
@@ -223,12 +222,6 @@ export const translations = {
       terms_link: 'الشروط والأحكام',
       privacy_link: 'سياسة الخصوصية'
     },
-    usefulLinks: {
-      section_title: 'روابط مفيدة للمواطن',
-      section_subtitle: 'بوابات حكومية رسمية ذات صلة بالإجراءات التوثيقية والتشريعية',
-      opens_new_tab: 'يفتح في نافذة جديدة',
-      external_link: 'موقع خارجي رسمي',
-    },
     cookie_banner: {
       message: 'يستخدم هذا الموقع خدمات استضافة سحابية (Firebase) لمعالجة بيانات حجز المواعيد. بالاستمرار في التصفح، فإنك توافق على سياسة الخصوصية ومعالجة بياناتك وفق القانون رقم 18-07 المعدل والمتمم.',
       privacy_policy: 'الاطلاع على سياسة الخصوصية',
@@ -248,7 +241,6 @@ export const translations = {
       faq: 'FAQ',
       contact: 'Contact',
       book: 'Demande de RDV',
-      useful_links: 'Liens utiles',
       notary: 'Notaire',
       name: 'Maitre Lattab Mohamed'
     },
@@ -460,12 +452,6 @@ export const translations = {
       terms_link: 'Conditions d\'utilisation',
       privacy_link: 'Politique de confidentialité'
     },
-    usefulLinks: {
-      section_title: 'Liens utiles pour les citoyens',
-      section_subtitle: 'Portails gouvernementaux officiels liés aux actes notariés',
-      opens_new_tab: 'ouvre dans un nouvel onglet',
-      external_link: 'Site officiel externe',
-    },
     cookie_banner: {
       message: 'Ce site utilise des services d\'hébergement cloud (Firebase) pour traiter les données de réservation de rendez-vous. En poursuivant votre navigation, vous acceptez notre politique de confidentialité et le traitement de vos données conformément à la législation en vigueur.',
       privacy_policy: 'Voir la politique de confidentialité',
@@ -486,7 +472,6 @@ export type FAQKeys = keyof TranslationKeys['faq'];
 export type LegalUpdatesKeys = keyof TranslationKeys['legalUpdates'];
 export type ContactKeys = keyof TranslationKeys['contact'];
 export type FooterKeys = keyof TranslationKeys['footer'];
-export type UsefulLinksKeys = keyof TranslationKeys['usefulLinks'];
 
 export function t(lang: Language, section: 'nav', key: NavKeys): string;
 export function t(lang: Language, section: 'calculator', key: CalculatorKeys): string;
@@ -496,7 +481,6 @@ export function t(lang: Language, section: 'notaryRole', key: NotaryRoleKeys): s
 export function t(lang: Language, section: 'faq', key: FAQKeys): string;
 export function t(lang: Language, section: 'legalUpdates', key: LegalUpdatesKeys): string;
 export function t(lang: Language, section: 'footer', key: FooterKeys): string;
-export function t(lang: Language, section: 'usefulLinks', key: UsefulLinksKeys): string;
 export function t(lang: Language, section: 'cookie_banner', key: 'message' | 'privacy_policy' | 'accept' | 'reject'): string;
 export function t(lang: Language, section: 'contact', key: string): string;
 export function t(lang: Language, section: keyof TranslationKeys, key: string): string {

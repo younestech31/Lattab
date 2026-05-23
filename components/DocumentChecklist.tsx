@@ -17,12 +17,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
     setMounted(true);
     try {
       const saved = localStorage.getItem(keyPrefix);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && typeof parsed === 'object') {
-          setCheckedState(parsed);
-        }
-      }
+      if (saved) setCheckedState(JSON.parse(saved));
     } catch (e) {
       console.error('Failed to load checklist', e);
     }
@@ -30,22 +25,20 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
 
   const toggleDocument = (index: number) => {
     const key = `${index}`;
-    setCheckedState(prev => {
-      const newState = { ...prev, [key]: !prev[key] };
-      try {
-        localStorage.setItem(keyPrefix, JSON.stringify(newState));
-      } catch (e) {
-        console.error('Failed to save checklist', e);
-      }
-      return newState;
-    });
+    const newState = { ...checkedState, [key]: !checkedState[key] };
+    setCheckedState(newState);
+    try {
+      localStorage.setItem(keyPrefix, JSON.stringify(newState));
+    } catch (e) {
+      console.error('Failed to save checklist', e);
+    }
   };
 
   if (!mounted) return null;
 
-  const total = documents && documents.length > 0 ? documents.length : 0;
   const checkedCount = Object.values(checkedState).filter(Boolean).length;
-  const progress = total > 0 ? (checkedCount / total) * 100 : 0;
+  const total = documents.length;
+  const progress = (checkedCount / total) * 100;
 
   const handlePrint = () => {
     const printContent = `
