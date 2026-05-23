@@ -11,6 +11,7 @@ import NotaryRole from '@/components/NotaryRole';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
+import UsefulLinksSection from '@/components/UsefulLinksSection';
 import { JsonLdScript } from '@/components/schema';
 import { AnalyticsScriptLoader } from '@/components/AnalyticsScriptLoader';
 
@@ -116,6 +117,8 @@ export async function HomeContent({ lang }: { lang: Language }) {
           <Suspense fallback={<SectionSkeleton height="min-h-[520px]" />}>
             <FAQ lang={lang} />
           </Suspense>
+
+          <UsefulLinksSection lang={lang} />
         </div>
         <Contact contactInfo={<ContactInfo lang={lang} />} lang={lang} />
       </main>

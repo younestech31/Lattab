@@ -38,6 +38,9 @@ export default function HeaderShell({ lang, pathname }: HeaderShellProps) {
       if (href === '/calculateur-prix-referentiel') {
         return '/fr/calculateur-prix-referentiel';
       }
+      if (href === '/useful-links') {
+        return '/fr/useful-links';
+      }
     }
     return href;
   };
@@ -46,6 +49,7 @@ export default function HeaderShell({ lang, pathname }: HeaderShellProps) {
     { href: '/#home', label: text.home },
     { href: '/#services', label: text.services },
     { href: '/calculateur-prix-referentiel', label: text.calculator },
+    { href: '/useful-links', label: text.useful_links },
     { href: '/blog', label: text.blog },
     { href: '/#notary-role', label: text.notary_role },
     { href: '/#procedures', label: text.procedures },
@@ -88,7 +92,7 @@ export default function HeaderShell({ lang, pathname }: HeaderShellProps) {
               href={getHref(link.href)}
               className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm link-text duration-300 ${
                 headerActive ? 'text-gray-700' : 'text-white'
-              } ${([text.notary_role, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
+              } ${([text.notary_role, text.procedures, text.news, text.faq, text.useful_links] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
             >
               {link.label}
             </Link>

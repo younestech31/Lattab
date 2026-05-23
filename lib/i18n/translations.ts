@@ -12,7 +12,8 @@ export const translations = {
       contact: 'معلومات الاتصال',
       book: 'حجز موعد',
       notary: 'موثق',
-      name: 'الأستاذ لعطب محمد'
+      name: 'الأستاذ لعطب محمد',
+      useful_links: 'روابط مفيدة'
     },
     calculator: {
       "Individuels": "سكنات فردية",
@@ -242,7 +243,8 @@ export const translations = {
       contact: 'Contact',
       book: 'Demande de RDV',
       notary: 'Notaire',
-      name: 'Maitre Lattab Mohamed'
+      name: 'Maitre Lattab Mohamed',
+      useful_links: 'Liens utiles'
     },
     calculator: {
       "Individuels": "Logements Individuels",

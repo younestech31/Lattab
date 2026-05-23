@@ -22,6 +22,9 @@ export default function Footer({ lang }: FooterProps) {
       if (href === '/calculateur-prix-referentiel') {
         return '/fr/calculateur-prix-referentiel';
       }
+      if (href === '/useful-links') {
+        return '/fr/useful-links';
+      }
       if (href === '/terms-privacy') {
         return '/fr/terms-privacy';
       }
@@ -34,6 +37,7 @@ export default function Footer({ lang }: FooterProps) {
     { href: '/#services', label: translations[lang].nav.services },
     { href: '/calculateur-prix-referentiel', label: translations[lang].nav.calculator },
     { href: '/blog', label: translations[lang].nav.blog },
+    { href: '/useful-links', label: translations[lang].nav.useful_links },
     { href: '/#procedures', label: translations[lang].nav.procedures },
     { href: '/#faq', label: translations[lang].nav.faq },
     { href: '/#appointment', label: translations[lang].nav.contact },
