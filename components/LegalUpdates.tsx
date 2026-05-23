@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Calendar, FileText, Scale, TrendingUp } from 'lucide-react';
 import { DirectionalArrow } from '@/components/ui/DirectionalArrow';
 import { Language, translations } from '@/lib/i18n/translations';
-import { blogPosts } from '@/lib/data/blog';
+import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 
 const iconMap: Record<string, React.ReactNode> = {
   FileText: <FileText className="w-6 h-6" />,
@@ -16,7 +16,8 @@ interface LegalUpdatesProps {
 
 export default function LegalUpdates({ lang }: LegalUpdatesProps) {
   const content = translations[lang].legalUpdates;
-  const latestPosts = blogPosts.slice(0, 4);
+  const posts = lang === 'fr' ? frBlogPosts : blogPosts;
+  const latestPosts = posts.slice(0, 2);
 
   return (
     <section id="legal-updates" className="scroll-mt-20 md:scroll-mt-24 py-16 bg-white relative" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
@@ -31,7 +32,7 @@ export default function LegalUpdates({ lang }: LegalUpdatesProps) {
             </p>
           </div>
           <Link 
-            href="/blog" 
+            href={lang === 'fr' ? '/fr/blog' : '/blog'} 
             className="hidden md:flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition-colors group"
           >
             {content.cta}
@@ -39,11 +40,11 @@ export default function LegalUpdates({ lang }: LegalUpdatesProps) {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {latestPosts.map((post) => (
             <Link 
               key={post.id}
-              href={`/blog/${post.slug}`}
+              href={lang === 'fr' ? `/fr/blog/${post.slug}` : `/blog/${post.slug}`}
               className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
             >
               <div className="p-6 flex-grow flex flex-col">
@@ -78,7 +79,7 @@ export default function LegalUpdates({ lang }: LegalUpdatesProps) {
 
         <div className="mt-8 text-center md:hidden">
           <Link 
-            href="/blog" 
+            href={lang === 'fr' ? '/fr/blog' : '/blog'} 
             className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 text-emerald-700 font-bold rounded-xl transition-colors"
           >
             {content.cta_mobile}
