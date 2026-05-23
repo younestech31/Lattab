@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useTransition } from 'react';
+import React, { createContext, useContext, useTransition, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { setLanguageCookie } from '@/app/actions/language';
 
@@ -11,6 +11,7 @@ export interface LanguageContextType {
   setLang: (lang: Language) => void;
   toggleLang: () => void;
   isPending: boolean;
+  setAlternatePaths: (paths: Record<Language, string> | null) => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -19,6 +20,7 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
+  const [alternatePaths, setAlternatePaths] = useState<Record<Language, string> | null>(null);
 
   React.useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -26,6 +28,11 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     }
   }, [lang]);
+
+  // Reset alternate paths when pathname changes
+  React.useEffect(() => {
+    setAlternatePaths(null);
+  }, [pathname]);
 
   const handleLanguageChange = (nextLang: Language) => {
     let targetPath = pathname;
@@ -35,7 +42,10 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
 
     let isPathChanging = false;
 
-    if (nextLang === 'fr') {
+    if (alternatePaths && alternatePaths[nextLang]) {
+      targetPath = alternatePaths[nextLang];
+      isPathChanging = targetPath !== pathname;
+    } else if (nextLang === 'fr') {
       if (!isFrPage) {
         targetPath = pathname === '/' ? '/fr' : `/fr${pathname}`;
         isPathChanging = true;
@@ -68,7 +78,7 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang, isPending }}>
+    <LanguageContext.Provider value={{ lang, setLang, toggleLang, isPending, setAlternatePaths }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -80,5 +90,18 @@ export function useLang() {
     throw new Error('useLang must be used within a LanguageProvider');
   }
   return context;
+}
+
+export function RegisterAlternatePath({ paths }: { paths: Record<Language, string> }) {
+  const { setAlternatePaths } = useLang();
+  
+  React.useEffect(() => {
+    setAlternatePaths(paths);
+    return () => {
+      setAlternatePaths(null);
+    };
+  }, [paths, setAlternatePaths]);
+
+  return null;
 }
 

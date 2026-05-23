@@ -11,6 +11,7 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
 import { enrichDescription, FR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
+import { RegisterAlternatePath } from '@/lib/i18n';
 
 const serviceMappings: Record<string, string> = {
   'Immobilier': 'عقود البيع والشراء العقارية',
@@ -115,6 +116,12 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <RegisterAlternatePath 
+        paths={{
+          ar: post.arSlug ? `/blog/${post.arSlug}` : `/blog`,
+          fr: `/fr/blog/${post.slug}`
+        }}
+      />
       <ReadingProgress />
       <main className="flex-grow pt-32 pb-20">
         <div dir="ltr" lang="fr" className="container mx-auto px-4 max-w-4xl">

@@ -11,6 +11,7 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
 import { enrichDescription, AR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
+import { RegisterAlternatePath } from '@/lib/i18n';
 
 const serviceMappings: Record<string, string> = {
   'عقاري': 'عقود البيع والشراء العقارية',
@@ -99,6 +100,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
+  const frPost = frBlogPosts.find(fp => fp.arSlug === post.slug);
+
   const filePath = path.join(process.cwd(), 'content', 'blog', `${slug}.md`);
   
   let content: string;
@@ -120,6 +123,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <RegisterAlternatePath 
+        paths={{
+          ar: `/blog/${post.slug}`,
+          fr: frPost ? `/fr/blog/${frPost.slug}` : `/fr/blog`
+        }}
+      />
       <ReadingProgress />
       <main className="flex-grow pt-32 pb-20" dir={post.language === 'fr' ? 'ltr' : 'rtl'}>
         <div className="container mx-auto px-4 max-w-4xl">
