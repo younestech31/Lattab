@@ -1,10 +1,20 @@
 'use client';
 import { useLang } from '@/lib/i18n';
+import { useState, useEffect } from 'react';
 
 // Custom SVG for WhatsApp icon for better representation.
 const FloatingWhatsApp = () => {
   const { lang } = useLang();
   const isAr = lang === 'ar';
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-4 inset-x-0 z-50 pb-[env(safe-area-inset-bottom,0px)] pointer-events-none" dir={isAr ? 'rtl' : 'ltr'}>
