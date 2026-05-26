@@ -17,7 +17,7 @@ export interface CalculatorApiErrorResponse {
 }
 
 const QuerySchema = z.object({
-  wilaya: z.enum(['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida','bouira','tamanrasset','tebessa','tiaret','tlemcen']),
+  wilaya: z.enum(['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida','bouira','tamanrasset','tebessa','tiaret','tlemcen','tizi-ouzou']),
   mode: z.enum(['sale','rent']).default('sale'),
   region: z.string().max(100).optional(),
 });
@@ -85,6 +85,10 @@ const wilayaDataLoaders: Record<Wilaya, () => Promise<{ transactions: PriceRefCo
   tlemcen: async () => ({
     transactions: (await import('@/lib/data/tlemcen-price-reference-transactions')).tlemcenPriceReferenceTransactions,
     locations: (await import('@/lib/data/tlemcen-price-reference-locations')).tlemcenRentalReferenceTransactions,
+  }),
+  'tizi-ouzou': async () => ({
+    transactions: (await import('@/lib/data/tizi-ouzou-price-reference-transactions')).tiziOuzouPriceReferenceTransactions,
+    locations: (await import('@/lib/data/tizi-ouzou-price-reference-locations')).tiziOuzouPriceReferenceLocations,
   }),
 };
 

@@ -124,7 +124,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     }
     
     const fetchApiData = async () => {
-      const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida','bouira','tamanrasset','tebessa','tiaret','tlemcen'];
+      const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida','bouira','tamanrasset','tebessa','tiaret','tlemcen','tizi-ouzou'];
       if (!supportedWilayas.includes(wilaya)) {
         setMappedData(null);
         setCommunes([]);
@@ -429,7 +429,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       { v: 'el-mghaier', n: isAr ? 'المغير (57)' : 'El M\'Ghair (57)' }, 
                       { v: 'el-meniaa', n: isAr ? 'المنيعة (58)' : 'El Meniaâ (58)' }
                     ].map(w => {
-                      const supportedWilayas = ['oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida', 'bouira', 'tamanrasset', 'tebessa', 'tiaret', 'tlemcen'];
+                      const supportedWilayas = ['oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida', 'bouira', 'tamanrasset', 'tebessa', 'tiaret', 'tlemcen', 'tizi-ouzou'];
                       const isSupported = supportedWilayas.includes(w.v);
                       return (
                         <option key={w.v} value={w.v} disabled={!isSupported} aria-disabled={!isSupported}>
