@@ -77,7 +77,27 @@ const uiTranslations = {
 
 const cleanCommuneName = (name: string): string => {
   if (!name) return '';
-  return name.replace(/^[dD]['’`\s]+/, '').trim();
+  let cleaned = name.trim();
+  
+  if (cleaned.includes(':')) {
+    const parts = cleaned.split(':');
+    const before = parts[0].trim();
+    const after = parts.slice(1).join(':').trim();
+    const isPrefixOnly = !before || /^(COMMUNES?\s*(DE)?)?$/i.test(before);
+    
+    if (isPrefixOnly) {
+      cleaned = after;
+    } else {
+      cleaned = before;
+    }
+  }
+  
+  cleaned = cleaned.replace(/^(COMMUNES?\s+DE\s+|COMMUNES?\s+)/gi, '');
+  cleaned = cleaned.replace(/^[dD]['’`\s]+/, '');
+  cleaned = cleaned.replace(/\.+$/, '');
+  cleaned = cleaned.replace(/\s+/g, ' ').trim();
+  
+  return cleaned;
 };
 
 interface PriceCalculatorProps {
@@ -94,7 +114,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
   const ui = uiTranslations[lang];
   const [wilaya, setWilaya] = useState<string>('oran');
   const [mappedData, setMappedData] = useState<CalculatorResult | null>(initialData);
-  const [communes, setCommunes] = useState<string[]>(initialCommunes);
+  const [communes, setCommunes] = useState<string[]>(initialCommunes || []);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [calculationMode, setCalculationMode] = useState<'sale' | 'rent'>('sale');
   const [regionId, setRegionId] = useState<string>(initialRegionId);
@@ -146,26 +166,33 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       setIsLoadingData(true);
       try {
         const response = await fetch(`/api/calculator-data?wilaya=${wilaya}&mode=${calculationMode}&region=${encodeURIComponent(regionId)}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const result = await response.json();
         
-        // Cache the result
-        cache.current[cacheKey] = {
-          data: result.data,
-          communes: result.communes,
-          regionId: result.regionId
-        };
-        if (result.regionId && result.regionId !== regionId) {
-          cache.current[`${wilaya}-${calculationMode}-${result.regionId}`] = {
+        if (result && Array.isArray(result.communes)) {
+          // Cache the result
+          cache.current[cacheKey] = {
             data: result.data,
             communes: result.communes,
             regionId: result.regionId
           };
-        }
-        
-        setMappedData(result.data);
-        setCommunes(result.communes);
-        if (result.regionId && result.regionId !== regionId) {
-          setRegionId(result.regionId);
+          if (result.regionId && result.regionId !== regionId) {
+            cache.current[`${wilaya}-${calculationMode}-${result.regionId}`] = {
+              data: result.data,
+              communes: result.communes,
+              regionId: result.regionId
+            };
+          }
+          
+          setMappedData(result.data);
+          setCommunes(result.communes);
+          if (result.regionId && result.regionId !== regionId) {
+            setRegionId(result.regionId);
+          }
+        } else {
+          throw new Error('Invalid data format received from API');
         }
       } catch (err: unknown) {
         console.error('Failed to fetch data', err);
@@ -477,7 +504,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed pr-10"
                       >
                         <option value="">{ui.chooseRegion}</option>
-                        {communes.map((c) => (
+                        {(communes || []).map((c) => (
                           <option key={c} value={c}>{cleanCommuneName(c)}</option>
                         ))}
                       </select>
@@ -519,7 +546,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                       >
                         <option value="">{ui.chooseCategory}</option>
-                        {currentRegionData?.prix.map((cat, idx) => (
+                        {currentRegionData?.prix?.map((cat, idx) => (
                           <option key={idx} value={idx}>{t(lang, 'calculator', cat.categorie as CalculatorKeys)}</option>
                         ))}
                       </select>
@@ -539,7 +566,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                       >
                         <option value="">{ui.chooseSubType}</option>
-                        {selectedCategory?.types.map((type, idx) => (
+                        {selectedCategory?.types?.map((type, idx) => (
                           <option key={idx} value={idx}>{t(lang, 'calculator', type.type as CalculatorKeys)}</option>
                         ))}
                       </select>
