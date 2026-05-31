@@ -1,11 +1,9 @@
 import { PriceRefCommune } from '../types';
 
+// ADRAR - Locations (Auto-generated from FTR PDF data)
 const createRange = (min: number, max: number) => ({ min, max });
 
 export const adrarPriceReferenceLocations: PriceRefCommune[] = [
-  // ==========================================
-  // PAGE 2: COMMUNE ADRAR
-  // ==========================================
   {
     commune: "ADRAR",
     individuels: [
@@ -14,42 +12,42 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         unit: "DA/m²/Mois",
         centreVille: createRange(182, 209),
         zonePeripherique: createRange(120, 138),
-        zoneEloignement: createRange(80, 92)
+        zoneEloignement: createRange(80, 92),
       },
       {
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(97, 121),
         zonePeripherique: createRange(50, 60),
-        zoneEloignement: createRange(40, 46)
+        zoneEloignement: createRange(40, 46),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(30, 35),
         zonePeripherique: createRange(20, 23),
-        zoneEloignement: createRange(20, 23)
-      }
+        zoneEloignement: createRange(20, 23),
+      },
     ],
     collectifsSemiCollectifs: [
       {
         label: "Standing",
         unit: "DA/m²/Mois",
         centreVille: createRange(135, 150),
-        zonePeripherique: createRange(100, 115)
+        zonePeripherique: createRange(100, 115),
       },
       {
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(70, 80),
-        zonePeripherique: createRange(50, 60)
+        zonePeripherique: createRange(50, 60),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(800, 920),
-        zonePeripherique: createRange(300, 350)
-      }
+        zonePeripherique: createRange(300, 350),
+      },
     ],
     locauxCommerciaux: [
       {
@@ -57,55 +55,51 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         unit: "DA/m²/Mois",
         centreVille: createRange(450, 500),
         zonePeripherique: createRange(220, 255),
-        zoneEloignement: createRange(130, 135)
+        zoneEloignement: createRange(130, 135),
       },
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(220, 240),
-        zonePeripherique: createRange(160, 185)
+        zonePeripherique: createRange(160, 185),
       },
       {
         label: "Artère peu commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(350, 405),
-        zonePeripherique: createRange(220, 255)
-      }
+        zonePeripherique: createRange(220, 255),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(220, 255),
-        zonePeripherique: createRange(160, 185)
+        zonePeripherique: createRange(160, 185),
       },
       {
-        label: "Artere secondaire",
+        label: "Artère secondaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(160, 185),
-        zonePeripherique: createRange(150, 175)
-      }
+        zonePeripherique: createRange(150, 175),
+      },
     ],
     hangars: [
       {
         label: "En zone urbaine",
         unit: "DA/m²/Mois",
         centreVille: createRange(140, 165),
-        zonePeripherique: createRange(130, 150)
-      }
+        zonePeripherique: createRange(130, 150),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité élevée",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2650)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2650),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 3: COMMUNE TAMEST
-  // ==========================================
   {
     commune: "TAMEST",
     individuels: [
@@ -113,99 +107,91 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 4: COMMUNE IN-ZEGHMIR
-  // ==========================================
   {
-    commune: "IN-ZEGHMIR",
+    commune: "IN-ZEGMIR",
     individuels: [
       {
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 5: COMMUNE TIT
-  // ==========================================
   {
     commune: "TIT",
     individuels: [
@@ -213,49 +199,45 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 6: COMMUNE TIMOKTEN
-  // ==========================================
   {
     commune: "TIMOKTEN",
     individuels: [
@@ -263,49 +245,45 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 7: COMMUNE TAMENTIT
-  // ==========================================
   {
     commune: "TAMENTIT",
     individuels: [
@@ -313,49 +291,45 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 8: COMMUNE SALI
-  // ==========================================
   {
     commune: "SALI",
     individuels: [
@@ -363,49 +337,45 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 9: COMMUNE AKABLI
-  // ==========================================
   {
     commune: "AKABLI",
     individuels: [
@@ -413,49 +383,45 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 10: COMMUNE TIMMI
-  // ==========================================
   {
     commune: "TIMMI",
     individuels: [
@@ -463,49 +429,45 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 11: COMMUNE BOUDA
-  // ==========================================
   {
     commune: "BOUDA",
     individuels: [
@@ -513,49 +475,45 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 12: COMMUNE SBAA
-  // ==========================================
   {
     commune: "SBAA",
     individuels: [
@@ -563,49 +521,45 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(63, 71),
-        zonePeripherique: createRange(42, 47)
+        zonePeripherique: createRange(42, 47),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
+        zonePeripherique: createRange(32, 37),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(21, 23),
-        zonePeripherique: createRange(11, 13)
-      }
+        zonePeripherique: createRange(11, 13),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(53, 58),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(42, 47),
-        zonePeripherique: createRange(32, 37)
-      }
+        zonePeripherique: createRange(32, 37),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2700)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2700),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 13: COMMUNE FENOUGHIL
-  // ==========================================
   {
     commune: "FENOUGHIL",
     individuels: [
@@ -613,243 +567,227 @@ export const adrarPriceReferenceLocations: PriceRefCommune[] = [
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(77, 87),
-        zonePeripherique: createRange(44, 50)
+        zonePeripherique: createRange(44, 50),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(55, 62),
-        zonePeripherique: createRange(33, 39)
+        zonePeripherique: createRange(33, 39),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(22, 24),
-        zonePeripherique: createRange(22, 24)
-      }
+        zonePeripherique: createRange(22, 24),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2650)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2650),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 14: COMMUNE Reggane
-  // ==========================================
   {
-    commune: "Reggane",
+    commune: "REGGANE",
     individuels: [
       {
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(77, 87),
-        zonePeripherique: createRange(44, 50)
+        zonePeripherique: createRange(44, 50),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(55, 62),
-        zonePeripherique: createRange(33, 39)
+        zonePeripherique: createRange(33, 39),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(22, 24),
-        zonePeripherique: createRange(22, 24)
-      }
+        zonePeripherique: createRange(22, 24),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2650)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2650),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 15: COMMUNE Tsabit
-  // ==========================================
   {
-    commune: "Tsabit",
+    commune: "TSABIT",
     individuels: [
       {
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(77, 87),
-        zonePeripherique: createRange(44, 50)
+        zonePeripherique: createRange(44, 50),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(55, 62),
-        zonePeripherique: createRange(33, 39)
+        zonePeripherique: createRange(33, 39),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(22, 24),
-        zonePeripherique: createRange(22, 24)
-      }
+        zonePeripherique: createRange(22, 24),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2650)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2650),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 16: COMMUNE Zaouiet Kounta
-  // ==========================================
   {
-    commune: "Zaouiet Kounta",
+    commune: "ZAOUIET KOUNTA",
     individuels: [
       {
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(77, 87),
-        zonePeripherique: createRange(44, 50)
+        zonePeripherique: createRange(44, 50),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(55, 62),
-        zonePeripherique: createRange(33, 39)
+        zonePeripherique: createRange(33, 39),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(22, 24),
-        zonePeripherique: createRange(22, 24)
-      }
+        zonePeripherique: createRange(22, 24),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2650)
-      }
-    ]
+        zoneEloignement: createRange(2300, 2650),
+      },
+    ],
   },
-
-  // ==========================================
-  // PAGE 17: COMMUNE Aoulef
-  // ==========================================
   {
-    commune: "Aoulef",
+    commune: "AOULEF",
     individuels: [
       {
         label: "Amélioré",
         unit: "DA/m²/Mois",
         centreVille: createRange(77, 87),
-        zonePeripherique: createRange(44, 50)
+        zonePeripherique: createRange(44, 50),
       },
       {
         label: "Economique",
         unit: "DA/m²/Mois",
         centreVille: createRange(55, 62),
-        zonePeripherique: createRange(33, 39)
+        zonePeripherique: createRange(33, 39),
       },
       {
         label: "Précaire",
         unit: "DA/m²/Mois",
         centreVille: createRange(22, 24),
-        zonePeripherique: createRange(22, 24)
-      }
+        zonePeripherique: createRange(22, 24),
+      },
     ],
     locauxCommerciaux: [
       {
         label: "Artère moyennement commerciale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     locauxUsageProfessionnels: [
       {
-        label: "Artere principale",
+        label: "Artère principale",
         unit: "DA/m²/Mois",
         centreVille: createRange(66, 75),
-        zonePeripherique: createRange(44, 50)
-      }
+        zonePeripherique: createRange(44, 50),
+      },
     ],
     terrainsAgricolesPlaine: [
       {
         label: "Potentialité moyenne",
         unit: "DA/Ha/Mois",
-        zoneEloignement: createRange(2300, 2650)
-      }
-    ]
-  }
+        zoneEloignement: createRange(2300, 2650),
+      },
+    ],
+  },
 ];

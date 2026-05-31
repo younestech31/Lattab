@@ -1,750 +1,11 @@
 import { PriceRefCommune } from '../types';
 
+// OUM EL BOUAGHI - Transactions (Auto-generated from FTR PDF data)
 const createRange = (min: number, max: number) => ({ min, max });
 
-// ============================================================================
-// SHARED AGRICULTURAL SCHEMES (COMMON FOR ALL COMMUNES IN OUM EL BOUAGHI)
-// ============================================================================
-const terrainsAgricolesPlaineOumElBouaghi = [
-  {
-    label: "Potentialité élevée",
-    unit: "DA/Ha",
-    zonePeripherique: createRange(662800, 762200),
-    zoneEloignement: createRange(385000, 442800)
-  },
-  {
-    label: "Potentialité moyenne",
-    unit: "DA/Ha",
-    zonePeripherique: createRange(552800, 635700),
-    zoneEloignement: createRange(275000, 316300)
-  },
-  {
-    label: "Potentialité faible",
-    unit: "DA/Ha",
-    zonePeripherique: createRange(442800, 509200),
-    zoneEloignement: createRange(165000, 189800)
-  }
-];
-
-const terrainsAgricolesPenteOumElBouaghi = [
-  {
-    label: "Potentialité élevée",
-    unit: "DA/Ha",
-    zonePeripherique: createRange(363000, 417500),
-    zoneEloignement: createRange(220000, 253000)
-  },
-  {
-    label: "Potentialité moyenne",
-    unit: "DA/Ha",
-    zonePeripherique: createRange(308000, 354200),
-    zoneEloignement: createRange(165000, 189800)
-  },
-  {
-    label: "Potentialité faible",
-    unit: "DA/Ha",
-    zonePeripherique: createRange(253000, 291000),
-    zoneEloignement: createRange(110000, 126500)
-  }
-];
-
-const scaleHangarsCommun = [
-  {
-    label: "Situé en zone urbaine",
-    unit: "DA/m²",
-    zoneResidentielle: createRange(4500, 5175),
-    centreVille: createRange(5500, 6325),
-    zonePeripherique: createRange(3500, 4025),
-    zoneEloignement: createRange(2500, 2875)
-  },
-  {
-    label: "Situé en zone rurale",
-    unit: "DA/m²",
-    zonePeripherique: createRange(3200, 3680),
-    zoneEloignement: createRange(2300, 2645)
-  }
-];
-
-const scaleHangarsCommunFkirina = [
-  {
-    label: "Situé en zone urbaine",
-    unit: "DA/m²",
-    zoneResidentielle: createRange(3300, 3795),
-    centreVille: createRange(4000, 4600),
-    zonePeripherique: createRange(2500, 2875),
-    zoneEloignement: createRange(1800, 2070)
-  },
-  {
-    label: "Situé en zone rurale",
-    unit: "DA/m²",
-    zonePeripherique: createRange(2300, 2645),
-    zoneEloignement: createRange(1600, 1840)
-  }
-];
-
-// ============================================================================
-// TEMPLATE BUILDERS FOR COMMUNE GROUPS
-// ============================================================================
-
-// Group 4: Ain Kercha, Sigus, Ouled Hamla (Standing [22 100, 25 415])
-const createAinKerchaGroupScale = (name: string): PriceRefCommune => ({
-  commune: name,
-  individuels: [
-    {
-      label: "Standing",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(22100, 25415),
-      centreVille: createRange(25900, 29785),
-      zonePeripherique: createRange(17500, 20125),
-      zoneEloignement: createRange(12200, 14030)
-    },
-    {
-      label: "Amélioré",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(18400, 21160),
-      centreVille: createRange(21600, 24840),
-      zonePeripherique: createRange(14600, 16790),
-      zoneEloignement: createRange(10200, 11730)
-    },
-    {
-      label: "Economique",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(15300, 17595),
-      centreVille: createRange(18000, 20700),
-      zonePeripherique: createRange(12200, 14030),
-      zoneEloignement: createRange(8500, 9775)
-    },
-    {
-      label: "Précaire",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(10700, 12305),
-      centreVille: createRange(12600, 14490),
-      zonePeripherique: createRange(8500, 9775),
-      zoneEloignement: createRange(6000, 6900)
-    }
-  ],
-  collectifsSemiCollectifs: [
-    {
-      label: "Standing",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(23600, 27140),
-      centreVille: createRange(27800, 31970),
-      zonePeripherique: createRange(18800, 21620),
-      zoneEloignement: createRange(13200, 15180)
-    },
-    {
-      label: "Amélioré",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(19700, 22655),
-      centreVille: createRange(23200, 26680),
-      zonePeripherique: createRange(15700, 18055),
-      zoneEloignement: createRange(11000, 12650)
-    },
-    {
-      label: "Economique",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(16400, 18860),
-      centreVille: createRange(19300, 22195),
-      zonePeripherique: createRange(13100, 15065),
-      zoneEloignement: createRange(9200, 10580)
-    },
-    {
-      label: "Précaire",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(11500, 13225),
-      centreVille: createRange(13500, 15525),
-      zonePeripherique: createRange(9200, 10580),
-      zoneEloignement: createRange(6400, 7360)
-    }
-  ],
-  locauxCommerciaux: [
-    {
-      label: "Artère hautement commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(29400, 33810),
-      centreVille: createRange(34600, 39790),
-      zonePeripherique: createRange(23500, 27025),
-      zoneEloignement: createRange(16400, 18860)
-    },
-    {
-      label: "Artère moyennement commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(24500, 28175),
-      centreVille: createRange(28800, 33120),
-      zonePeripherique: createRange(19600, 22540),
-      zoneEloignement: createRange(13700, 15755)
-    },
-    {
-      label: "Artère peu commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(19600, 22540),
-      centreVille: createRange(23000, 26450),
-      zonePeripherique: createRange(15700, 18055),
-      zoneEloignement: createRange(11000, 12650)
-    }
-  ],
-  hangars: [
-    {
-      label: "Situé en zone urbaine",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(3700, 4255),
-      centreVille: createRange(4500, 5175),
-      zonePeripherique: createRange(2800, 3220),
-      zoneEloignement: createRange(2000, 2300)
-    },
-    {
-      label: "Situé en zone rurale",
-      unit: "DA/m²",
-      zonePeripherique: createRange(2500, 2875),
-      zoneEloignement: createRange(1800, 2070)
-    }
-  ],
-  terrainsNus: [
-    {
-      label: "Pleine propriété deux (02) façades avec raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(8500, 9775),
-      centreVille: createRange(10000, 11500),
-      zonePeripherique: createRange(6800, 7820),
-      zoneEloignement: createRange(4800, 5520)
-    },
-    {
-      label: "Pleine propriété une (01) façade avec raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(7225, 8309),
-      centreVille: createRange(8500, 9775),
-      zonePeripherique: createRange(5780, 6647),
-      zoneEloignement: createRange(4080, 4692)
-    },
-    {
-      label: "Pleine propriété deux (02) façades sans raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(5100, 5865),
-      centreVille: createRange(7000, 8050),
-      zonePeripherique: createRange(3400, 3910),
-      zoneEloignement: createRange(1920, 2208)
-    },
-    {
-      label: "Pleine propriété une (01) façade sans raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(4335, 4985),
-      centreVille: createRange(5950, 6843),
-      zonePeripherique: createRange(2890, 3324),
-      zoneEloignement: createRange(1632, 1877)
-    },
-    {
-      label: "Dans l'indivision",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(3468, 3988),
-      centreVille: createRange(4760, 5474),
-      zonePeripherique: createRange(2312, 2659),
-      zoneEloignement: createRange(1306, 1501)
-    },
-    {
-      label: "Industriel",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(2000, 2300),
-      centreVille: createRange(2500, 2875),
-      zonePeripherique: createRange(1500, 1725),
-      zoneEloignement: createRange(1000, 1150)
-    }
-  ],
-  terrainsAgricolesPlaine: terrainsAgricolesPlaineOumElBouaghi,
-  terrainsAgricolesPente: terrainsAgricolesPenteOumElBouaghi
-});
-
-// Group 5: Ain Babouche, Meskiana, Souk Naamane (Standing [19 600, 22 540])
-const createAinBaboucheGroupScale = (name: string): PriceRefCommune => ({
-  commune: name,
-  individuels: [
-    {
-      label: "Standing",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(19600, 22540),
-      centreVille: createRange(23000, 26450),
-      zonePeripherique: createRange(15700, 18055),
-      zoneEloignement: createRange(10900, 12535)
-    },
-    {
-      label: "Amélioré",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(16300, 18745),
-      centreVille: createRange(19200, 22080),
-      zonePeripherique: createRange(13100, 15065),
-      zoneEloignement: createRange(9100, 10465)
-    },
-    {
-      label: "Economique",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(13600, 15640),
-      centreVille: createRange(16000, 18400),
-      zonePeripherique: createRange(10900, 12535),
-      zoneEloignement: createRange(7600, 8740)
-    },
-    {
-      label: "Précaire",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(9500, 10925),
-      centreVille: createRange(11200, 12880),
-      zonePeripherique: createRange(7600, 8740),
-      zoneEloignement: createRange(5300, 6095)
-    }
-  ],
-  collectifsSemiCollectifs: [
-    {
-      label: "Standing",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(20900, 24035),
-      centreVille: createRange(24600, 28290),
-      zonePeripherique: createRange(16700, 19205),
-      zoneEloignement: createRange(11600, 13340)
-    },
-    {
-      label: "Amélioré",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(17400, 20010),
-      centreVille: createRange(20500, 23575),
-      zonePeripherique: createRange(13900, 15985),
-      zoneEloignement: createRange(9700, 11155)
-    },
-    {
-      label: "Economique",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(14500, 16675),
-      centreVille: createRange(17100, 19665),
-      zonePeripherique: createRange(11600, 13340),
-      zoneEloignement: createRange(8100, 9315)
-    },
-    {
-      label: "Précaire",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(10200, 11730),
-      centreVille: createRange(12000, 13800),
-      zonePeripherique: createRange(8100, 9315),
-      zoneEloignement: createRange(5700, 6555)
-    }
-  ],
-  locauxCommerciaux: [
-    {
-      label: "Artère hautement commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(26200, 30130),
-      centreVille: createRange(30700, 35305),
-      zonePeripherique: createRange(20900, 24035),
-      zoneEloignement: createRange(14600, 16790)
-    },
-    {
-      label: "Artère moyennement commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(21800, 25070),
-      centreVille: createRange(25600, 29440),
-      zonePeripherique: createRange(17400, 20010),
-      zoneEloignement: createRange(12200, 14030)
-    },
-    {
-      label: "Artère peu commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(17400, 20010),
-      centreVille: createRange(20500, 23575),
-      zonePeripherique: createRange(13900, 15985),
-      zoneEloignement: createRange(9800, 11270)
-    }
-  ],
-  hangars: [
-    {
-      label: "En zone urbaine",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(3700, 4255),
-      centreVille: createRange(4500, 5175),
-      zonePeripherique: createRange(2800, 3220),
-      zoneEloignement: createRange(2000, 2300)
-    },
-    {
-      label: "En zone rurale",
-      unit: "DA/m²",
-      zonePeripherique: createRange(2500, 2875),
-      zoneEloignement: createRange(1800, 2070)
-    }
-  ],
-  terrainsNus: [
-    {
-      label: "Pleine propriété deux (02) façades avec raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(6800, 7820),
-      centreVille: createRange(8000, 9200),
-      zonePeripherique: createRange(5400, 6210),
-      zoneEloignement: createRange(3800, 4370)
-    },
-    {
-      label: "Pleine propriété une (01) façade avec raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(5780, 6647),
-      centreVille: createRange(6800, 7820),
-      zonePeripherique: createRange(4590, 5279),
-      zoneEloignement: createRange(3230, 3715)
-    },
-    {
-      label: "Pleine propriété deux (02) façades sans raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(4080, 4692),
-      centreVille: createRange(5600, 6440),
-      zonePeripherique: createRange(2700, 3105),
-      zoneEloignement: createRange(1520, 1748)
-    },
-    {
-      label: "Pleine propriété une (01) façade sans raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(3468, 3988),
-      centreVille: createRange(4760, 5474),
-      zonePeripherique: createRange(2295, 2639),
-      zoneEloignement: createRange(1292, 1486)
-    },
-    {
-      label: "Dans l'indivision",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(2774, 3191),
-      centreVille: createRange(3808, 4380),
-      zonePeripherique: createRange(1836, 2111),
-      zoneEloignement: createRange(1034, 1189)
-    },
-    {
-      label: "Industriel",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(1800, 2070),
-      centreVille: createRange(2200, 2530),
-      zonePeripherique: createRange(1400, 1610),
-      zoneEloignement: createRange(900, 1035)
-    }
-  ],
-  terrainsAgricolesPlaine: terrainsAgricolesPlaineOumElBouaghi,
-  terrainsAgricolesPente: terrainsAgricolesPenteOumElBouaghi
-});
-
-// Group 6: Fkirina, Ksar Sbahi, Berriche, Hanchir Toumghani (Standing [14 600, 16 790])
-const createFkirinaGroupScale = (name: string): PriceRefCommune => ({
-  commune: name,
-  individuels: [
-    {
-      label: "Standing",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(14600, 16790),
-      centreVille: createRange(17300, 19895),
-      zonePeripherique: createRange(11800, 13570),
-      zoneEloignement: createRange(8200, 9430)
-    },
-    {
-      label: "Amélioré",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(12200, 14030),
-      centreVille: createRange(14400, 16560),
-      zonePeripherique: createRange(9800, 11270),
-      zoneEloignement: createRange(6800, 7820)
-    },
-    {
-      label: "Economique",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(10200, 11730),
-      centreVille: createRange(12000, 13800),
-      zonePeripherique: createRange(8200, 9430),
-      zoneEloignement: createRange(5700, 6555)
-    },
-    {
-      label: "Précaire",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(7100, 8165),
-      centreVille: createRange(8400, 9660),
-      zonePeripherique: createRange(5700, 6555),
-      zoneEloignement: createRange(4000, 4600)
-    }
-  ],
-  collectifsSemiCollectifs: [
-    {
-      label: "Standing",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(15700, 18055),
-      centreVille: createRange(18500, 21275),
-      zonePeripherique: createRange(12500, 14375),
-      zoneEloignement: createRange(8800, 10120)
-    },
-    {
-      label: "Amélioré",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(13100, 15065),
-      centreVille: createRange(15400, 17710),
-      zonePeripherique: createRange(10400, 11960),
-      zoneEloignement: createRange(7300, 8395)
-    },
-    {
-      label: "Economique",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(10900, 12535),
-      centreVille: createRange(12800, 14720),
-      zonePeripherique: createRange(8700, 10005),
-      zoneEloignement: createRange(6100, 7015)
-    },
-    {
-      label: "Précaire",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(7600, 8740),
-      centreVille: createRange(9000, 10350),
-      zonePeripherique: createRange(6100, 7015),
-      zoneEloignement: createRange(4300, 4945)
-    }
-  ],
-  locauxCommerciaux: [
-    {
-      label: "Artère hautement commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(19600, 22540),
-      centreVille: createRange(23000, 26450),
-      zonePeripherique: createRange(15600, 17940),
-      zoneEloignement: createRange(10900, 12535)
-    },
-    {
-      label: "Artère moyennement commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(16300, 18745),
-      centreVille: createRange(19200, 22080),
-      zonePeripherique: createRange(13000, 14950),
-      zoneEloignement: createRange(9100, 10465)
-    },
-    {
-      label: "Artère peu commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(13000, 14950),
-      centreVille: createRange(15400, 17710),
-      zonePeripherique: createRange(10400, 11960),
-      zoneEloignement: createRange(7300, 8395)
-    }
-  ],
-  hangars: scaleHangarsCommunFkirina,
-  terrainsNus: [
-    {
-      label: "Pleine propriété deux (02) façades avec raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(5100, 5865),
-      centreVille: createRange(6000, 6900),
-      zonePeripherique: createRange(4100, 4715),
-      zoneEloignement: createRange(2900, 3335)
-    },
-    {
-      label: "Pleine propriété une (01) façade avec raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(4335, 4985),
-      centreVille: createRange(5100, 5865),
-      zonePeripherique: createRange(3485, 4008),
-      zoneEloignement: createRange(2465, 2835)
-    },
-    {
-      label: "Pleine propriété deux (02) façades sans raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(3060, 3519),
-      centreVille: createRange(4200, 4830),
-      zonePeripherique: createRange(2050, 2358),
-      zoneEloignement: createRange(1160, 1334)
-    },
-    {
-      label: "Pleine propriété une (01) façade sans raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(2601, 2991),
-      centreVille: createRange(3570, 4106),
-      zonePeripherique: createRange(1743, 2004),
-      zoneEloignement: createRange(986, 1134)
-    },
-    {
-      label: "Dans l'indivision",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(2081, 2393),
-      centreVille: createRange(2856, 3285),
-      zonePeripherique: createRange(1394, 1603),
-      zoneEloignement: createRange(789, 907)
-    },
-    {
-      label: "Industriel",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(1400, 1610),
-      centreVille: createRange(1700, 1955),
-      zonePeripherique: createRange(1100, 1265),
-      zoneEloignement: createRange(700, 805)
-    }
-  ],
-  terrainsAgricolesPlaine: terrainsAgricolesPlaineOumElBouaghi,
-  terrainsAgricolesPente: terrainsAgricolesPenteOumElBouaghi
-});
-
-// Group 7: Dhalaa & others (Standing [12 200, 14 030])
-const createDhalaaGroupScale = (name: string): PriceRefCommune => ({
-  commune: name,
-  individuels: [
-    {
-      label: "Standing",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(12200, 14030),
-      centreVille: createRange(14400, 16560),
-      zonePeripherique: createRange(9800, 11270),
-      zoneEloignement: createRange(7000, 8050)
-    },
-    {
-      label: "Amélioré",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(10200, 11730),
-      centreVille: createRange(12000, 13800),
-      zonePeripherique: createRange(8200, 9430),
-      zoneEloignement: createRange(5800, 6670)
-    },
-    {
-      label: "Economique",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(8500, 9775),
-      centreVille: createRange(10000, 11500),
-      zonePeripherique: createRange(6800, 7820),
-      zoneEloignement: createRange(4800, 5520)
-    },
-    {
-      label: "Précaire",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(6000, 6900),
-      centreVille: createRange(7000, 8050),
-      zonePeripherique: createRange(4800, 5520),
-      zoneEloignement: createRange(3400, 3910)
-    }
-  ],
-  collectifsSemiCollectifs: [
-    {
-      label: "Standing",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(13100, 15065),
-      centreVille: createRange(15400, 17710),
-      zonePeripherique: createRange(10600, 12190),
-      zoneEloignement: createRange(7300, 8395)
-    },
-    {
-      label: "Amélioré",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(10900, 12535),
-      centreVille: createRange(12800, 14720),
-      zonePeripherique: createRange(8800, 10120),
-      zoneEloignement: createRange(6100, 7015)
-    },
-    {
-      label: "Economique",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(9100, 10465),
-      centreVille: createRange(10700, 12305),
-      zonePeripherique: createRange(7300, 8395),
-      zoneEloignement: createRange(5100, 5865)
-    },
-    {
-      label: "Précaire",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(6400, 7360),
-      centreVille: createRange(7500, 8625),
-      zonePeripherique: createRange(5100, 5865),
-      zoneEloignement: createRange(3600, 4140)
-    }
-  ],
-  locauxCommerciaux: [
-    {
-      label: "Artère hautement commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(16300, 18745),
-      centreVille: createRange(19200, 22080),
-      zonePeripherique: createRange(13100, 15065),
-      zoneEloignement: createRange(9100, 10465)
-    },
-    {
-      label: "Artère moyennement commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(13600, 15640),
-      centreVille: createRange(16000, 18400),
-      zonePeripherique: createRange(10900, 12535),
-      zoneEloignement: createRange(7600, 8740)
-    },
-    {
-      label: "Artère peu commerciale",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(10900, 12535),
-      centreVille: createRange(12800, 14720),
-      zonePeripherique: createRange(8700, 10005),
-      zoneEloignement: createRange(6100, 7015)
-    }
-  ],
-  hangars: [
-    {
-      label: "En zone urbaine",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(3300, 3795),
-      centreVille: createRange(4000, 4600),
-      zonePeripherique: createRange(2500, 2875),
-      zoneEloignement: createRange(1800, 2070)
-    },
-    {
-      label: "En zone rurale",
-      unit: "DA/m²",
-      zonePeripherique: createRange(2300, 2645),
-      zoneEloignement: createRange(1600, 1840)
-    }
-  ],
-  terrainsNus: [
-    {
-      label: "Pleine propriété deux (02) façades avec raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(3400, 3910),
-      centreVille: createRange(4000, 4600),
-      zonePeripherique: createRange(2700, 3105),
-      zoneEloignement: createRange(1900, 2185)
-    },
-    {
-      label: "Pleine propriété une (01) façade avec raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(2890, 3324),
-      centreVille: createRange(3400, 3910),
-      zonePeripherique: createRange(2295, 2639),
-      zoneEloignement: createRange(1615, 1857)
-    },
-    {
-      label: "Pleine propriété deux (02) façades sans raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(2040, 2346),
-      centreVille: createRange(2800, 3220),
-      zonePeripherique: createRange(1350, 1553),
-      zoneEloignement: createRange(760, 874)
-    },
-    {
-      label: "Pleine propriété une (01) façade sans raccordements",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(1734, 1994),
-      centreVille: createRange(2380, 2737),
-      zonePeripherique: createRange(1148, 1320),
-      zoneEloignement: createRange(646, 743)
-    },
-    {
-      label: "Dans l'indivision",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(1387, 1595),
-      centreVille: createRange(1904, 2190),
-      zonePeripherique: createRange(918, 1056),
-      zoneEloignement: createRange(517, 594)
-    },
-    {
-      label: "Industriel",
-      unit: "DA/m²",
-      zoneResidentielle: createRange(1100, 1265),
-      centreVille: createRange(1400, 1610),
-      zonePeripherique: createRange(800, 920),
-      zoneEloignement: createRange(500, 575)
-    }
-  ],
-  terrainsAgricolesPlaine: terrainsAgricolesPlaineOumElBouaghi,
-  terrainsAgricolesPente: terrainsAgricolesPenteOumElBouaghi
-});
-
-// ============================================================================
-// EXPORTED DATA CONFIGURATION
-// ============================================================================
 export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
-  // 1. OUM EL BOUAGHI (Page 2)
   {
-    commune: "Oum El Bouaghi",
+    commune: "OUM EL BOUAGHI",
     individuels: [
       {
         label: "Standing",
@@ -752,7 +13,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(42400, 48800),
         centreVille: createRange(49900, 57400),
         zonePeripherique: createRange(34000, 39100),
-        zoneEloignement: createRange(23900, 27500)
+        zoneEloignement: createRange(23900, 27500),
       },
       {
         label: "Amélioré",
@@ -760,7 +21,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(35400, 40700),
         centreVille: createRange(41600, 47800),
         zonePeripherique: createRange(28400, 32600),
-        zoneEloignement: createRange(20000, 22900)
+        zoneEloignement: createRange(20000, 22900),
       },
       {
         label: "Economique",
@@ -768,7 +29,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(29500, 33900),
         centreVille: createRange(34700, 39800),
         zonePeripherique: createRange(23600, 27200),
-        zoneEloignement: createRange(16600, 19100)
+        zoneEloignement: createRange(16600, 19100),
       },
       {
         label: "Précaire",
@@ -776,8 +37,8 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(20700, 23800),
         centreVille: createRange(24300, 27900),
         zonePeripherique: createRange(16600, 19100),
-        zoneEloignement: createRange(11700, 13400)
-      }
+        zoneEloignement: createRange(11700, 13400),
+      },
     ],
     collectifsSemiCollectifs: [
       {
@@ -786,7 +47,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(50000, 57500),
         centreVille: createRange(66000, 75900),
         zonePeripherique: createRange(37500, 43100),
-        zoneEloignement: createRange(28000, 32200)
+        zoneEloignement: createRange(28000, 32200),
       },
       {
         label: "Amélioré",
@@ -794,7 +55,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(41000, 47200),
         centreVille: createRange(55000, 63300),
         zonePeripherique: createRange(31000, 35700),
-        zoneEloignement: createRange(23500, 27000)
+        zoneEloignement: createRange(23500, 27000),
       },
       {
         label: "Economique",
@@ -802,7 +63,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(35000, 40300),
         centreVille: createRange(46000, 52900),
         zonePeripherique: createRange(26500, 30500),
-        zoneEloignement: createRange(20000, 23000)
+        zoneEloignement: createRange(20000, 23000),
       },
       {
         label: "Précaire",
@@ -810,8 +71,8 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(24000, 27600),
         centreVille: createRange(32000, 36800),
         zonePeripherique: createRange(18000, 20700),
-        zoneEloignement: createRange(13500, 15500)
-      }
+        zoneEloignement: createRange(13500, 15500),
+      },
     ],
     locauxCommerciaux: [
       {
@@ -820,7 +81,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(54600, 62800),
         centreVille: createRange(64200, 73800),
         zonePeripherique: createRange(43700, 50300),
-        zoneEloignement: createRange(30600, 35200)
+        zoneEloignement: createRange(30600, 35200),
       },
       {
         label: "Artère moyennement commerciale",
@@ -828,7 +89,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(45500, 52300),
         centreVille: createRange(53500, 61500),
         zonePeripherique: createRange(36400, 41900),
-        zoneEloignement: createRange(25500, 29300)
+        zoneEloignement: createRange(25500, 29300),
       },
       {
         label: "Artère peu commerciale",
@@ -836,67 +97,118 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(36400, 41900),
         centreVille: createRange(42800, 49200),
         zonePeripherique: createRange(29100, 33500),
-        zoneEloignement: createRange(20400, 23500)
-      }
+        zoneEloignement: createRange(20400, 23500),
+      },
     ],
-    hangars: scaleHangarsCommun,
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4500, 5175),
+        centreVille: createRange(5500, 6325),
+        zonePeripherique: createRange(3500, 4025),
+        zoneEloignement: createRange(2500, 2875),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(3200, 3680),
+        zoneEloignement: createRange(2300, 2645),
+      },
+    ],
     terrainsNus: [
       {
-        label: "Pleine propriété deux (02) façades avec raccordements",
+        label: "Pleine propriété (2 façades) avec raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(17800, 20500),
         centreVille: createRange(20900, 24000),
         zonePeripherique: createRange(14300, 16400),
-        zoneEloignement: createRange(10000, 11500)
+        zoneEloignement: createRange(10000, 11500),
       },
       {
-        label: "Pleine propriété une (01) façade avec raccordements",
+        label: "Pleine propriété (1 façade) avec raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(15100, 17400),
         centreVille: createRange(17800, 20400),
         zonePeripherique: createRange(12200, 14000),
-        zoneEloignement: createRange(8500, 9800)
+        zoneEloignement: createRange(8500, 9800),
       },
       {
-        label: "Pleine propriété deux (02) façades sans raccordements",
+        label: "Pleine propriété (2 façades) sans raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(10700, 12300),
         centreVille: createRange(14600, 16800),
         zonePeripherique: createRange(7200, 8200),
-        zoneEloignement: createRange(4000, 4600)
+        zoneEloignement: createRange(4000, 4600),
       },
       {
-        label: "Pleine propriété une (01) façade sans raccordements",
+        label: "Pleine propriété (1 façade) sans raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(9100, 10500),
         centreVille: createRange(12400, 14300),
         zonePeripherique: createRange(6100, 7000),
-        zoneEloignement: createRange(3400, 3900)
+        zoneEloignement: createRange(3400, 3900),
       },
       {
-        label: "Dans l'indivision",
+        label: "Terrain dans l'indivision",
         unit: "DA/m²",
         zoneResidentielle: createRange(7300, 8400),
         centreVille: createRange(9900, 11400),
         zonePeripherique: createRange(4900, 5600),
-        zoneEloignement: createRange(2700, 3100)
+        zoneEloignement: createRange(2700, 3100),
       },
       {
-        label: "Industriel",
+        label: "Terrain industriel",
         unit: "DA/m²",
         zoneResidentielle: createRange(4400, 5100),
         centreVille: createRange(5500, 6300),
         zonePeripherique: createRange(3400, 3900),
-        zoneEloignement: createRange(2200, 2500)
-      }
+        zoneEloignement: createRange(2200, 2500),
+      },
     ],
-    terrainsAgricolesPlaine: terrainsAgricolesPlaineOumElBouaghi,
-    terrainsAgricolesPente: terrainsAgricolesPenteOumElBouaghi
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
   },
-
-  // 2. AIN MLILA (Page 3)
   {
-    commune: "Ain Mlila",
+    commune: "AIN MLILA",
     individuels: [
       {
         label: "Standing",
@@ -904,7 +216,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(46200, 53100),
         centreVille: createRange(54400, 62500),
         zonePeripherique: createRange(37100, 42600),
-        zoneEloignement: createRange(25900, 29800)
+        zoneEloignement: createRange(25900, 29800),
       },
       {
         label: "Amélioré",
@@ -912,7 +224,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(38500, 44300),
         centreVille: createRange(45400, 52200),
         zonePeripherique: createRange(30900, 35500),
-        zoneEloignement: createRange(21600, 24900)
+        zoneEloignement: createRange(21600, 24900),
       },
       {
         label: "Economique",
@@ -920,7 +232,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(32100, 36900),
         centreVille: createRange(37800, 43500),
         zonePeripherique: createRange(25700, 29600),
-        zoneEloignement: createRange(18100, 20800)
+        zoneEloignement: createRange(18100, 20800),
       },
       {
         label: "Précaire",
@@ -928,8 +240,8 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(22500, 25800),
         centreVille: createRange(26500, 30400),
         zonePeripherique: createRange(18100, 20800),
-        zoneEloignement: createRange(12600, 14500)
-      }
+        zoneEloignement: createRange(12600, 14500),
+      },
     ],
     collectifsSemiCollectifs: [
       {
@@ -938,7 +250,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(50000, 57500),
         centreVille: createRange(66000, 75900),
         zonePeripherique: createRange(37500, 43100),
-        zoneEloignement: createRange(28000, 32200)
+        zoneEloignement: createRange(28000, 32200),
       },
       {
         label: "Amélioré",
@@ -946,7 +258,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(41000, 47200),
         centreVille: createRange(55000, 63300),
         zonePeripherique: createRange(31000, 35700),
-        zoneEloignement: createRange(23500, 27000)
+        zoneEloignement: createRange(23500, 27000),
       },
       {
         label: "Economique",
@@ -954,7 +266,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(35000, 40300),
         centreVille: createRange(46000, 52900),
         zonePeripherique: createRange(26500, 30500),
-        zoneEloignement: createRange(20000, 23000)
+        zoneEloignement: createRange(20000, 23000),
       },
       {
         label: "Précaire",
@@ -962,8 +274,8 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(24000, 27600),
         centreVille: createRange(32000, 36800),
         zonePeripherique: createRange(18000, 20700),
-        zoneEloignement: createRange(13500, 15500)
-      }
+        zoneEloignement: createRange(13500, 15500),
+      },
     ],
     locauxCommerciaux: [
       {
@@ -972,7 +284,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(63200, 72700),
         centreVille: createRange(74400, 85600),
         zonePeripherique: createRange(50600, 58200),
-        zoneEloignement: createRange(35400, 40700)
+        zoneEloignement: createRange(35400, 40700),
       },
       {
         label: "Artère moyennement commerciale",
@@ -980,7 +292,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(52700, 60600),
         centreVille: createRange(62000, 71300),
         zonePeripherique: createRange(42200, 48500),
-        zoneEloignement: createRange(29500, 33900)
+        zoneEloignement: createRange(29500, 33900),
       },
       {
         label: "Artère peu commerciale",
@@ -988,67 +300,118 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(42200, 48500),
         centreVille: createRange(49600, 57000),
         zonePeripherique: createRange(33800, 38900),
-        zoneEloignement: createRange(23600, 27100)
-      }
+        zoneEloignement: createRange(23600, 27100),
+      },
     ],
-    hangars: scaleHangarsCommun,
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4500, 5175),
+        centreVille: createRange(5500, 6325),
+        zonePeripherique: createRange(3500, 4025),
+        zoneEloignement: createRange(2500, 2875),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(3200, 3680),
+        zoneEloignement: createRange(2300, 2645),
+      },
+    ],
     terrainsNus: [
       {
-        label: "Pleine propriété deux (02) façades avec raccordements",
+        label: "Pleine propriété (2 façades) avec raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(20600, 23700),
         centreVille: createRange(24200, 27800),
         zonePeripherique: createRange(16500, 19000),
-        zoneEloignement: createRange(11600, 13300)
+        zoneEloignement: createRange(11600, 13300),
       },
       {
-        label: "Pleine propriété une (01) façade avec raccordements",
+        label: "Pleine propriété (1 façade) avec raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(17500, 20100),
         centreVille: createRange(20600, 23700),
         zonePeripherique: createRange(14000, 16100),
-        zoneEloignement: createRange(9800, 11300)
+        zoneEloignement: createRange(9800, 11300),
       },
       {
-        label: "Pleine propriété deux (02) façades sans raccordements",
+        label: "Pleine propriété (2 façades) sans raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(12300, 14200),
         centreVille: createRange(16900, 19500),
         zonePeripherique: createRange(8300, 9500),
-        zoneEloignement: createRange(4600, 5300)
+        zoneEloignement: createRange(4600, 5300),
       },
       {
-        label: "Pleine propriété une (01) façade sans raccordements",
+        label: "Pleine propriété (1 façade) sans raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(10500, 12100),
         centreVille: createRange(14400, 16600),
         zonePeripherique: createRange(7000, 8100),
-        zoneEloignement: createRange(3900, 4500)
+        zoneEloignement: createRange(3900, 4500),
       },
       {
-        label: "Dans l'indivision",
+        label: "Terrain dans l'indivision",
         unit: "DA/m²",
         zoneResidentielle: createRange(8400, 9700),
         centreVille: createRange(11500, 13200),
         zonePeripherique: createRange(5600, 6500),
-        zoneEloignement: createRange(3100, 3600)
+        zoneEloignement: createRange(3100, 3600),
       },
       {
-        label: "Industriel",
+        label: "Terrain industriel",
         unit: "DA/m²",
         zoneResidentielle: createRange(4800, 5500),
         centreVille: createRange(6000, 6900),
         zonePeripherique: createRange(3600, 4100),
-        zoneEloignement: createRange(2400, 2800)
-      }
+        zoneEloignement: createRange(2400, 2800),
+      },
     ],
-    terrainsAgricolesPlaine: terrainsAgricolesPlaineOumElBouaghi,
-    terrainsAgricolesPente: terrainsAgricolesPenteOumElBouaghi
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
   },
-
-  // 3. AIN BEIDA (Page 4)
   {
-    commune: "Ain Beida",
+    commune: "AIN BEIDA",
     individuels: [
       {
         label: "Standing",
@@ -1056,7 +419,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(39900, 45900),
         centreVille: createRange(46800, 53900),
         zonePeripherique: createRange(31900, 36700),
-        zoneEloignement: createRange(22500, 25800)
+        zoneEloignement: createRange(22500, 25800),
       },
       {
         label: "Amélioré",
@@ -1064,7 +427,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(33300, 38300),
         centreVille: createRange(39100, 44900),
         zonePeripherique: createRange(26600, 30500),
-        zoneEloignement: createRange(18700, 21500)
+        zoneEloignement: createRange(18700, 21500),
       },
       {
         label: "Economique",
@@ -1072,7 +435,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(27700, 31900),
         centreVille: createRange(32600, 37400),
         zonePeripherique: createRange(22200, 25500),
-        zoneEloignement: createRange(15500, 17900)
+        zoneEloignement: createRange(15500, 17900),
       },
       {
         label: "Précaire",
@@ -1080,8 +443,8 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(19400, 22300),
         centreVille: createRange(22800, 26200),
         zonePeripherique: createRange(15500, 17900),
-        zoneEloignement: createRange(10900, 12600)
-      }
+        zoneEloignement: createRange(10900, 12600),
+      },
     ],
     collectifsSemiCollectifs: [
       {
@@ -1090,7 +453,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(45000, 51800),
         centreVille: createRange(60000, 69000),
         zonePeripherique: createRange(34000, 39100),
-        zoneEloignement: createRange(25500, 29300)
+        zoneEloignement: createRange(25500, 29300),
       },
       {
         label: "Amélioré",
@@ -1098,7 +461,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(38000, 43700),
         centreVille: createRange(50000, 57500),
         zonePeripherique: createRange(28500, 32800),
-        zoneEloignement: createRange(21500, 24700)
+        zoneEloignement: createRange(21500, 24700),
       },
       {
         label: "Economique",
@@ -1106,7 +469,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(32000, 36800),
         centreVille: createRange(42000, 48300),
         zonePeripherique: createRange(24000, 27600),
-        zoneEloignement: createRange(18000, 20700)
+        zoneEloignement: createRange(18000, 20700),
       },
       {
         label: "Précaire",
@@ -1114,8 +477,8 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(22000, 25300),
         centreVille: createRange(29000, 33400),
         zonePeripherique: createRange(16500, 19000),
-        zoneEloignement: createRange(12500, 14400)
-      }
+        zoneEloignement: createRange(12500, 14400),
+      },
     ],
     locauxCommerciaux: [
       {
@@ -1124,7 +487,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(52600, 60500),
         centreVille: createRange(61800, 71100),
         zonePeripherique: createRange(42000, 48300),
-        zoneEloignement: createRange(29400, 33800)
+        zoneEloignement: createRange(29400, 33800),
       },
       {
         label: "Artère moyennement commerciale",
@@ -1132,7 +495,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(43800, 50400),
         centreVille: createRange(51500, 59200),
         zonePeripherique: createRange(35000, 40300),
-        zoneEloignement: createRange(24500, 28200)
+        zoneEloignement: createRange(24500, 28200),
       },
       {
         label: "Artère peu commerciale",
@@ -1140,67 +503,118 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(35000, 40300),
         centreVille: createRange(41200, 47400),
         zonePeripherique: createRange(28000, 32200),
-        zoneEloignement: createRange(19600, 22500)
-      }
+        zoneEloignement: createRange(19600, 22500),
+      },
     ],
-    hangars: scaleHangarsCommun,
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4500, 5175),
+        centreVille: createRange(5500, 6325),
+        zonePeripherique: createRange(3500, 4025),
+        zoneEloignement: createRange(2500, 2875),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(3200, 3680),
+        zoneEloignement: createRange(2300, 2645),
+      },
+    ],
     terrainsNus: [
       {
-        label: "Pleine propriété deux (02) façades avec raccordements",
+        label: "Pleine propriété (2 façades) avec raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(16000, 18300),
         centreVille: createRange(18700, 21500),
         zonePeripherique: createRange(12800, 14700),
-        zoneEloignement: createRange(8900, 10200)
+        zoneEloignement: createRange(8900, 10200),
       },
       {
-        label: "Pleine propriété une (01) façade avec raccordements",
+        label: "Pleine propriété (1 façade) avec raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(13600, 15600),
         centreVille: createRange(15900, 18300),
         zonePeripherique: createRange(10800, 12500),
-        zoneEloignement: createRange(7600, 8700)
+        zoneEloignement: createRange(7600, 8700),
       },
       {
-        label: "Pleine propriété deux (02) façades sans raccordements",
+        label: "Pleine propriété (2 façades) sans raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(9600, 11000),
         centreVille: createRange(13100, 15100),
         zonePeripherique: createRange(6400, 7300),
-        zoneEloignement: createRange(3600, 4100)
+        zoneEloignement: createRange(3600, 4100),
       },
       {
-        label: "Pleine propriété une (01) façade sans raccordements",
+        label: "Pleine propriété (1 façade) sans raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(8100, 9400),
         centreVille: createRange(11100, 12800),
         zonePeripherique: createRange(5400, 6200),
-        zoneEloignement: createRange(3000, 3500)
+        zoneEloignement: createRange(3000, 3500),
       },
       {
-        label: "Dans l'indivision",
+        label: "Terrain dans l'indivision",
         unit: "DA/m²",
         zoneResidentielle: createRange(6500, 7500),
         centreVille: createRange(8900, 10200),
         zonePeripherique: createRange(4300, 5000),
-        zoneEloignement: createRange(2400, 2800)
+        zoneEloignement: createRange(2400, 2800),
       },
       {
-        label: "Industriel",
+        label: "Terrain industriel",
         unit: "DA/m²",
         zoneResidentielle: createRange(4100, 4700),
         centreVille: createRange(5200, 5900),
         zonePeripherique: createRange(3100, 3600),
-        zoneEloignement: createRange(2000, 2300)
-      }
+        zoneEloignement: createRange(2000, 2300),
+      },
     ],
-    terrainsAgricolesPlaine: terrainsAgricolesPlaineOumElBouaghi,
-    terrainsAgricolesPente: terrainsAgricolesPenteOumElBouaghi
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
   },
-
-  // 4. AIN FAKROUN (Page 5)
   {
-    commune: "Ain Fakroun",
+    commune: "AIN FAKROUN",
     individuels: [
       {
         label: "Standing",
@@ -1208,7 +622,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(39900, 45900),
         centreVille: createRange(46800, 53900),
         zonePeripherique: createRange(31900, 36700),
-        zoneEloignement: createRange(22500, 25800)
+        zoneEloignement: createRange(22500, 25800),
       },
       {
         label: "Amélioré",
@@ -1216,7 +630,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(33300, 38300),
         centreVille: createRange(39100, 44900),
         zonePeripherique: createRange(26600, 30500),
-        zoneEloignement: createRange(18700, 21500)
+        zoneEloignement: createRange(18700, 21500),
       },
       {
         label: "Economique",
@@ -1224,7 +638,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(27700, 31900),
         centreVille: createRange(32600, 37400),
         zonePeripherique: createRange(22200, 25500),
-        zoneEloignement: createRange(15500, 17900)
+        zoneEloignement: createRange(15500, 17900),
       },
       {
         label: "Précaire",
@@ -1232,8 +646,8 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(19400, 22300),
         centreVille: createRange(22800, 26200),
         zonePeripherique: createRange(15500, 17900),
-        zoneEloignement: createRange(10900, 12600)
-      }
+        zoneEloignement: createRange(10900, 12600),
+      },
     ],
     collectifsSemiCollectifs: [
       {
@@ -1242,7 +656,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(45000, 51800),
         centreVille: createRange(60000, 69000),
         zonePeripherique: createRange(34000, 39100),
-        zoneEloignement: createRange(25500, 29300)
+        zoneEloignement: createRange(25500, 29300),
       },
       {
         label: "Amélioré",
@@ -1250,7 +664,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(38000, 43700),
         centreVille: createRange(50000, 57500),
         zonePeripherique: createRange(28500, 32800),
-        zoneEloignement: createRange(21500, 24700)
+        zoneEloignement: createRange(21500, 24700),
       },
       {
         label: "Economique",
@@ -1258,7 +672,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(32000, 36800),
         centreVille: createRange(42000, 48300),
         zonePeripherique: createRange(24000, 27600),
-        zoneEloignement: createRange(18000, 20700)
+        zoneEloignement: createRange(18000, 20700),
       },
       {
         label: "Précaire",
@@ -1266,8 +680,8 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(22000, 25300),
         centreVille: createRange(29000, 33400),
         zonePeripherique: createRange(16500, 19000),
-        zoneEloignement: createRange(12500, 14400)
-      }
+        zoneEloignement: createRange(12500, 14400),
+      },
     ],
     locauxCommerciaux: [
       {
@@ -1276,7 +690,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(56200, 64600),
         centreVille: createRange(66000, 75900),
         zonePeripherique: createRange(44900, 51600),
-        zoneEloignement: createRange(31400, 36100)
+        zoneEloignement: createRange(31400, 36100),
       },
       {
         label: "Artère moyennement commerciale",
@@ -1284,7 +698,7 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(46800, 53800),
         centreVille: createRange(55000, 63300),
         zonePeripherique: createRange(37400, 43000),
-        zoneEloignement: createRange(26200, 30100)
+        zoneEloignement: createRange(26200, 30100),
       },
       {
         label: "Artère peu commerciale",
@@ -1292,94 +706,5189 @@ export const oumElBouaghiPriceReferenceTransactions: PriceRefCommune[] = [
         zoneResidentielle: createRange(37400, 43000),
         centreVille: createRange(44000, 50600),
         zonePeripherique: createRange(29900, 34400),
-        zoneEloignement: createRange(21000, 24200)
-      }
+        zoneEloignement: createRange(21000, 24200),
+      },
     ],
-    hangars: scaleHangarsCommun,
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4500, 5175),
+        centreVille: createRange(5500, 6325),
+        zonePeripherique: createRange(3500, 4025),
+        zoneEloignement: createRange(2500, 2875),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(3200, 3680),
+        zoneEloignement: createRange(2300, 2645),
+      },
+    ],
     terrainsNus: [
       {
-        label: "Pleine propriété deux (02) façades avec raccordements",
+        label: "Pleine propriété (2 façades) avec raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(16000, 18300),
         centreVille: createRange(18700, 21500),
         zonePeripherique: createRange(12800, 14700),
-        zoneEloignement: createRange(8900, 10200)
+        zoneEloignement: createRange(8900, 10200),
       },
       {
-        label: "Pleine propriété une (01) façade avec raccordements",
+        label: "Pleine propriété (1 façade) avec raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(13600, 15600),
         centreVille: createRange(15900, 18300),
         zonePeripherique: createRange(10800, 12500),
-        zoneEloignement: createRange(7600, 8700)
+        zoneEloignement: createRange(7600, 8700),
       },
       {
-        label: "Pleine propriété deux (02) façades sans raccordements",
+        label: "Pleine propriété (2 façades) sans raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(9600, 11000),
         centreVille: createRange(13100, 15100),
         zonePeripherique: createRange(6400, 7300),
-        zoneEloignement: createRange(3600, 4100)
+        zoneEloignement: createRange(3600, 4100),
       },
       {
-        label: "Pleine propriété une (01) façade sans raccordements",
+        label: "Pleine propriété (1 façade) sans raccordements",
         unit: "DA/m²",
         zoneResidentielle: createRange(8100, 9400),
         centreVille: createRange(11100, 12800),
         zonePeripherique: createRange(5400, 6200),
-        zoneEloignement: createRange(3000, 3500)
+        zoneEloignement: createRange(3000, 3500),
       },
       {
-        label: "Dans l'indivision",
+        label: "Terrain dans l'indivision",
         unit: "DA/m²",
         zoneResidentielle: createRange(6500, 7500),
         centreVille: createRange(8900, 10200),
         zonePeripherique: createRange(4300, 5000),
-        zoneEloignement: createRange(2400, 2800)
+        zoneEloignement: createRange(2400, 2800),
       },
       {
-        label: "Industriel",
+        label: "Terrain industriel",
         unit: "DA/m²",
         zoneResidentielle: createRange(4100, 4700),
         centreVille: createRange(5200, 5900),
         zonePeripherique: createRange(3100, 3600),
-        zoneEloignement: createRange(2000, 2300)
-      }
+        zoneEloignement: createRange(2000, 2300),
+      },
     ],
-    terrainsAgricolesPlaine: terrainsAgricolesPlaineOumElBouaghi,
-    terrainsAgricolesPente: terrainsAgricolesPenteOumElBouaghi
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
   },
-
-  // 5. AIN KERCHA GROUP (Pages 6, 7, 14)
-  createAinKerchaGroupScale("Ain Kercha"),
-  createAinKerchaGroupScale("Sigus"),
-  createAinKerchaGroupScale("Ouled Hamla"),
-
-  // 6. AIN BABOUCHE GROUP (Pages 8, 9, 10)
-  createAinBaboucheGroupScale("Ain Babouche"),
-  createAinBaboucheGroupScale("Meskiana"),
-  createAinBaboucheGroupScale("Souk Naamane"),
-
-  // 7. FKIRINA GROUP (Pages 11, 12, 15, 16)
-  createFkirinaGroupScale("Fkirina"),
-  createFkirinaGroupScale("Ksar Sbahi"),
-  createFkirinaGroupScale("Berriche"),
-  createFkirinaGroupScale("Hanchir Toumghani"),
-
-  // 8. DHALAA GROUP (Pages 13, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30)
-  createDhalaaGroupScale("Dhalaa"),
-  createDhalaaGroupScale("Bir Chouhada"),
-  createDhalaaGroupScale("Ouled Gacem"),
-  createDhalaaGroupScale("El Harmilia"),
-  createDhalaaGroupScale("Boughrara Saoudi"),
-  createDhalaaGroupScale("Oued Nini"),
-  createDhalaaGroupScale("Ain Zitoun"),
-  createDhalaaGroupScale("El Amiria"),
-  createDhalaaGroupScale("Ouled Zouai"),
-  createDhalaaGroupScale("Ain Diss"),
-  createDhalaaGroupScale("El Zorg"),
-  createDhalaaGroupScale("El Djazia"),
-  createDhalaaGroupScale("Behir Chergui"),
-  createDhalaaGroupScale("El Belala"),
-  createDhalaaGroupScale("Rahia")
+  {
+    commune: "AIN KERCHA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(22100, 25415),
+        centreVille: createRange(25900, 29785),
+        zonePeripherique: createRange(17500, 20125),
+        zoneEloignement: createRange(12200, 14030),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(18400, 21160),
+        centreVille: createRange(21600, 24840),
+        zonePeripherique: createRange(14600, 16790),
+        zoneEloignement: createRange(10200, 11730),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(15300, 17595),
+        centreVille: createRange(18000, 20700),
+        zonePeripherique: createRange(12200, 14030),
+        zoneEloignement: createRange(8500, 9775),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10700, 12305),
+        centreVille: createRange(12600, 14490),
+        zonePeripherique: createRange(8500, 9775),
+        zoneEloignement: createRange(6000, 6900),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(23600, 27140),
+        centreVille: createRange(27800, 31970),
+        zonePeripherique: createRange(18800, 21620),
+        zoneEloignement: createRange(13200, 15180),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19700, 22655),
+        centreVille: createRange(23200, 26680),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(11000, 12650),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16400, 18860),
+        centreVille: createRange(19300, 22195),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9200, 10580),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(11500, 13225),
+        centreVille: createRange(13500, 15525),
+        zonePeripherique: createRange(9200, 10580),
+        zoneEloignement: createRange(6400, 7360),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(29400, 33810),
+        centreVille: createRange(34600, 39790),
+        zonePeripherique: createRange(23500, 27025),
+        zoneEloignement: createRange(16400, 18860),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(24500, 28175),
+        centreVille: createRange(28800, 33120),
+        zonePeripherique: createRange(19600, 22540),
+        zoneEloignement: createRange(13700, 15755),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(11000, 12650),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3700, 4255),
+        centreVille: createRange(4500, 5175),
+        zonePeripherique: createRange(2800, 3220),
+        zoneEloignement: createRange(2000, 2300),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7225, 8309),
+        centreVille: createRange(8500, 9775),
+        zonePeripherique: createRange(5780, 6647),
+        zoneEloignement: createRange(4080, 4692),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5100, 5865),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(3400, 3910),
+        zoneEloignement: createRange(1920, 2208),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4335, 4985),
+        centreVille: createRange(5950, 6843),
+        zonePeripherique: createRange(2890, 3324),
+        zoneEloignement: createRange(1632, 1877),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3468, 3988),
+        centreVille: createRange(4760, 5474),
+        zonePeripherique: createRange(2312, 2659),
+        zoneEloignement: createRange(1306, 1501),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2000, 2300),
+        centreVille: createRange(2500, 2875),
+        zonePeripherique: createRange(1500, 1725),
+        zoneEloignement: createRange(1000, 1150),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "SIGUS",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(22100, 25415),
+        centreVille: createRange(25900, 29785),
+        zonePeripherique: createRange(17500, 20125),
+        zoneEloignement: createRange(12200, 14030),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(18400, 21160),
+        centreVille: createRange(21600, 24840),
+        zonePeripherique: createRange(14600, 16790),
+        zoneEloignement: createRange(10200, 11730),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(15300, 17595),
+        centreVille: createRange(18000, 20700),
+        zonePeripherique: createRange(12200, 14030),
+        zoneEloignement: createRange(8500, 9775),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10700, 12305),
+        centreVille: createRange(12600, 14490),
+        zonePeripherique: createRange(8500, 9775),
+        zoneEloignement: createRange(6000, 6900),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(23600, 27140),
+        centreVille: createRange(27800, 31970),
+        zonePeripherique: createRange(18800, 21620),
+        zoneEloignement: createRange(13200, 15180),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19700, 22655),
+        centreVille: createRange(23200, 26680),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(11000, 12650),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16400, 18860),
+        centreVille: createRange(19300, 22195),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9200, 10580),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(11500, 13225),
+        centreVille: createRange(13500, 15525),
+        zonePeripherique: createRange(9200, 10580),
+        zoneEloignement: createRange(6400, 7360),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(29400, 33810),
+        centreVille: createRange(34600, 39790),
+        zonePeripherique: createRange(23500, 27025),
+        zoneEloignement: createRange(16400, 18860),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(24500, 28175),
+        centreVille: createRange(28800, 33120),
+        zonePeripherique: createRange(19600, 22540),
+        zoneEloignement: createRange(13700, 15755),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(11000, 12650),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3700, 4255),
+        centreVille: createRange(4500, 5175),
+        zonePeripherique: createRange(2800, 3220),
+        zoneEloignement: createRange(2000, 2300),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7225, 8309),
+        centreVille: createRange(8500, 9775),
+        zonePeripherique: createRange(5780, 6647),
+        zoneEloignement: createRange(4080, 4692),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5100, 5865),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(3400, 3910),
+        zoneEloignement: createRange(1920, 2208),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4335, 4985),
+        centreVille: createRange(5950, 6843),
+        zonePeripherique: createRange(2890, 3324),
+        zoneEloignement: createRange(1632, 1877),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3468, 3988),
+        centreVille: createRange(4760, 5474),
+        zonePeripherique: createRange(2312, 2659),
+        zoneEloignement: createRange(1306, 1501),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2000, 2300),
+        centreVille: createRange(2500, 2875),
+        zonePeripherique: createRange(1500, 1725),
+        zoneEloignement: createRange(1000, 1150),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "AIN BABOUCHE",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(10900, 12535),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9500, 10925),
+        centreVille: createRange(11200, 12880),
+        zonePeripherique: createRange(7600, 8740),
+        zoneEloignement: createRange(5300, 6095),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(20900, 24035),
+        centreVille: createRange(24600, 28290),
+        zonePeripherique: createRange(16700, 19205),
+        zoneEloignement: createRange(11600, 13340),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(17400, 20010),
+        centreVille: createRange(20500, 23575),
+        zonePeripherique: createRange(13900, 15985),
+        zoneEloignement: createRange(9700, 11155),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(14500, 16675),
+        centreVille: createRange(17100, 19665),
+        zonePeripherique: createRange(11600, 13340),
+        zoneEloignement: createRange(8100, 9315),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8100, 9315),
+        zoneEloignement: createRange(5700, 6555),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(26200, 30130),
+        centreVille: createRange(30700, 35305),
+        zonePeripherique: createRange(20900, 24035),
+        zoneEloignement: createRange(14600, 16790),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(21800, 25070),
+        centreVille: createRange(25600, 29440),
+        zonePeripherique: createRange(17400, 20010),
+        zoneEloignement: createRange(12200, 14030),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(17400, 20010),
+        centreVille: createRange(20500, 23575),
+        zonePeripherique: createRange(13900, 15985),
+        zoneEloignement: createRange(9800, 11270),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3700, 4255),
+        centreVille: createRange(4500, 5175),
+        zonePeripherique: createRange(2800, 3220),
+        zoneEloignement: createRange(2000, 2300),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6800, 7820),
+        centreVille: createRange(8000, 9200),
+        zonePeripherique: createRange(5400, 6210),
+        zoneEloignement: createRange(3800, 4370),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5780, 6647),
+        centreVille: createRange(6800, 7820),
+        zonePeripherique: createRange(4590, 5279),
+        zoneEloignement: createRange(3230, 3715),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4080, 4692),
+        centreVille: createRange(5600, 6440),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1520, 1748),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3468, 3988),
+        centreVille: createRange(4760, 5474),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1292, 1486),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2774, 3191),
+        centreVille: createRange(3808, 4380),
+        zonePeripherique: createRange(1836, 2111),
+        zoneEloignement: createRange(1034, 1189),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1800, 2070),
+        centreVille: createRange(2200, 2530),
+        zonePeripherique: createRange(1400, 1610),
+        zoneEloignement: createRange(900, 1035),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "MESKIANA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(10900, 12535),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9500, 10925),
+        centreVille: createRange(11200, 12880),
+        zonePeripherique: createRange(7600, 8740),
+        zoneEloignement: createRange(5300, 6095),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(20900, 24035),
+        centreVille: createRange(24600, 28290),
+        zonePeripherique: createRange(16700, 19205),
+        zoneEloignement: createRange(11600, 13340),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(17400, 20010),
+        centreVille: createRange(20500, 23575),
+        zonePeripherique: createRange(13900, 15985),
+        zoneEloignement: createRange(9700, 11155),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(14500, 16675),
+        centreVille: createRange(17100, 19665),
+        zonePeripherique: createRange(11600, 13340),
+        zoneEloignement: createRange(8100, 9315),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8100, 9315),
+        zoneEloignement: createRange(5700, 6555),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(26200, 30130),
+        centreVille: createRange(30700, 35305),
+        zonePeripherique: createRange(20900, 24035),
+        zoneEloignement: createRange(14600, 16790),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(21800, 25070),
+        centreVille: createRange(25600, 29440),
+        zonePeripherique: createRange(17400, 20010),
+        zoneEloignement: createRange(12200, 14030),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(17400, 20010),
+        centreVille: createRange(20500, 23575),
+        zonePeripherique: createRange(13900, 15985),
+        zoneEloignement: createRange(9800, 11270),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3700, 4255),
+        centreVille: createRange(4500, 5175),
+        zonePeripherique: createRange(2800, 3220),
+        zoneEloignement: createRange(2000, 2300),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6800, 7820),
+        centreVille: createRange(8000, 9200),
+        zonePeripherique: createRange(5400, 6210),
+        zoneEloignement: createRange(3800, 4370),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5780, 6647),
+        centreVille: createRange(6800, 7820),
+        zonePeripherique: createRange(4590, 5279),
+        zoneEloignement: createRange(3230, 3715),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4080, 4692),
+        centreVille: createRange(5600, 6440),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1520, 1748),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3468, 3988),
+        centreVille: createRange(4760, 5474),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1292, 1486),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2774, 3191),
+        centreVille: createRange(3808, 4380),
+        zonePeripherique: createRange(1836, 2111),
+        zoneEloignement: createRange(1034, 1189),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1800, 2070),
+        centreVille: createRange(2200, 2530),
+        zonePeripherique: createRange(1400, 1610),
+        zoneEloignement: createRange(900, 1035),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "SOUK NAAMANE",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(10900, 12535),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9500, 10925),
+        centreVille: createRange(11200, 12880),
+        zonePeripherique: createRange(7600, 8740),
+        zoneEloignement: createRange(5300, 6095),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(20900, 24035),
+        centreVille: createRange(24600, 28290),
+        zonePeripherique: createRange(16700, 19205),
+        zoneEloignement: createRange(11600, 13340),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(17400, 20010),
+        centreVille: createRange(20500, 23575),
+        zonePeripherique: createRange(13900, 15985),
+        zoneEloignement: createRange(9700, 11155),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(14500, 16675),
+        centreVille: createRange(17100, 19665),
+        zonePeripherique: createRange(11600, 13340),
+        zoneEloignement: createRange(8100, 9315),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8100, 9315),
+        zoneEloignement: createRange(5700, 6555),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(26200, 30130),
+        centreVille: createRange(30700, 35305),
+        zonePeripherique: createRange(20900, 24035),
+        zoneEloignement: createRange(14600, 16790),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(21800, 25070),
+        centreVille: createRange(25600, 29440),
+        zonePeripherique: createRange(17400, 20010),
+        zoneEloignement: createRange(12200, 14030),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(17400, 20010),
+        centreVille: createRange(20500, 23575),
+        zonePeripherique: createRange(13900, 15985),
+        zoneEloignement: createRange(9800, 11270),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3700, 4255),
+        centreVille: createRange(4500, 5175),
+        zonePeripherique: createRange(2800, 3220),
+        zoneEloignement: createRange(2000, 2300),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6800, 7820),
+        centreVille: createRange(8000, 9200),
+        zonePeripherique: createRange(5400, 6210),
+        zoneEloignement: createRange(3800, 4370),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5780, 6647),
+        centreVille: createRange(6800, 7820),
+        zonePeripherique: createRange(4590, 5279),
+        zoneEloignement: createRange(3230, 3715),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4080, 4692),
+        centreVille: createRange(5600, 6440),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1520, 1748),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3468, 3988),
+        centreVille: createRange(4760, 5474),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1292, 1486),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2774, 3191),
+        centreVille: createRange(3808, 4380),
+        zonePeripherique: createRange(1836, 2111),
+        zoneEloignement: createRange(1034, 1189),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1800, 2070),
+        centreVille: createRange(2200, 2530),
+        zonePeripherique: createRange(1400, 1610),
+        zoneEloignement: createRange(900, 1035),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "FKIRINA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(14600, 16790),
+        centreVille: createRange(17300, 19895),
+        zonePeripherique: createRange(11800, 13570),
+        zoneEloignement: createRange(8200, 9430),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(6800, 7820),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5700, 6555),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7100, 8165),
+        centreVille: createRange(8400, 9660),
+        zonePeripherique: createRange(5700, 6555),
+        zoneEloignement: createRange(4000, 4600),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(15700, 18055),
+        centreVille: createRange(18500, 21275),
+        zonePeripherique: createRange(12500, 14375),
+        zoneEloignement: createRange(8800, 10120),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10400, 11960),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7600, 8740),
+        centreVille: createRange(9000, 10350),
+        zonePeripherique: createRange(6100, 7015),
+        zoneEloignement: createRange(4300, 4945),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15600, 17940),
+        zoneEloignement: createRange(10900, 12535),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13000, 14950),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13000, 14950),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10400, 11960),
+        zoneEloignement: createRange(7300, 8395),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5100, 5865),
+        centreVille: createRange(6000, 6900),
+        zonePeripherique: createRange(4100, 4715),
+        zoneEloignement: createRange(2900, 3335),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4335, 4985),
+        centreVille: createRange(5100, 5865),
+        zonePeripherique: createRange(3485, 4008),
+        zoneEloignement: createRange(2465, 2835),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3060, 3519),
+        centreVille: createRange(4200, 4830),
+        zonePeripherique: createRange(2050, 2358),
+        zoneEloignement: createRange(1160, 1334),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2601, 2991),
+        centreVille: createRange(3570, 4106),
+        zonePeripherique: createRange(1743, 2004),
+        zoneEloignement: createRange(986, 1134),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2081, 2393),
+        centreVille: createRange(2856, 3285),
+        zonePeripherique: createRange(1394, 1603),
+        zoneEloignement: createRange(789, 907),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1400, 1610),
+        centreVille: createRange(1700, 1955),
+        zonePeripherique: createRange(1100, 1265),
+        zoneEloignement: createRange(700, 805),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "KSAR SBAHI",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(14600, 16790),
+        centreVille: createRange(17300, 19895),
+        zonePeripherique: createRange(11800, 13570),
+        zoneEloignement: createRange(8200, 9430),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(6800, 7820),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5700, 6555),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7100, 8165),
+        centreVille: createRange(8400, 9660),
+        zonePeripherique: createRange(5700, 6555),
+        zoneEloignement: createRange(4000, 4600),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(15700, 18055),
+        centreVille: createRange(18500, 21275),
+        zonePeripherique: createRange(12500, 14375),
+        zoneEloignement: createRange(8800, 10120),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10400, 11960),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7600, 8740),
+        centreVille: createRange(9000, 10350),
+        zonePeripherique: createRange(6100, 7015),
+        zoneEloignement: createRange(4300, 4945),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15600, 17940),
+        zoneEloignement: createRange(10900, 12535),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13000, 14950),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13000, 14950),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10400, 11960),
+        zoneEloignement: createRange(7300, 8395),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5100, 5865),
+        centreVille: createRange(6000, 6900),
+        zonePeripherique: createRange(4100, 4715),
+        zoneEloignement: createRange(2900, 3335),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4335, 4985),
+        centreVille: createRange(5100, 5865),
+        zonePeripherique: createRange(3485, 4008),
+        zoneEloignement: createRange(2465, 2835),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3060, 3519),
+        centreVille: createRange(4200, 4830),
+        zonePeripherique: createRange(2050, 2358),
+        zoneEloignement: createRange(1160, 1334),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2601, 2991),
+        centreVille: createRange(3570, 4106),
+        zonePeripherique: createRange(1743, 2004),
+        zoneEloignement: createRange(986, 1134),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2081, 2393),
+        centreVille: createRange(2856, 3285),
+        zonePeripherique: createRange(1394, 1603),
+        zoneEloignement: createRange(789, 907),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1400, 1610),
+        centreVille: createRange(1700, 1955),
+        zonePeripherique: createRange(1100, 1265),
+        zoneEloignement: createRange(700, 805),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "DHALAA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "OULED HAMLA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(22100, 25415),
+        centreVille: createRange(25900, 29785),
+        zonePeripherique: createRange(17500, 20125),
+        zoneEloignement: createRange(12200, 14030),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(18400, 21160),
+        centreVille: createRange(21600, 24840),
+        zonePeripherique: createRange(14600, 16790),
+        zoneEloignement: createRange(10200, 11730),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(15300, 17595),
+        centreVille: createRange(18000, 20700),
+        zonePeripherique: createRange(12200, 14030),
+        zoneEloignement: createRange(8500, 9775),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10700, 12305),
+        centreVille: createRange(12600, 14490),
+        zonePeripherique: createRange(8500, 9775),
+        zoneEloignement: createRange(6000, 6900),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(23600, 27140),
+        centreVille: createRange(27800, 31970),
+        zonePeripherique: createRange(18800, 21620),
+        zoneEloignement: createRange(13200, 15180),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19700, 22655),
+        centreVille: createRange(23200, 26680),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(11000, 12650),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16400, 18860),
+        centreVille: createRange(19300, 22195),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9200, 10580),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(11500, 13225),
+        centreVille: createRange(13500, 15525),
+        zonePeripherique: createRange(9200, 10580),
+        zoneEloignement: createRange(6400, 7360),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(29400, 33810),
+        centreVille: createRange(34600, 39790),
+        zonePeripherique: createRange(23500, 27025),
+        zoneEloignement: createRange(16400, 18860),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(24500, 28175),
+        centreVille: createRange(28800, 33120),
+        zonePeripherique: createRange(19600, 22540),
+        zoneEloignement: createRange(13700, 15755),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15700, 18055),
+        zoneEloignement: createRange(11000, 12650),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3700, 4255),
+        centreVille: createRange(4500, 5175),
+        zonePeripherique: createRange(2800, 3220),
+        zoneEloignement: createRange(2000, 2300),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7225, 8309),
+        centreVille: createRange(8500, 9775),
+        zonePeripherique: createRange(5780, 6647),
+        zoneEloignement: createRange(4080, 4692),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5100, 5865),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(3400, 3910),
+        zoneEloignement: createRange(1920, 2208),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4335, 4985),
+        centreVille: createRange(5950, 6843),
+        zonePeripherique: createRange(2890, 3324),
+        zoneEloignement: createRange(1632, 1877),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3468, 3988),
+        centreVille: createRange(4760, 5474),
+        zonePeripherique: createRange(2312, 2659),
+        zoneEloignement: createRange(1306, 1501),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2000, 2300),
+        centreVille: createRange(2500, 2875),
+        zonePeripherique: createRange(1500, 1725),
+        zoneEloignement: createRange(1000, 1150),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "BERRICHE",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(14600, 16790),
+        centreVille: createRange(17300, 19895),
+        zonePeripherique: createRange(11800, 13570),
+        zoneEloignement: createRange(8200, 9430),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(6800, 7820),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5700, 6555),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7100, 8165),
+        centreVille: createRange(8400, 9660),
+        zonePeripherique: createRange(5700, 6555),
+        zoneEloignement: createRange(4000, 4600),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(15700, 18055),
+        centreVille: createRange(18500, 21275),
+        zonePeripherique: createRange(12500, 14375),
+        zoneEloignement: createRange(8800, 10120),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10400, 11960),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7600, 8740),
+        centreVille: createRange(9000, 10350),
+        zonePeripherique: createRange(6100, 7015),
+        zoneEloignement: createRange(4300, 4945),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15600, 17940),
+        zoneEloignement: createRange(10900, 12535),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13000, 14950),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13000, 14950),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10400, 11960),
+        zoneEloignement: createRange(7300, 8395),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5100, 5865),
+        centreVille: createRange(6000, 6900),
+        zonePeripherique: createRange(4100, 4715),
+        zoneEloignement: createRange(2900, 3335),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4335, 4985),
+        centreVille: createRange(5100, 5865),
+        zonePeripherique: createRange(3485, 4008),
+        zoneEloignement: createRange(2465, 2835),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3060, 3519),
+        centreVille: createRange(4200, 4830),
+        zonePeripherique: createRange(2050, 2358),
+        zoneEloignement: createRange(1160, 1334),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2601, 2991),
+        centreVille: createRange(3570, 4106),
+        zonePeripherique: createRange(1743, 2004),
+        zoneEloignement: createRange(986, 1134),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2081, 2393),
+        centreVille: createRange(2856, 3285),
+        zonePeripherique: createRange(1394, 1603),
+        zoneEloignement: createRange(789, 907),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1400, 1610),
+        centreVille: createRange(1700, 1955),
+        zonePeripherique: createRange(1100, 1265),
+        zoneEloignement: createRange(700, 805),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "HANCHIR TOUMGHANI",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(14600, 16790),
+        centreVille: createRange(17300, 19895),
+        zonePeripherique: createRange(11800, 13570),
+        zoneEloignement: createRange(8200, 9430),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(6800, 7820),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5700, 6555),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7100, 8165),
+        centreVille: createRange(8400, 9660),
+        zonePeripherique: createRange(5700, 6555),
+        zoneEloignement: createRange(4000, 4600),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(15700, 18055),
+        centreVille: createRange(18500, 21275),
+        zonePeripherique: createRange(12500, 14375),
+        zoneEloignement: createRange(8800, 10120),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10400, 11960),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(7600, 8740),
+        centreVille: createRange(9000, 10350),
+        zonePeripherique: createRange(6100, 7015),
+        zoneEloignement: createRange(4300, 4945),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(19600, 22540),
+        centreVille: createRange(23000, 26450),
+        zonePeripherique: createRange(15600, 17940),
+        zoneEloignement: createRange(10900, 12535),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13000, 14950),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13000, 14950),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10400, 11960),
+        zoneEloignement: createRange(7300, 8395),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(5100, 5865),
+        centreVille: createRange(6000, 6900),
+        zonePeripherique: createRange(4100, 4715),
+        zoneEloignement: createRange(2900, 3335),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(4335, 4985),
+        centreVille: createRange(5100, 5865),
+        zonePeripherique: createRange(3485, 4008),
+        zoneEloignement: createRange(2465, 2835),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3060, 3519),
+        centreVille: createRange(4200, 4830),
+        zonePeripherique: createRange(2050, 2358),
+        zoneEloignement: createRange(1160, 1334),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2601, 2991),
+        centreVille: createRange(3570, 4106),
+        zonePeripherique: createRange(1743, 2004),
+        zoneEloignement: createRange(986, 1134),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2081, 2393),
+        centreVille: createRange(2856, 3285),
+        zonePeripherique: createRange(1394, 1603),
+        zoneEloignement: createRange(789, 907),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1400, 1610),
+        centreVille: createRange(1700, 1955),
+        zonePeripherique: createRange(1100, 1265),
+        zoneEloignement: createRange(700, 805),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "BIR CHOUHADA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "OULED GACEM",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1400, 1610),
+        centreVille: createRange(1700, 1955),
+        zonePeripherique: createRange(1100, 1265),
+        zoneEloignement: createRange(700, 805),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "EL HARMILIA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "BOUGHRARA SAOUDI",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "OUED NINI",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "AIN ZITOUN",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "EL AMIRIA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "OULED ZOUAI",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "AIN DISS",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "EL ZORG",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "EL DJAZIA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "BEHIR CHERGUI",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "EL BELALA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
+  {
+    commune: "RAHIA",
+    individuels: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(12200, 14030),
+        centreVille: createRange(14400, 16560),
+        zonePeripherique: createRange(9800, 11270),
+        zoneEloignement: createRange(7000, 8050),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10200, 11730),
+        centreVille: createRange(12000, 13800),
+        zonePeripherique: createRange(8200, 9430),
+        zoneEloignement: createRange(5800, 6670),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(8500, 9775),
+        centreVille: createRange(10000, 11500),
+        zonePeripherique: createRange(6800, 7820),
+        zoneEloignement: createRange(4800, 5520),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6000, 6900),
+        centreVille: createRange(7000, 8050),
+        zonePeripherique: createRange(4800, 5520),
+        zoneEloignement: createRange(3400, 3910),
+      },
+    ],
+    collectifsSemiCollectifs: [
+      {
+        label: "Standing",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13100, 15065),
+        centreVille: createRange(15400, 17710),
+        zonePeripherique: createRange(10600, 12190),
+        zoneEloignement: createRange(7300, 8395),
+      },
+      {
+        label: "Amélioré",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8800, 10120),
+        zoneEloignement: createRange(6100, 7015),
+      },
+      {
+        label: "Economique",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(9100, 10465),
+        centreVille: createRange(10700, 12305),
+        zonePeripherique: createRange(7300, 8395),
+        zoneEloignement: createRange(5100, 5865),
+      },
+      {
+        label: "Précaire",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(6400, 7360),
+        centreVille: createRange(7500, 8625),
+        zonePeripherique: createRange(5100, 5865),
+        zoneEloignement: createRange(3600, 4140),
+      },
+    ],
+    locauxCommerciaux: [
+      {
+        label: "Artère hautement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(16300, 18745),
+        centreVille: createRange(19200, 22080),
+        zonePeripherique: createRange(13100, 15065),
+        zoneEloignement: createRange(9100, 10465),
+      },
+      {
+        label: "Artère moyennement commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(13600, 15640),
+        centreVille: createRange(16000, 18400),
+        zonePeripherique: createRange(10900, 12535),
+        zoneEloignement: createRange(7600, 8740),
+      },
+      {
+        label: "Artère peu commerciale",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(10900, 12535),
+        centreVille: createRange(12800, 14720),
+        zonePeripherique: createRange(8700, 10005),
+        zoneEloignement: createRange(6100, 7015),
+      },
+    ],
+    hangars: [
+      {
+        label: "En zone urbaine",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3300, 3795),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2500, 2875),
+        zoneEloignement: createRange(1800, 2070),
+      },
+      {
+        label: "En zone rurale",
+        unit: "DA/m²",
+        zonePeripherique: createRange(2300, 2645),
+        zoneEloignement: createRange(1600, 1840),
+      },
+    ],
+    terrainsNus: [
+      {
+        label: "Pleine propriété (2 façades) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(3400, 3910),
+        centreVille: createRange(4000, 4600),
+        zonePeripherique: createRange(2700, 3105),
+        zoneEloignement: createRange(1900, 2185),
+      },
+      {
+        label: "Pleine propriété (1 façade) avec raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2890, 3324),
+        centreVille: createRange(3400, 3910),
+        zonePeripherique: createRange(2295, 2639),
+        zoneEloignement: createRange(1615, 1857),
+      },
+      {
+        label: "Pleine propriété (2 façades) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(2040, 2346),
+        centreVille: createRange(2800, 3220),
+        zonePeripherique: createRange(1350, 1553),
+        zoneEloignement: createRange(760, 874),
+      },
+      {
+        label: "Pleine propriété (1 façade) sans raccordements",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1734, 1994),
+        centreVille: createRange(2380, 2737),
+        zonePeripherique: createRange(1148, 1320),
+        zoneEloignement: createRange(646, 743),
+      },
+      {
+        label: "Terrain dans l'indivision",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1387, 1595),
+        centreVille: createRange(1904, 2190),
+        zonePeripherique: createRange(918, 1056),
+        zoneEloignement: createRange(517, 594),
+      },
+      {
+        label: "Terrain industriel",
+        unit: "DA/m²",
+        zoneResidentielle: createRange(1100, 1265),
+        centreVille: createRange(1400, 1610),
+        zonePeripherique: createRange(800, 920),
+        zoneEloignement: createRange(500, 575),
+      },
+    ],
+    terrainsAgricolesPlaine: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(662800, 762200),
+        zoneEloignement: createRange(385000, 442800),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(552800, 635700),
+        zoneEloignement: createRange(275000, 316300),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(442800, 509200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+    ],
+    terrainsAgricolesPente: [
+      {
+        label: "Potentialité élevée",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(363000, 417500),
+        zoneEloignement: createRange(220000, 253000),
+      },
+      {
+        label: "Potentialité moyenne",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(308000, 354200),
+        zoneEloignement: createRange(165000, 189800),
+      },
+      {
+        label: "Potentialité faible",
+        unit: "DA/Ha",
+        zonePeripherique: createRange(253000, 291000),
+        zoneEloignement: createRange(110000, 126500),
+      },
+    ],
+  },
 ];

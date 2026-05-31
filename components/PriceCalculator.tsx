@@ -124,7 +124,15 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     }
     
     const fetchApiData = async () => {
-      const supportedWilayas = ['oran','alger','adrar','chlef','laghouat','oum-el-bouaghi','batna','bejaia','biskra','bechar','blida','bouira','tamanrasset','tebessa','tiaret','tlemcen','tizi-ouzou'];
+      const supportedWilayas = [
+        'oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida',
+        'bouira', 'tamanrasset', 'tebessa', 'tiaret', 'tlemcen', 'tizi-ouzou', 'alger', 'djelfa', 'jijel',
+        'setif', 'saida', 'skikda', 'sidi-bel-abbes', 'annaba', 'guelma', 'constantine', 'medea', 'mostaganem',
+        'msila', 'mascara', 'ouargla', 'el-bayadh', 'illizi', 'bordj-bou-arreridj', 'boumerdes', 'el-taref',
+        'tindouf', 'tissemsilt', 'el-oued', 'khenchela', 'souk-ahras', 'tipaza', 'mila', 'ain-defla', 'naama',
+        'ain-temouchent', 'ghardaia', 'relizane', 'timimoun', 'bordj-badji-mokhtar', 'ouled-djellal', 'beni-abbes',
+        'in-salah', 'in-guezzam', 'touggourt', 'djanet', 'el-mghaier', 'el-meniaa'
+      ];
       if (!supportedWilayas.includes(wilaya)) {
         setMappedData(null);
         setCommunes([]);
@@ -429,7 +437,15 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       { v: 'el-mghaier', n: isAr ? 'المغير (57)' : 'El M\'Ghair (57)' }, 
                       { v: 'el-meniaa', n: isAr ? 'المنيعة (58)' : 'El Meniaâ (58)' }
                     ].map(w => {
-                      const supportedWilayas = ['oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida', 'bouira', 'tamanrasset', 'tebessa', 'tiaret', 'tlemcen', 'tizi-ouzou'];
+                      const supportedWilayas = [
+                        'oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida',
+                        'bouira', 'tamanrasset', 'tebessa', 'tiaret', 'tlemcen', 'tizi-ouzou', 'alger', 'djelfa', 'jijel',
+                        'setif', 'saida', 'skikda', 'sidi-bel-abbes', 'annaba', 'guelma', 'constantine', 'medea', 'mostaganem',
+                        'msila', 'mascara', 'ouargla', 'el-bayadh', 'illizi', 'bordj-bou-arreridj', 'boumerdes', 'el-taref',
+                        'tindouf', 'tissemsilt', 'el-oued', 'khenchela', 'souk-ahras', 'tipaza', 'mila', 'ain-defla', 'naama',
+                        'ain-temouchent', 'ghardaia', 'relizane', 'timimoun', 'bordj-badji-mokhtar', 'ouled-djellal', 'beni-abbes',
+                        'in-salah', 'in-guezzam', 'touggourt', 'djanet', 'el-mghaier', 'el-meniaa'
+                      ];
                       const isSupported = supportedWilayas.includes(w.v);
                       return (
                         <option key={w.v} value={w.v} disabled={!isSupported} aria-disabled={!isSupported}>
