@@ -75,6 +75,11 @@ const uiTranslations = {
   }
 };
 
+const cleanCommuneName = (name: string): string => {
+  if (!name) return '';
+  return name.replace(/^[dD]['’`\s]+/, '').trim();
+};
+
 interface PriceCalculatorProps {
   initialData: CalculatorResult | null;
   initialCommunes: string[];
@@ -262,8 +267,8 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     const unitLabel = selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? (isAr ? 'هكتار' : 'Ha') : (isAr ? 'م²' : 'm²');
     
     let textToCopy = isAr 
-      ? `السعر المرجعي في ${regionId}:\nمن ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/${unitLabel}`
-      : `Prix de référence à ${regionId} :\nDe ${result.min.toLocaleString()} à ${result.max.toLocaleString()} DZD/${unitLabel}`;
+      ? `السعر المرجعي في ${cleanCommuneName(regionId)}:\nمن ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/${unitLabel}`
+      : `Prix de référence à ${cleanCommuneName(regionId)} :\nDe ${result.min.toLocaleString()} à ${result.max.toLocaleString()} DZD/${unitLabel}`;
       
     if (area && Number(area) > 0) {
       textToCopy += isAr 
@@ -304,8 +309,8 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     const unitLabel = selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? (isAr ? 'هكتار' : 'Ha') : (isAr ? 'م²' : 'm²');
     
     let textToShare = isAr
-      ? `السلام عليكم، قمت بحساب السعر المرجعي لعقاري (${regionId}) على موقعكم:\nالسعر للمتر المربع: من ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/${unitLabel}`
-      : `Bonjour, j'ai calculé le prix de référence de mon bien (${regionId}) sur votre site :\nPrix unitaire : De ${result.min.toLocaleString()} à ${result.max.toLocaleString()} DZD/${unitLabel}`;
+      ? `السلام عليكم، قمت بحساب السعر المرجعي لعقاري (${cleanCommuneName(regionId)}) على موقعكم:\nالسعر للمتر المربع: من ${result.min.toLocaleString()} إلى ${result.max.toLocaleString()} د.ج/${unitLabel}`
+      : `Bonjour, j'ai calculé le prix de référence de mon bien (${cleanCommuneName(regionId)}) sur votre site :\nPrix unitaire : De ${result.min.toLocaleString()} à ${result.max.toLocaleString()} DZD/${unitLabel}`;
       
     if (area && Number(area) > 0) {
       textToShare += isAr
@@ -473,7 +478,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       >
                         <option value="">{ui.chooseRegion}</option>
                         {communes.map((c) => (
-                          <option key={c} value={c}>{c}</option>
+                          <option key={c} value={c}>{cleanCommuneName(c)}</option>
                         ))}
                       </select>
                       {isLoadingData && (
