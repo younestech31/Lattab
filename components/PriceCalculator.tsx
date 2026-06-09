@@ -210,9 +210,10 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
   const selectedType = selectedCategory && typeIdx !== '' ? selectedCategory.types[typeIdx] : null;
   
   const availableZones = useMemo(() => {                
-    if (!selectedType) return [];
+    if (!selectedType || !selectedType.zones) return [];
     return Object.entries(selectedType.zones)
       .filter(([_, values]) => {
+        if (!values) return false;
         if (calculationMode === 'sale') {
           return values.min !== undefined && values.max !== undefined;
         } else {

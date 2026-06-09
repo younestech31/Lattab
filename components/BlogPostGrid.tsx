@@ -16,7 +16,8 @@ interface BlogPostGridProps {
 }
 
 const BlogPostGrid = function BlogPostGrid({ posts, emptyMessage }: BlogPostGridProps) {
-  if (posts.length === 0) {
+  const safePosts = Array.isArray(posts) ? posts : [];
+  if (safePosts.length === 0) {
     return (
       <p className="text-center text-gray-500 py-12">
         {emptyMessage || 'لا توجد نتائج'}
@@ -26,7 +27,7 @@ const BlogPostGrid = function BlogPostGrid({ posts, emptyMessage }: BlogPostGrid
 
   return (
     <div aria-live="polite" className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 transition-all">
-      {posts.map((post) => {
+      {safePosts.map((post) => {
         const isFr = post.language === 'fr';
         const postHref = isFr ? `/fr/blog/${post.slug}` : `/blog/${post.slug}`;
         return (
