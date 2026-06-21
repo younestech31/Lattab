@@ -23,11 +23,11 @@ const FloatingWhatsApp = () => {
           href="https://wa.me/213562296981"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-16 h-16 md:w-20 md:h-20 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center pointer-events-auto"
+          className="w-14 h-14 md:w-16 md:h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 flex items-center justify-center pointer-events-auto"
           aria-label={isAr ? 'الاتصال بالمكتب عبر واتساب' : 'Contacter l\'office par WhatsApp'}
         >
           <svg 
-            className="w-8 h-8 md:w-10 md:h-10 fill-current" 
+            className="w-7 h-7 md:w-8 md:h-8 fill-current" 
             viewBox="0 0 24 24" 
             xmlns="http://www.w3.org/2000/svg"
           >

@@ -47,14 +47,14 @@ export default function StickyMobileCTA() {
         {/* Appointment Bar */}
         <Link 
           href="/#booking-form"
-          className="grow pointer-events-auto bg-emerald-600 text-white font-bold text-center h-16 flex items-center justify-center rounded-xl shadow-lg hover:bg-emerald-700 transition-colors text-lg"
+          className="grow pointer-events-auto bg-emerald-600 text-white font-bold text-center h-14 flex items-center justify-center rounded-xl shadow-lg hover:bg-emerald-700 transition-colors text-base"
           aria-label={isAr ? 'طلب موعد إداري — الانتقال إلى نموذج الحجز' : 'Demande de RDV — Accéder au formulaire'}
         >
           {translations[lang].contact.tabs.appointment}
         </Link>
 
-        {/* Spacer for the permanently fixed Layout WhatsApp button */}
-        <div className="w-16 h-16 shrink-0 pointer-events-none" />
+         {/* Spacer for the permanently fixed Layout WhatsApp button */}
+         <div className="w-14 h-14 shrink-0 pointer-events-none" />
       </div>
     </div>
   );
