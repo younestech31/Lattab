@@ -25,6 +25,9 @@ export async function generateMetadata({
       title: `Résultats de recherche pour "${q}" — Blog Juridique`,
       description: searchDesc,
       robots: { index: false, follow: true },
+      alternates: {
+        canonical: `${SITE_URL}/fr/blog`,
+      },
     };
   }
 

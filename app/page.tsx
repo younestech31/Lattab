@@ -14,17 +14,17 @@ export async function generateMetadata(): Promise<Metadata> {
     description: desc,
     keywords: 'موثق وهران, توثيق عقود, بيع عقار الجزائر, تأسيس شركة, وكالة, رهن عقاري, السعر المرجعي العقاري',
     alternates: {
-      canonical: `${SITE_URL}/`,
+      canonical: SITE_URL,
       languages: {
-        'ar-DZ': `${SITE_URL}/`,
+        'ar-DZ': SITE_URL,
         'fr-DZ': `${SITE_URL}/fr`,
-        'x-default': `${SITE_URL}/`,
+        'x-default': SITE_URL,
       },
     },
     openGraph: {
       title: 'الديوان العمومي للتوثيق — موثق وهران',
       description: 'الديوان العمومي للتوثيق — معلومات حول الإجراءات التوثيقية والوثائق المطلوبة لولاية وهران.',
-      url: `${SITE_URL}/`,
+      url: SITE_URL,
       siteName: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
       locale: 'ar_DZ',
       type: 'website',

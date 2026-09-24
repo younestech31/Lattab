@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
 export const revalidate = 86400;
 
 export const size = { width: 1200, height: 630 };
@@ -8,140 +7,139 @@ export const contentType = 'image/png';
 export const alt = 'حاسبة السعر المرجعي العقاري 2026 - Calculateur des Prix de Référence Immobilier 2026';
 
 export default async function Image() {
-  return new ImageResponse(
-    <div
-      style={{
-        width: '1200px',
-        height: '630px',
-        background: '#ffffff',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '80px',
-        fontFamily: 'sans-serif',
-        borderLeft: '24px solid #059669',
-        borderTop: '8px solid #059669',
-        borderBottom: '8px solid #059669',
-        borderRight: '8px solid #059669',
-        boxSizing: 'border-box',
-        position: 'relative',
-      }}
-    >
-      {/* Background Decorative Graphic */}
-      <div
-        style={{
-          position: 'absolute',
-          right: '80px',
-          top: '120px',
-          display: 'flex',
-          opacity: 0.1,
-          color: '#059669',
-          width: '160px',
-          height: '160px',
-        }}
-      >
-        <svg
-          width="160"
-          height="160"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
+  try {
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            width: '1200px',
+            height: '630px',
+            background: 'linear-gradient(135deg, #065f46 0%, #059669 100%)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '70px',
+            fontFamily: 'sans-serif',
+            color: '#ffffff',
+          }}
         >
-          <path d="M3 3h18v18H3zM21 9H3M21 15H3M12 3v18" />
-        </svg>
-      </div>
-
-      {/* Top bar with category and Badge */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', zIndex: 10 }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <span
+          {/* Top category & year badge */}
+          <div
             style={{
-              background: '#f1f5f9',
-              color: '#334155',
-              padding: '10px 20px',
-              borderRadius: '12px',
-              fontSize: '20px',
-              fontWeight: 600,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              width: '100%',
             }}
           >
-            وزارة المالية والضرائب • Barème Officiel
-          </span>
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.15)',
+                color: '#d1fae5',
+                padding: '10px 22px',
+                borderRadius: '10px',
+                fontSize: '22px',
+                fontWeight: 600,
+              }}
+            >
+              Bareme Officiel — Ministere des Finances Algerie
+            </div>
+            <div
+              style={{
+                background: '#f59e0b',
+                color: '#064e3b',
+                padding: '10px 24px',
+                borderRadius: '10px',
+                fontWeight: 800,
+                fontSize: '24px',
+              }}
+            >
+              2026
+            </div>
+          </div>
+
+          {/* Main Title */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div
+              style={{
+                fontSize: '52px',
+                fontWeight: 800,
+                lineHeight: 1.2,
+                color: '#ffffff',
+                maxWidth: '980px',
+              }}
+            >
+              Calculateur des Prix de Reference Immobilier
+            </div>
+            <div
+              style={{
+                fontSize: '26px',
+                color: '#d1fae5',
+                fontWeight: 500,
+              }}
+            >
+              Estimation des valeurs immobilieres officielles a Oran
+            </div>
+          </div>
+
+          {/* Institutional Footer */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+              paddingTop: '30px',
+              width: '100%',
+            }}
+          >
+            <div
+              style={{
+                color: '#ffffff',
+                fontSize: '22px',
+                fontWeight: 600,
+              }}
+            >
+              Office Notarial de Maitre Lattab Mohamed — Notaire a Oran
+            </div>
+            <div
+              style={{
+                background: '#f59e0b',
+                color: '#064e3b',
+                padding: '10px 20px',
+                borderRadius: '8px',
+                fontWeight: 700,
+                fontSize: '18px',
+              }}
+            >
+              lattab.vercel.app
+            </div>
+          </div>
         </div>
+      ),
+      { ...size }
+    );
+  } catch {
+    return new ImageResponse(
+      (
         <div
           style={{
-            background: '#f59e0b',
+            width: '1200px',
+            height: '630px',
+            background: '#059669',
             color: '#ffffff',
-            padding: '10px 24px',
-            borderRadius: '12px',
-            fontWeight: 800,
-            fontSize: '24px',
-          }}
-        >
-          2026
-        </div>
-      </div>
-
-      {/* Main Bilingual Title */}
-      <div style={{ display: 'flex', flexDirection: 'column', width: '100%', gap: '16px', margin: '40px 0', zIndex: 10 }}>
-        <div
-          style={{
-            color: '#0f172a',
-            fontSize: '56px',
-            fontWeight: 800,
-            direction: 'rtl',
-            textAlign: 'right',
-            lineHeight: 1.3,
-          }}
-        >
-          حاسبة السعر المرجعي العقاري
-        </div>
-        <div
-          style={{
-            color: '#475569',
-            fontSize: '36px',
-            fontWeight: 600,
-            lineHeight: 1.2,
-          }}
-        >
-          Calculateur des Prix de Référence Immobilier
-        </div>
-      </div>
-
-      {/* Institutional Footer */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderTop: '2px solid #f1f5f9',
-          paddingTop: '32px',
-          width: '100%',
-          zIndex: 10,
-        }}
-      >
-        <div
-          style={{
-            color: '#0f172a',
-            fontSize: '20px',
-            fontWeight: 700,
             display: 'flex',
+            justifyContent: 'center',
             alignItems: 'center',
+            fontSize: '48px',
+            fontWeight: 800,
+            fontFamily: 'sans-serif',
           }}
         >
-          ⚖️ الديوان العمومي للتوثيق — وهران | Étude Publique Notariale — Oran
+          Calculateur des Prix de Reference Immobilier 2026
         </div>
-        <div
-          style={{
-            color: '#059669',
-            fontSize: '20px',
-            fontWeight: 700,
-          }}
-        >
-          lattab.vercel.app
-        </div>
-      </div>
-    </div>,
-    { ...size }
-  );
+      ),
+      { ...size }
+    );
+  }
 }

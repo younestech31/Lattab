@@ -54,15 +54,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: `${base}/`,
+      url: base,
       lastModified: new Date(LAST_CONTENT_UPDATED),
       changeFrequency: 'weekly',
       priority: 1.0,
       alternates: {
         languages: {
-          'ar-DZ': `${base}/`,
+          'ar-DZ': base,
           'fr-DZ': `${base}/fr`,
-          'x-default': `${base}/`,
+          'x-default': base,
         },
       },
     },
@@ -73,9 +73,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
       alternates: {
         languages: {
-          'ar-DZ': `${base}/`,
+          'ar-DZ': base,
           'fr-DZ': `${base}/fr`,
-          'x-default': `${base}/`,
+          'x-default': base,
         },
       },
     },

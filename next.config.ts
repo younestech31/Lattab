@@ -51,6 +51,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
+  outputFileTracingIncludes: {
+    '/**': ['./content/**/*'],
+  },
 };
 
 export default nextConfig;

@@ -25,6 +25,9 @@ export async function generateMetadata({
       title: `نتائج البحث عن "${q}" — المدونة القانونية`,
       description: searchDesc,
       robots: { index: false, follow: true },
+      alternates: {
+        canonical: `${SITE_URL}/blog`,
+      },
     };
   }
 

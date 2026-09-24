@@ -6,31 +6,18 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: [
-          '/',
-          '/fr',
-          '/blog/',
-          '/fr/blog/',
-          '/calculateur-prix-referentiel',
-          '/terms-privacy',
-        ],
+        allow: '/',
         disallow: [
           '/api/',
           '/scripts/',
-          '/*.json',
           '/_next/',
+          '/*?*q=',
         ],
       },
       {
         // Allow AI citation crawlers to index all public content
         userAgent: ['GPTBot', 'PerplexityBot', 'anthropic-ai', 'Claude-Web', 'OAI-SearchBot'],
-        allow: [
-          '/',
-          '/fr',
-          '/blog/',
-          '/fr/blog/',
-          '/calculateur-prix-referentiel',
-        ],
+        allow: '/',
         disallow: ['/api/'],
       },
       {
