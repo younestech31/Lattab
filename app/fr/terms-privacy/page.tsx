@@ -19,16 +19,28 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/fr/terms-privacy`,
     title: "Conditions & Confidentialité — Office Notarial",
     description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Maître Lattab Mohamed à Oran.",
-    siteName: 'Étude Public Notarial — Maître Lattab Mohamed',
+    siteName: 'Maître Lattab Mohamed, notaire à Oran',
     images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: "Conditions d'Utilisation" }],
     locale: 'fr_DZ',
+    alternateLocale: ['ar_DZ'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Conditions & Confidentialité — Office Notarial",
+    description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Maître Lattab Mohamed à Oran.",
+    images: [`${SITE_URL}/logo.webp`],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 const TermsPrivacyPageFR = () => {
   return (
     <div className="min-h-screen bg-white">
-      <main className="bg-gray-50" dir="ltr">
+      <div className="bg-gray-50" dir="ltr">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
           {/* Decorative background pattern */}
@@ -325,7 +337,7 @@ const TermsPrivacyPageFR = () => {
             <p className="mt-2 font-medium">Tous droits réservés &copy; 2026 - Office Notarial de Maître Lattab Mohamed</p>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

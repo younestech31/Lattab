@@ -14,6 +14,7 @@ import FAQ from '@/components/FAQ';
 import UsefulLinksSection from '@/components/UsefulLinksSection';
 import { JsonLdScript } from '@/components/schema';
 import { AnalyticsScriptLoader } from '@/components/AnalyticsScriptLoader';
+import { faqs } from '@/lib/data/faq';
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   <div
@@ -23,80 +24,92 @@ const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   />
 );
 
-async function buildHomeSchema(): Promise<Record<string, unknown>> {
-  // NOTE: aggregateRating, priceRange, hasOfferCatalog intentionally omitted.
-  // Algerian notarial deontological rules prohibit fee listings, ratings, and
-  // service catalogues framed as commercial offers. Law No. 06-02, Art. 17.
-  const schema: Record<string, unknown> = {
+function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
+  const isAr = lang === 'ar';
+  const pageUrl = isAr ? SITE_URL : `${SITE_URL}/fr`;
+  const notaryId = isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`;
+
+  const notarySchema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": ["LegalService", "Notary"],
-    "@id": `${SITE_URL}/#notary-office`,
-    "url": SITE_URL,
-    "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
-    "legalName": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
-    "alternateName": "Office Notarial Maître Lattab Mohamed",
-    "description": "الديوان العمومي للتوثيق — موثق معتمد لدى محكمة فلاوسن وهران وفق القانون الجزائري للإجراءات التوثيقية والشركات والمعاملات العقارية.",
-    "image": {
-      "@type": "ImageObject",
-      "url": `${SITE_URL}/logo.webp`,
-      "width": 512,
-      "height": 512
-    },
+    "@id": notaryId,
+    "url": pageUrl,
+    "name": isAr ? "الأستاذ لعطب محمد — موثق بوهران" : "Maître Lattab Mohamed, notaire à Oran",
+    "legalName": isAr ? "الأستاذ لعطب محمد — موثق بوهران" : "Maître Lattab Mohamed, notaire à Oran",
+    "alternateName": isAr ? "الديوان العمومي للتوثيق" : "Office notarial Maître Lattab Mohamed",
+    "description": isAr
+      ? "الديوان العمومي للتوثيق — موثق معتمد لدى محكمة فلاوسن بوهران، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون."
+      : "Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Prise de rendez-vous.",
+    "image": `${SITE_URL}/logo.webp`,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي",
-      "addressLocality": "وهران",
-      "addressRegion": "وهران",
+      "streetAddress": isAr
+        ? "حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي"
+        : "Cité 557 Logements, Immeuble D24, 1er Étage, Appt 768, Akid Lotfi",
+      "addressLocality": isAr ? "وهران" : "Oran",
+      "addressRegion": isAr ? "وهران" : "Oran",
       "postalCode": "31000",
       "addressCountry": "DZ"
     },
     "telephone": "+213562296981",
+    "email": "maitrelattabmohamed@gmail.com",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 35.7277124,
+      "longitude": -0.5931358
+    },
     "hasMap": "https://www.google.com/maps/place/NOTAIRE+LATTAB+MOHAMED/@35.7277124,-0.5931358,17z",
     "sameAs": [
       "https://www.google.com/maps/place/NOTAIRE+LATTAB+MOHAMED/@35.7277124,-0.5931358,17z"
     ],
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "Wilaya d'Oran"
-    },
-    "serviceType": [
-      "العقود والتوثيقات",
-      "تأسيس الشركات",
-      "المعاملات العقارية",
-      "الوكالات والرهون",
-      "Rédaction d'actes",
-      "Création d'entreprises",
-      "Transactions immobilières",
-      "Procurations et hypothèques"
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Oran" },
+      { "@type": "AdministrativeArea", "name": "Aïn Témouchent" },
+      { "@type": "AdministrativeArea", "name": "Mostaganem" },
+      { "@type": "AdministrativeArea", "name": "Relizane" }
     ],
-    "priceRange": "⚖️",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+        "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
         "opens": "08:30",
         "closes": "12:00"
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+        "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
         "opens": "13:30",
         "closes": "16:00"
       }
     ]
   };
 
-  return schema;
+  const faqSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": isAr ? faq.questionAr : faq.questionFr,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": isAr ? faq.answerAr : faq.answerFr
+      }
+    }))
+  };
+
+  return [notarySchema, faqSchema];
 }
 
 export async function HomeContent({ lang }: { lang: Language }) {
-  const consolidatedSchema = await buildHomeSchema();
+  const schemas = buildHomeSchemas(lang);
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLdScript schema={consolidatedSchema} />
+      {schemas.map((schema, idx) => (
+        <JsonLdScript key={idx} schema={schema} />
+      ))}
       <AnalyticsScriptLoader />
-      <main id="main-content">
+      <div className="flex flex-col">
         <div className="no-print">
           <Hero lang={lang} />
           <Services lang={lang} />
@@ -121,7 +134,7 @@ export async function HomeContent({ lang }: { lang: Language }) {
           <UsefulLinksSection lang={lang} />
         </div>
         <Contact contactInfo={<ContactInfo lang={lang} />} lang={lang} />
-      </main>
+      </div>
       <div className="no-print">
         <StickyMobileCTA />
       </div>

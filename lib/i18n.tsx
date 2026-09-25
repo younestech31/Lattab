@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useTransition, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { setLanguageCookie } from '@/app/actions/language';
 
 export type Language = 'ar' | 'fr';
 
@@ -58,13 +57,11 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
     }
 
     startTransition(() => {
-      setLanguageCookie(nextLang).then(() => {
-        if (isPathChanging) {
-          router.push(targetPath);
-        } else {
-          router.refresh();
-        }
-      });
+      if (isPathChanging) {
+        router.push(targetPath);
+      } else {
+        router.refresh();
+      }
     });
   };
 

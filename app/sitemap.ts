@@ -1,25 +1,80 @@
 import { MetadataRoute } from 'next';
 import { blogPosts, frBlogPosts } from '@/lib/data/blog';
-import { SITE_URL as base, LAST_CONTENT_UPDATED } from '@/lib/config';
+import { SITE_URL as base } from '@/lib/config';
+import { STATIC_LOCALE_MAP, BLOG_PAIRS_MAP, FR_TO_AR_BLOG_MAP } from '@/lib/data/localeMap';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Static and service routes
+  const staticEntries: MetadataRoute.Sitemap = [];
 
+  for (const entry of STATIC_LOCALE_MAP) {
+    const arUrl = `${base}${entry.arPath === '/' ? '' : entry.arPath}`;
+    
+    if (entry.frPath) {
+      const frUrl = `${base}${entry.frPath}`;
+      const languages: Record<string, string> = {
+        'ar-DZ': arUrl,
+        'fr-DZ': frUrl,
+        'x-default': arUrl,
+      };
+
+      // Arabic entry
+      staticEntries.push({
+        url: arUrl,
+        lastModified: new Date(entry.lastmod),
+        changeFrequency: entry.changeFrequency,
+        priority: entry.priority,
+        alternates: {
+          languages,
+        },
+      });
+
+      // French entry
+      staticEntries.push({
+        url: frUrl,
+        lastModified: new Date(entry.lastmod),
+        changeFrequency: entry.changeFrequency,
+        priority: entry.priority,
+        alternates: {
+          languages,
+        },
+      });
+    } else {
+      // Only Arabic exists
+      staticEntries.push({
+        url: arUrl,
+        lastModified: new Date(entry.lastmod),
+        changeFrequency: entry.changeFrequency,
+        priority: entry.priority,
+        alternates: {
+          languages: {
+            'ar-DZ': arUrl,
+            'x-default': arUrl,
+          },
+        },
+      });
+    }
+  }
+
+  // Arabic blog posts
   const blogEntries: MetadataRoute.Sitemap = [...blogPosts]
     .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
     .map(post => {
-      const frEquivalent = frBlogPosts.find(fr => fr.arSlug === post.slug);
+      const frSlug = BLOG_PAIRS_MAP[post.slug];
+      const arUrl = `${base}/blog/${post.slug}`;
       
       const languages: Record<string, string> = {
-        'ar-DZ': `${base}/blog/${post.slug}`,
-        'x-default': `${base}/blog/${post.slug}`,
+        'ar-DZ': arUrl,
+        'x-default': arUrl,
       };
       
-      if (frEquivalent) {
-        languages['fr-DZ'] = `${base}/fr/blog/${frEquivalent.slug}`;
+      // Emit xhtml alternate for fr-DZ ONLY when French counterpart exists
+      if (frSlug) {
+        languages['fr-DZ'] = `${base}/fr/blog/${frSlug}`;
       }
 
       return {
-        url: `${base}/blog/${post.slug}`,
+        url: arUrl,
         lastModified: new Date(post.dateModified || post.dateISO),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
@@ -29,20 +84,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     });
 
+  // French blog posts
   const frBlogEntries: MetadataRoute.Sitemap = [...frBlogPosts]
     .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
     .map(post => {
+      const arSlug = FR_TO_AR_BLOG_MAP[post.slug] || post.arSlug;
+      const frUrl = `${base}/fr/blog/${post.slug}`;
+      
       const languages: Record<string, string> = {
-        'fr-DZ': `${base}/fr/blog/${post.slug}`,
+        'fr-DZ': frUrl,
       };
       
-      if (post.arSlug) {
-        languages['ar-DZ'] = `${base}/blog/${post.arSlug}`;
-        languages['x-default'] = `${base}/blog/${post.arSlug}`;
+      if (arSlug) {
+        languages['ar-DZ'] = `${base}/blog/${arSlug}`;
+        languages['x-default'] = `${base}/blog/${arSlug}`;
       }
 
       return {
-        url: `${base}/fr/blog/${post.slug}`,
+        url: frUrl,
         lastModified: new Date(post.dateModified || post.dateISO),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
@@ -53,136 +112,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
 
   return [
-    {
-      url: base,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-      alternates: {
-        languages: {
-          'ar-DZ': base,
-          'fr-DZ': `${base}/fr`,
-          'x-default': base,
-        },
-      },
-    },
-    {
-      url: `${base}/fr`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-      alternates: {
-        languages: {
-          'ar-DZ': base,
-          'fr-DZ': `${base}/fr`,
-          'x-default': base,
-        },
-      },
-    },
-    {
-      url: `${base}/calculateur-prix-referentiel`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/calculateur-prix-referentiel`,
-          'fr-DZ': `${base}/fr/calculateur-prix-referentiel`,
-          'x-default': `${base}/calculateur-prix-referentiel`,
-        },
-      },
-    },
-    {
-      url: `${base}/fr/calculateur-prix-referentiel`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/calculateur-prix-referentiel`,
-          'fr-DZ': `${base}/fr/calculateur-prix-referentiel`,
-          'x-default': `${base}/calculateur-prix-referentiel`,
-        },
-      },
-    },
-    {
-      url: `${base}/blog`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/blog`,
-          'fr-DZ': `${base}/fr/blog`,
-          'x-default': `${base}/blog`,
-        },
-      },
-    },
-    {
-      url: `${base}/fr/blog`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/blog`,
-          'fr-DZ': `${base}/fr/blog`,
-          'x-default': `${base}/blog`,
-        },
-      },
-    },
-    {
-      url: `${base}/terms-privacy`,
-      lastModified: new Date('2025-01-01'),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/terms-privacy`,
-          'fr-DZ': `${base}/fr/terms-privacy`,
-          'x-default': `${base}/terms-privacy`,
-        },
-      },
-    },
-    {
-      url: `${base}/fr/terms-privacy`,
-      lastModified: new Date('2025-01-01'),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/terms-privacy`,
-          'fr-DZ': `${base}/fr/terms-privacy`,
-          'x-default': `${base}/terms-privacy`,
-        },
-      },
-    },
-    {
-      url: `${base}/useful-links`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/useful-links`,
-          'fr-DZ': `${base}/fr/useful-links`,
-          'x-default': `${base}/useful-links`,
-        },
-      },
-    },
-    {
-      url: `${base}/fr/useful-links`,
-      lastModified: new Date(LAST_CONTENT_UPDATED),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-      alternates: {
-        languages: {
-          'ar-DZ': `${base}/useful-links`,
-          'fr-DZ': `${base}/fr/useful-links`,
-          'x-default': `${base}/useful-links`,
-        },
-      },
-    },
+    ...staticEntries,
     ...blogEntries,
     ...frBlogEntries,
   ];

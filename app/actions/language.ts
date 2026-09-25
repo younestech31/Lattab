@@ -1,13 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
-
-export async function setLanguageCookie(lang: 'ar' | 'fr') {
-  const cookieStore = await cookies();
-  cookieStore.set('lang', lang, {
-    maxAge: 60 * 60 * 24 * 365,
-    httpOnly: false,
-    sameSite: 'lax',
-    path: '/'
-  });
+export async function setLanguageCookie(_lang: 'ar' | 'fr') {
+  // No-op: Language is strictly URL-based (/ vs /fr). No cookies are set.
 }
+

@@ -67,11 +67,10 @@ export const translations = {
     },
     hero: {
       badge: 'موثق لدى محكمة فلاوسن وهران',
-      title: 'الديوان العمومي للتوثيق',
-      subtitle: 'الأستاذ لعطب محمد — موثق بوهران',
+      eyebrow: 'الديوان العمومي للتوثيق',
+      title: 'الأستاذ لعطب محمد',
+      subtitle: 'موثق بوهران',
       description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران — للإعلام حول الإجراءات التوثيقية وفق القانون الجزائري',
-      // REMOVED: prohibited advertising: stats_experience
-      // REMOVED: prohibited advertising: stats_transactions
       cta_book: 'حجز موعد إداري',
       cta_services: 'الاختصاصات التوثيقية للمكتب'
     },
@@ -297,12 +296,11 @@ export const translations = {
       retry: 'Réessayer',
     },
     hero: {
-      badge: 'Notaire près le Tribunal de Felaoucene Oran',
-      title: 'Étude Public Notarial',
-      subtitle: 'Maître Lattab Mohamed — Notaire à Oran',
-      description: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran — pour l\'information sur les procédures notariales selon le droit algérien',
-      // REMOVED: prohibited advertising: stats_experience
-      // REMOVED: prohibited advertising: stats_transactions
+      badge: 'Notaire près le Tribunal de Flaussen Oran',
+      eyebrow: 'Office notarial Maître Lattab Mohamed',
+      title: 'Maître Lattab Mohamed',
+      subtitle: 'Notaire à Oran',
+      description: 'Maître Lattab Mohamed, notaire à Oran — pour l\'information sur les procédures notariales selon le droit algérien',
       cta_book: 'Demande de RDV',
       cta_services: 'Compétences de l\'Étude'
     },
@@ -345,9 +343,9 @@ export const translations = {
       contact_description: 'Pour plus d\'informations, vous pouvez contacter l\'Étude via les canaux officiels.'
     },
     contact: {
-      badge: 'Étude Public Notarial',
+      badge: 'Office Notarial',
       title: 'Demande de rendez-vous',
-      description: 'Vous pouvez contacter l\'Étude Public Notarial pour vous renseigner sur les procédures et documents requis ou pour organiser des rendez-vous administratifs.',
+      description: 'Vous pouvez contacter l\'office notarial pour vous renseigner sur les procédures et documents requis ou pour organiser des rendez-vous administratifs.',
       tabs: {
         appointment: 'Demande de rendez-vous',
         inquiry: 'Demande de renseignement'
@@ -441,7 +439,7 @@ export const translations = {
         email: 'E-mail',
         working_hours: 'Heures de travail',
         working_hours_details: 'Dimanche - Jeudi 08:30–12:00 et 13:30–16:00',
-        office_name: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran',
+        office_name: 'Maître Lattab Mohamed, notaire à Oran',
         notary_title: 'Maître Lattab Mohamed — Notaire à Oran'
       }
     },
@@ -450,7 +448,7 @@ export const translations = {
       services_title: 'Compétences notariales',
       tools_title: 'Outils',
       contact_title: 'Contact',
-      copyright: 'Tous droits réservés — Étude Public Notarial',
+      copyright: 'Tous droits réservés — Office notarial Maître Lattab Mohamed',
       terms_link: 'Conditions d\'utilisation',
       privacy_link: 'Politique de confidentialité'
     },

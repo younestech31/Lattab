@@ -2,14 +2,13 @@ import type { Metadata } from 'next';
 export const revalidate = 86400; // 24h ISR
 import { HomeContent } from '@/components/HomeContent';
 import { SITE_URL } from '@/lib/config';
-import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = "Étude Notariale — Maître Lattab Mohamed, Notaire Oran ⚖️ Contrat de vente, constitution de sociétés, procurations et calcul du prix de référence 2026.";
-  assertDescriptionLength(desc, 'French Home Page / app/fr/page.tsx');
+  const title = 'Notaire à Oran — Maître Lattab Mohamed | Tribunal de Flaussen';
+  const desc = 'Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Prise de rendez-vous.';
 
   return {
-    title: { absolute: 'Office Notarial de Me Lattab Mohamed — Oran' },
+    title: { absolute: title },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/fr`,
@@ -20,17 +19,18 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran',
+      title,
       description: desc,
       url: `${SITE_URL}/fr`,
-      siteName: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran',
+      siteName: 'Maître Lattab Mohamed, notaire à Oran',
       locale: 'fr_DZ',
+      alternateLocale: ['ar_DZ'],
       type: 'website',
-      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran' }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Maître Lattab Mohamed, notaire à Oran' }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Étude Public Notarial — Maître Lattab Mohamed, Notaire à Oran',
+      title,
       description: desc,
       images: [`${SITE_URL}/og-image.jpg`],
     },

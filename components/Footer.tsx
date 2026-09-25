@@ -13,56 +13,42 @@ export default function Footer({ lang }: FooterProps) {
 
   const getHref = (href: string) => {
     if (lang === 'fr') {
-      if (href.startsWith('/#')) {
-        return `/fr#${href.slice(2)}`;
-      }
-      if (href === '/blog') {
-        return '/fr/blog';
-      }
-      if (href === '/calculateur-prix-referentiel') {
-        return '/fr/calculateur-prix-referentiel';
-      }
-      if (href === '/useful-links') {
-        return '/fr/useful-links';
-      }
-      if (href === '/terms-privacy') {
-        return '/fr/terms-privacy';
-      }
+      if (href === '/') return '/fr';
+      if (href.startsWith('/#')) return `/fr#${href.slice(2)}`;
+      if (!href.startsWith('/fr')) return `/fr${href}`;
     }
     return href;
   };
 
   const quickLinks = [
-    { href: '/#home', label: translations[lang].nav.home },
-    { href: '/#services', label: translations[lang].nav.services },
+    { href: '/', label: translations[lang].nav.home },
+    { href: '/a-propos', label: lang === 'ar' ? 'عن المكتب' : 'À propos' },
+    { href: '/contact', label: lang === 'ar' ? 'اتصل بنا' : 'Contact' },
     { href: '/calculateur-prix-referentiel', label: translations[lang].nav.calculator },
     { href: '/blog', label: translations[lang].nav.blog },
     { href: '/useful-links', label: translations[lang].nav.useful_links },
-    { href: '/#procedures', label: translations[lang].nav.procedures },
     { href: '/#faq', label: translations[lang].nav.faq },
-    { href: '/#appointment', label: translations[lang].nav.contact },
     { href: '/terms-privacy', label: translations[lang].footer.terms_link },
   ];
 
   const services = lang === 'ar' ? [
-    'عقود البيع والشراء',
-    'عقود الإيجار',
-    'الوكالات',
-    'عقود الزواج',
-    'تأسيس الشركات',
-    'الرهن والتأمين',
-    'التصريحات والمصادقات',
-    'حساب السعر المرجعي',
+    { href: '/services/vente-immobiliere', label: 'عقود بيع وشراء العقارات' },
+    { href: '/services/creation-societe', label: 'تأسيس الشركات التجارية' },
+    { href: '/services/procuration', label: 'الوكالات والتفويضات' },
+    { href: '/services/succession', label: 'الفريضة والتركات' },
+    { href: '/services/contrat-mariage', label: 'عقود الزواج' },
+    { href: '/services/hypotheque', label: 'الرهن العقاري والتأمينات' },
   ] : [
-    'Actes de vente',
-    'Actes de location',
-    'Procurations et mandats',
-    'Actes de mariage',
-    'Constitution de sociétés',
-    'Hypothèques et assurances',
-    'Certification de signature',
-    'Calcul de prix de référence',
+    { href: '/services/vente-immobiliere', label: 'Vente immobilière' },
+    { href: '/services/creation-societe', label: 'Création de sociétés' },
+    { href: '/services/procuration', label: 'Procurations & mandats' },
+    { href: '/services/succession', label: 'Succession & héritage' },
+    { href: '/services/contrat-mariage', label: 'Contrat de mariage' },
+    { href: '/services/hypotheque', label: 'Hypothèque & sûretés' },
   ];
+
+  const brandTitle = lang === 'ar' ? 'الأستاذ لعطب محمد — موثق بوهران' : 'Maître Lattab Mohamed, notaire à Oran';
+  const brandSubtitle = lang === 'ar' ? 'الديوان العمومي للتوثيق' : 'Office notarial Maître Lattab Mohamed';
 
   return (
     <footer 
@@ -78,11 +64,11 @@ export default function Footer({ lang }: FooterProps) {
           {/* About */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <Link href={getHref('/#home')} className="flex items-center gap-3">
+              <Link href={getHref('/')} className="flex items-center gap-3">
                 <div className="w-16 h-16 bg-white rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
                   <Image 
                     src="/logo-small.webp" 
-                    alt={translations[lang].hero.title} 
+                    alt={brandTitle} 
                     width={64} 
                     height={64}
                     className="w-full h-full object-contain"
@@ -90,17 +76,17 @@ export default function Footer({ lang }: FooterProps) {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">{translations[lang].hero.title}</h3>
-                  <p className="text-gray-400 text-sm">{translations[lang].hero.subtitle}</p>
+                  <p className="text-xl font-bold">{brandTitle}</p>
+                  <p className="text-gray-400 text-sm">{brandSubtitle}</p>
                 </div>
               </Link>
             </div>
             
             {/* Institutional Information */}
             <div className="mb-6" dir={lang === 'fr' ? 'ltr' : 'rtl'}>
-              <h3 className="font-bold text-white text-sm mb-3">
+              <p className="font-bold text-white text-sm mb-3">
                 {lang === 'ar' ? 'المعلومات المؤسسية' : 'Informations institutionnelles'}
-              </h3>
+              </p>
               <dl className="space-y-1.5 text-emerald-200 text-xs">
                 <div>
                   <dt className="sr-only">{lang === 'ar' ? 'الصفة الرسمية' : 'Qualité officielle'}</dt>
@@ -139,7 +125,7 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6">{translations[lang].footer.quick_links_title}</h4>
+            <p className="text-lg font-bold mb-6">{translations[lang].footer.quick_links_title}</p>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -165,18 +151,18 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-bold mb-6">{translations[lang].footer.services_title}</h4>
+            <p className="text-lg font-bold mb-6">{translations[lang].footer.services_title}</p>
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
                   <Link
-                    href={getHref('/#services')}
+                    href={getHref(service.href)}
                     className="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2"
                   >
                     <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    {service}
+                    {service.label}
                   </Link>
                 </li>
               ))}
@@ -185,7 +171,7 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Tools */}
           <div>
-            <h4 className="text-lg font-bold mb-4">{translations[lang].footer.tools_title}</h4>
+            <p className="text-lg font-bold mb-4">{translations[lang].footer.tools_title}</p>
             <ul className="space-y-3">
               <li>
                 <Link
@@ -198,12 +184,23 @@ export default function Footer({ lang }: FooterProps) {
                   {translations[lang].nav.calculator}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={getHref('/useful-links')}
+                  className="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2"
+                >
+                  <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" />
+                  </svg>
+                  {translations[lang].nav.useful_links}
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold mb-6">{translations[lang].footer.contact_title}</h4>
+            <p className="text-lg font-bold mb-6">{translations[lang].footer.contact_title}</p>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <svg className="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

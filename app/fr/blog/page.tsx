@@ -49,18 +49,28 @@ export async function generateMetadata({
       title: 'Blog Juridique et Immobilier — Notaire à Oran',
       description: desc,
       url: `${SITE_URL}/fr/blog`,
-      siteName: 'Office Notarial de Maître Lattab Mohamed — Notaire à Oran',
+      siteName: 'Maître Lattab Mohamed, notaire à Oran',
       images: [
         {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Blog Juridique - Notaire Oran',
+          alt: 'Blog Juridique — Maître Lattab Mohamed',
         },
       ],
       locale: 'fr_DZ',
       alternateLocale: ['ar_DZ'],
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Blog Juridique et Immobilier — Notaire à Oran',
+      description: desc,
+      images: [`${SITE_URL}/og-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
@@ -119,7 +129,7 @@ export default async function FrenchBlogList({
           { name: "Blog", item: `${SITE_URL}/fr/blog` }
         ]}
       />
-      <main className="pt-32 pb-20" dir="ltr" lang="fr">
+      <div className="pt-32 pb-20" dir="ltr" lang="fr">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-sans">Blog Juridique et Immobilier</h1>
@@ -164,7 +174,7 @@ export default async function FrenchBlogList({
           </section>
 
         </div>
-      </main>
+      </div>
     </div>
   );
 }

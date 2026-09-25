@@ -1,16 +1,17 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { isKnownPublicRoute } from '@/lib/data/knownRoutes';
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
 
-  // 2. Remove trailing slashes (except root)
+  // 1. Remove trailing slashes (except root)
   if (url.pathname !== '/' && url.pathname.endsWith('/')) {
     url.pathname = url.pathname.slice(0, -1);
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  // 3. Enforce lowercase URLs (prevents duplicate content)
+  // 2. Enforce lowercase URLs (prevents duplicate content)
   const lowercasePath = url.pathname.toLowerCase();
   if (url.pathname !== lowercasePath) {
     url.pathname = lowercasePath;
@@ -18,8 +19,6 @@ export function middleware(request: NextRequest) {
   }
 
   const isDev = process.env.NODE_ENV !== 'production';
-  // Last updated: 2026-05-22 — includes Google Maps, Ahrefs Analytics, Vercel Analytics
-  // wa.me is navigational (<a href> / window.location.href), not a fetch target — not needed in connect-src.
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' https://analytics.ahrefs.com https://va.vercel-insights.com https://maps.googleapis.com${isDev ? " 'unsafe-eval'" : ""};
@@ -43,7 +42,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  // Language detection based on URL prefix
+  // Language detection based strictly on URL prefix (/fr = French, / = Arabic)
   let lang = 'ar';
   if (url.pathname.startsWith('/fr') && (url.pathname === '/fr' || url.pathname.startsWith('/fr/'))) {
     lang = 'fr';
@@ -63,29 +62,21 @@ export function middleware(request: NextRequest) {
   response.headers.set('Content-Security-Policy', cspHeader);
   response.headers.set('x-lang', lang);
 
-  // Set-Cookie to keep the cookie in sync with Detected Language for URL-based routes and bilingual state
-  response.cookies.set('lang', lang, { path: '/', maxAge: 31536000 });
-
-  // Dynamic/personalised requests
+  const isKnownRoute = isKnownPublicRoute(url.pathname);
   const isDynamic = request.method === 'POST' || url.searchParams.has('q');
-  
+
+  // Dynamic/search requests or unknown routes (404 candidates)
+  if (isDynamic || !isKnownRoute) {
+    response.headers.set('X-Robots-Tag', 'noindex, follow');
+  } else {
+    response.headers.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+  }
+
   if (isDynamic) {
     response.headers.set('Cache-Control', 'private, no-store');
   } else {
-    // Static pages
-    // The architectural assumption in the prompt is INCORRECT:
-    // Server Components like NonceScriptLoader reading headers() will force Next.js into dynamic rendering.
-    // Even if we set s-maxage here, caching a nonce at the edge while middleware generates a new CSP header 
-    // will cause a nonce mismatch and block all scripts. 
+    // Static marketing pages: ISR / public cache
     response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-    response.headers.set('Surrogate-Control', 'no-store'); // Tells Vercel to delegate to the page's revalidate
-  }
-
-  // Vary header: Keep Vary: Cookie only on routes where language actually varies the response
-  // /blog/[slug] and /blog/fr/[slug] do not vary by language cookie in main content.
-  const isBlogPost = url.pathname.startsWith('/blog/') && url.pathname !== '/blog';
-  if (!isBlogPost) {
-    response.headers.set('Vary', 'Cookie');
   }
 
   return response;
@@ -94,3 +85,4 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:ico|png|jpg|jpeg|webp|svg|txt|xml)).*)'],
 };
+

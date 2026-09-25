@@ -31,7 +31,6 @@ export async function generateMetadata({
     };
   }
 
-  const lang = 'ar';
   const desc = 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.';
   assertDescriptionLength(desc, 'blog page main');
 
@@ -50,18 +49,28 @@ export async function generateMetadata({
       title: 'المدونة القانونية والعقارية — موثق وهران',
       description: desc,
       url: `${SITE_URL}/blog`,
-      siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
       images: [
         {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'المدونة القانونية - موثق معتمد',
+          alt: 'المدونة القانونية والعقارية — موثق وهران',
         },
       ],
-      locale: lang === 'ar' ? 'ar_DZ' : 'fr_DZ',
-      alternateLocale: lang === 'ar' ? ['fr_DZ'] : ['ar_DZ'],
+      locale: 'ar_DZ',
+      alternateLocale: ['fr_DZ'],
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'المدونة القانونية والعقارية — موثق وهران',
+      description: desc,
+      images: [`${SITE_URL}/og-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
@@ -120,7 +129,7 @@ export default async function BlogList({
           { name: "المدونة", item: `${SITE_URL}/blog` }
         ]}
       />
-      <main className="pt-32 pb-20" dir="rtl">
+      <div className="pt-32 pb-20" dir="rtl">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">المدونة القانونية والعقارية — موثق وهران</h1>
@@ -165,7 +174,7 @@ export default async function BlogList({
           </section>
 
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -33,20 +33,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
-    template: '%s — الديوان العمومي للتوثيق',
+    default: 'الأستاذ لعطب محمد — موثق بوهران',
+    template: '%s',
   },
-  description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران ⚖️ لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.',
-  keywords: [
-    'الديوان العمومي للتوثيق', 'موثق وهران', 'موثق معتمد وهران', 'الديوان العمومي للتوثيق وهران',
-    'توثيق عقود الجزائر', 'تصريح ثمن بيع عقاري 2026',
-    'عقود عقارية', 'تأسيس شركات الجزائر',
-    'notaire Oran', 'notaire agréé Oran', 'Etude Public Notarial Oran',
-    'acte de vente Oran', 'prix référence immobilier Algérie 2026',
-    'création société Algérie', 'Maître Lattab Mohamed',
-  ],
-  authors: [{ name: 'الديوان العمومي للتوثيق', url: SITE_URL }],
-  creator: 'الديوان العمومي للتوثيق',
+  description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.',
+  authors: [{ name: 'الأستاذ لعطب محمد', url: `${SITE_URL}/a-propos` }],
+  creator: 'الأستاذ لعطب محمد',
   publisher: 'الديوان العمومي للتوثيق',
   category: 'legal services',
   robots: {
@@ -73,19 +65,26 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
+    type: 'website',
+    locale: 'ar_DZ',
+    alternateLocale: ['fr_DZ'],
+    url: SITE_URL,
+    siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+    title: 'الأستاذ لعطب محمد — موثق بوهران',
+    description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري.',
     images: [
       {
         url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
+        alt: 'الأستاذ لعطب محمد — موثق بوهران',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
-    description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران ⚖️ لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.',
+    title: 'الأستاذ لعطب محمد — موثق بوهران',
+    description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
   verification: {
@@ -148,7 +147,9 @@ export default async function RootLayout({children}: {children: React.ReactNode}
           </div>
           <FloatingWhatsApp />
           
-          {children}
+          <main id="main-content" className="flex-grow flex flex-col">
+            {children}
+          </main>
           <div className="no-print">
             <Footer lang={resolvedLang} />
           </div>

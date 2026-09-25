@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Calculateur Prix Référence Immobilier 2026 — Oran',
       description: desc,
       url: `${SITE_URL}/fr/calculateur-prix-referentiel`,
-      siteName: 'Étude Public Notarial — Maître Lattab Mohamed',
+      siteName: 'Maître Lattab Mohamed, notaire à Oran',
       type: 'website',
       images: [{ 
         url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 
@@ -38,6 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
         alt: 'Calculateur des prix de référence immobilier Oran' 
       }],
       locale: 'fr_DZ',
+      alternateLocale: ['ar_DZ'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -72,7 +73,7 @@ export default function CalculatorPageFR() {
           { name: "Calculateur prix de référence", item: `${SITE_URL}/fr/calculateur-prix-referentiel` }
         ]}
       />
-      <main className="bg-gray-50">
+      <div className="bg-gray-50">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
@@ -170,7 +171,7 @@ export default function CalculatorPageFR() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

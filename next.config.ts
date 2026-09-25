@@ -16,13 +16,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/(.*)',
-        headers: [
-          ...securityHeaders,
-          {
-            key: 'X-Robots-Tag',
-            value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-          },
-        ],
+        headers: securityHeaders,
       },
       {
         source: '/(.*)\\.(ico|png|jpg|jpeg|webp|avif|svg|woff2|woff)',

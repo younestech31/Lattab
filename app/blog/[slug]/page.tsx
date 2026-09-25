@@ -5,13 +5,15 @@ import { notFound } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
-import { blogPosts, frBlogPosts, getBlogPosts } from '@/lib/data/blog';
+import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL, TITLE_TEMPLATE_SUFFIX } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
+import ArticleAuthorBox from '@/components/ArticleAuthorBox';
 import { enrichDescription, AR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
 import { RegisterAlternatePath } from '@/lib/i18n';
+import { getRelatedPostsByCluster, CLUSTER_NAMES, SLUG_TO_CLUSTER } from '@/lib/data/clusters';
 
 const serviceMappings: Record<string, string> = {
   'عقاري': 'عقود البيع والشراء العقارية',
@@ -116,10 +118,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const cleanContentForWords = stripFrontmatterAndLeadingH1(content);
   const wordCount = Math.round(cleanContentForWords.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
   
-  const relatedPosts = getBlogPosts()
-    .filter(p => p.slug !== slug && p.category === post.category)
-    .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
-    .slice(0, 2);
+  const relatedPosts = getRelatedPostsByCluster(slug, 'ar', 3);
+  const clusterKey = SLUG_TO_CLUSTER[slug] || 'immobilier';
+  const clusterHeading = CLUSTER_NAMES.ar[clusterKey];
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -245,6 +246,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </span>
                 هذا المقال تم إعداده لأغراض إعلامية وتوعوية فقط، وقد تتغير النصوص القانونية والجبائية أو الإجراءات بمرور الوقت وفقاً للجريدة الرسمية. يرجى التقرب من مكتب الموثق للحصول على استشارة قانونية دقيقة ومحدثة تناسب وضعيتك الخاصة.
               </div>
+
+              {/* Author Box with E-E-A-T credentials and links */}
+              <ArticleAuthorBox lang="ar" />
             </div>
             
             <div className="bg-emerald-900 p-8 md:p-12 text-center text-white">
@@ -253,7 +257,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 مكتب الأستاذ لعطب محمد - الموثق المعتمد، مستعد لدراسة ملفك وتسهيل إجراءاتك بأمان تام وفي أسرع وقت.
               </p>
               <Link 
-                href="/#contact"
+                href="/contact"
                 className="inline-flex py-3 px-8 bg-amber-500 hover:bg-amber-400 text-emerald-950 rounded-full font-bold text-lg transition-colors shadow-lg shadow-amber-500/20"
               >
                 تواصل معنا الآن لإيداع ملفك
@@ -270,29 +274,41 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </Link>
               </li>
               <li>
-                <Link href="/#appointment" className="text-emerald-600 hover:underline font-medium">
-                  ← احجز موعداً مع الموثق مباشرة
+                <Link href="/services/vente-immobiliere" className="text-emerald-600 hover:underline font-medium">
+                  ← دليل توثيق عقود البيع العقاري بمحكمة فلاوسن
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-emerald-600 hover:underline font-medium">
+                  ← حجز موعد وزيارة مكتب الموثق بحي العقيد لطفي
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Related Posts for Internal Linking */}
+          {/* Related Posts from Same Cluster for Internal Linking */}
           {relatedPosts.length > 0 && (
             <div className="mt-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-sans">مقالات أخرى في: {post.category}</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-sans">
+                مقالات ذات صلة في محور: {clusterHeading}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedPosts.map((related) => (
                   <Link 
                     key={related.id}
                     href={`/blog/${related.slug}`}
-                    className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group block"
+                    className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group block flex flex-col justify-between"
                   >
-                    <p className="text-sm font-bold text-emerald-600 mb-2">{related.category}</p>
-                    <h4 className="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2 mb-2">
-                      {related.title}
-                    </h4>
-                    <p className="text-xs text-gray-500 flex items-center gap-1">
+                    <div>
+                      <p className="text-xs font-bold text-emerald-600 mb-2">{related.category}</p>
+                      <h4 className="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2 mb-2 text-sm leading-snug">
+                        {related.title}
+                      </h4>
+                      <p className="text-xs text-gray-500 line-clamp-2 mb-3">
+                        {related.description}
+                      </p>
+                    </div>
+                    <p className="text-xs text-gray-400 flex items-center gap-1 pt-2 border-t border-gray-50">
                       <Calendar className="w-3 h-3" />
                       {related.date}
                     </p>

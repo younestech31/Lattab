@@ -20,8 +20,21 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/terms-privacy`,
     title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
     description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
-    siteName: 'مكتب الأستاذ لعطب محمد — موثق وهران',
+    siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+    locale: 'ar_DZ',
+    alternateLocale: ['fr_DZ'],
+    type: 'website',
     images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: 'الشروط والأحكام وسياسة الخصوصية' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
+    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
+    images: [`${SITE_URL}/logo.webp`],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -32,7 +45,7 @@ const TermsPrivacyPage = async () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <main className="bg-gray-50" dir={isAr ? 'rtl' : 'ltr'}>
+      <div className="bg-gray-50" dir={isAr ? 'rtl' : 'ltr'}>
       {/* Hero Section */}
       <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
         {/* Decorative background pattern */}
@@ -332,7 +345,7 @@ const TermsPrivacyPage = async () => {
           <p className="mt-2 font-medium">جميع الحقوق محفوظة © 2026 - مكتب الموثق الأستاذ لعطب محمد</p>
         </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

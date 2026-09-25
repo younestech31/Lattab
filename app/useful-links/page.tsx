@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   assertDescriptionLength(desc, 'Useful Links / app/useful-links/page.tsx');
 
   return {
-    title: 'المصادر والروابط الإدارية والقانونية المفيدة | موثق وهران',
+    title: { absolute: 'المصادر والروابط الإدارية والقانونية المفيدة | موثق وهران' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/useful-links`,
@@ -26,8 +26,9 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'روابط ومصادر قانونية وإدارية مفيدة في الجزائر | الأستاذ لعطب محمد',
       description: desc,
       url: `${SITE_URL}/useful-links`,
-      siteName: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
+      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
       locale: 'ar_DZ',
+      alternateLocale: ['fr_DZ'],
       type: 'website',
       images: [
         {
@@ -37,6 +38,12 @@ export async function generateMetadata(): Promise<Metadata> {
           alt: 'المصادر والروابط الإدارية والقانونية المفيدة | موثق وهران',
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'المصادر والروابط الإدارية والقانونية المفيدة | موثق وهران',
+      description: desc,
+      images: [`${SITE_URL}/og-image.jpg`],
     },
     robots: {
       index: true,
@@ -144,7 +151,7 @@ export default function UsefulLinksPage() {
           { name: "الروابط المفيدة", item: `${SITE_URL}/useful-links` }
         ]}
       />
-      <main id="main-content" className="bg-gray-50 pb-20" dir="rtl">
+      <div className="bg-gray-50 pb-20" dir="rtl">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
           {/* Decorative background pattern */}
@@ -254,7 +261,7 @@ export default function UsefulLinksPage() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

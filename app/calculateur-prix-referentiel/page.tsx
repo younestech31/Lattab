@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
       description: desc,
       url: `${SITE_URL}/calculateur-prix-referentiel`,
-      siteName: 'مكتب الأستاذ لعطب محمد - موثق وهران',
+      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
       type: 'website',
       images: [{ 
         url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 
@@ -40,6 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
         alt: 'حاسبة السعر المرجعي العقاري وهران' 
       }],
       locale: 'ar_DZ',
+      alternateLocale: ['fr_DZ'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -77,7 +78,7 @@ export default function CalculatorPage() {
           { name: "حاسبة السعر المرجعي", item: `${SITE_URL}/calculateur-prix-referentiel` }
         ]}
       />
-      <main className="bg-gray-50" dir="rtl" lang="ar">
+      <div className="bg-gray-50" dir="rtl" lang="ar">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
@@ -175,7 +176,7 @@ export default function CalculatorPage() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

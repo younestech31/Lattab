@@ -5,13 +5,15 @@ import { notFound } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
-import { frBlogPosts, getFrBlogPosts } from '@/lib/data/blog';
+import { frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL, FR_TITLE_SUFFIX } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
+import ArticleAuthorBox from '@/components/ArticleAuthorBox';
 import { enrichDescription, FR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
 import { RegisterAlternatePath } from '@/lib/i18n';
+import { getRelatedPostsByCluster, CLUSTER_NAMES, SLUG_TO_CLUSTER } from '@/lib/data/clusters';
 
 const serviceMappings: Record<string, string> = {
   'Immobilier': 'عقود البيع والشراء العقارية',
@@ -109,10 +111,9 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
   const cleanContentForWords = stripFrontmatterAndLeadingH1(content);
   const wordCount = Math.round(cleanContentForWords.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
   
-  const relatedPosts = getFrBlogPosts()
-    .filter(p => p.slug !== slug && p.category === post.category)
-    .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
-    .slice(0, 2);
+  const relatedPosts = getRelatedPostsByCluster(slug, 'fr', 3);
+  const clusterKey = SLUG_TO_CLUSTER[slug] || 'immobilier';
+  const clusterHeading = CLUSTER_NAMES.fr[clusterKey];
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -128,9 +129,9 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
           
           <div className="mb-4 text-sm text-gray-500 overflow-x-auto whitespace-nowrap">
             <nav className="flex items-center gap-2" aria-label="Breadcrumb">
-              <Link href="/" className="hover:text-emerald-700 transition-colors">Accueil</Link>
+              <Link href="/fr" className="hover:text-emerald-700 transition-colors">Accueil</Link>
               <span aria-hidden="true">&gt;</span>
-              <Link href="/blog" className="hover:text-emerald-700 transition-colors">Blog</Link>
+              <Link href="/fr/blog" className="hover:text-emerald-700 transition-colors">Blog</Link>
               <span aria-hidden="true">&gt;</span>
               <span className="text-gray-900 font-medium truncate max-w-[200px] sm:max-w-none inline-block align-bottom">{post.title}</span>
             </nav>
@@ -138,7 +139,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
 
           <div className="mb-8">
             <Link 
-              href="/blog" 
+              href="/fr/blog" 
               className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-800 font-bold transition-colors group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -237,6 +238,9 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
                 </span>
                 Cet article a été rédigé à des fins d&apos;information et de sensibilisation uniquement, et les textes législatifs, fiscaux ou les procédures peuvent changer au fil du temps selon le Journal Officiel. Veuillez vous rapprocher de l&apos;office notarial pour obtenir des conseils juridiques précis et mis à jour adaptés à votre situation personnelle.
               </div>
+
+              {/* Author Box with E-E-A-T credentials and links */}
+              <ArticleAuthorBox lang="fr" />
             </div>
             
             <div className="bg-emerald-950 p-8 md:p-12 text-center text-white">
@@ -245,7 +249,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
                 L&apos;Office Notarial de Maître Lattab Mohamed est prêt à étudier votre dossier et rassurer vos procédures en toute sécurité et dans les meilleurs délais.
               </p>
               <Link 
-                href="/#contact"
+                href="/fr/contact"
                 className="inline-flex py-3 px-8 bg-amber-500 hover:bg-amber-400 text-emerald-950 rounded-full font-bold text-lg transition-colors shadow-lg shadow-amber-500/20"
               >
                 Contactez-nous maintenant pour déposer votre dossier
@@ -257,13 +261,18 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
             <h3 className="font-bold text-gray-800 mb-3">🔗 Cela pourrait aussi vous être utile :</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/calculateur-prix-referentiel" className="text-emerald-600 hover:underline font-medium">
+                <Link href="/fr/calculateur-prix-referentiel" className="text-emerald-600 hover:underline font-medium">
                   → Calculez le prix de référence de votre bien immobilier à Oran en 2026
                 </Link>
               </li>
               <li>
-                <Link href="/#appointment" className="text-emerald-600 hover:underline font-medium">
-                  → Prenez rendez-vous avec le notaire directement
+                <Link href="/fr/services/vente-immobiliere" className="text-emerald-600 hover:underline font-medium">
+                  → Guide des actes de vente immobilière à Oran (Tribunal de Flaussen)
+                </Link>
+              </li>
+              <li>
+                <Link href="/fr/contact" className="text-emerald-600 hover:underline font-medium">
+                  → Prendre rendez-vous à l&apos;office notarial à Akid Lotfi
                 </Link>
               </li>
             </ul>
@@ -272,19 +281,26 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
           {/* Related Posts for Internal Linking */}
           {relatedPosts.length > 0 && (
             <div className="mt-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-sans">Autres articles dans : {post.category}</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-sans">
+                Articles connexes : {clusterHeading}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedPosts.map((related) => (
                   <Link 
                     key={related.id}
                     href={`/fr/blog/${related.slug}`}
-                    className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group block"
+                    className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group block flex flex-col justify-between"
                   >
-                    <p className="text-sm font-bold text-emerald-600 mb-2">{related.category}</p>
-                    <h4 className="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2 mb-2">
-                      {related.title}
-                    </h4>
-                    <p className="text-xs text-gray-500 flex items-center gap-1">
+                    <div>
+                      <p className="text-xs font-bold text-emerald-600 mb-2">{related.category}</p>
+                      <h4 className="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2 mb-2 text-sm leading-snug">
+                        {related.title}
+                      </h4>
+                      <p className="text-xs text-gray-500 line-clamp-2 mb-3">
+                        {related.description}
+                      </p>
+                    </div>
+                    <p className="text-xs text-gray-400 flex items-center gap-1 pt-2 border-t border-gray-50">
                       <Calendar className="w-3 h-3" />
                       {related.date}
                     </p>

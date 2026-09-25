@@ -37,16 +37,16 @@ export default function Hero({ lang }: { lang: Language }) {
               <span className="font-medium">{t(lang, 'hero', 'badge')}</span>
             </div>
 
-            {/* Title — fluid font size with clamp */}
+            {/* Eyebrow */}
+            <p className="text-amber-300 font-semibold text-base sm:text-lg">
+              {t(lang, 'hero', 'eyebrow')}
+            </p>
+
+            {/* Title — single distinct H1 */}
             <h1
-              className="font-bold text-white leading-[1.2] tracking-tight text-[clamp(1.75rem,calc(6vw+0.5rem),4.5rem)]"
+              className="font-bold text-white leading-[1.2] tracking-tight text-[clamp(1.75rem,calc(5vw+0.5rem),3.75rem)]"
             >
-              {t(lang, 'hero', 'title')}
-              <span
-                className="block text-amber-400 mt-1 text-[clamp(1.5rem,calc(5vw+0.5rem),3.75rem)]"
-              >
-                {t(lang, 'hero', 'subtitle')}
-              </span>
+              {lang === 'ar' ? 'الأستاذ لعطب محمد — موثق بوهران' : 'Maître Lattab Mohamed, notaire à Oran'}
             </h1>
 
             {/* Subtitle */}

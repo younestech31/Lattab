@@ -1,18 +1,16 @@
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/config';
-import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 import { HomeContent } from '@/components/HomeContent';
 
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'الديوان العمومي للتوثيق — موثق محكمة فلاوسن وهران. معلومات حول الإجراءات التوثيقية والوثائق المطلوبة والعقارات وتأسيس الشركات وفق القانون الجزائري.';
-  assertDescriptionLength(desc, 'Home Page / app/page.tsx');
+  const title = 'موثق وهران — الأستاذ لعطب محمد | محكمة فلاوسن';
+  const desc = 'موثق معتمد لدى محكمة فلاوسن بوهران، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون. إمكانية حجز موعد إداري واستشارة قانونية.';
 
   return {
-    title: 'الديوان العمومي للتوثيق وهران — الأستاذ لعطب محمد',
+    title,
     description: desc,
-    keywords: 'موثق وهران, توثيق عقود, بيع عقار الجزائر, تأسيس شركة, وكالة, رهن عقاري, السعر المرجعي العقاري',
     alternates: {
       canonical: SITE_URL,
       languages: {
@@ -22,20 +20,27 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'الديوان العمومي للتوثيق — موثق وهران',
-      description: 'الديوان العمومي للتوثيق — معلومات حول الإجراءات التوثيقية والوثائق المطلوبة لولاية وهران.',
+      title,
+      description: desc,
       url: SITE_URL,
-      siteName: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
+      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
       locale: 'ar_DZ',
+      alternateLocale: ['fr_DZ'],
       type: 'website',
       images: [
         {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
+          alt: 'الأستاذ لعطب محمد — موثق بوهران',
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
+      images: [`${SITE_URL}/og-image.jpg`],
     },
     robots: {
       index: true,

@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   assertDescriptionLength(desc, 'French Useful Links / app/fr/useful-links/page.tsx');
 
   return {
-    title: 'Liens et Institutions Utiles en Algérie | Notaire Oran',
+    title: { absolute: 'Liens et Institutions Utiles en Algérie | Notaire Oran' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/fr/useful-links`,
@@ -26,8 +26,9 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Liens et ressources administratives et juridiques utiles | Me Lattab Mohamed',
       description: desc,
       url: `${SITE_URL}/fr/useful-links`,
-      siteName: 'Étude Notariale — Maître Lattab Mohamed, Notaire Oran',
+      siteName: 'Maître Lattab Mohamed, notaire à Oran',
       locale: 'fr_DZ',
+      alternateLocale: ['ar_DZ'],
       type: 'website',
       images: [
         {
@@ -37,6 +38,12 @@ export async function generateMetadata(): Promise<Metadata> {
           alt: 'Liens et Institutions Utiles en Algérie | Notaire Oran',
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Liens et Institutions Utiles en Algérie | Notaire Oran',
+      description: desc,
+      images: [`${SITE_URL}/og-image.jpg`],
     },
     robots: {
       index: true,
@@ -144,7 +151,7 @@ export default function FrenchUsefulLinksPage() {
           { name: "Liens utiles", item: `${SITE_URL}/fr/useful-links` }
         ]}
       />
-      <main id="main-content" className="bg-gray-50 pb-20" dir="ltr">
+      <div className="bg-gray-50 pb-20" dir="ltr">
         {/* Hero Section */}
         <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
           {/* Decorative background pattern */}
@@ -254,7 +261,7 @@ export default function FrenchUsefulLinksPage() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
