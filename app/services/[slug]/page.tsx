@@ -46,7 +46,7 @@ export async function generateMetadata({
       title: service.ar.metaTitle,
       description: service.ar.metaDescription,
       url: pageUrl,
-      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+      siteName: 'ديوان التوثيق ببلدية وهران',
       locale: 'ar_DZ',
       alternateLocale: ['fr_DZ'],
       type: 'article',

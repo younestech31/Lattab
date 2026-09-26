@@ -1,3 +1,5 @@
+'use client';
+
 export default function MapComponent() {
   return (
     <iframe
@@ -8,7 +10,7 @@ export default function MapComponent() {
       allowFullScreen
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
-      title="موقع مكتب الموثق لعطب محمد"
+      title="موقع ديوان التوثيق"
     />
   );
 }

@@ -19,7 +19,7 @@ export async function generateMetadata({
   const { q } = await searchParams;
 
   if (q) {
-    const searchDesc = `نتائج البحث عن المقالات المتعلقة بـ ${q} في المدونة القانونية والعقارية لمكتب الموثق لعطب محمد.`;
+    const searchDesc = `نتائج البحث عن المقالات المتعلقة بـ ${q} في المدونة القانونية والعقارية لديوان التوثيق.`;
     assertDescriptionLength(searchDesc, 'blog page search');
     return {
       title: `نتائج البحث عن "${q}" — المدونة القانونية`,
@@ -31,7 +31,7 @@ export async function generateMetadata({
     };
   }
 
-  const desc = 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من مكتب الموثق لعطب محمد بوهران.';
+  const desc = 'دليل شامل للقوانين العقارية والإجراءات التوثيقية في الجزائر. مقالات متخصصة من ديوان التوثيق بوهران.';
   assertDescriptionLength(desc, 'blog page main');
 
   return {
@@ -49,7 +49,7 @@ export async function generateMetadata({
       title: 'المدونة القانونية والعقارية — موثق وهران',
       description: desc,
       url: `${SITE_URL}/blog`,
-      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+      siteName: 'ديوان التوثيق ببلدية وهران',
       images: [
         {
           url: `${SITE_URL}/og-image.jpg`,
@@ -102,7 +102,7 @@ export default async function BlogList({
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "المدونة القانونية والعقارية — موثق وهران",
-    "description": "قائمة مقالات قانونية وعقارية من مكتب الأستاذ لعطب محمد، موثق معتمد بوهران",
+    "description": "قائمة مقالات قانونية وعقارية من ديوان التوثيق - وهران، موثق معتمد بوهران",
     "url": SITE_URL + "/blog",
     "numberOfItems": blogPosts.length,
     "itemListElement": blogPosts.map((post, index) => ({
@@ -122,7 +122,7 @@ export default async function BlogList({
       <JsonLdScript schema={itemListSchema} />
       <WebPageSchema
         url={`${SITE_URL}/blog`}
-        name="المدونة القانونية والعقارية | الأستاذ لعطب محمد - موثق"
+        name="المدونة القانونية والعقارية | ديوان التوثيق - وهران - موثق"
         description="مقالات ونصوص قانونية، الأسعار المرجعية للعقار بوهران 2026، شروحات تأسيس الشركات وكل ما يخص المعاملات التوثيقية بالجزائر."
         breadcrumbs={[
           { name: "الرئيسية", item: `${SITE_URL}/` },

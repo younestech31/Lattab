@@ -26,7 +26,7 @@ const WebPageSchema = async ({ url, name, description, breadcrumbs }: WebPageSch
     "isPartOf": {
       "@type": "WebSite",
       "url": SITE_URL,
-      "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران"
+      "name": "الديوان العمومي للتوثيق — ديوان التوثيق ببلدية وهران"
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",

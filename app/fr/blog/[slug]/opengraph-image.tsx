@@ -18,7 +18,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     const { slug } = await params;
     const post = frBlogPosts.find((p) => p.slug === slug);
 
-    const title = post?.title ?? 'Office Notarial de Maître Lattab Mohamed - Notaire à Oran';
+    const title = post?.title ?? 'Office Notarial de Office Notarial - Oran - Notaire à Oran';
     const category = post?.category ?? 'Droit Algérien';
 
     return new ImageResponse(
@@ -58,7 +58,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             }}
           >
             <div style={{ color: '#ffffff', fontSize: '22px' }}>
-              Office Notarial de Maître Lattab Mohamed — Notaire à Oran
+              Office Notarial de Office Notarial - Oran
             </div>
             <div
               style={{
@@ -97,7 +97,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           }}
         >
           <div style={{ fontSize: '48px', fontWeight: 800, marginBottom: '20px' }}>
-            Office Notarial de Maître Lattab Mohamed — Notaire à Oran
+            Office Notarial de Office Notarial - Oran
           </div>
           <div style={{ fontSize: '24px', color: '#d1fae5' }}>
             Guide Juridique et Notarial Algérien

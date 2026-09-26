@@ -76,9 +76,4 @@ Tenter de céder un fonds de commerce par une simple feuille sous seing privé r
 ---
 
 ## Conclusion
-La cession de fonds de commerce est une opération de haute technicité juridique et fiscale. 
-
-Vous envisagez de vendre ou de reprendre un commerce en Algérie ? **Ne laissez rien au hasard.**
-Réservez un [rendez-vous](/fr#appointment) avec l'Office Notarial de Maître Lattab Mohamed. Nous prenons en charge l'intégralité du traitement de votre dossier afin de sécuriser votre capital et garantir le succès juridique complet de votre projet.
-
-*Notre étude garantit la confidentialité rigoureuse de vos transactions d'affaires.*
+La cession de fonds de commerce est une opération réglementée par le Code de commerce algérien. L'intervention du notaire et le respect des formalités légales et fiscales (publicité légale au BOAL, purge des créances et acte authentique) constituent les garanties légales indispensables pour la sécurité de la transaction.

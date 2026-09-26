@@ -65,7 +65,7 @@ export default function HeaderShell({ lang, pathname }: HeaderShellProps) {
         <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
           <Image
             src="/logo-small.webp"
-            alt={lang === 'ar' ? 'شعار مكتب الأستاذ لعطب محمد' : 'Logo de l\'Étude Maître Lattab Mohamed'}
+            alt={lang === 'ar' ? 'شعار ديوان التوثيق - وهران' : 'Logo de l\'Étude Office Notarial - Oran'}
             width={48}
             height={48}
             quality={75}

@@ -5,8 +5,8 @@ import { SITE_URL } from '@/lib/config';
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'اتصل بنا وحجز موعد — الأستاذ لعطب محمد | موثق وهران';
-  const desc = 'بيانات الاتصال وحجز موعد لدى مكتب الأستاذ لعطب محمد موثق بوهران. حي العقيد لطفي، أرقام الهاتف، البريد الإلكتروني، مواعيد العمل، والموقع الجغرافي.';
+  const title = 'اتصل بنا وحجز موعد — ديوان التوثيق - وهران | موثق وهران';
+  const desc = 'بيانات الاتصال وحجز موعد لدى ديوان التوثيق ببلدية وهران. حي العقيد لطفي، أرقام الهاتف، البريد الإلكتروني، مواعيد العمل، والموقع الجغرافي.';
 
   return {
     title: { absolute: title },
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description: desc,
       url: `${SITE_URL}/contact`,
-      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+      siteName: 'ديوان التوثيق ببلدية وهران',
       locale: 'ar_DZ',
       alternateLocale: ['fr_DZ'],
       type: 'website',
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'الأستاذ لعطب محمد — موثق بوهران',
+          alt: 'ديوان التوثيق ببلدية وهران',
         },
       ],
     },

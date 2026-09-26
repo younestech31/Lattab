@@ -67,6 +67,4 @@ En Algérie, la rédaction des actes de société relève de la compétence excl
 * **Faciliter vos démarches bancaires :** Des statuts impeccablement rédigés facilitent la levée de fonds et l'ouverture de vos comptes de devises ou de dinars.
 
 ## Conclusion
-La création d'une SARL constitue l'acte de naissance de votre entreprise. C’est une étape passionnante et déterminante. 
-
-Vous disposez d'un projet d'avenir ambitieux ? **Faites du droit votre meilleur allié dès le premier jour.** Contactez notre cabinet pour organiser une consultation personnalisée et rédiger vos statuts de société en toute sérénité.
+La constitution d'une SARL en Algérie est obligatoirement constatée par acte authentique notarié. La rigueur dans la rédaction des statuts et la conformité aux dispositions légales et réglementaires garantissent le bon fonctionnement et la sécurité juridique de la société.

@@ -21,7 +21,7 @@ export default function ArticleAuthorBox({ lang }: ArticleAuthorBoxProps) {
         <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-white border-2 border-emerald-500/30 flex-shrink-0 flex items-center justify-center p-1.5 shadow-sm">
           <Image
             src="/logo-small.webp"
-            alt={isAr ? 'الأستاذ لعطب محمد — موثق بوهران' : 'Maître Lattab Mohamed — Notaire à Oran'}
+            alt={isAr ? 'ديوان التوثيق ببلدية وهران' : 'Office Notarial - Oran'}
             width={96}
             height={96}
             className="w-full h-full object-contain"
@@ -31,7 +31,7 @@ export default function ArticleAuthorBox({ lang }: ArticleAuthorBoxProps) {
         <div className="space-y-2 flex-grow">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-lg md:text-xl font-bold text-gray-900">
-              {isAr ? 'الأستاذ لعطب محمد' : 'Maître Lattab Mohamed'}
+              {isAr ? 'ديوان التوثيق - وهران' : 'Office Notarial - Oran'}
             </h3>
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
               {isAr ? 'موثق معتمد' : 'Notaire agréé'}
@@ -46,7 +46,7 @@ export default function ArticleAuthorBox({ lang }: ArticleAuthorBoxProps) {
 
           <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
             {isAr
-              ? 'ضابط عمومي معتمد بقرار وزاري صادر سنة 2008، حاصل على شهادة ماجستير في القانون الخاص من جامعة الجزائر، وخبرة مهنية تفوق 15 سنة في تحرير وتوثيق العقود المدنية والتجارية والعقارية والتركات وقوانين الشركات.'
+              ? 'الديوان العمومي للتوثيق يحرر ويوثق العقود المدنية والتجارية والعقارية والتركات وقوانين الشركات وفق أحكام التشريع والأنظمة السارية في الجزائر.'
               : 'Officier public titulaire d\'une charge notariale depuis 2008, titulaire d\'un Magister en Droit Privé de l\'Université d\'Alger, avec plus de 15 années d\'exercice dédié à la sécurisation des actes immobiliers, commerciaux et successoraux.'}
           </p>
 

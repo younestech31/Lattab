@@ -5,8 +5,8 @@ import { SITE_URL } from '@/lib/config';
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'Contact et rendez-vous — Maître Lattab Mohamed | Notaire à Oran';
-  const desc = 'Contactez l\'office notarial de Maître Lattab Mohamed à Oran (Akid Lotfi). Prise de rendez-vous, téléphones directes, horaires d\'ouverture et localisation.';
+  const title = 'Contact et rendez-vous — Office Notarial - Oran | Notaire à Oran';
+  const desc = 'Contactez l\'office notarial de Office Notarial - Oran à Oran (Akid Lotfi). Prise de rendez-vous, téléphones directes, horaires d\'ouverture et localisation.';
 
   return {
     title: { absolute: title },
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description: desc,
       url: `${SITE_URL}/fr/contact`,
-      siteName: 'Maître Lattab Mohamed, notaire à Oran',
+      siteName: 'Office Notarial - Oran',
       locale: 'fr_DZ',
       alternateLocale: ['ar_DZ'],
       type: 'website',
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Maître Lattab Mohamed, notaire à Oran',
+          alt: 'Office Notarial - Oran',
         },
       ],
     },

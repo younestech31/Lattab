@@ -4,7 +4,7 @@ import { HomeContent } from '@/components/HomeContent';
 import { SITE_URL } from '@/lib/config';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'Notaire à Oran — Maître Lattab Mohamed | Tribunal de Flaussen';
+  const title = 'Notaire à Oran — Office Notarial - Oran | Tribunal de Flaussen';
   const desc = 'Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Prise de rendez-vous.';
 
   return {
@@ -22,11 +22,11 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description: desc,
       url: `${SITE_URL}/fr`,
-      siteName: 'Maître Lattab Mohamed, notaire à Oran',
+      siteName: 'Office Notarial - Oran',
       locale: 'fr_DZ',
       alternateLocale: ['ar_DZ'],
       type: 'website',
-      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Maître Lattab Mohamed, notaire à Oran' }],
+      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: 'Office Notarial - Oran' }],
     },
     twitter: {
       card: 'summary_large_image',

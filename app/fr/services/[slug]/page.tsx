@@ -46,7 +46,7 @@ export async function generateMetadata({
       title: service.fr.metaTitle,
       description: service.fr.metaDescription,
       url: frUrl,
-      siteName: 'Maître Lattab Mohamed, notaire à Oran',
+      siteName: 'Office Notarial - Oran',
       locale: 'fr_DZ',
       alternateLocale: ['ar_DZ'],
       type: 'article',

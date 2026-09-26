@@ -5,7 +5,7 @@ import { HomeContent } from '@/components/HomeContent';
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'موثق وهران — الأستاذ لعطب محمد | محكمة فلاوسن';
+  const title = 'موثق وهران — ديوان التوثيق - وهران | محكمة فلاوسن';
   const desc = 'موثق معتمد لدى محكمة فلاوسن بوهران، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون. إمكانية حجز موعد إداري واستشارة قانونية.';
 
   return {
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description: desc,
       url: SITE_URL,
-      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+      siteName: 'ديوان التوثيق ببلدية وهران',
       locale: 'ar_DZ',
       alternateLocale: ['fr_DZ'],
       type: 'website',
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'الأستاذ لعطب محمد — موثق بوهران',
+          alt: 'ديوان التوثيق ببلدية وهران',
         },
       ],
     },

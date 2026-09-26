@@ -47,8 +47,8 @@ export default function Footer({ lang }: FooterProps) {
     { href: '/services/hypotheque', label: 'Hypothèque & sûretés' },
   ];
 
-  const brandTitle = lang === 'ar' ? 'الأستاذ لعطب محمد — موثق بوهران' : 'Maître Lattab Mohamed, notaire à Oran';
-  const brandSubtitle = lang === 'ar' ? 'الديوان العمومي للتوثيق' : 'Office notarial Maître Lattab Mohamed';
+  const brandTitle = lang === 'ar' ? 'الأستاذ لعطب محمد — موثق بوهران' : 'Maître Lattab Mohamed — Notaire à Oran';
+  const brandSubtitle = lang === 'ar' ? 'الديوان العمومي للتوثيق' : 'Office Public Notarial';
 
   return (
     <footer 
@@ -90,11 +90,11 @@ export default function Footer({ lang }: FooterProps) {
               <dl className="space-y-1.5 text-emerald-200 text-xs">
                 <div>
                   <dt className="sr-only">{lang === 'ar' ? 'الصفة الرسمية' : 'Qualité officielle'}</dt>
-                  <dd>{OFFICE_INFO.officialDesignation[lang]}</dd>
+                  <dd>{lang === 'ar' ? 'الديوان العمومي للتوثيق' : 'Office Public Notarial'}</dd>
                 </div>
                 <div>
                   <dt className="sr-only">{lang === 'ar' ? 'الاختصاص القضائي' : 'Juridiction'}</dt>
-                  <dd>{OFFICE_INFO.title[lang]}</dd>
+                  <dd>{lang === 'ar' ? 'موثق لدى محكمة فلاوسن — ولاية وهران' : 'Notaire près le Tribunal de Fellaoucène — Wilaya d\'Oran'}</dd>
                 </div>
                 <div>
                   <dt className="sr-only">{lang === 'ar' ? 'الإطار القانوني' : 'Cadre légal'}</dt>

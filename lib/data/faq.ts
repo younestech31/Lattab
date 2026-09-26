@@ -43,10 +43,10 @@ export const faqs: FAQItem[] = [
     answerFr: 'En principe, la comparution personnelle de toutes les parties est requise pour vérifier leur identité et leur consentement libre. Toutefois, en cas d\'empêchement, il est possible de se faire représenter par un mandataire muni d\'une procuration notariée spécifique.',
   },
   {
-    questionAr: 'كيف أحجز موعداً في مكتب الموثق؟',
-    answerAr: 'يمكنكم حجز موعد عبر نموذج التواصل المتاح على موقعنا، أو من خلال تطبيق واتساب، أو عبر الاتصال الهاتفي المباشر. ننصح بالتواصل مسبقاً للاستفسار عن قائمة الوثائق المطلوبة لملفكم.',
-    questionFr: 'Comment prendre rendez-vous au cabinet du notaire ?',
-    answerFr: 'Vous pouvez prendre rendez-vous en remplissant le formulaire de contact sur notre site web, en nous contactant via WhatsApp, ou par appel téléphonique direct. Nous vous conseillons de nous contacter au préalable pour obtenir la liste des documents nécessaires à la constitution de votre dossier.',
+    questionAr: 'كيف يتم استقبال المواطنين وإيداع الملفات لدى ديوان التوثيق؟',
+    answerAr: 'يتم استقبال المواطنين وإيداع ملفات العقود التوثيقية خلال أوقات العمل الرسمية المقررة لديوان التوثيق، مع إمكانية الاستفسار المسبق عن الوثائق الإدارية المطلوبة لكل معاملة توثيقية.',
+    questionFr: 'Comment s\'effectue la réception des citoyens et le dépôt des dossiers à l\'office notarial ?',
+    answerFr: 'La réception des citoyens et le dépôt des dossiers se font durant les horaires officiels d\'ouverture de l\'office notarial, avec possibilité de s\'informer au préalable des pièces requises pour chaque acte.',
   },
   {
     questionAr: 'ما هي وثائق الهوية المقبولة للتوثيق؟',
@@ -62,8 +62,8 @@ export const faqs: FAQItem[] = [
   },
   {
     questionAr: 'ما هي حاسبة السعر المرجعي للعقارات؟',
-    answerAr: 'هي أداة رقمية يوفرها مكتبنا لمساعدة المواطنين على تقدير القيمة التجارية الدنيا للعقارات (الأسعار المرجعية) المعتمدة من طرف مصالح الضرائب. تساعد هذه الحاسبة في تجنب مشاكل إخفاء جزء من ثمن البيع.',
+    answerAr: 'هي أداة إعلامية استرشادية لمساعدة المواطنين على تقدير القيمة التجارية الدنيا للعقارات (الأسعار المرجعية) المعتمدة من طرف مصالح الضرائب، لتفادي إشكالات التصريح الناقص.',
     questionFr: 'Qu\'est-ce que le calculateur de prix de référence immobilier ?',
-    answerFr: 'Il s\'agit d\'un outil numérique mis à votre disposition pour estimer la valeur vénale minimale des biens (prix de référence) admise par l\'administration fiscale. Cet outil aide à garantir la transparence des transactions et à éviter d\'éventuels redressements.',
+    answerFr: 'Il s\'agit d\'un outil informatif pour estimer la valeur vénale minimale des biens (prix de référence) admise par l\'administration fiscale, afin d\'éviter d\'éventuels redressements.',
   },
 ];

@@ -8,7 +8,7 @@ import WebPageSchema from '@/components/WebPageSchema';
 export const revalidate = 86400; // 24h ISR static page
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = "Liens et sources juridiques utiles en Algérie - Ministère de la Justice, Journal Officiel, Registre de Commerce, proposés par l'étude de Me Lattab Mohamed.";
+  const desc = "Liens et sources juridiques utiles en Algérie - Ministère de la Justice, Journal Officiel, Registre de Commerce, proposés par l'étude de Office Notarial - Oran.";
   assertDescriptionLength(desc, 'French Useful Links / app/fr/useful-links/page.tsx');
 
   return {
@@ -23,10 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'Liens et ressources administratives et juridiques utiles | Me Lattab Mohamed',
+      title: 'Liens et ressources administratives et juridiques utiles | Office Notarial - Oran',
       description: desc,
       url: `${SITE_URL}/fr/useful-links`,
-      siteName: 'Maître Lattab Mohamed, notaire à Oran',
+      siteName: 'Office Notarial - Oran',
       locale: 'fr_DZ',
       alternateLocale: ['ar_DZ'],
       type: 'website',
@@ -144,8 +144,8 @@ export default function FrenchUsefulLinksPage() {
     <div className="min-h-screen bg-white">
       <WebPageSchema
         url={`${SITE_URL}/fr/useful-links`}
-        name="Liens et Institutions Utiles en Algérie | Maître Lattab Mohamed"
-        description="Liens et sources juridiques utiles en Algérie - Ministère de la Justice, Journal Officiel, Registre de Commerce, proposés par l'étude de Me Lattab Mohamed."
+        name="Liens et Institutions Utiles en Algérie | Office Notarial - Oran"
+        description="Liens et sources juridiques utiles en Algérie - Ministère de la Justice, Journal Officiel, Registre de Commerce, proposés par l'étude de Office Notarial - Oran."
         breadcrumbs={[
           { name: "Accueil", item: `${SITE_URL}/fr` },
           { name: "Liens utiles", item: `${SITE_URL}/fr/useful-links` }
@@ -195,7 +195,7 @@ export default function FrenchUsefulLinksPage() {
             <div>
               <h3 className="text-lg font-bold text-amber-900 mb-2 font-sans">Note de Régulation Notariale</h3>
               <p className="text-sm text-amber-800 leading-relaxed font-sans">
-                Ce répertoire institutionnel est édité et partagé par l&apos;étude de Me Lattab Mohamed dans un but exclusif d&apos;orientation administrative générale. 
+                Ce répertoire institutionnel est édité et partagé par l&apos;étude de Office Notarial - Oran dans un but exclusif d&apos;orientation administrative générale. 
                 Il ne contient aucune offre promotionnelle ou référence commerciale payante, en stricte conformité avec le Code de déontologie notariale en vigueur en Algérie (Loi 06-02).
               </p>
             </div>
@@ -250,7 +250,7 @@ export default function FrenchUsefulLinksPage() {
           {/* Institutional Back Link */}
           <div className="mt-14 pt-8 border-t border-gray-200 text-center">
             <p className="text-xs text-gray-500 mb-4 font-sans">
-              Étude sous le contrôle du Ministère de la Justice. Me Lattab Mohamed, notaire agréé près la Cour d&apos;Oran.
+              Étude sous le contrôle du Ministère de la Justice. Office Notarial - Oran, notaire agréé près la Cour d&apos;Oran.
             </p>
             <Link
               href="/fr"

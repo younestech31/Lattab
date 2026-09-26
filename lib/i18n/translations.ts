@@ -68,8 +68,8 @@ export const translations = {
     hero: {
       badge: 'موثق لدى محكمة فلاوسن وهران',
       eyebrow: 'الديوان العمومي للتوثيق',
-      title: 'الأستاذ لعطب محمد',
-      subtitle: 'موثق بوهران',
+      title: 'الأستاذ لعطب محمد — موثق بوهران',
+      subtitle: 'الديوان العمومي للتوثيق ببلدية وهران',
       description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران — للإعلام حول الإجراءات التوثيقية وفق القانون الجزائري',
       cta_book: 'حجز موعد إداري',
       cta_services: 'الاختصاصات التوثيقية للمكتب'
@@ -209,8 +209,8 @@ export const translations = {
         email: 'البريد الإلكتروني',
         working_hours: 'أوقات العمل',
         working_hours_details: 'الأحد - الخميس 08:30–12:00 و 13:30–16:00',
-        office_name: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران',
-        notary_title: 'الأستاذ لعطب محمد — موثق بوهران'
+        office_name: 'الديوان العمومي للتوثيق ببلدية وهران',
+        notary_title: 'الديوان العمومي للتوثيق ببلدية وهران'
       }
     },
     footer: {
@@ -218,7 +218,7 @@ export const translations = {
       services_title: 'اختصاصات المكتب',
       tools_title: 'أدوات',
       contact_title: 'التواصل',
-      copyright: 'جميع الحقوق محفوظة — الديوان العمومي للتوثيق',
+      copyright: 'جميع الحقوق محفوظة — الأستاذ لعطب محمد موثق',
       terms_link: 'الشروط والأحكام',
       privacy_link: 'سياسة الخصوصية'
     },
@@ -242,7 +242,7 @@ export const translations = {
       contact: 'Contact',
       book: 'Demande de RDV',
       notary: 'Notaire',
-      name: 'Maitre Lattab Mohamed',
+      name: 'Maître Lattab Mohamed',
       useful_links: 'Liens utiles'
     },
     calculator: {
@@ -296,11 +296,11 @@ export const translations = {
       retry: 'Réessayer',
     },
     hero: {
-      badge: 'Notaire près le Tribunal de Flaussen Oran',
-      eyebrow: 'Office notarial Maître Lattab Mohamed',
-      title: 'Maître Lattab Mohamed',
-      subtitle: 'Notaire à Oran',
-      description: 'Maître Lattab Mohamed, notaire à Oran — pour l\'information sur les procédures notariales selon le droit algérien',
+      badge: 'Notaire près le Tribunal de Fellaoucène - Oran',
+      eyebrow: 'Office Notarial',
+      title: 'Maître Lattab Mohamed — Notaire à Oran',
+      subtitle: 'Office Notarial - Oran',
+      description: 'Office Notarial — Maître Lattab Mohamed, Notaire à Oran — Information sur les procédures notariales selon la législation algérienne',
       cta_book: 'Demande de RDV',
       cta_services: 'Compétences de l\'Étude'
     },
@@ -439,8 +439,8 @@ export const translations = {
         email: 'E-mail',
         working_hours: 'Heures de travail',
         working_hours_details: 'Dimanche - Jeudi 08:30–12:00 et 13:30–16:00',
-        office_name: 'Maître Lattab Mohamed, notaire à Oran',
-        notary_title: 'Maître Lattab Mohamed — Notaire à Oran'
+        office_name: 'Office Notarial - Oran',
+        notary_title: 'Office Notarial - Oran'
       }
     },
     footer: {
@@ -448,7 +448,7 @@ export const translations = {
       services_title: 'Compétences notariales',
       tools_title: 'Outils',
       contact_title: 'Contact',
-      copyright: 'Tous droits réservés — Office notarial Maître Lattab Mohamed',
+      copyright: 'Tous droits réservés — Maître Lattab Mohamed, Notaire',
       terms_link: 'Conditions d\'utilisation',
       privacy_link: 'Politique de confidentialité'
     },

@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Calculateur Prix Référence Immobilier 2026 — Oran',
       description: desc,
       url: `${SITE_URL}/fr/calculateur-prix-referentiel`,
-      siteName: 'Maître Lattab Mohamed, notaire à Oran',
+      siteName: 'Office Notarial - Oran',
       type: 'website',
       images: [{ 
         url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 

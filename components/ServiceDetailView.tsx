@@ -298,8 +298,8 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
           </h2>
           <p className="text-emerald-100 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
             {isAr
-              ? 'مكتب الأستاذ لعطب محمد بحي العقيد لطفي يستقبلكم يومياً من الأحد إلى الخميس لدراسة ملفاتكم وإنجاز معاملاتكم التوثيقية بأعلى معايير الدقة والأمان القانوني.'
-              : 'L\'office notarial de Maître Lattab Mohamed à Akid Lotfi vous accueille du dimanche au jeudi pour instruire vos dossiers avec diligence et sécurité juridique.'}
+              ? 'ديوان التوثيق - وهران بحي العقيد لطفي يستقبلكم يومياً من الأحد إلى الخميس لدراسة ملفاتكم وإنجاز معاملاتكم التوثيقية بأعلى معايير الدقة والأمان القانوني.'
+              : 'L\'office notarial de Office Notarial - Oran à Akid Lotfi vous accueille du dimanche au jeudi pour instruire vos dossiers avec diligence et sécurité juridique.'}
           </p>
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <Link

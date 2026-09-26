@@ -47,7 +47,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
 
   const t = {
     ar: {
-      brand: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران',
+      brand: 'ديوان التوثيق - وهران - موثق معتمد',
       title: `قائمة الوثائق المطلوبة: ${contractType}`,
       date: 'مستخرج بتاريخ',
       note: 'ملاحظة قانونية هامة: للموثق سلطة تقديرية مطلقة وصلاحية كاملة لطلب أي وثيقة إضافية بموجب الأحكام التشريعية والتنظيمية في الجمهورية الجزائرية، وذلك لضمان الموثوقية القانونية وحماية مصالح الأطراف.',
@@ -56,7 +56,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       preparedDocs: `تم تجهيز ${checkedCount} من ${total} وثائق`,
     },
     fr: {
-      brand: 'Cabinet de Me Lattab Mohamed - Notaire Agréé à Oran',
+      brand: 'Office Public Notarial - Oran - Notaire Agréé',
       title: `Liste des documents requis : ${contractType}`,
       date: 'Généré le',
       note: 'Note légale importante : Le notaire jouit d\'une compétence d\'appréciation exclusive pour exiger tout document légal complémentaire requis pour assurer la parfaite sécurité des conventions signées en son étude.',
@@ -65,7 +65,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       preparedDocs: `${checkedCount} sur ${total} documents préparés`,
     }
   }[lang] || {
-    brand: 'مكتب الأستاذ لعطب محمد - موثق معتمد بوهران',
+    brand: 'ديوان التوثيق - وهران - موثق معتمد',
     title: `قائمة الوثائق المطلوبة: ${contractType}`,
     date: 'مستخرج بتاريخ',
     note: 'ملاحظة قانونية هامة: للموثق سلطة تقديرية مطلقة وصلاحية كاملة لطلب أي وثيقة إضافية بموجب الأحكام التشريعية والتنظيمية في الجمهورية الجزائرية، وذلك لضمان الموثوقية القانونية وحماية مصالح الأطراف.',
@@ -128,7 +128,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
 
         ctx.font = 'bold 23px "Cairo", "IBM Plex Sans Arabic", sans-serif';
         ctx.fillStyle = '#0f766e'; // Professional Notary Teal
-        ctx.fillText('مكتب الأستاذ لعطب محمد - موثق معتمد', canvas.width - 90, 195);
+        ctx.fillText('الديوان العمومي للتوثيق ببلدية وهران', canvas.width - 90, 195);
 
         ctx.font = '19px "Cairo", "IBM Plex Sans Arabic", sans-serif';
         ctx.fillStyle = '#4b5563';
@@ -146,7 +146,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
 
         ctx.font = 'bold 22px "Georgia", serif';
         ctx.fillStyle = '#0f766e'; // Professional Notary Teal
-        ctx.fillText('ÉTUDE DE ME LATTAB MOHAMED', 90, 175);
+        ctx.fillText('OFFICE PUBLIC NOTARIAL - ORAN', 90, 175);
 
         ctx.font = '16px "Georgia", serif';
         ctx.fillStyle = '#4b5563';
@@ -174,11 +174,11 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       ctx.textAlign = 'center';
 
       if (isAr) {
-        ctx.fillText('الأستاذ لعطب محمد', sealX, sealY - 15);
+        ctx.fillText('ديوان التوثيق - وهران', sealX, sealY - 15);
         ctx.fillText('موثق معتمد لدى المحاكم', sealX, sealY + 10);
         ctx.fillText('ولاية وهران', sealX, sealY + 35);
       } else {
-        ctx.fillText('Me LATTAB MOHAMED', sealX, sealY - 15);
+        ctx.fillText('OFFICE NOTARIAL - ORAN', sealX, sealY - 15);
         ctx.fillText('NOTAIRE PUBLIC AGRÉÉ', sealX, sealY + 10);
         ctx.fillText('ORAN, ALGÉRIE', sealX, sealY + 32);
       }
@@ -433,8 +433,8 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       ctx.fillText(t.footer, canvas.width / 2, footerY - 5);
       ctx.fillText(
         isAr 
-          ? 'المكتب الرسمي للتوثيق الأستاذ لعطب محمد بوهران | مستند إعلامي مصمم إلكترونياً https://lattab.vercel.app' 
-          : 'Étude Notariale de Me Lattab Mohamed Oran | Fiche d\'information numérique https://lattab.vercel.app', 
+          ? 'ديوان التوثيق - وهران | مستند إعلامي مصمم إلكترونياً https://lattab.vercel.app' 
+          : 'Office Public Notarial - Oran | Fiche d\'information numérique https://lattab.vercel.app', 
         canvas.width / 2, 
         footerY + 25
       );
@@ -451,7 +451,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       pdf.addImage(imageURI, 'JPEG', 0, 0, pdfWidth, pdfHeight, undefined, 'FAST');
 
       // Trigger automatic local browser file transfer download
-      const documentFileName = `Notaire_Lattab_Documents_${contractType.replace(/\s+/g, '_')}.pdf`;
+      const documentFileName = `Notaire_Office Notarial_Documents_${contractType.replace(/\s+/g, '_')}.pdf`;
       pdf.save(documentFileName);
     } catch (err) {
       console.error('High fidelity canvas PDF generation encountered a warning, falling back to window.print()', err);

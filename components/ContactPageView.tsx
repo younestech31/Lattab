@@ -14,8 +14,8 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
   const pageUrl = isAr ? `${SITE_URL}/contact` : `${SITE_URL}/fr/contact`;
   const homeUrl = isAr ? '/' : '/fr';
 
-  const brandTitle = isAr ? 'الأستاذ لعطب محمد — موثق بوهران' : 'Maître Lattab Mohamed, notaire à Oran';
-  const brandSubtitle = isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial Maître Lattab Mohamed';
+  const brandTitle = isAr ? 'ديوان التوثيق ببلدية وهران' : 'Office Notarial - Oran';
+  const brandSubtitle = isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial Office Notarial - Oran';
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -41,10 +41,10 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
     '@type': 'ContactPage',
     '@id': `${pageUrl}#contactpage`,
     url: pageUrl,
-    name: isAr ? 'الاتصال وحجز موعد — الأستاذ لعطب محمد موثق بوهران' : 'Contact et prise de rendez-vous — Maître Lattab Mohamed',
+    name: isAr ? 'الاتصال وحجز موعد — ديوان التوثيق ببلدية وهران' : 'Contact et prise de rendez-vous — Office Notarial - Oran',
     description: isAr
-      ? 'بيانات الاتصال بمكتب الأستاذ لعطب محمد موثق بوهران: العنوان بحي العقيد لطفي، أرقام الهاتف، البريد الإلكتروني، مواعيد العمل، والموقع على الخريطة.'
-      : 'Coordonnées de l\'office notarial de Maître Lattab Mohamed à Oran : adresse à Akid Lotfi, téléphones, horaires et plan d\'accès.',
+      ? 'بيانات الاتصال بديوان التوثيق ببلدية وهران: العنوان بحي العقيد لطفي، أرقام الهاتف، البريد الإلكتروني، مواعيد العمل، والموقع على الخريطة.'
+      : 'Coordonnées de l\'office notarial de Office Notarial - Oran à Oran : adresse à Akid Lotfi, téléphones, horaires et plan d\'accès.',
     mainEntity: {
       '@type': ['LegalService', 'Notary'],
       '@id': isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`,
@@ -107,7 +107,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
           </nav>
 
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
-            {isAr ? 'الاتصال وحجز موعد — الأستاذ لعطب محمد موثق بوهران' : 'Contact et rendez-vous — Maître Lattab Mohamed, notaire à Oran'}
+            {isAr ? 'الاتصال وحجز موعد — ديوان التوثيق ببلدية وهران' : 'Contact et rendez-vous — Office Notarial - Oran'}
           </h1>
           <p className="text-lg md:text-xl text-emerald-100/90 leading-relaxed max-w-3xl">
             {isAr

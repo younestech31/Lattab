@@ -101,7 +101,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             }}
           >
             <div style={{ color: '#ffffff', fontSize: '20px', fontWeight: 600 }}>
-              Office Notarial de Maitre Lattab Mohamed — Oran
+              Office Notarial de Office Notarial - Oran — Oran
             </div>
             <div
               style={{
@@ -140,7 +140,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           }}
         >
           <div style={{ fontSize: '44px', fontWeight: 800, marginBottom: '16px' }}>
-            Office Notarial de Maitre Lattab Mohamed — Notaire a Oran
+            Office Notarial de Office Notarial - Oran — Notaire a Oran
           </div>
           <div style={{ fontSize: '24px', color: '#d1fae5' }}>
             Guide Notarial et Juridique Algerien 2026

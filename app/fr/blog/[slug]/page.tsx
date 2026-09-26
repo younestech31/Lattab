@@ -10,7 +10,6 @@ import { SITE_URL, FR_TITLE_SUFFIX } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
-import ArticleAuthorBox from '@/components/ArticleAuthorBox';
 import { enrichDescription, FR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
 import { RegisterAlternatePath } from '@/lib/i18n';
 import { getRelatedPostsByCluster, CLUSTER_NAMES, SLUG_TO_CLUSTER } from '@/lib/data/clusters';
@@ -63,7 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: titleValue,
     description: enrichedDesc,
-    authors: [{ name: 'Office Notarial de Maître Lattab Mohamed', url: SITE_URL }],
+    authors: [{ name: 'Office Notarial de Office Notarial - Oran', url: SITE_URL }],
     alternates: {
       canonical: `${SITE_URL}/fr/blog/${post.slug}`,
       languages: languages,
@@ -72,12 +71,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: enrichedDesc,
       url: `${SITE_URL}/fr/blog/${post.slug}`,
-      siteName: 'Office Notarial de Maître Lattab Mohamed - Notaire à Oran',
+      siteName: 'Office Notarial de Office Notarial - Oran - Notaire à Oran',
       locale: 'fr_DZ',
       type: 'article',
       publishedTime: post.dateISO,
       modifiedTime: post.dateModified || post.dateISO,
-      authors: ['Office Notarial de Maître Lattab Mohamed'],
+      authors: ['Office Notarial de Office Notarial - Oran'],
       section: post.category,
       tags: [post.category, 'Droit Algérien', 'Notariat', 'Oran'],
     },
@@ -160,11 +159,11 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               "dateModified": post.dateModified || post.dateISO,
               "author": {
                 "@type": "Person",
-                "name": "Maître Lattab Mohamed"
+                "name": "Office Notarial - Oran"
               },
               "publisher": {
                 "@type": "Organization",
-                "name": "Office Notarial de Maître Lattab Mohamed",
+                "name": "Office Notarial de Office Notarial - Oran",
                 "logo": {
                   "@type": "ImageObject",
                   "url": `${SITE_URL}/logo.webp`,
@@ -191,7 +190,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               "isPartOf": {
                 "@type": "WebSite",
                 "url": SITE_URL,
-                "name": "Office Notarial de Maître Lattab Mohamed — Notaire à Oran"
+                "name": "Office Notarial de Office Notarial - Oran"
               }
             }, {
               "@context": "https://schema.org",
@@ -239,21 +238,6 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
                 Cet article a été rédigé à des fins d&apos;information et de sensibilisation uniquement, et les textes législatifs, fiscaux ou les procédures peuvent changer au fil du temps selon le Journal Officiel. Veuillez vous rapprocher de l&apos;office notarial pour obtenir des conseils juridiques précis et mis à jour adaptés à votre situation personnelle.
               </div>
 
-              {/* Author Box with E-E-A-T credentials and links */}
-              <ArticleAuthorBox lang="fr" />
-            </div>
-            
-            <div className="bg-emerald-950 p-8 md:p-12 text-center text-white">
-              <h3 className="text-2xl font-bold mb-4">Avez-vous besoin d&apos;un accompagnement juridique et notarial sur ce sujet ?</h3>
-              <p className="text-emerald-100 mb-8 max-w-2xl mx-auto">
-                L&apos;Office Notarial de Maître Lattab Mohamed est prêt à étudier votre dossier et rassurer vos procédures en toute sécurité et dans les meilleurs délais.
-              </p>
-              <Link 
-                href="/fr/contact"
-                className="inline-flex py-3 px-8 bg-amber-500 hover:bg-amber-400 text-emerald-950 rounded-full font-bold text-lg transition-colors shadow-lg shadow-amber-500/20"
-              >
-                Contactez-nous maintenant pour déposer votre dossier
-              </Link>
             </div>
           </article>
 

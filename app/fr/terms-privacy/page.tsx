@@ -6,7 +6,7 @@ import { WORKING_HOURS, SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: { absolute: "Conditions & Confidentialité — Office Notarial" },
-  description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Maître Lattab Mohamed à Oran: traitement de vos données, obligations juridiques et secret professionnel.",
+  description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Office Notarial - Oran à Oran: traitement de vos données, obligations juridiques et secret professionnel.",
   alternates: {
     canonical: `${SITE_URL}/fr/terms-privacy`,
     languages: {
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   openGraph: {
     url: `${SITE_URL}/fr/terms-privacy`,
     title: "Conditions & Confidentialité — Office Notarial",
-    description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Maître Lattab Mohamed à Oran.",
-    siteName: 'Maître Lattab Mohamed, notaire à Oran',
+    description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Office Notarial - Oran à Oran.",
+    siteName: 'Office Notarial - Oran',
     images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: "Conditions d'Utilisation" }],
     locale: 'fr_DZ',
     alternateLocale: ['ar_DZ'],
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Conditions & Confidentialité — Office Notarial",
-    description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Maître Lattab Mohamed à Oran.",
+    description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Office Notarial - Oran à Oran.",
     images: [`${SITE_URL}/logo.webp`],
   },
   robots: {
@@ -65,7 +65,7 @@ const TermsPrivacyPageFR = () => {
               Conditions d&apos;Utilisation &amp; Politique de Confidentialité
             </h1>
             <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed text-center font-sans">
-              Office Notarial de Maître Lattab Mohamed - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne.
+              Office Notarial de Office Notarial - Oran - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne.
             </p>
           </div>
         </div>
@@ -95,7 +95,7 @@ const TermsPrivacyPageFR = () => {
                 </div>
                 <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
                   <p>
-                    Ce document constitue un accord contraignant entre l&apos;utilisateur et le site de l&apos;<strong>Office Notarial de Maître Lattab Mohamed</strong>, une plateforme électronique conçue de manière à faciliter et organiser la prise de rendez-vous et la présentation de services notariaux agréés en République Algérienne Démocratique et Populaire.
+                    Ce document constitue un accord contraignant entre l&apos;utilisateur et le site de l&apos;<strong>Office Notarial de Office Notarial - Oran</strong>, une plateforme électronique conçue de manière à faciliter et organiser la prise de rendez-vous et la présentation de services notariaux agréés en République Algérienne Démocratique et Populaire.
                   </p>
                   <p>
                     L&apos;office est soumis au contrôle et à la supervision de la <strong>Chambre Nationale des Notaires</strong> et respecte toutes les dispositions légales en vigueur, notamment la Loi n° 06-02 relative à la profession de notaire, et la Loi n° 18-07 relative à la protection des personnes physiques dans le traitement des données à caractère personnel (modifiée et complétée par la loi 25-11).
@@ -105,11 +105,11 @@ const TermsPrivacyPageFR = () => {
                   <ul className="space-y-4 list-none bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-100">
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                      <div><strong>&quot;La Plateforme&quot;:</strong> Le site web de l&apos;Office Notarial de Maître Lattab Mohamed, dédié au service de prise de rendez-vous.</div>
+                      <div><strong>&quot;La Plateforme&quot;:</strong> Le site web de l&apos;Office Notarial de Office Notarial - Oran, dédié au service de prise de rendez-vous.</div>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                      <div><strong>&quot;Responsable du traitement&quot;:</strong> L&apos;Office Notarial de Maître Lattab Mohamed, qui détermine les finalités et les moyens du traitement de vos données.</div>
+                      <div><strong>&quot;Responsable du traitement&quot;:</strong> L&apos;Office Notarial de Office Notarial - Oran, qui détermine les finalités et les moyens du traitement de vos données.</div>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
@@ -334,7 +334,7 @@ const TermsPrivacyPageFR = () => {
           
           <div className="text-center mt-12 text-gray-500 text-sm">
             <p>Version: 1.2 | Dernière mise à jour : 12/04/2026</p>
-            <p className="mt-2 font-medium">Tous droits réservés &copy; 2026 - Office Notarial de Maître Lattab Mohamed</p>
+            <p className="mt-2 font-medium">Tous droits réservés &copy; 2026 - Office Notarial de Office Notarial - Oran</p>
           </div>
         </div>
       </div>

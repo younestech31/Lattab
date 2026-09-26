@@ -8,7 +8,7 @@ import WebPageSchema from '@/components/WebPageSchema';
 export const revalidate = 86400; // 24h ISR static page
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'مصادر وروابط قانونية وإدارية مفيدة في الجزائر يقدمها مكتب الأستاذ لعطب محمد موثق بوهران: وزارة العدل، الجريدة الرسمية، السجل التجاري والمالية.';
+  const desc = 'مصادر وروابط قانونية وإدارية مفيدة في الجزائر يقدمها ديوان التوثيق ببلدية وهران: وزارة العدل، الجريدة الرسمية، السجل التجاري والمالية.';
   assertDescriptionLength(desc, 'Useful Links / app/useful-links/page.tsx');
 
   return {
@@ -23,10 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'روابط ومصادر قانونية وإدارية مفيدة في الجزائر | الأستاذ لعطب محمد',
+      title: 'روابط ومصادر قانونية وإدارية مفيدة في الجزائر | ديوان التوثيق - وهران',
       description: desc,
       url: `${SITE_URL}/useful-links`,
-      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+      siteName: 'ديوان التوثيق ببلدية وهران',
       locale: 'ar_DZ',
       alternateLocale: ['fr_DZ'],
       type: 'website',
@@ -145,7 +145,7 @@ export default function UsefulLinksPage() {
       <WebPageSchema
         url={`${SITE_URL}/useful-links`}
         name="المصادر والروابط الإدارية والقانونية المفيدة | موثق وهران"
-        description="مصادر وروابط قانونية وإدارية مفيدة في الجزائر يقدمها مكتب الأستاذ لعطب محمد موثق بوهران: وزارة العدل، الجريدة الرسمية، السجل التجاري والمالية."
+        description="مصادر وروابط قانونية وإدارية مفيدة في الجزائر يقدمها ديوان التوثيق ببلدية وهران: وزارة العدل، الجريدة الرسمية، السجل التجاري والمالية."
         breadcrumbs={[
           { name: "الرئيسية", item: `${SITE_URL}/` },
           { name: "الروابط المفيدة", item: `${SITE_URL}/useful-links` }
@@ -195,7 +195,7 @@ export default function UsefulLinksPage() {
             <div>
               <h3 className="text-lg font-bold text-amber-900 mb-2">ملاحظة تنظيمية هامة</h3>
               <p className="text-sm text-amber-800 leading-relaxed font-sans">
-                تم إعداد هذا الفهرس ومشاركته من قِبل <strong>مكتب الأستاذ لعطب محمد</strong> لغرض الإرشاد الإداري العام وتسهيل وصول المواطنين للمواقع الرسمية. 
+                تم إعداد هذا الفهرس ومشاركته من قِبل <strong>ديوان التوثيق - وهران</strong> لغرض الإرشاد الإداري العام وتسهيل وصول المواطنين للمواقع الرسمية. 
                 لا يحتوي هذا الموقع على أي إعلانات تجارية أو عروض ترويجية لخدمات مدفوعة التزاماً بمدونة أخلاقيات مهنة التوثيق الجزائرية (القانون 06-02).
               </p>
             </div>
@@ -250,7 +250,7 @@ export default function UsefulLinksPage() {
           {/* Institutional Back Link */}
           <div className="mt-14 pt-8 border-t border-gray-200 text-center">
             <p className="text-xs text-gray-500 mb-4 font-sans">
-              الديوان العمومي للتوثيق تحت إشراف وزارة العدل الجزائرية. الأستاذ لعطب محمد - موثق معتمد لدى مجلس قضاء وهران.
+              الديوان العمومي للتوثيق تحت إشراف وزارة العدل الجزائرية. ديوان التوثيق - وهران - موثق معتمد لدى مجلس قضاء وهران.
             </p>
             <Link
               href="/"

@@ -48,8 +48,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     ar: {
       title: 'عقد بيع عقار في وهران',
-      metaTitle: 'عقد بيع عقار في وهران — الأستاذ لعطب محمد | موثق وهران',
-      metaDescription: 'دليل توثيق عقد بيع عقار في وهران لدى مكتب الأستاذ لعطب محمد بمحكمة فلاوسن. الشروط، الوثائق المطلوبة، إجراءات المحافظة العقارية، وحساب السعر المرجعي 2026.',
+      metaTitle: 'عقد بيع عقار في وهران — ديوان التوثيق بوهران',
+      metaDescription: 'دليل توثيق عقد بيع عقار في وهران لدى مكتب التوثيق المعتمد. الشروط، الوثائق المطلوبة، إجراءات المحافظة العقارية، وحساب السعر المرجعي 2026.',
       h1: 'عقد بيع عقار في وهران — الإجراءات والتوثيق الرسمي',
       subtitle: 'توثيق رسمي ناقل للملكية العقارية مع الإشهار بالمحافظة العقارية لوهران طبقاً للقانون الجزائري',
       targetAudience: [
@@ -90,7 +90,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'حضور الأطراف والتوقيع على العقد التوثيقي الرسمي',
-          text: 'حضور البائع والمشتري شخصياً أو بوكلاء رسميين أمام الأستاذ لعطب محمد بمقر المكتب بحي العقيد لطفي، حيث تُتلى بنود العقد كاملة وتُثبت طريقة أداء الثمن وفقاً للتشريع المالي والبنكي الساري.'
+          text: 'حضور البائع والمشتري شخصياً أو بوكلاء رسميين أمام الموثق بمقر مكتب التوثيق بحي العقيد لطفي، حيث تُتلى بنود العقد كاملة وتُثبت طريقة أداء الثمن وفقاً للتشريع المالي والبنكي الساري.'
         },
         {
           name: 'التسجيل وإجراءات الإشهار العقاري بالمحافظة العقارية',
@@ -98,7 +98,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يقع مكتب الأستاذ لعطب محمد بدائرة اختصاص محكمة فلاوسن ومجلس قضاء وهران، ويمتد اختصاصه التوثيقي لتحرير العقود العقارية لكافة تراب ولاية وهران (بلدية وهران، بئر الجير، السانية، عين الترك، وغيرها).',
+        'يقع مكتب التوثيق بدائرة اختصاص محكمة فلاوسن ومجلس قضاء وهران، ويمتد اختصاصه التوثيقي لتحرير العقود العقارية لكافة تراب ولاية وهران (بلدية وهران، بئر الجير، السانية، عين الترك، وغيرها).',
         'تخضع المعاملات العقارية في وهران لأحكام الأمر 75-74 المتضمن إعداد مسح الأراضي وتأسيس السجل العقاري، والقوانين المالية السارية بما يضمن الحجية المطلقة للعقد المشهر.'
       ],
       inDepthContent: [
@@ -130,8 +130,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     fr: {
       title: 'Acte de vente immobilière à Oran',
-      metaTitle: 'Acte de vente immobilière à Oran — Maître Lattab Mohamed | Notaire Oran',
-      metaDescription: 'Guide complet pour l\'acte de vente immobilière à Oran chez Maître Lattab Mohamed, notaire près le Tribunal de Flaussen. Procédure, pièces requises et publicité foncière.',
+      metaTitle: 'Acte de vente immobilière à Oran — Office Notarial - Oran | Notaire Oran',
+      metaDescription: 'Guide complet pour l\'acte de vente immobilière à Oran chez Office Notarial - Oran, notaire près le Tribunal de Flaussen. Procédure, pièces requises et publicité foncière.',
       h1: 'Acte de vente immobilière à Oran — Sécurité juridique et publicité foncière',
       subtitle: 'Rédaction d\'actes notariés authentiques et transfert de propriété avec publication à la Conservation Foncière d\'Oran',
       targetAudience: [
@@ -172,7 +172,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Signature de l\'acte authentique de vente à l\'étude',
-          text: 'Comparution en personne ou par mandataire des parties devant Maître Lattab Mohamed au siège de l\'office à Akid Lotfi. Lecture intégrale de l\'acte, recueil des consentements et constatation du règlement conforme aux règles financières.'
+          text: 'Comparution en personne ou par mandataire des parties devant Office Notarial - Oran au siège de l\'office à Akid Lotfi. Lecture intégrale de l\'acte, recueil des consentements et constatation du règlement conforme aux règles financières.'
         },
         {
           name: 'Enregistrement et formalité de publicité foncière',
@@ -180,7 +180,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Maître Lattab Mohamed est notaire près le Tribunal de Flaussen et la Cour d\'Oran. Sa compétence territoriale s\'étend à l\'ensemble des actes immobiliers situés sur le territoire de la Wilaya d\'Oran (Oran centre, Bir El Djir, Es-Sénia, Aïn El Turck, etc.).',
+        'Office Notarial - Oran est notaire près le Tribunal de Flaussen et la Cour d\'Oran. Sa compétence territoriale s\'étend à l\'ensemble des actes immobiliers situés sur le territoire de la Wilaya d\'Oran (Oran centre, Bir El Djir, Es-Sénia, Aïn El Turck, etc.).',
         'Les actes authentiques répondent aux exigences de l\'ordonnance 75-74 portant établissement du cadastre et constitution du livret foncier, conférant au titre une force probante absolue.'
       ],
       inDepthContent: [
@@ -221,8 +221,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     ar: {
       title: 'تأسيس الشركات التجارية في وهران',
-      metaTitle: 'تأسيس شركة تجارية في وهران — الأستاذ لعطب محمد | موثق وهران',
-      metaDescription: 'إجراءات تأسيس الشركات التجارية (SARL, EURL, SPA, SNC) بوهران لدى مكتب الأستاذ لعطب محمد. تحرير القوانين الأساسية، إيداع الرأسمال، والقيد بالسجل التجاري.',
+      metaTitle: 'تأسيس شركة تجارية في وهران — ديوان التوثيق بوهران',
+      metaDescription: 'إجراءات تأسيس الشركات التجارية (SARL, EURL, SPA, SNC) بوهران لدى مكتب التوثيق المعتمد. تحرير القوانين الأساسية، إيداع الرأسمال، والقيد بالسجل التجاري.',
       h1: 'تأسيس الشركات التجارية في وهران — التوثيق والمرافقة القانونية',
       subtitle: 'تحرير العقود التأسيسية والأنظمة الأساسية للشركات التجارية وفق أحكام القانون التجاري الجزائري',
       targetAudience: [
@@ -261,7 +261,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'توقيع العقد التأسيسي والتسجيل الجبائي',
-          text: 'توقيع الشركاء على العقد التأسيسي الرسمي أمام الأستاذ لعطب محمد، واستيفاء إجراءات التسجيل لدى مصالح الضرائب بوهران.'
+          text: 'توقيع الشركاء على العقد التأسيسي الرسمي أمام الموثق، واستيفاء إجراءات التسجيل لدى مصالح الضرائب بوهران.'
         },
         {
           name: 'النشر في النشرة الرسمية واستخراج السجل التجاري',
@@ -269,7 +269,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يتولى مكتب الأستاذ لعطب محمد توثيق العقود التأسيسية للشركات لكافة الشركات الممارسة لنشاطها بولاية وهران والمناطق الصناعية المحيطة بها (حاسي عامر، بطيوة، السانية، الكرمة).',
+        'يتولى مكتب التوثيق توثيق العقود التأسيسية للشركات لكافة الشركات الممارسة لنشاطها بولاية وهران والمناطق الصناعية المحيطة بها (حاسي عامر، بطيوة، السانية، الكرمة).',
         'تتم صياغة القوانين الأساسية وفقاً لأحدث تعديلات القانون التجاري الجزائري لضمان حماية الشركاء واستقرار الكيان المعنوي.'
       ],
       inDepthContent: [
@@ -300,8 +300,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     fr: {
       title: 'Création de sociétés commerciales à Oran',
-      metaTitle: 'Création de société à Oran — Maître Lattab Mohamed | Notaire Oran',
-      metaDescription: 'Constitution de sociétés commerciales à Oran (SARL, EURL, SPA, SNC) chez Maître Lattab Mohamed. Rédaction des statuts, formalités CNRC et publicité légale BOAL.',
+      metaTitle: 'Création de société à Oran — Office Notarial - Oran | Notaire Oran',
+      metaDescription: 'Constitution de sociétés commerciales à Oran (SARL, EURL, SPA, SNC) chez Office Notarial - Oran. Rédaction des statuts, formalités CNRC et publicité légale BOAL.',
       h1: 'Création de société commerciale à Oran — Rédaction des statuts et immatriculation',
       subtitle: 'Accompagnement notarié dans la rédaction des statuts constitutifs conformément au Code de Commerce algérien',
       targetAudience: [
@@ -340,7 +340,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Signature de l\'acte constitutif et enregistrement fiscal',
-          text: 'Signature solennelle des statuts devant Maître Lattab Mohamed et enregistrement immédiat auprès de la recette des impôts d\'Oran.'
+          text: 'Signature solennelle des statuts devant Office Notarial - Oran et enregistrement immédiat auprès de la recette des impôts d\'Oran.'
         },
         {
           name: 'Publication au BOAL et retrait du registre du commerce',
@@ -388,8 +388,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     ar: {
       title: 'الوكالات الرسمية والتفويضات في وهران',
-      metaTitle: 'تحرير وكالة رسمية بوهران — الأستاذ لعطب محمد | موثق وهران',
-      metaDescription: 'تحرير الوكالات الرسمية والخاصة بوهران لدى مكتب الأستاذ لعطب محمد: وكالة بيع عقار، وكالة بنكية، وكالة تسيير شركات، وتمثيل أمام الإدارات الجزائرية.',
+      metaTitle: 'تحرير وكالة رسمية بوهران — ديوان التوثيق بوهران',
+      metaDescription: 'تحرير الوكالات الرسمية والخاصة بوهران لدى مكتب التوثيق المعتمد: وكالة بيع عقار، وكالة بنكية، وكالة تسيير شركات، وتمثيل أمام الإدارات الجزائرية.',
       h1: 'الوكالات الرسمية والخاصة بوهران — شروط التوثيق والصلاحيات',
       subtitle: 'تحرير عقود الوكالة والتفويض القانوني بصفة دقيقة تحفظ حقوق الموكل والوكيل وفق القانون المدني الجزائري',
       targetAudience: [
@@ -435,7 +435,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'تتمتع الوكالة التوثيقية المحررة بمكتب الأستاذ لعطب محمد بالقوة الثبوتية الرسمية وتُقبل لدى كافة المحاكم والإدارات العمومية والبنوك والمحافظات العقارية عبر كامل التراب الجزائري.',
+        'تتمتع الوكالة التوثيقية المحررة بمكتب التوثيق المعتمد بالقوة الثبوتية الرسمية وتُقبل لدى كافة المحاكم والإدارات العمومية والبنوك والمحافظات العقارية عبر كامل التراب الجزائري.',
         'يخضع عقد الوكالة لأحكام المواد 571 وما يليها من القانون المدني الجزائري، مع إمكانية إلغائها أو تقييدها بطلب رسمي من الموكل.'
       ],
       inDepthContent: [
@@ -466,8 +466,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     fr: {
       title: 'Procurations notariées à Oran',
-      metaTitle: 'Procuration notariée à Oran — Maître Lattab Mohamed | Notaire Oran',
-      metaDescription: 'Rédaction de procurations notariées à Oran (générale, spéciale de vente immobilière, bancaire, succession) chez Maître Lattab Mohamed, notaire à Oran.',
+      metaTitle: 'Procuration notariée à Oran — Office Notarial - Oran | Notaire Oran',
+      metaDescription: 'Rédaction de procurations notariées à Oran (générale, spéciale de vente immobilière, bancaire, succession) chez Office Notarial - Oran.',
       h1: 'Procuration notariée à Oran — Mandat authentique et représentation légale',
       subtitle: 'Rédaction d\'actes de mandat conformes aux exigences du Code Civil algérien garantissant la sécurité juridique du mandant et du mandataire',
       targetAudience: [
@@ -513,7 +513,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Les procurations instrumentées par Maître Lattab Mohamed disposent d\'une force probante pleine et entière sur l\'ensemble du territoire algérien.',
+        'Les procurations instrumentées par Office Notarial - Oran disposent d\'une force probante pleine et entière sur l\'ensemble du territoire algérien.',
         'L\'acte respecte scrupuleusement les articles 571 et suivants du Code Civil algérien, avec faculté de révocation à tout moment par le mandant.'
       ],
       inDepthContent: [
@@ -553,8 +553,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     ar: {
       title: 'الفريضة ونقل الملكية العقارية بالإرث في وهران',
-      metaTitle: 'الفريضة والتركات العقارية في وهران — الأستاذ لعطب محمد | موثق وهران',
-      metaDescription: 'إجراءات تحرير الفريضة التوثيقية، حصر التركة، وإعداد الشهادة التوثيقية لنقل الملكية العقارية بالميراث في وهران لدى مكتب الأستاذ لعطب محمد.',
+      metaTitle: 'الفريضة والتركات العقارية في وهران — ديوان التوثيق بوهران',
+      metaDescription: 'إجراءات تحرير الفريضة التوثيقية، حصر التركة، وإعداد الشهادة التوثيقية لنقل الملكية العقارية بالميراث في وهران لدى مكتب التوثيق المعتمد.',
       h1: 'الفريضة والتركات العقارية في وهران — تحديد الورثة ونقل الملكية',
       subtitle: 'تحرير عقود الفريضة الشرعية والشهادات التوثيقية لنقل الحقوق العقارية المشهرة وفق قانون الأسرة والتشريع العقاري الجزائري',
       targetAudience: [
@@ -601,7 +601,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يقوم مكتب الأستاذ لعطب محمد بتحرير عقود الفريضة وإعداد الشهادات التوثيقية لكافة العقارات التابعة للمورثين الكائنة بولاية وهران وما جاورها.',
+        'يقوم مكتب التوثيق بتحرير عقود الفريضة وإعداد الشهادات التوثيقية لكافة العقارات التابعة للمورثين الكائنة بولاية وهران وما جاورها.',
         'تُعد الشهادة التوثيقية المشهرة لدى المحافظة العقارية السند القانوني الإلزامي والوحيد لنقل الملكية العقارية بالميراث طبقاً للمرسوم 76-63 المتعلق بتأسيس السجل العقاري.'
       ],
       inDepthContent: [
@@ -632,8 +632,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     fr: {
       title: 'Succession et acte de notoriété (Fridha) à Oran',
-      metaTitle: 'Succession et Fridha à Oran — Maître Lattab Mohamed | Notaire Oran',
-      metaDescription: 'Règlement des successions à Oran chez Maître Lattab Mohamed : acte de notoriété (Fridha), attestation notariée de transfert immobilier et partage amiable.',
+      metaTitle: 'Succession et Fridha à Oran — Office Notarial - Oran | Notaire Oran',
+      metaDescription: 'Règlement des successions à Oran chez Office Notarial - Oran : acte de notoriété (Fridha), attestation notariée de transfert immobilier et partage amiable.',
       h1: 'Succession et transfert immobilier à Oran — Acte de notoriété (Fridha) et attestation',
       subtitle: 'Liquidation des successions, dévolution successorale et publication du transfert foncier au profit des héritiers à Oran',
       targetAudience: [
@@ -680,7 +680,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Maître Lattab Mohamed instrumente les actes de succession et attestations notariées pour tous les biens situés dans la circonscription de la Cour d\'Oran.',
+        'Office Notarial - Oran instrumente les actes de succession et attestations notariées pour tous les biens situés dans la circonscription de la Cour d\'Oran.',
         'L\'attestation notariée publiée est le titre légal obligatoire imposé par le décret 76-63 pour tout acte de disposition ultérieur sur les biens successoraux.'
       ],
       inDepthContent: [
@@ -720,8 +720,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     ar: {
       title: 'عقود الزواج والاتفاق المالي بين الزوجين بوهران',
-      metaTitle: 'عقد الزواج والاتفاق المالي بوهران — الأستاذ لعطب محمد | موثق وهران',
-      metaDescription: 'توثيق عقد الزواج الرسمي والشروط المالية والاتفاق على الأموال المشتركة بوهران لدى مكتب الأستاذ لعطب محمد وفقاً لقانون الأسرة الجزائري.',
+      metaTitle: 'عقد الزواج والاتفاق المالي بوهران — ديوان التوثيق بوهران',
+      metaDescription: 'توثيق عقد الزواج الرسمي والشروط المالية والاتفاق على الأموال المشتركة بوهران لدى مكتب التوثيق المعتمد وفقاً لقانون الأسرة الجزائري.',
       h1: 'عقد الزواج والشروط الاتفاقية بوهران — التوثيق الرسمي وحماية الحقوق',
       subtitle: 'توثيق عقد الزواج الرسمي والشروط المالية التوافقية وفقاً لأحكام المادة 19 من قانون الأسرة الجزائري',
       targetAudience: [
@@ -799,8 +799,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     fr: {
       title: 'Contrat de mariage et régime patrimonial à Oran',
-      metaTitle: 'Contrat de mariage à Oran — Maître Lattab Mohamed | Notaire Oran',
-      metaDescription: 'Célébration et rédaction du contrat de mariage à Oran chez Maître Lattab Mohamed. Clausses financières, biens communs et reconnaissance consulaire internationale.',
+      metaTitle: 'Contrat de mariage à Oran — Office Notarial - Oran | Notaire Oran',
+      metaDescription: 'Célébration et rédaction du contrat de mariage à Oran chez Office Notarial - Oran. Clausses financières, biens communs et reconnaissance consulaire internationale.',
       h1: 'Contrat de mariage et clauses conventionnelles à Oran — Authenticité et sécurité juridique',
       subtitle: 'Authentification solennelle du mariage et rédaction des stipulations patrimoniales conformément à l\'article 19 du Code de la Famille algérien',
       targetAudience: [
@@ -839,7 +839,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Célébration solennelle et signature à l\'étude',
-          text: 'Comparution solennelle des époux, du tuteur et des témoins devant Maître Lattab Mohamed, recueil des consentements et signatures sur le registre.'
+          text: 'Comparution solennelle des époux, du tuteur et des témoins devant Office Notarial - Oran, recueil des consentements et signatures sur le registre.'
         },
         {
           name: 'Remise du livret de famille et notification à l\'état civil',
@@ -861,7 +861,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         {
           heading: 'Reconnaissance et apostille consulaire',
           paragraphs: [
-            'Les actes de mariage notariés établis par Maître Lattab Mohamed respectent les standards diplomatiques requis pour l\'authentification auprès du Ministère des Affaires Étrangères et la transcription auprès des représentations consulaires étrangères en Algérie.'
+            'Les actes de mariage notariés établis par Office Notarial - Oran respectent les standards diplomatiques requis pour l\'authentification auprès du Ministère des Affaires Étrangères et la transcription auprès des représentations consulaires étrangères en Algérie.'
           ]
         }
       ],
@@ -887,8 +887,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     ar: {
       title: 'الرهن العقاري والتأمينات العينية بوهران',
-      metaTitle: 'عقد الرهن العقاري بوهران — الأستاذ لعطب محمد | موثق وهران',
-      metaDescription: 'توثيق عقود الرهن العقاري والتأمينات العينية ورفع اليد عن الرهن بوهران لدى مكتب الأستاذ لعطب محمد. مرافقة القروض البنكية والتمويلات الاستثمارية.',
+      metaTitle: 'عقد الرهن العقاري بوهران — ديوان التوثيق بوهران',
+      metaDescription: 'توثيق عقود الرهن العقاري والتأمينات العينية ورفع اليد عن الرهن بوهران لدى مكتب التوثيق المعتمد. مرافقة القروض البنكية والتمويلات الاستثمارية.',
       h1: 'الرهن العقاري والتأمينات العينية بوهران — القروض والتأمين المالي',
       subtitle: 'تحرير عقود الرهن الرسمي وشهادات القيد وإجراءات رفع اليد لدى المحافظة العقارية بوهران وفقاً للقانون المدني الجزائري',
       targetAudience: [
@@ -935,7 +935,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يقوم مكتب الأستاذ لعطب محمد بتوثيق عقود الرهن العقاري ورفع اليد لكافة العقارات الكائنة بولاية وهران بالتعاون مع جميع البنوك الجزائرية (BNA, CPA, BEA, BDL, BADR, CNEP, والمصارف الخاصة).',
+        'يقوم مكتب التوثيق بتوثيق عقود الرهن العقاري ورفع اليد لكافة العقارات الكائنة بولاية وهران بالتعاون مع جميع البنوك الجزائرية (BNA, CPA, BEA, BDL, BADR, CNEP, والمصارف الخاصة).',
         'يخضع الرهن الرسمي لأحكام المادة 882 وما يليها من القانون المدني الجزائري، ويمنح البنك الدائن حق التتبع والأفضلية عند بيع العقار.'
       ],
       inDepthContent: [
@@ -966,8 +966,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     },
     fr: {
       title: 'Hypothèque immobilière et sûretés à Oran',
-      metaTitle: 'Acte d\'hypothèque à Oran — Maître Lattab Mohamed | Notaire Oran',
-      metaDescription: 'Rédaction d\'actes d\'hypothèque immobilière, inscription de sûretés et mainlevée d\'hypothèque à Oran chez Maître Lattab Mohamed, notaire à Oran.',
+      metaTitle: 'Acte d\'hypothèque à Oran — Office Notarial - Oran | Notaire Oran',
+      metaDescription: 'Rédaction d\'actes d\'hypothèque immobilière, inscription de sûretés et mainlevée d\'hypothèque à Oran chez Office Notarial - Oran.',
       h1: 'Hypothèque immobilière et sûretés réelles à Oran — Garantie de crédit et mainlevée',
       subtitle: 'Constitution d\'hypothèques conventionnelles, inscription au livre foncier et délivrance de mainlevée conformément au Code Civil algérien',
       targetAudience: [
@@ -1014,7 +1014,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Maître Lattab Mohamed instrumente les actes d\'hypothèque et de mainlevée en relation avec l\'ensemble des banques de la place d\'Oran (BNA, CPA, BEA, BDL, BADR, CNEP, et banques privées).',
+        'Office Notarial - Oran instrumente les actes d\'hypothèque et de mainlevée en relation avec l\'ensemble des banques de la place d\'Oran (BNA, CPA, BEA, BDL, BADR, CNEP, et banques privées).',
         'L\'hypothèque conventionnelle confère à la banque créancière le droit de suite et le droit de préférence prévus par l\'article 882 du Code Civil algérien.'
       ],
       inDepthContent: [

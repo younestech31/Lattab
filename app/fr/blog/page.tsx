@@ -19,7 +19,7 @@ export async function generateMetadata({
   const { q } = await searchParams;
 
   if (q) {
-    const searchDesc = `Résultats de recherche pour les articles concernant "${q.slice(0, 30)}" sur le blog de Maître Lattab Mohamed.`;
+    const searchDesc = `Résultats de recherche pour les articles concernant "${q.slice(0, 30)}" sur le blog de Office Notarial - Oran.`;
     assertDescriptionLength(searchDesc, 'French blog page search');
     return {
       title: `Résultats de recherche pour "${q}" — Blog Juridique`,
@@ -31,7 +31,7 @@ export async function generateMetadata({
     };
   }
 
-  const desc = 'Un guide complet des lois immobilières et des procédures notariales en Algérie. Articles spécialisés de l’Office de Maître Lattab Mohamed.';
+  const desc = 'Un guide complet des lois immobilières et des procédures notariales en Algérie. Articles spécialisés de l’Office de Office Notarial - Oran.';
   assertDescriptionLength(desc, 'French blog page main');
 
   return {
@@ -49,13 +49,13 @@ export async function generateMetadata({
       title: 'Blog Juridique et Immobilier — Notaire à Oran',
       description: desc,
       url: `${SITE_URL}/fr/blog`,
-      siteName: 'Maître Lattab Mohamed, notaire à Oran',
+      siteName: 'Office Notarial - Oran',
       images: [
         {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Blog Juridique — Maître Lattab Mohamed',
+          alt: 'Blog Juridique — Office Notarial - Oran',
         },
       ],
       locale: 'fr_DZ',
@@ -102,7 +102,7 @@ export default async function FrenchBlogList({
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Blog Juridique et Immobilier — Notaire à Oran",
-    "description": "Liste d'articles juridiques et immobiliers de l'Office Notarial de Maître Lattab Mohamed, notaire agréé à Oran",
+    "description": "Liste d'articles juridiques et immobiliers de l'Office Notarial de Office Notarial - Oran, notaire agréé à Oran",
     "url": SITE_URL + "/fr/blog",
     "numberOfItems": frBlogPosts.length,
     "itemListElement": frBlogPosts.map((post, index) => ({
@@ -122,7 +122,7 @@ export default async function FrenchBlogList({
       <JsonLdScript schema={itemListSchema} />
       <WebPageSchema
         url={`${SITE_URL}/fr/blog`}
-        name="Blog Juridique et Immobilier | Maître Lattab Mohamed - Notaire"
+        name="Blog Juridique et Immobilier | Office Notarial - Oran - Notaire"
         description="Textes et lois juridiques, prix référentiels immobiliers à Oran 2026, explications sur la création de sociétés et tout ce qui concerne les transactions notariales en Algérie."
         breadcrumbs={[
           { name: "Accueil", item: `${SITE_URL}/fr` },

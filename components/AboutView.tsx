@@ -15,8 +15,8 @@ export default function AboutView({ lang }: AboutViewProps) {
   const homeUrl = isAr ? '/' : '/fr';
   const contactUrl = isAr ? '/contact' : '/fr/contact';
 
-  const brandTitle = isAr ? 'الأستاذ لعطب محمد — موثق بوهران' : 'Maître Lattab Mohamed, notaire à Oran';
-  const brandSubtitle = isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial Maître Lattab Mohamed';
+  const brandTitle = isAr ? 'ديوان التوثيق ببلدية وهران' : 'Office Notarial - Oran';
+  const brandSubtitle = isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial Office Notarial - Oran';
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -42,10 +42,10 @@ export default function AboutView({ lang }: AboutViewProps) {
     '@type': 'AboutPage',
     '@id': `${pageUrl}#aboutpage`,
     url: pageUrl,
-    name: isAr ? 'عن مكتب الأستاذ لعطب محمد — موثق بوهران' : 'À propos de l\'office notarial de Me Lattab Mohamed',
+    name: isAr ? 'عن ديوان التوثيق ببلدية وهران' : 'À propos de l\'office notarial de Office Notarial - Oran',
     description: isAr
-      ? 'نبذة تعريفية عن الأستاذ لعطب محمد، موثق معتمد لدى محكمة فلاوسن بوهران، المؤهلات العلمية، المسار المهني، ومبادئ العمل التوثيقي.'
-      : 'Présentation de Maître Lattab Mohamed, notaire agréé près le Tribunal de Flaussen à Oran : formation universitaire, parcours et déontologie.',
+      ? 'نبذة تعريفية عن ديوان التوثيق - وهران، موثق معتمد لدى محكمة فلاوسن بوهران، المؤهلات العلمية، المسار المهني، ومبادئ العمل التوثيقي.'
+      : 'Présentation de Office Notarial - Oran, notaire agréé près le Tribunal de Flaussen à Oran : formation universitaire, parcours et déontologie.',
     mainEntity: {
       '@type': ['LegalService', 'Notary'],
       '@id': isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`,
@@ -95,7 +95,7 @@ export default function AboutView({ lang }: AboutViewProps) {
           </nav>
 
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
-            {isAr ? 'عن المكتب — الأستاذ لعطب محمد موثق بوهران' : 'À propos de l\'office — Maître Lattab Mohamed, notaire à Oran'}
+            {isAr ? 'عن المكتب — ديوان التوثيق ببلدية وهران' : 'À propos de l\'office — Office Notarial - Oran'}
           </h1>
           <p className="text-lg md:text-xl text-emerald-100/90 leading-relaxed max-w-3xl">
             {isAr
@@ -133,20 +133,20 @@ export default function AboutView({ lang }: AboutViewProps) {
             </div>
             <div className="grid sm:grid-cols-2 gap-3 text-sm">
               <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100/50">
-                <p className="font-bold text-emerald-950">{isAr ? 'الاعتماد الوزاري' : 'Agrément ministériel'}</p>
-                <p className="text-emerald-800">{isAr ? 'موثق معتمد بمرسوم رسمي منذ 2008' : 'Notaire titulaire de charge depuis 2008'}</p>
+                <p className="font-bold text-emerald-950">{isAr ? 'الصفة القانونية' : 'Statut légal'}</p>
+                <p className="text-emerald-800">{isAr ? 'ديوان عمومي للتوثيق تحت إشراف وزارة العدل' : 'Office public notarial sous tutelle du Ministère de la Justice'}</p>
               </div>
               <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100/50">
-                <p className="font-bold text-emerald-950">{isAr ? 'المؤهل الأكاديمي' : 'Formation académique'}</p>
-                <p className="text-emerald-800">{isAr ? 'ماجستير في القانون الخاص — جامعة الجزائر' : 'Magister en droit privé — Université d\'Alger'}</p>
+                <p className="font-bold text-emerald-950">{isAr ? 'القانون المنظم' : 'Cadre réglementaire'}</p>
+                <p className="text-emerald-800">{isAr ? 'القانون رقم 06-02 المنظم لمهنة الموثق' : 'Loi n° 06-02 portant organisation du notariat'}</p>
               </div>
               <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100/50">
-                <p className="font-bold text-emerald-950">{isAr ? 'الاختصاص القضائي' : 'Juridiction de rattachement'}</p>
-                <p className="text-emerald-800">{isAr ? 'محكمة فلاوسن — مجلس قضاء وهران' : 'Tribunal de Flaussen — Cour d\'Oran'}</p>
+                <p className="font-bold text-emerald-950">{isAr ? 'الاختصاص الإقليمي' : 'Compétence territoriale'}</p>
+                <p className="text-emerald-800">{isAr ? 'مجلس قضاء وهران والمحاكم التابعة له' : 'Cour d\'Oran et ses tribunaux rattachés'}</p>
               </div>
               <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100/50">
-                <p className="font-bold text-emerald-950">{isAr ? 'الخبرة الميدانية' : 'Expérience professionnelle'}</p>
-                <p className="text-emerald-800">{isAr ? 'أكثر من 15 سنة من الممارسة التوثيقية' : 'Plus de 15 années d\'exercice notarial'}</p>
+                <p className="font-bold text-emerald-950">{isAr ? 'طبيعة الخدمة' : 'Nature de la fonction'}</p>
+                <p className="text-emerald-800">{isAr ? 'تقديم الخدمات والتحريرات التوثيقية الرسمية' : 'Authentification et rédaction des actes officiels'}</p>
               </div>
             </div>
           </div>
@@ -166,8 +166,8 @@ export default function AboutView({ lang }: AboutViewProps) {
             </p>
             <p>
               {isAr
-                ? 'يلتزم مكتب الأستاذ لعطب محمد بمبادئ السر المهني المطلق، والحياد الإيجابي بين كافة الأطراف، والحرص الصارم على مطابقة المعاملات للنصوص التشريعية والتنظيمية السارية، ولا سيما في مجالات العقود العقارية، تأسيس وتعديل الشركات التجارية، وتسوية التركات العائلية المعقدة.'
-                : 'L\'office notarial de Maître Lattab Mohamed observe scrupuleusement le secret professionnel, l\'impartialité la plus stricte et le devoir de conseil éclairé, notamment pour la sécurisation des acquisitions immobilières, la structuration des entreprises et la transmission successorale.'}
+                ? 'يلتزم ديوان التوثيق - وهران بمبادئ السر المهني المطلق، والحياد الإيجابي بين كافة الأطراف، والحرص الصارم على مطابقة المعاملات للنصوص التشريعية والتنظيمية السارية، ولا سيما في مجالات العقود العقارية، تأسيس وتعديل الشركات التجارية، وتسوية التركات العائلية المعقدة.'
+                : 'L\'office notarial de Office Notarial - Oran observe scrupuleusement le secret professionnel, l\'impartialité la plus stricte et le devoir de conseil éclairé, notamment pour la sécurisation des acquisitions immobilières, la structuration des entreprises et la transmission successorale.'}
             </p>
           </div>
         </section>

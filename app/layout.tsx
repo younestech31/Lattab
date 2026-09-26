@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     default: 'الأستاذ لعطب محمد — موثق بوهران',
     template: '%s',
   },
-  description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.',
-  authors: [{ name: 'الأستاذ لعطب محمد', url: `${SITE_URL}/a-propos` }],
-  creator: 'الأستاذ لعطب محمد',
-  publisher: 'الديوان العمومي للتوثيق',
+  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد لدى محكمة فلاوسن وهران — للإعلام والتوثيق الرسمي للعقود العقارية والتجارية والأحوال الشخصية وفق القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.',
+  authors: [{ name: 'الأستاذ لعطب محمد - موثق بوهران', url: `${SITE_URL}/a-propos` }],
+  creator: 'الأستاذ لعطب محمد - موثق بوهران',
+  publisher: 'الأستاذ لعطب محمد - موثق بوهران',
   category: 'legal services',
   robots: {
     index: true,
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: 'الأستاذ لعطب محمد — موثق بوهران',
     title: 'الأستاذ لعطب محمد — موثق بوهران',
-    description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري.',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد لدى محكمة فلاوسن وهران — للإعلام والتوثيق الرسمي للعقود وفق أحكام القانون الجزائري.',
     images: [
       {
         url: `${SITE_URL}/og-image.jpg`,
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'الأستاذ لعطب محمد — موثق بوهران',
-    description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران لتوثيق عقودكم من عقارات وشركات ووكالات وفق أحكام القانون الجزائري.',
+    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد لدى محكمة فلاوسن وهران — للإعلام والتوثيق الرسمي للعقود وفق أحكام القانون الجزائري.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
   verification: {
@@ -115,14 +115,21 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                    console.log('SW registered successfully:', reg.scope);
-                  }).catch(function(err) {
-                    console.error('SW registration failed:', err);
+              if (typeof window !== 'undefined') {
+                if ('serviceWorker' in navigator) {
+                  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    for (var i = 0; i < registrations.length; i++) {
+                      registrations[i].unregister();
+                    }
                   });
-                });
+                }
+                if ('caches' in window) {
+                  caches.keys().then(function(names) {
+                    for (var i = 0; i < names.length; i++) {
+                      caches.delete(names[i]);
+                    }
+                  });
+                }
               }
             `
           }}

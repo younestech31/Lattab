@@ -26,8 +26,8 @@
  * - /content/blog/fr/acte-de-vente-immobilier-oran.md
  */
 
-export const AR_DESCRIPTION_SUFFIX = 'مكتب الأستاذ لعطب محمد — موثق معتمد بوهران. خدمات قانونية وعقارية شاملة.';
-export const FR_DESCRIPTION_SUFFIX = 'Office Notarial de Maître Lattab Mohamed — Notaire agréé à Oran.';
+export const AR_DESCRIPTION_SUFFIX = 'الديوان العمومي للتوثيق بوهران — إعلام توعوي حول الإجراءات والوثائق القانونية طبقاً للتشريع الجزائري.';
+export const FR_DESCRIPTION_SUFFIX = 'Office Notarial à Oran — Informations administratives et juridiques sur les procédures en Algérie.';
 
 export function enrichDescription(
   description: string,

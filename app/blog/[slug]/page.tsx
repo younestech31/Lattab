@@ -10,7 +10,6 @@ import { SITE_URL, TITLE_TEMPLATE_SUFFIX } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
-import ArticleAuthorBox from '@/components/ArticleAuthorBox';
 import { enrichDescription, AR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
 import { RegisterAlternatePath } from '@/lib/i18n';
 import { getRelatedPostsByCluster, CLUSTER_NAMES, SLUG_TO_CLUSTER } from '@/lib/data/clusters';
@@ -68,7 +67,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: titleValue,
     description: enrichedDesc,
-    authors: [{ name: 'مكتب الأستاذ لعطب محمد', url: SITE_URL }],
+    authors: [{ name: 'ديوان التوثيق - وهران', url: SITE_URL }],
     alternates: {
       canonical: `${SITE_URL}/blog/${post.slug}`,
       languages,
@@ -77,12 +76,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: enrichedDesc,
       url: `${SITE_URL}/blog/${post.slug}`,
-      siteName: 'مكتب الأستاذ لعطب محمد - موثق بوهران',
+      siteName: 'ديوان التوثيق - وهران - موثق بوهران',
       locale: 'ar_DZ',
       type: 'article',
       publishedTime: post.dateISO,
       modifiedTime: post.dateModified || post.dateISO,
-      authors: ['مكتب الأستاذ لعطب محمد'],
+      authors: ['ديوان التوثيق - وهران'],
       section: post.category,
       tags: [post.category, 'قانون جزائري', 'توثيق', 'وهران'],
     },
@@ -168,7 +167,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               "dateModified": post.dateModified || post.dateISO,
               "author": {
                 "@type": "Person",
-                "name": "الأستاذ لعطب محمد"
+                "name": "ديوان التوثيق - وهران"
               },
               "publisher": {
                 "@type": "Organization",
@@ -199,7 +198,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               "isPartOf": {
                 "@type": "WebSite",
                 "url": SITE_URL,
-                "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران"
+                "name": "الديوان العمومي للتوثيق — ديوان التوثيق ببلدية وهران"
               }
             }, {
               "@context": "https://schema.org",
@@ -247,21 +246,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 هذا المقال تم إعداده لأغراض إعلامية وتوعوية فقط، وقد تتغير النصوص القانونية والجبائية أو الإجراءات بمرور الوقت وفقاً للجريدة الرسمية. يرجى التقرب من مكتب الموثق للحصول على استشارة قانونية دقيقة ومحدثة تناسب وضعيتك الخاصة.
               </div>
 
-              {/* Author Box with E-E-A-T credentials and links */}
-              <ArticleAuthorBox lang="ar" />
-            </div>
-            
-            <div className="bg-emerald-900 p-8 md:p-12 text-center text-white">
-              <h3 className="text-2xl font-bold mb-4">هل تحتاج لمرافقة قانونية وتوثيقية في هذا الموضوع؟</h3>
-              <p className="text-emerald-100 mb-8 max-w-2xl mx-auto">
-                مكتب الأستاذ لعطب محمد - الموثق المعتمد، مستعد لدراسة ملفك وتسهيل إجراءاتك بأمان تام وفي أسرع وقت.
-              </p>
-              <Link 
-                href="/contact"
-                className="inline-flex py-3 px-8 bg-amber-500 hover:bg-amber-400 text-emerald-950 rounded-full font-bold text-lg transition-colors shadow-lg shadow-amber-500/20"
-              >
-                تواصل معنا الآن لإيداع ملفك
-              </Link>
             </div>
           </article>
 

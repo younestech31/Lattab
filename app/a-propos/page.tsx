@@ -5,8 +5,8 @@ import { SITE_URL } from '@/lib/config';
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'عن المكتب — الأستاذ لعطب محمد | موثق وهران محكمة فلاوسن';
-  const desc = 'المسار المهني والمؤهلات الأكاديمية للأستاذ لعطب محمد، موثق معتمد لدى محكمة فلاوسن بوهران منذ 2008، ماجستير في القانون الخاص، وخبرة تفوق 15 سنة في التوثيق.';
+  const title = 'عن المكتب — ديوان التوثيق - وهران | موثق وهران محكمة فلاوسن';
+  const desc = 'دليل إعلامي وتوعوي شامل حول الإجراءات والوثائق القانونية المطلوبة لإتمام المعاملات الرسمية في الجزائر.';
 
   return {
     title: { absolute: title },
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description: desc,
       url: `${SITE_URL}/a-propos`,
-      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+      siteName: 'ديوان التوثيق ببلدية وهران',
       locale: 'ar_DZ',
       alternateLocale: ['fr_DZ'],
       type: 'profile',
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'الأستاذ لعطب محمد — موثق بوهران',
+          alt: 'ديوان التوثيق ببلدية وهران',
         },
       ],
     },

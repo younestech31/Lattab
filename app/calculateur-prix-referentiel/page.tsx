@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
       description: desc,
       url: `${SITE_URL}/calculateur-prix-referentiel`,
-      siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+      siteName: 'ديوان التوثيق ببلدية وهران',
       type: 'website',
       images: [{ 
         url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 

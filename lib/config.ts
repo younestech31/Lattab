@@ -2,12 +2,12 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://lattab.verc
 
 export const OFFICE_INFO = {
   notaryFullName: {
-    ar: 'الأستاذ لعطب محمد',
-    fr: 'Maître Lattab Mohamed',
+    ar: 'ديوان التوثيق - وهران',
+    fr: 'Office Notarial - Oran',
   },
   title: {
-    ar: 'موثق لدى محكمة فلاوسن — ولاية وهران',
-    fr: 'Notaire près le Tribunal de Felaoucene — Wilaya d\'Oran',
+    ar: 'الديوان العمومي للتوثيق ببلدية وهران',
+    fr: 'Étude Publique Notariale - Commune d\'Oran',
   },
   officialDesignation: {
     ar: 'الديوان العمومي للتوثيق',

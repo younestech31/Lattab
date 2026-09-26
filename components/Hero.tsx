@@ -46,7 +46,7 @@ export default function Hero({ lang }: { lang: Language }) {
             <h1
               className="font-bold text-white leading-[1.2] tracking-tight text-[clamp(1.75rem,calc(5vw+0.5rem),3.75rem)]"
             >
-              {lang === 'ar' ? 'الأستاذ لعطب محمد — موثق بوهران' : 'Maître Lattab Mohamed, notaire à Oran'}
+              {t(lang, 'hero', 'title')}
             </h1>
 
             {/* Subtitle */}

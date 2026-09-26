@@ -7,7 +7,7 @@ import { WORKING_HOURS, SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: { absolute: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران' },
-  description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها، والتزاماتنا القانونية والمهنية تجاهك كعميل.',
+  description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لديوان التوثيق - وهران بوهران: كيفية جمع بياناتك واستخدامها وحمايتها، والتزاماتنا القانونية والمهنية تجاهك كعميل.',
   alternates: {
     canonical: `${SITE_URL}/terms-privacy`,
     languages: {
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   openGraph: {
     url: `${SITE_URL}/terms-privacy`,
     title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
-    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
-    siteName: 'الأستاذ لعطب محمد — موثق بوهران',
+    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لديوان التوثيق - وهران بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
+    siteName: 'ديوان التوثيق ببلدية وهران',
     locale: 'ar_DZ',
     alternateLocale: ['fr_DZ'],
     type: 'website',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
-    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لمكتب الموثق الأستاذ لعطب محمد بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
+    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لديوان التوثيق - وهران بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
     images: [`${SITE_URL}/logo.webp`],
   },
   robots: {
@@ -71,8 +71,8 @@ const TermsPrivacyPage = async () => {
           </h1>
           <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed text-center font-sans">
             {isAr 
-              ? "مكتب الموثق الأستاذ لعطب محمد - نلتزم بالشفافية والسر المهني وحماية بياناتك وفقاً للتشريعات الجزائرية"
-              : "Office Notarial de Maître Lattab Mohamed - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne."
+              ? "ديوان التوثيق - وهران - نلتزم بالشفافية والسر المهني وحماية بياناتك وفقاً للتشريعات الجزائرية"
+              : "Office Notarial de Office Notarial - Oran - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne."
             }
           </p>
         </div>
@@ -103,7 +103,7 @@ const TermsPrivacyPage = async () => {
               </div>
               <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
                 <p>
-                  تُعدّ هذه الوثيقة عقداً ملزماً بين المستخدم وموقع <strong>مكتب الموثق الأستاذ لعطب محمد</strong>، وهو منصة إلكترونية تهدف إلى تسهيل وتنظيم حجز المواعيد وتقديم الخدمات التوثيقية المعتمدة في الجمهورية الجزائرية الديمقراطية الشعبية.
+                  تُعدّ هذه الوثيقة عقداً ملزماً بين المستخدم وموقع <strong>ديوان التوثيق - وهران</strong>، وهو منصة إلكترونية تهدف إلى تسهيل وتنظيم حجز المواعيد وتقديم الخدمات التوثيقية المعتمدة في الجمهورية الجزائرية الديمقراطية الشعبية.
                 </p>
                 <p>
                   يخضع المكتب لرقابة وإشراف <strong>الغرفة الوطنية للموثقين</strong> ويلتزم بجميع الأحكام القانونية المعمول بها، ولا سيما القانون رقم 06-02 المتعلق بمهنة الموثق، والقانون رقم 18-07 المعدل والمتمم بالقانون 25-11 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي.
@@ -113,11 +113,11 @@ const TermsPrivacyPage = async () => {
                 <ul className="space-y-4 list-none bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-100">
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                    <div><strong>&quot;المنصة&quot;:</strong> الموقع الإلكتروني لمكتب الموثق الأستاذ لعطب محمد المخصص لتقديم خدمة حجز المواعيد.</div>
+                    <div><strong>&quot;المنصة&quot;:</strong> الموقع الإلكتروني لديوان التوثيق - وهران المخصص لتقديم خدمة حجز المواعيد.</div>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                    <div><strong>&quot;المسؤول عن المعالجة&quot;:</strong> مكتب الموثق الأستاذ لعطب محمد، والذي يحدد غايات ووسائل معالجة بياناتك.</div>
+                    <div><strong>&quot;المسؤول عن المعالجة&quot;:</strong> ديوان التوثيق - وهران، والذي يحدد غايات ووسائل معالجة بياناتك.</div>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
@@ -342,7 +342,7 @@ const TermsPrivacyPage = async () => {
         
         <div className="text-center mt-12 text-gray-500 text-sm">
           <p>الإصدار: 1.2 | تاريخ آخر تحديث: 12/4/2026</p>
-          <p className="mt-2 font-medium">جميع الحقوق محفوظة © 2026 - مكتب الموثق الأستاذ لعطب محمد</p>
+          <p className="mt-2 font-medium">جميع الحقوق محفوظة © 2026 - ديوان التوثيق - وهران</p>
         </div>
         </div>
       </div>

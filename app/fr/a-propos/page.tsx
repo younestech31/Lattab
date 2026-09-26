@@ -5,8 +5,8 @@ import { SITE_URL } from '@/lib/config';
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'À propos — Maître Lattab Mohamed | Notaire à Oran';
-  const desc = 'Parcours et compétences de Maître Lattab Mohamed, notaire agréé près le Tribunal de Flaussen à Oran depuis 2008. Titulaire d\'un magister en droit privé.';
+  const title = 'À propos — Office Notarial - Oran | Notaire à Oran';
+  const desc = 'Parcours et compétences de Office Notarial - Oran, notaire agréé près le Tribunal de Flaussen à Oran depuis 2008. Titulaire d\'un magister en droit privé.';
 
   return {
     title: { absolute: title },
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description: desc,
       url: `${SITE_URL}/fr/a-propos`,
-      siteName: 'Maître Lattab Mohamed, notaire à Oran',
+      siteName: 'Office Notarial - Oran',
       locale: 'fr_DZ',
       alternateLocale: ['ar_DZ'],
       type: 'profile',
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${SITE_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Maître Lattab Mohamed, notaire à Oran',
+          alt: 'Office Notarial - Oran',
         },
       ],
     },

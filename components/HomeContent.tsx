@@ -34,9 +34,9 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
     "@type": ["LegalService", "Notary"],
     "@id": notaryId,
     "url": pageUrl,
-    "name": isAr ? "الأستاذ لعطب محمد — موثق بوهران" : "Maître Lattab Mohamed, notaire à Oran",
-    "legalName": isAr ? "الأستاذ لعطب محمد — موثق بوهران" : "Maître Lattab Mohamed, notaire à Oran",
-    "alternateName": isAr ? "الديوان العمومي للتوثيق" : "Office notarial Maître Lattab Mohamed",
+    "name": isAr ? "ديوان التوثيق ببلدية وهران" : "Office Notarial - Oran",
+    "legalName": isAr ? "ديوان التوثيق ببلدية وهران" : "Office Notarial - Oran",
+    "alternateName": isAr ? "الديوان العمومي للتوثيق" : "Office notarial Office Notarial - Oran",
     "description": isAr
       ? "الديوان العمومي للتوثيق — موثق معتمد لدى محكمة فلاوسن بوهران، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون."
       : "Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Prise de rendez-vous.",
