@@ -3,7 +3,7 @@ import { Language } from '@/lib/i18n/translations';
 import { SITE_URL } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';
 import MapComponent from '@/components/MapComponent';
-import ObfuscatedPhone from '@/components/ui/ObfuscatedPhone';
+import PhoneLink from '@/components/ui/PhoneLink';
 
 interface ContactPageViewProps {
   lang: Language;
@@ -157,11 +157,11 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
                   <p className="font-bold text-gray-900 mb-1">{isAr ? 'أرقام الهاتف' : 'Lignes téléphoniques'}</p>
                   <div className="space-y-1 font-mono" dir="ltr">
                     <div>
-                      <ObfuscatedPhone number="+213562296981" display="+213 562 29 69 81" lang={lang} className="text-emerald-700 font-bold hover:underline" />
+                      <PhoneLink type="office" className="text-emerald-700 font-bold hover:underline" />
                       <span className="text-gray-400 text-xs ms-2">({isAr ? 'خط المكتب الرئيسي' : 'Ligne directe'})</span>
                     </div>
                     <div>
-                      <ObfuscatedPhone number="+213558440001" display="+213 558 44 00 01" lang={lang} className="text-emerald-700 font-bold hover:underline" />
+                      <PhoneLink type="support" className="text-emerald-700 font-bold hover:underline" />
                       <span className="text-gray-400 text-xs ms-2">({isAr ? 'الأمانة والمتابعة' : 'Secrétariat'})</span>
                     </div>
                   </div>
@@ -211,15 +211,15 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
                 </svg>
                 <span>{isAr ? 'مراسلة عبر واتساب' : 'Contacter sur WhatsApp'}</span>
               </a>
-              <a
-                href="tel:+213562296981"
+              <PhoneLink
+                type="office"
                 className="w-full bg-slate-100 hover:bg-slate-200 text-gray-800 font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2"
               >
-                <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <span>{isAr ? 'اتصال هاتفي مباشر' : 'Appel téléphonique'}</span>
-              </a>
+              </PhoneLink>
             </div>
           </div>
 

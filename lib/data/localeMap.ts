@@ -53,6 +53,13 @@ export const STATIC_LOCALE_MAP: RouteLocaleEntry[] = [
     changeFrequency: 'monthly',
   },
   {
+    arPath: '/services',
+    frPath: '/fr/services',
+    lastmod: '2026-09-24',
+    priority: 0.8,
+    changeFrequency: 'weekly',
+  },
+  {
     arPath: '/services/vente-immobiliere',
     frPath: '/fr/services/vente-immobiliere',
     lastmod: '2026-09-24',

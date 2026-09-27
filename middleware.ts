@@ -42,6 +42,16 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 });
   }
 
+  // 301 Redirect for mismatched blog slugs between languages
+  if (url.pathname === '/fr/blog/guide-acte-de-vente-immobilier') {
+    url.pathname = '/fr/blog/acte-de-vente-immobilier-oran';
+    return NextResponse.redirect(url, { status: 301 });
+  }
+  if (url.pathname === '/blog/acte-de-vente-immobilier-oran') {
+    url.pathname = '/blog/guide-acte-de-vente-immobilier';
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
   // Language detection based strictly on URL prefix (/fr = French, / = Arabic)
   let lang = 'ar';
   if (url.pathname.startsWith('/fr') && (url.pathname === '/fr' || url.pathname.startsWith('/fr/'))) {

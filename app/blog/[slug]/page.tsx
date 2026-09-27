@@ -1,7 +1,7 @@
 import { parseMarkdown, stripFrontmatterAndLeadingH1 } from '@/lib/utils/parseMarkdown';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
@@ -32,9 +32,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === 'acte-de-vente-immobilier-oran') {
+    redirect('/blog/guide-acte-de-vente-immobilier');
+  }
   const post = blogPosts.find(p => p.slug === slug);
   if (!post) {
-    return { title: 'مقال غير موجود' };
+    notFound();
   }
 
   const frPost = frBlogPosts.find(fp => fp.arSlug === post.slug);
@@ -95,6 +98,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (slug === 'acte-de-vente-immobilier-oran') {
+    redirect('/blog/guide-acte-de-vente-immobilier');
+  }
   const post = blogPosts.find(p => p.slug === slug);
   
   if (!post) {

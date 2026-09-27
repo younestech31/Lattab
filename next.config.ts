@@ -27,6 +27,25 @@ const nextConfig: NextConfig = {
 
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/fr/blog/guide-acte-de-vente-immobilier',
+        destination: '/fr/blog/acte-de-vente-immobilier-oran',
+        statusCode: 301,
+      },
+      {
+        source: '/blog/acte-de-vente-immobilier-oran',
+        destination: '/blog/guide-acte-de-vente-immobilier',
+        statusCode: 301,
+      },
+      {
+        source: '/blog/fr/:slug',
+        destination: '/fr/blog/:slug',
+        statusCode: 301,
+      },
+    ];
+  },
   eslint: {
     ignoreDuringBuilds: false,
   },

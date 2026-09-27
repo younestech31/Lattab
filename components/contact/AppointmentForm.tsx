@@ -6,6 +6,7 @@ import { AppointmentFormData, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOT
 import { validateAppointment, AppointmentState } from '@/app/actions/appointment';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
+import PhoneLink from '@/components/ui/PhoneLink';
 
 export default function AppointmentForm({ services }: { services: readonly string[] }) {
   const { lang } = useLang();
@@ -139,9 +140,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
             <p className="text-blue-800 font-medium mb-2">
               {t_form.fallback_call}
             </p>
-            <a href="tel:+213562296981" className="text-lg font-bold text-blue-900 underline block" dir="ltr">
-              +213 562 29 69 81
-            </a>
+            <PhoneLink type="office" className="text-lg font-bold text-blue-900 underline block" />
           </div>
 
           <button
@@ -172,7 +171,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
             <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
             <div className="text-red-700 font-medium text-start">
               <p>{t_form.error_title}</p>
-              <a href="tel:+213562296981" className="font-bold underline block mt-1" dir="ltr">+213 562 29 69 81</a>
+              <PhoneLink type="office" className="font-bold underline block mt-1" />
             </div>
           </div>
         </div>

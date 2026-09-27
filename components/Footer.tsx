@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Language, translations } from '@/lib/i18n/translations';
 import { OFFICE_INFO } from '@/lib/config';
-import ObfuscatedPhone from './ui/ObfuscatedPhone';
+import PhoneLink from './ui/PhoneLink';
 
 interface FooterProps {
   lang: Language;
@@ -236,11 +236,11 @@ export default function Footer({ lang }: FooterProps) {
                 </svg>
                 <div className="text-gray-400 text-sm space-y-1 font-mono" dir="ltr">
                   <div>
-                    <ObfuscatedPhone number="+213562296981" display="+213 562 29 69 81" lang={lang} className="hover:text-emerald-400 transition-colors" />
+                    <PhoneLink type="office" className="hover:text-emerald-400 transition-colors" />
                     <span className="text-gray-500 text-xs ms-2">{translations[lang].contact.info.phone_office}</span>
                   </div>
                   <div>
-                    <ObfuscatedPhone number="+213558440001" display="+213 558 44 00 01" lang={lang} className="hover:text-emerald-400 transition-colors" />
+                    <PhoneLink type="support" className="hover:text-emerald-400 transition-colors" />
                     <span className="text-gray-500 text-xs ms-2">{translations[lang].contact.info.phone_support}</span>
                   </div>
                 </div>

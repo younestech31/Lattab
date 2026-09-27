@@ -3,6 +3,7 @@ import { useState, useEffect, Suspense } from 'react';
 import AppointmentForm from './AppointmentForm';
 import InquiryForm from './InquiryForm';
 import { Language, translations } from '@/lib/i18n/translations';
+import PhoneLink from '@/components/ui/PhoneLink';
 
 export default function ContactTabs({ lang }: { lang: Language }) {
   const [activeTab, setActiveTab] = useState<'appointment' | 'inquiry'>('appointment');
@@ -48,7 +49,7 @@ export default function ContactTabs({ lang }: { lang: Language }) {
       <noscript>
         <p className="p-4 bg-gray-50 rounded-xl text-center text-gray-700">
           {lang === 'ar' ? 'يرجى التواصل على' : 'Veuillez nous contacter au'}{' '}
-          <a href="tel:+213562296981" className="text-emerald-600 font-bold hover:underline" dir="ltr">+213 562 29 69 81</a>
+          <PhoneLink type="office" className="text-emerald-600 font-bold hover:underline" />
         </p>
       </noscript>
       

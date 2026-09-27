@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
 import { WORKING_HOURS, SITE_URL } from '@/lib/config';
+import PhoneLink from '@/components/ui/PhoneLink';
 
 export const metadata: Metadata = {
   title: { absolute: "Conditions & Confidentialité — Office Notarial" },
@@ -297,13 +298,13 @@ const TermsPrivacyPageFR = () => {
                       </div>
                       <div className="flex items-start gap-4 text-gray-700">
                         <Phone className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-1" />
-                        <div className="font-medium flex flex-col space-y-1">
-                          <a href="tel:+213562296981" className="hover:text-emerald-600 transition-colors">
-                            +213 562 29 69 81 <span className="text-xs font-normal text-gray-500 ml-2">(Office)</span>
-                          </a>
-                          <a href="tel:+213558440001" className="hover:text-emerald-600 transition-colors text-sm text-gray-500">
-                            +213 558 44 00 01 <span className="text-xs font-normal ml-2">(Assistance hors horaires uniquement)</span>
-                          </a>
+                        <div>
+                          <PhoneLink type="office" className="hover:text-emerald-600 transition-colors" />
+                          <span className="text-xs font-normal text-gray-500 ml-2">(Office)</span>
+                        </div>
+                        <div>
+                          <PhoneLink type="support" className="hover:text-emerald-600 transition-colors text-sm text-gray-500" />
+                          <span className="text-xs font-normal ml-2">(Assistance hors horaires uniquement)</span>
                         </div>
                       </div>
                       <div className="flex items-center gap-4 text-gray-700">

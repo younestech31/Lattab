@@ -3,6 +3,8 @@ export const KNOWN_STATIC_ROUTES = new Set([
   '/fr',
   '/blog',
   '/fr/blog',
+  '/services',
+  '/fr/services',
   '/calculateur-prix-referentiel',
   '/fr/calculateur-prix-referentiel',
   '/useful-links',

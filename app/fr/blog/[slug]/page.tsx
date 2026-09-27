@@ -1,7 +1,7 @@
 import { parseMarkdown, stripFrontmatterAndLeadingH1 } from '@/lib/utils/parseMarkdown';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, ArrowLeft, Clock } from 'lucide-react';
@@ -32,9 +32,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === 'guide-acte-de-vente-immobilier') {
+    redirect('/fr/blog/acte-de-vente-immobilier-oran');
+  }
   const post = frBlogPosts.find(p => p.slug === slug);
   if (!post) {
-    return { title: 'Article non trouvé' };
+    notFound();
   }
 
   const languages: Record<string, string> = {
@@ -90,6 +93,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function FrenchBlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (slug === 'guide-acte-de-vente-immobilier') {
+    redirect('/fr/blog/acte-de-vente-immobilier-oran');
+  }
   const post = frBlogPosts.find(p => p.slug === slug);
   
   if (!post) {

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Language } from '@/lib/i18n/translations';
 import { SITE_URL } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';
-import ObfuscatedPhone from '@/components/ui/ObfuscatedPhone';
+import PhoneLink from '@/components/ui/PhoneLink';
 
 interface AboutViewProps {
   lang: Language;
@@ -203,11 +203,14 @@ export default function AboutView({ lang }: AboutViewProps) {
                 <div>
                   <p className="font-bold text-gray-900">{isAr ? 'أرقام الهاتف' : 'Téléphones'}</p>
                   <div className="space-y-1 font-mono" dir="ltr">
-                    <ObfuscatedPhone number="+213562296981" display="+213 562 29 69 81" lang={lang} className="text-emerald-700 hover:underline" />
-                    <span className="text-gray-400 text-xs ms-2">({isAr ? 'المكتب' : 'Bureau'})</span>
-                    <br />
-                    <ObfuscatedPhone number="+213558440001" display="+213 558 44 00 01" lang={lang} className="text-emerald-700 hover:underline" />
-                    <span className="text-gray-400 text-xs ms-2">({isAr ? 'المتابعة' : 'Secrétariat'})</span>
+                    <div>
+                      <PhoneLink type="office" className="text-emerald-700 hover:underline" />
+                      <span className="text-gray-400 text-xs ms-2">({isAr ? 'المكتب' : 'Bureau'})</span>
+                    </div>
+                    <div>
+                      <PhoneLink type="support" className="text-emerald-700 hover:underline" />
+                      <span className="text-gray-400 text-xs ms-2">({isAr ? 'المتابعة' : 'Secrétariat'})</span>
+                    </div>
                   </div>
                 </div>
               </div>
