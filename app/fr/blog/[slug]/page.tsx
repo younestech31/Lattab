@@ -261,8 +261,8 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
                 </Link>
               </li>
               <li>
-                <Link href="/fr/contact" className="text-emerald-600 hover:underline font-medium">
-                  → Prendre rendez-vous à l&apos;office notarial à Akid Lotfi
+                <Link href="/fr/contact" className="text-emerald-700 hover:underline font-medium">
+                  → Coordonnées et horaires de réception de l&apos;office
                 </Link>
               </li>
             </ul>

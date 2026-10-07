@@ -203,27 +203,34 @@ export default function ServicesPage() {
             })}
           </section>
 
-          {/* Consultation CTA Banner */}
-          <section className="bg-gradient-to-br from-emerald-800 to-emerald-950 text-white rounded-3xl p-8 md:p-12 shadow-xl text-center md:text-start flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-2xl">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                هل تحتاج إلى استشارة توثيقية أو توثيق معاملة خاصة؟
-              </h2>
-              <p className="text-emerald-100 text-sm md:text-base leading-relaxed">
-                يسعد ديوان التوثيق للأستاذ لعطب محمد باستقبالكم بمقر الديوان بحي العقيد لطفي بوهران، أو تقديم الإرشادات الأولية لحجز موعدكم الإداري وتجهيز الوثائق مسبقاً.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-3 rounded-xl transition-all text-center shadow-lg"
-              >
-                حجز موعد بالديوان
-              </Link>
-              <PhoneLink
-                type="office"
-                className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-medium px-5 py-3 rounded-xl transition-all border border-white/20 justify-center"
-              />
+          {/* Institutional Office Information */}
+          <section className="bg-slate-100 rounded-2xl p-8 border border-slate-200 text-slate-800">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="space-y-2 text-center md:text-start">
+                <h2 className="text-xl font-bold text-slate-900">
+                  البيانات الرسمية وأوقات الاستقبال
+                </h2>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  الديوان العمومي للتوثيق — الأستاذ لعطب محمد، موثق لدى محكمة فلاوسن بوهران. المقر: حي العقيد لطفي، وهران. أوقات الاستقبال: من الأحد إلى الخميس (08:30–12:00 و 13:30–16:00).
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-3 shrink-0">
+                <Link
+                  href="/contact"
+                  className="bg-slate-800 hover:bg-slate-900 text-white px-5 py-2.5 rounded-xl font-semibold transition text-sm flex items-center gap-2"
+                >
+                  معلومات الاتصال والمواعيد
+                </Link>
+                <PhoneLink
+                  type="office"
+                  className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 px-5 py-2.5 rounded-xl font-medium transition text-sm flex items-center gap-2"
+                  icon={
+                    <svg className="w-4 h-4 flex-shrink-0 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  }
+                />
+              </div>
             </div>
           </section>
         </div>

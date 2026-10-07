@@ -104,24 +104,22 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
           <div className="flex flex-wrap gap-4 items-center">
             <Link
               href={contactUrl}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-emerald-500/25 text-sm md:text-base flex items-center gap-2"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md text-sm md:text-base flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              {isAr ? 'حجز موعد بالمكتب' : 'Prendre rendez-vous'}
+              {isAr ? 'معلومات الاتصال والمواعيد الإدارية' : 'Coordonnées et démarches'}
             </Link>
-            <a
-              href="https://wa.me/213562296981"
-              target="_blank"
-              rel="noopener noreferrer"
+            <PhoneLink
+              type="office"
               className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl font-semibold transition-all text-sm md:text-base flex items-center gap-2"
-            >
-              <svg className="w-5 h-5 text-emerald-400 fill-current" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414zM12.004 0C5.374 0 0 5.373 0 12.001c0 2.112.547 4.178 1.588 6.003L.057 24l6.162-1.616a11.953 11.953 0 005.785 1.517c6.629 0 12.002-5.373 12.002-12.001C24.006 5.373 18.632 0 12.004 0zM12.004 21.902c-1.934 0-3.83-.518-5.482-1.499l-.393-.233-3.674.963.98-3.582-.255-.406a9.865 9.865 0 01-1.513-5.144c0-5.457 4.441-9.898 9.897-9.898 5.457 0 9.899 4.441 9.899 9.898 0 5.458-4.442 9.899-9.899 9.899z" />
-              </svg>
-              {isAr ? 'استفسار عبر واتساب' : 'WhatsApp direct'}
-            </a>
+              icon={
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              }
+            />
           </div>
         </div>
       </section>
@@ -292,32 +290,36 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
           </div>
         </section>
 
-        {/* Bottom Booking CTA */}
-        <section className="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-8 text-white text-center space-y-4">
-          <h2 className="text-2xl md:text-3xl font-bold">
-            {isAr ? 'هل تحتاج إلى استشارة أو توثيق رسمي بوهران؟' : 'Besoin d\'un conseil ou d\'un acte notarié à Oran ?'}
-          </h2>
-          <p className="text-emerald-100 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            {isAr
-              ? 'ديوان التوثيق - وهران بحي العقيد لطفي يستقبلكم يومياً من الأحد إلى الخميس لدراسة ملفاتكم وإنجاز معاملاتكم التوثيقية بأعلى معايير الدقة والأمان القانوني.'
-              : 'L\'office notarial de Office Notarial - Oran à Akid Lotfi vous accueille du dimanche au jeudi pour instruire vos dossiers avec diligence et sécurité juridique.'}
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 pt-2">
-            <Link
-              href={contactUrl}
-              className="bg-white text-emerald-800 hover:bg-emerald-50 px-8 py-3 rounded-xl font-bold transition shadow-lg text-sm md:text-base"
-            >
-              {isAr ? 'الاتصال وحجز موعد' : 'Prendre rendez-vous'}
-            </Link>
-            <PhoneLink
-              type="office"
-              className="bg-emerald-800 hover:bg-emerald-900 text-white px-8 py-3 rounded-xl font-semibold transition text-sm md:text-base flex items-center gap-2"
-              icon={
-                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              }
-            />
+        {/* Institutional Office Information */}
+        <section className="bg-slate-100 rounded-2xl p-8 border border-slate-200 text-slate-800">
+          <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 text-center md:text-start">
+              <h2 className="text-xl font-bold text-slate-900">
+                {isAr ? 'البيانات الرسمية وأوقات الاستقبال' : 'Informations officielles et réception'}
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                {isAr
+                  ? 'الديوان العمومي للتوثيق — حي العقيد لطفي، وهران. أوقات الاستقبال: من الأحد إلى الخميس، من 08:30 إلى 12:00 ومن 13:30 إلى 16:00.'
+                  : 'Office Notarial — Quartier Akid Lotfi, Oran. Réception du public : du dimanche au jeudi, de 08h30 à 12h00 et de 13h30 à 16h00.'}
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 shrink-0">
+              <Link
+                href={contactUrl}
+                className="bg-slate-800 hover:bg-slate-900 text-white px-5 py-2.5 rounded-xl font-semibold transition text-sm flex items-center gap-2"
+              >
+                {isAr ? 'معلومات الاتصال بالديوان' : 'Coordonnées de l\'office'}
+              </Link>
+              <PhoneLink
+                type="office"
+                className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 px-5 py-2.5 rounded-xl font-medium transition text-sm flex items-center gap-2"
+                icon={
+                  <svg className="w-4 h-4 flex-shrink-0 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                }
+              />
+            </div>
           </div>
         </section>
       </div>

@@ -98,22 +98,22 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يقع مكتب التوثيق بدائرة اختصاص محكمة فلاوسن ومجلس قضاء وهران، ويمتد اختصاصه التوثيقي لتحرير العقود العقارية لكافة تراب ولاية وهران (بلدية وهران، بئر الجير، السانية، عين الترك، وغيرها).',
-        'تخضع المعاملات العقارية في وهران لأحكام الأمر 75-74 المتضمن إعداد مسح الأراضي وتأسيس السجل العقاري، والقوانين المالية السارية بما يضمن الحجية المطلقة للعقد المشهر.'
+        'يمارس الموثق مهامه كضابط عمومي مفوض لدى محكمة فلاوسن ومجلس قضاء وهران، ويمتد اختصاصه التوثيقي لتحرير العقود لكافة التراب الوطني طبقاً للمادة 3 من القانون رقم 06-02 المنظم لمهنة التوثيق.',
+        'تخضع المعاملات العقارية لأحكام الأمر 75-74 المتضمن إعداد مسح الأراضي وتأسيس السجل العقاري والقوانين المالية السارية.'
       ],
       inDepthContent: [
         {
           heading: 'القوة الإثباتية والتنفيذية لعقد البيع التوثيقي',
           paragraphs: [
             'يُعتبر العقد التوثيقي سندا رسمياً يتمتع بالقوة التنفيذية المباشرة والحجية القاطعة في مواجهة الكافة، ولا يمكن الطعن فيه إلا بسلوك دعوى التزوير الفرعية وفقاً لقانون الإجراءات المدنية والإدارية الجزائري. ويتكفل الموثق كضابط عمومي بفحص أهلية المتعاقدين وصحة رضاهم وخلو إرادتهم من أي عيب.',
-            'في ولاية وهران، مع التطور العمراني السريع في أحياء مثل العقيد لطفي، إيسطو، وخليل الرامي، تكتسي المعاملة التوثيقية أهمية قصوى لمنع النزاعات الملكية والتأكد من إدماج كافة التعديلات الهندسية ومخططات التجزئة ضمن الدفتر العقاري المودع لدى المحافظة العقارية المختصة.'
+            'تكتسي المعاملة التوثيقية أهمية جوهرية لمنع النزاعات الملكية والتأكد من إدماج كافة التعديلات ومخططات المسح ضمن الدفتر العقاري المودع لدى المحافظة العقارية المختصة.'
           ]
         },
         {
           heading: 'الالتزامات الضريبية والمالية وفق قانون المالية 2026',
           paragraphs: [
-            'تتطلب المعاملات العقارية التوثيقية استيفاء حقوق التسجيل بنسبة محددة قانوناً، إضافة إلى رسم الإشهار العقاري وأتعاب الموثق المحددة بالتنظيم الوزاري الصادر بموجب المرسوم التنفيذي رقم 08-243 المحدد لأتعاب الموثقين. ويلتزم المكتب بتطبيق الشفافية التامة وتقديم إيصالات رسمية صادرة عن قابضات الضرائب والمحافظات العقارية.',
-            'كما يوفر موقعنا حاسبة تفاعلية متطورة للسعر المرجعي للعقارات بوهران لتمكين المتعاملين من حساب التقدير المالي المسبق لرسومهم وضمان التوافق التام مع توجيهات الإدارة الجبائية.'
+            'تتطلب المعاملات العقارية التوثيقية استيفاء حقوق التسجيل بنسبة محددة قانوناً، إضافة إلى رسم الإشهار العقاري وأتعاب الموثق المحددة بالتنظيم الصادر بموجب المرسوم التنفيذي رقم 08-243 المحدد لأتعاب الموثقين.',
+            'يتضمن الموقع حاسبة استرشادية للسعر المرجعي للعقارات لتمكين المتعاملين من تقدير الرسوم والاطلاع على التوجيهات الجبائية المعمول بها.'
           ]
         }
       ],
@@ -180,22 +180,22 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Office Notarial - Oran est notaire près le Tribunal de Flaussen et la Cour d\'Oran. Sa compétence territoriale s\'étend à l\'ensemble des actes immobiliers situés sur le territoire de la Wilaya d\'Oran (Oran centre, Bir El Djir, Es-Sénia, Aïn El Turck, etc.).',
-        'Les actes authentiques répondent aux exigences de l\'ordonnance 75-74 portant établissement du cadastre et constitution du livret foncier, conférant au titre une force probante absolue.'
+        'Le notaire exerce ses fonctions d\'officier public près le Tribunal de Fellaoucène et la Cour d\'Oran, avec une compétence nationale d\'instrumentation conformément à l\'article 3 de la loi n° 06-02 portant organisation de la profession de notaire.',
+        'Les actes authentiques répondent aux exigences de l\'ordonnance 75-74 portant établissement du cadastre et constitution du livre foncier ainsi qu\'à la législation fiscale en vigueur.'
       ],
       inDepthContent: [
         {
           heading: 'Force probante et exécutoire de l\'acte notarié',
           paragraphs: [
-            'En droit algérien, l\'acte notarié est revêtu de la formule exécutoire de plein droit sans nécessiter de décision judiciaire préalable. En tant qu\'officier public impartial, le notaire assure la validité formelle et matérielle du contrat et vérifie la pleine capacité juridique de chaque intervenant.',
-            'À Oran, face au dynamisme urbain des quartiers d\'Akid Lotfi, de l\'USTO ou de Canastel, la rigueur notariale garantit l\'acquéreur contre tout vice caché dans la chaîne de propriété antérieure et certifie l\'inscription définitive au livre foncier.'
+            'En droit algérien, l\'acte notarié est revêtu de la formule exécutoire de plein droit sans nécessiter de décision judiciaire préalable. En tant qu\'officier public impartial, le notaire assure la validité formelle et matérielle du contrat et vérifie la capacité juridique de chaque intervenant.',
+            'L\'intervention notariale garantit l\'acquéreur contre tout vice dans la chaîne de propriété antérieure et certifie l\'inscription régulière au livre foncier.'
           ]
         },
         {
           heading: 'Frais d\'enregistrement et barème réglementaire',
           paragraphs: [
-            'Les frais d\'acte comportent les droits fiscaux d\'enregistrement (versés au Trésor public), la taxe de publicité foncière et les émoluments du notaire, strictement encadrés par le décret exécutif n° 08-243. L\'office notarial délivre systématiquement des quittances officielles.',
-            'Notre simulateur en ligne d\'évaluation fiscale permet aux usagers d\'anticiper les coûts légaux et de préparer leur dossier dans les meilleures conditions de transparence.'
+            'Les frais d\'acte comportent les droits fiscaux d\'enregistrement (versés au Trésor public), la taxe de publicité foncière et les émoluments du notaire, strictement encadrés par le décret exécutif n° 08-243.',
+            'Le simulateur d\'évaluation fiscale permet aux usagers d\'anticiper les coûts légaux et de préparer leur dossier conformément au barème officiel.'
           ]
         }
       ],
@@ -269,21 +269,21 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يتولى مكتب التوثيق توثيق العقود التأسيسية للشركات لكافة الشركات الممارسة لنشاطها بولاية وهران والمناطق الصناعية المحيطة بها (حاسي عامر، بطيوة، السانية، الكرمة).',
-        'تتم صياغة القوانين الأساسية وفقاً لأحدث تعديلات القانون التجاري الجزائري لضمان حماية الشركاء واستقرار الكيان المعنوي.'
+        'يمارس الموثق مهامه كضابط عمومي مفوض لدى محكمة فلاوسن ومجلس قضاء وهران، ويمتد اختصاصه لتحرير العقود التأسيسية وتعديلات الشركات عبر كامل التراب الوطني طبقاً للمادة 3 من القانون 06-02.',
+        'تخضع العقود التأسيسية والأنظمة الأساسية لأحكام القانون التجاري الجزائري والنصوص التنظيمية المعمول بها.'
       ],
       inDepthContent: [
         {
           heading: 'المقارنة بين الأشكال القانونية للشركات التجارية في الجزائر',
           paragraphs: [
-            'تُعتبر الشركة ذات المسؤولية المحدودة (SARL) وشركة الشخص الوحيد (EURL) الخيار الأكثر شيوعاً بين رواد الأعمال بوهران نظراً لتحديد مسؤولية الشريك بمقدار حصته في رأس المال وفصل الذمة المالية للشركة عن الذمة الشخصية للشركاء.',
-            'بالنسبة للمشاريع الاستثمارية الكبرى في قطاعات الصناعة واللوجستيك بميناء وهران والمناطق الحرة، يُنصح بتأسيس شركات المساهمة (SPA) التي توفر مرونة عالية في استقطاب رؤوس الأموال وتداول الأسهم.'
+            'تُعتبر الشركة ذات المسؤولية المحدودة (SARL) وشركة الشخص الوحيد (EURL) من الصيغ القانونية الشائعة في تنظيم الأعمال نظراً لتحديد مسؤولية الشريك بمقدار حصته في رأس المال وفصل الذمة المالية للشركة عن الذمة الشخصية للشركاء.',
+            'بالنسبة للمشاريع الاستثمارية الكبرى، يتيح القانون تأسيس شركات المساهمة (SPA) التي توفر هيكلة مرنة لتداول الأسهم وجذب رؤوس الأموال.'
           ]
         },
         {
-          heading: 'المرافقة التوثيقية المستمرة لحياة الشركة',
+          heading: 'المتابعة التوثيقية لحياة الشركة',
           paragraphs: [
-            'لا تقتصر مهمة الموثق على التأسيس فحسب، بل تمتد لمرافقة الشركة طوال دورة حياتها من خلال توثيق محاضر الجمعيات العامة التأسيسية والعادية وغير العادية، وتعديل القوانين الأساسية، ورفع رأس المال، وتغيير المسيرين، وعقود التنازل عن الحصص، وصولاً إلى إجراءات الحل والتصفية القانونية.'
+            'يمتد دور الموثق لمتابعة الإجراءات التوثيقية للشركة طوال نشاطها من خلال توثيق محاضر الجمعيات العامة، وتعديل القوانين الأساسية، ورفع رأس المال، وتغيير المسيرين، وعقود التنازل عن الحصص، وصولاً إلى إجراءات الحل والتصفية.'
           ]
         }
       ],
@@ -348,21 +348,21 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'L\'office notarial instrumente la constitution de sociétés dans l\'ensemble des zones d\'activité et parcs industriels de la Wilaya d\'Oran (Hassi Ameur, Es-Sénia, Béthioua, Bir El Djir).',
-        'Les statuts intègrent rigoureusement les réformes récentes du droit commercial algérien, protégeant les droits respectifs des associés minoritaires et majoritaires.'
+        'Le notaire est compétent pour instrumenter les actes constitutifs et modificatifs de sociétés sur l\'ensemble du territoire national conformément à l\'article 3 de la loi n° 06-02.',
+        'Les statuts sont établis en conformité avec les dispositions du Code de Commerce algérien et des textes réglementaires en vigueur.'
       ],
       inDepthContent: [
         {
           heading: 'Choix de la forme sociale : SARL, EURL ou SPA',
           paragraphs: [
-            'La SARL et l\'EURL demeurent les formes privilégiées pour les PME en Algérie, offrant une séparation patrimoniale stricte entre les biens personnels des entrepreneurs et ceux de la société.',
-            'Pour les projets d\'envergure dans les secteurs portuaire, pétrochimique et logistique à Oran, la Société par Actions (SPA) permet une structuration robuste du capital et l\'entrée de nouveaux investisseurs.'
+            'La SARL et l\'EURL constituent des formes sociétaires permettant une séparation patrimoniale stricte entre les biens personnels des associés et le patrimoine social de la société.',
+            'Pour les investissements d\'envergure, la Société par Actions (SPA) offre un cadre adapté à la mobilisation de capitaux et à la gestion par actions.'
           ]
         },
         {
-          heading: 'Suivi juridique régulier et modifications statutaires',
+          heading: 'Suivi juridique et modifications statutaires',
           paragraphs: [
-            'L\'étude accompagne également les sociétés existantes dans toutes leurs étapes de développement : procès-verbaux d\'assemblées générales ordinaires et extraordinaires, augmentation de capital, nomination de nouveaux dirigeants, transfert de siège social et cession de parts sociales.'
+            'L\'office notarial instrumente également les actes relatifs à la vie sociale des entreprises : procès-verbaux d\'assemblées générales, augmentations de capital, modifications de gérance, transferts de siège et cessions de parts sociales.'
           ]
         }
       ],
@@ -435,7 +435,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'تتمتع الوكالة التوثيقية المحررة بمكتب التوثيق المعتمد بالقوة الثبوتية الرسمية وتُقبل لدى كافة المحاكم والإدارات العمومية والبنوك والمحافظات العقارية عبر كامل التراب الجزائري.',
+        'يمارس الموثق مهامه التوثيقية كضابط عمومي لدى محكمة فلاوسن ومجلس قضاء وهران، وتتمتع الوكالات التوثيقية بالقوة الثبوتية الرسمية وتُقبل لدى كافة الجهات الإدارية والقضائية عبر كامل التراب الوطني طبقاً للقانون 06-02.',
         'يخضع عقد الوكالة لأحكام المواد 571 وما يليها من القانون المدني الجزائري، مع إمكانية إلغائها أو تقييدها بطلب رسمي من الموكل.'
       ],
       inDepthContent: [
@@ -513,8 +513,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Les procurations instrumentées par Office Notarial - Oran disposent d\'une force probante pleine et entière sur l\'ensemble du territoire algérien.',
-        'L\'acte respecte scrupuleusement les articles 571 et suivants du Code Civil algérien, avec faculté de révocation à tout moment par le mandant.'
+        'Le notaire instrumente les actes de procuration avec une pleine valeur probante et opposabilité sur l\'ensemble du territoire algérien conformément à la loi n° 06-02.',
+        'L\'acte respecte les dispositions des articles 571 et suivants du Code Civil algérien régissant le mandat légal.'
       ],
       inDepthContent: [
         {
@@ -601,8 +601,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يقوم مكتب التوثيق بتحرير عقود الفريضة وإعداد الشهادات التوثيقية لكافة العقارات التابعة للمورثين الكائنة بولاية وهران وما جاورها.',
-        'تُعد الشهادة التوثيقية المشهرة لدى المحافظة العقارية السند القانوني الإلزامي والوحيد لنقل الملكية العقارية بالميراث طبقاً للمرسوم 76-63 المتعلق بتأسيس السجل العقاري.'
+        'يقوم الموثق بتحرير عقود الفريضة وإعداد الشهادات التوثيقية لنقل الملكية العقارية بالميراث وفقاً لقانون الأسرة والتشريع العقاري الجزائري.',
+        'تُعد الشهادة التوثيقية المشهرة لدى المحافظة العقارية السند القانوني الإلزامي لنقل الحقوق العينية العقارية بالميراث طبقاً للمرسوم 76-63 المتعلق بتأسيس السجل العقاري.'
       ],
       inDepthContent: [
         {
@@ -680,8 +680,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Office Notarial - Oran instrumente les actes de succession et attestations notariées pour tous les biens situés dans la circonscription de la Cour d\'Oran.',
-        'L\'attestation notariée publiée est le titre légal obligatoire imposé par le décret 76-63 pour tout acte de disposition ultérieur sur les biens successoraux.'
+        'L\'office notarial instrumente les actes de notoriété (Fridha) et attestations notariées après décès conformément au Code de la Famille et à la réglementation foncière.',
+        'L\'attestation notariée publiée est le titre légal obligatoire prescrit par le décret 76-63 pour constater le transfert des droits réels immobiliers par succession.'
       ],
       inDepthContent: [
         {
@@ -935,8 +935,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يقوم مكتب التوثيق بتوثيق عقود الرهن العقاري ورفع اليد لكافة العقارات الكائنة بولاية وهران بالتعاون مع جميع البنوك الجزائرية (BNA, CPA, BEA, BDL, BADR, CNEP, والمصارف الخاصة).',
-        'يخضع الرهن الرسمي لأحكام المادة 882 وما يليها من القانون المدني الجزائري، ويمنح البنك الدائن حق التتبع والأفضلية عند بيع العقار.'
+        'يمارس الموثق مهامه التوثيقية لتحرير عقود الرهن الرسمي ورفع اليد طبقاً لأحكام القانون المدني والتشريع المصرفي الجزائري.',
+        'يخضع الرهن الرسمي لأحكام المادة 882 وما يليها من القانون المدني الجزائري، ويُرتب آثاره القانونية بعد القيد بالمحافظة العقارية المختصة.'
       ],
       inDepthContent: [
         {
@@ -1014,8 +1014,8 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Office Notarial - Oran instrumente les actes d\'hypothèque et de mainlevée en relation avec l\'ensemble des banques de la place d\'Oran (BNA, CPA, BEA, BDL, BADR, CNEP, et banques privées).',
-        'L\'hypothèque conventionnelle confère à la banque créancière le droit de suite et le droit de préférence prévus par l\'article 882 du Code Civil algérien.'
+        'L\'office notarial instrumente les actes d\'affectation hypothécaire conventionnelle et de mainlevée conformément au Code Civil et à la réglementation bancaire.',
+        'L\'hypothèque conventionnelle confère au créancier inscrit les droits prévus par l\'article 882 du Code Civil algérien dès son inscription régulière.'
       ],
       inDepthContent: [
         {

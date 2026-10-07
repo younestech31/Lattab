@@ -269,8 +269,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-emerald-600 hover:underline font-medium">
-                  ← حجز موعد وزيارة مكتب الموثق بحي العقيد لطفي
+                <Link href="/contact" className="text-emerald-700 hover:underline font-medium">
+                  ← معلومات الاتصال وأوقات الاستقبال بالديوان
                 </Link>
               </li>
             </ul>
