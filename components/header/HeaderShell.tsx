@@ -1,6 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { Language, translations } from '@/lib/i18n/translations';
+import { usePathname } from 'next/navigation';
+import { useLang } from '@/lib/i18n';
+import { translations } from '@/lib/i18n/translations';
 
 /**
  * Interface representing a navigation link item.
@@ -11,18 +15,12 @@ export interface NavLinkItem {
 }
 
 /**
- * Props for the HeaderShell component.
- */
-export interface HeaderShellProps {
-  lang: Language;
-  pathname: string;
-}
-
-/**
- * Server Component representing the static shell of the header.
+ * Client Component representing the static shell of the header.
  * Renders the brand logo and the desktop navigation link options.
  */
-export default function HeaderShell({ lang, pathname }: HeaderShellProps) {
+export default function HeaderShell() {
+  const { lang } = useLang();
+  const pathname = usePathname();
   const text = translations[lang].nav;
   const isHomePage = pathname === '/' || pathname === '/fr';
   const headerActive = !isHomePage;

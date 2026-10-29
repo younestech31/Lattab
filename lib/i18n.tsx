@@ -15,18 +15,21 @@ export interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children, lang }: { children: React.ReactNode, lang: Language }) {
+export function LanguageProvider({ children, lang: initialLang = 'ar' }: { children: React.ReactNode, lang?: Language }) {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
   const [alternatePaths, setAlternatePaths] = useState<Record<Language, string> | null>(null);
 
+  const langFromPath: Language =
+    pathname === '/fr' || pathname.startsWith('/fr/') ? 'fr' : (pathname === '/' || pathname ? 'ar' : (initialLang || 'ar'));
+
   React.useEffect(() => {
     if (typeof document !== 'undefined') {
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = langFromPath;
+      document.documentElement.dir = langFromPath === 'ar' ? 'rtl' : 'ltr';
     }
-  }, [lang]);
+  }, [langFromPath]);
 
   // Reset alternate paths when pathname changes
   React.useEffect(() => {
@@ -37,7 +40,7 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
     let targetPath = pathname;
     
     // Check if current page is structured as /fr/...
-    const isFrPage = pathname.startsWith('/fr') && (pathname === '/fr' || pathname.startsWith('/fr/'));
+    const isFrPage = pathname === '/fr' || pathname.startsWith('/fr/');
 
     let isPathChanging = false;
 
@@ -66,7 +69,7 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
   };
 
   const toggleLang = () => {
-    const nextLang = lang === 'ar' ? 'fr' : 'ar';
+    const nextLang = langFromPath === 'ar' ? 'fr' : 'ar';
     handleLanguageChange(nextLang);
   };
 
@@ -75,7 +78,7 @@ export function LanguageProvider({ children, lang }: { children: React.ReactNode
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang, isPending, setAlternatePaths }}>
+    <LanguageContext.Provider value={{ lang: langFromPath, setLang, toggleLang, isPending, setAlternatePaths }}>
       {children}
     </LanguageContext.Provider>
   );

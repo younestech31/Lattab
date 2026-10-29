@@ -1,14 +1,19 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { Language, translations } from '@/lib/i18n/translations';
+import { useLang, Language } from '@/lib/i18n';
+import { translations } from '@/lib/i18n/translations';
 import { OFFICE_INFO } from '@/lib/config';
 import PhoneLink from './ui/PhoneLink';
 
 interface FooterProps {
-  lang: Language;
+  lang?: Language;
 }
 
-export default function Footer({ lang }: FooterProps) {
+export default function Footer({ lang: propLang }: FooterProps = {}) {
+  const { lang: contextLang } = useLang();
+  const lang = propLang || contextLang;
   const isRTL = lang === 'ar';
 
   const getHref = (href: string) => {

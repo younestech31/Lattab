@@ -2,23 +2,19 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { Language, translations } from '@/lib/i18n/translations';
+import { usePathname } from 'next/navigation';
+import { useLang } from '@/lib/i18n';
+import { translations } from '@/lib/i18n/translations';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { useFocusTrap } from '@/lib/hooks/useFocusTrap';
-
-/**
- * Props for the HeaderClient component.
- */
-export interface HeaderClientProps {
-  lang: Language;
-  pathname: string;
-}
 
 /**
  * Client Component that manages interactive portions of the header,
  * such as scroll styling, language switching, and mobile drawer accessibility.
  */
-export default function HeaderClient({ lang, pathname }: HeaderClientProps) {
+export default function HeaderClient() {
+  const { lang } = useLang();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const ticking = useRef(false);

@@ -1,27 +1,15 @@
+'use client';
+
 import HeaderShell from './header/HeaderShell';
 import HeaderClient from './header/HeaderClient';
-import { headers } from 'next/headers';
-import { Language } from '@/lib/i18n/translations';
+import { usePathname } from 'next/navigation';
 
-/**
- * Interface representing the props for the Header parent component.
- */
 export interface HeaderProps {
-  lang?: Language;
+  lang?: any;
 }
 
-/**
- * Composition-layer Server Component representing the layout header.
- * Orchestrates the Server-rendered static structures (HeaderShell) and the 
- * interactive islands (HeaderClient) side by side under a single server-rendered <header>.
- * 
- * Written justification for client partition: Required for scroll event listeners,
- * active mobile modal toggle states, and focus trap keydown managers which cannot run on the server.
- */
-export default async function Header({ lang = 'ar' }: HeaderProps) {
-  const headersList = await headers();
-  const pathname = headersList.get('x-lang') === 'fr' ? `/fr${headersList.get('x-pathname') || ''}` : (headersList.get('x-pathname') || '/');
-  
+export default function Header({ lang: _lang }: HeaderProps = {}) {
+  const pathname = usePathname();
   const isHomePage = pathname === '/' || pathname === '/fr';
   const headerActive = !isHomePage;
 
@@ -37,8 +25,8 @@ export default async function Header({ lang = 'ar' }: HeaderProps) {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <HeaderShell lang={lang} pathname={pathname} />
-          <HeaderClient lang={lang} pathname={pathname} />
+          <HeaderShell />
+          <HeaderClient />
         </div>
       </div>
     </header>
