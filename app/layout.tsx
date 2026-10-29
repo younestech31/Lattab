@@ -13,7 +13,7 @@ import type { Viewport } from 'next';
 import { headers } from 'next/headers';
 
 const cairo = Cairo({ 
-  subsets: ['arabic'], 
+  subsets: ['arabic', 'latin'], 
   variable: '--font-cairo',
   display: 'swap',
   preload: true,
@@ -111,30 +111,9 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         {/* next/font/google self-hosts Cairo at build time — no runtime Google Fonts connection occurs */}
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (typeof window !== 'undefined') {
-                if ('serviceWorker' in navigator) {
-                  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                    for (var i = 0; i < registrations.length; i++) {
-                      registrations[i].unregister();
-                    }
-                  });
-                }
-                if ('caches' in window) {
-                  caches.keys().then(function(names) {
-                    for (var i = 0; i < names.length; i++) {
-                      caches.delete(names[i]);
-                    }
-                  });
-                }
-              }
-            `
-          }}
-        />
+
       </head>
-      <body className="font-cairo" suppressHydrationWarning>
+      <body className={`${cairo.className} font-cairo`} suppressHydrationWarning>
         <LanguageProvider lang={resolvedLang}>
           <a 
             href="#main-content" 

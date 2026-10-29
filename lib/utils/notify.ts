@@ -26,8 +26,8 @@ export async function notifyAppointment(payload: AppointmentNotificationPayload)
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sanitisedPayload),
       });
-    } catch (error) {
-      console.error('[APPOINTMENT] Webhook notification failed:', error instanceof Error ? error.message : 'Unknown error');
+    } catch {
+      console.error('[APPOINTMENT] Webhook notification dispatch failed');
     }
   }
 }

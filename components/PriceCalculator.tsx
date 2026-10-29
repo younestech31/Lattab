@@ -7,6 +7,7 @@ import { Calculator, Copy, MessageCircle, Check } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 import { CalculatorResult } from '@/lib/types';
 import { CalculatorKeys } from '@/lib/i18n/translations';
+import { WILAYAS } from '@/lib/data/wilayas';
 
 const uiTranslations = {
   ar: {
@@ -131,7 +132,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       const cached = cache.current[cacheKey];
       setMappedData(cached.data);
       setCommunes(cached.communes);
-      if (cached.regionId && cached.regionId !== regionId) {
+      if (cached.regionId && !regionId) {
         setRegionId(cached.regionId);
       }
       return;
@@ -148,24 +149,21 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
         return;
     }
     
+    const controller = new AbortController();
+
     const fetchApiData = async () => {
-      const supportedWilayas = [
-        'oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida',
-        'bouira', 'tamanrasset', 'tebessa', 'tiaret', 'tlemcen', 'tizi-ouzou', 'alger', 'djelfa', 'jijel',
-        'setif', 'saida', 'skikda', 'sidi-bel-abbes', 'annaba', 'guelma', 'constantine', 'medea', 'mostaganem',
-        'msila', 'mascara', 'ouargla', 'el-bayadh', 'illizi', 'bordj-bou-arreridj', 'boumerdes', 'el-taref',
-        'tindouf', 'tissemsilt', 'el-oued', 'khenchela', 'souk-ahras', 'tipaza', 'mila', 'ain-defla', 'naama',
-        'ain-temouchent', 'ghardaia', 'relizane', 'timimoun', 'bordj-badji-mokhtar', 'ouled-djellal', 'beni-abbes',
-        'in-salah', 'in-guezzam', 'touggourt', 'djanet', 'el-mghaier', 'el-meniaa'
-      ];
-      if (!supportedWilayas.includes(wilaya)) {
+      const targetWilaya = WILAYAS.find(w => w.code === wilaya);
+      if (!targetWilaya || !targetWilaya.isSupported) {
         setMappedData(null);
         setCommunes([]);
         return;
       }
       setIsLoadingData(true);
       try {
-        const response = await fetch(`/api/calculator-data?wilaya=${wilaya}&mode=${calculationMode}&region=${encodeURIComponent(regionId)}`);
+        const response = await fetch(
+          `/api/calculator-data?wilaya=${wilaya}&mode=${calculationMode}&region=${encodeURIComponent(regionId)}`,
+          { signal: controller.signal }
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -188,20 +186,29 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
           
           setMappedData(result.data);
           setCommunes(result.communes);
-          if (result.regionId && result.regionId !== regionId) {
+          if (result.regionId && !regionId) {
             setRegionId(result.regionId);
           }
         } else {
           throw new Error('Invalid data format received from API');
         }
       } catch (err: unknown) {
+        if (err instanceof DOMException && err.name === 'AbortError') {
+          return;
+        }
         console.error('Failed to fetch data', err);
       } finally {
-        setIsLoadingData(false);
-        hasInitialized.current = true;
+        if (!controller.signal.aborted) {
+          setIsLoadingData(false);
+          hasInitialized.current = true;
+        }
       }
     };
     fetchApiData();
+
+    return () => {
+      controller.abort();
+    };
   }, [wilaya, calculationMode, regionId, initialData, initialCommunes, initialRegionId]);
   
   const currentRegionData = mappedData ? { prix: mappedData.categories } : null;
@@ -410,82 +417,11 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                     onChange={handleWilayaChange}
                     className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-gray-50 hover:bg-white cursor-pointer"
                   >
-                    <option value="oran">{isAr ? 'وهران (31)' : 'Oran (31)'}</option>
-                    {[
-                      { v: 'adrar', n: isAr ? 'أدرار (01)' : 'Adrar (01)' }, 
-                      { v: 'chlef', n: isAr ? 'الشلف (02)' : 'Chlef (02)' }, 
-                      { v: 'laghouat', n: isAr ? 'الأغواط (03)' : 'Laghouat (03)' },
-                      { v: 'oum-el-bouaghi', n: isAr ? 'أم البواقي (04)' : 'Oum El Bouaghi (04)' }, 
-                      { v: 'batna', n: isAr ? 'باتنة (05)' : 'Batna (05)' }, 
-                      { v: 'bejaia', n: isAr ? 'بجاية (06)' : 'Béjaïa (06)' },
-                      { v: 'biskra', n: isAr ? 'بسكرة (07)' : 'Biskra (07)' }, 
-                      { v: 'bechar', n: isAr ? 'بشار (08)' : 'Béchar (08)' }, 
-                      { v: 'blida', n: isAr ? 'البليدة (09)' : 'Blida (09)' },
-                      { v: 'bouira', n: isAr ? 'البويرة (10)' : 'Bouira (10)' }, 
-                      { v: 'tamanrasset', n: isAr ? 'تمنراست (11)' : 'Tamanrasset (11)' }, 
-                      { v: 'tebessa', n: isAr ? 'تبسة (12)' : 'Tébessa (12)' },
-                      { v: 'tlemcen', n: isAr ? 'تلمسان (13)' : 'Tlemcen (13)' }, 
-                      { v: 'tiaret', n: isAr ? 'تيارت (14)' : 'Tiaret (14)' }, 
-                      { v: 'tizi-ouzou', n: isAr ? 'تيزي وزو (15)' : 'Tizi Ouzou (15)' },
-                      { v: 'alger', n: isAr ? 'الجزائر (16)' : 'Alger (16)' }, 
-                      { v: 'djelfa', n: isAr ? 'الجلفة (17)' : 'Djelfa (17)' }, 
-                      { v: 'jijel', n: isAr ? 'جيجل (18)' : 'Jijel (18)' },
-                      { v: 'setif', n: isAr ? 'سطيف (19)' : 'Sétif (19)' }, 
-                      { v: 'saida', n: isAr ? 'سعيدة (20)' : 'Saïda (20)' }, 
-                      { v: 'skikda', n: isAr ? 'سكيكدة (21)' : 'Skikda (21)' },
-                      { v: 'sidi-bel-abbes', n: isAr ? 'سيدي بلعباس (22)' : 'Sidi Bel Abbès (22)' }, 
-                      { v: 'annaba', n: isAr ? 'عنابة (23)' : 'Annaba (23)' }, 
-                      { v: 'guelma', n: isAr ? 'قالمة (24)' : 'Guelma (24)' },
-                      { v: 'constantine', n: isAr ? 'قسنطينة (25)' : 'Constantine (25)' }, 
-                      { v: 'medea', n: isAr ? 'المدية (26)' : 'Médéa (26)' }, 
-                      { v: 'mostaganem', n: isAr ? 'مستغانم (27)' : 'Mostaganem (27)' },
-                      { v: 'msila', n: isAr ? 'المسيلة (28)' : 'M\'Sila (28)' }, 
-                      { v: 'mascara', n: isAr ? 'معسكر (29)' : 'Mascara (29)' }, 
-                      { v: 'ouargla', n: isAr ? 'ورقلة (30)' : 'Ouargla (30)' },
-                      { v: 'el-bayadh', n: isAr ? 'البيض (32)' : 'El Bayadh (32)' }, 
-                      { v: 'illizi', n: isAr ? 'إليزي (33)' : 'Illizi (33)' }, 
-                      { v: 'bordj-bou-arreridj', n: isAr ? 'برج بو عريريج (34)' : 'Bordj Bou Arreridj (34)' },
-                      { v: 'boumerdes', n: isAr ? 'بومرداس (35)' : 'Boumerdès (35)' }, 
-                      { v: 'el-taref', n: isAr ? 'الطارف (36)' : 'El Tarf (36)' }, 
-                      { v: 'tindouf', n: isAr ? 'تندوف (37)' : 'Tindouf (37)' },
-                      { v: 'tissemsilt', n: isAr ? 'تيسمسيلت (38)' : 'Tissemsilt (38)' }, 
-                      { v: 'el-oued', n: isAr ? 'الوادي (39)' : 'El Oued (39)' }, 
-                      { v: 'khenchela', n: isAr ? 'خنشلة (40)' : 'Khenchela (40)' },
-                      { v: 'souk-ahras', n: isAr ? 'سوق أهراس (41)' : 'Souk Ahras (41)' }, 
-                      { v: 'tipaza', n: isAr ? 'تيبازة (42)' : 'Tipaza (42)' }, 
-                      { v: 'mila', n: isAr ? 'ميلة (43)' : 'Mila (43)' },
-                      { v: 'ain-defla', n: isAr ? 'عين الدفلى (44)' : 'Aïn Defla (44)' }, 
-                      { v: 'naama', n: isAr ? 'النعامة (45)' : 'Naâma (45)' }, 
-                      { v: 'ain-temouchent', n: isAr ? 'عين تموشنت (46)' : 'Aïn Témouchent (46)' },
-                      { v: 'ghardaia', n: isAr ? 'غرداية (47)' : 'Ghardaïa (47)' }, 
-                      { v: 'relizane', n: isAr ? 'غليزان (48)' : 'Relizane (48)' }, 
-                      { v: 'timimoun', n: isAr ? 'تيميمون (49)' : 'Timimoun (49)' },
-                      { v: 'bordj-badji-mokhtar', n: isAr ? 'برج باجي مختار (50)' : 'Bordj Badji Mokhtar (50)' }, 
-                      { v: 'ouled-djellal', n: isAr ? 'أولاد جلال (51)' : 'Ouled Djellal (51)' }, 
-                      { v: 'beni-abbes', n: isAr ? 'بني عباس (52)' : 'Béni Abbès (52)' },
-                      { v: 'in-salah', n: isAr ? 'إن صالح (53)' : 'In Salah (53)' }, 
-                      { v: 'in-guezzam', n: isAr ? 'إن قزام (54)' : 'In Guezzam (54)' }, 
-                      { v: 'touggourt', n: isAr ? 'تقرت (55)' : 'Touggourt (55)' },
-                      { v: 'djanet', n: isAr ? 'جانت (56)' : 'Djanet (56)' }, 
-                      { v: 'el-mghaier', n: isAr ? 'المغير (57)' : 'El M\'Ghair (57)' }, 
-                      { v: 'el-meniaa', n: isAr ? 'المنيعة (58)' : 'El Meniaâ (58)' }
-                    ].map(w => {
-                      const supportedWilayas = [
-                        'oran', 'adrar', 'chlef', 'laghouat', 'oum-el-bouaghi', 'batna', 'bejaia', 'biskra', 'bechar', 'blida',
-                        'bouira', 'tamanrasset', 'tebessa', 'tiaret', 'tlemcen', 'tizi-ouzou', 'alger', 'djelfa', 'jijel',
-                        'setif', 'saida', 'skikda', 'sidi-bel-abbes', 'annaba', 'guelma', 'constantine', 'medea', 'mostaganem',
-                        'msila', 'mascara', 'ouargla', 'el-bayadh', 'illizi', 'bordj-bou-arreridj', 'boumerdes', 'el-taref',
-                        'tindouf', 'tissemsilt', 'el-oued', 'khenchela', 'souk-ahras', 'tipaza', 'mila', 'ain-defla', 'naama',
-                        'ain-temouchent', 'ghardaia', 'relizane', 'timimoun', 'bordj-badji-mokhtar', 'ouled-djellal', 'beni-abbes',
-                        'in-salah', 'in-guezzam', 'touggourt', 'djanet', 'el-mghaier', 'el-meniaa'
-                      ];
-                      const isSupported = supportedWilayas.includes(w.v);
-                      return (
-                        <option key={w.v} value={w.v} disabled={!isSupported} aria-disabled={!isSupported}>
-                          {w.n} {!isSupported && (isAr ? '(قريبًا)' : '(Bientôt)')}
-                        </option>
-                      );
-                    })}
+                    {WILAYAS.map((w) => (
+                      <option key={w.code} value={w.code} disabled={!w.isSupported} aria-disabled={!w.isSupported}>
+                        {isAr ? w.nameAr : w.nameFr} {!w.isSupported && (isAr ? '(قريبًا)' : '(Bientôt)')}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 

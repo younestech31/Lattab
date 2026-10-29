@@ -231,7 +231,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
                 dangerouslySetInnerHTML={{ __html: safeHtml }}
               />
 
-              <div className="mt-12 p-6 bg-gray-50 border-l-4 border-emerald-500 rounded-r-lg text-sm text-gray-600 italic">
+              <div className="mt-12 p-6 bg-gray-50 border-l-4 border-emerald-500 rounded-r-lg text-sm text-gray-600">
                 <span className="font-bold flex items-center gap-2 mb-2 text-gray-800 not-italic">
                    Avis de non-responsabilité (Disclaimer):
                 </span>
@@ -265,7 +265,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
           {/* Related Posts for Internal Linking */}
           {relatedPosts.length > 0 && (
             <div className="mt-12">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-sans">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Articles connexes : {clusterHeading}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

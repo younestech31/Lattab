@@ -4,11 +4,34 @@ import { z } from 'zod';
 import { headers } from 'next/headers';
 import { notifyAppointment } from '@/lib/utils/notify';
 
+function getAlgiersTodayYYYYMMDD(): string {
+  const formatter = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Africa/Algiers',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+  return formatter.format(new Date());
+}
+
+function isAlgiersWeekend(dateStr: string): boolean {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  const dateUtc = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+  const dayName = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Africa/Algiers',
+    weekday: 'short',
+  }).format(dateUtc);
+  return dayName === 'Fri' || dayName === 'Sat';
+}
+
 const AppointmentSchema = z.object({
   name: z.string().min(2, 'الاسم يجب أن يكون على الأقل حرفين').max(100),
   phone: z.string().regex(/^[\d\s\+\-\(\)]{8,20}$/, 'رقم هاتف غير صحيح'),
   service: z.string().min(1, 'يرجى اختيار الخدمة'),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(d => new Date(d) >= new Date(new Date().toDateString()), 'تاريخ غير صحيح'),
+  date: z.string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, 'صيغة التاريخ غير صحيحة')
+    .refine((d) => d >= getAlgiersTodayYYYYMMDD(), 'لا يمكن اختيار تاريخ في الماضي')
+    .refine((d) => !isAlgiersWeekend(d), 'لا يمكن حجز موعد في أيام العطلة الأسبوعية (الجمعة والسبت)'),
   time: z.string().min(1, 'يرجى اختيار وقت الموعد'),
   notes: z.string().max(500).optional(),
   company: z.string().max(200).optional(),
@@ -109,7 +132,14 @@ export async function validateAppointment(prevState: AppointmentState, formData:
       notes: result.data.notes,
     });
   } catch (error) {
-    console.error('[APPOINTMENT] Notification error:', error);
+    console.error('[APPOINTMENT] Notification error');
+    if (error instanceof TypeError || error instanceof ReferenceError) {
+      return {
+        success: false,
+        errors: { _form: ['حدث خطأ أثناء معالجة الطلب.'] },
+        message: 'حدث خطأ أثناء معالجة الطلب.',
+      };
+    }
   }
   
   return { 
@@ -118,4 +148,3 @@ export async function validateAppointment(prevState: AppointmentState, formData:
     data: result.data 
   };
 }
-

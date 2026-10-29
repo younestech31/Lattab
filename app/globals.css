@@ -9,6 +9,9 @@
 body, .font-cairo, .prose, .prose * {
   font-family: var(--font-cairo), sans-serif;
 }
+.prose code, .prose pre, .prose kbd {
+  font-family: var(--font-cairo), sans-serif !important;
+}
 .font-cairo {
   line-height: 1.8;
 }

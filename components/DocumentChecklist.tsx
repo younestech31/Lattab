@@ -80,7 +80,16 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       // 1. Dynamic import of jsPDF to prevent Next.js SSR build crashes
       const { jsPDF } = await import('jspdf');
 
-      // 2. Create high-resolution white A4 canvas in memory
+      // 2. Estimate if content fits on a single A4 page canvas (1754px)
+      // Header (~490px) + items (~70px each) + footer (~320px)
+      const estimatedContentHeight = 490 + 160 + (documents.length * 75) + 320;
+      if (estimatedContentHeight > 1754) {
+        // Exceeds single A4 canvas limit: fallback to HTML window.print()
+        window.print();
+        return;
+      }
+
+      // Create high-resolution white A4 canvas in memory (single page)
       const canvas = document.createElement('canvas');
       canvas.width = 1240;
       canvas.height = 1754; // A4 Form Factor ratio
@@ -101,18 +110,10 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       ctx.strokeRect(41, 41, canvas.width - 82, canvas.height - 82);
 
       // Setup typography fallback families for beautiful browser native rendering
-      const titleFont = isAr 
-        ? 'bold 30px "Cairo", "IBM Plex Sans Arabic", "Noto Naskh Arabic", Arial, sans-serif'
-        : 'bold 26px "Georgia", "Times New Roman", serif';
-      const bodyFont = isAr
-        ? '500 21px "Cairo", "IBM Plex Sans Arabic", "Noto Sans Arabic", Arial, sans-serif'
-        : '19px "Helvetica Neue", Helvetica, Arial, sans-serif';
-      const headingFont = isAr
-        ? 'bold 23px "Cairo", "IBM Plex Sans Arabic", "Noto Sans Arabic", Arial, sans-serif'
-        : 'bold 20px "Georgia", "Times New Roman", serif';
-      const smallFont = isAr
-        ? '15px "Cairo", "IBM Plex Sans Arabic", sans-serif'
-        : '14px Arial, sans-serif';
+      const titleFont = 'bold 30px "Cairo", sans-serif';
+      const bodyFont = '500 21px "Cairo", sans-serif';
+      const headingFont = 'bold 23px "Cairo", sans-serif';
+      const smallFont = '15px "Cairo", sans-serif';
 
       // 4. Draw Official Header layout
       if (isAr) {
@@ -120,17 +121,17 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         ctx.textAlign = 'right';
         ctx.direction = 'rtl';
 
-        ctx.font = 'bold 26px "Noto Naskh Arabic", "Cairo", "IBM Plex Sans Arabic", Arial, sans-serif';
+        ctx.font = 'bold 26px "Cairo", sans-serif';
         ctx.fillText('الجمهورية الجزائرية الديمقراطية الشعبية', canvas.width - 90, 105);
 
-        ctx.font = '21px "Cairo", "IBM Plex Sans Arabic", sans-serif';
+        ctx.font = '21px "Cairo", sans-serif';
         ctx.fillText('وزارة العدل', canvas.width - 90, 150);
 
-        ctx.font = 'bold 23px "Cairo", "IBM Plex Sans Arabic", sans-serif';
+        ctx.font = 'bold 23px "Cairo", sans-serif';
         ctx.fillStyle = '#0f766e'; // Professional Notary Teal
         ctx.fillText('الديوان العمومي للتوثيق ببلدية وهران', canvas.width - 90, 195);
 
-        ctx.font = '19px "Cairo", "IBM Plex Sans Arabic", sans-serif';
+        ctx.font = '19px "Cairo", sans-serif';
         ctx.fillStyle = '#4b5563';
         ctx.fillText('حي العقيد لطفي، وهران - محلف لدى المجلس القضائي', canvas.width - 90, 235);
       } else {
@@ -138,17 +139,17 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         ctx.textAlign = 'left';
         ctx.direction = 'ltr';
 
-        ctx.font = 'bold 20px "Georgia", serif';
+        ctx.font = 'bold 20px "Cairo", sans-serif';
         ctx.fillText('RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE', 90, 105);
 
-        ctx.font = '18px "Georgia", serif';
+        ctx.font = '18px "Cairo", sans-serif';
         ctx.fillText('MINISTÈRE DE LA JUSTICE', 90, 140);
 
-        ctx.font = 'bold 22px "Georgia", serif';
+        ctx.font = 'bold 22px "Cairo", sans-serif';
         ctx.fillStyle = '#0f766e'; // Professional Notary Teal
         ctx.fillText('OFFICE PUBLIC NOTARIAL - ORAN', 90, 175);
 
-        ctx.font = '16px "Georgia", serif';
+        ctx.font = '16px "Cairo", sans-serif';
         ctx.fillStyle = '#4b5563';
         ctx.fillText('Notaire Public Agréé près la Cour d\'Oran', 90, 210);
       }
@@ -170,7 +171,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       ctx.stroke();
 
       ctx.fillStyle = '#059669';
-      ctx.font = isAr ? 'bold 12px "Cairo", sans-serif' : 'bold 11px Arial, sans-serif';
+      ctx.font = 'bold 12px "Cairo", sans-serif';
       ctx.textAlign = 'center';
 
       if (isAr) {
@@ -395,7 +396,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       ctx.lineTo(canvas.width - 90, lawY - 15);
       ctx.stroke();
 
-      ctx.font = 'italic 18px "Cairo", sans-serif';
+      ctx.font = '18px "Cairo", sans-serif';
       ctx.fillStyle = '#6b7280';
       
       if (isAr) {
@@ -411,7 +412,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         ctx.direction = 'ltr';
         ctx.fillText('Rappel légal d\'importance pour l\'édition des actes :', 90, lawY + 20);
 
-        ctx.font = '15px Arial, sans-serif';
+        ctx.font = '15px "Cairo", sans-serif';
         ctx.fillText('Conformément à la Loi 06-02 portant Code du Notariat, le notaire exerce une autorité d\'interprétation', 90, lawY + 50);
         ctx.fillText('légale souveraine pour réclamer tout document complémentaire garantissant la régularité absolue de l\'acte.', 90, lawY + 75);
       }
@@ -474,7 +475,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
           html, body {
             background-color: #ffffff !important;
             color: #111827 !important;
-            font-family: Arial, sans-serif !important;
+            font-family: var(--font-cairo), "Cairo", sans-serif !important;
             margin: 0 !important;
             padding: 0 !important;
           }
