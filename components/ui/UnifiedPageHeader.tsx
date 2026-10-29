@@ -41,7 +41,7 @@ export default function UnifiedPageHeader({
   return (
     <section
       className={`
-        relative bg-emerald-950 text-white overflow-hidden
+        relative bg-emerald-900 text-white overflow-hidden
         pt-[calc(5.5rem+env(safe-area-inset-top,0px))] md:pt-32
         pb-12 md:pb-16
         ${className}
@@ -50,9 +50,9 @@ export default function UnifiedPageHeader({
     >
       {/* Background visual layers matching homepage identity */}
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-0 bg-emerald-950" />
+        <div className="absolute inset-0 bg-emerald-900" />
         <div className="absolute inset-0 bg-pattern-plus opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-900/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-emerald-900 via-emerald-800/60 to-transparent" />
         
         {/* Subtle glowing ambient blobs */}
         <div className="absolute top-10 left-6 w-48 h-48 sm:w-72 sm:h-72 bg-emerald-500/15 rounded-full filter blur-3xl" />
@@ -143,7 +143,7 @@ export default function UnifiedPageHeader({
 
           {/* Description */}
           {description && (
-            <p className="text-emerald-100/90 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base md:text-lg">
+            <p className="text-emerald-200 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base md:text-lg">
               {description}
             </p>
           )}

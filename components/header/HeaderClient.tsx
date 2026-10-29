@@ -217,7 +217,7 @@ export default function HeaderClient({ lang, pathname }: HeaderClientProps) {
             <Link
               href={getHref('/#booking-form')}
               onClick={() => setIsMenuOpen(false)}
-              className="mt-2 text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl transition-all"
+              className="mt-2 text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm"
             >
               {text.book}
             </Link>

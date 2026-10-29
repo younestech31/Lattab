@@ -85,12 +85,12 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-gray-800" dir={isAr ? 'rtl' : 'ltr'} lang={isAr ? 'ar-DZ' : 'fr-DZ'}>
+    <div className="min-h-screen bg-gray-50 text-gray-800" dir={isAr ? 'rtl' : 'ltr'} lang={isAr ? 'ar-DZ' : 'fr-DZ'}>
       <JsonLdScript schema={breadcrumbSchema} />
       <JsonLdScript schema={contactSchema} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-gray-900 text-white pt-32 pb-16 px-4">
+      <section className="bg-emerald-900 text-white pt-32 pb-16 px-4">
         <div className="max-w-4xl mx-auto">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm text-emerald-200">
             <ol className="flex items-center gap-2 flex-wrap">
@@ -109,7 +109,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
             {isAr ? 'الاتصال وحجز موعد — ديوان التوثيق ببلدية وهران' : 'Contact et rendez-vous — Office Notarial - Oran'}
           </h1>
-          <p className="text-lg md:text-xl text-emerald-100/90 leading-relaxed max-w-3xl">
+          <p className="text-lg md:text-xl text-emerald-200 leading-relaxed max-w-3xl">
             {isAr
               ? 'مكتب التوثيق يستقبلكم لدراسة ملفاتكم وإنجاز كافة المعاملات القانونية والعقارية بحي العقيد لطفي بوهران.'
               : 'Notre étude vous accueille à Akid Lotfi pour étudier vos dossiers et accomplir vos actes juridiques et immobiliers.'}
@@ -204,7 +204,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
                 href="https://wa.me/213562296981"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow-sm"
+                className="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow-sm"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414zM12.004 0C5.374 0 0 5.373 0 12.001c0 2.112.547 4.178 1.588 6.003L.057 24l6.162-1.616a11.953 11.953 0 005.785 1.517c6.629 0 12.002-5.373 12.002-12.001C24.006 5.373 18.632 0 12.004 0zM12.004 21.902c-1.934 0-3.83-.518-5.482-1.499l-.393-.233-3.674.963.98-3.582-.255-.406a9.865 9.865 0 01-1.513-5.144c0-5.457 4.441-9.898 9.897-9.898 5.457 0 9.899 4.441 9.899 9.898 0 5.458-4.442 9.899-9.899 9.899z" />
@@ -213,7 +213,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
               </a>
               <PhoneLink
                 type="office"
-                className="w-full bg-slate-100 hover:bg-slate-200 text-gray-800 font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2"
+                className="w-full border border-gray-300 hover:bg-gray-50 text-gray-800 font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -225,7 +225,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
 
           {/* Map Card */}
           <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex flex-col">
-            <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+            <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-3">
               <span className="w-2.5 h-7 bg-emerald-600 rounded-full" />
               {isAr ? 'الموقع الجغرافي وخريطة الوصول' : 'Localisation géographique'}
             </h2>
@@ -247,7 +247,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
         </div>
 
         {/* Institutional notice */}
-        <section className="bg-emerald-50 rounded-2xl p-6 border border-emerald-100 text-sm text-emerald-950 leading-relaxed">
+        <section className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-sm text-gray-700 leading-relaxed">
           <p className="font-bold mb-1">
             {isAr ? 'ملاحظة قانونية وتنظيمية' : 'Cadre légal et déontologique'}
           </p>

@@ -8,12 +8,12 @@ interface FAQProps {
 
 export default function FAQ({ lang }: FAQProps) {
   return (
-    <section id="faq" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-white">
+    <section id="faq" className="scroll-mt-20 md:scroll-mt-24 py-12 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Side - Info */}
           <div className="lg:col-span-1">
-            <span className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block bg-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
               {t(lang, 'faq', 'badge')}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
@@ -24,7 +24,7 @@ export default function FAQ({ lang }: FAQProps) {
             </p>
 
             {/* Contact Card */}
-            <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-6 text-white">
+            <div className="bg-emerald-900 rounded-2xl p-6 text-white shadow-sm">
               <h3 className="font-bold text-xl mb-4">{t(lang, 'faq', 'contact_title')}</h3>
               <p className="text-emerald-100 mb-6 text-sm">
                 {t(lang, 'faq', 'contact_description')}

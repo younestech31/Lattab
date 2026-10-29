@@ -67,7 +67,7 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-gray-800" dir={isAr ? 'rtl' : 'ltr'} lang={isAr ? 'ar-DZ' : 'fr-DZ'}>
+    <div className="min-h-screen bg-gray-50 text-gray-800" dir={isAr ? 'rtl' : 'ltr'} lang={isAr ? 'ar-DZ' : 'fr-DZ'}>
       <JsonLdScript schema={breadcrumbSchema} />
       <JsonLdScript schema={howToSchema} />
 
@@ -121,7 +121,7 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
           </h2>
           <ul className="grid sm:grid-cols-2 gap-4">
             {content.targetAudience.map((item, idx) => (
-              <li key={idx} className="flex items-start gap-3 bg-emerald-50/50 p-4 rounded-xl border border-emerald-100/60">
+              <li key={idx} className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
                 <svg className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
@@ -192,15 +192,15 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
         </section>
 
         {/* Jurisdiction / Oran Notes */}
-        <section className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100">
-          <h2 className="text-xl font-bold text-emerald-950 mb-4 flex items-center gap-2">
-            <svg className="w-6 h-6 text-emerald-700 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <section className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+          <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <svg className="w-6 h-6 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             {isAr ? 'الاختصاص القضائي والتنظيمي — وهران' : 'Compétence territoriale — Oran & Tribunal de Flaussen'}
           </h2>
-          <div className="space-y-3 text-emerald-900 text-sm leading-relaxed">
+          <div className="space-y-3 text-gray-600 text-sm leading-relaxed">
             {content.jurisdictionNotes.map((note, idx) => (
               <p key={idx}>{note}</p>
             ))}
@@ -215,7 +215,7 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
           </h2>
           <div className="space-y-4">
             {content.faq.map((item, idx) => (
-              <div key={idx} className="bg-slate-50 p-5 rounded-xl border border-gray-100">
+              <div key={idx} className="bg-gray-50 p-5 rounded-xl border border-gray-100">
                 <h3 className="font-bold text-gray-900 text-base mb-2">{item.question}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{item.answer}</p>
               </div>
@@ -224,20 +224,20 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
         </section>
 
         {/* Internal Links & Tools */}
-        <section className="bg-gray-900 text-white rounded-2xl p-8 space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-800 pb-6">
+        <section className="bg-emerald-900 text-white rounded-2xl p-8 space-y-6 shadow-sm">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-emerald-800 pb-6">
             <div>
               <h2 className="text-xl font-bold text-white mb-1">
                 {isAr ? 'مقالات وأدلة قانونية ذات صلة' : 'Guides et articles juridiques connexes'}
               </h2>
-              <p className="text-gray-400 text-sm">
+              <p className="text-emerald-200 text-sm">
                 {isAr ? 'اطلع على تحليلاتنا ومقالات المدونة المحدثة' : 'Consultez les articles spécialisés de notre blog juridique'}
               </p>
             </div>
             {service.isPropertyRelated && (
               <Link
                 href={calcUrl}
-                className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition flex items-center gap-2 self-start md:self-auto"
+                className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition flex items-center gap-2 self-start md:self-auto shadow-sm"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 11h.01M12 14h.01M15 11h.01M12 7h.01M15 7h.01M15 14h.01M9 11h.01M12 17h.01M15 17h.01" />
@@ -253,15 +253,15 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
                 <Link
                   key={idx}
                   href={isAr ? `/blog/${art.slug}` : `/fr/blog/${art.slug}`}
-                  className="bg-gray-800/80 hover:bg-gray-800 p-5 rounded-xl border border-gray-700/60 transition group"
+                  className="bg-emerald-800/60 hover:bg-emerald-800 p-5 rounded-xl border border-emerald-700/60 transition group"
                 >
-                  <p className="text-emerald-400 text-xs font-semibold mb-2">
+                  <p className="text-amber-300 text-xs font-semibold mb-2">
                     {art.category || (isAr ? 'مقال قانوني' : 'Article juridique')}
                   </p>
-                  <h3 className="text-white font-bold text-base group-hover:text-emerald-300 transition-colors line-clamp-2 mb-2">
+                  <h3 className="text-white font-bold text-base group-hover:text-amber-200 transition-colors line-clamp-2 mb-2">
                     {art.title}
                   </h3>
-                  <p className="text-gray-400 text-xs line-clamp-2 leading-relaxed">
+                  <p className="text-emerald-100 text-xs line-clamp-2 leading-relaxed">
                     {art.description}
                   </p>
                 </Link>
@@ -269,7 +269,7 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
             ) : (
               <Link
                 href={isAr ? '/blog' : '/fr/blog'}
-                className="bg-gray-800 p-5 rounded-xl border border-gray-700/60 hover:bg-gray-750 transition text-sm text-gray-300"
+                className="bg-emerald-800/60 p-5 rounded-xl border border-emerald-700/60 hover:bg-emerald-800 transition text-sm text-emerald-100"
               >
                 {isAr ? 'تصفح جميع مقالات المدونة القانونية' : 'Consulter tous les articles du blog juridique'}
               </Link>
@@ -278,13 +278,13 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
         </section>
 
         {/* Institutional Office Information */}
-        <section className="bg-slate-100 rounded-2xl p-8 border border-slate-200 text-slate-800">
+        <section className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm text-gray-800">
           <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-2 text-center md:text-start">
-              <h2 className="text-xl font-bold text-slate-900">
+              <h2 className="text-xl font-bold text-gray-800">
                 {isAr ? 'البيانات الرسمية وأوقات الاستقبال' : 'Informations officielles et réception'}
               </h2>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-gray-600 text-sm leading-relaxed">
                 {isAr
                   ? 'الديوان العمومي للتوثيق — حي العقيد لطفي، وهران. أوقات الاستقبال: من الأحد إلى الخميس، من 08:30 إلى 12:00 ومن 13:30 إلى 16:00.'
                   : 'Office Notarial — Quartier Akid Lotfi, Oran. Réception du public : du dimanche au jeudi, de 08h30 à 12h00 et de 13h30 à 16h00.'}
@@ -293,15 +293,15 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
             <div className="flex flex-wrap justify-center gap-3 shrink-0">
               <Link
                 href={contactUrl}
-                className="bg-slate-800 hover:bg-slate-900 text-white px-5 py-2.5 rounded-xl font-semibold transition text-sm flex items-center gap-2"
+                className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 rounded-xl font-bold transition text-sm flex items-center gap-2 shadow-sm"
               >
                 {isAr ? 'معلومات الاتصال بالديوان' : 'Coordonnées de l\'office'}
               </Link>
               <PhoneLink
                 type="office"
-                className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 px-5 py-2.5 rounded-xl font-medium transition text-sm flex items-center gap-2"
+                className="bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 px-5 py-2.5 rounded-xl font-medium transition text-sm flex items-center gap-2"
                 icon={
-                  <svg className="w-4 h-4 flex-shrink-0 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 flex-shrink-0 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 }

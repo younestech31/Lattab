@@ -73,7 +73,7 @@ export default function AboutView({ lang }: AboutViewProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-gray-800" dir={isAr ? 'rtl' : 'ltr'} lang={isAr ? 'ar-DZ' : 'fr-DZ'}>
+    <div className="min-h-screen bg-gray-50 text-gray-800" dir={isAr ? 'rtl' : 'ltr'} lang={isAr ? 'ar-DZ' : 'fr-DZ'}>
       <JsonLdScript schema={breadcrumbSchema} />
       <JsonLdScript schema={aboutSchema} />
 
@@ -132,21 +132,21 @@ export default function AboutView({ lang }: AboutViewProps) {
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-3 text-sm">
-              <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100/50">
-                <p className="font-bold text-emerald-950">{isAr ? 'الصفة القانونية' : 'Statut légal'}</p>
-                <p className="text-emerald-800">{isAr ? 'ديوان عمومي للتوثيق تحت إشراف وزارة العدل' : 'Office public notarial sous tutelle du Ministère de la Justice'}</p>
+              <div className="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                <p className="font-bold text-gray-800">{isAr ? 'الصفة القانونية' : 'Statut légal'}</p>
+                <p className="text-gray-600">{isAr ? 'ديوان عمومي للتوثيق تحت إشراف وزارة العدل' : 'Office public notarial sous tutelle du Ministère de la Justice'}</p>
               </div>
-              <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100/50">
-                <p className="font-bold text-emerald-950">{isAr ? 'القانون المنظم' : 'Cadre réglementaire'}</p>
-                <p className="text-emerald-800">{isAr ? 'القانون رقم 06-02 المنظم لمهنة الموثق' : 'Loi n° 06-02 portant organisation du notariat'}</p>
+              <div className="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                <p className="font-bold text-gray-800">{isAr ? 'القانون المنظم' : 'Cadre réglementaire'}</p>
+                <p className="text-gray-600">{isAr ? 'القانون رقم 06-02 المنظم لمهنة الموثق' : 'Loi n° 06-02 portant organisation du notariat'}</p>
               </div>
-              <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100/50">
-                <p className="font-bold text-emerald-950">{isAr ? 'الاختصاص الإقليمي' : 'Compétence territoriale'}</p>
-                <p className="text-emerald-800">{isAr ? 'مجلس قضاء وهران والمحاكم التابعة له' : 'Cour d\'Oran et ses tribunaux rattachés'}</p>
+              <div className="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                <p className="font-bold text-gray-800">{isAr ? 'الاختصاص الإقليمي' : 'Compétence territoriale'}</p>
+                <p className="text-gray-600">{isAr ? 'مجلس قضاء وهران والمحاكم التابعة له' : 'Cour d\'Oran et ses tribunaux rattachés'}</p>
               </div>
-              <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100/50">
-                <p className="font-bold text-emerald-950">{isAr ? 'طبيعة الخدمة' : 'Nature de la fonction'}</p>
-                <p className="text-emerald-800">{isAr ? 'تقديم الخدمات والتحريرات التوثيقية الرسمية' : 'Authentification et rédaction des actes officiels'}</p>
+              <div className="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                <p className="font-bold text-gray-800">{isAr ? 'طبيعة الخدمة' : 'Nature de la fonction'}</p>
+                <p className="text-gray-600">{isAr ? 'تقديم الخدمات والتحريرات التوثيقية الرسمية' : 'Authentification et rédaction des actes officiels'}</p>
               </div>
             </div>
           </div>
@@ -240,10 +240,10 @@ export default function AboutView({ lang }: AboutViewProps) {
             </div>
 
             {/* Map link button & directions */}
-            <div className="bg-emerald-50/60 p-6 rounded-2xl border border-emerald-100 flex flex-col justify-between">
+            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-emerald-950 mb-2">{isAr ? 'الوصول إلى المكتب' : 'Accès à l\'étude'}</h3>
-                <p className="text-sm text-emerald-800 leading-relaxed mb-4">
+                <h3 className="font-bold text-gray-800 mb-2">{isAr ? 'الوصول إلى المكتب' : 'Accès à l\'étude'}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">
                   {isAr
                     ? 'يقع المكتب بحي العقيد لطفي بوهران، على مقربة من المحاور الرئيسية، ويتوفر على مواقف سيارات قريبة وولوج ميسر.'
                     : 'Située dans le quartier d\'Akid Lotfi à Oran, l\'étude est aisément accessible depuis les grands axes avec facilités de stationnement à proximité.'}
@@ -254,7 +254,7 @@ export default function AboutView({ lang }: AboutViewProps) {
                   href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2"
+                  className="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow-sm"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
@@ -263,7 +263,7 @@ export default function AboutView({ lang }: AboutViewProps) {
                 </a>
                 <Link
                   href={contactUrl}
-                  className="w-full bg-white hover:bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold py-3 px-4 rounded-xl text-center text-sm transition block"
+                  className="w-full bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold py-3 px-4 rounded-xl text-center text-sm transition block"
                 >
                   {isAr ? 'صفحة التواصل وحجز موعد' : 'Formulaire de contact et rendez-vous'}
                 </Link>

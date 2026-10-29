@@ -49,7 +49,7 @@ export default function LegalUpdates({ lang }: LegalUpdatesProps) {
             >
               <div className="p-6 flex-grow flex flex-col">
                 <div className="flex items-center justify-between mb-6">
-                  <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                  <div className="p-3 bg-emerald-100 text-emerald-600 rounded-xl group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
                     {iconMap[post.icon] || <FileText className="w-6 h-6" />}
                   </div>
                   <span className="text-xs font-bold px-3 py-1.5 bg-gray-50 text-gray-600 rounded-full border border-gray-100">
@@ -57,7 +57,7 @@ export default function LegalUpdates({ lang }: LegalUpdatesProps) {
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2 leading-tight">
+                <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2 leading-tight">
                   {post.title}
                 </h3>
                 
@@ -70,7 +70,7 @@ export default function LegalUpdates({ lang }: LegalUpdatesProps) {
                     <Calendar className="w-4 h-4 text-gray-400" />
                     <span>{post.date}</span>
                   </div>
-                  <div className="font-medium bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">{post.readTime}</div>
+                  <div className="font-medium bg-emerald-100 text-emerald-600 px-2 py-1 rounded-md">{post.readTime}</div>
                 </div>
               </div>
             </Link>
@@ -80,7 +80,7 @@ export default function LegalUpdates({ lang }: LegalUpdatesProps) {
         <div className="mt-8 text-center md:hidden">
           <Link 
             href={lang === 'fr' ? '/fr/blog' : '/blog'} 
-            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-50 text-emerald-700 font-bold rounded-xl transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-800 bg-white hover:bg-gray-50 font-bold rounded-xl transition-colors shadow-sm"
           >
             {content.cta_mobile}
             <DirectionalArrow lang={lang} className="w-5 h-5" />

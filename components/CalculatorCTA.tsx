@@ -16,9 +16,9 @@ const CalculatorCTA = ({ lang = 'ar' }: CalculatorCTAProps) => {
           <div className={`flex-1 text-center ${isAr ? 'md:text-right' : 'md:text-left'}`}>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
               {isAr ? 'حاسبة السعر المرجعي للعقار' : 'Calculateur des prix de référence immobilier'}
-              <span className="block text-emerald-400 mt-1">2026</span>
+              <span className="block text-amber-300 mt-1">2026</span>
             </h2>
-            <p className="text-emerald-50 text-sm md:text-base leading-relaxed mb-6">
+            <p className="text-emerald-200 text-sm md:text-base leading-relaxed mb-6">
               {isAr ? 'أداة إعلامية للتعرف على الأسعار المرجعية لوزارة المالية لولاية وهران.' : 'Outil d\'information sur les prix de référence officiels du Ministère des Finances pour la wilaya d\'Oran.'}
             </p>
             
@@ -26,7 +26,7 @@ const CalculatorCTA = ({ lang = 'ar' }: CalculatorCTAProps) => {
               <Link 
                 href={isAr ? '/calculateur-prix-referentiel' : '/fr/calculateur-prix-referentiel'}
                 aria-label={isAr ? 'الانتقال إلى حاسبة السعر المرجعي للعقار' : 'Accéder au calculateur des prix de référence'}
-                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20 group"
+                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-md group"
               >
                 <Calculator className="w-5 h-5" />
                 {isAr ? 'الانتقال إلى الحاسبة' : 'Accéder au calculateur'}

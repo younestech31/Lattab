@@ -6,8 +6,10 @@
 @import "tw-animate-css";
 
 /* Custom Font */
-.font-cairo {
+body, .font-cairo, .prose, .prose * {
   font-family: var(--font-cairo), sans-serif;
+}
+.font-cairo {
   line-height: 1.8;
 }
 

@@ -73,7 +73,7 @@ const TermsPrivacyPageFR = () => {
 
         <div className="container mx-auto px-4 max-w-5xl">
           {/* Institutional & Deontological Legal Banner */}
-          <div className="bg-emerald-950 text-emerald-100 border border-emerald-800/80 p-6 rounded-2xl mb-8 shadow-sm">
+          <div className="bg-emerald-900 text-emerald-100 border border-emerald-800/80 p-6 rounded-2xl mb-8 shadow-sm">
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <div className="p-2.5 bg-emerald-900 text-emerald-300 rounded-xl flex-shrink-0">
                 <Scale className="w-6 h-6" />
@@ -155,7 +155,7 @@ const TermsPrivacyPageFR = () => {
               </section>
 
               {/* Dedicated Section: Tarification officielle et interdiction commerciale */}
-              <section className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200">
+              <section className="bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm">
                 <div className="flex items-center gap-4 mb-6 border-b border-slate-200 pb-4">
                   <div className="p-3 bg-emerald-800 text-white rounded-xl">
                     <Scale className="w-6 h-6" />
@@ -250,11 +250,11 @@ const TermsPrivacyPageFR = () => {
                   
                   {/* Formal Professional Secrecy Pledge Box */}
                   <div className="bg-emerald-50 border-l-4 border-emerald-600 p-6 rounded-2xl">
-                    <h4 className="text-lg font-bold text-emerald-950 mb-2 flex items-center gap-2">
+                    <h4 className="text-lg font-bold text-emerald-900 mb-2 flex items-center gap-2">
                       <Shield className="w-5 h-5 text-emerald-700" />
                       Secret Professionnel Absolu &amp; Engagement Formel de Non-Divulgation
                     </h4>
-                    <p className="text-emerald-900 text-sm md:text-base leading-relaxed m-0 font-sans">
+                    <p className="text-emerald-900 text-sm md:text-base leading-relaxed m-0">
                       En application de <strong>l&apos;article 14 de la Loi n° 06-02</strong> portant organisation de la profession de notaire, le notaire ainsi que l&apos;ensemble des collaborateurs et employés de l&apos;office sont tenus au secret professionnel le plus absolu sur toutes les informations, faits et déclarations dont ils ont connaissance en raison de leurs fonctions. Toute violation du secret professionnel est sévèrement sanctionnée pénalement par <strong>l&apos;article 301 du Code pénal algérien</strong>. L&apos;office souscrit un engagement formel et irrévocable de non-divulgation, d&apos;intégrité et de confidentialité.
                     </p>
                   </div>

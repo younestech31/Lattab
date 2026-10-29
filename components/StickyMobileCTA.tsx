@@ -47,7 +47,7 @@ export default function StickyMobileCTA() {
         {/* Appointment Bar */}
         <Link 
           href="/#booking-form"
-          className="grow pointer-events-auto bg-emerald-600 text-white font-bold text-center h-14 flex items-center justify-center rounded-xl shadow-lg hover:bg-emerald-700 transition-colors text-base"
+          className="grow pointer-events-auto bg-amber-500 text-white font-bold text-center h-14 flex items-center justify-center rounded-xl shadow-lg hover:bg-amber-600 transition-colors text-base"
           aria-label={isAr ? 'طلب موعد إداري — الانتقال إلى نموذج الحجز' : 'Demande de RDV — Accéder au formulaire'}
         >
           {translations[lang].contact.tabs.appointment}

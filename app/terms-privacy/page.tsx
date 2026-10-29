@@ -81,7 +81,7 @@ const TermsPrivacyPage = async () => {
 
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Institutional & Deontological Legal Banner */}
-        <div className="bg-emerald-950 text-emerald-100 border border-emerald-800/80 p-6 rounded-2xl mb-8 shadow-sm">
+        <div className="bg-emerald-900 text-emerald-100 border border-emerald-800/80 p-6 rounded-2xl mb-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start gap-4">
             <div className="p-2.5 bg-emerald-900 text-emerald-300 rounded-xl flex-shrink-0">
               <Scale className="w-6 h-6" />
@@ -163,7 +163,7 @@ const TermsPrivacyPage = async () => {
             </section>
 
             {/* Dedicated Section: Official Regulated Fees & Anti-Commercial Policy */}
-            <section className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200">
+            <section className="bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm">
               <div className="flex items-center gap-4 mb-6 border-b border-slate-200 pb-4">
                 <div className="p-3 bg-emerald-800 text-white rounded-xl">
                   <Scale className="w-6 h-6" />
@@ -258,7 +258,7 @@ const TermsPrivacyPage = async () => {
                 
                 {/* Formal Professional Secrecy Pledge Box */}
                 <div className="bg-emerald-50 border-r-4 border-emerald-600 p-6 rounded-2xl">
-                  <h4 className="text-lg font-bold text-emerald-950 mb-2 flex items-center gap-2">
+                  <h4 className="text-lg font-bold text-emerald-900 mb-2 flex items-center gap-2">
                     <Shield className="w-5 h-5 text-emerald-700" />
                     السر المهني القانوني المطلق وتعهد عدم الإفشاء
                   </h4>
@@ -301,7 +301,7 @@ const TermsPrivacyPage = async () => {
                 <div className="bg-red-50 border-r-4 border-red-500 p-6 rounded-2xl mb-8 flex items-start gap-4">
                   <Shield className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-red-800 m-0 leading-relaxed font-sans">
+                    <p className="text-red-800 m-0 leading-relaxed">
                       صوناً للسر المهني وحماية للأطراف، يُمنع منعاً باتاً عبر الموقع إدخال أو تحميل أي وثائق ملكية، أو أرقام حسابات مصرفية، أو نصوص وصايا وعقود، أو معطيات شخصية حساسة. تتم كافة الإجراءات المتعلقة بمتن العقود ومستنداتها شخصياً وسرياً داخل مقر ديوان التوثيق حصراً.
                     </p>
                   </div>
