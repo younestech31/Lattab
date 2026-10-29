@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
-import { Calendar, ArrowLeft, Clock } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 import { frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL, FR_TITLE_SUFFIX } from '@/lib/config';
 import { readFile } from 'fs/promises';

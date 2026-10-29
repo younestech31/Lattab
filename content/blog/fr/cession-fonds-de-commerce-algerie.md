@@ -1,6 +1,6 @@
 ---
 title: "La Cession de Fonds de Commerce en Algérie en 2026 : Le Guide Juridique"
-description: "Un guide juridique complet sur les procédures de cession de fonds de commerce (Fonds de commerce) en Algérie en 2026 et l'accompagnement notarial."
+description: "Un guide juridique sur les procédures de cession de fonds de commerce en Algérie et les formalités notariales obligatoires."
 dateISO: "2026-05-20"
 category: "Sociétés"
 language: "fr"
@@ -14,7 +14,7 @@ icon: "FileText"
 ## Introduction
 Le fonds de commerce constitue l'un des actifs les plus précieux du commerçant ou de l'opérateur économique en Algérie. Que vous souhaitiez céder votre activité actuelle pour vous lancer dans un nouveau projet ou acquérir un commerce existant pour accélérer votre croissance, l'opération de "cession ou transfert de fonds de commerce" n'est pas un simple accord informel.
 
-C’est un acte hautement réglementé par des dispositions d’ordre public contenues dans le Code de commerce algérien. Ce guide complet pour l’année 2026 vous aide à appréhender ces procédures complexes et explique pourquoi l'accompagnement d'un notaire agréé est impératif pour sécuriser les parties et protéger les tiers.
+C’est un acte réglementé par des dispositions d’ordre public contenues dans le Code de commerce algérien. Ce guide présente les règles applicables et les formalités requises par la loi pour la validité de l'opération.
 
 ---
 
@@ -44,7 +44,7 @@ En Algérie, toute vente ou cession d'un fonds de commerce doit impérativement 
 Le notaire interroge les fichiers officiels pour s’assurer que le fonds de commerce est libre de tout nantissement (hypothèque mobilière), gage ou saisie susceptible de paralyser les droits de l’acquéreur.
 
 ### 2. La protection de l’acquéreur
-Le notaire garantit que vous traitez avec le propriétaire légitime, de bonne foi, et que les mentions exigées par le Code de commerce (origine de propriété, chiffre d'affaires, bail commercial) sont retranscrites de façon conforme.
+Le notaire vérifie la qualité du propriétaire légitime et veille à la retranscription conforme des mentions obligatoires exigées par le Code de commerce (origine de propriété, chiffre d'affaires, bail commercial).
 
 ### 3. La protection des créanciers
 La législation impose des procédures d’opposition strictes pour s'assurer que le produit de la vente sert d'abord à éteindre les dettes légitimes du cédant (fiscales, parafiscales, bancaires) avant versement du solde.
@@ -61,9 +61,9 @@ La constitution du dossier nécessite de réunir des pièces administratives et 
 ---
 
 ## Les formalités obligatoires de publicité légale (BOAL)
-Après signature de l'acte, le notaire Procède impérativement au dépôt de l'acte et publie un avis de cession au Bulletin Officiel des Annonces Légales (BOAL) ainsi que dans un quotidien national d'informations.
+Après signature de l'acte, le notaire procède impérativement au dépôt de l'acte et publie un avis de cession au Bulletin Officiel des Annonces Légales (BOAL) ainsi que dans un quotidien national d'informations.
 
-Cette mesure de publicité légale ouvre un délai d'opposition durant lequel les créanciers professionnels du cédant peuvent manifester leurs droits sur le prix de cession auprès de l'office notarial désigné. Cette purge des créances garantit à l'acheteur un départ sans risques cachés.
+Cette mesure de publicité légale ouvre un délai d'opposition durant lequel les créanciers professionnels du cédant peuvent manifester leurs droits sur le prix de cession auprès de l'office notarial désigné, permettant la purge des créances conformément à la loi.
 
 ---
 

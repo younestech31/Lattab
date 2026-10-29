@@ -12,7 +12,7 @@ L’acquisition ou la vente d’un bien immobilier est une étape majeure qui re
 
 ## Le Rôle Central du Notaire dans la Vente Immobilière
 
-En vertu de la loi algérienne, toute mutation de droits réels immobiliers doit impérativement faire l'objet d'un acte authentique rédigé par un notaire. Le notaire d'Oran intervient non seulement en tant que rédacteur de l'acte, mais également en tant que conseiller juridique garantissant la sécurité de la transaction. Il est chargé de vérifier l'identité et la capacité juridique des parties, l'origine de la propriété, et la situation hypothécaire du bien. Son intervention garantit l'inopposabilité de l'acte aux tiers.
+En vertu de la loi algérienne, toute mutation de droits réels immobiliers doit impérativement faire l'objet d'un acte authentique rédigé par un notaire. Le notaire intervient pour rédiger l'acte, vérifier l'identité et la capacité juridique des parties, l'origine de la propriété et la situation hypothécaire du bien, avant d'effectuer les formalités de publication foncière conférant l'opposabilité de l'acte aux tiers.
 
 ## Les Documents Nécessaires pour la Rédaction de l'Acte
 
@@ -39,4 +39,4 @@ Une fois les vérifications terminées et le projet d'acte rédigé, une séance
 
 Finalement, le document authentique est déposé à la conservation foncière d'Oran pour sa publication. Cette dernière étape est primordiale, car c'est la formalité de publicité qui confère à la transaction son efficacité juridique et le transfert effectif de la propriété de manière opposable aux tiers.
 
-La vigilance à chaque étape, de la consultation des documents à la publication foncière, garantit une transaction sereine et conforme à la législation algérienne en vigueur.
+L'accomplissement de chaque étape, de la vérification des documents à la publication foncière, permet d'assurer la conformité de la transaction à la législation algérienne en vigueur.

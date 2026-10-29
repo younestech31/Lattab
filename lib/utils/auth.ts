@@ -1,7 +1,7 @@
 /**
  * Validates Bearer token authentication against a required secret.
- * Throws if the secret is not configured to prevent silent auth bypass.
- * @throws never
+ * Fails closed (returns false) if the secret is not configured to prevent silent auth bypass.
+ * @returns boolean - true if valid, false otherwise. Does not throw.
  */
 export function validateBearerAuth(
   request: Request,

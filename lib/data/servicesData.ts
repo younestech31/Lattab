@@ -188,7 +188,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
           heading: 'Force probante et exécutoire de l\'acte notarié',
           paragraphs: [
             'En droit algérien, l\'acte notarié est revêtu de la formule exécutoire de plein droit sans nécessiter de décision judiciaire préalable. En tant qu\'officier public impartial, le notaire assure la validité formelle et matérielle du contrat et vérifie la capacité juridique de chaque intervenant.',
-            'L\'intervention notariale garantit l\'acquéreur contre tout vice dans la chaîne de propriété antérieure et certifie l\'inscription régulière au livre foncier.'
+            'L\'intervention notariale protège l\'acquéreur par la vérification rigoureuse de la chaîne de propriété antérieure et certifie l\'inscription régulière au livre foncier.'
           ]
         },
         {
@@ -223,7 +223,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       title: 'تأسيس الشركات التجارية في وهران',
       metaTitle: 'تأسيس شركة تجارية في وهران — ديوان التوثيق بوهران',
       metaDescription: 'إجراءات تأسيس الشركات التجارية (SARL, EURL, SPA, SNC) بوهران لدى مكتب التوثيق المعتمد. تحرير القوانين الأساسية، إيداع الرأسمال، والقيد بالسجل التجاري.',
-      h1: 'تأسيس الشركات التجارية في وهران — التوثيق والمرافقة القانونية',
+      h1: 'تأسيس الشركات التجارية في وهران — الإجراءات التوثيقية الرسمية',
       subtitle: 'تحرير العقود التأسيسية والأنظمة الأساسية للشركات التجارية وفق أحكام القانون التجاري الجزائري',
       targetAudience: [
         'المقاولون وأصحاب المشاريع والشركات الناشئة الراغبون في إطلاق نشاط تجاري أو خدمي مهيكل بوهران.',
@@ -303,7 +303,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       metaTitle: 'Création de société à Oran — Office Notarial - Oran | Notaire Oran',
       metaDescription: 'Constitution de sociétés commerciales à Oran (SARL, EURL, SPA, SNC) chez Office Notarial - Oran. Rédaction des statuts, formalités CNRC et publicité légale BOAL.',
       h1: 'Création de société commerciale à Oran — Rédaction des statuts et immatriculation',
-      subtitle: 'Accompagnement notarié dans la rédaction des statuts constitutifs conformément au Code de Commerce algérien',
+      subtitle: 'Rédaction notariale des statuts constitutifs conformément au Code de Commerce algérien',
       targetAudience: [
         'Entrepreneurs, start-up et créateurs de projets désireux de lancer une activité économique à Oran.',
         'Associés optant pour la création d\'une Société à Responsabilité Limitée (SARL) ou d\'une Entreprise Unipersonnelle (EURL).',
@@ -848,7 +848,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       ],
       jurisdictionNotes: [
         'Le notaire dispose d\'une compétence légale concurrente à celle de l\'officier d\'état civil communal pour célébrer et instrumenter les actes de mariage.',
-        'L\'acte notarié garantit une valeur probante internationale, facilitant les transcriptions consulaires et procédures de regroupement familial.'
+        'L\'acte notarié confère une valeur probante officielle, facilitant les transcriptions consulaires et procédures de regroupement familial.'
       ],
       inDepthContent: [
         {
@@ -888,7 +888,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     ar: {
       title: 'الرهن العقاري والتأمينات العينية بوهران',
       metaTitle: 'عقد الرهن العقاري بوهران — ديوان التوثيق بوهران',
-      metaDescription: 'توثيق عقود الرهن العقاري والتأمينات العينية ورفع اليد عن الرهن بوهران لدى مكتب التوثيق المعتمد. مرافقة القروض البنكية والتمويلات الاستثمارية.',
+      metaDescription: 'توثيق عقود الرهن العقاري والتأمينات العينية ورفع اليد عن الرهن بوهران لدى مكتب التوثيق المعتمد وفقاً لأحكام التشريع الجزائري.',
       h1: 'الرهن العقاري والتأمينات العينية بوهران — القروض والتأمين المالي',
       subtitle: 'تحرير عقود الرهن الرسمي وشهادات القيد وإجراءات رفع اليد لدى المحافظة العقارية بوهران وفقاً للقانون المدني الجزائري',
       targetAudience: [

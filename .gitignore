@@ -9,3 +9,5 @@ coverage/
 *.test-*.ts
 public/logo-optimized.png
 public/favicon-1.ico
+tsconfig.tsbuildinfo
+.aistudio/

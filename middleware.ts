@@ -34,23 +34,6 @@ export function middleware(request: NextRequest) {
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('Content-Security-Policy', cspHeader);
-  
-  // 301 Redirect from /blog/fr/[slug] to /fr/blog/[slug]
-  if (url.pathname.startsWith('/blog/fr/')) {
-    const slug = url.pathname.slice('/blog/fr/'.length);
-    url.pathname = `/fr/blog/${slug}`;
-    return NextResponse.redirect(url, { status: 301 });
-  }
-
-  // 301 Redirect for mismatched blog slugs between languages
-  if (url.pathname === '/fr/blog/guide-acte-de-vente-immobilier') {
-    url.pathname = '/fr/blog/acte-de-vente-immobilier-oran';
-    return NextResponse.redirect(url, { status: 301 });
-  }
-  if (url.pathname === '/blog/acte-de-vente-immobilier-oran') {
-    url.pathname = '/blog/guide-acte-de-vente-immobilier';
-    return NextResponse.redirect(url, { status: 301 });
-  }
 
   // Language detection based strictly on URL prefix (/fr = French, / = Arabic)
   let lang = 'ar';

@@ -15,6 +15,26 @@ const AppointmentSchema = z.object({
   honeypot: z.string().optional(),
 });
 
+// ─────────────────────────────────────────────────────────────
+// In-Memory Rate Limiting for Appointment Submissions (Temporary)
+//
+// TODO: Replace with distributed KV / Upstash Redis for production multi-instance
+// serverless deployments (e.g. Vercel Functions). In-memory state is isolated
+// per container instance and does not persist across cold starts.
+// ─────────────────────────────────────────────────────────────
+const APPOINTMENT_RATE_LIMIT_WINDOW_MS = 3 * 60 * 1000; // 3 minutes
+const phoneRateLimitMap = new Map<string, number>();
+
+function cleanExpiredRateLimits(now: number) {
+  if (phoneRateLimitMap.size > 200) {
+    for (const [phone, timestamp] of phoneRateLimitMap.entries()) {
+      if (now - timestamp > APPOINTMENT_RATE_LIMIT_WINDOW_MS) {
+        phoneRateLimitMap.delete(phone);
+      }
+    }
+  }
+}
+
 export type AppointmentFormData = z.infer<typeof AppointmentSchema>;
 
 export type AppointmentState = {
@@ -58,6 +78,24 @@ export async function validateAppointment(prevState: AppointmentState, formData:
       errors
     };
   }
+
+  // Rate-limiting check per sanitized phone number
+  const normalizedPhone = result.data.phone.replace(/\D/g, '');
+  const now = Date.now();
+  cleanExpiredRateLimits(now);
+
+  const lastAttempt = phoneRateLimitMap.get(normalizedPhone);
+  if (lastAttempt && now - lastAttempt < APPOINTMENT_RATE_LIMIT_WINDOW_MS) {
+    return {
+      success: false,
+      errors: {
+        phone: ['تم إرسال طلب لهذا الرقم مؤخراً. يرجى الانتظار بضع دقائق قبل إعادة المحاولة.'],
+      },
+      message: 'لقد تم إرسال طلب مؤخراً. يرجى الانتظار 3 دقائق قبل إعادة المحاولة.',
+    };
+  }
+
+  phoneRateLimitMap.set(normalizedPhone, now);
   
   // Send notification server-side
   try {

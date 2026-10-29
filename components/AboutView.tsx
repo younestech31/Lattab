@@ -162,7 +162,7 @@ export default function AboutView({ lang }: AboutViewProps) {
             <p>
               {isAr
                 ? 'يخضع الموثق في الجزائر لأحكام القانون رقم 06-02 المتضمن تنظيم مهنة الموثق، ويُعتبر ضابطاً عمومياً مفوضاً يتولى تحرير العقود التي يشترط فيها القانون الصبغة الرسمية أو تلك التي يرغب الأطراف في إعطائها هذه الصبغة.'
-                : 'En Algérie, le notaire exerce son ministère sous le régime de la Loi n° 06-02 portant organisation de la profession notariale. Investi de l\'autorité publique, il confère l\'authenticité aux conventions et garantit la régularité juridique des engagements patrimoniaux.'}
+                : 'En Algérie, le notaire exerce son ministère sous le régime de la Loi n° 06-02 portant organisation de la profession notariale. Investi de l\'autorité publique, il confère l\'authenticité aux conventions et assure la régularité juridique des engagements patrimoniaux.'}
             </p>
             <p>
               {isAr
