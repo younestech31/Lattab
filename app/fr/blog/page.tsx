@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
+import { BookOpen } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
 import BlogSearchInput from '@/components/BlogSearchInput';
 import BlogPostGrid from '@/components/BlogPostGrid';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import { JsonLdScript } from '@/components/schema';
 import { SITE_URL } from '@/lib/config';
 import { frBlogPosts } from '@/lib/data/blog';
@@ -118,7 +120,7 @@ export default async function FrenchBlogList({
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <JsonLdScript schema={itemListSchema} />
       <WebPageSchema
         url={`${SITE_URL}/fr/blog`}
@@ -129,19 +131,32 @@ export default async function FrenchBlogList({
           { name: "Blog", item: `${SITE_URL}/fr/blog` }
         ]}
       />
-      <div className="pt-32 pb-20" dir="ltr" lang="fr">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-sans">Blog Juridique et Immobilier</h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Votre guide complet pour comprendre la législation immobilière, les procédures notariales et la création de sociétés en Algérie.
-            </p>
-            <div className="max-w-lg mx-auto">
-              <Suspense fallback={null}>
-                <BlogSearchInput defaultValue={q} resultsCount={filteredPosts.length} />
-              </Suspense>
-            </div>
-          </div>
+      
+      <UnifiedPageHeader
+        lang="fr"
+        badgeText="Blog Juridique et Immobilier"
+        badgeIcon={<BookOpen className="w-4 h-4" />}
+        eyebrow="Office Notarial"
+        title="Blog Juridique et Immobilier"
+        description="Votre guide complet pour comprendre la législation immobilière, les procédures notariales et la création de sociétés en Algérie."
+        backLink={{
+          href: '/fr',
+          label: "Retour à l'accueil de l'étude",
+        }}
+        breadcrumbs={[
+          { name: 'Accueil', href: '/fr' },
+          { name: 'Blog' },
+        ]}
+      >
+        <div className="max-w-lg mx-auto mt-2">
+          <Suspense fallback={null}>
+            <BlogSearchInput defaultValue={q} resultsCount={filteredPosts.length} />
+          </Suspense>
+        </div>
+      </UnifiedPageHeader>
+
+      <main className="flex-grow py-12" dir="ltr" lang="fr">
+        <div className="container mx-auto px-4 max-w-6xl">
 
           <section aria-label="Liste d'articles" aria-live="polite" aria-busy={false}>
             {q && (
@@ -174,7 +189,7 @@ export default async function FrenchBlogList({
           </section>
 
         </div>
-      </div>
+      </main>
     </div>
   );
 }

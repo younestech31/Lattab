@@ -6,6 +6,7 @@ import { Calculator, AlertCircle, TrendingDown, Info } from 'lucide-react';
 import { SITE_URL } from '@/lib/config';
 import PriceCalculator from '@/components/PriceCalculator';
 import CalculatorSkeleton from '@/components/CalculatorSkeleton';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
@@ -73,32 +74,26 @@ export default function CalculatorPageFR() {
           { name: "Calculateur prix de référence", item: `${SITE_URL}/fr/calculateur-prix-referentiel` }
         ]}
       />
-      <div className="bg-gray-50">
-        {/* Hero Section */}
-        <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="mb-8 text-left">
-              <Link href="/fr" className="inline-flex items-center gap-2 text-emerald-400 hover:text-white font-bold transition-colors group">
-                <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                Retour à l&apos;accueil
-              </Link>
-            </div>
-            
-            <Calculator className="w-20 h-20 mx-auto mb-6 text-emerald-400" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center leading-tight">
-              Calculateur des prix de référence immobilier 2026
-            </h1>
-            <p className="text-xl text-emerald-100 max-w-2xl mx-auto text-center leading-relaxed">
-              Outil d&apos;estimation indicatif basé sur les barèmes officiels approuvés par la Direction Générale des Impôts (DGI) en Algérie.
-            </p>
-          </div>
-        </div>
+      <div className="bg-gray-50 pb-16" dir="ltr" lang="fr">
+        <UnifiedPageHeader
+          lang="fr"
+          badgeText="Outils et services numériques indicatifs"
+          badgeIcon={<Calculator className="w-4 h-4" />}
+          eyebrow="Office Notarial"
+          title="Calculateur des prix de référence immobilier 2026"
+          description="Outil d'estimation indicatif basé sur les barèmes officiels approuvés par la Direction Générale des Impôts (DGI) et le Ministère des Finances en Algérie."
+          backLink={{
+            href: '/fr',
+            label: "Retour à l'accueil de l'étude",
+          }}
+          breadcrumbs={[
+            { name: 'Accueil', href: '/fr' },
+            { name: 'Calculateur prix de référence' },
+          ]}
+        />
 
         {/* The Calculator Component */}
-        <div className="-mt-10 relative z-20">
+        <div className="-mt-8 relative z-20">
           <Suspense fallback={<CalculatorSkeleton />}>
             <PriceCalculator 
               lang="fr"

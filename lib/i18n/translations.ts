@@ -140,7 +140,7 @@ export const translations = {
         time_afternoon: 'الفترة المسائية',
         notes: 'ملاحظات إضافية',
         notes_placeholder: 'أي معلومات إضافية تريد إضافتها...',
-        terms: 'أوافق على الشروط والأحكام وسياسة الخصوصية الخاصة بالديوان.',
+        terms: 'أوافق على الشروط وسياسة الخصوصية (معالجة إدارية حصرية تحت طائلة السر المهني وفق المادة 14 من القانون 06-02 والقانون 18-07).',
         submit_appointment: 'تأكيد حجز الموعد',
         submit_inquiry: 'إرسال الاستفسار',
         loading: 'جاري الإرسال...',
@@ -223,7 +223,7 @@ export const translations = {
       privacy_link: 'سياسة الخصوصية'
     },
     cookie_banner: {
-      message: 'يستخدم هذا الموقع خدمات استضافة سحابية (Firebase) لمعالجة بيانات حجز المواعيد. بالاستمرار في التصفح، فإنك توافق على سياسة الخصوصية ومعالجة بياناتك وفق القانون رقم 18-07 المعدل والمتمم.',
+      message: 'يستخدم هذا الموقع معالجة تقنية سحابية مخصصة حصراً لتنظيم حجز المواعيد الإدارية تحت طائلة السر المهني (المادة 14 من القانون 06-02) والقانون 18-07 المتعلق بحماية المعطيات الشخصية.',
       privacy_policy: 'الاطلاع على سياسة الخصوصية',
       accept: 'موافقة',
       reject: 'رفض'
@@ -370,7 +370,7 @@ export const translations = {
         time_afternoon: 'Après-midi',
         notes: 'Notes supplémentaires',
         notes_placeholder: 'Toute information supplémentaire que vous souhaitez ajouter...',
-        terms: 'J\'accepte les conditions d\'utilisation et la politique de confidentialité de l\'étude.',
+        terms: 'J\'accepte les conditions et la politique de confidentialité (traitement administratif strictement réservé à la gestion des rendez-vous sous le sceau du secret professionnel, Art. 14 Loi 06-02 et Loi 18-07).',
         submit_appointment: 'Confirmer le rendez-vous',
         submit_inquiry: 'Envoyer la demande',
         loading: 'Envoi en cours...',
@@ -453,7 +453,7 @@ export const translations = {
       privacy_link: 'Politique de confidentialité'
     },
     cookie_banner: {
-      message: 'Ce site utilise des services d\'hébergement cloud (Firebase) pour traiter les données de réservation de rendez-vous. En poursuivant votre navigation, vous acceptez notre politique de confidentialité et le traitement de vos données conformément à la législation en vigueur.',
+      message: 'Ce site utilise un traitement technique cloud strictement limité à la gestion administrative des rendez-vous, sous le sceau du secret professionnel (Art. 14 Loi 06-02) et conformément à la Loi 18-07 relative à la protection des données.',
       privacy_policy: 'Voir la politique de confidentialité',
       accept: 'Accepter',
       reject: 'Refuser'

@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
+import { BookOpen } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
 import BlogSearchInput from '@/components/BlogSearchInput';
 import BlogPostGrid from '@/components/BlogPostGrid';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import { JsonLdScript } from '@/components/schema';
 import { SITE_URL } from '@/lib/config';
 import { blogPosts } from '@/lib/data/blog';
@@ -118,7 +120,7 @@ export default async function BlogList({
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <JsonLdScript schema={itemListSchema} />
       <WebPageSchema
         url={`${SITE_URL}/blog`}
@@ -129,19 +131,32 @@ export default async function BlogList({
           { name: "المدونة", item: `${SITE_URL}/blog` }
         ]}
       />
-      <div className="pt-32 pb-20" dir="rtl">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">المدونة القانونية والعقارية — موثق وهران</h1>
-            <p className="text-xl text-gray-600 mb-8">
-              دليلك الشامل للقوانين العقارية، الإجراءات التوثيقية، وأدلة تأسيس الشركات في الجزائر. 
-            </p>
-            <div className="max-w-lg mx-auto">
-              <Suspense fallback={null}>
-                <BlogSearchInput defaultValue={q} resultsCount={filteredPosts.length} />
-              </Suspense>
-            </div>
-          </div>
+      
+      <UnifiedPageHeader
+        lang="ar"
+        badgeText="المدونة القانونية والعقارية"
+        badgeIcon={<BookOpen className="w-4 h-4" />}
+        eyebrow="الديوان العمومي للتوثيق"
+        title="المدونة القانونية والعقارية — موثق وهران"
+        description="دليلك الشامل للقوانين العقارية، الإجراءات التوثيقية، وأدلة تأسيس الشركات في الجزائر وفق أحدث النصوص التنظيمية."
+        backLink={{
+          href: '/',
+          label: 'العودة إلى الصفحة الرئيسية للمكتب',
+        }}
+        breadcrumbs={[
+          { name: 'الرئيسية', href: '/' },
+          { name: 'المدونة' },
+        ]}
+      >
+        <div className="max-w-lg mx-auto mt-2">
+          <Suspense fallback={null}>
+            <BlogSearchInput defaultValue={q} resultsCount={filteredPosts.length} />
+          </Suspense>
+        </div>
+      </UnifiedPageHeader>
+
+      <main className="flex-grow py-12" dir="rtl">
+        <div className="container mx-auto px-4 max-w-6xl">
 
           <section aria-label="قائمة المقالات" aria-live="polite" aria-busy={false}>
             {q && (
@@ -174,7 +189,7 @@ export default async function BlogList({
           </section>
 
         </div>
-      </div>
+      </main>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 import { Scale, BookOpen, Building2, Landmark, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import WebPageSchema from '@/components/WebPageSchema';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 
 export const revalidate = 86400; // 24h ISR static page
 
@@ -152,42 +153,24 @@ export default function FrenchUsefulLinksPage() {
         ]}
       />
       <div className="bg-gray-50 pb-20" dir="ltr">
-        {/* Hero Section */}
-        <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
-          {/* Decorative background pattern */}
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-          
-          <div className="container mx-auto px-4 relative z-10 max-w-5xl">
-            {/* Back to Home Button */}
-            <div className="mb-8 text-left">
-              <Link 
-                href="/fr" 
-                className="inline-flex items-center gap-2 text-emerald-400 hover:text-white font-bold transition-colors group"
-              >
-                <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                Retour à l&apos;accueil de l&apos;étude
-              </Link>
-            </div>
+        <UnifiedPageHeader
+          lang="fr"
+          badgeText="Répertoire des institutions et sources officielles"
+          badgeIcon={<BookOpen className="w-4 h-4" />}
+          eyebrow="Office Notarial"
+          title="Liens et Institutions Utiles en Algérie"
+          description="Votre guide de référence institutionnel pour accéder directement aux portails des administrations, législations et services publics de la République Algérienne."
+          backLink={{
+            href: '/fr',
+            label: "Retour à l'accueil de l'étude",
+          }}
+          breadcrumbs={[
+            { name: 'Accueil', href: '/fr' },
+            { name: 'Liens utiles' },
+          ]}
+        />
 
-            <BookOpen className="w-20 h-20 mx-auto mb-6 text-emerald-400 animate-pulse" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-center font-sans">
-              Liens et Institutions Utiles en Algérie
-            </h1>
-            <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed text-center font-sans">
-              Votre guide de référence institutionnel pour accéder directement aux portails des administrations, législations et services publics de la République Algérienne.
-            </p>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-4 max-w-5xl">
-          {/* Navigation Breadcrumb */}
-          <nav className="text-xs text-gray-500 mb-6 flex items-center gap-1.5 font-sans" aria-label="Breadcrumb">
-            <Link href="/fr" className="hover:text-emerald-600 transition-colors">Accueil</Link>
-            <span>/</span>
-            <span className="text-gray-900 font-semibold">Liens utiles</span>
-          </nav>
+        <div className="container mx-auto px-4 max-w-5xl mt-8">
 
           {/* Information Warning - Law 06-02 Compliance */}
           <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-2xl mb-12 flex flex-col sm:flex-row items-start gap-4 shadow-sm text-left">

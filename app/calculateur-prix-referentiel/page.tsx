@@ -8,6 +8,7 @@ import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { SITE_URL } from '@/lib/config';
 import PriceCalculator from '@/components/PriceCalculator';
 import CalculatorSkeleton from '@/components/CalculatorSkeleton';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 // Validate this page using the Open Graph debugger:
@@ -78,32 +79,26 @@ export default function CalculatorPage() {
           { name: "حاسبة السعر المرجعي", item: `${SITE_URL}/calculateur-prix-referentiel` }
         ]}
       />
-      <div className="bg-gray-50" dir="rtl" lang="ar">
-        {/* Hero Section */}
-        <div className="bg-emerald-900 text-white pt-32 pb-20 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="mb-8 text-right">
-              <Link href="/" className="inline-flex items-center gap-2 text-emerald-400 hover:text-white font-bold transition-colors group">
-                <svg className="w-5 h-5 transform rotate-180 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                العودة للرئيسية
-              </Link>
-            </div>
-            
-            <Calculator className="w-20 h-20 mx-auto mb-6 text-emerald-400" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center leading-tight">
-              حاسبة السعر المرجعي للعقار 2026
-            </h1>
-            <p className="text-xl text-emerald-100 max-w-2xl mx-auto text-center leading-relaxed">
-              حاسبة السعر المرجعي العقاري — أداة إعلامية استرشادية بناءً على الجداول الرسمية المعتمدة من المديرية العامة للضرائب.
-            </p>
-          </div>
-        </div>
+      <div className="bg-gray-50 pb-16" dir="rtl" lang="ar">
+        <UnifiedPageHeader
+          lang="ar"
+          badgeText="الخدمات والأدوات الرقمية الاسترشادية"
+          badgeIcon={<Calculator className="w-4 h-4" />}
+          eyebrow="الديوان العمومي للتوثيق"
+          title="حاسبة السعر المرجعي للعقار 2026"
+          description="حاسبة السعر المرجعي العقاري — أداة إعلامية استرشادية بناءً على الجداول الرسمية المعتمدة من المديرية العامة للضرائب ووزارة المالية."
+          backLink={{
+            href: '/',
+            label: 'العودة إلى الصفحة الرئيسية للمكتب',
+          }}
+          breadcrumbs={[
+            { name: 'الرئيسية', href: '/' },
+            { name: 'حاسبة السعر المرجعي' },
+          ]}
+        />
 
         {/* The Calculator Component */}
-        <div className="-mt-10 relative z-20">
+        <div className="-mt-8 relative z-20">
           <Suspense fallback={<CalculatorSkeleton />}>
             <PriceCalculator 
               lang="ar"

@@ -72,13 +72,36 @@ const TermsPrivacyPageFR = () => {
         </div>
 
         <div className="container mx-auto px-4 max-w-5xl">
+          {/* Institutional & Deontological Legal Banner */}
+          <div className="bg-emerald-950 text-emerald-100 border border-emerald-800/80 p-6 rounded-2xl mb-8 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="p-2.5 bg-emerald-900 text-emerald-300 rounded-xl flex-shrink-0">
+                <Scale className="w-6 h-6" />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="bg-emerald-800 text-emerald-200 text-xs px-2.5 py-0.5 rounded font-bold">
+                    Avis Légal et Réglementaire Officiel
+                  </span>
+                  <span className="text-emerald-400 text-xs font-mono">Décret exécutif 08-243 • Loi 06-02</span>
+                </div>
+                <p className="text-white font-medium text-base sm:text-lg leading-relaxed">
+                  Ce site a un caractère purement informatif. Les honoraires du notaire sont fixés exclusivement par la tarification officielle (<strong>Décret exécutif n° 08-243</strong>). Aucune publicité commerciale n&apos;est pratiquée.
+                </p>
+                <p className="text-emerald-300/90 text-sm leading-relaxed" dir="rtl">
+                  « هذا الموقع ذو طابع إعلامي محض. أتعاب الموثق محددة حصراً بالتعريفة الرسمية المقننة (المرسوم التنفيذي 08-243). لا يمارس المكتب أي إشهار تجاري. »
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Important Notice */}
           <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-2xl mb-12 flex flex-col sm:flex-row items-start gap-4 shadow-sm">
             <AlertTriangle className="w-8 h-8 text-amber-500 flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-bold text-amber-900 mb-2">Avis Important</h3>
-              <p className="text-amber-800 leading-relaxed">
-                Veuillez lire attentivement ce document avant d&apos;utiliser la plateforme ou de prendre rendez-vous. En utilisant nos services, vous reconnaissez avoir lu, compris et accepté l&apos;ensemble des conditions énoncées ci-dessous, et vous consentez expressément au traitement de vos données dans le cadre du service notarial.
+              <h3 className="text-lg font-bold text-amber-900 mb-2">Avis Réglementaire &amp; Secret Professionnel</h3>
+              <p className="text-amber-800 leading-relaxed font-sans">
+                Veuillez lire attentivement ce document avant d&apos;utiliser la plateforme administrative de prise de rendez-vous. L&apos;utilisation de cette plateforme constitue une acceptation formelle du statut institutionnel de l&apos;office notarial en tant qu&apos;officier public ministériel soumis aux règles déontologiques et au secret professionnel absolu.
               </p>
             </div>
           </div>
@@ -92,35 +115,66 @@ const TermsPrivacyPageFR = () => {
                   <div className="p-3 bg-emerald-100 text-emerald-600 rounded-xl">
                     <Scale className="w-6 h-6" />
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Préambule et Cadre Général</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Préambule et Cadre Juridique</h2>
                 </div>
                 <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
                   <p>
-                    Ce document constitue un accord contraignant entre l&apos;utilisateur et le site de l&apos;<strong>Office Notarial de Office Notarial - Oran</strong>, une plateforme électronique conçue de manière à faciliter et organiser la prise de rendez-vous et la présentation de services notariaux agréés en République Algérienne Démocratique et Populaire.
+                    Ce document définit les règles organisationnelles et déontologiques régissant l&apos;utilisation du portail de l&apos;<strong>Office Public Notarial — Maître Lattab Mohamed (Notaire près le Tribunal de Fellaoucène, Cour d&apos;Oran)</strong>. Ce portail a pour vocation exclusive d&apos;éclairer les usagers sur les démarches juridiques et de faciliter la gestion administrative des rendez-vous.
                   </p>
                   <p>
-                    L&apos;office est soumis au contrôle et à la supervision de la <strong>Chambre Nationale des Notaires</strong> et respecte toutes les dispositions légales en vigueur, notamment la Loi n° 06-02 relative à la profession de notaire, et la Loi n° 18-07 relative à la protection des personnes physiques dans le traitement des données à caractère personnel (modifiée et complétée par la loi 25-11).
+                    L&apos;office notarial est placé sous la tutelle du Ministère de la Justice et sous la surveillance de la <strong>Chambre Nationale des Notaires</strong> ainsi que de la <strong>Chambre Régionale des Notaires (Région Ouest)</strong>, dans le respect scrupuleux de :
                   </p>
+                  <ul className="space-y-2 text-gray-700 bg-gray-50 p-5 rounded-xl border border-gray-100 list-none">
+                    <li>• <strong>La Loi n° 06-02</strong> du 20 février 2006, portant organisation de la profession de notaire.</li>
+                    <li>• <strong>Le Décret exécutif n° 08-243</strong> du 3 août 2008, fixant la tarification officielle et réglementée des honoraires de notaire.</li>
+                    <li>• <strong>L&apos;Article 14 de la Loi 06-02 et l&apos;Article 301 du Code pénal</strong>, instituant le secret professionnel absolu.</li>
+                    <li>• <strong>L&apos;Article 22 de la Loi 06-02</strong>, interdisant formellement toute activité commerciale, spéculative ou publicitaire.</li>
+                    <li>• <strong>La Loi n° 18-07</strong> (modifiée et complétée par la loi 25-11), relative à la protection des personnes physiques dans le traitement des données à caractère personnel.</li>
+                  </ul>
                   
-                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">Définitions de Base</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">Définitions Fondamentales</h3>
                   <ul className="space-y-4 list-none bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-100">
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                      <div><strong>&quot;La Plateforme&quot;:</strong> Le site web de l&apos;Office Notarial de Office Notarial - Oran, dédié au service de prise de rendez-vous.</div>
+                      <div><strong>&quot;L&apos;Office Public Notarial&quot;:</strong> L&apos;étude de l&apos;officier public délégataire de la puissance publique, habilité à authentifier les conventions et leur conférer force probante et exécutoire.</div>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                      <div><strong>&quot;Responsable du traitement&quot;:</strong> L&apos;Office Notarial de Office Notarial - Oran, qui détermine les finalités et les moyens du traitement de vos données.</div>
+                      <div><strong>&quot;Le Portail Électronique&quot;:</strong> L&apos;interface informatique d&apos;information juridique et d&apos;accueil administratif des usagers.</div>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                      <div><strong>&quot;L&apos;Utilisateur&quot; (Personne concernée):</strong> Toute personne physique majeure ou personne morale légalement représentée, qui accède à la plateforme et utilise ses services.</div>
+                      <div><strong>&quot;Responsable du traitement&quot;:</strong> L&apos;Office Notarial à Oran, tenu par l&apos;obligation stricte du secret professionnel et la protection des données.</div>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                      <div><strong>&quot;La Réservation&quot;:</strong> La demande de rendez-vous en ligne effectuée auprès de l&apos;office à une date et heure précises.</div>
+                      <div><strong>&quot;La Demande de Rendez-vous&quot;:</strong> Une démarche purement préparatoire d&apos;organisation d&apos;accueil, ne générant aucun engagement contractuel ni financier avant comparution physique à l&apos;étude.</div>
                     </li>
                   </ul>
+                </div>
+              </section>
+
+              {/* Dedicated Section: Tarification officielle et interdiction commerciale */}
+              <section className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200">
+                <div className="flex items-center gap-4 mb-6 border-b border-slate-200 pb-4">
+                  <div className="p-3 bg-emerald-800 text-white rounded-xl">
+                    <Scale className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">Tarification Officielle Réglementée &amp; Interdiction de la Publicité</h2>
+                    <p className="text-sm text-gray-500 mt-1">Application du Décret exécutif n° 08-243 et de l&apos;Article 22 de la Loi n° 06-02</p>
+                  </div>
+                </div>
+                <div className="prose prose-emerald max-w-none text-gray-700 leading-relaxed space-y-4 font-sans">
+                  <p>
+                    <strong>1. Tarification exclusive et réglementée :</strong> En droit algérien, les honoraires du notaire ne sont ni négociables ni soumis aux lois du marché commercial. Ils sont fixés de manière impérative par le <strong>Décret exécutif n° 08-243</strong>. L&apos;office applique cette tarification d&apos;État avec une rigueur absolue, sans majoration, rabais ni discrimination.
+                  </p>
+                  <p>
+                    <strong>2. Interdiction absolue de publicité :</strong> Conformément à <strong>l&apos;article 22 de la Loi n° 06-02</strong>, il est strictement interdit au notaire d&apos;exercer toute activité commerciale ou spéculative, ou de faire de la publicité personnelle. Ce site web a une vocation exclusivement civique et documentaire (renseigner sur les pièces requises et les lois en vigueur).
+                  </p>
+                  <p>
+                    <strong>3. Nature du simulateur de prix de référence :</strong> Le calculateur présent sur le site est un outil technique d&apos;information publique basé sur les barèmes référentiels officiels de la Direction Générale des Impôts (DGI) pour l&apos;assiette fiscale, et ne comprend aucune tarification d&apos;honoraires commerciaux libres.
+                  </p>
                 </div>
               </section>
 
@@ -181,40 +235,55 @@ const TermsPrivacyPageFR = () => {
                 </div>
               </section>
 
-              {/* Section 3: Privacy Policy */}
+              {/* Section 3: Privacy Policy & Professional Secrecy */}
               <section>
                 <div className="flex items-center gap-4 mb-8 border-b border-gray-100 pb-4">
                   <div className="p-3 bg-emerald-100 text-emerald-600 rounded-xl">
                     <Lock className="w-6 h-6" />
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Politique de Confidentialité &amp; Protection des Données</h2>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Politique de Confidentialité, Secret Professionnel &amp; Données</h2>
+                    <p className="text-sm text-gray-500 mt-1">Article 14 de la Loi 06-02, Article 301 du Code pénal et Loi 18-07</p>
+                  </div>
                 </div>
-                <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
+                <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed space-y-6">
+                  
+                  {/* Formal Professional Secrecy Pledge Box */}
+                  <div className="bg-emerald-50 border-l-4 border-emerald-600 p-6 rounded-2xl">
+                    <h4 className="text-lg font-bold text-emerald-950 mb-2 flex items-center gap-2">
+                      <Shield className="w-5 h-5 text-emerald-700" />
+                      Secret Professionnel Absolu &amp; Engagement Formel de Non-Divulgation
+                    </h4>
+                    <p className="text-emerald-900 text-sm md:text-base leading-relaxed m-0 font-sans">
+                      En application de <strong>l&apos;article 14 de la Loi n° 06-02</strong> portant organisation de la profession de notaire, le notaire ainsi que l&apos;ensemble des collaborateurs et employés de l&apos;office sont tenus au secret professionnel le plus absolu sur toutes les informations, faits et déclarations dont ils ont connaissance en raison de leurs fonctions. Toute violation du secret professionnel est sévèrement sanctionnée pénalement par <strong>l&apos;article 301 du Code pénal algérien</strong>. L&apos;office souscrit un engagement formel et irrévocable de non-divulgation, d&apos;intégrité et de confidentialité.
+                    </p>
+                  </div>
+
                   <p>
-                    Nous nous engageons pleinement à protéger votre vie privée et à respecter le secret professionnel conformément à la Loi n° 18-07 relative à la protection des personnes physiques dans le traitement des données à caractère personnel (modifiée et complétée par la loi 25-11). Nous ne collectons que les données strictement nécessaires (principe de minimisation) pour fournir le service et faciliter nos échanges avec vous.
+                    Nous appliquons avec rigueur les dispositions de la <strong>Loi n° 18-07</strong> (modifiée et complétée par la loi 25-11) relative à la protection des personnes physiques dans le traitement des données à caractère personnel. En vertu du principe de minimisation, seules les informations strictement nécessaires à la planification du calendrier de rendez-vous sont requises.
                   </p>
                   
-                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">1. Données collectées et finalités :</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">1. Données collectées et finalité administrative exclusive :</h3>
                   <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden mb-8">
                     <table className="w-full text-sm md:text-base text-left">
                       <thead className="bg-gray-50 text-gray-700">
                         <tr>
                           <th className="px-6 py-4 font-bold border-b border-gray-200">Type de données</th>
-                          <th className="px-6 py-4 font-bold border-b border-gray-200">Finalité de la collecte</th>
+                          <th className="px-6 py-4 font-bold border-b border-gray-200">Finalité administrative exclusive</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-100">
                         <tr>
                           <td className="px-6 py-4 font-medium text-gray-900 font-sans">Données d&apos;identité</td>
-                          <td className="px-6 py-4">Nom complet (pour identifier la personne effectuant la réservation et préparer le dossier initial).</td>
+                          <td className="px-6 py-4">Nom et prénom (identification administrative de l&apos;usager pour la gestion du registre d&apos;accueil).</td>
                         </tr>
                         <tr>
                           <td className="px-6 py-4 font-medium text-gray-900 font-sans">Données de contact</td>
-                          <td className="px-6 py-4">Numéro de téléphone et adresse e-mail (pour confirmer la réservation et vous contacter en cas d&apos;urgence ou de modification).</td>
+                          <td className="px-6 py-4">Numéro de téléphone et adresse e-mail (confirmation administrative du rendez-vous et coordination en cas d&apos;empêchement).</td>
                         </tr>
                         <tr>
                           <td className="px-6 py-4 font-medium text-gray-900 font-sans">Données du service</td>
-                          <td className="px-6 py-4">Type de prestation demandée, date choisie, et nom de l&apos;entreprise si applicable (pour organiser la séance et de préparer l&apos;avant-projet).</td>
+                          <td className="px-6 py-4">Catégorie de prestation notariée envisagée et date souhaitée (préparation de l&apos;inventaire des pièces légales requises).</td>
                         </tr>
                       </tbody>
                     </table>
@@ -225,24 +294,24 @@ const TermsPrivacyPageFR = () => {
                     <Shield className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                     <div>
                       <p className="text-red-800 m-0 leading-relaxed font-sans">
-                        Nous ne demandons jamais la saisie du contenu d&apos;actes personnels ou commerciaux sensibles, de coordonnées bancaires ou de données hautement confidentielles (santé, génétiques, etc.) via notre site web. Ces informations doivent être transmises exclusivement en personne et de manière confidentielle au sein de l&apos;office.
+                        Pour préserver le secret professionnel et la sécurité des parties, il est formellement prohibé de transmettre via ce site tout titre de propriété, acte d&apos;état civil confidentiel, coordonnées bancaires, testament ou document sensible. Tout dépôt de pièces et examen au fond des dossiers s&apos;effectue physiquement et confidentiellement au sein de l&apos;office.
                       </p>
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. Hébergement et transfert de données (Important) :</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. Hébergement et sécurité technique des données :</h3>
                   <p>
-                    Pour garantir la rapidité, la stabilité et la sécurité du service de réservation en ligne, notre plateforme utilise un fournisseur de services cloud de confiance mondiale (Google Firebase). En acceptant cette politique de confidentialité, vous consentez expressément au transfert et au stockage de vos données de réservation sur des serveurs cloud qui peuvent être situés en dehors du territoire national, et ce exclusivement aux fins du traitement technique de votre réservation.
+                    Le traitement technique des réservations repose sur une infrastructure sécurisée (Google Firebase) assurant le chiffrement des flux. En consentant à la prise de rendez-vous en ligne, vous autorisez ce traitement technique automatisé, strictement encadré et réservé au personnel assermenté ou soumis au secret professionnel de l&apos;office.
                   </p>
 
-                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">4. Sécurité et Confidentialité des Données :</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">4. Engagement de Non-Divulgation &amp; Absence Totale de Prospection :</h3>
                   <p>
-                    Vos données de réservation sont exploitées exclusivement pour l&apos;organisation des rendez-vous et la communication avec vous. Nous garantissons que vos données ne seront ni vendues ni partagées avec des tiers à des fins publicitaires. L&apos;accès est restreint au personnel de l&apos;office soumis au secret professionnel absolu. La plateforme fait l&apos;objet de mesures de sécurité physiques et logicielles pour préserver l&apos;intégrité des renseignements conformément à la loi (notamment l&apos;article 38 de la loi 18-07).
+                    L&apos;office notarial garantit qu&apos;aucune donnée n&apos;est vendue, cédée, louée ou exploitée à des fins commerciales ou publicitaires. Vos coordonnées sont utilisées exclusivement pour vous confirmer votre date d&apos;accueil à l&apos;étude.
                   </p>
 
-                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">5. Durée de Conservation des Données :</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">5. Durée de Conservation &amp; Destruction :</h3>
                   <p>
-                    Les données de réservation en ligne sont conservées uniquement pendant la période requise pour l&apos;accomplissement du rendez-vous et l&apos;organisation du calendrier de l&apos;office, avant d&apos;être archivées ou supprimées conformément aux obligations régissantes de la profession notariale.
+                    Les données de rendez-vous en ligne sont conservées uniquement pour le temps strictement requis par l&apos;organisation du calendrier d&apos;accueil. Après réalisation de l&apos;audience notariale ou expiration du délai, ces enregistrements temporaires sont effacés conformément aux obligations réglementaires.
                   </p>
 
                   <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">6. Droits de l&apos;Utilisateur (Personne concernée) :</h3>

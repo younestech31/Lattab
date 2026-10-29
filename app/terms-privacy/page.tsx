@@ -80,13 +80,36 @@ const TermsPrivacyPage = async () => {
       </div>
 
       <div className="container mx-auto px-4 max-w-5xl">
+        {/* Institutional & Deontological Legal Banner */}
+        <div className="bg-emerald-950 text-emerald-100 border border-emerald-800/80 p-6 rounded-2xl mb-8 shadow-sm">
+          <div className="flex flex-col sm:flex-row items-start gap-4">
+            <div className="p-2.5 bg-emerald-900 text-emerald-300 rounded-xl flex-shrink-0">
+              <Scale className="w-6 h-6" />
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="bg-emerald-800 text-emerald-200 text-xs px-2.5 py-0.5 rounded font-bold">
+                  إشعار قانوني وتنظيمي رسمي
+                </span>
+                <span className="text-emerald-400 text-xs font-mono">المرسوم التنفيذي 08-243 • القانون 06-02</span>
+              </div>
+              <p className="text-white font-medium text-base sm:text-lg leading-relaxed">
+                هذا الموقع ذو طابع إعلامي محض. أتعاب الموثق محددة حصراً بالتعريفة الرسمية المقننة (المرسوم التنفيذي رقم 08-243). لا يمارس المكتب أي إشهار تجاري أو نشاط استقطابي.
+              </p>
+              <p className="text-emerald-300/90 text-sm leading-relaxed">
+                « Ce site a un caractère purement informatif. Les honoraires du notaire sont fixés exclusivement par la tarification officielle (Décret exécutif 08-243). Aucune publicité commerciale n&apos;est pratiquée. »
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Important Notice */}
         <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-2xl mb-12 flex flex-col sm:flex-row items-start gap-4 shadow-sm">
           <AlertTriangle className="w-8 h-8 text-amber-500 flex-shrink-0 mt-1" />
           <div>
-            <h3 className="text-lg font-bold text-amber-900 mb-2">إشعار هام</h3>
+            <h3 className="text-lg font-bold text-amber-900 mb-2">إشعار الاستخدام وحماية السرية</h3>
             <p className="text-amber-800 leading-relaxed">
-              يُرجى قراءة هذه الوثيقة بعناية قبل استخدام المنصة أو حجز موعد. باستخدامك لخدماتنا، فإنك تُقرّ بقراءتك وفهمك وقبولك التام لجميع البنود الواردة أدناه، وتوافق صراحةً على معالجة بياناتك في إطار تقديم الخدمة التوثيقية.
+              يُرجى الاطلاع على هذه الضوابط التوثيقية والتنظيمية قبل استخدام المنصة الإدارية لحجز المواعيد. يُعد استخدام هذه البوابة إقراراً بفهم واحترام الطبيعة المؤسسية لديوان التوثيق كجهة عمومية رسمية تخضع للقوانين الجزائرية المنظمة للمهنة والسر المهني.
             </p>
           </div>
         </div>
@@ -100,35 +123,66 @@ const TermsPrivacyPage = async () => {
                 <div className="p-3 bg-emerald-100 text-emerald-600 rounded-xl">
                   <Scale className="w-6 h-6" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">تمهيد والإطار العام</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">تمهيد والإطار القانوني المنظم</h2>
               </div>
               <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
                 <p>
-                  تُعدّ هذه الوثيقة عقداً ملزماً بين المستخدم وموقع <strong>ديوان التوثيق - وهران</strong>، وهو منصة إلكترونية تهدف إلى تسهيل وتنظيم حجز المواعيد وتقديم الخدمات التوثيقية المعتمدة في الجمهورية الجزائرية الديمقراطية الشعبية.
+                  تُعدّ هذه الوثيقة بياناً تنظيمياً وإجرائياً يحكم استخدام بوابة <strong>الديوان العمومي للتوثيق — الأستاذ لعطب محمد (موثق لدى محكمة فلاوسن بمجلس قضاء وهران)</strong>. تهدف هذه المنصة إلى توفير المعلومات الإجرائية والقانونية للمواطنين وتنظيم الاستقبال الإداري وفقاً لأرفع معايير الانضباط المهني.
                 </p>
                 <p>
-                  يخضع المكتب لرقابة وإشراف <strong>الغرفة الوطنية للموثقين</strong> ويلتزم بجميع الأحكام القانونية المعمول بها، ولا سيما القانون رقم 06-02 المتعلق بمهنة الموثق، والقانون رقم 18-07 المعدل والمتمم بالقانون 25-11 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي.
+                  يخضع الديوان لإشراف وزارة العدل ورقابة <strong>الغرفة الوطنية للـموثقين</strong> و<strong>الغرفة الجهوية لموثقي ناحية الغرب</strong>، ويلتزم التزاماً صارماً بأحكام:
                 </p>
-                
+                <ul className="space-y-2 text-gray-700 bg-gray-50 p-5 rounded-xl border border-gray-100">
+                  <li><strong>القانون رقم 06-02</strong> المؤرخ في 20 فبراير 2006، المتضمن تنظيم مهنة التوثيق.</li>
+                  <li><strong>المرسوم التنفيذي رقم 08-243</strong> المؤرخ في 3 أغسطس 2008، المحدد لأتعاب الموثق الرسمية المقننة.</li>
+                  <li><strong>المادة 14 من القانون 06-02 والمادة 301 من قانون العقوبات</strong> المتعلقتين بالسر المهني المطلق.</li>
+                  <li><strong>المادة 22 من القانون 06-02</strong> القاضية بالحظر المطلق لممارسة أي نشاط تجاري أو إشهاري أو مضاربة.</li>
+                  <li><strong>القانون رقم 18-07</strong> المعدل والمتمم بالقانون 25-11، المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي.</li>
+                </ul>
+
                 <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">التعريفات الأساسية</h3>
                 <ul className="space-y-4 list-none bg-gray-50 p-6 md:p-8 rounded-2xl border border-gray-100">
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                    <div><strong>&quot;المنصة&quot;:</strong> الموقع الإلكتروني لديوان التوثيق - وهران المخصص لتقديم خدمة حجز المواعيد.</div>
+                    <div><strong>&quot;الديوان العمومي للتوثيق&quot;:</strong> مكتب الضابط العمومي المفوض قانوناً لتحرير العقود وتوثيق المعاملات وإضفاء الصيغة الرسمية والتنفيذية عليها.</div>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                    <div><strong>&quot;المسؤول عن المعالجة&quot;:</strong> ديوان التوثيق - وهران، والذي يحدد غايات ووسائل معالجة بياناتك.</div>
+                    <div><strong>&quot;البوابة الإلكترونية&quot;:</strong> الواجهة المعلوماتية المخصصة لتوفير الإرشادات القانونية وتنظيم المواعيد الإدارية.</div>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                    <div><strong>&quot;المستخدم&quot; (الشخص المعني):</strong> كل شخص طبيعي بالغ أو شخص معنوي ممثل قانوناً، يلج إلى المنصة ويستخدم خدماتها.</div>
+                    <div><strong>&quot;المسؤول عن المعالجة&quot;:</strong> ديوان التوثيق بوهران، الملتزم بالسر المهني وضوابط الحماية القانونية للمعطيات.</div>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0"></div>
-                    <div><strong>&quot;الحجز&quot;:</strong> الطلب الإلكتروني لتحديد موعد لدى المكتب في تاريخ وساعة محددين.</div>
+                    <div><strong>&quot;الحجز الإداري للموعد&quot;:</strong> تنظيم مسبق لجدول الاستقبال بالمكتب، لا يترتب عنه أي التزام عقدي أو مالي إلا بعد الحضور الشخصي واستيفاء الأركان القانونية.</div>
                   </li>
                 </ul>
+              </div>
+            </section>
+
+            {/* Dedicated Section: Official Regulated Fees & Anti-Commercial Policy */}
+            <section className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200">
+              <div className="flex items-center gap-4 mb-6 border-b border-slate-200 pb-4">
+                <div className="p-3 bg-emerald-800 text-white rounded-xl">
+                  <Scale className="w-6 h-6" />
+                </div>
+                <div>
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-900">التعريفة الرسمية المقننة والحظر التام للإشهار التجاري</h2>
+                  <p className="text-sm text-gray-500 mt-1">تطبيقاً للمرسوم التنفيذي 08-243 والمادة 22 من القانون 06-02</p>
+                </div>
+              </div>
+              <div className="prose prose-emerald max-w-none text-gray-700 leading-relaxed space-y-4">
+                <p>
+                  <strong>1. الأتعاب الرسمية المقننة:</strong> لا تخضع أتعاب الموثق في التشريع الجزائري لقانون العرض والطلب أو المنافسة التجارية، بل هي محددة قانوناً بموجب <strong>المرسوم التنفيذي رقم 08-243</strong> الصادر عن الوزير الأول. يلتزم الديوان بتطبيق هذه التعريفة الرسمية بكل شفافية ودقة دون أي زيادة أو تخفيض أو تمييز.
+                </p>
+                <p>
+                  <strong>2. حظر الدعاية والمضاربة:</strong> عملاً بأحكام <strong>المادة 22 من القانون رقم 06-02</strong>، يُحظر على الموثق ممارسة أي عمل تجاري، مضاربة، أو إشهار ترويجي. يُدار هذا الموقع بصفة معلوماتية توعوية خالصة لمساعدة المواطنين والمهنيين على فهم الإجراءات التوثيقية والوثائق المطلوبة، دون أن يمثل أي دعوة للتعاقد أو منافسة غير مشروعة.
+                </p>
+                <p>
+                  <strong>3. طبيعة حاسبة السعر المرجعي:</strong> تُعد حاسبة السعر المرجعي المتاحة في الموقع أداة تقنية محايدة مستمدة من الجداول الرسمية الصادرة عن المديرية العامة للضرائب (DGI)، وهي مخصصة حصراً لتقدير الأساس الضريبي ونسب التسجيل والشهر العقاري بصورة إرشادية للمواطن، ولا تتضمن أي تقدير لأتعاب تجارية.
+                </p>
               </div>
             </section>
 
@@ -189,68 +243,83 @@ const TermsPrivacyPage = async () => {
               </div>
             </section>
 
-            {/* Section 3: Privacy Policy */}
+            {/* Section 3: Privacy Policy & Professional Secrecy */}
             <section>
               <div className="flex items-center gap-4 mb-8 border-b border-gray-100 pb-4">
                 <div className="p-3 bg-emerald-100 text-emerald-600 rounded-xl">
                   <Lock className="w-6 h-6" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">سياسة الخصوصية وحماية البيانات</h2>
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900">سياسة الخصوصية، السر المهني وحماية البيانات</h2>
+                  <p className="text-sm text-gray-500 mt-1">المادة 14 من القانون 06-02، المادة 301 من قانون العقوبات، والقانون 18-07</p>
+                </div>
               </div>
-              <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
+              <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed space-y-6">
+                
+                {/* Formal Professional Secrecy Pledge Box */}
+                <div className="bg-emerald-50 border-r-4 border-emerald-600 p-6 rounded-2xl">
+                  <h4 className="text-lg font-bold text-emerald-950 mb-2 flex items-center gap-2">
+                    <Shield className="w-5 h-5 text-emerald-700" />
+                    السر المهني القانوني المطلق وتعهد عدم الإفشاء
+                  </h4>
+                  <p className="text-emerald-900 text-sm md:text-base leading-relaxed m-0">
+                    تطبيقاً لأحكام <strong>المادة 14 من القانون رقم 06-02</strong> المتضمن تنظيم مهنة التوثيق، فإن الموثق ومساعديه وجميع مستخدمي الديوان ملزمون التزاماً مطلقاً بالسر المهني عن جميع الوقائع والتصريحات والمعطيات التي يطلعون عليها بحكم وظيفتهم أو بمناسبة ممارستها. وكل إفشاء للسر المهني يعاقب عليه القانون بعقوبات جزائية مشددة طبقاً لأحكام <strong>المادة 301 من قانون العقوبات الجزائري</strong>. يلتزم الديوان بتعهد رسمي وقانوني بعدم إفشاء أو تداول أو استغلال أي بيانات يتم الإدلاء بها.
+                  </p>
+                </div>
+
                 <p>
-                  نلتزم التزاماً كاملاً بحماية خصوصيتك والالتزام بالسر المهني وفقاً للقانون رقم 18-07 (المعدل والمتمم بـ 25-11). نحن نجمع فقط البيانات الضرورية (بمبدأ الملاءمة) لتقديم الخدمة وتسهيل تواصلنا معك.
+                  نلتزم بالامتثال التام لأحكام <strong>القانون رقم 18-07</strong> المعدل والمتمم بالقانون 25-11، المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي. ونعتمد مبدأ التخصيص والحد الأدنى (Minimisation)، حيث لا نجمع سوى البيانات الأساسية الصرفة اللازمة لتنظيم جدول الاستقبال فقط.
                 </p>
                 
-                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">1. البيانات التي نجمعها وغرضها:</h3>
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">1. البيانات التي نجمعها وغايتها الحصرية:</h3>
                 <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden mb-8">
                   <table className="w-full text-sm md:text-base text-right">
                     <thead className="bg-gray-50 text-gray-700">
                       <tr>
-                        <th className="px-6 py-4 font-bold border-b border-gray-200">نوع البيانات</th>
-                        <th className="px-6 py-4 font-bold border-b border-gray-200">الغرض من الجمع</th>
+                        <th className="px-6 py-4 font-bold border-b border-gray-200">نوع المعطيات</th>
+                        <th className="px-6 py-4 font-bold border-b border-gray-200">الغرض التنظيمي الحصري</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
                       <tr>
                         <td className="px-6 py-4 font-medium text-gray-900">بيانات الهوية</td>
-                        <td className="px-6 py-4">الاسم الكامل (لتعريف هوية الحاجز وإعداد الملف الأولي).</td>
+                        <td className="px-6 py-4">الاسم الكامل (للتعرف الإداري على صاحب الموعد وضبط جدول الاستقبال بالديوان).</td>
                       </tr>
                       <tr>
                         <td className="px-6 py-4 font-medium text-gray-900">بيانات التواصل</td>
-                        <td className="px-6 py-4">رقم الهاتف والبريد الإلكتروني (لتأكيد الحجز والتواصل في حال الطوارئ).</td>
+                        <td className="px-6 py-4">رقم الهاتف والبريد الإلكتروني (لتأكيد الموعد إدارياً والتنسيق في حال الطوارئ فقط).</td>
                       </tr>
                       <tr>
                         <td className="px-6 py-4 font-medium text-gray-900">بيانات الخدمة</td>
-                        <td className="px-6 py-4">نوع الخدمة المطلوبة، التاريخ، واسم الشركة إن وجدت (لتنظيم الجلسة وتحضير المتطلبات).</td>
+                        <td className="px-6 py-4">طبيعة المعاملة المرغوبة وتاريخ الاستقبال (لتحضير قائمة الوثائق المطلوبة إجرائياً).</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
                 <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">2. ما لا نجمعه إطلاقاً عبر الموقع:</h3>
-                <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-2xl mb-8 flex items-start gap-4">
+                <div className="bg-red-50 border-r-4 border-red-500 p-6 rounded-2xl mb-8 flex items-start gap-4">
                   <Shield className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-red-800 m-0">
-                      لا نطلب أبداً إدخال محتوى العقود الحساسة، البيانات البنكية، أو أرقام الحسابات، أو المعطيات الحساسة (البيانات الصحية، الجينية، الخ) عبر الموقع الإلكتروني. يتم تقديم هذه المعلومات شخصياً وبشكل سري في المكتب فقط.
+                    <p className="text-red-800 m-0 leading-relaxed font-sans">
+                      صوناً للسر المهني وحماية للأطراف، يُمنع منعاً باتاً عبر الموقع إدخال أو تحميل أي وثائق ملكية، أو أرقام حسابات مصرفية، أو نصوص وصايا وعقود، أو معطيات شخصية حساسة. تتم كافة الإجراءات المتعلقة بمتن العقود ومستنداتها شخصياً وسرياً داخل مقر ديوان التوثيق حصراً.
                     </p>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. استضافة البيانات ونقلها (هام):</h3>
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. استضافة البيانات وحمايتها تقنياً:</h3>
                 <p>
-                  لضمان سرعة، استقرار، وأمان خدمة الحجز الإلكتروني، تستخدم منصتنا مزود خدمات سحابية عالمي موثوق (Google Firebase). بموافقتك على سياسة الخصوصية هذه، فإنك توافق صراحةً على نقل وتخزين بيانات الحجز الخاصة بك في خوادم سحابية قد تقع خارج التراب الوطني، وذلك حصرياً لغرض المعالجة التقنية لحجزك.
+                  تستخدم منصة المواعيد بنية تحتية سحابية مؤمنة (Google Firebase) تقتصر على المعالجة التقنية اللحظية لطلب الحجز. وبموجب موافقتك الصريحة، تُحفظ بيانات الموعد على خوادم محمية بأعلى بروتوكولات التشفير، ولا يُتاح الوصول إليها إلا لموظفي الديوان المكلفين بضبط سجل المواعيد وتحت طائلة السر المهني.
                 </p>
 
-                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">4. أمن وسرية البيانات:</h3>
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">4. التعهد بعدم الإفشاء والامتناع عن أي استغلال تجاري:</h3>
                 <p>
-                  تُستخدم بياناتك حصراً لتنظيم المواعيد والتواصل معك. نؤكد أن بياناتك لن تُباع ولن تُشارك مع أي طرف ثالث لأغراض تجارية. يقتصر الوصول إليها على طاقم المكتب الملتزم بالسرية المهنية المطلقة. وتخضع المنصة لتدابير أمنية تقنية لحماية المعطيات من التلف أو الولوج غير المرخص (تطبيقاً للمادة 38 من القانون).
+                  يتعهد ديوان التوثيق تعهداً رسمياً وقاطعاً بعدم بيع أو تأجير أو مشاركة أو تحويل أي من بيانات المستخدمين لأي طرف ثالث أو لأي أغراض دعائية أو تجارية تحت أي ظرف. تقتصر المعالجة حصراً على الغرض الإداري المحدد بطلب الموعد.
                 </p>
 
-                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">5. مدة حفظ البيانات:</h3>
+                <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">5. مدة الحفظ وقواعد الإتلاف:</h3>
                 <p>
-                  يتم الاحتفاظ ببيانات الحجز الإلكتروني فقط للفترة اللازمة لإتمام الموعد وتنظيم جدول المكتب، ليتم بعد ذلك أرشفتها أو مسحها وفقاً لما تقتضيه القوانين المنظمة لمهنة التوثيق.
+                  تُحفظ بيانات طلب الموعد فقط للفترة الضرورية لتنظيم وتأكيد الحضور. وبمجرد انقضاء الجلسة التوثيقية أو إلغاء الموعد، يتم إتلاف أو أرشفة السجلات الإدارية المؤقتة طبقاً للقواعد والمدد المنصوص عليها في التشريع التوثيقي الوطني وقانون حماية المعطيات الشخصية.
                 </p>
 
                 <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">6. حقوق المستخدم (الشخص المعني):</h3>

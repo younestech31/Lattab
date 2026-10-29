@@ -13,6 +13,7 @@ import ArticleActionLinks from '@/components/ArticleActionLinks';
 import { enrichDescription, AR_DESCRIPTION_SUFFIX, assertDescriptionLength, assertTitleLength } from '@/lib/utils/metaValidation';
 import { RegisterAlternatePath } from '@/lib/i18n';
 import { getRelatedPostsByCluster, CLUSTER_NAMES, SLUG_TO_CLUSTER } from '@/lib/data/clusters';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 
 const serviceMappings: Record<string, string> = {
   'عقاري': 'عقود البيع والشراء العقارية',
@@ -136,29 +137,47 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         }}
       />
       <ReadingProgress />
-      <main className="flex-grow pt-32 pb-20" dir={post.language === 'fr' ? 'ltr' : 'rtl'}>
+
+      <UnifiedPageHeader
+        lang="ar"
+        badgeText={post.category}
+        badgeIcon={<Calendar className="w-4 h-4" />}
+        eyebrow="المدونة القانونية والعقارية — ديوان التوثيق"
+        title={post.title}
+        backLink={{
+          href: '/blog',
+          label: 'العودة للمدونة',
+        }}
+        breadcrumbs={[
+          { name: 'الرئيسية', href: '/' },
+          { name: 'المدونة', href: '/blog' },
+          { name: post.title },
+        ]}
+      >
+        <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-emerald-200/90 pt-1 font-medium">
+          <div className="flex items-center gap-1.5">
+            <Calendar className="w-4 h-4 text-amber-400" />
+            <span>{post.date}</span>
+          </div>
+          <span className="text-white/40" aria-hidden="true">·</span>
+          <div className="flex items-center gap-1.5">
+            <Clock className="w-4 h-4 text-amber-400" />
+            <span>{post.readTime} قراءة</span>
+          </div>
+          {post.dateModified && post.dateModified !== post.dateISO && (
+            <>
+              <span className="text-white/40" aria-hidden="true">·</span>
+              <div className="flex items-center gap-1.5 text-emerald-200/75">
+                <span>آخر تحديث:</span>
+                <span>{new Date(post.dateModified).toLocaleDateString('ar-DZ')}</span>
+              </div>
+            </>
+          )}
+        </div>
+      </UnifiedPageHeader>
+
+      <main className="flex-grow -mt-6 relative z-20 pb-20" dir={post.language === 'fr' ? 'ltr' : 'rtl'}>
         <div className="container mx-auto px-4 max-w-4xl">
-          
-          <div className="mb-4 text-sm text-gray-500 overflow-x-auto whitespace-nowrap">
-            <nav className="flex items-center gap-2" aria-label="Breadcrumb">
-              <Link href="/" className="hover:text-emerald-700 transition-colors">الرئيسية</Link>
-              <span aria-hidden="true">&gt;</span>
-              <Link href="/blog" className="hover:text-emerald-700 transition-colors">المدونة</Link>
-              <span aria-hidden="true">&gt;</span>
-              <span className="text-gray-900 font-medium truncate max-w-[200px] sm:max-w-none inline-block align-bottom">{post.title}</span>
-            </nav>
-          </div>
-
-          <div className="mb-8">
-            <Link 
-              href="/blog" 
-              className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-800 font-bold transition-colors group"
-            >
-              <ArrowLeft className="w-4 h-4 transform rotate-180 group-hover:-translate-x-1 transition-transform" />
-              العودة للمدونة
-            </Link>
-          </div>
-
           <article 
             className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden"
             lang={post.language === 'fr' ? 'fr' : 'ar'}
@@ -216,29 +235,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               ]
             }]} />
             <div className="p-8 md:p-12">
-              <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-500">
-                <span className="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full font-bold">
-                  {post.category}
-                </span>
-                <div className="flex items-center gap-1.5 border-r pr-4 border-gray-200">
-                  <Calendar className="w-4 h-4" />
-                  <span>{post.date}</span>
-                </div>
-                <div className="flex items-center gap-1.5 border-r pr-4 border-gray-200">
-                  <Clock className="w-4 h-4" />
-                  <span>{post.readTime} قراءة</span>
-                </div>
-                {post.dateModified && post.dateModified !== post.dateISO && (
-                  <div className="flex items-center gap-1.5 border-r pr-4 border-gray-200 text-gray-500">
-                    <span className="font-medium text-gray-400">آخر تحديث:</span>
-                    <span>{new Date(post.dateModified).toLocaleDateString('ar-DZ')}</span>
-                  </div>
-                )}
-              </div>
-
-              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                {post.title}
-              </h1>
 
               <div 
                 className="prose prose-lg prose-emerald max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-p:leading-relaxed prose-a:text-emerald-600 prose-li:text-gray-600"

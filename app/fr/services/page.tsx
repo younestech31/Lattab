@@ -7,6 +7,7 @@ import { SITE_URL } from '@/lib/config';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import PhoneLink from '@/components/ui/PhoneLink';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 export const revalidate = 86400;
@@ -106,31 +107,25 @@ export default function FrenchServicesPage() {
         ]}
       />
 
-      <main className="flex-grow pt-28 pb-16">
-        <div className="container mx-auto px-4 max-w-6xl">
-          {/* Breadcrumb */}
-          <nav className="mb-6 text-sm text-gray-500 overflow-x-auto whitespace-nowrap" aria-label="Fil d'Ariane">
-            <ol className="flex items-center gap-2">
-              <li>
-                <Link href="/fr" className="hover:text-emerald-700 transition-colors">Accueil</Link>
-              </li>
-              <li aria-hidden="true" className="text-gray-400">/</li>
-              <li className="text-gray-800 font-semibold" aria-current="page">Services notariaux</li>
-            </ol>
-          </nav>
+      <UnifiedPageHeader
+        lang="fr"
+        badgeText="Prestations et actes authentiques notariés"
+        badgeIcon={<Scale className="w-4 h-4" />}
+        eyebrow="Office Public Notarial — Me Lattab Mohamed"
+        title="Nomenclature des Actes et Services Notariaux"
+        description="Titulaire d’un office public près le Tribunal de Fellaoucène à Oran, notre étude assure l’authentification, la conservation et l’opposabilité de tous vos actes civils et commerciaux conformément à la loi 06-02 régissant le notariat en Algérie."
+        backLink={{
+          href: '/fr',
+          label: "Retour à l'accueil de l'étude",
+        }}
+        breadcrumbs={[
+          { name: 'Accueil', href: '/fr' },
+          { name: 'Services notariaux' },
+        ]}
+      />
 
-          {/* Header */}
-          <header className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block bg-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              Office Public Notarial — Me Lattab Mohamed
-            </span>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-              Nomenclature des Actes et Services Notariaux
-            </h1>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-              Titulaire d’un office public près le Tribunal de Fellaoucène à Oran, notre étude assure l’authentification, la conservation et l’opposabilité de tous vos actes civils et commerciaux conformément à la loi 06-02 régissant le notariat en Algérie.
-            </p>
-          </header>
+      <main className="flex-grow py-12">
+        <div className="container mx-auto px-4 max-w-6xl">
 
           {/* Cards Grid */}
           <section aria-label="Liste des prestations notariales" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">

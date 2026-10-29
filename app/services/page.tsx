@@ -7,6 +7,7 @@ import { SITE_URL } from '@/lib/config';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import PhoneLink from '@/components/ui/PhoneLink';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 export const revalidate = 86400;
@@ -106,31 +107,25 @@ export default function ServicesPage() {
         ]}
       />
 
-      <main className="flex-grow pt-28 pb-16">
-        <div className="container mx-auto px-4 max-w-6xl">
-          {/* Breadcrumb */}
-          <nav className="mb-6 text-sm text-gray-500 overflow-x-auto whitespace-nowrap" aria-label="مسار التصفح">
-            <ol className="flex items-center gap-2">
-              <li>
-                <Link href="/" className="hover:text-emerald-700 transition-colors">الرئيسية</Link>
-              </li>
-              <li aria-hidden="true" className="text-gray-400">/</li>
-              <li className="text-gray-800 font-semibold" aria-current="page">الخدمات التوثيقية</li>
-            </ol>
-          </nav>
+      <UnifiedPageHeader
+        lang="ar"
+        badgeText="الاختصاصات والمعاملات التوثيقية المعتمدة"
+        badgeIcon={<Scale className="w-4 h-4" />}
+        eyebrow="الديوان العمومي للتوثيق — الأستاذ لعطب محمد"
+        title="دليل الخدمات والمعاملات التوثيقية"
+        description="يقدم ديوان التوثيق المعتمد لدى محكمة فلاوسن بوهران كافة المعاملات والعقود الرسمية طبقاً لأحكام القانون 06-02 المنظم لمهنة الموثق في الجزائر، مع حماية مصالح الأطراف وضمان الأمن القانوني."
+        backLink={{
+          href: '/',
+          label: 'العودة إلى الصفحة الرئيسية للمكتب',
+        }}
+        breadcrumbs={[
+          { name: 'الرئيسية', href: '/' },
+          { name: 'الخدمات التوثيقية' },
+        ]}
+      />
 
-          {/* Header */}
-          <header className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block bg-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-              الديوان العمومي للتوثيق — الأستاذ لعطب محمد
-            </span>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-              دليل الخدمات والمعاملات التوثيقية
-            </h1>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-              يقدم مكتب التوثيق المعتمد لدى محكمة فلاوسن بوهران كافة المعاملات والعقود الرسمية طبقاً لأحكام القانون 06-02 المنظم لمهنة الموثق في الجزائر، مع حماية مصالح الأطراف وضمان الأمن القانوني.
-            </p>
-          </header>
+      <main className="flex-grow py-12">
+        <div className="container mx-auto px-4 max-w-6xl">
 
           {/* Cards Grid */}
           <section aria-label="قائمة الخدمات التوثيقية" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">

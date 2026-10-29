@@ -5,6 +5,8 @@ import { SITE_URL } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';
 import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import PhoneLink from '@/components/ui/PhoneLink';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
+import { Scale } from 'lucide-react';
 
 interface ServiceDetailViewProps {
   service: ServiceData;
@@ -70,59 +72,44 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
       <JsonLdScript schema={howToSchema} />
 
       {/* Hero / Header Section */}
-      <section className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-gray-900 text-white pt-32 pb-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Breadcrumb nav */}
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-emerald-200">
-            <ol className="flex items-center gap-2 flex-wrap">
-              <li>
-                <Link href={homeUrl} className="hover:text-white transition-colors underline-offset-4 hover:underline">
-                  {isAr ? 'الرئيسية' : 'Accueil'}
-                </Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li>
-                <Link href={`${homeUrl}#services`} className="hover:text-white transition-colors underline-offset-4 hover:underline">
-                  {isAr ? 'الخدمات' : 'Services'}
-                </Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li className="text-white font-medium" aria-current="page">
-                {content.title}
-              </li>
-            </ol>
-          </nav>
-
-          {/* Single H1 on page */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
-            {content.h1}
-          </h1>
-          <p className="text-lg md:text-xl text-emerald-100/90 leading-relaxed mb-8 max-w-3xl">
-            {content.subtitle}
-          </p>
-
-          <div className="flex flex-wrap gap-4 items-center">
-            <Link
-              href={contactUrl}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md text-sm md:text-base flex items-center gap-2"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      <UnifiedPageHeader
+        lang={lang}
+        badgeText={content.title}
+        badgeIcon={<Scale className="w-4 h-4" />}
+        eyebrow={isAr ? 'الديوان العمومي للتوثيق' : 'Office Notarial'}
+        title={content.h1}
+        description={content.subtitle}
+        backLink={{
+          href: isAr ? '/services' : '/fr/services',
+          label: isAr ? 'العودة لجميع الخدمات التوثيقية' : 'Retour à tous les services',
+        }}
+        breadcrumbs={[
+          { name: isAr ? 'الرئيسية' : 'Accueil', href: homeUrl },
+          { name: isAr ? 'الخدمات' : 'Services', href: isAr ? '/services' : '/fr/services' },
+          { name: content.title },
+        ]}
+      >
+        <div className="flex flex-wrap gap-4 items-center justify-center pt-2">
+          <Link
+            href={contactUrl}
+            className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md text-sm md:text-base flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            {isAr ? 'معلومات الاتصال والمواعيد الإدارية' : 'Coordonnées et démarches'}
+          </Link>
+          <PhoneLink
+            type="office"
+            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl font-semibold transition-all text-sm md:text-base flex items-center gap-2"
+            icon={
+              <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              {isAr ? 'معلومات الاتصال والمواعيد الإدارية' : 'Coordonnées et démarches'}
-            </Link>
-            <PhoneLink
-              type="office"
-              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl font-semibold transition-all text-sm md:text-base flex items-center gap-2"
-              icon={
-                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              }
-            />
-          </div>
+            }
+          />
         </div>
-      </section>
+      </UnifiedPageHeader>
 
       {/* Main Content Area */}
       <div className="max-w-4xl mx-auto px-4 py-12 space-y-12">

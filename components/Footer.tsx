@@ -266,16 +266,32 @@ export default function Footer({ lang }: FooterProps) {
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-6">
-          <div className="text-center text-gray-400 text-sm mb-6">
-            <p>
-              {isRTL 
-                ? 'هذا الموقع إعلامي بحت ولا يُعد دعوة للتعامل أو إعلاناً تجارياً. الموثق ضابط عمومي معيَّن بمرسوم رئاسي.'
-                : 'Ce site est purement informatif et ne constitue ni une sollicitation commerciale ni une publicité. Le notaire est un officier public nommé par décret présidentiel.'
-              }
-            </p>
+      {/* Bottom Footer & Deontological Legal Notice */}
+      <div className="border-t border-gray-800 bg-gray-950/70">
+        <div className="container mx-auto px-4 py-8">
+          {/* Institutional Compliance Disclaimer Banner */}
+          <div className="bg-gray-900/90 rounded-2xl p-5 mb-6 border border-gray-800 text-xs sm:text-sm text-gray-300 leading-relaxed">
+            <div className="grid md:grid-cols-2 gap-4 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-gray-800">
+              {/* Arabic notice */}
+              <div className="pt-3 md:pt-0 md:pe-4 text-right" dir="rtl">
+                <span className="inline-block px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 font-semibold text-[11px] mb-2 border border-emerald-800/40">
+                  إشعار قانوني وتنظيمي
+                </span>
+                <p className="text-gray-300">
+                  هذا الموقع ذو طابع إعلامي محض. أتعاب الموثق محددة حصراً بالتعريفة الرسمية المقننة بموجب <strong>المرسوم التنفيذي رقم 08-243</strong>. لا يمارس المكتب أي إشهار تجاري أو مضاربة عملاً بأحكام المادتين 14 و22 من <strong>القانون رقم 06-02</strong> المنظم لمهنة التوثيق.
+                </p>
+              </div>
+
+              {/* French notice */}
+              <div className="pt-3 md:pt-0 md:ps-4 text-left" dir="ltr">
+                <span className="inline-block px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 font-semibold text-[11px] mb-2 border border-emerald-800/40">
+                  Avis légal et réglementaire
+                </span>
+                <p className="text-gray-300">
+                  Ce site a un caractère purement informatif. Les honoraires du notaire sont fixés exclusivement par la tarification officielle (<strong>Décret exécutif n° 08-243</strong>). Aucune publicité commerciale n&apos;est pratiquée, conformément aux articles 14 et 22 de la <strong>Loi n° 06-02</strong> portant organisation de la profession de notaire.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm text-center md:text-right">
