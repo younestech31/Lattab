@@ -20,20 +20,20 @@ function fitTextInBox(
     return { fontSize: size, textWidth, fittedText: text };
   }
 
-  // 1. Smoothly scale font size down to minimum 6.5pt
-  while (textWidth > maxWidth && size > 6.5) {
+  // 1. Smoothly scale font size down to minimum 9pt
+  while (textWidth > maxWidth && size > 9) {
     size -= 0.5;
     textWidth = font.widthOfTextAtSize(text, size);
   }
 
-  // 2. Truncate if still exceeds maxWidth at 6.5pt
+  // 2. Truncate if still exceeds maxWidth at 9pt
   let fittedText = text;
   while (textWidth > maxWidth && fittedText.length > 3) {
     fittedText = fittedText.slice(0, -1);
-    textWidth = font.widthOfTextAtSize(fittedText, size);
+    textWidth = font.widthOfTextAtSize(fittedText + '...', size);
   }
 
-  return { fontSize: size, textWidth, fittedText };
+  return { fontSize: size, textWidth: font.widthOfTextAtSize(fittedText + '...', size), fittedText: fittedText + '...' };
 }
 
 /**
