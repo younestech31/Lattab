@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import HeaderShell from './header/HeaderShell';
 import HeaderClient from './header/HeaderClient';
 import type { Language } from '@/lib/i18n';
