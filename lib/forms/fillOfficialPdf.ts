@@ -57,7 +57,13 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
   // 3. Load & embed required Arabic custom font (Amiri-Regular)
   let customFont: PDFFont;
   try {
-    const fontRes = await fetch(fontUrl);
+    let fontRes = await fetch(fontUrl);
+    if (!fontRes.ok) {
+      const altUrl = fontUrl.toLowerCase();
+      if (altUrl !== fontUrl) {
+        fontRes = await fetch(altUrl);
+      }
+    }
     if (!fontRes.ok) {
       throw new Error(`فشل جلب الخط العربي (HTTP ${fontRes.status})`);
     }
