@@ -7,52 +7,49 @@ import { GN17ComputeResult } from './compute';
  * Calibrated against public/forms/gn17.pdf.
  */
 export const GN17_FIELD_COORDINATES: FormFieldCoord[] = [
-  // الترويسة — فراغ «لولاية» وفراغ «قباضة الضرائب لـ» فقط
-  { id: 'wilaya', page: 1, x: 400, y: 761, size: 8, align: 'right', maxWidth: 70 },
-  { id: 'recette', page: 1, x: 390, y: 747, size: 8, align: 'right', maxWidth: 100 },
+  // فراغ «لولاية» وفراغ «لـ» في القباضة. ليس على «وزارة المالية»
+  { id: 'wilaya', page: 1, x: 410, y: 736, size: 8, align: 'right', maxWidth: 80 },
+  { id: 'recette', page: 1, x: 395, y: 722, size: 8, align: 'right', maxWidth: 95 },
 
-  // I المتنازل — سطر رسمي واحد لكل قيمة
-  { id: 'cedantNomPrenom', page: 1, x: 50, y: 552, size: 9, align: 'right', maxWidth: 450 },
-  { id: 'cedantAdresse', page: 1, x: 50, y: 538, size: 8, align: 'right', maxWidth: 450 },
-  { id: 'cedantNif', page: 1, x: 48, y: 499, size: 9, align: 'left', maxWidth: 200 },
+  // القسم I — المتنازل
+  { id: 'cedantNomPrenom', page: 1, x: 45, y: 529, size: 9, align: 'right', maxWidth: 465 },
+  { id: 'cedantAdresse', page: 1, x: 45, y: 515, size: 8, align: 'right', maxWidth: 465 },
+  { id: 'cedantNif', page: 1, x: 160, y: 471, size: 9, align: 'left', maxWidth: 180 },
 
-  // I المشتري: اسم ثم عنوان، بلا سطر تاريخ
-  { id: 'buyer1NomPrenom', page: 1, x: 50, y: 441, size: 8, align: 'right', maxWidth: 450 },
-  { id: 'buyer1Adresse', page: 1, x: 50, y: 428, size: 8, align: 'right', maxWidth: 450 },
-  { id: 'buyer1Nif', page: 1, x: 50, y: 414, size: 8, align: 'left', maxWidth: 160 },
-  { id: 'buyer2NomPrenom', page: 1, x: 50, y: 402, size: 8, align: 'right', maxWidth: 450 },
-  { id: 'buyer2Adresse', page: 1, x: 50, y: 389, size: 8, align: 'right', maxWidth: 450 },
+  // القسم I — مشترٍ: اسم ثم عنوان
+  { id: 'buyer1NomPrenom', page: 1, x: 45, y: 418, size: 8, align: 'right', maxWidth: 465 },
+  { id: 'buyer1Adresse', page: 1, x: 45, y: 404, size: 8, align: 'right', maxWidth: 465 },
+  { id: 'buyer1Nif', page: 1, x: 45, y: 392, size: 8, align: 'left', maxWidth: 140 },
+  { id: 'buyer2NomPrenom', page: 1, x: 45, y: 379, size: 8, align: 'right', maxWidth: 465 },
+  { id: 'buyer2Adresse', page: 1, x: 45, y: 366, size: 8, align: 'right', maxWidth: 465 },
 
-  // II داخل الإطار، فوق الملاحظات التي تبدأ تحت y≈115
-  { id: 'natureBien', page: 1, x: 50, y: 268, size: 8, align: 'right', maxWidth: 430 },
-  { id: 'cadastreRef', page: 1, x: 40, y: 254, size: 8, align: 'left', maxWidth: 220 },
-  { id: 'situationBien', page: 1, x: 50, y: 239, size: 8, align: 'right', maxWidth: 430 },
-  { id: 'commune', page: 1, x: 300, y: 225, size: 8, align: 'right', maxWidth: 120 },
-  { id: 'originePropriete', page: 1, x: 50, y: 186, size: 8, align: 'right', maxWidth: 430 },
-  { id: 'dateActeOrigine', page: 1, x: 40, y: 173, size: 8, align: 'left', maxWidth: 90 },
-  { id: 'refPublicationOrigine', page: 1, x: 140, y: 173, size: 8, align: 'left', maxWidth: 160 },
-  { id: 'dateActeCession', page: 1, x: 40, y: 161, size: 8, align: 'left', maxWidth: 90 },
-  { id: 'natureActeCession', page: 1, x: 150, y: 151, size: 8, align: 'right', maxWidth: 280 },
+  // القسم II — داخل الإطار وفوق الملاحظات
+  { id: 'natureBien', page: 1, x: 45, y: 245, size: 8, align: 'right', maxWidth: 420 },
+  { id: 'cadastreRef', page: 1, x: 40, y: 230, size: 8, align: 'left', maxWidth: 200 },
+  { id: 'situationBien', page: 1, x: 45, y: 215, size: 8, align: 'right', maxWidth: 420 },
+  { id: 'commune', page: 1, x: 300, y: 197, size: 8, align: 'right', maxWidth: 110 },
+  { id: 'originePropriete', page: 1, x: 45, y: 162, size: 8, align: 'right', maxWidth: 420 },
+  { id: 'dateActeOrigine', page: 1, x: 40, y: 150, size: 8, align: 'left', maxWidth: 80 },
+  { id: 'refPublicationOrigine', page: 1, x: 130, y: 150, size: 8, align: 'left', maxWidth: 150 },
+  { id: 'dateActeCession', page: 1, x: 40, y: 139, size: 8, align: 'left', maxWidth: 80 },
+  { id: 'natureActeCession', page: 1, x: 140, y: 127, size: 8, align: 'right', maxWidth: 270 },
 
-  // الصفحة 2 — عمود القيمة يسار الصفحة (النقاط من x≈30 إلى 260)
-  { id: 'montantCession', page: 2, x: 40, y: 794, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'fraisCession', page: 2, x: 40, y: 781, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'netSalePrice', page: 2, x: 40, y: 768, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'valeurOrigine', page: 2, x: 40, y: 755, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'fraisAcquisition', page: 2, x: 40, y: 737, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'grossPlusValue', page: 2, x: 40, y: 718, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'abattementRate', page: 2, x: 40, y: 705, size: 8, format: 'percent', align: 'left', maxWidth: 60 },
-  { id: 'abattementAmount', page: 2, x: 40, y: 692, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'netImposablePlusValue', page: 2, x: 40, y: 679, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-
-  { id: 'baseImposable', page: 2, x: 40, y: 578, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'grossTax', page: 2, x: 40, y: 552, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'residenceAbattementAmount', page: 2, x: 40, y: 538, size: 8, format: 'currency', align: 'left', maxWidth: 180 },
-  { id: 'netTaxDue', page: 2, x: 40, y: 525, size: 9, format: 'currency', align: 'left', maxWidth: 180 },
-
-  // «بـ …… في ……» سطر الإمضاء. لا ترسم taxRate: النسبة 15% مطبوعة سلفًا
-  { id: 'faitA', page: 2, x: 455, y: 431, size: 8, align: 'left', maxWidth: 55 },
-  { id: 'dateDeclaration', page: 2, x: 355, y: 431, size: 8, align: 'left', maxWidth: 70 },
+  // الصفحة 2 — عمود «القيمة ب دج» من اليسار. لا ترسم taxRate (15% مطبوعة)
+  { id: 'montantCession', page: 2, x: 40, y: 770, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'fraisCession', page: 2, x: 40, y: 757, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'netSalePrice', page: 2, x: 40, y: 744, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'valeurOrigine', page: 2, x: 40, y: 730, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'fraisAcquisition', page: 2, x: 40, y: 712, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'grossPlusValue', page: 2, x: 40, y: 694, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'abattementRate', page: 2, x: 40, y: 681, size: 8, format: 'percent', align: 'left', maxWidth: 50 },
+  { id: 'abattementAmount', page: 2, x: 40, y: 668, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'netImposablePlusValue', page: 2, x: 40, y: 655, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'baseImposable', page: 2, x: 40, y: 553, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'grossTax', page: 2, x: 40, y: 527, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'residenceAbattementAmount', page: 2, x: 40, y: 514, size: 8, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'netTaxDue', page: 2, x: 40, y: 501, size: 9, format: 'currency', align: 'left', maxWidth: 170 },
+  { id: 'faitA', page: 2, x: 455, y: 407, size: 8, align: 'left', maxWidth: 50 },
+  { id: 'dateDeclaration', page: 2, x: 355, y: 407, size: 8, align: 'left', maxWidth: 70 },
 ];
 
 /**
