@@ -2,13 +2,13 @@
 
 import HeaderShell from './header/HeaderShell';
 import HeaderClient from './header/HeaderClient';
-import { usePathname } from 'next/navigation';
+import type { Language } from '@/lib/i18n';
 
 export interface HeaderProps {
-  lang?: any;
+  lang?: Language;
 }
 
-export default function Header({ lang: _lang }: HeaderProps = {}) {
+export default function Header(_props: HeaderProps = {}) {
   const pathname = usePathname();
   const isHomePage = pathname === '/' || pathname === '/fr';
   const headerActive = !isHomePage;
