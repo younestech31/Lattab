@@ -4,6 +4,39 @@ import { FillPdfOptions } from './types';
 import { shapeArabicForPdf, hasArabic } from './textShaper';
 
 /**
+ * Calculates font size and text scaling to ensure text strictly fits within maxWidth.
+ * Prevents any text from overflowing onto other parts of the official form.
+ */
+function fitTextInBox(
+  font: PDFFont,
+  text: string,
+  initialSize: number,
+  maxWidth?: number
+): { fontSize: number; textWidth: number; fittedText: string } {
+  let size = initialSize;
+  let textWidth = font.widthOfTextAtSize(text, size);
+
+  if (!maxWidth || maxWidth <= 0 || textWidth <= maxWidth) {
+    return { fontSize: size, textWidth, fittedText: text };
+  }
+
+  // 1. Smoothly scale font size down to minimum 6.5pt
+  while (textWidth > maxWidth && size > 6.5) {
+    size -= 0.5;
+    textWidth = font.widthOfTextAtSize(text, size);
+  }
+
+  // 2. Truncate if still exceeds maxWidth at 6.5pt
+  let fittedText = text;
+  while (textWidth > maxWidth && fittedText.length > 3) {
+    fittedText = fittedText.slice(0, -1);
+    textWidth = font.widthOfTextAtSize(fittedText, size);
+  }
+
+  return { fontSize: size, textWidth, fittedText };
+}
+
+/**
  * Generic PDF filling engine for official Algerian administrative and tax templates.
  * Operates purely on client-side memory using pdf-lib. Never modifies template structure.
  */
@@ -89,48 +122,45 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
     // Format text representation
     let formattedText = String(rawValue);
     if (field.format === 'currency' && typeof rawValue === 'number') {
-      formattedText = Math.round(rawValue).toLocaleString('fr-DZ') + ' دج';
+      // Clean numeric formatting for official tax columns without appending mixed text
+      formattedText = Math.round(rawValue).toLocaleString('fr-DZ');
     } else if (field.format === 'percent' && typeof rawValue === 'number') {
       formattedText = `${rawValue} %`;
     }
 
     const isArabic = hasArabic(formattedText);
     const activeFont = isArabic ? customFont : (customFont || standardFont);
-    const fontSize = field.size || 10;
+    const initialFontSize = field.size || 10;
     const fontColor = field.color
       ? rgb(field.color.r, field.color.g, field.color.b)
       : rgb(0.05, 0.15, 0.35); // dark navy/slate for formal print
 
-    const printableText = isArabic ? shapeArabicForPdf(formattedText) : formattedText;
+    const rawTextToDraw = shapeArabicForPdf(formattedText);
+
+    // Fit text within box bounds
+    const { fontSize, textWidth, fittedText } = fitTextInBox(
+      activeFont,
+      rawTextToDraw,
+      initialFontSize,
+      field.maxWidth
+    );
 
     // Handle text alignment
     let drawX = field.x;
     if (field.align === 'right' || (isArabic && field.align !== 'left')) {
-      try {
-        const textWidth = activeFont.widthOfTextAtSize(printableText, fontSize);
-        if (field.maxWidth && field.maxWidth > 0) {
-          drawX = field.x + field.maxWidth - textWidth;
-        } else {
-          drawX = field.x;
-        }
-      } catch {
-        drawX = field.x;
+      if (field.maxWidth && field.maxWidth > 0) {
+        drawX = field.x + field.maxWidth - textWidth;
       }
     } else if (field.align === 'center') {
-      try {
-        const textWidth = activeFont.widthOfTextAtSize(printableText, fontSize);
-        if (field.maxWidth && field.maxWidth > 0) {
-          drawX = field.x + (field.maxWidth - textWidth) / 2;
-        } else {
-          drawX = field.x - textWidth / 2;
-        }
-      } catch {
-        drawX = field.x;
+      if (field.maxWidth && field.maxWidth > 0) {
+        drawX = field.x + (field.maxWidth - textWidth) / 2;
+      } else {
+        drawX = field.x - textWidth / 2;
       }
     }
 
     try {
-      page.drawText(printableText, {
+      page.drawText(fittedText, {
         x: drawX,
         y: field.y,
         size: fontSize,
