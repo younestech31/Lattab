@@ -9,41 +9,41 @@ import { GN17ComputeResult } from './compute';
 export const GN17_FIELD_COORDINATES: FormFieldCoord[] = [
   // ================= PAGE 1 =================
   // Routing headers (مديرية الضرائب / المفتشية / القباضة)
-  { id: 'wilaya', page: 1, x: 260, y: 742, size: 9, align: 'right', maxWidth: 240 },
-  { id: 'inspection', page: 1, x: 260, y: 727, size: 9, align: 'right', maxWidth: 240 },
-  { id: 'recette', page: 1, x: 260, y: 712, size: 9, align: 'right', maxWidth: 240 },
+  { id: 'wilaya', page: 1, x: 280, y: 700, size: 9, align: 'right', maxWidth: 220 },
+  { id: 'inspection', page: 1, x: 280, y: 678, size: 9, align: 'right', maxWidth: 220 },
+  { id: 'recette', page: 1, x: 280, y: 656, size: 9, align: 'right', maxWidth: 220 },
 
   // I. Cédant (المتنازل)
-  { id: 'cedantNomPrenom', page: 1, x: 120, y: 522, size: 10, align: 'right', maxWidth: 350 },
-  { id: 'cedantDateLieu', page: 1, x: 120, y: 505, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'cedantFiliation', page: 1, x: 120, y: 488, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'cedantAdresse', page: 1, x: 120, y: 471, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'cedantNif', page: 1, x: 120, y: 454, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'cedantProfession', page: 1, x: 120, y: 437, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'cedantNomPrenom', page: 1, x: 120, y: 552, size: 10, align: 'right', maxWidth: 350 },
+  { id: 'cedantDateLieu', page: 1, x: 120, y: 536, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'cedantFiliation', page: 1, x: 120, y: 520, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'cedantAdresse', page: 1, x: 120, y: 504, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'cedantNif', page: 1, x: 120, y: 488, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'cedantProfession', page: 1, x: 120, y: 472, size: 9, align: 'right', maxWidth: 350 },
 
   // Cessionnaires (المتنازل لهم)
   // Buyer 1
-  { id: 'buyer1NomPrenom', page: 1, x: 120, y: 382, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'buyer1DateLieu', page: 1, x: 120, y: 365, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'buyer1Adresse', page: 1, x: 120, y: 348, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'buyer1Nif', page: 1, x: 120, y: 331, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'buyer1NomPrenom', page: 1, x: 120, y: 418, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'buyer1DateLieu', page: 1, x: 120, y: 402, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'buyer1Adresse', page: 1, x: 120, y: 386, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'buyer1Nif', page: 1, x: 120, y: 370, size: 9, align: 'right', maxWidth: 350 },
 
   // Buyer 2 (if present)
-  { id: 'buyer2NomPrenom', page: 1, x: 120, y: 298, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'buyer2DateLieu', page: 1, x: 120, y: 281, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'buyer2Adresse', page: 1, x: 120, y: 264, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'buyer2NomPrenom', page: 1, x: 120, y: 330, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'buyer2DateLieu', page: 1, x: 120, y: 314, size: 9, align: 'right', maxWidth: 350 },
+  { id: 'buyer2Adresse', page: 1, x: 120, y: 298, size: 9, align: 'right', maxWidth: 350 },
 
   // II. Désignation du bien (تعيين العقار)
-  { id: 'natureBien', page: 1, x: 120, y: 226, size: 9, align: 'right', maxWidth: 320 },
-  { id: 'situationBien', page: 1, x: 120, y: 210, size: 9, align: 'right', maxWidth: 360 },
-  { id: 'cadastreRef', page: 1, x: 120, y: 193, size: 9, align: 'right', maxWidth: 220 },
-  { id: 'commune', page: 1, x: 380, y: 193, size: 9, align: 'right', maxWidth: 120 },
-  { id: 'originePropriete', page: 1, x: 120, y: 163, size: 9, align: 'right', maxWidth: 380 },
-  { id: 'dateActeOrigine', page: 1, x: 320, y: 147, size: 9, align: 'right', maxWidth: 140 },
-  { id: 'refPublicationOrigine', page: 1, x: 120, y: 147, size: 9, align: 'right', maxWidth: 160 },
-  { id: 'dateAchevement', page: 1, x: 120, y: 131, size: 9, align: 'right', maxWidth: 340 },
-  { id: 'natureActeCession', page: 1, x: 320, y: 115, size: 9, align: 'right', maxWidth: 160 },
-  { id: 'dateActeCession', page: 1, x: 120, y: 115, size: 9, align: 'right', maxWidth: 160 },
+  { id: 'natureBien', page: 1, x: 120, y: 258, size: 9, align: 'right', maxWidth: 320 },
+  { id: 'situationBien', page: 1, x: 120, y: 242, size: 9, align: 'right', maxWidth: 360 },
+  { id: 'cadastreRef', page: 1, x: 120, y: 226, size: 9, align: 'right', maxWidth: 220 },
+  { id: 'commune', page: 1, x: 380, y: 226, size: 9, align: 'right', maxWidth: 120 },
+  { id: 'originePropriete', page: 1, x: 120, y: 200, size: 9, align: 'right', maxWidth: 380 },
+  { id: 'dateActeOrigine', page: 1, x: 320, y: 184, size: 9, align: 'right', maxWidth: 140 },
+  { id: 'refPublicationOrigine', page: 1, x: 120, y: 184, size: 9, align: 'right', maxWidth: 160 },
+  { id: 'dateAchevement', page: 1, x: 120, y: 168, size: 9, align: 'right', maxWidth: 340 },
+  { id: 'natureActeCession', page: 1, x: 320, y: 152, size: 9, align: 'right', maxWidth: 160 },
+  { id: 'dateActeCession', page: 1, x: 120, y: 152, size: 9, align: 'right', maxWidth: 160 },
 
   // ================= PAGE 2 =================
   // III. Montants et plus-value (المبالغ وفائض القيمة)
