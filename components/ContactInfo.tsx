@@ -1,5 +1,6 @@
 import React from 'react';
 import { Language, translations } from '@/lib/i18n/translations';
+import { GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from './ui/PhoneLink';
 
 export default function ContactInfo({ lang }: { lang: Language }) {
@@ -21,7 +22,7 @@ export default function ContactInfo({ lang }: { lang: Language }) {
             <h3 className="font-bold text-gray-800 mb-1">{t_info.address}</h3>
             <p className="text-gray-600 text-sm" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
               <a
-                href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
+                href={GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-emerald-600 transition-colors"

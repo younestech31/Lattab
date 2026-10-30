@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { headers } from 'next/headers';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import { WORKING_HOURS, SITE_URL } from '@/lib/config';
+import { WORKING_HOURS, SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from '@/components/ui/PhoneLink';
 
 export const metadata: Metadata = {
@@ -73,7 +73,7 @@ const TermsPrivacyPage = async () => {
           <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed text-center font-sans">
             {isAr 
               ? "ديوان التوثيق - وهران - نلتزم بالشفافية والسر المهني وحماية بياناتك وفقاً للتشريعات الجزائرية"
-              : "Office Notarial de Office Notarial - Oran - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne."
+              : "Office Notarial - Oran - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne."
             }
           </p>
         </div>
@@ -365,7 +365,7 @@ const TermsPrivacyPage = async () => {
                     <div className="flex items-start gap-4 text-gray-700">
                       <MapPin className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                       <a 
-                        href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7" 
+                        href={GOOGLE_MAPS_URL} 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="hover:text-emerald-600 transition-colors"

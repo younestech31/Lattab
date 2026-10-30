@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Language } from '@/lib/i18n/translations';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';
 import PhoneLink from '@/components/ui/PhoneLink';
 
@@ -69,6 +69,7 @@ export default function AboutView({ lang }: AboutViewProps) {
         latitude: 35.7277124,
         longitude: -0.5931358,
       },
+      hasMap: GOOGLE_MAPS_URL,
     },
   };
 
@@ -251,7 +252,7 @@ export default function AboutView({ lang }: AboutViewProps) {
               </div>
               <div className="space-y-3">
                 <a
-                  href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
+                  href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow-sm"

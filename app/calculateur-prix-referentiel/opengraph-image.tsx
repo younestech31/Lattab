@@ -100,7 +100,7 @@ export default async function Image() {
                 fontWeight: 600,
               }}
             >
-              Office Notarial de Office Notarial - Oran — Notaire a Oran
+              Office Notarial - Oran — Notaire a Oran
             </div>
             <div
               style={{

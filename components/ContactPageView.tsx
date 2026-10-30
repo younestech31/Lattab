@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Language } from '@/lib/i18n/translations';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';
 import MapComponent from '@/components/MapComponent';
 import PhoneLink from '@/components/ui/PhoneLink';
@@ -67,6 +67,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
         latitude: 35.7277124,
         longitude: -0.5931358,
       },
+      hasMap: GOOGLE_MAPS_URL,
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
@@ -233,7 +234,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
               <MapComponent />
             </div>
             <a
-              href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7"
+              href={GOOGLE_MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:underline text-sm font-semibold flex items-center justify-center gap-1.5"

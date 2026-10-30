@@ -317,7 +317,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     
     textToCopy += isAr 
       ? `\n(حاسبة ديوان التوثيق - وهران — lattab.vercel.app)`
-      : `\n(Calculateur de l'Office Notarial de Office Notarial - Oran — lattab.vercel.app)`;
+      : `\n(Calculateur de l'Office Notarial - Oran — lattab.vercel.app)`;
       
     try {
       await navigator.clipboard.writeText(textToCopy);

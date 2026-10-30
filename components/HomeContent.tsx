@@ -6,7 +6,7 @@ import ContactInfo from '@/components/ContactInfo';
 import CalculatorCTA from '@/components/CalculatorCTA';
 import { Language } from '@/lib/i18n/translations';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import NotaryRole from '@/components/NotaryRole';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
@@ -58,9 +58,9 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
       "latitude": 35.7277124,
       "longitude": -0.5931358
     },
-    "hasMap": "https://www.google.com/maps/place/NOTAIRE+LATTAB+MOHAMED/@35.7277124,-0.5931358,17z",
+    "hasMap": GOOGLE_MAPS_URL,
     "sameAs": [
-      "https://www.google.com/maps/place/NOTAIRE+LATTAB+MOHAMED/@35.7277124,-0.5931358,17z"
+      GOOGLE_MAPS_URL
     ],
     "areaServed": [
       { "@type": "AdministrativeArea", "name": "Oran" },

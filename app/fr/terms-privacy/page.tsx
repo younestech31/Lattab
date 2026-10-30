@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import { WORKING_HOURS, SITE_URL } from '@/lib/config';
+import { WORKING_HOURS, SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from '@/components/ui/PhoneLink';
 
 export const metadata: Metadata = {
@@ -66,7 +66,7 @@ const TermsPrivacyPageFR = () => {
               Conditions d&apos;Utilisation &amp; Politique de Confidentialité
             </h1>
             <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed text-center font-sans">
-              Office Notarial de Office Notarial - Oran - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne.
+              Office Notarial - Oran - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne.
             </p>
           </div>
         </div>
@@ -357,7 +357,7 @@ const TermsPrivacyPageFR = () => {
                       <div className="flex items-start gap-4 text-gray-700">
                         <MapPin className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                         <a 
-                          href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7" 
+                          href={GOOGLE_MAPS_URL} 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:text-emerald-600 transition-colors"
@@ -404,7 +404,7 @@ const TermsPrivacyPageFR = () => {
           
           <div className="text-center mt-12 text-gray-500 text-sm">
             <p>Version: 1.2 | Dernière mise à jour : 12/04/2026</p>
-            <p className="mt-2 font-medium">Tous droits réservés &copy; 2026 - Office Notarial de Office Notarial - Oran</p>
+            <p className="mt-2 font-medium">Tous droits réservés &copy; 2026 - Office Notarial - Oran</p>
           </div>
         </div>
       </div>

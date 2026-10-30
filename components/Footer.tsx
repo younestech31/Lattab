@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLang, Language } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
-import { OFFICE_INFO } from '@/lib/config';
+import { OFFICE_INFO, GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from './ui/PhoneLink';
 
 interface FooterProps {
@@ -13,7 +13,7 @@ interface FooterProps {
 
 export default function Footer({ lang: propLang }: FooterProps = {}) {
   const { lang: contextLang } = useLang();
-  const lang = propLang || contextLang;
+  const lang = contextLang || propLang || 'ar';
   const isRTL = lang === 'ar';
 
   const getHref = (href: string) => {
@@ -214,7 +214,7 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
                 </svg>
                 <p className="text-emerald-100 text-sm">
                   <a 
-                    href="https://maps.app.goo.gl/NwPD6ik2evPreyCc7" 
+                    href={GOOGLE_MAPS_URL} 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="hover:text-white transition-colors"

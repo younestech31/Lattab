@@ -38,5 +38,7 @@ export const SITE_CONFIG = {
   version: '1.2',
 } as const;
 
+export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/NwPD6ik2evPreyCc7';
+
 export const LAST_CONTENT_UPDATED = '2026-09-24';
 

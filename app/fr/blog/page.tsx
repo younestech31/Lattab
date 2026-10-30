@@ -104,7 +104,7 @@ export default async function FrenchBlogList({
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Blog Juridique et Immobilier — Notaire à Oran",
-    "description": "Liste d'articles juridiques et immobiliers de l'Office Notarial de Office Notarial - Oran, notaire agréé à Oran",
+    "description": "Liste d'articles juridiques et immobiliers de l'Office Notarial - Oran, notaire agréé à Oran",
     "url": SITE_URL + "/fr/blog",
     "numberOfItems": frBlogPosts.length,
     "itemListElement": frBlogPosts.map((post, index) => ({
