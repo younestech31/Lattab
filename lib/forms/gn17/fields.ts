@@ -8,8 +8,8 @@ import { GN17ComputeResult } from './compute';
  */
 export const GN17_FIELD_COORDINATES: FormFieldCoord[] = [
   // فراغ «لولاية» وفراغ «لـ» في القباضة. ليس على «وزارة المالية»
-  { id: 'wilaya', page: 1, x: 410, y: 736, size: 10, align: 'right', maxWidth: 80 },
-  { id: 'recette', page: 1, x: 395, y: 722, size: 10, align: 'right', maxWidth: 95 },
+  { id: 'wilaya', page: 1, x: 300, y: 736, size: 10, align: 'right', maxWidth: 140 },
+  { id: 'recette', page: 1, x: 280, y: 722, size: 10, align: 'right', maxWidth: 160 },
 
   // القسم I — المتنازل
   { id: 'cedantNomPrenom', page: 1, x: 45, y: 529, size: 10, align: 'right', maxWidth: 465 },
@@ -24,13 +24,13 @@ export const GN17_FIELD_COORDINATES: FormFieldCoord[] = [
   { id: 'buyer2Adresse', page: 1, x: 45, y: 366, size: 10, align: 'right', maxWidth: 465 },
 
   // القسم II — داخل الإطار وفوق الملاحظات
-  { id: 'natureBien', page: 1, x: 220, y: 245, size: 10, align: 'right', maxWidth: 270 },
-  { id: 'cadastreRef', page: 1, x: 40, y: 231, size: 9, align: 'left', maxWidth: 200 },
+  { id: 'natureBien', page: 1, x: 45, y: 245, size: 10, align: 'right', maxWidth: 420 },
+  { id: 'cadastreRef', page: 1, x: 40, y: 228, size: 9, align: 'left', maxWidth: 240 },
   { id: 'situationBien', page: 1, x: 45, y: 215, size: 10, align: 'right', maxWidth: 420 },
   { id: 'commune', page: 1, x: 300, y: 197, size: 10, align: 'right', maxWidth: 110 },
   { id: 'originePropriete', page: 1, x: 45, y: 162, size: 10, align: 'right', maxWidth: 420 },
-  { id: 'dateActeOrigine', page: 1, x: 40, y: 150, size: 9, align: 'left', maxWidth: 80 },
-  { id: 'refPublicationOrigine', page: 1, x: 130, y: 150, size: 9, align: 'left', maxWidth: 150 },
+  { id: 'dateActeOrigine', page: 1, x: 360, y: 150, size: 9, align: 'left', maxWidth: 80 },
+  { id: 'refPublicationOrigine', page: 1, x: 40, y: 150, size: 9, align: 'left', maxWidth: 200 },
   { id: 'dateActeCession', page: 1, x: 40, y: 139, size: 9, align: 'left', maxWidth: 80 },
   { id: 'natureActeCession', page: 1, x: 140, y: 127, size: 10, align: 'right', maxWidth: 270 },
 
