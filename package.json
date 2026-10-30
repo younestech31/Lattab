@@ -13,7 +13,9 @@
     "test:indexing:put": "curl -X PUT -H \"Authorization: Bearer $CRON_SECRET\" $NEXT_PUBLIC_SITE_URL/api/google-indexing"
   },
   "dependencies": {
+    "@pdf-lib/fontkit": "^1.1.1",
     "@vercel/analytics": "^2.0.1",
+    "arabic-persian-reshaper": "^1.0.1",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
@@ -22,6 +24,7 @@
     "motion": "^12.39.0",
     "next": "^15.4.9",
     "nextjs-toploader": "^3.9.17",
+    "pdf-lib": "^1.17.1",
     "postcss": "^8.5.6",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",

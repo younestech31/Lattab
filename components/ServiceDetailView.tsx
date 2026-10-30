@@ -6,7 +6,7 @@ import { JsonLdScript } from '@/components/schema';
 import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import PhoneLink from '@/components/ui/PhoneLink';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
-import { Scale } from 'lucide-react';
+import { Scale, FileText, ArrowRight } from 'lucide-react';
 
 interface ServiceDetailViewProps {
   service: ServiceData;
@@ -246,6 +246,29 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
               </Link>
             )}
           </div>
+
+          {service.slug === 'vente-immobiliere' && (
+            <div className="bg-emerald-950/70 border border-emerald-700/60 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <div className="text-amber-300 text-xs font-bold flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-amber-400" />
+                  <span>{isAr ? 'الالتزام الجبائي للتصريح بفائض القيمة (سلسلة ج رقم 17)' : 'Déclaration fiscale de plus-value (Série G N° 17)'}</span>
+                </div>
+                <p className="text-emerald-100 text-xs leading-relaxed max-w-2xl">
+                  {isAr
+                    ? 'المادة 80 مكرر من قانون الضرائب المباشرة: يلتزم البائع بإيداع تصريح فائض القيمة ج 17 خلال 30 يوماً من تاريخ إبرام العقد التوثيقي لدى قباضة الضرائب لموقع العقار.'
+                    : 'En vertu de l\'article 80 bis du CIDTA, le cédant est tenu de souscrire la déclaration Série G N° 17 auprès de la recette des impôts dans les 30 jours suivant la passation de l\'acte.'}
+                </p>
+              </div>
+              <Link
+                href={isAr ? '/formulaires/gn17' : '/fr/formulaires/gn17'}
+                className="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap self-start sm:self-auto"
+              >
+                <span>{isAr ? 'تعبئة استمارة ج 17' : 'Remplir l\'imprimé G N° 17'}</span>
+                <ArrowRight className={`w-3.5 h-3.5 ${isAr ? 'rotate-180' : ''}`} />
+              </Link>
+            </div>
+          )}
 
           <div className="grid sm:grid-cols-2 gap-4">
             {relatedArticles.length > 0 ? (

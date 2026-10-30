@@ -129,6 +129,20 @@ export const STATIC_LOCALE_MAP: RouteLocaleEntry[] = [
     priority: 0.3,
     changeFrequency: 'yearly',
   },
+  {
+    arPath: '/formulaires',
+    frPath: '/fr/formulaires',
+    lastmod: LAST_CONTENT_UPDATED,
+    priority: 0.8,
+    changeFrequency: 'monthly',
+  },
+  {
+    arPath: '/formulaires/gn17',
+    frPath: '/fr/formulaires/gn17',
+    lastmod: LAST_CONTENT_UPDATED,
+    priority: 0.8,
+    changeFrequency: 'monthly',
+  },
 ];
 
 export const BLOG_PAIRS_MAP: Record<string, string> = {
