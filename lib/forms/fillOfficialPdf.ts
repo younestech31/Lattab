@@ -108,18 +108,24 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
     if (field.align === 'right' || (isArabic && field.align !== 'left')) {
       try {
         const textWidth = activeFont.widthOfTextAtSize(printableText, fontSize);
-        if (field.maxWidth && field.maxWidth > textWidth) {
-          drawX = field.x + (field.maxWidth - textWidth);
+        if (field.maxWidth && field.maxWidth > 0) {
+          drawX = field.x + field.maxWidth - textWidth;
+        } else {
+          drawX = field.x;
         }
       } catch {
-        // Fallback to direct x
+        drawX = field.x;
       }
     } else if (field.align === 'center') {
       try {
         const textWidth = activeFont.widthOfTextAtSize(printableText, fontSize);
-        drawX = field.x - textWidth / 2;
+        if (field.maxWidth && field.maxWidth > 0) {
+          drawX = field.x + (field.maxWidth - textWidth) / 2;
+        } else {
+          drawX = field.x - textWidth / 2;
+        }
       } catch {
-        // Fallback to direct x
+        drawX = field.x;
       }
     }
 

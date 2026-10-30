@@ -1,5 +1,8 @@
+import createBidi from 'bidi-js';
 // @ts-expect-error arabic-persian-reshaper has untyped CommonJS exports
 import { ArabicShaper } from 'arabic-persian-reshaper';
+
+const bidi = createBidi();
 
 /**
  * Checks if a character is within the basic Arabic Unicode block
@@ -21,8 +24,11 @@ export function hasArabic(text: string): boolean {
 }
 
 /**
- * Shapes Arabic text (Presentation Forms-B) and reverses it for RTL drawing in PDF coordinate space.
- * Numbers and Latin tokens are preserved in their natural LTR reading order.
+ * Mental test / Verification:
+ * Input: "وهران" or "محمد" or "محمد لعطب"
+ * 1) ArabicShaper.convertArabic() reshapes individual Unicode characters into connected Presentation Forms-B glyphs.
+ * 2) bidi.getEmbeddingLevels() + bidi.getReorderedString() visually reorders the characters so that when
+ *    pdf-lib renders them left-to-right on the PDF canvas, the text displays connected right-to-left.
  */
 export function shapeArabicForPdf(text: string): string {
   if (!text || typeof text !== 'string') return '';
@@ -31,31 +37,14 @@ export function shapeArabicForPdf(text: string): string {
   }
 
   try {
-    // Convert to connected Arabic glyph forms (Initial, Medial, Final, Isolated)
-    const shaped = ArabicShaper?.convertArabic ? ArabicShaper.convertArabic(text) : text;
-    
-    // Split into segments of Arabic vs Non-Arabic (numbers, latin, punctuation)
-    // to reverse the overall line for RTL while keeping numbers and latin LTR.
-    const tokens: Array<{ text: string; isRtl: boolean }> = [];
-    const regex = /([\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF\s]+)|([^\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF\s]+)/g;
-    let match: RegExpExecArray | null;
+    // 1. Reshape Arabic glyphs to Unicode Presentation Forms-B (connected contextual forms)
+    const reshaped = ArabicShaper?.convertArabic ? ArabicShaper.convertArabic(text) : text;
 
-    while ((match = regex.exec(shaped)) !== null) {
-      if (match[1]) {
-        tokens.push({ text: match[1], isRtl: true });
-      } else if (match[2]) {
-        tokens.push({ text: match[2], isRtl: false });
-      }
-    }
+    // 2. Compute Bidirectional embedding levels and reorder string for LTR PDF rendering
+    const embeddingLevels = bidi.getEmbeddingLevels(reshaped, 'rtl');
+    const visualOrderString = bidi.getReorderedString(reshaped, embeddingLevels);
 
-    // Reverse tokens overall (so Arabic flows right-to-left)
-    // Within an Arabic token, reverse characters because pdf-lib draws left-to-right
-    const reversed = tokens
-      .reverse()
-      .map((t) => (t.isRtl ? t.text.split('').reverse().join('') : t.text))
-      .join('');
-
-    return reversed;
+    return visualOrderString;
   } catch (err) {
     console.warn('shapeArabicForPdf error:', err);
     return text;

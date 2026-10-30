@@ -17,6 +17,7 @@
     "@vercel/analytics": "^2.0.1",
     "arabic-persian-reshaper": "^1.0.1",
     "autoprefixer": "^10.4.21",
+    "bidi-js": "^1.1.0",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "jspdf": "^4.2.1",
