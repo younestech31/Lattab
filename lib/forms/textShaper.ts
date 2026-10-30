@@ -1,3 +1,6 @@
+// @ts-expect-error arabic-persian-reshaper has untyped CommonJS exports
+import { ArabicShaper } from 'arabic-persian-reshaper';
+
 /**
  * Checks if a character is within the basic Arabic Unicode block
  */
@@ -17,13 +20,41 @@ export function hasArabic(text: string): boolean {
   return /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/.test(text);
 }
 
+function shapeToken(token: string): string {
+  const shaped = ArabicShaper.convertArabic(token); // connected Presentation Forms-B, logical order
+  return Array.from(shaped).reverse().join('');     // visual LTR order for pdf-lib
+}
+
 /**
- * Normalizes text for PDF generation.
- * With pdf-lib + @pdf-lib/fontkit, raw logical Arabic Unicode strings (e.g., "محمد لعطب", "وهران")
- * are automatically reshaped, connected, and ordered correctly by fontkit's OpenType layout engine.
- * No manual reshaping or bidi reversal is applied here to avoid double-processing.
+ * Converts Arabic text to connected Presentation Forms-B and performs a single
+ * visual reversal so that pdf-lib draws connected Arabic text in the correct LTR sequence.
+ * Non-Arabic tokens (numbers, Latin, punctuation) are preserved as-is.
  */
 export function shapeArabicForPdf(text: string): string {
   if (!text || typeof text !== 'string') return '';
-  return text.trim();
+  if (!hasArabic(text)) return text.trim();
+
+  try {
+    const tokens: Array<{ text: string; isArabic: boolean }> = [];
+    const regex = /([\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\s]+)|([^\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\s]+)/g;
+    let match: RegExpExecArray | null;
+
+    while ((match = regex.exec(text)) !== null) {
+      if (match[1]) {
+        tokens.push({ text: match[1], isArabic: true });
+      } else if (match[2]) {
+        tokens.push({ text: match[2], isArabic: false });
+      }
+    }
+
+    const result = tokens
+      .reverse()
+      .map((t) => (t.isArabic ? shapeToken(t.text) : t.text))
+      .join('');
+
+    return result;
+  } catch (err) {
+    console.warn('shapeArabicForPdf error:', err);
+    return text.trim();
+  }
 }

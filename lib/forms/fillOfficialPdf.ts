@@ -63,6 +63,24 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
     }
     const fontBytes = await fontRes.arrayBuffer();
     customFont = await pdfDoc.embedFont(fontBytes);
+
+    // Override fontkit layout engine so that custom-shaped Presentation Forms glyphs are rendered as-is
+    const fontEmbedder = (customFont as unknown as { embedder?: { font?: { layout?: (text: string) => unknown; glyphForCodePoint?: (codePoint: number) => { advanceWidth: number } | null } } }).embedder;
+    const fkFont = fontEmbedder?.font;
+    if (fkFont && typeof fkFont.glyphForCodePoint === 'function') {
+      fkFont.layout = (text: string) => {
+        const glyphs = Array.from(text).map((ch) => fkFont.glyphForCodePoint!(ch.codePointAt(0) || 0));
+        return {
+          glyphs,
+          positions: glyphs.map((g: { advanceWidth: number } | null) => ({
+            xAdvance: g ? g.advanceWidth : 0,
+            yAdvance: 0,
+            xOffset: 0,
+            yOffset: 0,
+          })),
+        };
+      };
+    }
   } catch (err: unknown) {
     const errMsg = err instanceof Error ? err.message : String(err);
     throw new Error(`فشل تحميل أو تضمين الخط العربي الرسمي (${fontUrl}): ${errMsg}`);
