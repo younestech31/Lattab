@@ -13,7 +13,7 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
   // 1. Fetch official PDF template
   const templateRes = await fetch(templateUrl);
   if (!templateRes.ok) {
-    throw new Error(`Failed to fetch official PDF template from ${templateUrl} (${templateRes.status})`);
+    throw new Error(`تعذر تحميل نموذج PDF الرسمي من ${templateUrl} (HTTP ${templateRes.status})`);
   }
   const templateBytes = await templateRes.arrayBuffer();
 
@@ -21,19 +21,21 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
   const pdfDoc = await PDFDocument.load(templateBytes);
   pdfDoc.registerFontkit(fontkit);
 
-  // 3. Load & embed custom font (supports full Arabic unicode)
-  let customFont: PDFFont | null = null;
+  // 3. Load & embed required Arabic custom font (Amiri-Regular)
+  let customFont: PDFFont;
   try {
     const fontRes = await fetch(fontUrl);
-    if (fontRes.ok) {
-      const fontBytes = await fontRes.arrayBuffer();
-      customFont = await pdfDoc.embedFont(fontBytes);
+    if (!fontRes.ok) {
+      throw new Error(`فشل جلب الخط العربي (HTTP ${fontRes.status})`);
     }
-  } catch (err) {
-    console.warn('Could not load custom font, falling back to standard font:', err);
+    const fontBytes = await fontRes.arrayBuffer();
+    customFont = await pdfDoc.embedFont(fontBytes);
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : String(err);
+    throw new Error(`فشل تحميل أو تضمين الخط العربي الرسمي (${fontUrl}): ${errMsg}`);
   }
 
-  // Standard fallback font for ASCII / numbers
+  // Standard fallback font for ASCII / numbers / debug
   const standardFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
   const pageCount = pdfDoc.getPageCount();
@@ -93,7 +95,7 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
     }
 
     const isArabic = hasArabic(formattedText);
-    const activeFont = isArabic && customFont ? customFont : (customFont || standardFont);
+    const activeFont = isArabic ? customFont : (customFont || standardFont);
     const fontSize = field.size || 10;
     const fontColor = field.color
       ? rgb(field.color.r, field.color.g, field.color.b)
@@ -101,7 +103,7 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
 
     const printableText = isArabic ? shapeArabicForPdf(formattedText) : formattedText;
 
-    // Handle text alignment if needed
+    // Handle text alignment
     let drawX = field.x;
     if (field.align === 'right' || (isArabic && field.align !== 'left')) {
       try {
@@ -130,8 +132,10 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
         color: fontColor,
       });
     } catch (err) {
-      console.warn(`Failed to render text for field ${field.id}:`, err);
-      // Fallback with standard font if custom font threw
+      if (isArabic) {
+        throw new Error(`خطأ في كتابة النص العربي للحقل ${field.id}: ${err instanceof Error ? err.message : String(err)}`);
+      }
+      // Non-Arabic fallback
       try {
         page.drawText(String(rawValue), {
           x: drawX,
@@ -141,7 +145,7 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
           color: fontColor,
         });
       } catch {
-        // Ignore fatal text error
+        // Ignore non-fatal drawing error on standard fallback
       }
     }
   }

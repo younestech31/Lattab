@@ -5,6 +5,14 @@ import { isKnownPublicRoute } from '@/lib/data/knownRoutes';
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
 
+  // Bypass static files, fonts, images, and public documents
+  if (
+    url.pathname.startsWith('/fonts/') ||
+    /\.(ttf|otf|woff|woff2|eot|png|jpg|jpeg|webp|svg|ico|txt|xml|pdf)$/i.test(url.pathname)
+  ) {
+    return NextResponse.next();
+  }
+
   // 1. Remove trailing slashes (except root)
   if (url.pathname !== '/' && url.pathname.endsWith('/')) {
     url.pathname = url.pathname.slice(0, -1);

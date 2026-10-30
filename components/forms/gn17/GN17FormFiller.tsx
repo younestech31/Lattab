@@ -97,10 +97,12 @@ export default function GN17FormFiller() {
       downloadPdfBytes(pdfBytes, fileName);
     } catch (err: unknown) {
       console.error('PDF generation error:', err);
+      const msg = err instanceof Error ? err.message : String(err);
       setDownloadError(
-        isAr
-          ? 'حدث خطأ أثناء إعداد ملف PDF. يرجى التأكد من اتصالك بالإنترنت والمحاولة مجدداً.'
-          : 'Erreur lors de la génération du PDF. Veuillez vérifier votre connexion et réessayer.'
+        msg ||
+          (isAr
+            ? 'حدث خطأ أثناء إعداد ملف PDF. يرجى التأكد من اتصالك بالإنترنت والمحاولة مجدداً.'
+            : 'Erreur lors de la génération du PDF. Veuillez vérifier votre connexion et réessayer.')
       );
     } finally {
       setIsDownloading(false);
