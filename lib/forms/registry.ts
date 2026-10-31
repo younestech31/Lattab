@@ -30,6 +30,30 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
     },
   },
   {
+    slug: 'gn31',
+    templatePath: '/forms/gn31.pdf',
+    officialNumber: 'سلسلة ج رقم 31 / Série G N° 31',
+    title: {
+      ar: 'تصريح الرسم العقاري (ج رقم 31)',
+      fr: 'Déclaration de la taxe foncière (Série G N° 31)',
+    },
+    shortDescription: {
+      ar: 'تصريح بالرسم العقاري على الملكيات المبنية وغير المبنية (المادة 261 مكرر من قانون الضرائب المباشرة والرسوم المماثلة CIDTA).',
+      fr: 'Déclaration de la taxe foncière sur les propriétés bâties et non bâties (Art. 261 bis du CIDTA).',
+    },
+    legalRef: {
+      ar: 'المادة 261 مكرر من قانون الضرائب المباشرة والرسوم المماثلة (CIDTA)',
+      fr: 'Article 261 bis du Code des Impôts Directs et Taxes Assimilées (CIDTA)',
+    },
+    category: 'impots',
+    pages: 4,
+    enabled: true,
+    badge: {
+      ar: 'إيداع سنوي / تغيير',
+      fr: 'Annuelle / Changement',
+    },
+  },
+  {
     // Disabled example entry to verify registry extensibility and resilience
     slug: 'gn18',
     templatePath: '/forms/gn18.pdf',
