@@ -63,7 +63,9 @@ export default function FormsIndex() {
                 </div>
 
                 <h3 className="text-xl font-bold text-gray-900 mb-3 leading-snug">
-                  {isAr ? form.title.ar : form.title.fr}
+                  <Link href={formHref} className="hover:text-emerald-700 transition">
+                    {isAr ? form.title.ar : form.title.fr}
+                  </Link>
                 </h3>
 
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">

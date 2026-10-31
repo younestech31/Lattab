@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     languages: {
       'ar-DZ': `${SITE_URL}/formulaires`,
       'fr-DZ': `${SITE_URL}/fr/formulaires`,
+      'x-default': `${SITE_URL}/formulaires`,
     },
   },
   openGraph: {
@@ -19,6 +20,20 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/formulaires`,
     locale: 'ar_DZ',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'النماذج والاستمارات الرسمية — ديوان التوثيق وهران',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'النماذج والاستمارات الرسمية — ديوان التوثيق وهران',
+    description: 'تعبئة وتحميل الاستمارات الجبائية والعقارية الرسمية الجزائرية مباشرة وفق القوالب القانونية المعتمدة.',
+    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 

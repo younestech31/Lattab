@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     languages: {
       'ar-DZ': `${SITE_URL}/formulaires`,
       'fr-DZ': `${SITE_URL}/fr/formulaires`,
+      'x-default': `${SITE_URL}/formulaires`,
     },
   },
   openGraph: {
@@ -19,6 +20,20 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/fr/formulaires`,
     locale: 'fr_DZ',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Formulaires et Imprimés Officiels — Office Notarial Oran',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Formulaires et Imprimés Officiels — Office Notarial Oran',
+    description: 'Remplissage et génération PDF des formulaires administratifs et fiscaux algériens conformes aux gabarits de la DGI.',
+    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 
