@@ -36,6 +36,7 @@ export default function GN17FormFiller() {
     return computeGN17({
       salePrice: data.montantCession,
       saleExpenses: data.fraisCession,
+      otherExpenses: data.fraisAutres,
       acquisitionPrice: data.valeurOrigine,
       acquisitionExpenses: data.fraisAcquisition,
       useFlatExpenses: data.useFlatExpenses,
@@ -47,6 +48,7 @@ export default function GN17FormFiller() {
   }, [
     data.montantCession,
     data.fraisCession,
+    data.fraisAutres,
     data.valeurOrigine,
     data.fraisAcquisition,
     data.useFlatExpenses,

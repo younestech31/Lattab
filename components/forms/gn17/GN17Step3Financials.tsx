@@ -53,10 +53,10 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
             </span>
           </div>
 
-          {/* Sale Expenses */}
+          {/* Sale Expenses (ب) */}
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-1">
-              {isAr ? 'ب) مصاريف ورسوم التنازل المؤداة من المتنازل (دج)' : 'B) Frais de cession acquittés par le cédant (DZD)'}
+              {isAr ? 'ب) مبلغ الحقوق والرسوم المدفوعة (دج)' : 'B) Droits et taxes acquittés (DZD)'}
             </label>
             <input
               type="number"
@@ -68,11 +68,30 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               placeholder="0"
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
-              {isAr ? 'رسوم التوثيق أو الخبرة المؤداة قانوناً من البائع' : 'Frais justifiés à la charge du vendeur'}
+              {isAr ? 'رسوم التوثيق أو الإشهار العقاري المؤداة قانوناً من البائع' : 'Droits d\'enregistrement et publicité foncière'}
             </span>
           </div>
 
-          {/* Acquisition Price */}
+          {/* Other Expenses (ج) */}
+          <div>
+            <label className="block text-xs font-medium text-gray-700 mb-1">
+              {isAr ? 'ج) مصاريف أخرى مثبتة قانوناً (دج)' : 'C) Autres frais légalement justifiés (DZD)'}
+            </label>
+            <input
+              type="number"
+              min="0"
+              step="1000"
+              value={data.fraisAutres || ''}
+              onChange={(e) => updateData({ fraisAutres: Number(e.target.value) || 0 })}
+              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono"
+              placeholder="0"
+            />
+            <span className="text-[11px] text-gray-500 mt-1 block">
+              {isAr ? 'أتعاب خبير أو مصاريف قضائية مثبتة قانوناً (تترك 0 إن لم توجد)' : 'Frais d\'expertise ou judiciaires justifiés (laisser 0 si néant)'}
+            </span>
+          </div>
+
+          {/* Acquisition Price (د) */}
           <div>
             <label className="block text-xs font-bold text-gray-800 mb-1">
               {isAr ? 'د) سعر أو قيمة التملك الأصلية (دج) *' : 'D) Prix d\'acquisition ou valeur d\'origine (DZD) *'}
@@ -196,7 +215,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
 
         <div className="grid sm:grid-cols-3 gap-4 text-sm divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-slate-800">
           <div className="space-y-1 pt-2 sm:pt-0">
-            <span className="text-xs text-slate-400 block">{isAr ? 'صافي سعر التنازل (ج = أ - ب):' : 'Prix net de cession :'}</span>
+            <span className="text-xs text-slate-400 block">{isAr ? 'صافي التنازل (أ - ب - ج):' : 'Assiette nette (A - B - C) :'}</span>
             <span className="text-base font-bold font-mono text-white">{formatCurrency(calc.netSalePrice)}</span>
           </div>
 

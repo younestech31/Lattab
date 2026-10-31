@@ -48,6 +48,7 @@ export const gn17FormSchema = z.object({
   // III. Montants & Plus-value (المبالغ)
   montantCession: z.coerce.number().min(1, 'سعر التنازل يجب أن يكون أكبر من الصفر'),
   fraisCession: z.coerce.number().min(0).default(0),
+  fraisAutres: z.coerce.number().min(0).default(0), // ج: مصاريف أخرى مثبتة قانوناً
   valeurOrigine: z.coerce.number().min(0, 'سعر التملك الأصلي مطلوب'),
   fraisAcquisition: z.coerce.number().min(0).default(0),
   useFlatExpenses: z.boolean().default(false), // 3%
@@ -96,6 +97,7 @@ export const initialGN17Values: GN17FormData = {
   dateActeCession: new Date().toISOString().split('T')[0],
   montantCession: 18000000,
   fraisCession: 0,
+  fraisAutres: 0,
   valeurOrigine: 12000000,
   fraisAcquisition: 360000,
   useFlatExpenses: true,

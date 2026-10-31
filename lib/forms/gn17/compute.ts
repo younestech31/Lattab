@@ -1,6 +1,7 @@
 export interface GN17ComputeInput {
   salePrice: number; // أ: سعر التنازل
-  saleExpenses: number; // ب: مصاريف التنازل المؤداة من المتنازل
+  saleExpenses: number; // ب: مصاريف ورسوم التنازل المؤداة من المتنازل
+  otherExpenses?: number; // ج: مصاريف أخرى مثبتة قانوناً
   acquisitionPrice: number; // د: سعر أو قيمة التملك الأصلية
   acquisitionExpenses: number; // هـ: مصاريف التملك والصيانة
   useFlatExpenses?: boolean; // خيار المصاريف الحكمية 3% من سعر التملك
@@ -13,11 +14,12 @@ export interface GN17ComputeInput {
 export interface GN17ComputeResult {
   salePrice: number; // أ
   saleExpenses: number; // ب
-  netSalePrice: number; // ج = أ - ب
+  otherExpenses: number; // ج: مصاريف أخرى مثبتة قانوناً
+  netSalePrice: number; // (أ - ب - ج) الأساس الصافي للتنازل
   acquisitionPrice: number; // د
   acquisitionExpenses: number; // هـ
   totalAcquisitionCost: number; // د + هـ
-  grossPlusValue: number; // و = ج - (د + هـ)
+  grossPlusValue: number; // و = (أ - ب - ج) - (د + هـ)
   yearsHeld: number; // عدد سنوات الحيازة
   abattementRate: number; // نسبة التخفيض للـمدة (0% إلى 50%)
   abattementAmount: number; // ز = و × نسبة التخفيض
@@ -56,6 +58,7 @@ export function calculateDetentionYears(acquisitionDate?: string, saleDate?: str
 export function computeGN17(input: GN17ComputeInput): GN17ComputeResult {
   const salePrice = Math.max(0, Number(input.salePrice) || 0);
   const saleExpenses = Math.max(0, Number(input.saleExpenses) || 0);
+  const otherExpenses = Math.max(0, Number(input.otherExpenses) || 0);
   const acquisitionPrice = Math.max(0, Number(input.acquisitionPrice) || 0);
 
   // If 3% flat expense requested or acquisitionExpenses not provided
@@ -64,10 +67,11 @@ export function computeGN17(input: GN17ComputeInput): GN17ComputeResult {
     acquisitionExpenses = Math.round(acquisitionPrice * 0.03);
   }
 
-  const netSalePrice = Math.max(0, salePrice - saleExpenses);
+  // الأساس الصافي للتنازل = (أ - ب - ج)
+  const netSalePrice = Math.max(0, salePrice - saleExpenses - otherExpenses);
   const totalAcquisitionCost = acquisitionPrice + acquisitionExpenses;
 
-  // Plus-value brute (و) = ج - (د + هـ)
+  // Plus-value brute (و) = ((أ - ب - ج) - (د + هـ))
   const rawPlusValue = netSalePrice - totalAcquisitionCost;
   const grossPlusValue = Math.max(0, rawPlusValue);
 
@@ -108,6 +112,7 @@ export function computeGN17(input: GN17ComputeInput): GN17ComputeResult {
   return {
     salePrice,
     saleExpenses,
+    otherExpenses,
     netSalePrice,
     acquisitionPrice,
     acquisitionExpenses,
