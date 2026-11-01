@@ -76,13 +76,9 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
         lang={lang}
         badgeText={content.title}
         badgeIcon={<Scale className="w-4 h-4" />}
-        eyebrow={isAr ? 'الديوان العمومي للتوثيق' : 'Office Notarial'}
+        eyebrow={isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial'}
         title={content.h1}
         description={content.subtitle}
-        backLink={{
-          href: isAr ? '/services' : '/fr/services',
-          label: isAr ? 'العودة لجميع الخدمات التوثيقية' : 'Retour à tous les services',
-        }}
         breadcrumbs={[
           { name: isAr ? 'الرئيسية' : 'Accueil', href: homeUrl },
           { name: isAr ? 'الخدمات' : 'Services', href: isAr ? '/services' : '/fr/services' },

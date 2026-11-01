@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, ArrowLeft, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 
 export interface BreadcrumbItem {
@@ -15,10 +15,6 @@ export interface UnifiedPageHeaderProps {
   title: string;
   description?: string;
   breadcrumbs?: BreadcrumbItem[];
-  backLink?: {
-    href: string;
-    label: string;
-  };
   children?: React.ReactNode;
   className?: string;
 }
@@ -31,12 +27,21 @@ export default function UnifiedPageHeader({
   title,
   description,
   breadcrumbs,
-  backLink,
   children,
   className = '',
 }: UnifiedPageHeaderProps) {
   const isAr = lang === 'ar';
   const isRtl = isAr;
+  const defaultEyebrow = isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial';
+
+  // Single centered breadcrumbs list
+  const finalBreadcrumbs: BreadcrumbItem[] =
+    breadcrumbs && breadcrumbs.length > 0
+      ? breadcrumbs
+      : [
+          { name: isAr ? 'الرئيسية' : 'Accueil', href: isAr ? '/' : '/fr' },
+          { name: title },
+        ];
 
   return (
     <section
@@ -53,73 +58,53 @@ export default function UnifiedPageHeader({
         <div className="absolute inset-0 bg-emerald-900" />
         <div className="absolute inset-0 bg-pattern-plus opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-t from-emerald-900 via-emerald-800/60 to-transparent" />
-        
-        {/* Subtle glowing ambient blobs */}
+
+        {/* Ambient glowing blobs */}
         <div className="absolute top-10 left-6 w-48 h-48 sm:w-72 sm:h-72 bg-emerald-500/15 rounded-full filter blur-3xl" />
         <div className="absolute bottom-6 right-6 w-48 h-48 sm:w-72 sm:h-72 bg-amber-500/15 rounded-full filter blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-5xl">
-        {/* Top bar: Back link and Breadcrumbs */}
-        {(backLink || (breadcrumbs && breadcrumbs.length > 0)) && (
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6 text-xs sm:text-sm text-emerald-200/80">
-            {backLink && (
-              <Link
-                href={backLink.href}
-                className="inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-semibold transition-colors group"
-              >
-                {isRtl ? (
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                ) : (
-                  <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-4xl text-center">
+        {/* 1) Breadcrumbs (Centered, Single) */}
+        <nav aria-label="Breadcrumbs" className="flex items-center justify-center gap-1.5 py-1 mb-6 text-xs sm:text-sm text-emerald-200/80 overflow-x-auto">
+          {finalBreadcrumbs.map((crumb, idx) => {
+            const isLast = idx === finalBreadcrumbs.length - 1;
+            return (
+              <React.Fragment key={idx}>
+                {idx > 0 && (
+                  <span className="text-white/40" aria-hidden="true">
+                    {isRtl ? (
+                      <ChevronLeft className="w-3.5 h-3.5 inline" />
+                    ) : (
+                      <ChevronRight className="w-3.5 h-3.5 inline" />
+                    )}
+                  </span>
                 )}
-                <span>{backLink.label}</span>
-              </Link>
-            )}
+                {crumb.href && !isLast ? (
+                  <Link
+                    href={crumb.href}
+                    className="hover:text-white transition-colors whitespace-nowrap"
+                  >
+                    {crumb.name}
+                  </Link>
+                ) : (
+                  <span
+                    className={`whitespace-nowrap ${isLast ? 'text-white font-medium' : ''}`}
+                    aria-current={isLast ? 'page' : undefined}
+                  >
+                    {crumb.name}
+                  </span>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </nav>
 
-            {breadcrumbs && breadcrumbs.length > 0 && (
-              <nav aria-label="Breadcrumbs" className="flex items-center gap-1.5 overflow-x-auto py-1">
-                {breadcrumbs.map((crumb, idx) => {
-                  const isLast = idx === breadcrumbs.length - 1;
-                  return (
-                    <React.Fragment key={idx}>
-                      {idx > 0 && (
-                        <span className="text-white/40" aria-hidden="true">
-                          {isRtl ? (
-                            <ChevronLeft className="w-3.5 h-3.5 inline" />
-                          ) : (
-                            <ChevronRight className="w-3.5 h-3.5 inline" />
-                          )}
-                        </span>
-                      )}
-                      {crumb.href && !isLast ? (
-                        <Link
-                          href={crumb.href}
-                          className="hover:text-white transition-colors whitespace-nowrap"
-                        >
-                          {crumb.name}
-                        </Link>
-                      ) : (
-                        <span
-                          className={`whitespace-nowrap ${isLast ? 'text-white font-medium' : ''}`}
-                          aria-current={isLast ? 'page' : undefined}
-                        >
-                          {crumb.name}
-                        </span>
-                      )}
-                    </React.Fragment>
-                  );
-                })}
-              </nav>
-            )}
-          </div>
-        )}
-
-        {/* Center Content */}
-        <div className="text-center flex flex-col items-center gap-4 max-w-3xl mx-auto">
-          {/* Badge */}
+        {/* Center Content Stack */}
+        <div className="flex flex-col items-center gap-3.5 max-w-3xl mx-auto">
+          {/* 2) Optional Pill Badge */}
           {badgeText && (
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full text-xs sm:text-sm border border-white/15 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full text-xs sm:text-sm border border-white/15 shadow-sm mb-1">
               {badgeIcon ? (
                 <span className="text-amber-400">{badgeIcon}</span>
               ) : (
@@ -129,26 +114,24 @@ export default function UnifiedPageHeader({
             </div>
           )}
 
-          {/* Eyebrow */}
-          {eyebrow && (
-            <p className="text-amber-300/90 font-semibold text-sm sm:text-base">
-              {eyebrow}
-            </p>
-          )}
+          {/* 3) Fixed Line / Eyebrow */}
+          <p className="text-amber-300/90 font-semibold text-sm sm:text-base">
+            {eyebrow || defaultEyebrow}
+          </p>
 
-          {/* Title */}
+          {/* 4) H1 Title */}
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.2] tracking-tight">
             {title}
           </h1>
 
-          {/* Description */}
+          {/* 5) Description (Max 2 lines) */}
           {description && (
-            <p className="text-emerald-200 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base md:text-lg">
+            <p className="text-emerald-200 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base md:text-lg line-clamp-2">
               {description}
             </p>
           )}
 
-          {/* Optional children (e.g. Search Bar or Quick CTA Links) */}
+          {/* Optional children */}
           {children && <div className="w-full mt-3">{children}</div>}
         </div>
       </div>

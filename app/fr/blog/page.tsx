@@ -136,13 +136,9 @@ export default async function FrenchBlogList({
         lang="fr"
         badgeText="Blog Juridique et Immobilier"
         badgeIcon={<BookOpen className="w-4 h-4" />}
-        eyebrow="Office Notarial"
+        eyebrow="Office notarial"
         title="Blog Juridique et Immobilier"
         description="Votre guide complet pour comprendre la législation immobilière, les procédures notariales et la création de sociétés en Algérie."
-        backLink={{
-          href: '/fr',
-          label: "Retour à l'accueil de l'étude",
-        }}
         breadcrumbs={[
           { name: 'Accueil', href: '/fr' },
           { name: 'Blog' },

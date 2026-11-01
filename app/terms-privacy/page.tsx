@@ -5,6 +5,7 @@ import { headers } from 'next/headers';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
 import { WORKING_HOURS, SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from '@/components/ui/PhoneLink';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 
 export const metadata: Metadata = {
   title: { absolute: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران' },
@@ -47,39 +48,23 @@ const TermsPrivacyPage = async () => {
   return (
     <div className="min-h-screen bg-white">
       <div className="bg-gray-50" dir={isAr ? 'rtl' : 'ltr'}>
-      {/* Hero Section */}
-      <div className="bg-emerald-900 text-white pt-32 pb-20 mb-12 relative overflow-hidden">
-        {/* Decorative background pattern */}
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Back to Home Button inside Hero */}
-          <div className={isAr ? "mb-8 text-right" : "mb-8 text-left"}>
-            <Link 
-              href="/" 
-              className="inline-flex items-center gap-2 text-emerald-400 hover:text-white font-bold transition-colors group"
-            >
-              <svg className={`w-5 h-5 transform ${isAr ? 'rotate-180 group-hover:translate-x-1' : 'group-hover:-translate-x-1'} transition-transform`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              {isAr ? "العودة إلى الصفحة الرئيسية" : "Retour à l'accueil"}
-            </Link>
-          </div>
+      <UnifiedPageHeader
+        lang={lang}
+        badgeText={isAr ? "الحماية والسر المهني" : "Protection & Secret Professionnel"}
+        badgeIcon={<Shield className="w-4 h-4" />}
+        eyebrow={isAr ? "الديوان العمومي للتوثيق" : "Office notarial"}
+        title={isAr ? "الشروط والأحكام وسياسة الخصوصية" : "Conditions d'Utilisation et Politique de Confidentialité"}
+        description={isAr 
+          ? "نلتزم بالشفافية والسر المهني وحماية بياناتك وفقاً للتشريعات الجزائرية والقوانين المنظمة لمهنة التوثيق."
+          : "Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne."
+        }
+        breadcrumbs={[
+          { name: isAr ? 'الرئيسية' : 'Accueil', href: isAr ? '/' : '/fr' },
+          { name: isAr ? 'الشروط والخصوصية' : 'Conditions & Confidentialité' },
+        ]}
+      />
 
-          <Shield className="w-20 h-20 mx-auto mb-6 text-emerald-400 animate-pulse" />
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-center">
-            {isAr ? "الشروط والأحكام وسياسة الخصوصية" : "Conditions d'Utilisation et Politique de Confidentialité"}
-          </h1>
-          <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed text-center font-sans">
-            {isAr 
-              ? "ديوان التوثيق - وهران - نلتزم بالشفافية والسر المهني وحماية بياناتك وفقاً للتشريعات الجزائرية"
-              : "Office Notarial - Oran - Nous nous engageons à la transparence, au secret professionnel et à la protection de vos données conformément à la législation algérienne."
-            }
-          </p>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 max-w-5xl">
+      <div className="container mx-auto px-4 max-w-5xl mt-12">
         {/* Institutional & Deontological Legal Banner */}
         <div className="bg-emerald-900 text-emerald-100 border border-emerald-800/80 p-6 rounded-2xl mb-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start gap-4">

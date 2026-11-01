@@ -101,6 +101,37 @@ const cleanCommuneName = (name: string): string => {
   return cleaned;
 };
 
+const getRegionHelperText = (regionId: string, isAr: boolean): { label: string; text: string } | null => {
+  if (!regionId || !regionId.includes(':')) return null;
+
+  const upper = regionId.toUpperCase();
+
+  if (upper.includes('PARTIE') && upper.includes('EST') && upper.includes('1')) {
+    return {
+      label: isAr ? 'الأحياء التابعة:' : 'Quartiers :',
+      text: 'EL-BARQUI، VICTOR HUGO، PETIT LAC، BEL AIR، SAINT-EUGÈNE، DELMONTE، CARTEAUX، CENTRE VILLE، GAMBETTA، POINT DU JOUR، FALAISES',
+    };
+  }
+
+  if (upper.includes('PARTIE') && (upper.includes('OUEST') || upper.includes('SUD')) && upper.includes('2')) {
+    return {
+      label: isAr ? 'الأحياء التابعة:' : 'Quartiers :',
+      text: isAr
+        ? 'باقي أحياء مدينة وهران غير المذكورة في القطاع 1'
+        : "Autres quartiers d'Oran non cités dans le secteur 1",
+    };
+  }
+
+  const parts = regionId.split(':');
+  const afterColon = parts.slice(1).join(':').trim().replace(/\.+$/, '');
+  if (!afterColon) return null;
+
+  return {
+    label: isAr ? 'الأحياء / المناطق التابعة:' : 'Secteurs / Quartiers :',
+    text: afterColon,
+  };
+};
+
 interface PriceCalculatorProps {
   initialData: CalculatorResult | null;
   initialCommunes: string[];
@@ -454,6 +485,16 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                         </div>
                       )}
                     </div>
+                    {(() => {
+                      const helper = getRegionHelperText(regionId, isAr);
+                      if (!helper) return null;
+                      return (
+                        <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">
+                          <span className="font-semibold text-gray-700">{helper.label} </span>
+                          <span>{helper.text}</span>
+                        </p>
+                      );
+                    })()}
                   </div>
                 </div>
 

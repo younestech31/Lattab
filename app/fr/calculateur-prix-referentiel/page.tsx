@@ -79,13 +79,9 @@ export default function CalculatorPageFR() {
           lang="fr"
           badgeText="Outils et services numériques indicatifs"
           badgeIcon={<Calculator className="w-4 h-4" />}
-          eyebrow="Office Notarial"
+          eyebrow="Office notarial"
           title="Calculateur des prix de référence immobilier 2026"
           description="Outil d'estimation indicatif basé sur les barèmes officiels approuvés par la Direction Générale des Impôts (DGI) et le Ministère des Finances en Algérie."
-          backLink={{
-            href: '/fr',
-            label: "Retour à l'accueil de l'étude",
-          }}
           breadcrumbs={[
             { name: 'Accueil', href: '/fr' },
             { name: 'Calculateur prix de référence' },

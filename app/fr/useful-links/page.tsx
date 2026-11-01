@@ -157,13 +157,9 @@ export default function FrenchUsefulLinksPage() {
           lang="fr"
           badgeText="Répertoire des institutions et sources officielles"
           badgeIcon={<BookOpen className="w-4 h-4" />}
-          eyebrow="Office Notarial"
+          eyebrow="Office notarial"
           title="Liens et Institutions Utiles en Algérie"
           description="Votre guide de référence institutionnel pour accéder directement aux portails des administrations, législations et services publics de la République Algérienne."
-          backLink={{
-            href: '/fr',
-            label: "Retour à l'accueil de l'étude",
-          }}
           breadcrumbs={[
             { name: 'Accueil', href: '/fr' },
             { name: 'Liens utiles' },

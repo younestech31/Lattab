@@ -4,6 +4,7 @@ import { Language } from '@/lib/i18n/translations';
 import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';
 import PhoneLink from '@/components/ui/PhoneLink';
+import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 
 interface AboutViewProps {
   lang: Language;
@@ -79,32 +80,18 @@ export default function AboutView({ lang }: AboutViewProps) {
       <JsonLdScript schema={aboutSchema} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-gray-900 text-white pt-32 pb-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-emerald-200">
-            <ol className="flex items-center gap-2 flex-wrap">
-              <li>
-                <Link href={homeUrl} className="hover:text-white transition-colors underline-offset-4 hover:underline">
-                  {isAr ? 'الرئيسية' : 'Accueil'}
-                </Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li className="text-white font-medium" aria-current="page">
-                {isAr ? 'عن المكتب' : 'À propos'}
-              </li>
-            </ol>
-          </nav>
-
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
-            {isAr ? 'عن المكتب — ديوان التوثيق ببلدية وهران' : 'À propos de l\'office — Office Notarial - Oran'}
-          </h1>
-          <p className="text-lg md:text-xl text-emerald-100/90 leading-relaxed max-w-3xl">
-            {isAr
-              ? 'ضابط عمومي مفوض من الدولة الجزائرية لتوثيق العقود وتثبيت المعاملات القانونية بمهنية وحياد تام.'
-              : 'Officier public investi d\'une délégation de puissance publique, garant de la sécurité juridique de vos contrats à Oran.'}
-          </p>
-        </div>
-      </section>
+      <UnifiedPageHeader
+        lang={lang}
+        eyebrow={isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial'}
+        title={isAr ? 'عن المكتب — ديوان التوثيق ببلدية وهران' : 'À propos de l\'office — Office Notarial - Oran'}
+        description={isAr
+          ? 'ضابط عمومي مفوض من الدولة الجزائرية لتوثيق العقود وتثبيت المعاملات القانونية بمهنية وحياد تام.'
+          : 'Officier public investi d\'une délégation de puissance publique, garant de la sécurité juridique de vos contrats à Oran.'}
+        breadcrumbs={[
+          { name: isAr ? 'الرئيسية' : 'Accueil', href: homeUrl },
+          { name: isAr ? 'عن المكتب' : 'À propos' },
+        ]}
+      />
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 py-12 space-y-10">
