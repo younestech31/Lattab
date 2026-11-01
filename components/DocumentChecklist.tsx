@@ -48,17 +48,17 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
   const t = {
     ar: {
       title: `قائمة إرشادية بالوثائق المطلوبة: ${contractType}`,
-      downloadBtn: 'تحميل PDF (عالي الجودة)',
+      downloadBtn: 'تحميل PDF احترافي',
       preparedDocs: `تم تجهيز ${checkedCount} من ${total} وثائق`,
     },
     fr: {
       title: `Liste indicative des pièces : ${contractType}`,
-      downloadBtn: 'Télécharger PDF (Haute Qualité)',
+      downloadBtn: 'Télécharger PDF Professionnel',
       preparedDocs: `${checkedCount} sur ${total} documents préparés`,
     }
   }[lang] || {
     title: `قائمة إرشادية بالوثائق المطلوبة: ${contractType}`,
-    downloadBtn: 'تحميل PDF (عالي الجودة)',
+    downloadBtn: 'تحميل PDF احترافي',
     preparedDocs: `تم تجهيز ${checkedCount} من ${total} وثائق`,
   };
 
@@ -97,30 +97,30 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
 
       const A4_WIDTH = 595.27;
       const A4_HEIGHT = 841.89;
-      const margin = 40;
+      const margin = 50; // ~18mm margin
       const usableWidth = A4_WIDTH - (margin * 2);
 
       let page = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
       let y = A4_HEIGHT - margin;
 
-      const drawHeader = () => {
+      const drawHeader = (isContinuation = false) => {
         const headerText = isAr 
-          ? 'ديوان التوثيق — الأستاذ لعطب محمد — وهران' 
-          : 'Office notarial — Maître Lattab Mohamed — Oran';
+          ? (isContinuation ? 'ديوان التوثيق — الأستاذ لعطب محمد — وهران (تتمة)' : 'ديوان التوثيق — الأستاذ لعطب محمد — وهران')
+          : (isContinuation ? 'Office notarial — Maître Lattab Mohamed — Oran (Suite)' : 'Office notarial — Maître Lattab Mohamed — Oran');
         const formattedHeader = isAr ? shapeArabicForPdf(headerText) : headerText;
         page.drawText(formattedHeader, {
-          x: isAr ? A4_WIDTH - margin - customFont.widthOfTextAtSize(formattedHeader, 12) : margin,
+          x: isAr ? A4_WIDTH - margin - customFont.widthOfTextAtSize(formattedHeader, 11) : margin,
           y,
-          size: 12,
+          size: 11,
           font: customFont,
           color: rgb(0.02, 0.59, 0.41), // emerald
         });
-        y -= 15;
+        y -= 12;
         page.drawLine({
           start: { x: margin, y },
           end: { x: A4_WIDTH - margin, y },
           thickness: 1,
-          color: rgb(0.85, 0.87, 0.90),
+          color: rgb(0.80, 0.84, 0.88),
         });
         y -= 25;
       };
@@ -153,7 +153,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         font: customFont,
         color: rgb(0.07, 0.09, 0.15),
       });
-      y -= 20;
+      y -= 18;
 
       // Date & Progress
       const dateStr = new Date().toLocaleDateString(isAr ? 'ar-DZ' : 'fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -168,7 +168,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         font: customFont,
         color: rgb(0.35, 0.39, 0.45),
       });
-      y -= 30;
+      y -= 25;
 
       // Helper for wrapping text
       const wrapLines = (text: string, fontSize: number, maxW: number) => {
@@ -196,18 +196,18 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         const itemText = `${idx + 1}. ${doc}`;
         const lines = wrapLines(itemText, 10, usableWidth - 30);
 
-        const itemHeight = lines.length * 16 + 10;
-        if (y - itemHeight < margin + 60) {
+        const itemHeight = lines.length * 15 + 8;
+        if (y - itemHeight < margin + 80) {
           drawFooter();
           page = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
           y = A4_HEIGHT - margin;
-          drawHeader();
+          drawHeader(true);
         }
 
         // Checkbox box
-        const boxSize = 12;
+        const boxSize = 11;
         const boxX = isAr ? A4_WIDTH - margin - boxSize : margin;
-        const boxY = y - 2;
+        const boxY = y - 1;
 
         page.drawRectangle({
           x: boxX,
@@ -220,16 +220,15 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         });
 
         if (isChecked) {
-          // Checkmark
           page.drawLine({
             start: { x: boxX + 2, y: boxY + 6 },
-            end: { x: boxX + 5, y: boxY + 3 },
+            end: { x: boxX + 4, y: boxY + 3 },
             thickness: 1.5,
             color: rgb(1, 1, 1),
           });
           page.drawLine({
-            start: { x: boxX + 5, y: boxY + 3 },
-            end: { x: boxX + 10, y: boxY + 9 },
+            start: { x: boxX + 4, y: boxY + 3 },
+            end: { x: boxX + 9, y: boxY + 8 },
             thickness: 1.5,
             color: rgb(1, 1, 1),
           });
@@ -246,37 +245,49 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
             font: customFont,
             color: isChecked ? rgb(0.6, 0.64, 0.7) : rgb(0.1, 0.12, 0.16),
           });
-          y -= 16;
+          y -= 15;
         }
-        y -= 6;
+        y -= 4;
       }
 
       // Legal Note section
-      y -= 15;
+      y -= 10;
       const noteText = isAr 
         ? 'ملاحظة: هذه قائمة إرشادية غير شاملة. للموثق، وفقاً للقانون 06-02 المنظم لمهنة التوثيق، طلب أي وثيقة إضافية يقتضيها انتظام العقد وحماية الأطراف.' 
         : 'Note : Liste indicative non exhaustive. Conformément à la loi 06-02, le notaire peut demander toute pièce complémentaire nécessaire à la régularité de l’acte.';
       
-      const noteLines = wrapLines(noteText, 9, usableWidth);
-      const noteHeight = noteLines.length * 14 + 20;
+      const noteLines = wrapLines(noteText, 8.5, usableWidth - 20);
+      const noteHeight = noteLines.length * 13 + 24;
 
-      if (y - noteHeight < margin + 30) {
+      if (y - noteHeight < margin + 20) {
         drawFooter();
         page = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
         y = A4_HEIGHT - margin;
-        drawHeader();
+        drawHeader(true);
       }
 
+      // Draw light background box for note
+      page.drawRectangle({
+        x: margin,
+        y: y - noteHeight + 10,
+        width: usableWidth,
+        height: noteHeight,
+        color: rgb(0.95, 0.98, 0.96),
+        borderColor: rgb(0.73, 0.93, 0.81),
+        borderWidth: 1,
+      });
+
+      y -= 5;
       for (const line of noteLines) {
         const shapedNoteLine = isAr ? shapeArabicForPdf(line) : line;
         page.drawText(shapedNoteLine, {
-          x: isAr ? A4_WIDTH - margin - customFont.widthOfTextAtSize(shapedNoteLine, 9) : margin,
+          x: isAr ? A4_WIDTH - margin - 10 - customFont.widthOfTextAtSize(shapedNoteLine, 8.5) : margin + 10,
           y,
-          size: 9,
+          size: 8.5,
           font: customFont,
-          color: rgb(0.45, 0.50, 0.58),
+          color: rgb(0.20, 0.40, 0.30),
         });
-        y -= 14;
+        y -= 13;
       }
 
       drawFooter();
@@ -374,7 +385,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
             </svg>
-            {isAr ? 'جاري توليد ملف الـ PDF...' : 'Génération du PDF en cours...'}
+            {isAr ? 'جاري توليد ملف الـ PDF الاحترافي...' : 'Génération du PDF professionnel...'}
           </>
         ) : (
           <>
