@@ -144,10 +144,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         badgeIcon={<Calendar className="w-4 h-4" />}
         eyebrow="المدونة القانونية والعقارية — ديوان التوثيق"
         title={post.title}
-        backLink={{
-          href: '/blog',
-          label: 'العودة للمدونة',
-        }}
         breadcrumbs={[
           { name: 'الرئيسية', href: '/' },
           { name: 'المدونة', href: '/blog' },

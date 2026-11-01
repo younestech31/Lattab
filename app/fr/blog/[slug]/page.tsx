@@ -136,10 +136,6 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
         badgeIcon={<Calendar className="w-4 h-4" />}
         eyebrow="Blog Juridique et Immobilier — Office Notarial"
         title={post.title}
-        backLink={{
-          href: '/fr/blog',
-          label: 'Retourner au blog',
-        }}
         breadcrumbs={[
           { name: 'Accueil', href: '/fr' },
           { name: 'Blog', href: '/fr/blog' },

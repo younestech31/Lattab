@@ -114,10 +114,6 @@ export default function FrenchServicesPage() {
         eyebrow="Office Public Notarial — Me Lattab Mohamed"
         title="Nomenclature des Actes et Services Notariaux"
         description="Titulaire d’un office public près le Tribunal de Fellaoucène à Oran, notre étude assure l’authentification, la conservation et l’opposabilité de tous vos actes civils et commerciaux conformément à la loi 06-02 régissant le notariat en Algérie."
-        backLink={{
-          href: '/fr',
-          label: "Retour à l'accueil de l'étude",
-        }}
         breadcrumbs={[
           { name: 'Accueil', href: '/fr' },
           { name: 'Services notariaux' },
