@@ -158,29 +158,21 @@ export function mapGN17ToFieldValues(
     cedantDateLieu: '',
     cedantFiliation: '',
     cedantAdresse: data.cedantAdresse,
-    cedantNin: data.cedantNif || '',
-    cedantNif: '',
+    cedantNin: (data as Record<string, any>).cedantNin || '',
+    cedantNif: data.cedantNif || '',
     cedantProfession: '',
 
     // Buyer 1
     buyer1NomPrenom: data.buyer1NomPrenom,
     buyer1DateLieu: '',
     buyer1Adresse: data.buyer1Adresse || '',
-    buyer1Nif: data.buyer1Nif
-      ? isFr
-        ? (data.buyer1Nif.toUpperCase().startsWith('NIN') ? data.buyer1Nif : `NIN: ${data.buyer1Nif}`)
-        : (data.buyer1Nif.startsWith('ر') ? data.buyer1Nif : `ر.ت.و: ${data.buyer1Nif}`)
-      : '',
+    buyer1Nif: data.buyer1Nif || '',
 
     // Buyer 2
     buyer2NomPrenom: data.buyer2NomPrenom || '',
     buyer2DateLieu: '',
     buyer2Adresse: data.buyer2Adresse || '',
-    buyer2Nif: data.buyer2Nif
-      ? isFr
-        ? (data.buyer2Nif.toUpperCase().startsWith('NIN') ? data.buyer2Nif : `NIN: ${data.buyer2Nif}`)
-        : (data.buyer2Nif.startsWith('ر') ? data.buyer2Nif : `ر.ت.و: ${data.buyer2Nif}`)
-      : '',
+    buyer2Nif: data.buyer2Nif || '',
 
     // Property
     natureBien: data.natureBien,
@@ -195,7 +187,7 @@ export function mapGN17ToFieldValues(
     dateAchevement: '',
     natureActeCession: data.natureActeCession,
     dateActeCession: data.dateActeCession || '',
-    natureActe: isFr ? 'Acte notarié' : 'عقد توثيقي',
+    natureActe: data.natureActeCession,
 
     // Financials (Table III)
     montantCession: calc.salePrice,
