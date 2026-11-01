@@ -2,9 +2,9 @@ import { z } from 'zod';
 
 export const gn17FormSchema = z.object({
   // Tax Bureau & Administrative routing
-  wilaya: z.string().default('وهران'),
-  recette: z.string().default('قباضة الضرائب العقيد لطفي'),
-  inspection: z.string().default('مفتشية الضرائب وهران شرق'),
+  wilaya: z.string().default(''),
+  recette: z.string().default(''),
+  inspection: z.string().default(''),
 
   // I. Cédant (المتنازل)
   cedantNomPrenom: z.string().min(2, 'الاسم واللقب مطلوب'),
@@ -12,7 +12,8 @@ export const gn17FormSchema = z.object({
   cedantLieuNaissance: z.string().optional(),
   cedantFiliation: z.string().optional(), // ابن ... و ...
   cedantAdresse: z.string().min(2, 'العنوان مطلوب'),
-  cedantNif: z.string().optional(), // NIF / NIN
+  cedantNin: z.string().default(''), // NIN (رقم التعريف الوطني)
+  cedantNif: z.string().default(''), // NIF
   cedantProfession: z.string().optional(),
 
   // Cessionnaire 1 (المشتري الأول)
@@ -36,46 +37,47 @@ export const gn17FormSchema = z.object({
   // II. Designation du bien (تعيين العقار)
   natureBien: z.string().min(2, 'طبيعة العقار مطلوبة'), // شقة، فيلا، قطعة أرض...
   situationBien: z.string().min(2, 'موقع العقار مطلوب'),
-  commune: z.string().default('وهران'),
+  commune: z.string().default(''),
   cadastreRef: z.string().optional(), // القسم ورقم القطعة
   originePropriete: z.string().optional(), // عقد شراء، هبة، فريضة...
   dateActeOrigine: z.string().optional(),
   refPublicationOrigine: z.string().optional(), // مجلد ... رقم ...
   dateAchevement: z.string().optional(),
-  natureActeCession: z.string().default('عقد بيع رسمي'),
+  natureActeCession: z.string().default(''),
   dateActeCession: z.string().optional(),
 
   // III. Montants & Plus-value (المبالغ)
-  montantCession: z.coerce.number().min(1, 'سعر التنازل يجب أن يكون أكبر من الصفر'),
+  montantCession: z.coerce.number().min(0).default(0),
   fraisCession: z.coerce.number().min(0).default(0),
   fraisAutres: z.coerce.number().min(0).default(0), // ج: مصاريف أخرى مثبتة قانوناً
-  valeurOrigine: z.coerce.number().min(0, 'سعر التملك الأصلي مطلوب'),
+  valeurOrigine: z.coerce.number().min(0).default(0),
   fraisAcquisition: z.coerce.number().min(0).default(0),
   useFlatExpenses: z.boolean().default(false), // 3%
   anneeDetention: z.coerce.number().min(0).max(100).default(0),
 
   // IV. Liquidation de l'impôt (الضريبة)
   isSolePrimaryResidence: z.boolean().default(false), // تخفيض 50%
-  faitA: z.string().default('وهران'),
-  dateDeclaration: z.string().default(() => new Date().toISOString().split('T')[0]),
+  faitA: z.string().default(''),
+  dateDeclaration: z.string().default(''),
 });
 
 export type GN17FormData = z.infer<typeof gn17FormSchema>;
 
 export const initialGN17Values: GN17FormData = {
-  wilaya: 'وهران',
-  recette: 'قباضة الضرائب العقيد لطفي',
-  inspection: 'مفتشية الضرائب وهران شرق',
+  wilaya: '',
+  recette: '',
+  inspection: '',
   cedantNomPrenom: '',
   cedantDateNaissance: '',
-  cedantLieuNaissance: 'وهران',
+  cedantLieuNaissance: '',
   cedantFiliation: '',
-  cedantAdresse: 'وهران',
+  cedantAdresse: '',
+  cedantNin: '',
   cedantNif: '',
   cedantProfession: '',
   buyer1NomPrenom: '',
   buyer1DateLieu: '',
-  buyer1Adresse: 'وهران',
+  buyer1Adresse: '',
   buyer1Nif: '',
   buyer2NomPrenom: '',
   buyer2DateLieu: '',
@@ -85,24 +87,24 @@ export const initialGN17Values: GN17FormData = {
   buyer3DateLieu: '',
   buyer3Adresse: '',
   buyer3Nif: '',
-  natureBien: 'شقة سكنية (سكن ترقوي / فردي)',
-  situationBien: 'حي العقيد لطفي، وهران',
-  commune: 'وهران',
-  cadastreRef: 'قسم 12، مجموعة ملكية رقم 45',
-  originePropriete: 'عقد بيع رسمي مشهر بالمحافظة العقارية',
-  dateActeOrigine: '2018-05-10',
-  refPublicationOrigine: 'حجم 1245 رقم 67',
-  dateAchevement: '2018-05-10',
-  natureActeCession: 'عقد بيع نهائي',
-  dateActeCession: new Date().toISOString().split('T')[0],
-  montantCession: 18000000,
+  natureBien: '',
+  situationBien: '',
+  commune: '',
+  cadastreRef: '',
+  originePropriete: '',
+  dateActeOrigine: '',
+  refPublicationOrigine: '',
+  dateAchevement: '',
+  natureActeCession: '',
+  dateActeCession: '',
+  montantCession: 0,
   fraisCession: 0,
   fraisAutres: 0,
-  valeurOrigine: 12000000,
-  fraisAcquisition: 360000,
-  useFlatExpenses: true,
-  anneeDetention: 8,
+  valeurOrigine: 0,
+  fraisAcquisition: 0,
+  useFlatExpenses: false,
+  anneeDetention: 0,
   isSolePrimaryResidence: false,
-  faitA: 'وهران',
-  dateDeclaration: new Date().toISOString().split('T')[0],
+  faitA: '',
+  dateDeclaration: '',
 };

@@ -55,6 +55,30 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
     },
   },
   {
+    slug: 'gn8',
+    templatePath: '/forms/gn8.pdf',
+    officialNumber: 'سلسلة ج رقم 08 / Série G N° 08',
+    title: {
+      ar: 'تصريح بالوجود (ج رقم 08)',
+      fr: 'Déclaration d\'existence (Série G N° 08)',
+    },
+    shortDescription: {
+      ar: 'تصريح يكتتب في الثلاثين (30) يوماً التي تلي بداية النشاط لدى مصالح الضرائب لمكان ممارسة النشاط.',
+      fr: 'Déclaration à souscrire dans les 30 jours suivant le début d\'activité auprès des services fiscaux du lieu d\'exercice.',
+    },
+    legalRef: {
+      ar: 'المادة 51 من قانون الرسوم على رقم الأعمال والمادة 183 من قانون الضرائب المباشرة والرسوم المماثلة',
+      fr: 'Article 51 du CTCA et Article 183 du CIDTA',
+    },
+    category: 'impots',
+    pages: 2,
+    enabled: true,
+    badge: {
+      ar: 'إلزامي خلال 30 يوماً',
+      fr: 'Délai légal : 30 jours',
+    },
+  },
+  {
     // Disabled example entry to verify registry extensibility and resilience
     slug: 'gn18',
     templatePath: '/forms/gn18.pdf',

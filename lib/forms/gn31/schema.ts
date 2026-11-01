@@ -2,9 +2,9 @@ import { z } from 'zod';
 
 export const gn31FormSchema = z.object({
   // Administrative routing
-  directionWilaya: z.string().default('وهران'),
-  commune: z.string().default('وهران'),
-  inspection: z.string().default('مفتشية الضرائب وهران شرق'),
+  directionWilaya: z.string().default(''),
+  commune: z.string().default(''),
+  inspection: z.string().default(''),
 
   // Identifiers
   nif: z.string().default(''), // 20 digits
@@ -15,9 +15,9 @@ export const gn31FormSchema = z.object({
   declarationType: z.enum(['first_year', 'change']).default('first_year'),
 
   // Section I: موقع الملكية
-  propWilaya: z.string().default('وهران'),
-  propCommune: z.string().default('وهران'),
-  propRue: z.string().min(2, 'عنوان أو شارع الملكية مطلوب'),
+  propWilaya: z.string().default(''),
+  propCommune: z.string().default(''),
+  propRue: z.string().default(''),
   propDetails: z.string().default(''),
 
   // Section II: تعيين الشاغل
@@ -27,9 +27,9 @@ export const gn31FormSchema = z.object({
   nomPrenom: z.string().default(''),
   dateLieuNaissance: z.string().default(''),
   adresseResidence: z.string().default(''),
-  communeResidence: z.string().default('وهران'),
-  wilayaResidence: z.string().default('وهران'),
-  codePostal: z.string().default('31000'),
+  communeResidence: z.string().default(''),
+  wilayaResidence: z.string().default(''),
+  codePostal: z.string().default(''),
   telephone: z.string().default(''),
   email: z.string().default(''),
   qualitePhysique: z.enum(['proprietaire', 'usufruitier']).default('proprietaire'),
@@ -71,31 +71,31 @@ export const gn31FormSchema = z.object({
   surfaceTerrainConstructible: z.coerce.number().min(0).default(0), // m²
 
   // Final Signature Block
-  faitA: z.string().default('وهران'),
-  dateDeclaration: z.string().default(() => new Date().toISOString().split('T')[0]),
+  faitA: z.string().default(''),
+  dateDeclaration: z.string().default(''),
 });
 
 export type GN31FormData = z.infer<typeof gn31FormSchema>;
 
 export const initialGN31Values: GN31FormData = {
-  directionWilaya: 'وهران',
-  commune: 'وهران',
-  inspection: 'مفتشية الضرائب وهران شرق',
+  directionWilaya: '',
+  commune: '',
+  inspection: '',
   nif: '',
   nai: '',
   nin: '',
   declarationType: 'first_year',
-  propWilaya: 'وهران',
-  propCommune: 'وهران',
-  propRue: 'حي العقيد لطفي',
-  propDetails: 'عمارة A، الطابق 3، رقم 12',
+  propWilaya: '',
+  propCommune: '',
+  propRue: '',
+  propDetails: '',
   occupantType: 'physique',
   nomPrenom: '',
   dateLieuNaissance: '',
-  adresseResidence: 'وهران',
-  communeResidence: 'وهران',
-  wilayaResidence: 'وهران',
-  codePostal: '31000',
+  adresseResidence: '',
+  communeResidence: '',
+  wilayaResidence: '',
+  codePostal: '',
   telephone: '',
   email: '',
   qualitePhysique: 'proprietaire',
@@ -106,21 +106,21 @@ export const initialGN31Values: GN31FormData = {
   emailSociete: '',
   qualiteMorale: 'proprietaire',
   natureBien: 'individuel',
-  dateAchat: '2020-01-15',
-  dateAchevement: '2020-01-15',
+  dateAchat: '',
+  dateAchevement: '',
   dateOccupationPartielle: '',
-  dateOccupationTotale: '2020-02-01',
+  dateOccupationTotale: '',
   usageResidence: 'principale',
   isLoue: false,
-  superficieTotale: 150,
-  superficieHabitation: 130,
+  superficieTotale: 0,
+  superficieHabitation: 0,
   superficieProfessionnelle: 0,
-  superficieDependances: 20,
-  superficieNonBatie: 50,
-  nbEtages: 1,
+  superficieDependances: 0,
+  superficieNonBatie: 0,
+  nbEtages: 0,
   surfaceAgricoleIrriguee: 0,
   surfaceAgricoleNonIrriguee: 0,
   surfaceTerrainConstructible: 0,
-  faitA: 'وهران',
-  dateDeclaration: new Date().toISOString().split('T')[0],
+  faitA: '',
+  dateDeclaration: '',
 };

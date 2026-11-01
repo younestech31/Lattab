@@ -158,7 +158,7 @@ export function mapGN17ToFieldValues(
     cedantDateLieu: '',
     cedantFiliation: '',
     cedantAdresse: data.cedantAdresse,
-    cedantNin: (data as Record<string, any>).cedantNin || '',
+    cedantNin: data.cedantNin || '',
     cedantNif: data.cedantNif || '',
     cedantProfession: '',
 

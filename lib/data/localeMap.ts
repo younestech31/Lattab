@@ -150,6 +150,13 @@ export const STATIC_LOCALE_MAP: RouteLocaleEntry[] = [
     priority: 0.8,
     changeFrequency: 'monthly',
   },
+  {
+    arPath: '/formulaires/gn8',
+    frPath: '/fr/formulaires/gn8',
+    lastmod: LAST_CONTENT_UPDATED,
+    priority: 0.8,
+    changeFrequency: 'monthly',
+  },
 ];
 
 export const BLOG_PAIRS_MAP: Record<string, string> = {
