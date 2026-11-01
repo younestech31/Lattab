@@ -37,6 +37,10 @@ export const metadata: Metadata = {
     description: 'Imprimé officiel DGI rempli et prêt pour impression et dépôt auprès des services fiscaux compétents.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function GN31PageFR() {

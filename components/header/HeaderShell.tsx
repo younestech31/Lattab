@@ -39,6 +39,9 @@ export default function HeaderShell() {
       if (href === '/useful-links') {
         return '/fr/useful-links';
       }
+      if (href === '/formulaires') {
+        return '/fr/formulaires';
+      }
     }
     return href;
   };
@@ -47,6 +50,7 @@ export default function HeaderShell() {
     { href: '/#home', label: text.home },
     { href: '/#services', label: text.services },
     { href: '/calculateur-prix-referentiel', label: text.calculator },
+    { href: '/formulaires', label: text.forms },
     { href: '/useful-links', label: text.useful_links },
     { href: '/blog', label: text.blog },
     { href: '/#notary-role', label: text.notary_role },

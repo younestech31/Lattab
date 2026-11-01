@@ -2,10 +2,11 @@ import { Metadata } from 'next';
 import { SITE_URL } from '@/lib/config';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import FormsIndex from '@/components/forms/FormsIndex';
+import { JsonLdScript } from '@/components/schema';
 
 export const metadata: Metadata = {
-  title: 'Formulaires et Imprimés Officiels — Office Notarial Oran',
-  description: 'Catalogue des imprimés et formulaires fiscaux et administratifs algériens (Série G N° 17, déclarations de plus-value immobilière) avec remplissage et téléchargement PDF direct.',
+  title: 'Formulaires fiscaux officiels à remplir — G17 G31 G08 | Office notarial Oran',
+  description: 'Remplissage et impression des formulaires fiscaux officiels de la DGI : plus-value immobilière G17, taxe foncière G31 et déclaration d’existence G08 conformes aux modèles réglementaires et prêts pour dépôt.',
   alternates: {
     canonical: `${SITE_URL}/fr/formulaires`,
     languages: {
@@ -15,8 +16,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Formulaires et Imprimés Officiels — Office Notarial Oran',
-    description: 'Remplissage et génération PDF des formulaires administratifs et fiscaux algériens conformes aux gabarits de la DGI.',
+    title: 'Formulaires fiscaux officiels à remplir — G17 G31 G08 | Office notarial Oran',
+    description: 'Remplissage et impression des formulaires fiscaux officiels de la DGI : plus-value immobilière G17, taxe foncière G31 et déclaration d’existence G08.',
     url: `${SITE_URL}/fr/formulaires`,
     locale: 'fr_DZ',
     type: 'website',
@@ -25,27 +26,59 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Formulaires et Imprimés Officiels — Office Notarial Oran',
+        alt: 'Formulaires fiscaux officiels à remplir — G17 G31 G08',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Formulaires et Imprimés Officiels — Office Notarial Oran',
-    description: 'Remplissage et génération PDF des formulaires administratifs et fiscaux algériens conformes aux gabarits de la DGI.',
+    title: 'Formulaires fiscaux officiels à remplir — G17 G31 G08 | Office notarial Oran',
+    description: 'Remplissage et impression des formulaires fiscaux officiels de la DGI : plus-value immobilière G17, taxe foncière G31 et déclaration d’existence G08.',
     images: [`${SITE_URL}/og-image.jpg`],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 export default function FormulairesPageFR() {
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'name': 'Formulaires et déclarations fiscales officielles en Algérie',
+    'description': 'Catalogue des formulaires officiels de la Direction Générale des Impôts (DGI) pour remplissage et impression directe.',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Série G N° 17 — Déclaration de plus-value immobilière',
+        'url': `${SITE_URL}/fr/formulaires/gn17`,
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Série G N° 31 — Déclaration de la taxe foncière',
+        'url': `${SITE_URL}/fr/formulaires/gn31`,
+      },
+      {
+        '@type': 'ListItem',
+        'position': 3,
+        'name': 'Série G N° 08 — Déclaration d\'existence',
+        'url': `${SITE_URL}/fr/formulaires/gn8`,
+      },
+    ],
+  };
+
   return (
     <div>
+      <JsonLdScript schema={itemListSchema} />
       <UnifiedPageHeader
         lang="fr"
         eyebrow="Assistance administrative & fiscale"
         badgeText="Imprimés officiels DGI"
-        title="Formulaires et Imprimés Officiels"
-        description="Assistance au remplissage et à l'impression des déclarations et formulaires administratifs et fiscaux algériens, avec traitement strictement local garantissant votre confidentialité."
+        title="Formulaires officiels"
+        description="Remplissage et impression des imprimés fiscaux officiels (plus-value G17, taxe foncière G31, déclaration d’existence G08) conformes aux modèles de la DGI, avec traitement local garantissant votre confidentialité."
         breadcrumbs={[
           { name: 'Accueil', href: '/fr' },
           { name: 'Formulaires officiels' },

@@ -4,6 +4,7 @@ import Services from '@/components/Services';
 import Contact from '@/components/contact';
 import ContactInfo from '@/components/ContactInfo';
 import CalculatorCTA from '@/components/CalculatorCTA';
+import OfficialFormsSection from '@/components/OfficialFormsSection';
 import { Language } from '@/lib/i18n/translations';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
@@ -114,6 +115,7 @@ export async function HomeContent({ lang }: { lang: Language }) {
           <Hero lang={lang} />
           <Services lang={lang} />
           <CalculatorCTA lang={lang} />
+          <OfficialFormsSection lang={lang} />
           
           <Suspense fallback={<SectionSkeleton height="min-h-[480px]" />}>
             <NotaryRole lang={lang} />

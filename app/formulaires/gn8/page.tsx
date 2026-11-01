@@ -37,6 +37,10 @@ export const metadata: Metadata = {
     description: 'تعبئة إلكترونية فورية للنموذج الرسمي المعتمد من المديرية العامة للضرائب وتحميله بصيغة PDF معداً للإيداع مع قائمة الوثائق المرفقة.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function GN8Page() {

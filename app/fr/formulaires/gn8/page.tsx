@@ -37,6 +37,10 @@ export const metadata: Metadata = {
     description: 'Imprimé officiel DGI 2024 rempli et prêt pour impression et dépôt avec la liste des pièces justificatives.',
     images: [`${SITE_URL}/og-image.jpg`],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function GN8PageFR() {
