@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Language } from '@/lib/i18n/translations';
 import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';

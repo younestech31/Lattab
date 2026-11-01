@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FileText, Printer, ArrowLeft, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { FileText, Printer, ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Language } from '@/lib/i18n/translations';
 
 interface OfficialFormsSectionProps {

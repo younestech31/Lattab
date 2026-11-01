@@ -11,7 +11,6 @@ import {
   FileText,
   Clock,
   ShieldCheck,
-  Building,
 } from 'lucide-react';
 
 interface Props {

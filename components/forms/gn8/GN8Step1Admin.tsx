@@ -1,7 +1,7 @@
 'use client';
 
 import { GN8FormData } from '@/lib/forms/gn8/schema';
-import { Building2, Hash, FileCheck, Info, Layers } from 'lucide-react';
+import { Building2, Hash, Info, Layers } from 'lucide-react';
 
 interface Props {
   data: GN8FormData;

@@ -1,7 +1,7 @@
 'use client';
 
 import { GN8FormData } from '@/lib/forms/gn8/schema';
-import { MapPin, Phone, Mail, Award, Calendar, AlertCircle, CheckCircle, BadgePercent } from 'lucide-react';
+import { MapPin, Phone, Calendar, AlertCircle, CheckCircle } from 'lucide-react';
 
 interface Props {
   data: GN8FormData;
