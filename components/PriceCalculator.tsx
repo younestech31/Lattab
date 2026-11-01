@@ -138,8 +138,8 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       return;
     }
     
-    // If we have initial data and we haven't tried to fetch yet, we can skip the first fetch
-    if (!hasInitialized.current && initialData && initialRegionId) {
+    // If we have initial data and we haven't tried to fetch yet, we can skip the first fetch in sale mode
+    if (!hasInitialized.current && initialData && initialRegionId && calculationMode === 'sale') {
         hasInitialized.current = true;
         cache.current[`${wilaya}-${calculationMode}-${regionId}`] = {
           data: initialData,
@@ -165,6 +165,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
           { signal: controller.signal }
         );
         if (!response.ok) {
+          setMappedData(null);
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.json();
@@ -190,6 +191,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
             setRegionId(result.regionId);
           }
         } else {
+          setMappedData(null);
           throw new Error('Invalid data format received from API');
         }
       } catch (err: unknown) {
@@ -197,6 +199,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
           return;
         }
         console.error('Failed to fetch data', err);
+        setMappedData(null);
       } finally {
         if (!controller.signal.aborted) {
           setIsLoadingData(false);
@@ -222,9 +225,9 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       .filter(([_, values]) => {
         if (!values) return false;
         if (calculationMode === 'sale') {
-          return values.min !== undefined && values.max !== undefined;
+          return values.min !== undefined && values.max !== undefined && values.min !== null && values.max !== null;
         } else {
-          return values.rent_min !== null && values.rent_max !== null && values.rent_min !== undefined && values.rent_max !== undefined;
+          return values.rent_min !== undefined && values.rent_max !== undefined && values.rent_min !== null && values.rent_max !== null;
         }
       })
       .map(([key]) => key);

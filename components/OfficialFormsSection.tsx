@@ -24,8 +24,8 @@ export default function OfficialFormsSection({ lang = 'ar' }: OfficialFormsSecti
       num: isAr ? 'سلسلة ج رقم 31' : 'Série G N° 31',
       title: isAr ? 'تصريح الرسم العقاري' : 'Déclaration de la taxe foncière',
       desc: isAr
-        ? 'تصريح بالرسم العقاري على الملكيات المبنية وغير المبنية والأراضي القابلة للتعمير (المادة 261 مكرر CIDTA).'
-        : 'Déclaration de taxe foncière sur propriétés bâties et non bâties (Art. 261 bis du CIDTA).',
+        ? 'تصريح بالرسم العقاري على الملكيات المبنية وغير المبنية والأراضي القابلة للتعمير (المادتان 261-ص و261-ق CIDTA).'
+        : 'Déclaration de taxe foncière sur propriétés bâties et non bâties (Articles 261-r et 261-s du CIDTA).',
       badge: isAr ? 'إيداع سنوي / تغيير' : 'Annuelle / Changement',
     },
     {

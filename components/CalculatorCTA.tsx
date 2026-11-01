@@ -15,11 +15,13 @@ const CalculatorCTA = ({ lang = 'ar' }: CalculatorCTAProps) => {
           
           <div className={`flex-1 text-center ${isAr ? 'md:text-right' : 'md:text-left'}`}>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              {isAr ? 'حاسبة السعر المرجعي للعقار' : 'Calculateur des prix de référence immobilier'}
+              {isAr ? 'حاسبة السعر المرجعي للعقار ' : 'Calculateur des prix de référence immobilier '}
               <span className="block text-amber-300 mt-1">2026</span>
             </h2>
             <p className="text-emerald-200 text-sm md:text-base leading-relaxed mb-6">
-              {isAr ? 'أداة إعلامية للتعرف على الأسعار المرجعية لوزارة المالية لولاية وهران.' : 'Outil d\'information sur les prix de référence officiels du Ministère des Finances pour la wilaya d\'Oran.'}
+              {isAr
+                ? 'أداة إعلامية للتعرف على الأسعار المرجعية لوزارة المالية عبر ولايات الوطن (58 ولاية).'
+                : 'Outil d\'information sur les prix de référence officiels du Ministère des Finances pour les 58 wilayas.'}
             </p>
             
             <div className={`flex justify-center ${isAr ? 'md:justify-start' : 'md:justify-start'}`}>

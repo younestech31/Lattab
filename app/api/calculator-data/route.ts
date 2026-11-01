@@ -20,7 +20,7 @@ export interface CalculatorApiErrorResponse {
 const QuerySchema = z.object({
   wilaya: z.enum(SUPPORTED_WILAYA_CODES),
   mode: z.enum(['sale', 'rent']).default('sale'),
-  region: z.string().max(100).optional(),
+  region: z.string().max(400).optional(),
 });
 
 type Wilaya = z.infer<typeof QuerySchema>['wilaya'];

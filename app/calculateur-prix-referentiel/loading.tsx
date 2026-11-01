@@ -5,7 +5,7 @@ export default function CalculatorLoading() {
     <div className="min-h-screen bg-white pt-20" dir="rtl">
       <div className="container mx-auto px-4 max-w-4xl">
         <div role="status" className="text-2xl font-bold text-gray-900 mb-6 text-center">
-          حاسبة السعر المرجعي العقاري — وهران 2026
+          حاسبة السعر المرجعي العقاري 2026 — الجزائر
         </div>
         <CalculatorSkeleton />
       </div>

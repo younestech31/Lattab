@@ -7,7 +7,7 @@ import { JsonLdScript } from '@/components/schema';
 
 export const metadata: Metadata = {
   title: 'Formulaire Série G N° 31 — Déclaration de la Taxe Foncière',
-  description: 'Remplissage et génération du formulaire officiel DGI Série G N° 31 : déclaration de la taxe foncière sur les propriétés bâties et non bâties (Art. 261 bis et 261 Q du CIDTA).',
+  description: 'Remplissage et génération du formulaire officiel DGI Série G N° 31 : déclaration de la taxe foncière sur les propriétés bâties et non bâties (Articles 261-r et 261-s du CIDTA).',
   alternates: {
     canonical: `${SITE_URL}/fr/formulaires/gn31`,
     languages: {
@@ -74,7 +74,7 @@ export default function GN31PageFR() {
         'name': 'Quel est le délai légal de souscription de la déclaration Série G N° 31 ?',
         'acceptedAnswer': {
           '@type': 'Answer',
-          'text': 'La déclaration Série G N° 31 doit être souscrite dans un délai de deux mois suivant l\'achèvement ou l\'occupation totale ou partielle de l\'immeuble, ou dans les deux mois suivant l\'achèvement de toute modification de structure ou d\'affectation, conformément à l\'article 261 bis du CIDTA.',
+          'text': 'La déclaration Série G N° 31 doit être souscrite dans un délai de deux mois suivant l\'achèvement ou l\'occupation totale ou partielle de l\'immeuble, ou dans les deux mois suivant l\'achèvement de toute modification de structure ou d\'affectation, conformément aux Articles 261-r et 261-s du CIDTA.',
         },
       },
       {
@@ -105,7 +105,7 @@ export default function GN31PageFR() {
         eyebrow="Direction Générale des Impôts — Série G N° 31"
         badgeText="Annuelle / Changement"
         title="Déclaration de la Taxe Foncière sur les Propriétés Bâties et Non Bâties"
-        description="Formulaire officiel pour la souscription de la taxe foncière conformément aux articles 261 bis et 261 Q du CIDTA, avec génération du fichier PDF officiel conforme pour dépôt légal."
+        description="Formulaire officiel pour la souscription de la taxe foncière conformément aux Articles 261-r et 261-s du CIDTA, avec génération du fichier PDF officiel conforme pour dépôt légal."
         breadcrumbs={[
           { name: 'Accueil', href: '/fr' },
           { name: 'Formulaires officiels', href: '/fr/formulaires' },

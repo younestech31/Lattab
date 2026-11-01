@@ -12,11 +12,11 @@ import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = "Calculateur officiel des prix de référence immobiliers 2026 à Oran. Outil d'estimation basé sur les grilles de la Direction Générale des Impôts d'Algérie.";
+  const desc = "Calculateur officiel des prix de référence immobiliers 2026 en Algérie (58 wilayas). Outil d'estimation basé sur les grilles officielles de la DGI.";
   assertDescriptionLength(desc, 'calculateur-prix-referentiel-fr');
 
   return {
-    title: { absolute: 'Calculateur Prix Référence Immobilier 2026 — Oran' },
+    title: { absolute: 'Calculateur Prix Référence Immobilier 2026 — Algérie' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/fr/calculateur-prix-referentiel`,
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'Calculateur Prix Référence Immobilier 2026 — Oran',
+      title: 'Calculateur Prix Référence Immobilier 2026 — Algérie',
       description: desc,
       url: `${SITE_URL}/fr/calculateur-prix-referentiel`,
       siteName: 'Office Notarial - Oran',
@@ -36,14 +36,14 @@ export async function generateMetadata(): Promise<Metadata> {
         url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 
         width: 1200, 
         height: 630, 
-        alt: 'Calculateur des prix de référence immobilier Oran' 
+        alt: 'Calculateur des prix de référence immobilier 2026 — Algérie' 
       }],
       locale: 'fr_DZ',
       alternateLocale: ['ar_DZ'],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Calculateur des prix de référence immobilier — Oran, Algérie',
+      title: 'Calculateur des prix de référence immobilier 2026 — Algérie',
       description: desc,
       images: [`${SITE_URL}/calculateur-prix-referentiel/opengraph-image`],
     },
@@ -55,7 +55,7 @@ export default function CalculatorPageFR() {
   const webApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Calculateur des prix de référence immobilier — Oran, Algérie",
+    "name": "Calculateur des prix de référence immobilier 2026 — Algérie",
     "url": `${SITE_URL}/fr/calculateur-prix-referentiel`,
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Web",
@@ -68,7 +68,7 @@ export default function CalculatorPageFR() {
       <WebPageSchema
         url={`${SITE_URL}/fr/calculateur-prix-referentiel`}
         name="Calculateur des prix de référence immobilier 2026"
-        description="Calculateur des prix de référence officiels du Ministère des Finances 2026 pour immobilier à Oran."
+        description="Calculateur des prix de référence officiels du Ministère des Finances 2026 pour l'immobilier en Algérie (58 wilayas)."
         breadcrumbs={[
           { name: "Accueil", item: `${SITE_URL}/fr` },
           { name: "Calculateur prix de référence", item: `${SITE_URL}/fr/calculateur-prix-referentiel` }

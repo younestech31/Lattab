@@ -39,12 +39,12 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
       fr: 'Déclaration de la taxe foncière (Série G N° 31)',
     },
     shortDescription: {
-      ar: 'تصريح بالرسم العقاري على الملكيات المبنية وغير المبنية (المادة 261 مكرر من قانون الضرائب المباشرة والرسوم المماثلة CIDTA).',
-      fr: 'Déclaration de la taxe foncière sur les propriétés bâties et non bâties (Art. 261 bis du CIDTA).',
+      ar: 'تصريح بالرسم العقاري على الملكيات المبنية وغير المبنية (المادتان 261-ص و261-ق من قانون الضرائب المباشرة والرسوم المماثلة CIDTA).',
+      fr: 'Déclaration de la taxe foncière sur les propriétés bâties et non bâties (Articles 261-r et 261-s du CIDTA).',
     },
     legalRef: {
-      ar: 'المادة 261 مكرر من قانون الضرائب المباشرة والرسوم المماثلة (CIDTA)',
-      fr: 'Article 261 bis du Code des Impôts Directs et Taxes Assimilées (CIDTA)',
+      ar: 'المادتان 261-ص و261-ق من قانون الضرائب المباشرة والرسوم المماثلة (CIDTA)',
+      fr: 'Articles 261-r et 261-s du Code des Impôts Directs et Taxes Assimilées (CIDTA)',
     },
     category: 'impots',
     pages: 4,
@@ -77,27 +77,6 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
       ar: 'إلزامي خلال 30 يوماً',
       fr: 'Délai légal : 30 jours',
     },
-  },
-  {
-    // Disabled example entry to verify registry extensibility and resilience
-    slug: 'gn18',
-    templatePath: '/forms/gn18.pdf',
-    officialNumber: 'سلسلة ج رقم 18 / Série G N° 18',
-    title: {
-      ar: 'تصريح التنازل عن الأسهم والحصص الاجتماعية (ج 18)',
-      fr: 'Déclaration de cession d\'actions et parts sociales (G N° 18)',
-    },
-    shortDescription: {
-      ar: 'تصريح جبائي بفائض القيمة المحقق من التنازل عن الحصص الاجتماعية في الشركات.',
-      fr: 'Déclaration fiscale de plus-value sur cession de parts sociales.',
-    },
-    legalRef: {
-      ar: 'قانون الضرائب المباشرة والرسوم المماثلة',
-      fr: 'Code des Impôts Directs',
-    },
-    category: 'impots',
-    pages: 2,
-    enabled: false,
   },
 ];
 

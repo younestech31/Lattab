@@ -14,11 +14,11 @@ import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 // Validate this page using the Open Graph debugger:
 // https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Flattab.vercel.app%2Fcalculateur-prix-referentiel
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'حاسبة السعر المرجعي الرسمي للعقار بوهران 2026. تقدير فوري لقيمة العقارات التجارية والسكنية بناءً على جداول وزارة المالية والمديرية العامة للضرائب بالجزائر.';
+  const desc = 'حاسبة السعر المرجعي الرسمي للعقار بالجزائر 2026 (58 ولاية). تقدير فوري لقيمة العقارات التجارية والسكنية بناءً على جداول وزارة المالية والضرائب.';
   assertDescriptionLength(desc, 'calculateur-prix-referentiel');
 
   return {
-    title: { absolute: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026' },
+    title: { absolute: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/calculateur-prix-referentiel`,
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
+      title: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر',
       description: desc,
       url: `${SITE_URL}/calculateur-prix-referentiel`,
       siteName: 'ديوان التوثيق ببلدية وهران',
@@ -38,14 +38,14 @@ export async function generateMetadata(): Promise<Metadata> {
         url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 
         width: 1200, 
         height: 630, 
-        alt: 'حاسبة السعر المرجعي العقاري وهران' 
+        alt: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر' 
       }],
       locale: 'ar_DZ',
       alternateLocale: ['fr_DZ'],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'حاسبة السعر المرجعي العقاري — موثق وهران 2026',
+      title: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر',
       description: desc,
       images: [`${SITE_URL}/calculateur-prix-referentiel/opengraph-image`],
     },
@@ -60,7 +60,7 @@ export default function CalculatorPage() {
   const webApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "حاسبة السعر المرجعي العقاري — ولاية وهران",
+    "name": "حاسبة السعر المرجعي العقاري 2026 — الجزائر",
     "url": `${SITE_URL}/calculateur-prix-referentiel`,
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Web",
@@ -73,7 +73,7 @@ export default function CalculatorPage() {
       <WebPageSchema
         url={`${SITE_URL}/calculateur-prix-referentiel`}
         name="حاسبة السعر المرجعي للعقار 2026"
-        description="السعر المرجعي الرسمي للعقار في وهران 2026. بيانات رسمية من وزارة المالية."
+        description="السعر المرجعي الرسمي للعقار في الجزائر 2026 (58 ولاية). بيانات رسمية من وزارة المالية والمديرية العامة للضرائب."
         breadcrumbs={[
           { name: "الرئيسية", item: `${SITE_URL}/` },
           { name: "حاسبة السعر المرجعي", item: `${SITE_URL}/calculateur-prix-referentiel` }
