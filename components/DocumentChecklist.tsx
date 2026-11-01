@@ -47,561 +47,265 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
 
   const t = {
     ar: {
-      brand: 'ديوان التوثيق - وهران - موثق معتمد',
-      title: `قائمة الوثائق المطلوبة: ${contractType}`,
-      date: 'مستخرج بتاريخ',
-      note: 'ملاحظة قانونية هامة: للموثق سلطة تقديرية مطلقة وصلاحية كاملة لطلب أي وثيقة إضافية بموجب الأحكام التشريعية والتنظيمية في الجمهورية الجزائرية، وذلك لضمان الموثوقية القانونية وحماية مصالح الأطراف.',
-      footer: 'العنوان: حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي، وهران | هاتف: +213 562 29 69 81',
-      downloadBtn: 'تحميل PDF / طباعة',
+      title: `قائمة إرشادية بالوثائق المطلوبة: ${contractType}`,
+      downloadBtn: 'تحميل PDF (عالي الجودة)',
       preparedDocs: `تم تجهيز ${checkedCount} من ${total} وثائق`,
     },
     fr: {
-      brand: 'Office Public Notarial - Oran - Notaire Agréé',
-      title: `Liste des documents requis : ${contractType}`,
-      date: 'Généré le',
-      note: 'Note légale importante : Le notaire jouit d\'une compétence d\'appréciation exclusive pour exiger tout document légal complémentaire requis pour assurer la parfaite sécurité des conventions signées en son étude.',
-      footer: 'Cité 557 Logements, Bâtiment D24, 1er Étage, N° 768, Akid Lotfi, Oran | Tél : +213 562 29 69 81',
-      downloadBtn: 'Télécharger PDF / Imprimer',
+      title: `Liste indicative des pièces : ${contractType}`,
+      downloadBtn: 'Télécharger PDF (Haute Qualité)',
       preparedDocs: `${checkedCount} sur ${total} documents préparés`,
     }
   }[lang] || {
-    brand: 'ديوان التوثيق - وهران - موثق معتمد',
-    title: `قائمة الوثائق المطلوبة: ${contractType}`,
-    date: 'مستخرج بتاريخ',
-    note: 'ملاحظة قانونية هامة: للموثق سلطة تقديرية مطلقة وصلاحية كاملة لطلب أي وثيقة إضافية بموجب الأحكام التشريعية والتنظيمية في الجمهورية الجزائرية، وذلك لضمان الموثوقية القانونية وحماية مصالح الأطراف.',
-    footer: 'العنوان: حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي، وهران | هاتف: +213 562 29 69 81',
-    downloadBtn: 'تحميل PDF / طباعة',
+    title: `قائمة إرشادية بالوثائق المطلوبة: ${contractType}`,
+    downloadBtn: 'تحميل PDF (عالي الجودة)',
     preparedDocs: `تم تجهيز ${checkedCount} من ${total} وثائق`,
   };
 
   const handleExportPDF = async () => {
     setIsGenerating(true);
     try {
-      // 1. Dynamic import of jsPDF to prevent Next.js SSR build crashes
-      const { jsPDF } = await import('jspdf');
+      const { PDFDocument, rgb } = await import('pdf-lib');
+      const fontkit = (await import('@pdf-lib/fontkit')).default;
+      const { shapeArabicForPdf } = await import('@/lib/forms/textShaper');
 
-      // 2. Estimate if content fits on a single A4 page canvas (1754px)
-      // Header (~490px) + items (~70px each) + footer (~320px)
-      const estimatedContentHeight = 490 + 160 + (documents.length * 75) + 320;
-      if (estimatedContentHeight > 1754) {
-        // Exceeds single A4 canvas limit: fallback to HTML window.print()
-        window.print();
-        return;
+      const pdfDoc = await PDFDocument.create();
+      pdfDoc.registerFontkit(fontkit);
+
+      const fontRes = await fetch('/fonts/Amiri-Regular.ttf');
+      if (!fontRes.ok) throw new Error('Failed to load Amiri font');
+      const fontBytes = await fontRes.arrayBuffer();
+      const customFont = await pdfDoc.embedFont(fontBytes);
+
+      // Fix layout engine for Arabic presentation forms
+      const fontEmbedder = (customFont as unknown as { embedder?: { font?: { layout?: (text: string) => unknown; glyphForCodePoint?: (codePoint: number) => { advanceWidth: number } | null } } }).embedder;
+      const fkFont = fontEmbedder?.font;
+      if (fkFont && typeof fkFont.glyphForCodePoint === 'function') {
+        fkFont.layout = (text: string) => {
+          const glyphs = Array.from(text).map((ch) => fkFont.glyphForCodePoint!(ch.codePointAt(0) || 0));
+          return {
+            glyphs,
+            positions: glyphs.map((g: { advanceWidth: number } | null) => ({
+              xAdvance: g ? g.advanceWidth : 0,
+              yAdvance: 0,
+              xOffset: 0,
+              yOffset: 0,
+            })),
+          };
+        };
       }
 
-      // Create high-resolution white A4 canvas in memory (single page)
-      const canvas = document.createElement('canvas');
-      canvas.width = 1240;
-      canvas.height = 1754; // A4 Form Factor ratio
-      const ctx = canvas.getContext('2d');
-      if (!ctx) throw new Error('Could not request Canvas2D execution model context');
+      const A4_WIDTH = 595.27;
+      const A4_HEIGHT = 841.89;
+      const margin = 40;
+      const usableWidth = A4_WIDTH - (margin * 2);
 
-      // Clear layout with pure white
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      let page = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
+      let y = A4_HEIGHT - margin;
 
-      // 3. Draw dual official emerald & gold border frame (compliant with Notarial institutional styling)
-      ctx.strokeStyle = '#059669'; // Emerald notary green
-      ctx.lineWidth = 6;
-      ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
-
-      ctx.strokeStyle = '#d97706'; // Notary public gold/amber accent
-      ctx.lineWidth = 2;
-      ctx.strokeRect(41, 41, canvas.width - 82, canvas.height - 82);
-
-      // Setup typography fallback families for beautiful browser native rendering
-      const titleFont = 'bold 30px "Cairo", sans-serif';
-      const bodyFont = '500 21px "Cairo", sans-serif';
-      const headingFont = 'bold 23px "Cairo", sans-serif';
-      const smallFont = '15px "Cairo", sans-serif';
-
-      // 4. Draw Official Header layout
-      if (isAr) {
-        ctx.fillStyle = '#111827';
-        ctx.textAlign = 'right';
-        ctx.direction = 'rtl';
-
-        ctx.font = 'bold 26px "Cairo", sans-serif';
-        ctx.fillText('الجمهورية الجزائرية الديمقراطية الشعبية', canvas.width - 90, 105);
-
-        ctx.font = '21px "Cairo", sans-serif';
-        ctx.fillText('وزارة العدل', canvas.width - 90, 150);
-
-        ctx.font = 'bold 23px "Cairo", sans-serif';
-        ctx.fillStyle = '#0f766e'; // Professional Notary Teal
-        ctx.fillText('الديوان العمومي للتوثيق ببلدية وهران', canvas.width - 90, 195);
-
-        ctx.font = '19px "Cairo", sans-serif';
-        ctx.fillStyle = '#4b5563';
-        ctx.fillText('حي العقيد لطفي، وهران - محلف لدى المجلس القضائي', canvas.width - 90, 235);
-      } else {
-        ctx.fillStyle = '#111827';
-        ctx.textAlign = 'left';
-        ctx.direction = 'ltr';
-
-        ctx.font = 'bold 20px "Cairo", sans-serif';
-        ctx.fillText('RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE', 90, 105);
-
-        ctx.font = '18px "Cairo", sans-serif';
-        ctx.fillText('MINISTÈRE DE LA JUSTICE', 90, 140);
-
-        ctx.font = 'bold 22px "Cairo", sans-serif';
-        ctx.fillStyle = '#0f766e'; // Professional Notary Teal
-        ctx.fillText('OFFICE PUBLIC NOTARIAL - ORAN', 90, 175);
-
-        ctx.font = '16px "Cairo", sans-serif';
-        ctx.fillStyle = '#4b5563';
-        ctx.fillText('Notaire Public Agréé près la Cour d\'Oran', 90, 210);
-      }
-
-      // Draw elegant decorative circular stamp seal opposite to text flow
-      const sealX = isAr ? 210 : canvas.width - 210;
-      const sealY = 168;
-
-      ctx.strokeStyle = '#059669';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.arc(sealX, sealY, 70, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.strokeStyle = '#059669';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(sealX, sealY, 63, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.fillStyle = '#059669';
-      ctx.font = 'bold 12px "Cairo", sans-serif';
-      ctx.textAlign = 'center';
-
-      if (isAr) {
-        ctx.fillText('ديوان التوثيق - وهران', sealX, sealY - 15);
-        ctx.fillText('موثق معتمد لدى المحاكم', sealX, sealY + 10);
-        ctx.fillText('ولاية وهران', sealX, sealY + 35);
-      } else {
-        ctx.fillText('OFFICE NOTARIAL - ORAN', sealX, sealY - 15);
-        ctx.fillText('NOTAIRE PUBLIC AGRÉÉ', sealX, sealY + 10);
-        ctx.fillText('ORAN, ALGÉRIE', sealX, sealY + 32);
-      }
-
-      // Horizontal separator rule
-      ctx.strokeStyle = '#059669';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.moveTo(80, 285);
-      ctx.lineTo(canvas.width - 80, 285);
-      ctx.stroke();
-
-      // Centered Title Box
-      const pX = 80;
-      const pY = 325;
-      const pW = canvas.width - 160;
-      const pH = 110;
-      ctx.fillStyle = '#f0fdf4'; // Soft light green
-      ctx.beginPath();
-      if (ctx.roundRect) {
-        ctx.roundRect(pX, pY, pW, pH, 12);
-      } else {
-        ctx.rect(pX, pY, pW, pH);
-      }
-      ctx.fill();
-      ctx.strokeStyle = '#bbf7d0';
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-
-      // Title Text inside box
-      ctx.textAlign = 'center';
-      ctx.fillStyle = '#065f46'; // Emerald deep forest
-      ctx.font = titleFont;
-      const titleString = isAr 
-        ? `قائمة المستندات والوثائق لـ: ${contractType}`
-        : `Liste des pièces requises pour : ${contractType}`;
-      ctx.fillText(titleString, canvas.width / 2, pY + 68);
-
-      // Metadata section
-      const metaY = 490;
-      ctx.fillStyle = '#374151'; // Charcoal
-      ctx.font = headingFont;
-
-      const dateTextValue = new Date().toLocaleDateString(isAr ? 'ar-DZ' : 'fr-FR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-      const generatedDateLine = isAr ? `تاريخ استخراج الوثيقة: ${dateTextValue}` : `Document édité le : ${dateTextValue}`;
-      const statusLine = isAr 
-        ? `الحالة الحالية: تم تجهيز ${checkedCount} من إجمالي ${total} وثائق مطلوبة`
-        : `Statut : ${checkedCount} sur ${total} documents préparés`;
-
-      if (isAr) {
-        ctx.textAlign = 'right';
-        ctx.direction = 'rtl';
-        ctx.fillText(generatedDateLine, canvas.width - 90, metaY);
-        ctx.fillText(statusLine, canvas.width - 90, metaY + 45);
-      } else {
-        ctx.textAlign = 'left';
-        ctx.direction = 'ltr';
-        ctx.fillText(generatedDateLine, 90, metaY);
-        ctx.fillText(statusLine, 90, metaY + 45);
-      }
-
-      // Draw matching progress bar on Canvas sheet
-      const barX = 90;
-      const barY = metaY + 80;
-      const barW = canvas.width - 180;
-      const barH = 14;
-
-      // Track
-      ctx.fillStyle = '#f3f4f6';
-      ctx.beginPath();
-      if (ctx.roundRect) {
-        ctx.roundRect(barX, barY, barW, barH, 7);
-      } else {
-        ctx.rect(barX, barY, barW, barH);
-      }
-      ctx.fill();
-
-      // Progress color fill
-      const progressWidth = (checkedCount / total) * barW;
-      if (progressWidth > 0) {
-        ctx.fillStyle = '#059669';
-        ctx.beginPath();
-        if (ctx.roundRect) {
-          ctx.roundRect(barX, barY, progressWidth, barH, 7);
-        } else {
-          ctx.rect(barX, barY, progressWidth, barH);
-        }
-        ctx.fill();
-      }
-
-      // Divider line before documents start
-      let startListY = metaY + 160;
-      ctx.strokeStyle = '#e5e7eb';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(90, startListY - 25);
-      ctx.lineTo(canvas.width - 90, startListY - 25);
-      ctx.stroke();
-
-      // Wrapped string writing logic
-      const drawWrappedItemText = (text: string, x: number, y: number, maxLength: number, isChecked: boolean) => {
-        ctx.font = bodyFont;
-        const words = text.split(' ');
-        let currentLine = '';
-        const wrappedLines = [];
-
-        for (let i = 0; i < words.length; i++) {
-          const testLine = currentLine + words[i] + ' ';
-          const measure = ctx.measureText(testLine);
-          if (measure.width > maxLength && i > 0) {
-            wrappedLines.push(currentLine.trim());
-            currentLine = words[i] + ' ';
-          } else {
-            currentLine = testLine;
-          }
-        }
-        wrappedLines.push(currentLine.trim());
-
-        let lineY = y + 5;
-        wrappedLines.forEach((lineText) => {
-          ctx.fillStyle = isChecked ? '#9ca3af' : '#1f2937';
-          if (isAr) {
-            ctx.textAlign = 'right';
-            ctx.direction = 'rtl';
-            ctx.fillText(lineText, x, lineY);
-            
-            if (isChecked) {
-              const textWidth = ctx.measureText(lineText).width;
-              ctx.strokeStyle = '#9ca3af';
-              ctx.lineWidth = 2;
-              ctx.beginPath();
-              ctx.moveTo(x, lineY - 8);
-              ctx.lineTo(x - textWidth, lineY - 8);
-              ctx.stroke();
-            }
-          } else {
-            ctx.textAlign = 'left';
-            ctx.direction = 'ltr';
-            ctx.fillText(lineText, x, lineY);
-
-            if (isChecked) {
-              const textWidth = ctx.measureText(lineText).width;
-              ctx.strokeStyle = '#9ca3af';
-              ctx.lineWidth = 2;
-              ctx.beginPath();
-              ctx.moveTo(x, lineY - 7);
-              ctx.lineTo(x + textWidth, lineY - 7);
-              ctx.stroke();
-            }
-          }
-          lineY += 32; // Multi-line line spacing
+      const drawHeader = () => {
+        const headerText = isAr 
+          ? 'ديوان التوثيق — الأستاذ لعطب محمد — وهران' 
+          : 'Office notarial — Maître Lattab Mohamed — Oran';
+        const formattedHeader = isAr ? shapeArabicForPdf(headerText) : headerText;
+        page.drawText(formattedHeader, {
+          x: isAr ? A4_WIDTH - margin - customFont.widthOfTextAtSize(formattedHeader, 12) : margin,
+          y,
+          size: 12,
+          font: customFont,
+          color: rgb(0.02, 0.59, 0.41), // emerald
         });
-
-        return lineY - y;
+        y -= 15;
+        page.drawLine({
+          start: { x: margin, y },
+          end: { x: A4_WIDTH - margin, y },
+          thickness: 1,
+          color: rgb(0.85, 0.87, 0.90),
+        });
+        y -= 25;
       };
 
-      // Draw each document checkbox item
-      documents.forEach((doc, idx) => {
-        const isChecked = !!checkedState[idx];
-        const boxSize = 28;
-        const boxX = isAr ? canvas.width - (90 + boxSize) : 90;
-        const boxY = startListY - 16;
+      const drawFooter = () => {
+        const footerText = isAr 
+          ? 'العنوان: حي 557 مسكن، العقيد لطفي، وهران | هاتف: +213562296981 | https://lattab.vercel.app' 
+          : 'Cité 557 Logements, Akid Lotfi, Oran | Tél : +213 562 29 69 81 | https://lattab.vercel.app';
+        const formattedFooter = isAr ? shapeArabicForPdf(footerText) : footerText;
+        page.drawText(formattedFooter, {
+          x: (A4_WIDTH - customFont.widthOfTextAtSize(formattedFooter, 8)) / 2,
+          y: margin / 2,
+          size: 8,
+          font: customFont,
+          color: rgb(0.40, 0.45, 0.52),
+        });
+      };
 
-        // Draw checkbox card shape
-        ctx.strokeStyle = isChecked ? '#059669' : '#cbd5e1';
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        if (ctx.roundRect) {
-          ctx.roundRect(boxX, boxY, boxSize, boxSize, 6);
-        } else {
-          ctx.rect(boxX, boxY, boxSize, boxSize);
+      drawHeader();
+
+      // Title
+      const titleText = isAr 
+        ? `قائمة إرشادية بالوثائق المطلوبة — ${contractType}` 
+        : `Liste indicative des pièces — ${contractType}`;
+      const formattedTitle = isAr ? shapeArabicForPdf(titleText) : titleText;
+      page.drawText(formattedTitle, {
+        x: isAr ? A4_WIDTH - margin - customFont.widthOfTextAtSize(formattedTitle, 13) : margin,
+        y,
+        size: 13,
+        font: customFont,
+        color: rgb(0.07, 0.09, 0.15),
+      });
+      y -= 20;
+
+      // Date & Progress
+      const dateStr = new Date().toLocaleDateString(isAr ? 'ar-DZ' : 'fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+      const metaText = isAr 
+        ? `التاريخ: ${dateStr}  |  الحالة: تم تجهيز ${checkedCount} من ${total} وثائق` 
+        : `Date : ${dateStr}  |  Statut : ${checkedCount} sur ${total} documents préparés`;
+      const formattedMeta = isAr ? shapeArabicForPdf(metaText) : metaText;
+      page.drawText(formattedMeta, {
+        x: isAr ? A4_WIDTH - margin - customFont.widthOfTextAtSize(formattedMeta, 10) : margin,
+        y,
+        size: 10,
+        font: customFont,
+        color: rgb(0.35, 0.39, 0.45),
+      });
+      y -= 30;
+
+      // Helper for wrapping text
+      const wrapLines = (text: string, fontSize: number, maxW: number) => {
+        const words = text.split(' ');
+        const lines: string[] = [];
+        let currentLine = '';
+        for (const word of words) {
+          const test = currentLine ? `${currentLine} ${word}` : word;
+          const shapedTest = isAr ? shapeArabicForPdf(test) : test;
+          if (customFont.widthOfTextAtSize(shapedTest, fontSize) > maxW && currentLine) {
+            lines.push(currentLine);
+            currentLine = word;
+          } else {
+            currentLine = test;
+          }
         }
-        ctx.stroke();
+        if (currentLine) lines.push(currentLine);
+        return lines;
+      };
+
+      // Draw items
+      for (let idx = 0; idx < documents.length; idx++) {
+        const doc = documents[idx];
+        const isChecked = !!checkedState[idx];
+        const itemText = `${idx + 1}. ${doc}`;
+        const lines = wrapLines(itemText, 10, usableWidth - 30);
+
+        const itemHeight = lines.length * 16 + 10;
+        if (y - itemHeight < margin + 60) {
+          drawFooter();
+          page = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
+          y = A4_HEIGHT - margin;
+          drawHeader();
+        }
+
+        // Checkbox box
+        const boxSize = 12;
+        const boxX = isAr ? A4_WIDTH - margin - boxSize : margin;
+        const boxY = y - 2;
+
+        page.drawRectangle({
+          x: boxX,
+          y: boxY,
+          width: boxSize,
+          height: boxSize,
+          borderColor: rgb(0.02, 0.59, 0.41),
+          borderWidth: 1,
+          color: isChecked ? rgb(0.02, 0.59, 0.41) : rgb(1, 1, 1),
+        });
 
         if (isChecked) {
-          ctx.fillStyle = '#059669';
-          ctx.beginPath();
-          if (ctx.roundRect) {
-            ctx.roundRect(boxX, boxY, boxSize, boxSize, 6);
-          } else {
-            ctx.rect(boxX, boxY, boxSize, boxSize);
-          }
-          ctx.fill();
-
-          // Standard vector white checkmark
-          ctx.strokeStyle = '#ffffff';
-          ctx.lineWidth = 3;
-          ctx.beginPath();
-          ctx.moveTo(boxX + 6, boxY + boxSize / 2);
-          ctx.lineTo(boxX + boxSize / 2 - 1, boxY + boxSize - 8);
-          ctx.lineTo(boxX + boxSize - 6, boxY + 7);
-          ctx.stroke();
+          // Checkmark
+          page.drawLine({
+            start: { x: boxX + 2, y: boxY + 6 },
+            end: { x: boxX + 5, y: boxY + 3 },
+            thickness: 1.5,
+            color: rgb(1, 1, 1),
+          });
+          page.drawLine({
+            start: { x: boxX + 5, y: boxY + 3 },
+            end: { x: boxX + 10, y: boxY + 9 },
+            thickness: 1.5,
+            color: rgb(1, 1, 1),
+          });
         }
 
-        // Draw paragraph text
-        const textX = isAr ? canvas.width - (110 + boxSize + 15) : 90 + boxSize + 20;
-        const maxWidth = canvas.width - 240;
-        const spacingConsumed = drawWrappedItemText(doc, textX, startListY - 15, maxWidth, isChecked);
+        const textX = isAr ? boxX - 10 : boxX + boxSize + 10;
 
-        startListY += Math.max(65, spacingConsumed + 20);
-      });
-
-      // Bottom Institutional Disclaimer Box
-      const lawY = Math.max(canvas.height - 350, startListY + 40);
-
-      ctx.strokeStyle = '#e5e7eb';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(90, lawY - 15);
-      ctx.lineTo(canvas.width - 90, lawY - 15);
-      ctx.stroke();
-
-      ctx.font = '18px "Cairo", sans-serif';
-      ctx.fillStyle = '#6b7280';
-      
-      if (isAr) {
-        ctx.textAlign = 'right';
-        ctx.direction = 'rtl';
-        ctx.fillText('تذكير قانوني هام لإنجاز العقود:', canvas.width - 90, lawY + 20);
-        
-        ctx.font = '16px "Cairo", sans-serif';
-        ctx.fillText('للموثق بمقتضى القانون 06-02 المنظم للمهنة سلطة تقديرية مطلقة لمراجعة الوثائق وطلب أي مستند إضافي', canvas.width - 90, lawY + 50);
-        ctx.fillText('يراه لازماً وضرورياً لضمان الصحة المطلقة للعقد المبرم وتأمين المعاملة القانونية وصيانة حقوق جميع الأطراف.', canvas.width - 90, lawY + 80);
-      } else {
-        ctx.textAlign = 'left';
-        ctx.direction = 'ltr';
-        ctx.fillText('Rappel légal d\'importance pour l\'édition des actes :', 90, lawY + 20);
-
-        ctx.font = '15px "Cairo", sans-serif';
-        ctx.fillText('Conformément à la Loi 06-02 portant Code du Notariat, le notaire exerce une autorité d\'interprétation', 90, lawY + 50);
-        ctx.fillText('légale souveraine pour réclamer tout document complémentaire garantissant la régularité absolue de l\'acte.', 90, lawY + 75);
+        for (const line of lines) {
+          const shapedLine = isAr ? shapeArabicForPdf(line) : line;
+          page.drawText(shapedLine, {
+            x: isAr ? textX - customFont.widthOfTextAtSize(shapedLine, 10) : textX,
+            y,
+            size: 10,
+            font: customFont,
+            color: isChecked ? rgb(0.6, 0.64, 0.7) : rgb(0.1, 0.12, 0.16),
+          });
+          y -= 16;
+        }
+        y -= 6;
       }
 
-      // Elegant official address band footer
-      const footerY = canvas.height - 110;
+      // Legal Note section
+      y -= 15;
+      const noteText = isAr 
+        ? 'ملاحظة: هذه قائمة إرشادية غير شاملة. للموثق، وفقاً للقانون 06-02 المنظم لمهنة التوثيق، طلب أي وثيقة إضافية يقتضيها انتظام العقد وحماية الأطراف.' 
+        : 'Note : Liste indicative non exhaustive. Conformément à la loi 06-02, le notaire peut demander toute pièce complémentaire nécessaire à la régularité de l’acte.';
+      
+      const noteLines = wrapLines(noteText, 9, usableWidth);
+      const noteHeight = noteLines.length * 14 + 20;
 
-      ctx.fillStyle = '#f9fafb';
-      ctx.fillRect(48, canvas.height - 130, canvas.width - 96, 80);
+      if (y - noteHeight < margin + 30) {
+        drawFooter();
+        page = pdfDoc.addPage([A4_WIDTH, A4_HEIGHT]);
+        y = A4_HEIGHT - margin;
+        drawHeader();
+      }
 
-      ctx.strokeStyle = '#e5e7eb';
-      ctx.lineWidth = 1;
-      ctx.strokeRect(48, canvas.height - 130, canvas.width - 96, 80);
+      for (const line of noteLines) {
+        const shapedNoteLine = isAr ? shapeArabicForPdf(line) : line;
+        page.drawText(shapedNoteLine, {
+          x: isAr ? A4_WIDTH - margin - customFont.widthOfTextAtSize(shapedNoteLine, 9) : margin,
+          y,
+          size: 9,
+          font: customFont,
+          color: rgb(0.45, 0.50, 0.58),
+        });
+        y -= 14;
+      }
 
-      ctx.font = smallFont;
-      ctx.fillStyle = '#4b5563';
-      ctx.textAlign = 'center';
+      drawFooter();
 
-      ctx.fillText(t.footer, canvas.width / 2, footerY - 5);
-      ctx.fillText(
-        isAr 
-          ? 'ديوان التوثيق - وهران | مستند إعلامي مصمم إلكترونياً https://lattab.vercel.app' 
-          : 'Office Public Notarial - Oran | Fiche d\'information numérique https://lattab.vercel.app', 
-        canvas.width / 2, 
-        footerY + 25
-      );
-
-      // Convert to high resolution JPG format
-      const imageURI = canvas.toDataURL('image/jpeg', 0.96);
-
-      // Generate the PDF as A4 size
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-
-      // Render image to cover the entire layout page perfectly
-      pdf.addImage(imageURI, 'JPEG', 0, 0, pdfWidth, pdfHeight, undefined, 'FAST');
-
-      // Trigger automatic local browser file transfer download
-      const documentFileName = `Notaire_Office Notarial_Documents_${contractType.replace(/\s+/g, '_')}.pdf`;
-      pdf.save(documentFileName);
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes as BlobPart], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      const safeContractName = contractType.replace(/\s+/g, '_');
+      const fileDateStr = new Date().toISOString().split('T')[0];
+      link.download = isAr 
+        ? `قائمة_وثائق_${safeContractName}_${fileDateStr}.pdf` 
+        : `Liste_pieces_${safeContractName}_${fileDateStr}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
     } catch (err) {
-      console.error('High fidelity canvas PDF generation encountered a warning, falling back to window.print()', err);
-      window.print();
+      console.error('PDF generation error:', err);
     } finally {
       setIsGenerating(false);
     }
   };
 
   return (
-    <div className="printable-checklist-container space-y-4" dir={isAr ? 'rtl' : 'ltr'}>
-      {/* ⚠️ Law 06-02 Compliance — Clean institutional document printing, no self-praise or marketing */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @media print {
-          @page {
-            margin: 15mm 20mm !important;
-            size: auto;
-          }
-          
-          html, body {
-            background-color: #ffffff !important;
-            color: #111827 !important;
-            font-family: var(--font-cairo), "Cairo", sans-serif !important;
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-
-          /* Hide everything on the page including other Accordion items and general sections */
-          body * {
-            visibility: hidden !important;
-            box-shadow: none !important;
-          }
-
-          /* Force show only this checklist and its descendants */
-          .printable-checklist-container,
-          .printable-checklist-container * {
-            visibility: visible !important;
-          }
-
-          /* Elevate the container to occupy full printable area cleanly */
-          .printable-checklist-container {
-            position: absolute !important;
-            left: 0 !important;
-            top: 0 !important;
-            width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            display: block !important;
-            background: white !important;
-            direction: ${isAr ? 'rtl' : 'ltr'} !important;
-            text-align: ${isAr ? 'right' : 'left'} !important;
-          }
-
-          .print-title {
-            font-size: 18pt !important;
-            font-weight: bold !important;
-            color: #059669 !important;
-          }
-
-          .print-subtitle {
-            font-size: 10pt !important;
-            color: #4b5563 !important;
-          }
-
-          .print-item {
-            font-size: 11pt !important;
-            color: #111827 !important;
-            padding: 8px 0 !important;
-            border-bottom: 1px solid #e5e7eb !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
-            page-break-inside: avoid !important;
-          }
-
-          /* Print hidden classes overrides */
-          .print\\:hidden, 
-          button, 
-          header, 
-          footer, 
-          nav, 
-          aside, 
-          .no-print,
-          [role="progressbar"] {
-            display: none !important;
-            height: 0 !important;
-            width: 0 !important;
-            overflow: hidden !important;
-            visibility: hidden !important;
-          }
-
-          /* Beautiful custom checkboxes for printing output */
-          .print-checkbox-box {
-            width: 18px !important;
-            height: 18px !important;
-            border: 2px solid #059669 !important;
-            border-radius: 4px !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            flex-shrink: 0 !important;
-            print-color-adjust: exact !important;
-            -webkit-print-color-adjust: exact !important;
-          }
-
-          .print-checkbox-checked {
-            background-color: #059669 !important;
-          }
-
-          .print-checkbox-check-icon {
-            color: #ffffff !important;
-            width: 10px !important;
-            height: 10px !important;
-          }
-
-          .print-header {
-            display: block !important;
-            border-bottom: 2px solid #059669 !important;
-            padding-bottom: 12px !important;
-            margin-bottom: 20px !important;
-          }
-
-          .print-footer {
-            display: block !important;
-            border-top: 1px solid #e5e7eb !important;
-            padding-top: 12px !important;
-            margin-top: 30px !important;
-            text-align: center !important;
-            font-size: 8pt !important;
-            color: #4b5563 !important;
-          }
-        }
-      `}} />
-
-      {/* Print-Only Header */}
-      <div className="hidden print-header" dir={isAr ? 'rtl' : 'ltr'}>
-        <div className="print-subtitle font-medium">{t.brand}</div>
-        <h2 className="print-title mt-1 font-bold text-xl">{t.title}</h2>
-        <div className="text-xs text-gray-500 mt-1">
-          {t.date}: {new Date().toLocaleDateString(isAr ? 'ar-DZ' : 'fr-FR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </div>
-      </div>
-
+    <div className="space-y-4" dir={isAr ? 'rtl' : 'ltr'}>
       {/* On-Screen Progress Bar */}
-      <div className="space-y-1 print:hidden">
+      <div className="space-y-1">
         <div className="flex justify-between text-xs text-gray-500 font-bold">
             <span>{t.preparedDocs}</span>
             <span>{Math.round(progress)}%</span>
@@ -618,13 +322,13 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         </div>
       </div>
 
-      {/* Checklist (Visible on-screen and fully custom styled on pdf/print) */}
+      {/* Checklist items */}
       <ul className="space-y-2.5">
         {documents.map((doc, idx) => {
           const isChecked = !!checkedState[idx];
           return (
-            <li key={idx} className="print-item">
-              <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded-lg group w-full print:p-0 print:hover:bg-transparent">
+            <li key={idx}>
+              <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-gray-50 rounded-lg group w-full">
                 <input
                   type="checkbox"
                   checked={isChecked}
@@ -633,20 +337,19 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
                   aria-label={isAr ? `تحديد وثيقة ${doc}` : `Sélectionner le document ${doc}`}
                 />
                 
-                {/* Custom modern checkbox box */}
-                <div className={`print-checkbox-box relative flex items-center justify-center w-6 h-6 rounded border transition-all shrink-0 ${
+                <div className={`relative flex items-center justify-center w-6 h-6 rounded border transition-all shrink-0 ${
                   isChecked 
-                    ? 'bg-emerald-600 border-emerald-600 text-white print-checkbox-checked' 
+                    ? 'bg-emerald-600 border-emerald-600 text-white' 
                     : 'border-gray-300 bg-white text-transparent group-hover:border-emerald-500'
                 }`}>
                   {isChecked && (
-                    <svg className="w-4 h-4 print-checkbox-check-icon text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   )}
                 </div>
                 
-                <span className={`text-sm select-none transition-colors ${isChecked ? 'line-through text-gray-400 print:text-gray-400' : 'text-gray-700'}`}>
+                <span className={`text-sm select-none transition-colors ${isChecked ? 'line-through text-gray-400' : 'text-gray-700'}`}>
                   {doc}
                 </span>
               </label>
@@ -655,24 +358,11 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         })}
       </ul>
 
-      {/* Print-Only Note */}
-      <p className="hidden print:block text-[10px] text-gray-500 italic mt-6 border-t border-gray-100 pt-4" dir={isAr ? 'rtl' : 'ltr'}>
-        {t.note}
-      </p>
-
-      {/* Print-Only Footer */}
-      <footer className="hidden print-footer" dir={isAr ? 'rtl' : 'ltr'}>
-        <p className="font-medium">{t.footer}</p>
-        <p className="text-[10px] text-gray-400 mt-1">
-          {isAr ? 'مستخرج إلكترونياً من الموقع الرسمي لمكتب الموثق - https://lattab.vercel.app' : 'Généré électroniquement depuis le site officiel - https://lattab.vercel.app'}
-        </p>
-      </footer>
-
-      {/* PDF Export Button (PDF generation) */}
+      {/* PDF Export Button */}
       <button 
         onClick={handleExportPDF}
         disabled={isGenerating}
-        className={`mt-4 w-full sm:w-auto border text-sm px-4 py-2 rounded-lg font-bold transition-all cursor-pointer flex items-center justify-center gap-2 print:hidden ${
+        className={`mt-4 w-full sm:w-auto border text-sm px-4 py-2 rounded-lg font-bold transition-all cursor-pointer flex items-center justify-center gap-2 ${
           isGenerating 
             ? 'bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed' 
             : 'border-emerald-600 text-emerald-600 hover:bg-emerald-50'
@@ -684,7 +374,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
             </svg>
-            {isAr ? 'جاري توليد تحميل الـ PDF...' : 'Génération du PDF...'}
+            {isAr ? 'جاري توليد ملف الـ PDF...' : 'Génération du PDF en cours...'}
           </>
         ) : (
           <>
