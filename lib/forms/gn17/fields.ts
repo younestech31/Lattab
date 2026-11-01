@@ -74,17 +74,84 @@ export const GN17_FIELD_COORDINATES: FormFieldCoord[] = [
 ];
 
 /**
+ * Coordinate mapping for official French template Série G N° 17 (2 pages A4).
+ * Calibrated against public/forms/gn17_fr.pdf.
+ */
+export const GN17_FIELD_COORDINATES_FR: FormFieldCoord[] = [
+  // En-tête (Header)
+  { id: 'wilaya', page: 1, x: 98, y: 741.0, size: 9.5, align: 'left', maxWidth: 180 },
+  { id: 'recette', page: 1, x: 112, y: 727.5, size: 9.5, align: 'left', maxWidth: 170 },
+
+  // I - Renseignements concernant le cédant
+  { id: 'cedantNomPrenom', page: 1, x: 108, y: 507.5, size: 9, align: 'left', maxWidth: 460 },
+  { id: 'cedantAdresse', page: 1, x: 88, y: 494.0, size: 9, align: 'left', maxWidth: 480 },
+  { id: 'cedantNif', page: 1, x: 230, y: 454.0, size: 8.5, align: 'left', maxWidth: 335 },
+  { id: 'cedantNin', page: 1, x: 220, y: 441.5, size: 9, align: 'left', maxWidth: 350 },
+
+  // I - Désignation de ou des acquéreur(s)
+  { id: 'buyer1NomPrenom', page: 1, x: 200, y: 404.0, size: 9, align: 'left', maxWidth: 240 },
+  { id: 'buyer1Nif', page: 1, x: 445, y: 404.0, size: 8.5, align: 'left', maxWidth: 125 },
+  { id: 'buyer1Adresse', page: 1, x: 88, y: 390.5, size: 9, align: 'left', maxWidth: 480 },
+
+  { id: 'buyer2NomPrenom', page: 1, x: 200, y: 363.0, size: 9, align: 'left', maxWidth: 240 },
+  { id: 'buyer2Nif', page: 1, x: 445, y: 363.0, size: 8.5, align: 'left', maxWidth: 125 },
+  { id: 'buyer2Adresse', page: 1, x: 88, y: 349.5, size: 9, align: 'left', maxWidth: 480 },
+
+  // II - Désignation du bien ou des droits réels cédés
+  { id: 'natureBien', page: 1, x: 138, y: 237.0, size: 9, align: 'left', maxWidth: 90 },
+  { id: 'cadastreRef', page: 1, x: 426, y: 237.0, size: 8.5, align: 'left', maxWidth: 140 },
+  { id: 'natureDroitsReels', page: 1, x: 175, y: 223.5, size: 9, align: 'left', maxWidth: 390 },
+  { id: 'situationBien', page: 1, x: 200, y: 209.5, size: 9, align: 'left', maxWidth: 365 },
+  { id: 'commune', page: 1, x: 90, y: 192.0, size: 9, align: 'left', maxWidth: 105 },
+  { id: 'wilayaBien', page: 1, x: 245, y: 192.0, size: 9, align: 'left', maxWidth: 180 },
+  { id: 'articleImposition', page: 1, x: 215, y: 179.5, size: 9, align: 'left', maxWidth: 350 },
+  { id: 'natureActeCession', page: 1, x: 185, y: 167.5, size: 9, align: 'left', maxWidth: 380 },
+  { id: 'originePropriete', page: 1, x: 155, y: 156.0, size: 9, align: 'left', maxWidth: 410 },
+  { id: 'dateActeOrigine', page: 1, x: 190, y: 144.0, size: 9, align: 'left', maxWidth: 90 },
+  { id: 'refPublicationOrigine', page: 1, x: 290, y: 144.0, size: 8.5, align: 'left', maxWidth: 275 },
+  { id: 'dateActeCession', page: 1, x: 170, y: 132.5, size: 9, align: 'left', maxWidth: 120 },
+  { id: 'natureActe', page: 1, x: 125, y: 121.0, size: 9, align: 'left', maxWidth: 440 },
+
+  // III - Éléments à déclarer
+  { id: 'montantCession', page: 2, x: 375, y: 778.0, size: 9, format: 'currency', align: 'left', maxWidth: 195 },
+  { id: 'fraisCession', page: 2, x: 375, y: 765.0, size: 9, format: 'currency', align: 'left', maxWidth: 195 },
+  { id: 'fraisAutres', page: 2, x: 375, y: 752.0, size: 9, format: 'currency', align: 'left', maxWidth: 195 },
+  { id: 'valeurOrigine', page: 2, x: 375, y: 739.0, size: 9, format: 'currency', align: 'left', maxWidth: 195 },
+  { id: 'fraisAcquisition', page: 2, x: 375, y: 715.0, size: 9, format: 'currency', align: 'left', maxWidth: 195 },
+  { id: 'grossPlusValue', page: 2, x: 375, y: 691.5, size: 9, format: 'currency', align: 'left', maxWidth: 195 },
+  { id: 'abattementRate', page: 2, x: 458, y: 678.5, size: 9, align: 'left', maxWidth: 28 },
+  { id: 'abattementAmount', page: 2, x: 375, y: 665.5, size: 9, format: 'currency', align: 'left', maxWidth: 195 },
+  { id: 'netImposablePlusValue', page: 2, x: 375, y: 652.5, size: 9, format: 'currency', align: 'left', maxWidth: 195 },
+
+  // IV - Montant de l'impôt à payer
+  { id: 'baseImposable', page: 2, x: 338, y: 546.0, size: 9, format: 'currency', align: 'left', maxWidth: 220 },
+  { id: 'check15', page: 2, x: 418, y: 529.5, size: 9, align: 'center' },
+  { id: 'checkExonere', page: 2, x: 552, y: 529.5, size: 9, align: 'center' },
+  { id: 'grossTax', page: 2, x: 338, y: 519.5, size: 9, format: 'currency', align: 'left', maxWidth: 220 },
+  { id: 'residenceAbattementAmount', page: 2, x: 338, y: 506.0, size: 9, format: 'currency', align: 'left', maxWidth: 220 },
+  { id: 'netTaxDue', page: 2, x: 338, y: 492.5, size: 9, format: 'currency', align: 'left', maxWidth: 220 },
+
+  // Déclaration et signature
+  { id: 'faitA', page: 2, x: 84, y: 401.5, size: 9, align: 'left', maxWidth: 70 },
+  { id: 'dateDeclaration', page: 2, x: 180, y: 401.5, size: 9, align: 'left', maxWidth: 80 },
+];
+
+/**
  * Transforms form state + calculation results into a flat key-value dictionary
- * matching GN17_FIELD_COORDINATES.
+ * matching GN17_FIELD_COORDINATES or GN17_FIELD_COORDINATES_FR.
  */
 export function mapGN17ToFieldValues(
   data: GN17FormData,
-  calc: GN17ComputeResult
+  calc: GN17ComputeResult,
+  lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
+  const isFr = lang === 'fr';
+
   return {
     wilaya: data.wilaya,
+    wilayaBien: data.wilaya,
     inspection: '',
-    recette: data.recette.replace(/^قباضة الضرائب\s*/u, '').trim(),
+    recette: data.recette.replace(/^(قباضة الضرائب|Recette des Impôts)\s*/ui, '').trim(),
 
     // Cédant
     cedantNomPrenom: data.cedantNomPrenom,
@@ -100,7 +167,9 @@ export function mapGN17ToFieldValues(
     buyer1DateLieu: '',
     buyer1Adresse: data.buyer1Adresse || '',
     buyer1Nif: data.buyer1Nif
-      ? (data.buyer1Nif.startsWith('ر') ? data.buyer1Nif : `ر.ت.و: ${data.buyer1Nif}`)
+      ? isFr
+        ? (data.buyer1Nif.toUpperCase().startsWith('NIN') ? data.buyer1Nif : `NIN: ${data.buyer1Nif}`)
+        : (data.buyer1Nif.startsWith('ر') ? data.buyer1Nif : `ر.ت.و: ${data.buyer1Nif}`)
       : '',
 
     // Buyer 2
@@ -108,20 +177,25 @@ export function mapGN17ToFieldValues(
     buyer2DateLieu: '',
     buyer2Adresse: data.buyer2Adresse || '',
     buyer2Nif: data.buyer2Nif
-      ? (data.buyer2Nif.startsWith('ر') ? data.buyer2Nif : `ر.ت.و: ${data.buyer2Nif}`)
+      ? isFr
+        ? (data.buyer2Nif.toUpperCase().startsWith('NIN') ? data.buyer2Nif : `NIN: ${data.buyer2Nif}`)
+        : (data.buyer2Nif.startsWith('ر') ? data.buyer2Nif : `ر.ت.و: ${data.buyer2Nif}`)
       : '',
 
     // Property
     natureBien: data.natureBien,
     situationBien: data.situationBien,
     cadastreRef: data.cadastreRef || '',
-    commune: data.commune || 'وهران',
+    commune: data.commune || (isFr ? 'Oran' : 'وهران'),
+    natureDroitsReels: isFr ? 'Pleine propriété' : 'ملكية تامة',
+    articleImposition: data.cadastreRef || '',
     originePropriete: data.originePropriete || '',
     dateActeOrigine: data.dateActeOrigine || '',
     refPublicationOrigine: data.refPublicationOrigine || '',
     dateAchevement: '',
     natureActeCession: data.natureActeCession,
     dateActeCession: data.dateActeCession || '',
+    natureActe: isFr ? 'Acte notarié' : 'عقد توثيقي',
 
     // Financials (Table III)
     montantCession: calc.salePrice,
@@ -137,6 +211,8 @@ export function mapGN17ToFieldValues(
     // Tax Liquidation (Table IV)
     baseImposable: calc.netImposablePlusValue,
     taxRate: calc.taxRate,
+    check15: calc.taxRate === 15,
+    checkExonere: calc.taxRate === 0,
     grossTax: calc.grossTax,
     residenceAbattementAmount: calc.isSolePrimaryResidence ? calc.residenceAbattementAmount : 0,
     netTaxDue: calc.netTaxDue,

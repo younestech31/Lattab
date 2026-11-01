@@ -8,6 +8,7 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
   {
     slug: 'gn17',
     templatePath: '/forms/gn17.pdf',
+    templatePathFr: '/forms/gn17_fr.pdf',
     officialNumber: 'سلسلة ج رقم 17 / Série G N° 17',
     title: {
       ar: 'التصريح بفائض القيمة العقارية (ج رقم 17)',

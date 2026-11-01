@@ -6,7 +6,7 @@ import { useLang } from '@/lib/i18n';
 import { getFormBySlug } from '@/lib/forms/registry';
 import { GN17FormData, initialGN17Values } from '@/lib/forms/gn17/schema';
 import { computeGN17 } from '@/lib/forms/gn17/compute';
-import { GN17_FIELD_COORDINATES, mapGN17ToFieldValues } from '@/lib/forms/gn17/fields';
+import { GN17_FIELD_COORDINATES, GN17_FIELD_COORDINATES_FR, mapGN17ToFieldValues } from '@/lib/forms/gn17/fields';
 import { fillOfficialPdf, downloadPdfBytes } from '@/lib/forms/fillOfficialPdf';
 
 import FormWizardShell from '@/components/forms/FormWizardShell';
@@ -83,10 +83,14 @@ export default function GN17FormFiller() {
     setDownloadError(null);
 
     try {
-      const fieldValues = mapGN17ToFieldValues(data, calcResult);
+      const isFr = lang === 'fr';
+      const templateUrl = isFr && formDef.templatePathFr ? formDef.templatePathFr : formDef.templatePath;
+      const fieldCoords = isFr ? GN17_FIELD_COORDINATES_FR : GN17_FIELD_COORDINATES;
+      const fieldValues = mapGN17ToFieldValues(data, calcResult, lang as 'ar' | 'fr');
+
       const pdfBytes = await fillOfficialPdf({
-        templateUrl: formDef.templatePath,
-        fields: GN17_FIELD_COORDINATES,
+        templateUrl,
+        fields: fieldCoords,
         values: fieldValues,
         debug: isDebug,
       });

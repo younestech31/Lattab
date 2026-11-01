@@ -22,6 +22,7 @@ export interface FormFieldCoord {
 export interface FormalFormDefinition {
   slug: string;
   templatePath: string; // e.g. '/forms/gn17.pdf'
+  templatePathFr?: string; // e.g. '/forms/gn17_fr.pdf'
   title: FormLocalizedText;
   shortDescription: FormLocalizedText;
   officialNumber: string; // e.g. 'سلسلة ج رقم 17 / Série G N° 17'
