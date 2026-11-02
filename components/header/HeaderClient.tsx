@@ -123,6 +123,11 @@ export default function HeaderClient() {
     { href: '/#contact', label: text.contact },
   ];
 
+  const brandTextClass = headerActive ? 'text-gray-800' : 'text-white';
+  const notaryTextClass = headerActive ? 'text-emerald-600' : 'text-emerald-200';
+  const menuBtnClass = headerActive ? 'text-gray-700' : 'text-white';
+  const linkTextClass = headerActive ? 'text-gray-700' : 'text-white';
+
   return (
     <>
       {headerActive && (
@@ -173,15 +178,12 @@ export default function HeaderClient() {
         </div>
         <div>
           <span
-            className={`block text-base font-bold leading-tight brand-text transition-colors duration-300 ${
-              headerActive ? 'text-gray-800' : 'text-white'
-            }`}
+            className={`block text-base font-bold leading-tight brand-text transition-colors duration-300 ${brandTextClass}`}
           >
             {text.name}
           </span>
           <p
-            className={`text-xs leading-tight notary-subtext transition-colors duration-300 ${\n              headerActive ? 'text-emerald-600' : 'text-emerald-200'
-            }`}
+            className={`text-xs leading-tight notary-subtext transition-colors duration-300 ${notaryTextClass}`}
           >
             {text.notary}
           </p>
@@ -195,9 +197,7 @@ export default function HeaderClient() {
             <Link
               key={link.href}
               href={getHref(link.href)}
-              className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-sm leading-none link-text duration-300 ${
-                headerActive ? 'text-gray-700' : 'text-white'
-              } ${([text.notary_role, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden' : ''}`}
+              className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-sm leading-none link-text duration-300 ${linkTextClass} ${([text.notary_role, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden' : ''}`}
             >
               {link.label}
             </Link>
@@ -216,8 +216,7 @@ export default function HeaderClient() {
           aria-label={isMenuOpen ? (lang === 'ar' ? 'إغلاق القائمة' : 'Fermer le menu') : (lang === 'ar' ? 'فتح القائمة' : 'Ouvrir le menu')}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-nav"
-          className={`p-2 rounded-lg menu-btn transition-colors duration-300 ${\n            headerActive ? 'text-gray-700' : 'text-white'
-          }`}
+          className={`p-2 rounded-lg menu-btn transition-colors duration-300 ${menuBtnClass}`}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             {isMenuOpen ? (
