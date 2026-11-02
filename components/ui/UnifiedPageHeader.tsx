@@ -47,8 +47,8 @@ export default function UnifiedPageHeader({
     <section
       className={`
         relative bg-emerald-900 text-white overflow-hidden
-        pt-[calc(5.5rem+env(safe-area-inset-top,0px))] md:pt-32
-        pb-12 md:pb-16
+        pt-24 md:pt-28
+        pb-8 md:pb-10
         ${className}
       `}
       dir={isRtl ? 'rtl' : 'ltr'}
@@ -120,7 +120,7 @@ export default function UnifiedPageHeader({
           </p>
 
           {/* 4) H1 Title */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.2] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-snug tracking-tight">
             {title}
           </h1>
 

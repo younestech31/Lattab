@@ -64,49 +64,41 @@ export default function HeaderShell() {
     <>
       {/* Brand & Logo */}
       <Link href={getHref('/#home')} className="flex items-center gap-3">
-        <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
+        <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
           <Image
             src="/logo-small.webp"
             alt={lang === 'ar' ? 'شعار ديوان التوثيق - وهران' : 'Logo de l\'Étude Office Notarial - Oran'}
-            width={48}
-            height={48}
+            width={40}
+            height={40}
             quality={75}
             priority={true}
             unoptimized={false}
           />
         </div>
         <div>
-          <span className={`block text-xl font-bold brand-text transition-colors duration-300 ${headerActive ? 'text-gray-800' : 'text-white'}`}>
+          <span className={`block text-base font-bold leading-tight brand-text transition-colors duration-300 ${headerActive ? 'text-gray-800' : 'text-white'}`}>
             {text.name}
           </span>
-          <p className={`text-xs notary-subtext transition-colors duration-300 ${headerActive ? 'text-emerald-600' : 'text-emerald-200'}`}>
+          <p className={`text-xs leading-tight notary-subtext transition-colors duration-300 ${headerActive ? 'text-emerald-600' : 'text-emerald-200'}`}>
             {text.notary}
           </p>
         </div>
       </Link>
 
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center gap-3 xl:gap-5">
-        <nav className="flex items-center gap-3 xl:gap-5">
+      <div className="hidden lg:flex items-center gap-4">
+        <nav className="flex items-center gap-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={getHref(link.href)}
-              className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm link-text duration-300 ${
+              className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-sm leading-none link-text duration-300 ${
                 headerActive ? 'text-gray-700' : 'text-white'
-              } ${([text.notary_role, text.procedures, text.news, text.faq, text.useful_links] as string[]).includes(link.label) ? 'hidden xl:block' : ''}`}
+              } ${([text.notary_role, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden' : ''}`}
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href={getHref('/#contact')}
-            className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm link-text duration-300 ${
-              headerActive ? 'text-gray-700' : 'text-white'
-            }`}
-          >
-            {text.book}
-          </Link>
         </nav>
       </div>
     </>

@@ -5,15 +5,26 @@
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 
-/* Custom Font */
-body, .font-cairo, .prose, .prose * {
+/* UI copy stays compact. 1.8 on every element made headings and the nav look oversized at 100% zoom. */
+body, .font-cairo {
   font-family: var(--font-cairo), sans-serif;
+  line-height: 1.6;
+}
+.prose, .prose * {
+  font-family: var(--font-cairo), sans-serif;
+  line-height: 1.8;
 }
 .prose code, .prose pre, .prose kbd {
   font-family: var(--font-cairo), sans-serif !important;
 }
-.font-cairo {
-  line-height: 1.8;
+
+/* Desktop only. 16px × 0.875 = 14px, which is the practical density of ~90% zoom
+   without a non-standard zoom property. Browser zoom still works on top.
+   Phones stay at the default so touch reading size does not drop. */
+@media (min-width: 1024px) {
+  html {
+    font-size: 87.5%;
+  }
 }
 
 /* Smooth Scrolling */
