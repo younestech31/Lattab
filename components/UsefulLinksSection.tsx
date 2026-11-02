@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Scale, Building2, Landmark, Book, FileText } from 'lucide-react';
 import { DirectionalArrow } from '@/components/ui/DirectionalArrow';
-import { getHomeUsefulLinks } from '@/lib/data/usefulLinks';
+import { getHomeUsefulLinks, USEFUL_LINK_CATEGORIES } from '@/lib/data/usefulLinks';
 
 interface UsefulLinksSectionProps {
   lang: 'ar' | 'fr';
@@ -59,7 +59,8 @@ export default function UsefulLinksSection({ lang }: UsefulLinksSectionProps) {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {links.map((link) => {
-            const Icon = IconMap[link.icon as keyof typeof IconMap] || FileText;
+            const category = USEFUL_LINK_CATEGORIES.find((c) => c.id === link.category);
+            const Icon = IconMap[category?.icon ?? 'book'] ?? FileText;
             return (
               <a
                 key={link.id}
