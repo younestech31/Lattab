@@ -80,11 +80,11 @@ export const translations = {
       heading: 'الاختصاصات التوثيقية للمكتب',
       items: [
         { title: 'عقود البيع والشراء العقارية', description: 'يتولى الموثق تحرير عقود البيع والشراء العقارية وفق الإجراءات القانونية المعمول بها، بما في ذلك التحقق من الملكية والوضعية القانونية.', features: ['عقود بيع عقارات سكنية', 'عقود بيع محلات تجارية', 'عقود بيع أراضي', 'عقود بيع مركبات'] },
-        { title: 'عقود الإيجار والتأجير', description: 'يتولى الموثق إعداد عقود الإيجار وفقاً للتشريع الساري لحماية حقوق الطرفين المتعاقدين.', features: ['إيجار سكني طويل الأمد', 'إيجار تجاري', 'عقود إيجار موسمية', 'تجديد العقود'] },
+        { title: 'عقود الزواج والاتفاق المالي', description: 'توثيق عقد الزواج الرسمي والشروط المالية والاتفاق على الأموال المشتركة وفقاً لقانون الأسرة الجزائري.', features: ['عقود الزواج الرسمية', 'تنظيم الأموال المشتركة', 'شروط العمل والدراسة', 'المصادقة الدولية'] },
         { title: 'الوكالات والتفويضات', description: 'يُحرر الموثق الوكالات القانونية مع تحديد دقيق لنطاق الصلاحيات التفويضية.', features: ['وكالة عامة كاملة', 'وكالة خاصة محددة', 'وكالة قضائية', 'وكالة بنكية'] },
         { title: 'تأسيس الشركات والمؤسسات', description: 'يتولى الموثق تحرير العقود التأسيسية للشركات التجارية وفق أحكام القانون التجاري.', features: ['شركات ذات مسؤولية محدودة', 'شركات تضامن', 'شركات مساهمة', 'تعديل النظام الأساسي'] },
         { title: 'الرهن والتأمينات', description: 'يُوثق المكتب عقود الرهن والتأمينات العينية وفق القواعد القانونية.', features: ['رهن عقاري', 'رهن حيازي', 'رفع الرهن', 'عقود تأمين'] },
-        { title: 'التصريحات والمصادقات', description: 'يُحرر المكتب التصريحات والمصادقات القانونية طبقاً للتشريعات السارية.', features: ['مصادقة التوقيع', 'تصريحات الشرف', 'شهادات الملكية', 'تصريحات الإرث'] }
+        { title: 'الفريضة والتركات', description: 'إجراءات تحرير الفريضة التوثيقية، حصر التركة، وإعداد الشهادة التوثيقية لنقل الملكية العقارية بالميراث.', features: ['عقود الفريضة الشرعية', 'نقل الملكية العقارية', 'القسمة الودية', 'حصر التركة'] }
       ],
       cta: 'الاستفسار حول الإجراءات'
     },
@@ -311,11 +311,11 @@ export const translations = {
       heading: 'Compétences notariales',
       items: [
         { title: 'Actes de vente immobilière', description: 'Le notaire rédige les actes de vente immobilière conformément aux procédures légales en vigueur, incluant la vérification du titre et de la situation juridique.', features: ['Actes de vente de logements', 'Actes de vente de locaux commerciaux', 'Actes de vente de terrains', 'Actes de vente de véhicules'] },
-        { title: 'Actes de location', description: 'Le notaire prépare les actes de location selon la législation en vigueur pour protéger les droits des parties contractantes.', features: ['Location résidentielle longue durée', 'Location commerciale', 'Contrats de location saisonnière', 'Renouvellement de contrats'] },
+        { title: 'Contrats de mariage', description: 'Authentification solennelle du mariage et rédaction des stipulations patrimoniales conformément au Code de la Famille algérien.', features: ['Actes de mariage officiels', 'Gestion des biens communs', 'Clauses professionnelles', 'Homologation consulaire'] },
         { title: 'Procurations et mandats', description: 'Le notaire rédige les procurations légales avec une définition précise de l\'étendue des pouvoirs de représentation.', features: ['Procuration générale complète', 'Procuration spéciale spécifique', 'Procuration judiciaire', 'Procuration bancaire'] },
         { title: 'Constitution de sociétés', description: 'Le notaire rédige les statuts de sociétés commerciales conformément aux dispositions du Code de Commerce.', features: ['SARL', 'Société de personnes', 'Société par actions', 'Modification des statuts'] },
         { title: 'Hypothèques et assurances', description: 'L\'Étude documente les actes d\'hypothèque et les sûretés réelles selon les règles juridiques.', features: ['Hypothèque immobilière', 'Hypothèque possessive', 'Mainlevée d\'hypothèque', 'Actes d\'assurance'] },
-        { title: 'Déclarations et certifications', description: 'L\'Étude rédige les déclarations et certifications légales conformément aux législations en vigueur.', features: ['Certification de signature', 'Déclarations sur l\'honneur', 'Attestations de propriété', 'Déclarations de succession'] }
+        { title: 'Successions et héritages', description: 'Liquidation des successions, dévolution successorale and publication of land transfer for the benefit of heirs.', features: ['Actes de notoriété (Fridha)', 'Attestations immobilières', 'Partages amiables', 'Mutation de propriété'] }
       ],
       cta: 'Renseignez-vous sur les procédures'
     },
