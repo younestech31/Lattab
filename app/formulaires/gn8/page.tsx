@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import GN8FormFiller from '@/components/forms/gn8/GN8FormFiller';
 import { JsonLdScript } from '@/components/schema';

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Calculator, AlertCircle, TrendingDown, Info } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import PriceCalculator from '@/components/PriceCalculator';
 import CalculatorSkeleton from '@/components/CalculatorSkeleton';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
