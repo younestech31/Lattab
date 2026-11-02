@@ -12,7 +12,7 @@ const cspHeader = [
   "font-src 'self' data:",
   "img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://maps.gstatic.com",
   "style-src 'self' 'unsafe-inline'",
-  `script-src ${isProd ? "'self'" : "'self' 'unsafe-eval' 'unsafe-inline'"}`,
+  `script-src ${isProd ? "'self' 'unsafe-inline'" : "'self' 'unsafe-eval' 'unsafe-inline'"}`,
   `connect-src ${isProd ? "'self' https://va.vercel-insights.com" : "'self' ws: wss: http: https:"}`,
   "frame-src 'self' https://www.google.com https://maps.google.com https://maps.googleapis.com",
 ]
