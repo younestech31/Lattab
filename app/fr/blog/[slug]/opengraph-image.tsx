@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { frBlogPosts } from '@/lib/data/blog';
 
 export const revalidate = 86400;
@@ -14,10 +16,12 @@ export async function generateStaticParams() {
 }
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
-  // Load Cairo font for consistent branding
-  const cairoRegular = await fetch(
-    new URL('../../../../public/fonts/Cairo-Regular.ttf', import.meta.url)
-  ).then((res) => res.arrayBuffer());
+  // Load Cairo font from disk (Node.js runtime). Relative import.meta.url + fetch
+  // resolves to /_next/static/media/... which is not a valid absolute URL and
+  // breaks prerender with ERR_INVALID_URL.
+  const cairoRegular = await readFile(
+    join(process.cwd(), 'public/fonts/Cairo-Regular.ttf')
+  );
 
   try {
     const { slug } = await params;
