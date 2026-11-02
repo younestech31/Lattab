@@ -57,19 +57,53 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function CalculatorPage() {
-  const webApplicationSchema = {
+  const serviceSchema = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type": "GovernmentService",
+    "@id": `${SITE_URL}/#notary-office`,
     "name": "حاسبة السعر المرجعي العقاري 2026 — الجزائر",
     "url": `${SITE_URL}/calculateur-prix-referentiel`,
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Web",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DZD" }
+    "description": "حاسبة السعر المرجعي العقاري — أداة إعلامية استرشادية بناءً على الجداول الرسمية المعتمدة من المديرية العامة للضرائب ووزارة المالية.",
+    "provider": {
+      "@type": "GovernmentService",
+      "@id": `${SITE_URL}/#notary-office`,
+      "name": "ديوان التوثيق ببلدية وهران",
+      "legalName": "ديوان التوثيق ببلدية وهران",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي",
+        "addressLocality": "وهران",
+        "addressRegion": "وهران",
+        "postalCode": "31000",
+        "addressCountry": "DZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.7277124,
+        "longitude": -0.5931358
+      },
+      "hasMap": GOOGLE_MAPS_URL,
+      "areaServed": { "@type": "AdministrativeArea", "name": "Oran" },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "08:30",
+          "closes": "12:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "13:30",
+          "closes": "16:00"
+        }
+      ]
+    }
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <SchemaScriptLoader schemas={[webApplicationSchema]} />
+      <SchemaScriptLoader schemas={[serviceSchema]} />
       <WebPageSchema
         url={`${SITE_URL}/calculateur-prix-referentiel`}
         name="حاسبة السعر المرجعي للعقار 2026"

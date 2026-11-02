@@ -47,7 +47,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
       ? 'بيانات الاتصال بديوان التوثيق ببلدية وهران: العنوان بحي العقيد لطفي، أرقام الهاتف، البريد الإلكتروني، مواعيد العمل، والموقع على الخريطة.'
       : 'Coordonnées de l\'office notarial de Office Notarial - Oran à Oran : adresse à Akid Lotfi, téléphones, horaires et plan d\'accès.',
     mainEntity: {
-      '@type': ['LegalService', 'Notary'],
+      '@type': 'GovernmentService',
       '@id': isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`,
       name: brandTitle,
       alternateName: brandSubtitle,
@@ -67,6 +67,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
         longitude: -0.5931358,
       },
       hasMap: GOOGLE_MAPS_URL,
+      areaServed: { '@type': 'AdministrativeArea', 'name': 'Oran' },
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
@@ -144,11 +145,11 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
                   <div className="space-y-1 font-mono" dir="ltr">
                     <div>
                       <PhoneLink type="office" className="text-emerald-700 font-bold hover:underline" />
-                      <span className="text-gray-400 text-xs ms-2">({isAr ? 'خط المكتب الرئيسي' : 'Ligne directe'})</span>
+                      <span className="text-gray-600 text-xs ms-2">({isAr ? 'خط المكتب الرئيسي' : 'Ligne directe'})</span>
                     </div>
                     <div>
                       <PhoneLink type="support" className="text-emerald-700 font-bold hover:underline" />
-                      <span className="text-gray-400 text-xs ms-2">({isAr ? 'الأمانة والمتابعة' : 'Secrétariat'})</span>
+                      <span className="text-gray-600 text-xs ms-2">({isAr ? 'الأمانة والمتابعة' : 'Secrétariat'})</span>
                     </div>
                   </div>
                 </div>
@@ -177,7 +178,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
                 <div>
                   <p className="font-bold text-gray-900 mb-0.5">{isAr ? 'ساعات الاستقبال والعمل' : 'Horaires d\'ouverture'}</p>
                   <p>{isAr ? 'الأحد – الخميس: 08:30 إلى 12:00 ومن 13:30 إلى 16:00' : 'Dimanche – Jeudi : 08h30 à 12h00 et 13h30 à 16h00'}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{isAr ? 'الجمعة والسبت: عطلة أسبوعية' : 'Vendredi et Samedi : Fermé'}</p>
+                  <p className="text-xs text-gray-600 mt-0.5">{isAr ? 'الجمعة والسبت: عطلة أسبوعية' : 'Vendredi et Samedi : Fermé'}</p>
                 </div>
               </div>
             </div>

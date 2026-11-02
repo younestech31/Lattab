@@ -49,7 +49,7 @@ export default function AboutView({ lang }: AboutViewProps) {
       ? 'نبذة تعريفية عن ديوان التوثيق - وهران، موثق معتمد لدى محكمة فلاوسن بوهران، المؤهلات العلمية، المسار المهني، ومبادئ العمل التوثيقي.'
       : 'Présentation de Office Notarial - Oran, notaire agréé près le Tribunal de Flaussen à Oran : formation universitaire, parcours et déontologie.',
     mainEntity: {
-      '@type': ['LegalService', 'Notary'],
+      '@type': 'GovernmentService',
       '@id': isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`,
       name: brandTitle,
       alternateName: brandSubtitle,
@@ -70,6 +70,7 @@ export default function AboutView({ lang }: AboutViewProps) {
         longitude: -0.5931358,
       },
       hasMap: GOOGLE_MAPS_URL,
+      areaServed: { '@type': 'AdministrativeArea', 'name': 'Oran' },
     },
   };
 
@@ -192,11 +193,11 @@ export default function AboutView({ lang }: AboutViewProps) {
                   <div className="space-y-1 font-mono" dir="ltr">
                     <div>
                       <PhoneLink type="office" className="text-emerald-700 hover:underline" />
-                      <span className="text-gray-400 text-xs ms-2">({isAr ? 'المكتب' : 'Bureau'})</span>
+                      <span className="text-gray-600 text-xs ms-2">({isAr ? 'المكتب' : 'Bureau'})</span>
                     </div>
                     <div>
                       <PhoneLink type="support" className="text-emerald-700 hover:underline" />
-                      <span className="text-gray-400 text-xs ms-2">({isAr ? 'المتابعة' : 'Secrétariat'})</span>
+                      <span className="text-gray-600 text-xs ms-2">({isAr ? 'المتابعة' : 'Secrétariat'})</span>
                     </div>
                   </div>
                 </div>
@@ -219,7 +220,7 @@ export default function AboutView({ lang }: AboutViewProps) {
                 <div>
                   <p className="font-bold text-gray-900">{isAr ? 'أوقات العمل' : 'Horaires d\'ouverture'}</p>
                   <p>{isAr ? 'الأحد إلى الخميس: 08:30 – 12:00 ومن 13:30 – 16:00' : 'Dimanche au Jeudi : 08h30 – 12h00 et 13h30 – 16h00'}</p>
-                  <p className="text-xs text-gray-400">{isAr ? 'الجمعة والسبت: مغلق' : 'Vendredi et Samedi : Fermé'}</p>
+                  <p className="text-xs text-gray-600">{isAr ? 'الجمعة والسبت: مغلق' : 'Vendredi et Samedi : Fermé'}</p>
                 </div>
               </div>
             </div>

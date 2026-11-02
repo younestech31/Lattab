@@ -9,7 +9,7 @@ export default function ContactInfo({ lang }: { lang: Language }) {
   const t_info = translations[lang].contact.info;
   
   return (
-    <address itemScope itemType="https://schema.org/LocalBusiness" className="space-y-6 no-print not-italic" dir={isAr ? 'rtl' : 'ltr'}>
+    <address className="space-y-6 no-print not-italic" dir={isAr ? 'rtl' : 'ltr'}>
       {/* Address */}
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
         <div className="flex items-start gap-4">
@@ -21,13 +21,12 @@ export default function ContactInfo({ lang }: { lang: Language }) {
           </div>
           <div className="text-start">
             <h3 className="font-bold text-gray-800 mb-1">{t_info.address}</h3>
-            <p className="text-gray-600 text-sm" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+            <p className="text-gray-600 text-sm">
               <a
                 href={GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-emerald-600 transition-colors"
-                itemProp="streetAddress"
               >
                 {isAr ? (
                   <>
@@ -61,11 +60,11 @@ export default function ContactInfo({ lang }: { lang: Language }) {
             <div className="text-gray-600 text-sm space-y-2">
               <div className="flex items-center gap-2">
                 <PhoneLink type="office" lang={lang} className="hover:text-emerald-600 transition-colors font-medium" />
-                <span className="text-gray-400 text-xs ms-2">{t_info.phone_office}</span>
+                <span className="text-gray-600 text-xs ms-2">{t_info.phone_office}</span>
               </div>
               <div className="flex items-center gap-2">
                 <PhoneLink type="support" lang={lang} className="hover:text-emerald-600 transition-colors font-medium" />
-                <span className="text-gray-400 text-xs ms-2">{t_info.phone_support}</span>
+                <span className="text-gray-600 text-xs ms-2">{t_info.phone_support}</span>
               </div>
             </div>
           </div>

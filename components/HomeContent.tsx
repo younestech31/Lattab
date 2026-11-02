@@ -31,7 +31,7 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
 
   const notarySchema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": ["LegalService", "Notary"],
+    "@type": "GovernmentService",
     "@id": notaryId,
     "url": pageUrl,
     "name": isAr ? "ديوان التوثيق ببلدية وهران" : "Office Notarial - Oran",
@@ -57,15 +57,7 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
       "longitude": -0.5931358
     },
     "hasMap": GOOGLE_MAPS_URL,
-    "sameAs": [
-      GOOGLE_MAPS_URL
-    ],
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Oran" },
-      { "@type": "AdministrativeArea", "name": "Aïn Témouchent" },
-      { "@type": "AdministrativeArea", "name": "Mostaganem" },
-      { "@type": "AdministrativeArea", "name": "Relizane" }
-    ],
+    "areaServed": { "@type": "AdministrativeArea", "name": "Oran" },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",

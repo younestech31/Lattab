@@ -44,25 +44,48 @@ export const metadata: Metadata = {
 };
 
 export default function GN8Page() {
-  const webApplicationSchema = {
+  const serviceSchema = {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
+    '@type': 'GovernmentService',
+    '@id': `${SITE_URL}/#notary-office`,
     'name': 'استمارة ج رقم 08 — تصريح بالوجود',
     'url': `${SITE_URL}/formulaires/gn8`,
-    'inLanguage': 'ar-DZ',
-    'applicationCategory': 'TaxApplication',
-    'operatingSystem': 'Web',
     'description': 'أداة تعبئة استمارة سلسلة ج رقم 08 الرسمية للتصريح بالوجود لدى مصلحة الضرائب وتوليد ملف PDF مطابق تماماً للنموذج الإداري لعام 2024.',
-    'offers': {
-      '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'DZD',
-    },
     'provider': {
-      '@type': ['LegalService', 'Notary'],
-      'name': 'ديوان التوثيق — الأستاذ لعطب محمد',
-      'url': SITE_URL,
-    },
+      '@type': 'GovernmentService',
+      '@id': `${SITE_URL}/#notary-office`,
+      'name': 'ديوان التوثيق ببلدية وهران',
+      'legalName': 'ديوان التوثيق ببلدية وهران',
+      'address': {
+        '@type': 'PostalAddress',
+        'streetAddress': 'حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي',
+        'addressLocality': 'وهران',
+        'addressRegion': 'وهران',
+        'postalCode': '31000',
+        'addressCountry': 'DZ'
+      },
+      'geo': {
+        '@type': 'GeoCoordinates',
+        'latitude': 35.7277124,
+        'longitude': -0.5931358
+      },
+      'hasMap': GOOGLE_MAPS_URL,
+      'areaServed': { '@type': 'AdministrativeArea', 'name': 'Oran' },
+      'openingHoursSpecification': [
+        {
+          '@type': 'OpeningHoursSpecification',
+          'dayOfWeek': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+          'opens': '08:30',
+          'closes': '12:00'
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          'dayOfWeek': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+          'opens': '13:30',
+          'closes': '16:00'
+        }
+      ]
+    }
   };
 
   const faqSchema = {
@@ -98,7 +121,7 @@ export default function GN8Page() {
 
   return (
     <div>
-      <JsonLdScript schema={webApplicationSchema} />
+      <JsonLdScript schema={serviceSchema} />
       <JsonLdScript schema={faqSchema} />
       <UnifiedPageHeader
         lang="ar"

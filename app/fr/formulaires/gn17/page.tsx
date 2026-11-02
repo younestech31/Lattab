@@ -44,25 +44,48 @@ export const metadata: Metadata = {
 };
 
 export default function GN17PageFR() {
-  const webApplicationSchema = {
+  const serviceSchema = {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
+    '@type': 'GovernmentService',
+    '@id': `${SITE_URL}/fr#notary-office`,
     'name': 'Formulaire Série G N° 17 — Déclaration de Plus-Value Immobilière',
     'url': `${SITE_URL}/fr/formulaires/gn17`,
-    'inLanguage': 'fr-DZ',
-    'applicationCategory': 'TaxApplication',
-    'operatingSystem': 'Web',
     'description': 'Outil de remplissage du formulaire officiel Série G N° 17 pour la liquidation de l\'IRG/Plus-value immobilière et la génération d\'un fichier PDF conforme au gabarit officiel.',
-    'offers': {
-      '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'DZD',
-    },
     'provider': {
-      '@type': ['LegalService', 'Notary'],
-      'name': 'Office Notarial — Me Lattab Mohamed',
-      'url': `${SITE_URL}/fr`,
-    },
+      '@type': 'GovernmentService',
+      '@id': `${SITE_URL}/fr#notary-office`,
+      'name': 'Office Notarial - Oran',
+      'legalName': 'Office Notarial - Oran',
+      'address': {
+        '@type': 'PostalAddress',
+        'streetAddress': 'Cité 557 Logements, Immeuble D24, 1er Étage, Appt 768, Akid Lotfi',
+        'addressLocality': 'Oran',
+        'addressRegion': 'Oran',
+        'postalCode': '31000',
+        'addressCountry': 'DZ'
+      },
+      'geo': {
+        '@type': 'GeoCoordinates',
+        'latitude': 35.7277124,
+        'longitude': -0.5931358
+      },
+      'hasMap': GOOGLE_MAPS_URL,
+      'areaServed': { '@type': 'AdministrativeArea', 'name': 'Oran' },
+      'openingHoursSpecification': [
+        {
+          '@type': 'OpeningHoursSpecification',
+          'dayOfWeek': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+          'opens': '08:30',
+          'closes': '12:00'
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          'dayOfWeek': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+          'opens': '13:30',
+          'closes': '16:00'
+        }
+      ]
+    }
   };
 
   const faqSchema = {
@@ -98,7 +121,7 @@ export default function GN17PageFR() {
 
   return (
     <div>
-      <JsonLdScript schema={webApplicationSchema} />
+      <JsonLdScript schema={serviceSchema} />
       <JsonLdScript schema={faqSchema} />
       <UnifiedPageHeader
         lang="fr"
