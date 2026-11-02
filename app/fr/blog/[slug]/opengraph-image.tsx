@@ -1,6 +1,4 @@
 import { ImageResponse } from 'next/og';
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
 import { frBlogPosts } from '@/lib/data/blog';
 
 export const revalidate = 86400;
@@ -16,19 +14,12 @@ export async function generateStaticParams() {
 }
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
-  // Load Cairo font from disk (Node.js runtime). Relative import.meta.url + fetch
-  // resolves to /_next/static/media/... which is not a valid absolute URL and
-  // breaks prerender with ERR_INVALID_URL.
-  const cairoRegular = await readFile(
-    join(process.cwd(), 'public/fonts/Cairo-Regular.ttf')
-  );
-
   try {
     const { slug } = await params;
     const post = frBlogPosts.find((p) => p.slug === slug);
 
-    const title = post?.title ?? 'Office Notarial - Oran - Notaire à Oran';
-    const category = post?.category ?? 'Droit Algérien';
+    const title = post?.title ?? 'Office Notarial - Oran - Notaire a Oran';
+    const category = post?.category ?? 'Droit Algerien';
 
     return new ImageResponse(
       (
@@ -41,23 +32,10 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             flexDirection: 'column',
             justifyContent: 'space-between',
             padding: '60px',
-            fontFamily: 'Cairo',
+            fontFamily: 'sans-serif',
+            color: '#ffffff',
           }}
         >
-          <div style={{ color: '#d1fae5', fontSize: '22px', fontWeight: 600 }}>
-            {category}
-          </div>
-          <div
-            style={{
-              color: '#ffffff',
-              fontSize: '48px',
-              fontWeight: 800,
-              lineHeight: 1.25,
-              maxWidth: '960px',
-            }}
-          >
-            {title}
-          </div>
           <div
             style={{
               display: 'flex',
@@ -66,17 +44,65 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               width: '100%',
             }}
           >
-            <div style={{ color: '#ffffff', fontSize: '22px' }}>
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.15)',
+                color: '#d1fae5',
+                padding: '8px 18px',
+                borderRadius: '8px',
+                fontSize: '20px',
+                fontWeight: 600,
+              }}
+            >
+              {category}
+            </div>
+            <div
+              style={{
+                background: '#f59e0b',
+                color: '#064e3b',
+                padding: '8px 20px',
+                borderRadius: '8px',
+                fontWeight: 800,
+                fontSize: '20px',
+              }}
+            >
+              2026
+            </div>
+          </div>
+
+          <div
+            style={{
+              color: '#ffffff',
+              fontSize: '48px',
+              fontWeight: 800,
+              lineHeight: 1.25,
+              maxWidth: '980px',
+            }}
+          >
+            {title}
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+              paddingTop: '24px',
+              width: '100%',
+            }}
+          >
+            <div style={{ color: '#ffffff', fontSize: '20px', fontWeight: 600 }}>
               Office Notarial - Oran
             </div>
             <div
               style={{
                 background: '#f59e0b',
                 color: '#064e3b',
-                padding: '10px 20px',
+                padding: '8px 18px',
                 borderRadius: '8px',
                 fontWeight: 700,
-                fontSize: '18px',
+                fontSize: '16px',
               }}
             >
               lattab.vercel.app
@@ -84,7 +110,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           </div>
         </div>
       ),
-      { ...size, fonts: [{ name: "Cairo", data: cairoRegular, style: "normal", weight: 400 }] }
+      { ...size }
     );
   } catch {
     // Fail-safe fallback: Never return a 500 error to search engine crawlers
@@ -100,20 +126,20 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             justifyContent: 'center',
             alignItems: 'center',
             padding: '60px',
-            fontFamily: 'Cairo',
+            fontFamily: 'sans-serif',
             color: '#ffffff',
             textAlign: 'center',
           }}
         >
-          <div style={{ fontSize: '48px', fontWeight: 800, marginBottom: '20px' }}>
-            Office Notarial - Oran
+          <div style={{ fontSize: '44px', fontWeight: 800, marginBottom: '16px' }}>
+            Office Notarial - Oran — Notaire a Oran
           </div>
           <div style={{ fontSize: '24px', color: '#d1fae5' }}>
-            Guide Juridique et Notarial Algérien
+            Guide Juridique et Notarial Algerien 2026
           </div>
         </div>
       ),
-      { ...size, fonts: [{ name: "Cairo", data: cairoRegular, style: "normal", weight: 400 }] }
+      { ...size }
     );
   }
 }
