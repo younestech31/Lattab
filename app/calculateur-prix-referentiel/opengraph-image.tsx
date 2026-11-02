@@ -1,10 +1,36 @@
 import { ImageResponse } from 'next/og';
 
+export const runtime = 'nodejs';
 export const revalidate = 86400;
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'حاسبة السعر المرجعي العقاري 2026 - Calculateur des Prix de Référence Immobilier 2026';
+export const alt =
+  'Calculateur des Prix de Reference Immobilier 2026 - Office Notarial Oran';
+
+function buildFallbackImage() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '1200px',
+          height: '630px',
+          background: '#059669',
+          color: '#ffffff',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: '48px',
+          fontWeight: 800,
+          fontFamily: 'sans-serif',
+        }}
+      >
+        Calculateur des Prix de Reference Immobilier 2026
+      </div>
+    ),
+    { ...size }
+  );
+}
 
 export default async function Image() {
   try {
@@ -23,7 +49,6 @@ export default async function Image() {
             color: '#ffffff',
           }}
         >
-          {/* Top category & year badge */}
           <div
             style={{
               display: 'flex',
@@ -58,7 +83,6 @@ export default async function Image() {
             </div>
           </div>
 
-          {/* Main Title */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div
               style={{
@@ -82,7 +106,6 @@ export default async function Image() {
             </div>
           </div>
 
-          {/* Institutional Footer */}
           <div
             style={{
               display: 'flex',
@@ -120,26 +143,6 @@ export default async function Image() {
       { ...size }
     );
   } catch {
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            width: '1200px',
-            height: '630px',
-            background: '#059669',
-            color: '#ffffff',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            fontSize: '48px',
-            fontWeight: 800,
-            fontFamily: 'sans-serif',
-          }}
-        >
-          Calculateur des Prix de Reference Immobilier 2026
-        </div>
-      ),
-      { ...size }
-    );
+    return buildFallbackImage();
   }
 }
