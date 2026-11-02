@@ -83,7 +83,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react'],
   },
   outputFileTracingIncludes: {
-    '/**': ['./content/**/*'],
+    '/**': ['./content/**/*', './public/fonts/**/*'],
   },
 };
 
