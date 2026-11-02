@@ -10,7 +10,7 @@ export default function Hero({ lang }: { lang: Language }) {
         className="
           scroll-mt-20
           relative flex items-center justify-center bg-emerald-900
-          min-h-[70svh]
+          min-h-screen min-h-[100dvh]
           pt-20 pb-10 sm:pt-24 sm:pb-12
         "
       >
