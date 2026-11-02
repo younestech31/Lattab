@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLang } from '@/lib/i18n';
+import { officeTelDigits } from '@/lib/contact/channels';
 
 interface DocumentChecklistProps {
   documents: string[];
@@ -126,9 +127,10 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       };
 
       const drawFooter = () => {
+        const tel = `+${officeTelDigits()}`;
         const footerText = isAr 
-          ? 'العنوان: حي 557 مسكن، العقيد لطفي، وهران | هاتف: +213562296981 | https://lattab.vercel.app' 
-          : 'Cité 557 Logements, Akid Lotfi, Oran | Tél : +213 562 29 69 81 | https://lattab.vercel.app';
+          ? `العنوان: حي 557 مسكن، العقيد لطفي، وهران | هاتف: ${tel} | https://lattab.vercel.app` 
+          : `Cité 557 Logements, Akid Lotfi, Oran | Tél : ${tel} | https://lattab.vercel.app`;
         const formattedFooter = isAr ? shapeArabicForPdf(footerText) : footerText;
         page.drawText(formattedFooter, {
           x: (A4_WIDTH - customFont.widthOfTextAtSize(formattedFooter, 8)) / 2,

@@ -5,7 +5,7 @@ import { SITE_URL } from '@/lib/config';
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = 'Notaire à Oran — Office Notarial - Oran | Tribunal de Flaussen';
-  const desc = 'Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Prise de rendez-vous.';
+  const desc = 'Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession et renseignements administratifs.';
 
   return {
     title: { absolute: title },

@@ -94,7 +94,7 @@ export default function NotFound() {
               href="/contact"
               className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-5 rounded-xl transition text-center text-sm shadow-sm"
             >
-              حجز موعد إداري / Prendre RDV
+              استفسار إداري / Renseignement administratif
             </Link>
             <div className="flex items-center gap-2">
               <span>المساعدة عبر الهاتف:</span>

@@ -1,25 +1,31 @@
 'use client';
 import { useState, useEffect, useActionState, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Calendar, Clock, User, Phone, FileText, Building, CheckCircle, Loader2, AlertTriangle, Printer, ExternalLink } from 'lucide-react';
-import { AppointmentFormData, TIME_DISPLAY_TO_24H, MORNING_SLOTS, AFTERNOON_SLOTS, generateWhatsAppAppointmentUrl } from './types';
+import { Calendar, User, Phone, FileText, Building, CheckCircle, Loader2, AlertTriangle, Printer, ExternalLink, Clock } from 'lucide-react';
+import { AppointmentFormData } from './types';
 import { validateAppointment, AppointmentState } from '@/app/actions/appointment';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
 import PhoneLink from '@/components/ui/PhoneLink';
+import { buildInquiryWaUrl } from '@/lib/contact/channels';
 
 export default function AppointmentForm({ services }: { services: readonly string[] }) {
   const { lang } = useLang();
   const t_form = translations[lang].contact.form;
   const isAr = lang === 'ar';
-  
+
   const searchParams = useSearchParams();
   const initialState: AppointmentState = { success: false, errors: {} };
   const [state, formAction, isPending] = useActionState(validateAppointment, initialState);
 
   const [appointmentData, setAppointmentData] = useState<AppointmentFormData>({
-    name: '', phone: '', service: '',
-    date: '', time: '', notes: '', company: '',
+    name: '',
+    phone: '',
+    service: '',
+    date: '',
+    time: '',
+    notes: '',
+    company: '',
     honeypot: '',
   });
 
@@ -28,11 +34,11 @@ export default function AppointmentForm({ services }: { services: readonly strin
   const [minDate, setMinDate] = useState<string>('');
   const [maxDate, setMaxDate] = useState<string>('');
   const whatsappUrlRef = useRef<string | null>(null);
-  
+
   useEffect(() => {
     const now = new Date();
     setMinDate(now.toISOString().split('T')[0]);
-    
+
     const max = new Date();
     max.setDate(max.getDate() + 90);
     setMaxDate(max.toISOString().split('T')[0]);
@@ -41,15 +47,14 @@ export default function AppointmentForm({ services }: { services: readonly strin
   useEffect(() => {
     const serviceParam = searchParams.get('service');
     if (serviceParam && services.includes(decodeURIComponent(serviceParam))) {
-      setAppointmentData(prev => ({ ...prev, service: decodeURIComponent(serviceParam) }));
+      setAppointmentData((prev) => ({ ...prev, service: decodeURIComponent(serviceParam) }));
     }
   }, [searchParams, services]);
 
-  // Handle successful submission and navigation
   useEffect(() => {
     if (state.success && !isAppointmentSubmitted) {
       setIsAppointmentSubmitted(true);
-      const url = whatsappUrlRef.current || generateWhatsAppAppointmentUrl(appointmentData, lang);
+      const url = whatsappUrlRef.current || buildInquiryWaUrl(lang, appointmentData.service);
       window.location.href = url;
     }
   }, [state.success, isAppointmentSubmitted, appointmentData, lang]);
@@ -59,31 +64,12 @@ export default function AppointmentForm({ services }: { services: readonly strin
     return hints[service] || null;
   };
 
-  const isPastTime = (slot: string, selectedDate: string) => {
-    if (!selectedDate) return false;
-    const now = new Date();
-    const localISOTime = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-    if (selectedDate !== localISOTime) return false;
-    
-    const time24h = TIME_DISPLAY_TO_24H[slot] ?? slot;
-    if (!time24h) return false;
-    
-    const [hours, minutes] = time24h.split(':').map(Number);
-    const currentTime = new Date();
-    return currentTime.getHours() > hours || (currentTime.getHours() === hours && currentTime.getMinutes() > minutes);
-  };
-
   const formatPhoneNumber = (value: string) => {
     return value.replace(/[^\d\s\+\-\(\)]/g, '');
   };
 
-  const localizeTimeSlot = (slot: string) => {
-    if (lang === 'ar') return slot;
-    return slot.replace('صباحاً', 'AM').replace('ظهراً', 'PM').replace('عصراً', 'PM');
-  };
-
   const handleManualWhatsAppOpen = () => {
-    const url = whatsappUrlRef.current || generateWhatsAppAppointmentUrl(appointmentData, lang);
+    const url = whatsappUrlRef.current || buildInquiryWaUrl(lang, appointmentData.service);
     window.location.href = url;
   };
 
@@ -94,30 +80,46 @@ export default function AppointmentForm({ services }: { services: readonly strin
           <CheckCircle className="w-10 h-10 text-emerald-600" />
         </div>
         <h3 className="text-2xl font-bold text-gray-900 mb-4">{t_form.success_appointment_title}</h3>
-        <p className="text-gray-600 mb-8 leading-relaxed">
+        <p className="text-gray-600 mb-8 leading-relaxed max-w-xl mx-auto">
           {t_form.success_appointment_desc}
         </p>
 
-        {/* Receipt display for printing */}
-        <div className="bg-gray-50 rounded-2xl p-6 mb-8 text-start border border-gray-100">
-          <h4 className="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">{isAr ? 'تفاصيل الموعد' : 'Détails du RDV'}</h4>
+        {/* Display details for reference/print */}
+        <div className="bg-gray-50 rounded-2xl p-6 mb-8 text-start border border-gray-100 max-w-xl mx-auto">
+          <h4 className="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">
+            {isAr ? 'ملخص الاستفسار الإداري' : 'Récapitulatif de la demande administrative'}
+          </h4>
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
               <span className="text-gray-500">{t_form.name}:</span>
               <span className="font-medium text-gray-900">{appointmentData.name}</span>
             </div>
+            {appointmentData.company && (
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-500">{t_form.company}:</span>
+                <span className="font-medium text-gray-900">{appointmentData.company}</span>
+              </div>
+            )}
             <div className="flex justify-between text-sm">
               <span className="text-gray-500">{t_form.service}:</span>
               <span className="font-medium text-gray-900">{appointmentData.service}</span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-500">{t_form.date} & {t_form.time}:</span>
-              <span className="font-medium text-gray-900">{appointmentData.date} - {appointmentData.time}</span>
-            </div>
+            {appointmentData.date && (
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-500">{t_form.date}:</span>
+                <span className="font-medium text-gray-900">{appointmentData.date}</span>
+              </div>
+            )}
+            {appointmentData.time && (
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-500">{t_form.time}:</span>
+                <span className="font-medium text-gray-900">{appointmentData.time}</span>
+              </div>
+            )}
           </div>
-          
+
           <div className="mt-6 flex gap-3 no-print">
-             <button 
+            <button
               onClick={() => window.print()}
               className="flex-1 inline-flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-3 rounded-xl transition-all"
             >
@@ -126,9 +128,9 @@ export default function AppointmentForm({ services }: { services: readonly strin
             </button>
           </div>
         </div>
-        
-        <div className="flex flex-col gap-4 no-print">
-          <button 
+
+        <div className="flex flex-col gap-4 max-w-md mx-auto no-print">
+          <button
             onClick={handleManualWhatsAppOpen}
             className="inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-2xl transition-all shadow-lg hover:shadow-emerald-200 touch-manipulation"
           >
@@ -155,14 +157,14 @@ export default function AppointmentForm({ services }: { services: readonly strin
   }
 
   return (
-    <form 
+    <form
       action={async (formData) => {
-        const url = generateWhatsAppAppointmentUrl(appointmentData, lang);
+        const url = buildInquiryWaUrl(lang, appointmentData.service);
         whatsappUrlRef.current = url;
         await formAction(formData);
       }}
-      className="space-y-6" 
-      id="booking-form" 
+      className="space-y-6"
+      id="inquiry-admin-form"
       dir={isAr ? 'rtl' : 'ltr'}
     >
       {Object.keys(state.errors).length > 0 && (
@@ -179,7 +181,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
 
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="appt-name" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="appt-name" className="block text-sm font-medium text-gray-700 mb-2 text-start">
             <User className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
             {t_form.name}
           </label>
@@ -218,7 +220,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
 
       <div className="grid md:grid-cols-1 gap-6">
         <div>
-          <label htmlFor="appointment_company" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="appointment_company" className="block text-sm font-medium text-gray-700 mb-2 text-start">
             <Building className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
             {t_form.company}
           </label>
@@ -237,7 +239,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
 
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="appointment_service" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="appointment_service" className="block text-sm font-medium text-gray-700 mb-2 text-start">
             {t_form.service}
           </label>
           <select
@@ -253,8 +255,8 @@ export default function AppointmentForm({ services }: { services: readonly strin
               <option key={index} value={service}>{service}</option>
             ))}
           </select>
-          {(appointmentData.service && getRequiredDocsForService(appointmentData.service)) && (
-            <div className={`mt-3 bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100 text-sm animate-in fade-in slide-in-from-top-2 text-start`}>
+          {appointmentData.service && getRequiredDocsForService(appointmentData.service) && (
+            <div className="mt-3 bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100 text-sm animate-in fade-in slide-in-from-top-2 text-start">
               <p className="font-bold mb-1">{t_form.required_docs}</p>
               <ul className="list-disc list-inside space-y-1 text-blue-700 ms-2">
                 {getRequiredDocsForService(appointmentData.service)?.map((doc, idx) => (
@@ -264,8 +266,9 @@ export default function AppointmentForm({ services }: { services: readonly strin
             </div>
           )}
         </div>
+
         <div>
-          <label htmlFor="appointment_date" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="appointment_date" className="block text-sm font-medium text-gray-700 mb-2 text-start">
             <Calendar className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
             {t_form.date}
           </label>
@@ -273,7 +276,6 @@ export default function AppointmentForm({ services }: { services: readonly strin
             id="appointment_date"
             name="date"
             type="date"
-            required
             value={appointmentData.date}
             onChange={(e) => setAppointmentData({ ...appointmentData, date: e.target.value })}
             min={minDate}
@@ -281,6 +283,26 @@ export default function AppointmentForm({ services }: { services: readonly strin
             className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
           />
           <p className="text-xs text-gray-500 mt-2 text-start">{t_form.date_note}</p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-1 gap-6">
+        <div>
+          <label htmlFor="appointment_time_period" className="block text-sm font-medium text-gray-700 mb-2 text-start">
+            <Clock className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
+            {t_form.time}
+          </label>
+          <select
+            id="appointment_time_period"
+            name="time"
+            value={appointmentData.time}
+            onChange={(e) => setAppointmentData({ ...appointmentData, time: e.target.value })}
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-white"
+          >
+            <option value="">{isAr ? 'خلال أوقات العمل الرسمية (08:30–12:00 أو 13:30–16:00)' : 'Pendant les heures d\'ouverture (08h30–12h00 ou 13h30–16h00)'}</option>
+            <option value={t_form.time_morning}>{t_form.time_morning}</option>
+            <option value={t_form.time_afternoon}>{t_form.time_afternoon}</option>
+          </select>
         </div>
       </div>
 
@@ -295,63 +317,8 @@ export default function AppointmentForm({ services }: { services: readonly strin
         autoComplete="off"
       />
 
-      <input type="hidden" name="time" value={appointmentData.time} required />
-
-      <div className="text-start">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          <Clock className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
-          {t_form.time}
-        </label>
-        
-        <div className="mb-3">
-          <span className="text-xs font-bold text-gray-500 mb-2 block">{t_form.time_morning}</span>
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-            {MORNING_SLOTS.map((slot, index) => (
-              <button
-                key={`morning-${index}`}
-                type="button"
-                onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
-                disabled={isPastTime(slot, appointmentData.date)}
-                className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors touch-manipulation ${
-                  appointmentData.time === slot
-                    ? 'bg-emerald-600 text-white border-emerald-600'
-                    : isPastTime(slot, appointmentData.date)
-                    ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-500'
-                }`}
-              >
-                {localizeTimeSlot(slot)}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <span className="text-xs font-bold text-gray-500 mb-2 block">{t_form.time_afternoon}</span>
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-            {AFTERNOON_SLOTS.map((slot, index) => (
-              <button
-                key={`afternoon-${index}`}
-                type="button"
-                onClick={() => setAppointmentData({ ...appointmentData, time: slot })}
-                disabled={isPastTime(slot, appointmentData.date)}
-                className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors touch-manipulation ${
-                  appointmentData.time === slot
-                    ? 'bg-emerald-600 text-white border-emerald-600'
-                    : isPastTime(slot, appointmentData.date)
-                    ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-500'
-                }`}
-              >
-                {localizeTimeSlot(slot)}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
       <div>
-        <label htmlFor="appt-notes" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="appt-notes" className="block text-sm font-medium text-gray-700 mb-2 text-start">
           <FileText className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
           {t_form.notes}
         </label>
@@ -385,7 +352,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
         <div className="text-sm text-start">
           <label htmlFor="terms-appointment" className="font-medium text-gray-700 cursor-pointer">
             {t_form.terms.split(' ').map((word, i) => {
-              if (['الشروط', 'والأحكام', 'وسياسة', 'الخصوصية', 'conditions', "d'utilisation", 'politique', 'confidentialité'].some(w => word.includes(w))) {
+              if (['الشروط', 'والأحكام', 'وسياسة', 'الخصوصية', 'conditions', "d'utilisation", 'politique', 'confidentialité'].some((w) => word.includes(w))) {
                 return (
                   <span key={i} className="text-emerald-600 hover:underline">{word} </span>
                 );
@@ -393,7 +360,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
               return word + ' ';
             })}
           </label>
-          <a href={lang === 'fr' ? "/fr/terms-privacy" : "/terms-privacy"} target="_blank" rel="noopener noreferrer" className="sr-only">Terms and Privacy</a>
+          <a href={lang === 'fr' ? '/fr/terms-privacy' : '/terms-privacy'} target="_blank" rel="noopener noreferrer" className="sr-only">Terms and Privacy</a>
         </div>
       </div>
 

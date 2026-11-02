@@ -2,6 +2,7 @@ import React from 'react';
 import { Language, translations } from '@/lib/i18n/translations';
 import { GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from './ui/PhoneLink';
+import ObfuscatedContact from './ui/ObfuscatedContact';
 
 export default function ContactInfo({ lang }: { lang: Language }) {
   const isAr = lang === 'ar';
@@ -59,11 +60,11 @@ export default function ContactInfo({ lang }: { lang: Language }) {
             <h3 className="font-bold text-gray-800 mb-1">{t_info.phone}</h3>
             <div className="text-gray-600 text-sm space-y-2">
               <div className="flex items-center gap-2">
-                <PhoneLink type="office" className="hover:text-emerald-600 transition-colors font-medium" />
+                <PhoneLink type="office" lang={lang} className="hover:text-emerald-600 transition-colors font-medium" />
                 <span className="text-gray-400 text-xs ms-2">{t_info.phone_office}</span>
               </div>
               <div className="flex items-center gap-2">
-                <PhoneLink type="support" className="hover:text-emerald-600 transition-colors font-medium" />
+                <PhoneLink type="support" lang={lang} className="hover:text-emerald-600 transition-colors font-medium" />
                 <span className="text-gray-400 text-xs ms-2">{t_info.phone_support}</span>
               </div>
             </div>
@@ -82,9 +83,7 @@ export default function ContactInfo({ lang }: { lang: Language }) {
           <div className="text-start">
             <h3 className="font-bold text-gray-800 mb-1">{t_info.email}</h3>
             <p className="text-gray-600 text-sm">
-              <a href="mailto:maitrelattabmohamed@gmail.com" itemProp="email" className="hover:text-emerald-600 transition-colors" dir="ltr">
-                maitrelattabmohamed@gmail.com
-              </a>
+              <ObfuscatedContact type="email" lang={lang} className="hover:text-emerald-600 transition-colors" />
             </p>
           </div>
         </div>

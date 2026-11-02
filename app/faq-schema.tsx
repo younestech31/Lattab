@@ -1,10 +1,7 @@
 import { faqs } from '@/lib/data/faq';
-import { headers } from 'next/headers';
 import { JsonLdScript } from '@/components/schema';
 
-export default async function FAQSchema() {
-  const headerStore = await headers();
-  const lang = (headerStore.get('x-lang') ?? 'ar') as 'ar' | 'fr';
+export default function FAQSchema({ lang = 'ar' }: { lang?: 'ar' | 'fr' }) {
 
   const schema = {
     "@context": "https://schema.org",

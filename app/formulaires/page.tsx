@@ -4,6 +4,8 @@ import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import FormsIndex from '@/components/forms/FormsIndex';
 import { JsonLdScript } from '@/components/schema';
 
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: 'استمارات ضريبية رسمية للتعبئة — ج 17 ج 31 ج 08 | ديوان التوثيق وهران',
   description: 'تعبئة وطباعة الاستمارات الجبائية الرسمية للمديرية العامة للضرائب (DGI): التصريح بفائض القيمة العقارية ج 17، الرسم العقاري ج 31، وتصريح بالوجود ج 08 وفق النماذج القانونية المعتمدة بصيغة PDF معدة للإيداع.',

@@ -4,6 +4,8 @@ import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import FormsIndex from '@/components/forms/FormsIndex';
 import { JsonLdScript } from '@/components/schema';
 
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: 'Formulaires fiscaux officiels à remplir — G17 G31 G08 | Office notarial Oran',
   description: 'Remplissage et impression des formulaires fiscaux officiels de la DGI : plus-value immobilière G17, taxe foncière G31 et déclaration d’existence G08 conformes aux modèles réglementaires et prêts pour dépôt.',

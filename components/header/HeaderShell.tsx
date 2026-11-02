@@ -100,7 +100,7 @@ export default function HeaderShell() {
             </Link>
           ))}
           <Link
-            href={getHref('/#booking-form')}
+            href={getHref('/#contact')}
             className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-xs xl:text-sm link-text duration-300 ${
               headerActive ? 'text-gray-700' : 'text-white'
             }`}

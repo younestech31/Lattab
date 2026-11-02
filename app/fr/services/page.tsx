@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Home, Building2, Users, Scale, Heart, Lock, ArrowRight, Calendar, FileText } from 'lucide-react';
+import { Home, Building2, Users, Scale, Heart, Lock, ArrowRight, FileText } from 'lucide-react';
 import { SERVICES_DATA } from '@/lib/data/servicesData';
 import { SITE_URL } from '@/lib/config';
 import WebPageSchema from '@/components/WebPageSchema';
@@ -68,15 +68,6 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
   'hypotheque': <Lock className="w-7 h-7 text-emerald-600" />,
 };
 
-const SERVICE_BOOKING_PARAM_FR: Record<string, string> = {
-  'vente-immobiliere': 'Actes de vente immobilière',
-  'creation-societe': 'Constitution de sociétés',
-  'procuration': 'Procurations et mandats',
-  'succession': 'Actes de mariage et documents familiaux',
-  'contrat-mariage': 'Actes de mariage et documents familiaux',
-  'hypotheque': 'Hypothèques et assurances',
-};
-
 export default function FrenchServicesPage() {
   const serviceList = Object.values(SERVICES_DATA);
 
@@ -126,8 +117,6 @@ export default function FrenchServicesPage() {
           {/* Cards Grid */}
           <section aria-label="Liste des prestations notariales" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {serviceList.map((service) => {
-              const bookingParam = SERVICE_BOOKING_PARAM_FR[service.slug] || service.fr.title;
-              const bookingUrl = `/fr/contact?service=${encodeURIComponent(bookingParam)}`;
               const detailsUrl = `/fr/services/${service.slug}`;
 
               return (
@@ -178,15 +167,6 @@ export default function FrenchServicesPage() {
                     >
                       <span>Formalités & Pièces</span>
                       <ArrowRight className="w-4 h-4" />
-                    </Link>
-
-                    <Link
-                      href={bookingUrl}
-                      className="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition-colors shadow-sm"
-                      aria-label={`Prendre rendez-vous pour ${service.fr.title}`}
-                    >
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>Rendez-vous</span>
                     </Link>
                   </div>
                 </article>

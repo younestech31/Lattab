@@ -5,8 +5,10 @@ import { isKnownPublicRoute } from '@/lib/data/knownRoutes';
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
 
-  // Bypass static files, fonts, images, and public documents
+  // Bypass internal Next.js assets, API routes, static files, fonts, images, and public documents
   if (
+    url.pathname.startsWith('/_next/') ||
+    url.pathname.startsWith('/api/') ||
     url.pathname.startsWith('/fonts/') ||
     /\.(ttf|otf|woff|woff2|eot|png|jpg|jpeg|webp|svg|ico|txt|xml|pdf)$/i.test(url.pathname)
   ) {
@@ -26,22 +28,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  const isDev = process.env.NODE_ENV !== 'production';
-  const cspHeader = `
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' https://analytics.ahrefs.com https://va.vercel-insights.com https://maps.googleapis.com${isDev ? " 'unsafe-eval'" : ""};
-    style-src 'self' 'unsafe-inline' https://maps.googleapis.com https://fonts.googleapis.com;
-    img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://maps.gstatic.com;
-    font-src 'self' data:;
-    connect-src 'self' ws: wss: https://analytics.ahrefs.com https://va.vercel-insights.com https://api.indexnow.org https://maps.googleapis.com https://maps.gstatic.com;
-    frame-src 'self' https://www.google.com https://maps.google.com https://maps.googleapis.com;
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-  `.replace(/\n\s+/g, ' ').trim();
-
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('Content-Security-Policy', cspHeader);
 
   // Language detection based strictly on URL prefix (/fr = French, / = Arabic)
   let lang = 'ar';
@@ -60,7 +47,6 @@ export function middleware(request: NextRequest) {
     },
   });
 
-  response.headers.set('Content-Security-Policy', cspHeader);
   response.headers.set('x-lang', lang);
 
   const isKnownRoute = isKnownPublicRoute(url.pathname);
@@ -73,10 +59,22 @@ export function middleware(request: NextRequest) {
     response.headers.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
   }
 
-  if (isDynamic) {
+  const isRSC =
+    request.headers.get('RSC') === '1' ||
+    request.headers.has('Next-Router-State-Tree') ||
+    request.headers.has('Next-Router-Prefetch') ||
+    request.headers.has('Next-Url') ||
+    (request.headers.get('Accept')?.includes('text/x-component') ?? false) ||
+    url.searchParams.has('_rsc');
+
+  const isDev = process.env.NODE_ENV !== 'production';
+
+  // Cache-Control rules (mandatory order)
+  if (isDev || isRSC) {
+    response.headers.set('Cache-Control', 'no-store, must-revalidate');
+  } else if (isDynamic) {
     response.headers.set('Cache-Control', 'private, no-store');
   } else {
-    // Static marketing pages: ISR / public cache
     response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
   }
 
@@ -86,4 +84,3 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|fonts|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:ico|png|jpg|jpeg|webp|svg|txt|xml|ttf|woff|woff2|eot|otf)).*)'],
 };
-

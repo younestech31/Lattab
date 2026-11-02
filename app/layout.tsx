@@ -10,7 +10,7 @@ import { AnalyticsWrapper } from "@/components/AnalyticsWrapper";
 import CookieBanner from '@/components/CookieBanner';
 import { SITE_URL } from '@/lib/config';
 import type { Viewport } from 'next';
-import { headers } from 'next/headers';
+import DocumentLanguage from '@/components/DocumentLanguage';
 
 const cairo = Cairo({ 
   subsets: ['arabic', 'latin'], 
@@ -92,12 +92,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({children}: {children: React.ReactNode}) {
-  /* NOTE: headers() here forces dynamic rendering for the layout. Child page segments (app/page.tsx, app/fr/page.tsx) are separately statically rendered. In Next.js 15, Page-level static rendering is still achievable because each page segment is independently optimised — the layout being dynamic does not force pages to be dynamic when pages themselves do not call dynamic functions. See Next.js 15 partial prerendering docs. */
-  const resolvedLang = (await headers()).get('x-lang') === 'fr' ? 'fr' : 'ar';
-
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang={resolvedLang} dir={resolvedLang === 'ar' ? 'rtl' : 'ltr'} className={cairo.variable} suppressHydrationWarning>
+    <html lang="ar" dir="rtl" className={cairo.variable} suppressHydrationWarning>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -110,17 +107,15 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         {/* next/font/google self-hosts Cairo at build time — no runtime Google Fonts connection occurs */}
-        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
-
       </head>
       <body className={`${cairo.className} font-cairo`} suppressHydrationWarning>
-        <LanguageProvider lang={resolvedLang}>
+        <DocumentLanguage />
+        <LanguageProvider>
           <a 
             href="#main-content" 
-            lang={resolvedLang}
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 [html[dir=rtl]_&]:focus:right-4 [html[dir=rtl]_&]:focus:left-auto focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold"
           >
-            {resolvedLang === 'ar' ? 'تخطى إلى المحتوى الرئيسي' : 'Passer au contenu principal'}
+            تخطى إلى المحتوى الرئيسي / Passer au contenu principal
           </a>
           <NextTopLoader 
             color="#059669"

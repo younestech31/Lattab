@@ -5,6 +5,7 @@ import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';
 import PhoneLink from '@/components/ui/PhoneLink';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
+import ObfuscatedContact from '@/components/ui/ObfuscatedContact';
 
 interface AboutViewProps {
   lang: Language;
@@ -53,8 +54,6 @@ export default function AboutView({ lang }: AboutViewProps) {
       name: brandTitle,
       alternateName: brandSubtitle,
       image: `${SITE_URL}/logo.webp`,
-      telephone: '+213562296981',
-      email: 'maitrelattabmohamed@gmail.com',
       address: {
         '@type': 'PostalAddress',
         streetAddress: isAr
@@ -209,9 +208,7 @@ export default function AboutView({ lang }: AboutViewProps) {
                 </svg>
                 <div>
                   <p className="font-bold text-gray-900">{isAr ? 'البريد الإلكتروني' : 'Courriel'}</p>
-                  <a href="mailto:maitrelattabmohamed@gmail.com" className="font-mono text-emerald-700 hover:underline">
-                    maitrelattabmohamed@gmail.com
-                  </a>
+                  <ObfuscatedContact type="email" lang={lang} className="text-emerald-700 hover:underline" />
                 </div>
               </div>
 
@@ -253,7 +250,7 @@ export default function AboutView({ lang }: AboutViewProps) {
                   href={contactUrl}
                   className="w-full bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold py-3 px-4 rounded-xl text-center text-sm transition block"
                 >
-                  {isAr ? 'صفحة التواصل وحجز موعد' : 'Formulaire de contact et rendez-vous'}
+                  {isAr ? 'صفحة التواصل والاستفسار الإداري' : 'Formulaire de contact et renseignements'}
                 </Link>
               </div>
             </div>

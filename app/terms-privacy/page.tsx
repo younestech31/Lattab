@@ -1,10 +1,10 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
 import { WORKING_HOURS, SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from '@/components/ui/PhoneLink';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
+import ObfuscatedContact from '@/components/ui/ObfuscatedContact';
 
 export const metadata: Metadata = {
   title: { absolute: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران' },
@@ -39,10 +39,11 @@ export const metadata: Metadata = {
   },
 };
 
-const TermsPrivacyPage = async () => {
-  const headerList = await headers();
-  const lang = (headerList.get('x-lang') ?? 'ar') as 'ar' | 'fr';
-  const isAr = lang === 'ar';
+export const revalidate = 86400;
+
+const TermsPrivacyPage = () => {
+  const lang = 'ar';
+  const isAr = true;
 
   return (
     <div className="min-h-screen bg-white">
@@ -372,7 +373,7 @@ const TermsPrivacyPage = async () => {
                     </div>
                     <div className="flex items-center gap-4 text-gray-700">
                       <Mail className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <a href="mailto:maitrelattabmohamed@gmail.com" className="font-medium hover:text-emerald-600 transition-colors">maitrelattabmohamed@gmail.com</a>
+                      <ObfuscatedContact type="email" lang="ar" className="font-medium hover:text-emerald-600 transition-colors" />
                     </div>
                     <div className="flex items-center gap-4 text-gray-700">
                       <Clock className="w-5 h-5 text-emerald-600 flex-shrink-0" />

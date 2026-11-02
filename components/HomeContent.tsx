@@ -14,7 +14,6 @@ import LegalUpdates from '@/components/LegalUpdates';
 import FAQ from '@/components/FAQ';
 import UsefulLinksSection from '@/components/UsefulLinksSection';
 import { JsonLdScript } from '@/components/schema';
-import { AnalyticsScriptLoader } from '@/components/AnalyticsScriptLoader';
 import { faqs } from '@/lib/data/faq';
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
@@ -40,7 +39,7 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
     "alternateName": isAr ? "الديوان العمومي للتوثيق" : "Office notarial Office Notarial - Oran",
     "description": isAr
       ? "الديوان العمومي للتوثيق — موثق معتمد لدى محكمة فلاوسن بوهران، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون."
-      : "Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Prise de rendez-vous.",
+      : "Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Renseignements administratifs.",
     "image": `${SITE_URL}/logo.webp`,
     "address": {
       "@type": "PostalAddress",
@@ -52,8 +51,6 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
       "postalCode": "31000",
       "addressCountry": "DZ"
     },
-    "telephone": "+213562296981",
-    "email": "maitrelattabmohamed@gmail.com",
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 35.7277124,
@@ -109,7 +106,6 @@ export async function HomeContent({ lang }: { lang: Language }) {
       {schemas.map((schema, idx) => (
         <JsonLdScript key={idx} schema={schema} />
       ))}
-      <AnalyticsScriptLoader />
       <div className="flex flex-col">
         <div className="no-print">
           <Hero lang={lang} />

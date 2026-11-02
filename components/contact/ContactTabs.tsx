@@ -13,7 +13,7 @@ export default function ContactTabs({ lang }: { lang: Language }) {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash === '#appointment' || hash === '#contact' || hash === '#booking-form') setActiveTab('appointment');
+      if (hash === '#appointment' || hash === '#contact') setActiveTab('appointment');
       else if (hash === '#inquiry') setActiveTab('inquiry');
     };
     window.addEventListener('hashchange', handleHashChange);

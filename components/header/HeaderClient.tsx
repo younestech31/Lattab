@@ -215,7 +215,7 @@ export default function HeaderClient() {
               </Link>
             ))}
             <Link
-              href={getHref('/#booking-form')}
+              href={getHref('/#contact')}
               onClick={() => setIsMenuOpen(false)}
               className="mt-2 text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm"
             >

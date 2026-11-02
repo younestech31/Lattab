@@ -8,6 +8,7 @@ import { useLang } from '@/lib/i18n';
 import { CalculatorResult } from '@/lib/types';
 import { CalculatorKeys } from '@/lib/i18n/translations';
 import { WILAYAS } from '@/lib/data/wilayas';
+import { officeTelDigits } from '@/lib/contact/channels';
 
 const uiTranslations = {
   ar: {
@@ -371,8 +372,6 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     }
   };
 
-  const OFFICE_WHATSAPP = '213562296981';
-
   const handleWhatsApp = () => {
     if (!result) return;
     const unitLabel = selectedType?.unit === 'DA/Ha' || selectedType?.unit?.includes('Ha') ? (isAr ? 'هكتار' : 'Ha') : (isAr ? 'م²' : 'm²');
@@ -395,7 +394,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
       ? `\nأود الاستفسار أكثر.`
       : `\nJe souhaite avoir plus d'informations.`;
       
-    window.open(`https://wa.me/${OFFICE_WHATSAPP}?text=${encodeURIComponent(textToShare)}`, '_blank', 'noopener,noreferrer');
+    window.open(`https://wa.me/${officeTelDigits()}?text=${encodeURIComponent(textToShare)}`, '_blank', 'noopener,noreferrer');
   };
 
   return (

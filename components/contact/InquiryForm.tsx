@@ -1,9 +1,11 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { User, Phone, FileText, CheckCircle } from 'lucide-react';
-import { InquiryFormData, openWhatsAppInquiry } from './types';
+import { InquiryFormData, cleanText } from './types';
 import { useLang } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
+import { AdministrativeInquirySchema } from '@/lib/contact/inquirySchema';
+import { buildInquiryWaUrl } from '@/lib/contact/channels';
 
 export default function InquiryForm({ services }: { services: readonly string[] }) {
   const { lang } = useLang();
@@ -35,14 +37,34 @@ export default function InquiryForm({ services }: { services: readonly string[] 
       return;
     }
 
-    const phoneDigits = inquiryData.phone.replace(/\D/g, '');
-    if (phoneDigits.length < 8) {
-      setInquiryError(t_form.phone_error);
+    const cleanedName = cleanText(inquiryData.name);
+    const cleanedPhone = cleanText(inquiryData.phone).replace(/\s+/g, '').replace(/^\+/, '');
+    const cleanedService = cleanText(inquiryData.service);
+    const cleanedMessage = cleanText(inquiryData.message);
+
+    const parseResult = AdministrativeInquirySchema.safeParse({
+      name: cleanedName,
+      phone: cleanedPhone,
+      service: cleanedService,
+      message: cleanedMessage || undefined,
+      companyWebsite: '',
+    });
+
+    if (!parseResult.success) {
+      const firstError = Object.values(parseResult.error.flatten().fieldErrors)[0]?.[0];
+      setInquiryError(firstError || (lang === 'fr' ? 'Données invalides' : 'يرجى التحقق من صحة البيانات المدخلة'));
       return;
     }
 
-    openWhatsAppInquiry(inquiryData, lang);
+    const waUrl = buildInquiryWaUrl(lang, cleanedService);
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
     setIsInquirySubmitted(true);
+  };
+
+  const handleRetryOpen = () => {
+    const cleanedService = cleanText(inquiryData.service);
+    const waUrl = buildInquiryWaUrl(lang, cleanedService);
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
   };
 
   if (isInquirySubmitted) {
@@ -52,13 +74,13 @@ export default function InquiryForm({ services }: { services: readonly string[] 
           <CheckCircle className="w-10 h-10 text-emerald-600" />
         </div>
         <h3 className="text-2xl font-bold text-gray-800 mb-2">{t_form.success_inquiry_title}</h3>
-        <p className="text-gray-600 mb-6">
-          {t_form.success_inquiry_desc}
+        <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+          {t_form.success_appointment_desc}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             ref={retryButtonRef}
-            onClick={() => openWhatsAppInquiry(inquiryData, lang)}
+            onClick={handleRetryOpen}
             className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 touch-manipulation"
           >
             {t_form.retry_whatsapp}
@@ -80,7 +102,6 @@ export default function InquiryForm({ services }: { services: readonly string[] 
 
   return (
     <form onSubmit={handleInquirySubmit} className="space-y-6" dir={isAr ? 'rtl' : 'ltr'}>
-      {/* RTL-safe: uses logical properties */}
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="inq-name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -140,19 +161,21 @@ export default function InquiryForm({ services }: { services: readonly string[] 
       </div>
 
       <div>
-        <label htmlFor="inq-message" className="block text-sm font-medium text-gray-700 mb-2">{lang === 'ar' ? 'رسالتك أو استفسارك *' : 'Votre message ou demande *'}</label>
+        <label htmlFor="inq-message" className="block text-sm font-medium text-gray-700 mb-2">
+          {lang === 'ar' ? 'موضوع الاستفسار الإداري *' : 'Objet de la demande administrative *'}
+        </label>
         <textarea
           id="inq-message"
           required
-          rows={5}
-          maxLength={1000}
+          rows={4}
+          maxLength={500}
           value={inquiryData.message}
           onChange={(e) => setInquiryData({ ...inquiryData, message: e.target.value })}
           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all resize-none"
-          placeholder={lang === 'ar' ? 'اكتب رسالتك أو استفسارك هنا...' : 'Écrivez votre message ou demande ici...'}
+          placeholder={lang === 'ar' ? 'اكتب تفاصيل استفسارك الإداري حول المعاملة أو الوثائق المطلوبة...' : 'Précisez votre demande d\'information administrative...'}
         />
         <div className={`flex ${isAr ? 'justify-end' : 'justify-start'} mt-1`}>
-          <span className="text-xs text-gray-400">{inquiryData.message.length} / 1000</span>
+          <span className="text-xs text-gray-400">{inquiryData.message.length} / 500</span>
         </div>
       </div>
 

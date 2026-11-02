@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Home, Building2, Users, Scale, Heart, Lock, ArrowLeft, Calendar, FileText } from 'lucide-react';
+import { Home, Building2, Users, Scale, Heart, Lock, ArrowLeft, FileText } from 'lucide-react';
 import { SERVICES_DATA } from '@/lib/data/servicesData';
 import { SITE_URL } from '@/lib/config';
 import WebPageSchema from '@/components/WebPageSchema';
@@ -68,15 +68,6 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
   'hypotheque': <Lock className="w-7 h-7 text-emerald-600" />,
 };
 
-const SERVICE_BOOKING_PARAM_AR: Record<string, string> = {
-  'vente-immobiliere': 'عقود البيع والشراء العقارية',
-  'creation-societe': 'تأسيس الشركات والمؤسسات',
-  'procuration': 'الوكالات والتفويضات',
-  'succession': 'عقود الزواج والمستندات العائلية',
-  'contrat-mariage': 'عقود الزواج والمستندات العائلية',
-  'hypotheque': 'الرهن والتأمينات',
-};
-
 export default function ServicesPage() {
   const serviceList = Object.values(SERVICES_DATA);
 
@@ -126,8 +117,6 @@ export default function ServicesPage() {
           {/* Cards Grid */}
           <section aria-label="قائمة الخدمات التوثيقية" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {serviceList.map((service) => {
-              const bookingParam = SERVICE_BOOKING_PARAM_AR[service.slug] || service.ar.title;
-              const bookingUrl = `/contact?service=${encodeURIComponent(bookingParam)}`;
               const detailsUrl = `/services/${service.slug}`;
 
               return (
@@ -178,15 +167,6 @@ export default function ServicesPage() {
                     >
                       <span>تفاصيل والوثائق</span>
                       <ArrowLeft className="w-4 h-4 rtl:rotate-0 ltr:rotate-180" />
-                    </Link>
-
-                    <Link
-                      href={bookingUrl}
-                      className="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition-colors shadow-sm"
-                      aria-label={`حجز موعد لخدمة ${service.ar.title}`}
-                    >
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>حجز موعد</span>
                     </Link>
                   </div>
                 </article>

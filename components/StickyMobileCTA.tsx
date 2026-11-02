@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLang } from '@/lib/i18n';
-import { translations } from '@/lib/i18n/translations';
+import { FileText } from 'lucide-react';
 
 export default function StickyMobileCTA() {
-  const { lang} = useLang();
+  const { lang } = useLang();
   const isAr = lang === 'ar';
   
   const [isVisible, setIsVisible] = useState(false);
@@ -14,15 +14,13 @@ export default function StickyMobileCTA() {
   useEffect(() => {
     const handleScroll = () => {
       requestAnimationFrame(() => {
-        // Show CTA only after scrolling down
         setIsVisible(window.scrollY > 300);
         
-        // Calculate intersection on the fly instead of relying on stateful IntersectionObserver
         const contactSection = document.getElementById('contact');
         if (contactSection) {
           const rect = contactSection.getBoundingClientRect();
-          // Contact segment starts being visible when top arrives at viewport bottom
-          setIsContactVisible(rect.top <= window.innerHeight);
+          // Hide when #contact is on screen
+          setIsContactVisible(rect.top <= window.innerHeight && rect.bottom >= 0);
         } else {
           setIsContactVisible(false);
         }
@@ -30,7 +28,7 @@ export default function StickyMobileCTA() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -44,17 +42,18 @@ export default function StickyMobileCTA() {
       dir={isAr ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-4 flex items-center gap-2 pb-[env(safe-area-inset-bottom,0px)]">
-        {/* Appointment Bar */}
+        {/* Single Administrative Inquiry Link to #contact */}
         <Link 
-          href="/#booking-form"
-          className="grow pointer-events-auto bg-amber-500 text-white font-bold text-center h-14 flex items-center justify-center rounded-xl shadow-lg hover:bg-amber-600 transition-colors text-base"
-          aria-label={isAr ? 'طلب موعد إداري — الانتقال إلى نموذج الحجز' : 'Demande de RDV — Accéder au formulaire'}
+          href="#contact"
+          className="grow pointer-events-auto bg-emerald-700 text-white font-bold text-center h-14 flex items-center justify-center gap-2 rounded-xl shadow-lg hover:bg-emerald-800 active:bg-emerald-900 transition-colors text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 touch-manipulation"
+          aria-label={isAr ? 'استفسار إداري — الانتقال إلى قسم التواصل' : 'Demande administrative — Accéder aux informations de contact'}
         >
-          {translations[lang].contact.tabs.appointment}
+          <FileText className="w-5 h-5 shrink-0" aria-hidden="true" />
+          <span>{isAr ? 'استفسار إداري' : 'Demande administrative'}</span>
         </Link>
 
-         {/* Spacer for the permanently fixed Layout WhatsApp button */}
-         <div className="w-14 h-14 shrink-0 pointer-events-none" />
+        {/* Spacer for the permanently fixed Layout WhatsApp button */}
+        <div className="w-14 h-14 shrink-0 pointer-events-none" />
       </div>
     </div>
   );

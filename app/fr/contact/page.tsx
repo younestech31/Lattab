@@ -5,8 +5,8 @@ import { SITE_URL } from '@/lib/config';
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'Contact et rendez-vous — Office Notarial - Oran | Notaire à Oran';
-  const desc = 'Contactez l\'office notarial de Office Notarial - Oran à Oran (Akid Lotfi). Prise de rendez-vous, téléphones directes, horaires d\'ouverture et localisation.';
+  const title = 'Contact et renseignement administratif — Office Notarial - Oran | Notaire à Oran';
+  const desc = 'Contactez l\'office notarial à Oran (Akid Lotfi, près le Tribunal de Flaussen) pour vos démarches et renseignements administratifs. Horaires d\'ouverture et localisation.';
 
   return {
     title: { absolute: title },
