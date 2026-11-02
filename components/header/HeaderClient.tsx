@@ -2,15 +2,32 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { Language, translations } from '@/lib/i18n/translations';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { translations, type Language } from '@/lib/i18n/translations';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { useFocusTrap } from '@/lib/hooks/useFocusTrap';
 
+function resolveLang(pathname: string | null): Language {
+  if (!pathname) return 'ar';
+  return pathname === '/fr' || pathname.startsWith('/fr/') ? 'fr' : 'ar';
+}
+
+function isHome(pathname: string | null): boolean {
+  return pathname === '/' || pathname === '/fr';
+}
+
 /**
  * Client Component that manages interactive portions of the header,
- * such as scroll styling, language switching, and mobile drawer accessibility.
+ * including brand text, nav links, language switcher, and mobile drawer.
+ * Language is derived from usePathname() so it stays correct after client-side
+ * language switches (Server Component header would stay stale from layout cache).
  */
-export default function HeaderClient({ lang, isHomePage }: { lang: Language, isHomePage: boolean }) {
+export default function HeaderClient() {
+  const pathname = usePathname();
+  const lang = resolveLang(pathname);
+  const isHomePage = isHome(pathname);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const ticking = useRef(false);
@@ -20,7 +37,6 @@ export default function HeaderClient({ lang, isHomePage }: { lang: Language, isH
   const text = translations[lang].nav;
   const headerActive = !isHomePage || isScrolled || isMenuOpen;
 
-  // Track scroll with passive listener and requestAnimationFrame
   const handleScroll = useCallback(() => {
     if (!ticking.current) {
       window.requestAnimationFrame(() => {
@@ -38,7 +54,6 @@ export default function HeaderClient({ lang, isHomePage }: { lang: Language, isH
     };
   }, [handleScroll]);
 
-  // Handle body overflow on mobile menu toggle
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => {
@@ -46,7 +61,6 @@ export default function HeaderClient({ lang, isHomePage }: { lang: Language, isH
     };
   }, [isMenuOpen]);
 
-  // Close menu on clicks outside
   useEffect(() => {
     if (!isMenuOpen) return;
     const handleClickOutside = (e: MouseEvent) => {
@@ -61,7 +75,6 @@ export default function HeaderClient({ lang, isHomePage }: { lang: Language, isH
     };
   }, [isMenuOpen]);
 
-  // Handle Escape key
   useEffect(() => {
     if (!isMenuOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -76,26 +89,22 @@ export default function HeaderClient({ lang, isHomePage }: { lang: Language, isH
     };
   }, [isMenuOpen]);
 
-  // Engage focus trap inside mobile nav popup
   useFocusTrap(isMenuOpen, mobileNavRef);
+
+  // Close mobile menu when language/route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   const getHref = (href: string) => {
     if (lang === 'fr') {
       if (href.startsWith('/#')) {
         return `/fr#${href.slice(2)}`;
       }
-      if (href === '/blog') {
-        return '/fr/blog';
-      }
-      if (href === '/calculateur-prix-referentiel') {
-        return '/fr/calculateur-prix-referentiel';
-      }
-      if (href === '/useful-links') {
-        return '/fr/useful-links';
-      }
-      if (href === '/formulaires') {
-        return '/fr/formulaires';
-      }
+      if (href === '/blog') return '/fr/blog';
+      if (href === '/calculateur-prix-referentiel') return '/fr/calculateur-prix-referentiel';
+      if (href === '/useful-links') return '/fr/useful-links';
+      if (href === '/formulaires') return '/fr/formulaires';
     }
     return href;
   };
@@ -116,9 +125,10 @@ export default function HeaderClient({ lang, isHomePage }: { lang: Language, isH
 
   return (
     <>
-      {/* Styles injected to dynamically alter the server-rendered parent header */}
       {headerActive && (
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           #main-header {
             background-color: white !important;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
@@ -140,55 +150,85 @@ export default function HeaderClient({ lang, isHomePage }: { lang: Language, isH
           #main-header .menu-btn {
             color: #374151 !important;
           }
-        `}} />
+        `,
+          }}
+        />
       )}
 
-      {/* Desktop Language Switcher (aligned to the right next to Nav links) */}
-      <div className="hidden lg:flex items-center shrink-0">
+      {/* Brand — language-aware, updates on client navigation */}
+      <Link href={getHref('/#home')} className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-white flex items-center justify-center">
+          <Image
+            src="/logo-small.webp"
+            alt={
+              lang === 'ar'
+                ? 'شعار ديوان التوثيق - وهران'
+                : "Logo de l'Étude Office Notarial - Oran"
+            }
+            width={40}
+            height={40}
+            quality={75}
+            priority={true}
+          />
+        </div>
+        <div>
+          <span
+            className={`block text-base font-bold leading-tight brand-text transition-colors duration-300 ${
+              headerActive ? 'text-gray-800' : 'text-white'
+            }`}
+          >
+            {text.name}
+          </span>
+          <p
+            className={`text-xs leading-tight notary-subtext transition-colors duration-300 ${\n              headerActive ? 'text-emerald-600' : 'text-emerald-200'
+            }`}
+          >
+            {text.notary}
+          </p>
+        </div>
+      </Link>
+
+      {/* Desktop nav */}
+      <div className="hidden lg:flex items-center gap-4">
+        <nav className="flex items-center gap-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={getHref(link.href)}
+              className={`font-medium transition-colors hover:text-emerald-500 whitespace-nowrap text-sm leading-none link-text duration-300 ${
+                headerActive ? 'text-gray-700' : 'text-white'
+              } ${([text.notary_role, text.procedures, text.news, text.faq] as string[]).includes(link.label) ? 'hidden' : ''}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
         <LanguageSwitcher headerActive={headerActive} />
       </div>
 
-      {/* Mobile Controls & Hamburger */}
+      {/* Mobile controls */}
       <div className="flex items-center gap-3 lg:hidden shrink-0">
         <LanguageSwitcher headerActive={headerActive} isMobile={true} />
         <button
           ref={menuButtonRef}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           type="button"
-          aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
+          aria-label={isMenuOpen ? (lang === 'ar' ? 'إغلاق القائمة' : 'Fermer le menu') : (lang === 'ar' ? 'فتح القائمة' : 'Ouvrir le menu')}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-nav"
-          className={`p-2 rounded-lg menu-btn transition-colors duration-300 ${
-            headerActive ? 'text-gray-700' : 'text-white'
+          className={`p-2 rounded-lg menu-btn transition-colors duration-300 ${\n            headerActive ? 'text-gray-700' : 'text-white'
           }`}
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             {isMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
       </div>
 
-      {/* Mobile Navigation Panel */}
       {isMenuOpen && (
         <nav
           id="mobile-nav"
