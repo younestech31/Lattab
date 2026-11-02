@@ -192,7 +192,7 @@ export default function FormWizardShell({
               type="button"
               onClick={onDownload}
               disabled={isDownloading}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm transition shadow-md disabled:opacity-60 cursor-pointer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold text-sm transition shadow-md disabled:opacity-60 cursor-pointer min-h-11 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
             >
               <FileDown className="w-4 h-4" />
               <span>{isDownloading ? (isAr ? 'جاري التحميل...' : 'Génération...') : (isAr ? 'تحميل الاستمارة الرسمية' : 'Télécharger le formulaire')}</span>

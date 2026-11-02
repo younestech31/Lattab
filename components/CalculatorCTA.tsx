@@ -28,7 +28,7 @@ const CalculatorCTA = ({ lang = 'ar' }: CalculatorCTAProps) => {
               <Link 
                 href={isAr ? '/calculateur-prix-referentiel' : '/fr/calculateur-prix-referentiel'}
                 aria-label={isAr ? 'الانتقال إلى حاسبة السعر المرجعي للعقار' : 'Accéder au calculateur des prix de référence'}
-                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-md group"
+                className="inline-flex items-center gap-2 bg-amber-800 hover:bg-amber-900 active:bg-amber-950 text-white font-bold px-6 py-3 rounded-xl min-h-11 transition-all shadow-md group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-900"
               >
                 <Calculator className="w-5 h-5" />
                 {isAr ? 'الانتقال إلى الحاسبة' : 'Accéder au calculateur'}

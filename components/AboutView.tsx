@@ -195,10 +195,6 @@ export default function AboutView({ lang }: AboutViewProps) {
                       <PhoneLink type="office" className="text-emerald-700 hover:underline" />
                       <span className="text-gray-600 text-xs ms-2">({isAr ? 'المكتب' : 'Bureau'})</span>
                     </div>
-                    <div>
-                      <PhoneLink type="support" className="text-emerald-700 hover:underline" />
-                      <span className="text-gray-600 text-xs ms-2">({isAr ? 'المتابعة' : 'Secrétariat'})</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -240,7 +236,7 @@ export default function AboutView({ lang }: AboutViewProps) {
                   href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold min-h-11 py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
@@ -249,7 +245,7 @@ export default function AboutView({ lang }: AboutViewProps) {
                 </a>
                 <Link
                   href={contactUrl}
-                  className="w-full bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold py-3 px-4 rounded-xl text-center text-sm transition block"
+                  className="w-full bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold min-h-11 py-3 px-4 rounded-xl text-center text-sm transition flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
                 >
                   {isAr ? 'صفحة التواصل والاستفسار الإداري' : 'Formulaire de contact et renseignements'}
                 </Link>

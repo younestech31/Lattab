@@ -255,10 +255,6 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
                     <PhoneLink type="office" className="hover:text-white transition-colors" />
                     <span className="text-emerald-200 text-xs ms-2">{translations[lang].contact.info.phone_office}</span>
                   </div>
-                  <div>
-                    <PhoneLink type="support" className="hover:text-white transition-colors" />
-                    <span className="text-emerald-200 text-xs ms-2">{translations[lang].contact.info.phone_support}</span>
-                  </div>
                 </div>
               </div>
               <div className="flex items-center gap-3">

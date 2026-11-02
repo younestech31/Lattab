@@ -2,9 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useLang } from '@/lib/i18n';
-import { translations } from '@/lib/i18n/translations';
+import { Language, translations } from '@/lib/i18n/translations';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { useFocusTrap } from '@/lib/hooks/useFocusTrap';
 
@@ -12,9 +10,7 @@ import { useFocusTrap } from '@/lib/hooks/useFocusTrap';
  * Client Component that manages interactive portions of the header,
  * such as scroll styling, language switching, and mobile drawer accessibility.
  */
-export default function HeaderClient() {
-  const { lang } = useLang();
-  const pathname = usePathname();
+export default function HeaderClient({ lang, isHomePage }: { lang: Language, isHomePage: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const ticking = useRef(false);
@@ -22,7 +18,6 @@ export default function HeaderClient() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const text = translations[lang].nav;
-  const isHomePage = pathname === '/' || pathname === '/fr';
   const headerActive = !isHomePage || isScrolled || isMenuOpen;
 
   // Track scroll with passive listener and requestAnimationFrame

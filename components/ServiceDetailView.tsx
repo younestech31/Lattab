@@ -88,7 +88,7 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
         <div className="flex flex-wrap gap-4 items-center justify-center pt-2">
           <Link
             href={contactUrl}
-            className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md text-sm md:text-base flex items-center gap-2"
+            className="bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md text-sm md:text-base flex items-center gap-2 min-h-11 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -97,7 +97,7 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
           </Link>
           <PhoneLink
             type="office"
-            className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl font-semibold transition-all text-sm md:text-base flex items-center gap-2"
+            className="bg-white hover:bg-gray-50 text-emerald-800 border border-emerald-800 px-6 py-3 rounded-xl font-semibold transition-all text-sm md:text-base flex items-center gap-2 min-h-11 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
             icon={
               <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

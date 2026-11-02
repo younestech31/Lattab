@@ -224,7 +224,7 @@ export const translations = {
       privacy_link: 'سياسة الخصوصية'
     },
     cookie_banner: {
-      message: 'يستخدم هذا الموقع معالجة تقنية سحابية مخصصة حصراً لتنظيم حجز المواعيد الإدارية تحت طائلة السر المهني (المادة 14 من القانون 06-02) والقانون 18-07 المتعلق بحماية المعطيات الشخصية.',
+      message: 'يستخدم هذا الموقع معالجة تقنية سحابية مخصصة حصراً للاستفسار الإداري وتقديم المعلومات حول الإجراءات التوثيقية، تحت طائلة السر المهني (المادة 14 من القانون 06-02) والقانون 18-07 المتعلق بحماية المعطيات الشخصية.',
       privacy_policy: 'الاطلاع على سياسة الخصوصية',
       accept: 'موافقة',
       reject: 'رفض'
@@ -455,7 +455,7 @@ export const translations = {
       privacy_link: 'Politique de confidentialité'
     },
     cookie_banner: {
-      message: 'Ce site utilise un traitement technique cloud strictement limité à la gestion administrative des rendez-vous, sous le sceau du secret professionnel (Art. 14 Loi 06-02) et conformément à la Loi 18-07 relative à la protection des données.',
+      message: 'Ce site utilise un traitement technique cloud strictement limité à la gestion des demandes de renseignements administratifs et d\'information sur les procédures notariales, sous le sceau du secret professionnel (Art. 14 Loi 06-02) et conformément à la Loi 18-07 relative à la protection des données.',
       privacy_policy: 'Voir la politique de confidentialité',
       accept: 'Accepter',
       reject: 'Refuser'

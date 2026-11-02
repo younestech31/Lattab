@@ -1,19 +1,7 @@
-'use client';
-
 import { t, Language } from '@/lib/i18n/translations';
 
 export default function Hero({ lang }: { lang: Language }) {
   const isAr = lang === 'ar';
-
-  const handleScrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const servicesEl = document.getElementById('services');
-    if (servicesEl) {
-      servicesEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      window.location.hash = 'services';
-    }
-  };
 
   return (
     <div className="relative" dir={isAr ? 'rtl' : 'ltr'}>
@@ -22,7 +10,7 @@ export default function Hero({ lang }: { lang: Language }) {
         className="
           scroll-mt-20
           relative flex items-center justify-center bg-emerald-900
-          min-h-[100dvh]
+          min-h-[70svh]
           pt-20 pb-10 sm:pt-24 sm:pb-12
         "
       >
@@ -71,7 +59,6 @@ export default function Hero({ lang }: { lang: Language }) {
             <div className="flex justify-center w-full max-w-sm sm:max-w-none pt-1">
               <a
                 href="#services"
-                onClick={handleScrollToServices}
                 aria-label={isAr ? 'الوثائق والإجراءات — الانتقال إلى الاختصاصات والمعاملات التوثيقية' : 'Documents et démarches — Voir les attributions de l\'office'}
                 className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white min-h-11 px-6 py-2.5 rounded-xl font-bold text-base transition-all border border-emerald-400/40 touch-manipulation focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-900 shadow-lg cursor-pointer"
               >
