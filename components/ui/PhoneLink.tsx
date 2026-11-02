@@ -4,7 +4,7 @@ import React from 'react';
 import ObfuscatedContact from './ObfuscatedContact';
 
 export interface PhoneLinkProps {
-  type?: 'office';
+  type?: 'office' | 'support';
   lang?: 'ar' | 'fr';
   number?: string;
   display?: string;
