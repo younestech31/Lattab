@@ -1,32 +1,27 @@
 ---
-title: "La taxe foncière en Algérie et le formulaire G31 : Ce qu'il faut savoir"
-description: "Guide informatif sur la taxe foncière, son lien avec la propriété immobilière, et l'utilisation du formulaire G31 comme outil de déclaration."
+title: "Taxe foncière en Algérie et formulaire G31 : Principes et démarches"
+description: "Guide d'information sur la taxe foncière annuelle sur les propriétés bâties et non bâties, et le rôle du formulaire G31 auprès des impôts."
 dateISO: "2026-11-01"
-dateModified: "2026-11-01"
+dateModified: "2026-11-02"
 category: "Immobilier"
 language: "fr"
-readTime: "7"
+readTime: "6"
 icon: "FileText"
-tags: ["taxe foncière", "G31", "impôts"]
+tags: ["taxe foncière", "G31", "fiscalité immobilière", "propriété"]
 arSlug: "taxe-fonciere-gn31-algerie"
 ---
 
 ## Introduction
-La taxe foncière est un impôt annuel imposé sur les propriétés bâties et non bâties par la législation algérienne, contribuant au financement des collectivités locales.
+La taxe foncière est un impôt réel annuel perçu sur les propriétés immobilières bâties et non bâties en Algérie. Ses recettes sont destinées au financement des collectivités locales et des communes.
 
-## La taxe foncière et la propriété
-Elle est due par le propriétaire ou l'usufruitier au début de chaque année fiscale. La situation fiscale dépend étroitement des titres de propriété officiels et du cadastre.
+## Principes généraux de la taxe foncière
+1. **Redevable légal :** La taxe est due par le propriétaire ou l'usufruitier au 1er janvier de l'année d'imposition.
+2. **Base d'imposition :** Calculée sur la valeur locative fiscale déterminée par la recette des impôts.
+3. **Immatriculation foncière :** Le livret foncier et l'acte notarié facilitent l'identification précise des parcelles et constructions au niveau cadastral et fiscal.
 
-## Le formulaire G31
-Le formulaire **G31** sert d'outil administratif pour déclarer ou suivre l'assiette fiscale de la taxe foncière. Vous pouvez utiliser notre outil d'aide pour préparer les informations de [votre déclaration G31](/fr/formulaires/gn31) avant de vous présenter aux services concernés.
+## Formulaires et ressources utiles
+- Utilisez notre [générateur du formulaire G31](/fr/formulaires/gn31) pour préparer votre déclaration foncière.
+- Consultez l'ensemble de nos [formulaires administratifs](/fr/formulaires).
 
-## Démarches principales
-- Disposer d'un titre de propriété ou d'un livret foncier.
-- Suivre les avis d'imposition.
-- Utiliser le formulaire G31 pour les déclarations nécessaires avant de vous adresser aux autorités compétentes.
-
-## Rôle du notaire
-Le notaire authentifie les transactions immobilières, garantissant ainsi la clarté de la situation juridique du bien, ce qui facilite ultérieurement les procédures fiscales auprès de l'administration.
-
-## Conclusion et note importante
-Ces informations sont purement indicatives. La détermination de la valeur de la taxe, les éventuelles exonérations et la validation finale de la situation fiscale relèvent de la compétence exclusive des recettes des impôts territorialement compétentes.
+## Avertissement légal
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.

@@ -1,32 +1,26 @@
 ---
-title: "Indivision immobilière et sortie d'indivision en Algérie : Partage et accord devant notaire"
-description: "Guide informatif sur l'état d'indivision, l'accord de partage amiable, et le rôle du notaire et de la Conservation Foncière."
+title: "La sortie de l'indivision immobilière en Algérie : Partage amiable"
+description: "Guide juridique sur la fin de l'indivision immobilière en Algérie, l'acte de partage amiable notarié, la soulte et le partage judiciaire."
 dateISO: "2026-11-01"
-dateModified: "2026-11-01"
-category: "Immobilier"
+dateModified: "2026-11-02"
+category: "Juridique"
 language: "fr"
-readTime: "8"
+readTime: "7"
 icon: "Scale"
-tags: ["indivision", "partage", "propriété"]
+tags: ["indivision", "partage amiable", "soulte", "notaire"]
 arSlug: "sortie-indivision-immobiliere-algerie"
 ---
 
 ## Introduction
-L'état d'indivision résulte souvent d'un achat en commun ou d'une succession sans partage préalable. Maintenir un bien en indivision complique sa gestion et sa disposition, rendant la sortie d'indivision une étape nécessaire.
+L'article 722 du Code civil algérien dispose que nul ne peut être contraint à demeurer dans l'indivision. Tout co-indivisaire peut à tout moment demander le partage pour obtenir sa part individualisée sur les biens communs.
 
-## Partage amiable ou judiciaire
-- **Partage amiable (conventionnel) :** C'est la solution idéale. Les copropriétaires s'entendent pour diviser le bien indivis en lots distincts correspondant à leurs parts, et formalisent cet accord par un acte notarié.
-- **Partage judiciaire :** Il intervient en cas de désaccord entre les copropriétaires ou en présence de mineurs, où la justice tranche le litige conformément à la loi.
+## Voies de sortie de l'indivision
+1. **Le partage amiable notarié :** Accord unanime de l'ensemble des co-indivisaires sur l'attribution de lots individualisés, formalisé par un acte de partage authentique publié à la conservation foncière, avec possibilité d'égalisation par soulte.
+2. **Le partage judiciaire :** En cas de désaccord, de présence de mineurs ou d'absents, le tribunal désigne un expert foncier pour élaborer un projet de lotissement ou ordonner la licitation aux enchères publiques.
 
-## Démarches principales
-- Fournir les titres de propriété ou l'acte de dévolution successorale (Faraid).
-- Préparer les plans topographiques (si nécessaire pour délimiter les lots).
-- Établir l'acte de partage chez le notaire.
-- Procéder à la publicité foncière de l'acte.
-- Pour plus de détails sur les successions, consultez notre [guide des successions](/fr/blog/fredha-succession-algerie-etapes).
+## Liens utiles
+- Consultez notre article sur [L'acte de Fredha et la dévolution successorale](/fr/blog/fredha-succession-algerie-etapes).
+- Découvrez nos services de [partage successorale et règlement d'indivision](/fr/services/succession).
 
-## Rôle du notaire
-Le notaire rédige l'acte de partage amiable en veillant à la protection des droits de chaque indivisaire et à sa conformité avec la réglementation foncière, puis supervise les formalités de publicité foncière.
-
-## Conclusion et note importante
-Cet article est informatif. Chaque cas d'indivision et de partage doit être étudié individuellement en fonction des documents et de la situation réelle du bien, devant le notaire compétent ou les instances judiciaires concernées.
+## Avertissement légal
+Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
