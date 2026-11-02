@@ -29,17 +29,11 @@ export interface AppointmentFormData {
 }
 
 export async function submitAdministrativeInquiry(
-  prevStateOrFormData: InquiryState | FormData,
-  maybeFormData?: FormData
+  _prevState: InquiryState,
+  formData: FormData,
 ): Promise<InquiryState> {
   try {
-    const formData = maybeFormData instanceof FormData
-      ? maybeFormData
-      : prevStateOrFormData instanceof FormData
-        ? prevStateOrFormData
-        : new FormData();
-
-    // Fast-path honeypot check: Non-empty honeypot returns { success: false, errors: {} } with no outbound call
+    // Fast-path honeypot check: Non-empty honeypot returns { success: false, errors: {} }
     const websiteVal = formData.get('companyWebsite') ?? formData.get('honeypot');
     if (typeof websiteVal === 'string' && websiteVal.trim() !== '') {
       return { success: false, errors: {} };
@@ -84,7 +78,6 @@ export async function submitAdministrativeInquiry(
       errors: {},
     };
   } catch {
-    console.error('[INQUIRY_VALIDATION_ERROR]');
     return {
       success: false,
       errors: { _form: ['حدث خطأ أثناء معالجة الطلب.'] },

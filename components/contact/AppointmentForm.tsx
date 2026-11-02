@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useEffect, useActionState, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Calendar, User, Phone, FileText, Building, CheckCircle, Loader2, AlertTriangle, Printer, ExternalLink, Clock } from 'lucide-react';
@@ -158,10 +159,9 @@ export default function AppointmentForm({ services }: { services: readonly strin
 
   return (
     <form
-      action={async (formData) => {
-        const url = buildInquiryWaUrl(lang, appointmentData.service);
-        whatsappUrlRef.current = url;
-        await formAction(formData);
+      action={(formData) => {
+        whatsappUrlRef.current = buildInquiryWaUrl(lang, appointmentData.service);
+        formAction(formData);
       }}
       className="space-y-6"
       id="inquiry-admin-form"
