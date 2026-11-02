@@ -177,7 +177,7 @@ export default function GN17Step4Liquidation({
           type="button"
           onClick={onDownload}
           disabled={isDownloading}
-          className="inline-flex items-center gap-3 px-8 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-base transition-all shadow-md hover:shadow-lg disabled:opacity-60 cursor-pointer"
+          className="inline-flex items-center gap-3 px-8 py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold text-base transition-all shadow-md hover:shadow-lg disabled:opacity-60 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
         >
           {isDownloading ? (
             <>

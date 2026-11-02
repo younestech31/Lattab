@@ -83,7 +83,7 @@ export default function GN17Step2Property({ data, updateData, isAr }: Props) {
                 type="text"
                 value={data.cadastreRef}
                 onChange={(e) => updateData({ cadastreRef: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono text-xs"
+                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 text-xs"
                 placeholder={isAr ? 'قسم 12، مجموعة ملكية رقم 45' : 'Section 12, Lot 45'}
               />
             </div>
@@ -141,7 +141,7 @@ export default function GN17Step2Property({ data, updateData, isAr }: Props) {
               type="text"
               value={data.refPublicationOrigine}
               onChange={(e) => updateData({ refPublicationOrigine: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono text-xs"
+              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 text-xs"
               placeholder={isAr ? 'حجم 1245 رقم 67' : 'Vol 1245 N° 67'}
             />
           </div>

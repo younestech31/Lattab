@@ -63,7 +63,7 @@ export default function GN8Step1Admin({ data, updateData, isAr }: Props) {
                 className="text-emerald-700 focus:ring-emerald-500"
               />
             </div>
-            <span className="inline-block mt-2 font-mono font-semibold text-xs text-emerald-800 bg-emerald-100/60 px-2 py-0.5 rounded w-fit">
+            <span className="inline-block mt-2 font-semibold text-xs text-emerald-800 bg-emerald-100/60 px-2 py-0.5 rounded w-fit">
               IFU
             </span>
             <span className="text-xs text-gray-500 mt-2 leading-relaxed">
@@ -94,7 +94,7 @@ export default function GN8Step1Admin({ data, updateData, isAr }: Props) {
                 className="text-emerald-700 focus:ring-emerald-500"
               />
             </div>
-            <span className="inline-block mt-2 font-mono font-semibold text-xs text-blue-800 bg-blue-100/60 px-2 py-0.5 rounded w-fit">
+            <span className="inline-block mt-2 font-semibold text-xs text-blue-800 bg-blue-100/60 px-2 py-0.5 rounded w-fit">
               IRG (Régime Réel)
             </span>
             <span className="text-xs text-gray-500 mt-2 leading-relaxed">
@@ -125,7 +125,7 @@ export default function GN8Step1Admin({ data, updateData, isAr }: Props) {
                 className="text-emerald-700 focus:ring-emerald-500"
               />
             </div>
-            <span className="inline-block mt-2 font-mono font-semibold text-xs text-indigo-800 bg-indigo-100/60 px-2 py-0.5 rounded w-fit">
+            <span className="inline-block mt-2 font-semibold text-xs text-indigo-800 bg-indigo-100/60 px-2 py-0.5 rounded w-fit">
               IBS
             </span>
             <span className="text-xs text-gray-500 mt-2 leading-relaxed">
@@ -217,7 +217,7 @@ export default function GN8Step1Admin({ data, updateData, isAr }: Props) {
               value={data.nif}
               onChange={(e) => updateData({ nif: e.target.value.replace(/\D/g, '') })}
               placeholder="00000000000000000000"
-              className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 font-mono tracking-wider focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 tracking-wider focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
             <span className="text-[11px] text-gray-400 mt-1 block">
               {data.nif.length}/20 {isAr ? 'أرقام مدخلة' : 'chiffres saisis'}
@@ -234,7 +234,7 @@ export default function GN8Step1Admin({ data, updateData, isAr }: Props) {
               value={data.nai}
               onChange={(e) => updateData({ nai: e.target.value.replace(/\D/g, '') })}
               placeholder="00000000000"
-              className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 font-mono tracking-wider focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 tracking-wider focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
             <span className="text-[11px] text-gray-400 mt-1 block">
               {data.nai.length}/11 {isAr ? 'أرقام مدخلة' : 'chiffres saisis'}

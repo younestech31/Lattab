@@ -72,7 +72,7 @@ export default function FormWizardShell({
 
       {/* Statutory 30-Day Legal Warning Card */}
       <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-5 mb-8 text-amber-950 shadow-sm flex items-start gap-4">
-        <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+        <div className="w-10 h-10 rounded-xl bg-amber-800 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
           <Clock className="w-5 h-5" />
         </div>
         <div className="text-xs sm:text-sm leading-relaxed space-y-1">

@@ -70,7 +70,7 @@ const TermsPrivacyPageFR = () => {
                   <span className="bg-emerald-800 text-emerald-200 text-xs px-2.5 py-0.5 rounded font-bold">
                     Avis Légal et Réglementaire Officiel
                   </span>
-                  <span className="text-emerald-400 text-xs font-mono">Décret exécutif 08-243 • Loi 06-02</span>
+                  <span className="text-emerald-400 text-xs">Décret exécutif 08-243 • Loi 06-02</span>
                 </div>
                 <p className="text-white font-medium text-base sm:text-lg leading-relaxed">
                   Ce site a un caractère purement informatif. Les honoraires du notaire sont fixés exclusivement par la tarification officielle (<strong>Décret exécutif n° 08-243</strong>). Aucune publicité commerciale n&apos;est pratiquée.
@@ -152,7 +152,7 @@ const TermsPrivacyPageFR = () => {
                     <p className="text-sm text-gray-500 mt-1">Application du Décret exécutif n° 08-243 et de l&apos;Article 22 de la Loi n° 06-02</p>
                   </div>
                 </div>
-                <div className="prose prose-emerald max-w-none text-gray-700 leading-relaxed space-y-4 font-sans">
+                <div className="prose prose-emerald max-w-none text-gray-700 leading-relaxed space-y-4">
                   <p>
                     <strong>1. Tarification exclusive et réglementée :</strong> En droit algérien, les honoraires du notaire ne sont ni négociables ni soumis aux lois du marché commercial. Ils sont fixés de manière impérative par le <strong>Décret exécutif n° 08-243</strong>. L&apos;office applique cette tarification d&apos;État avec une rigueur absolue, sans majoration, rabais ni discrimination.
                   </p>
@@ -261,15 +261,15 @@ const TermsPrivacyPageFR = () => {
                       </thead>
                       <tbody className="divide-y divide-gray-100">
                         <tr>
-                          <td className="px-6 py-4 font-medium text-gray-900 font-sans">Données d&apos;identité</td>
+                          <td className="px-6 py-4 font-medium text-gray-900">Données d&apos;identité</td>
                           <td className="px-6 py-4">Nom et prénom (identification administrative de l&apos;usager pour la gestion du registre d&apos;accueil).</td>
                         </tr>
                         <tr>
-                          <td className="px-6 py-4 font-medium text-gray-900 font-sans">Données de contact</td>
+                          <td className="px-6 py-4 font-medium text-gray-900">Données de contact</td>
                           <td className="px-6 py-4">Numéro de téléphone et adresse e-mail (confirmation administrative du rendez-vous et coordination en cas d&apos;empêchement).</td>
                         </tr>
                         <tr>
-                          <td className="px-6 py-4 font-medium text-gray-900 font-sans">Données du service</td>
+                          <td className="px-6 py-4 font-medium text-gray-900">Données du service</td>
                           <td className="px-6 py-4">Catégorie de prestation notariée envisagée et date souhaitée (préparation de l&apos;inventaire des pièces légales requises).</td>
                         </tr>
                       </tbody>
@@ -279,11 +279,9 @@ const TermsPrivacyPageFR = () => {
                   <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">2. Ce que nous ne collectons JAMAIS en ligne :</h3>
                   <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-2xl mb-8 flex items-start gap-4">
                     <Shield className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-red-800 m-0 leading-relaxed font-sans">
+                      <p className="text-red-800 m-0 leading-relaxed">
                         Pour préserver le secret professionnel et la sécurité des parties, il est formellement prohibé de transmettre via ce site tout titre de propriété, acte d&apos;état civil confidentiel, coordonnées bancaires, testament ou document sensible. Tout dépôt de pièces et examen au fond des dossiers s&apos;effectue physiquement et confidentiellement au sein de l&apos;office.
                       </p>
-                    </div>
                   </div>
 
                   <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">3. Hébergement et sécurité technique des données :</h3>
@@ -340,7 +338,7 @@ const TermsPrivacyPageFR = () => {
                     <p className="text-gray-600 leading-relaxed">
                       Pour exercer vos droits d&apos;accès, de rectification ou de suppression de vos données, ou pour toute demande réglementaire ou administrative, vous pouvez nous joindre par nos canaux officiels :
                     </p>
-                    <div className="space-y-5 bg-gray-50 p-6 rounded-2xl border border-gray-100 font-sans">
+                    <div className="space-y-5 bg-gray-50 p-6 rounded-2xl border border-gray-100">
                       <div className="flex items-start gap-4 text-gray-700">
                         <MapPin className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                         <a 
@@ -379,7 +377,7 @@ const TermsPrivacyPageFR = () => {
                       <CheckCircle className="w-8 h-8 text-emerald-600" />
                     </div>
                     <h4 className="text-xl font-bold text-emerald-900 mb-4">Consentement Explicite de Traitement</h4>
-                    <p className="text-emerald-800 leading-relaxed font-sans text-sm md:text-base">
+                    <p className="text-emerald-800 leading-relaxed text-sm md:text-base">
                       En utilisant ce site et en cochant la case d&apos;acceptation lors de la soumission d&apos;une demande de réservation, vous reconnaissez avoir pris connaissance, compris et accepté explicitement l&apos;ensemble des conditions d&apos;utilisation et de la politique de confidentialité ci-dessus, y compris le traitement et le stockage technique de vos données par le fournisseur cloud à des fins exclusives de gestion de votre rendez-vous.
                     </p>
                   </div>

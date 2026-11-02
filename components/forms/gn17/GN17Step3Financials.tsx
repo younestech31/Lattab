@@ -45,7 +45,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               required
               value={data.montantCession || ''}
               onChange={(e) => updateData({ montantCession: Number(e.target.value) || 0 })}
-              className="w-full px-3.5 py-2.5 text-sm font-semibold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono"
+              className="w-full px-3.5 py-2.5 text-sm font-semibold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
               placeholder="18000000"
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
@@ -64,7 +64,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               step="1000"
               value={data.fraisCession || ''}
               onChange={(e) => updateData({ fraisCession: Number(e.target.value) || 0 })}
-              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono"
+              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
               placeholder="0"
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
@@ -83,7 +83,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               step="1000"
               value={data.fraisAutres || ''}
               onChange={(e) => updateData({ fraisAutres: Number(e.target.value) || 0 })}
-              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono"
+              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
               placeholder="0"
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
@@ -103,7 +103,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               required
               value={data.valeurOrigine || ''}
               onChange={(e) => updateData({ valeurOrigine: Number(e.target.value) || 0 })}
-              className="w-full px-3.5 py-2.5 text-sm font-semibold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono"
+              className="w-full px-3.5 py-2.5 text-sm font-semibold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
               placeholder="12000000"
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
@@ -139,7 +139,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               step="1000"
               value={data.fraisAcquisition || ''}
               onChange={(e) => updateData({ fraisAcquisition: Number(e.target.value) || 0, useFlatExpenses: false })}
-              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono"
+              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
               placeholder="360000"
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
@@ -176,7 +176,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               max="99"
               value={data.anneeDetention}
               onChange={(e) => updateData({ anneeDetention: Number(e.target.value) || 0 })}
-              className="w-full px-3.5 py-2.5 text-sm font-semibold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono"
+              className="w-full px-3.5 py-2.5 text-sm font-semibold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
             />
             <p className="text-[11px] text-gray-500 mt-1">
               {isAr
@@ -216,12 +216,12 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
         <div className="grid sm:grid-cols-3 gap-4 text-sm divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-slate-800">
           <div className="space-y-1 pt-2 sm:pt-0">
             <span className="text-xs text-slate-400 block">{isAr ? 'صافي التنازل (أ - ب - ج):' : 'Assiette nette (A - B - C) :'}</span>
-            <span className="text-base font-bold font-mono text-white">{formatCurrency(calc.netSalePrice)}</span>
+            <span className="text-base font-bold text-white">{formatCurrency(calc.netSalePrice)}</span>
           </div>
 
           <div className="space-y-1 pt-2 sm:pt-0 sm:px-4">
             <span className="text-xs text-slate-400 block">{isAr ? 'فائض القيمة الإجمالي (و):' : 'Plus-value brute :'}</span>
-            <span className="text-base font-bold font-mono text-amber-300">{formatCurrency(calc.grossPlusValue)}</span>
+            <span className="text-base font-bold text-amber-300">{formatCurrency(calc.grossPlusValue)}</span>
             <span className="text-[11px] text-slate-400 block">
               {isAr ? `تخفيض المدة (${calc.abattementRate}%): -${formatCurrency(calc.abattementAmount)}` : `Abattement : -${formatCurrency(calc.abattementAmount)}`}
             </span>
@@ -229,7 +229,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
 
           <div className="space-y-1 pt-2 sm:pt-0 sm:ps-4">
             <span className="text-xs text-emerald-400 block font-semibold">{isAr ? 'الأساس الصافي الخاضع للضريبة (ح):' : 'Base nette imposable :'}</span>
-            <span className="text-lg font-extrabold font-mono text-emerald-300">{formatCurrency(calc.netImposablePlusValue)}</span>
+            <span className="text-lg font-extrabold text-emerald-300">{formatCurrency(calc.netImposablePlusValue)}</span>
           </div>
         </div>
       </div>

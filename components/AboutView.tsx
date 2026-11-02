@@ -190,7 +190,7 @@ export default function AboutView({ lang }: AboutViewProps) {
                 </svg>
                 <div>
                   <p className="font-bold text-gray-900">{isAr ? 'أرقام الهاتف' : 'Téléphones'}</p>
-                  <div className="space-y-1 font-mono" dir="ltr">
+                  <div className="space-y-1" dir="ltr">
                     <div>
                       <PhoneLink type="office" className="text-emerald-700 hover:underline" />
                       <span className="text-gray-600 text-xs ms-2">({isAr ? 'المكتب' : 'Bureau'})</span>

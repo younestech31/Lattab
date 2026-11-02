@@ -233,7 +233,7 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
             {service.isPropertyRelated && (
               <Link
                 href={calcUrl}
-                className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition flex items-center gap-2 self-start md:self-auto shadow-sm"
+                className="bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition flex items-center gap-2 self-start md:self-auto shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 11h.01M12 14h.01M15 11h.01M12 7h.01M15 7h.01M15 14h.01M9 11h.01M12 17h.01M15 17h.01" />
@@ -312,7 +312,7 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
             <div className="flex flex-wrap justify-center gap-3 shrink-0">
               <Link
                 href={contactUrl}
-                className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 rounded-xl font-bold transition text-sm flex items-center gap-2 shadow-sm"
+                className="bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white px-5 py-2.5 rounded-xl font-bold transition text-sm flex items-center gap-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
               >
                 {isAr ? 'معلومات الاتصال بالديوان' : 'Coordonnées de l\'office'}
               </Link>

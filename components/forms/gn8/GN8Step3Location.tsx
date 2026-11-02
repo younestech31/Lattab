@@ -128,7 +128,7 @@ export default function GN8Step3Location({ data, updateData, isAr }: Props) {
               value={data.email}
               onChange={(e) => updateData({ email: e.target.value })}
               placeholder="contact@exemple.dz"
-              className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono text-xs"
+              className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-xs"
             />
           </div>
 

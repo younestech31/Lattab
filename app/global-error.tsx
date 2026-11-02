@@ -15,7 +15,7 @@ export default function GlobalError({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontFamily: 'sans-serif',
+            fontFamily: 'var(--font-cairo), Cairo, sans-serif',
             textAlign: 'center',
             padding: '24px',
             backgroundColor: '#ffffff',

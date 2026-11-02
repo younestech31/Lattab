@@ -144,7 +144,7 @@ export default function GN31Step1Admin({ data, updateData, isAr }: Props) {
               maxLength={20}
               value={data.nif}
               onChange={(e) => updateData({ nif: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm font-mono tracking-wider bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+              className="w-full px-3.5 py-2 text-sm tracking-wider bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
               placeholder="00000000000000000000"
               dir="ltr"
             />
@@ -162,7 +162,7 @@ export default function GN31Step1Admin({ data, updateData, isAr }: Props) {
               maxLength={11}
               value={data.nai}
               onChange={(e) => updateData({ nai: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm font-mono tracking-wider bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+              className="w-full px-3.5 py-2 text-sm tracking-wider bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
               placeholder="00000000000"
               dir="ltr"
             />
@@ -180,7 +180,7 @@ export default function GN31Step1Admin({ data, updateData, isAr }: Props) {
               maxLength={18}
               value={data.nin}
               onChange={(e) => updateData({ nin: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm font-mono tracking-wider bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+              className="w-full px-3.5 py-2 text-sm tracking-wider bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
               placeholder="000000000000000000"
               dir="ltr"
             />

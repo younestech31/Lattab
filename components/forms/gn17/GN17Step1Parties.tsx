@@ -154,7 +154,7 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
                 type="text"
                 value={data.cedantNif}
                 onChange={(e) => updateData({ cedantNif: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 font-mono text-xs"
+                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 text-xs"
                 placeholder="1980310100..."
               />
             </div>
@@ -235,7 +235,7 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
                 type="text"
                 value={data.buyer1Nif}
                 onChange={(e) => updateData({ buyer1Nif: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-emerald-500 font-mono text-xs"
+                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-emerald-500 text-xs"
                 placeholder="1085..."
               />
             </div>

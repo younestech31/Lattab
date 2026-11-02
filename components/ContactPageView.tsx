@@ -142,7 +142,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
                 </div>
                 <div>
                   <p className="font-bold text-gray-900 mb-1">{isAr ? 'أرقام الهاتف' : 'Lignes téléphoniques'}</p>
-                  <div className="space-y-1 font-mono" dir="ltr">
+                  <div className="space-y-1" dir="ltr">
                     <div>
                       <PhoneLink type="office" className="text-emerald-700 font-bold hover:underline" />
                       <span className="text-gray-600 text-xs ms-2">({isAr ? 'الخط الرئيسي' : 'Ligne directe'})</span>

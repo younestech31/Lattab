@@ -212,7 +212,7 @@ export default function HeaderClient({ lang, isHomePage }: { lang: Language, isH
             <Link
               href={getHref('/#contact')}
               onClick={() => setIsMenuOpen(false)}
-              className="mt-2 text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm"
+              className="mt-2 text-center bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
             >
               {text.book}
             </Link>

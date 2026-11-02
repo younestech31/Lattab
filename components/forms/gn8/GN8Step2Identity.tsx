@@ -154,7 +154,7 @@ export default function GN8Step2Identity({ data, updateData, isAr }: Props) {
               value={data.nin}
               onChange={(e) => updateData({ nin: e.target.value.replace(/\D/g, '') })}
               placeholder="100000000000000000"
-              className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 font-mono tracking-wider focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 tracking-wider focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
             <span className="text-[11px] text-gray-400 mt-1 block">
               {data.nin.length}/18 {isAr ? 'أرقام مدخلة' : 'chiffres saisis'}

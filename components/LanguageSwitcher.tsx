@@ -17,7 +17,7 @@ export default function LanguageSwitcher({ headerActive, isMobile: _isMobile = f
       onClick={toggleLang}
       disabled={isPending}
       aria-busy={isPending}
-      className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center font-mono text-xs md:text-sm font-bold tracking-wider border rounded-none transition-all duration-300 pointer-events-auto leading-none ${
+      className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center text-xs md:text-sm font-bold tracking-wider border rounded-none transition-all duration-300 pointer-events-auto leading-none ${
         headerActive 
           ? 'border-gray-900 text-gray-900 bg-white hover:bg-gray-900 hover:text-white' 
           : 'border-white text-white bg-transparent hover:bg-white hover:text-emerald-900'

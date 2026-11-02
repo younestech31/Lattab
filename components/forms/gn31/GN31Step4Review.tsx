@@ -68,7 +68,7 @@ export default function GN31Step4Review({
 
           <div className="bg-gray-50 p-3 rounded-xl">
             <span className="text-gray-500 block mb-1">{isAr ? 'الرقم الجبائي NIF:' : 'NIF :'}</span>
-            <span className="font-mono font-semibold text-gray-800 block">
+            <span className="font-semibold text-gray-800 block">
               {data.nif || (isAr ? 'غير محدد' : 'Non spécifié')}
             </span>
           </div>

@@ -14,6 +14,11 @@ export async function generateStaticParams() {
 }
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
+  // Load Cairo font for consistent branding
+  const cairoRegular = await fetch(
+    new URL('../../../../public/fonts/Cairo-Regular.ttf', import.meta.url)
+  ).then((res) => res.arrayBuffer());
+
   try {
     const { slug } = await params;
     const post = frBlogPosts.find((p) => p.slug === slug);
@@ -32,7 +37,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             flexDirection: 'column',
             justifyContent: 'space-between',
             padding: '60px',
-            fontFamily: 'sans-serif',
+            fontFamily: 'Cairo',
           }}
         >
           <div style={{ color: '#d1fae5', fontSize: '22px', fontWeight: 600 }}>
@@ -75,7 +80,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           </div>
         </div>
       ),
-      { ...size }
+      { ...size, fonts: [{ name: "Cairo", data: cairoRegular, style: "normal", weight: 400 }] }
     );
   } catch {
     // Fail-safe fallback: Never return a 500 error to search engine crawlers
@@ -91,7 +96,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             justifyContent: 'center',
             alignItems: 'center',
             padding: '60px',
-            fontFamily: 'sans-serif',
+            fontFamily: 'Cairo',
             color: '#ffffff',
             textAlign: 'center',
           }}
@@ -104,8 +109,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           </div>
         </div>
       ),
-      { ...size }
+      { ...size, fonts: [{ name: "Cairo", data: cairoRegular, style: "normal", weight: 400 }] }
     );
   }
 }
-
