@@ -1,25 +1,75 @@
 import { ImageResponse } from 'next/og';
 import { frBlogPosts } from '@/lib/data/blog';
 
+export const runtime = 'nodejs';
 export const revalidate = 86400;
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-// Pre-render all French blog OG images as static assets at build time
+/**
+ * Pre-render all French blog OG images as static assets at build time.
+ * Uses only Satori built-in sans-serif — no custom fonts (avoids Invalid URL / ENOENT).
+ * Titles are derived from the slug (Latin) to avoid Satori OpenType / accent shaping issues.
+ */
 export async function generateStaticParams() {
-  return frBlogPosts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    return (frBlogPosts ?? []).map((post) => ({
+      slug: post.slug,
+    }));
+  } catch {
+    return [];
+  }
 }
 
-export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
+function buildFallbackImage() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '1200px',
+          height: '630px',
+          background: 'linear-gradient(135deg, #065f46 0%, #059669 100%)',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '60px',
+          fontFamily: 'sans-serif',
+          color: '#ffffff',
+          textAlign: 'center',
+        }}
+      >
+        <div style={{ fontSize: '44px', fontWeight: 800, marginBottom: '16px' }}>
+          Office Notarial - Oran — Notaire a Oran
+        </div>
+        <div style={{ fontSize: '24px', color: '#d1fae5' }}>
+          Guide Juridique et Notarial Algerien 2026
+        </div>
+      </div>
+    ),
+    { ...size }
+  );
+}
+
+export default async function Image({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   try {
     const { slug } = await params;
-    const post = frBlogPosts.find((p) => p.slug === slug);
 
-    const title = post?.title ?? 'Office Notarial - Oran - Notaire a Oran';
-    const category = post?.category ?? 'Droit Algerien';
+    // Prefer Latinized slug title (same strategy as AR blog OG) to keep Satori stable
+    const formattedTitle = (slug || 'guide-notarial')
+      .split('-')
+      .filter(Boolean)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+      .slice(0, 120);
+
+    const post = (frBlogPosts ?? []).find((p) => p.slug === slug);
+    const category = (post?.category || 'Droit Algerien').slice(0, 60);
 
     return new ImageResponse(
       (
@@ -79,7 +129,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               maxWidth: '980px',
             }}
           >
-            {title}
+            {formattedTitle}
           </div>
 
           <div
@@ -113,33 +163,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
       { ...size }
     );
   } catch {
-    // Fail-safe fallback: Never return a 500 error to search engine crawlers
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            width: '1200px',
-            height: '630px',
-            background: 'linear-gradient(135deg, #065f46 0%, #059669 100%)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '60px',
-            fontFamily: 'sans-serif',
-            color: '#ffffff',
-            textAlign: 'center',
-          }}
-        >
-          <div style={{ fontSize: '44px', fontWeight: 800, marginBottom: '16px' }}>
-            Office Notarial - Oran — Notaire a Oran
-          </div>
-          <div style={{ fontSize: '24px', color: '#d1fae5' }}>
-            Guide Juridique et Notarial Algerien 2026
-          </div>
-        </div>
-      ),
-      { ...size }
-    );
+    // Absolute fail-safe: never let OG image generation break the build
+    return buildFallbackImage();
   }
 }
