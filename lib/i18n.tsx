@@ -1,7 +1,8 @@
 'use client';
 
-import React, { createContext, useContext, useTransition, useState } from 'react';
+import React, { createContext, useContext, useTransition, useState, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { getCounterpartBlogUrl } from '@/lib/data/localeMap';
 
 export type Language = 'ar' | 'fr';
 
@@ -15,14 +16,56 @@ export interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children, lang: initialLang = 'ar' }: { children: React.ReactNode, lang?: Language }) {
+function resolveLangFromPath(pathname: string | null): Language {
+  if (!pathname) return 'ar';
+  return pathname === '/fr' || pathname.startsWith('/fr/') ? 'fr' : 'ar';
+}
+
+/** Map a path to the other language using alternatePaths, blog pairs, or /fr prefix. */
+function resolveTargetPath(
+  pathname: string,
+  nextLang: Language,
+  alternatePaths: Record<Language, string> | null,
+): string {
+  // 1. Explicit alternate registered by the page (blog posts with different slugs)
+  if (alternatePaths?.[nextLang]) {
+    return alternatePaths[nextLang];
+  }
+
+  // 2. Blog pair map (handles same-slug and different-slug blog posts)
+  if (pathname.startsWith('/blog/') || pathname.startsWith('/fr/blog/')) {
+    const counterpart = getCounterpartBlogUrl(pathname);
+    if (counterpart && counterpart !== pathname) {
+      return counterpart;
+    }
+  }
+
+  // 3. Generic /fr prefix logic for static routes
+  const isFrPage = pathname === '/fr' || pathname.startsWith('/fr/');
+
+  if (nextLang === 'fr') {
+    if (isFrPage) return pathname;
+    return pathname === '/' ? '/fr' : `/fr${pathname}`;
+  }
+
+  // nextLang === 'ar'
+  if (!isFrPage) return pathname;
+  return pathname === '/fr' ? '/' : pathname.replace(/^\/fr/, '') || '/';
+}
+
+export function LanguageProvider({
+  children,
+  lang: _initialLang = 'ar',
+}: {
+  children: React.ReactNode;
+  lang?: Language;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
-  const [alternatePaths, setAlternatePaths] = useState<Record<Language, string> | null>(null);
+  const [alternatePaths, setAlternatePathsState] = useState<Record<Language, string> | null>(null);
 
-  const langFromPath: Language =
-    pathname === '/fr' || pathname.startsWith('/fr/') ? 'fr' : (pathname === '/' || pathname ? 'ar' : (initialLang || 'ar'));
+  const langFromPath = resolveLangFromPath(pathname);
 
   React.useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -31,54 +74,47 @@ export function LanguageProvider({ children, lang: initialLang = 'ar' }: { child
     }
   }, [langFromPath]);
 
-  // Reset alternate paths when pathname changes
-  React.useEffect(() => {
-    setAlternatePaths(null);
-  }, [pathname]);
+  // Do NOT clear alternatePaths on every pathname change — that creates a race
+  // where toggleLang runs with null alternates. Pages register via RegisterAlternatePath
+  // and clean up on unmount; that is sufficient.
 
-  const handleLanguageChange = (nextLang: Language) => {
-    let targetPath = pathname;
-    
-    // Check if current page is structured as /fr/...
-    const isFrPage = pathname === '/fr' || pathname.startsWith('/fr/');
+  const setAlternatePaths = useCallback((paths: Record<Language, string> | null) => {
+    setAlternatePathsState(paths);
+  }, []);
 
-    let isPathChanging = false;
+  const handleLanguageChange = useCallback(
+    (nextLang: Language) => {
+      const current = pathname || '/';
+      const targetPath = resolveTargetPath(current, nextLang, alternatePaths);
+      const isPathChanging = targetPath !== current;
 
-    if (alternatePaths && alternatePaths[nextLang]) {
-      targetPath = alternatePaths[nextLang];
-      isPathChanging = targetPath !== pathname;
-    } else if (nextLang === 'fr') {
-      if (!isFrPage) {
-        targetPath = pathname === '/' ? '/fr' : `/fr${pathname}`;
-        isPathChanging = true;
-      }
-    } else {
-      if (isFrPage) {
-        targetPath = pathname === '/fr' ? '/' : pathname.replace(/^\/fr/, '');
-        isPathChanging = true;
-      }
-    }
+      startTransition(() => {
+        if (isPathChanging) {
+          router.push(targetPath);
+        } else {
+          router.refresh();
+        }
+      });
+    },
+    [pathname, alternatePaths, router],
+  );
 
-    startTransition(() => {
-      if (isPathChanging) {
-        router.push(targetPath);
-      } else {
-        router.refresh();
-      }
-    });
-  };
-
-  const toggleLang = () => {
+  const toggleLang = useCallback(() => {
     const nextLang = langFromPath === 'ar' ? 'fr' : 'ar';
     handleLanguageChange(nextLang);
-  };
+  }, [langFromPath, handleLanguageChange]);
 
-  const setLang = (newLang: Language) => {
-    handleLanguageChange(newLang);
-  };
+  const setLang = useCallback(
+    (newLang: Language) => {
+      handleLanguageChange(newLang);
+    },
+    [handleLanguageChange],
+  );
 
   return (
-    <LanguageContext.Provider value={{ lang: langFromPath, setLang, toggleLang, isPending, setAlternatePaths }}>
+    <LanguageContext.Provider
+      value={{ lang: langFromPath, setLang, toggleLang, isPending, setAlternatePaths }}
+    >
       {children}
     </LanguageContext.Provider>
   );
@@ -92,16 +128,16 @@ export function useLang() {
   return context;
 }
 
+/** Register the AR/FR counterpart paths for the current page (e.g. blog posts). */
 export function RegisterAlternatePath({ paths }: { paths: Record<Language, string> }) {
   const { setAlternatePaths } = useLang();
-  
+
   React.useEffect(() => {
     setAlternatePaths(paths);
     return () => {
       setAlternatePaths(null);
     };
-  }, [paths, setAlternatePaths]);
+  }, [paths.ar, paths.fr, setAlternatePaths]);
 
   return null;
 }
-
