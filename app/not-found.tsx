@@ -19,7 +19,7 @@ export default function NotFound() {
         <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100 max-w-2xl w-full text-center">
           {/* Status Badge */}
           <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner">
-            <span className="text-3xl font-black font-mono">404</span>
+            <span className="text-3xl font-black">404</span>
           </div>
 
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">

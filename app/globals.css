@@ -5,6 +5,12 @@
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 
+@theme {
+  --font-sans: var(--font-cairo), "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-cairo), "Cairo", ui-sans-serif, system-ui, sans-serif;
+}
+
+
 /* UI copy stays compact. 1.8 on every element made headings and the nav look oversized at 100% zoom. */
 body, .font-cairo {
   font-family: var(--font-cairo), sans-serif;

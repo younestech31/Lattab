@@ -76,7 +76,7 @@ const TermsPrivacyPage = () => {
                 <span className="bg-emerald-800 text-emerald-200 text-xs px-2.5 py-0.5 rounded font-bold">
                   إشعار قانوني وتنظيمي رسمي
                 </span>
-                <span className="text-emerald-400 text-xs font-mono">المرسوم التنفيذي 08-243 • القانون 06-02</span>
+                <span className="text-emerald-400 text-xs">المرسوم التنفيذي 08-243 • القانون 06-02</span>
               </div>
               <p className="text-white font-medium text-base sm:text-lg leading-relaxed">
                 هذا الموقع ذو طابع إعلامي محض. أتعاب الموثق محددة حصراً بالتعريفة الرسمية المقننة (المرسوم التنفيذي رقم 08-243). لا يمارس المكتب أي إشهار تجاري أو نشاط استقطابي.

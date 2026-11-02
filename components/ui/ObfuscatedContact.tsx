@@ -68,7 +68,7 @@ export default function ObfuscatedContact({
         <span
           dir="ltr"
           style={{ unicodeBidi: 'isolate' }}
-          className="font-mono whitespace-nowrap"
+          className="whitespace-nowrap"
         >
           {revealed ? '0562 29 69 81' : '0562 •• •• ••'}
         </span>

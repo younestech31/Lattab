@@ -87,7 +87,7 @@ const TermsPrivacyPageFR = () => {
             <AlertTriangle className="w-8 h-8 text-amber-500 flex-shrink-0 mt-1" />
             <div>
               <h3 className="text-lg font-bold text-amber-900 mb-2">Avis Réglementaire &amp; Secret Professionnel</h3>
-              <p className="text-amber-800 leading-relaxed font-sans">
+              <p className="text-amber-800 leading-relaxed">
                 Veuillez lire attentivement ce document avant d&apos;utiliser la plateforme administrative de prise de rendez-vous. L&apos;utilisation de cette plateforme constitue une acceptation formelle du statut institutionnel de l&apos;office notarial en tant qu&apos;officier public ministériel soumis aux règles déontologiques et au secret professionnel absolu.
               </p>
             </div>
