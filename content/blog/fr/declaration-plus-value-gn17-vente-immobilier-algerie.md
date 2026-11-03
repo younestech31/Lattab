@@ -26,7 +26,7 @@ La plus-value est calculée sur la base de la différence entre le prix de cessi
 La déclaration G17 doit impérativement être déposée et l'impôt acquitté dans un délai de **30 jours** à compter de la date de l'acte de vente notarié.
 - **Taux applicable :** La plus-value immobilière est imposée au taux de **15%** (IRG).
 - **Abattement pour durée de détention :** Un abattement de **5% par an** est appliqué sur la plus-value à partir de la 3ème année de détention.
-- **Exonération :** Des conditions particulières s'appliquent pour la cession de l'habitation principale unique.
+- **Habitation principale unique :** La cession de l'habitation principale n'est pas, en elle-même, une exonération générale et totale. Selon les indications de la Direction générale des impôts, le cédant qui remplit les conditions peut bénéficier d'un **abattement de 50 %** de l'impôt dû sur la plus-value de cession de l'unique habitation principale, et non d'une exonération automatique de toute vente de logement. L'administration fiscale vérifie ces conditions au dossier.
 La déclaration est obligatoire même en l'absence de plus-value taxable.
 
 ## Démarches principales
@@ -42,5 +42,5 @@ Ces informations sont purement indicatives. **Note :** Le régime fiscal peut va
 
 ## Références et sources officielles
 - [Code des Impôts Directs et Taxes Assimilées](https://www.mfdgi.gov.dz).
-- [Direction Générale des Impôts - Déclaration G17](https://www.mfdgi.gov.dz).
+- [Direction générale des impôts — plus-value immobilière](https://www.mfdgi.gov.dz/fr/particuliers/irg-plus-values-de-cession-a-titre-onereux-des-immeubles-batis-ou-non-batis).
 - [Journal Officiel de la République Algérienne](https://www.joradp.dz).

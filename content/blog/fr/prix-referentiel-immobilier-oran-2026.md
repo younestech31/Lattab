@@ -24,7 +24,7 @@ Il faut distinguer quatre notions :
 3. **La valeur vénale estimée :** l'appréciation que l'administration peut retenir si le prix déclaré ne reflète pas l'opération.
 4. **Le redressement ou la réévaluation fiscale :** une procédure ultérieure, soumise à ses conditions légales, et non un calcul automatique sur le chiffre le plus élevé du tableau dès la signature.
 
-Les droits d'enregistrement et la taxe de publicité foncière sont liquidés selon les textes fiscaux en vigueur et sur la base retenue dans le dossier, après comparaison de la déclaration avec le référentiel.
+Les droits d'enregistrement et la taxe de publicité foncière sont liquidés selon les textes fiscaux en vigueur et sur la base retenue dans le dossier, après comparaison de la déclaration avec le référentiel. Les grilles 2025-2026 sont des fourchettes qui varient selon la wilaya, la commune, la zone et le type de bien. Elles ne sont ni un plancher unique ni une règle automatique de calcul des droits de tous les actes.
 
 ## Rôle du notaire
 Le notaire applique le barème fiscal en vigueur, informe préalablement les parties du montant estimé des droits à acquitter et veille à l'utilisation des moyens de paiement bancaires légaux pour garantir la sécurité financière.
