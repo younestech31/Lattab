@@ -2,6 +2,8 @@
 title: "Guide de l'Acte de Vente Immobilier à Oran"
 description: "Découvrez les étapes clés, les documents requis et le rôle du notaire dans la conclusion d'un acte de vente immobilier à Oran, en Algérie."
 dateISO: "2026-05-19"
+dateModified: "2026-11-04"
+lastLegalReview: "2026-11-04"
 category: "Immobilier"
 language: "fr"
 arSlug: "guide-acte-de-vente-immobilier"
@@ -16,15 +18,15 @@ En vertu de la loi algérienne, toute mutation de droits réels immobiliers doit
 
 ## Les Documents Nécessaires pour la Rédaction de l'Acte
 
-Afin de procéder à la rédaction de l'acte de vente, les parties doivent fournir un certain nombre de documents administratifs et juridiques à l'office notarial. Les pièces couramment exigées comprennent :
+Afin de procéder à la rédaction de l'acte de vente, les parties doivent fournir un certain nombre de documents administratifs et juridiques à l'office notarial. Les pièces susceptibles d’être demandées comprennent, selon l’origine du titre, le régime foncier, la situation urbanistique et les caractéristiques du bien :
 
 **Pour le Vendeur :**
 * Le titre de propriété original (acte notarié, acte de concession, ou livret foncier).
-* Le livret foncier ou un certificat de propriété récent délivré par la conservation foncière.
-* Un certificat négatif prouvant l'absence de charges ou d'hypothèques sur le bien, datant de moins d'un mois.
+* Le livret foncier ou les documents de propriété et renseignements fonciers disponibles, selon le régime de publicité et la situation du bien.
+* Les renseignements ou certificats fonciers nécessaires pour vérifier les charges, hypothèques et inscriptions, selon la procédure de la conservation foncière compétente.
 * Une copie certifiée de la pièce d'identité (carte nationale d'identité biométrique) et d'un extrait de naissance (N° 12).
 * Si le vendeur est marié, le livret de famille peut être requis dans certains régimes matrimoniaux.
-* Le certificat de conformité de la construction, particulièrement pour les biens récents.
+* Le certificat de conformité ou les documents d’urbanisme, lorsqu’ils sont requis au regard de la nature du bien et de sa situation administrative.
 
 **Pour l'Acquéreur :**
 * Une copie certifiée de la pièce d'identité en cours de validité.

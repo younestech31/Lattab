@@ -2,7 +2,7 @@
 title: "Prix référentiel immobilier à Oran : Référentiel fiscal et droits d'enregistrement"
 description: "Guide sur la grille des prix référentiels de la Direction des impôts d'Oran, les critères d'évaluation et le calcul des droits d'enregistrement."
 dateISO: "2026-05-18"
-dateModified: "2026-11-03"
+dateModified: "2026-11-04"
 lastLegalReview: "2026-11-03"
 category: "Immobilier"
 language: "fr"
@@ -34,7 +34,7 @@ Le notaire applique le barème fiscal en vigueur, informe préalablement les par
 - Consultez la liste des [documents de vente immobilière](/fr/blog/documents-vente-immobilier-algerie).
 
 ## Conclusion et note importante
-Ce guide est purement informatif sur les méthodes d'évaluation fiscale. **Note :** L'administration fiscale conserve le droit légal de procéder à une réévaluation (préemption fiscale ou redressement) si la valeur déclarée, même conforme au prix référentiel, apparaît manifestement inférieure à la valeur vénale réelle du marché au moment de la transaction.
+Ce guide est purement informatif sur les méthodes d'évaluation fiscale. **Note :** L'administration fiscale conserve le droit légal de procéder à une réévaluation (préemption fiscale ou redressement) si la valeur déclarée, même conforme à la fourchette référentielle, apparaît manifestement inférieure à la valeur vénale réelle du marché au moment de la transaction. Il s’agit alors, lorsque les conditions légales sont réunies, d’une réévaluation ou d’un redressement fiscal, et non d’une « préemption fiscale ».
 
 ## Références et sources officielles
 - [Direction Générale des Impôts](https://www.mfdgi.gov.dz).
