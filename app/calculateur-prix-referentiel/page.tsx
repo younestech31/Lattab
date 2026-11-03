@@ -11,8 +11,6 @@ import CalculatorSkeleton from '@/components/CalculatorSkeleton';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
-// Validate this page using the Open Graph debugger:
-// https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Flattab.vercel.app%2Fcalculateur-prix-referentiel
 export async function generateMetadata(): Promise<Metadata> {
   const desc = 'حاسبة السعر المرجعي الرسمي للعقار بالجزائر 2026 (58 ولاية). تقدير فوري لقيمة العقارات التجارية والسكنية بناءً على جداول وزارة المالية والضرائب.';
   assertDescriptionLength(desc, 'calculateur-prix-referentiel');
@@ -127,7 +125,6 @@ export default function CalculatorPage() {
           ]}
         />
 
-        {/* The Calculator Component */}
         <div className="-mt-6 relative z-20">
           <Suspense fallback={<CalculatorSkeleton />}>
             <PriceCalculator 
@@ -139,12 +136,10 @@ export default function CalculatorPage() {
           </Suspense>
         </div>
 
-        {/* SEO Supporting Articles / Guides */}
         <div className="container mx-auto px-4 py-16 max-w-5xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">الدليل الشامل للسعر المرجعي العقاري 2026</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Guide 1 */}
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6">
                 <Info className="w-6 h-6" />
@@ -160,14 +155,13 @@ export default function CalculatorPage() {
               </ul>
             </div>
 
-            {/* Guide 2 */}
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mb-6">
                 <AlertCircle className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">ماذا يحدث إذا صرّحت بسعر أقل من المرجعي؟</h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                قانونياً، للموثق الحق في رفض تمرير عقد بيع إذا كان السعر المصرح به فيه غبن لخزينة الدولة. إذا مر العقد، ستقوم مصلحة الضرائب بإجراء <strong>"تقويم ضريبي إداري" (Redressement Fiscal)</strong>.
+                {'قانونياً، للموثق الحق في رفض تمرير عقد بيع إذا كان السعر المصرح به فيه غبن لخزينة الدولة. إذا مر العقد، ستقوم مصلحة الضرائب بإجراء "تقويم ضريبي إداري" (Redressement Fiscal).'}
               </p>
               <ul className="text-sm text-gray-500 space-y-2 list-disc list-inside">
                 <li>غرامات تأخير قاسية جداً</li>
@@ -176,7 +170,6 @@ export default function CalculatorPage() {
               </ul>
             </div>
 
-            {/* Guide 3 */}
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <TrendingDown className="w-6 h-6" />
