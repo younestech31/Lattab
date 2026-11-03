@@ -126,7 +126,7 @@ export default function CalculatorPage() {
           ]}
         />
 
-        <div className="-mt-6 relative z-20">
+        <div className="relative z-20">
           <Suspense fallback={<CalculatorSkeleton />}>
             <PriceCalculator
               lang="ar"
