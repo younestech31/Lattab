@@ -128,7 +128,7 @@ export default function CalculatorPage() {
         />
 
         {/* The Calculator Component */}
-        <div className="-mt-8 relative z-20">
+        <div className="-mt-6 relative z-20">
           <Suspense fallback={<CalculatorSkeleton />}>
             <PriceCalculator 
               lang="ar"
@@ -167,7 +167,7 @@ export default function CalculatorPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">ماذا يحدث إذا صرّحت بسعر أقل من المرجعي؟</h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                قانونياً، للموثق الحق في رفض تمرير عقد بيع إذا كان السعر المصرح به فيه غبن لخزينة الدولة. إذا مر العقد، ستقوم مصلحة الضرائب بإجراء <strong>&quot;تقويم ضريبي إداري&quot; (Redressement Fiscal)</strong>.
+                قانونياً، للموثق الحق في رفض تمرير عقد بيع إذا كان السعر المصرح به فيه غبن لخزينة الدولة. إذا مر العقد، ستقوم مصلحة الضرائب بإجراء <strong>"تقويم ضريبي إداري" (Redressement Fiscal)</strong>.
               </p>
               <ul className="text-sm text-gray-500 space-y-2 list-disc list-inside">
                 <li>غرامات تأخير قاسية جداً</li>
@@ -205,4 +205,3 @@ export default function CalculatorPage() {
     </div>
   );
 }
-
