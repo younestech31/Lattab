@@ -2,7 +2,8 @@
 title: "La promesse de vente immobilière en Algérie : Conditions et garanties"
 description: "Guide juridique sur la promesse de vente notariée en Algérie, les arrhes, les conditions suspensives de crédit et la sécurité des parties."
 dateISO: "2026-05-18"
-dateModified: "2026-11-02"
+dateModified: "2026-11-03"
+lastLegalReview: "2026-11-03"
 category: "Immobilier"
 language: "fr"
 readTime: "7"
@@ -25,10 +26,11 @@ Ces droits concernent les actes expressément visés par le texte. Le service de
 Chaque dossier se rapporte au libellé en vigueur de l'article 252 après la modification de 2026, et non au seul tableau résumé.
 Il faut distinguer les effets obligatoires ou probatoires qu'un accord sous seing privé peut éventuellement produire selon son objet, de la forme authentique exigée par la loi pour certains actes immobiliers, ainsi que de la publicité foncière nécessaire au transfert du droit réel conformément à l'article 793 du Code civil. Il est donc inexact d'affirmer que tout accord sous seing privé est absolument dépourvu d'effet.
 
-## Clauses et conditions suspensives
-- **Versement d'arrhes :** Fixation du montant de l'acompte et prévision des modalités de restitution ou de conservation en cas de désistement.
-- **Condition suspensive de financement :** Prévoir la caducité du contrat en cas de refus de crédit bancaire.
-- **Vérifications préalables :** Exigence d'un certificat négatif et vérification des titres de propriété.
+## Clauses et conditions suspensives : arrhes et acompte
+- **Arrhes :** si les parties entendent retenir le régime de l'article 72 bis du Code civil, leur versement donne, sauf convention contraire, à chacune des parties la faculté de se dédire dans le délai convenu. Celui qui a versé les arrhes les perd s'il se dédit; celui qui les a reçues doit en restituer le double s'il se dédit. Le contrat doit préciser clairement cette qualification et ses conséquences.
+- **Acompte :** il s'agit d'un paiement partiel imputé sur le prix dans le cadre d'un engagement contractuel. Il ne doit pas être utilisé comme synonyme d'arrhes, ni être présenté comme ouvrant automatiquement le même droit de dédit prévu à l'article 72 bis.
+- **Condition suspensive de financement :** préciser l'événement attendu, le délai pour obtenir le crédit et les conséquences de la non-réalisation de la condition.
+- **Vérifications préalables :** examiner les titres, les charges et le certificat de situation foncière selon le dossier.
 
 ## Liens utiles
 - Pour le financement, consultez notre article sur l'[Achat par crédit bancaire](/fr/blog/achat-immobilier-credit-bancaire-algerie).

@@ -13,24 +13,28 @@ arSlug: "nouvelle-loi-enregistrement-immobilier-2026"
 ---
 
 ## Introduction
-Les administrations évoquent une modernisation de la conservation foncière et du cadastre. Cet article ne constate pas qu'une numérisation nationale, un identifiant foncier unique ou un échange électronique obligatoire entre le notaire, la conservation et le cadastre soit en vigueur sur tout le territoire. À la date de cette relecture, l'étude ne cite pas de texte au Journal officiel fixant la date et le champ territorial d'un tel dispositif.
+Le décret exécutif **n° 26-15 du 7 janvier 2026**, publié au Journal officiel n° **6 du 22 janvier 2026**, a modifié et complété le décret n° 76-63 relatif à l'institution du livre foncier. Il y a notamment inséré un **article 45 bis**, qui reconnaît le livret foncier reproduit sous forme électronique et prévoit qu'il comporte les annotations inscrites au fichier immobilier ainsi que les données graphiques relatives à l'immeuble.
 
-## Ce qui est établi et ce qui ne l'est pas ici
-1. **Ce qui demeure applicable :** les mutations de droits réels immobiliers pour lesquelles la loi impose la forme authentique, puis la publicité foncière de l'article 793 du Code civil pour l'opposabilité aux tiers.
-2. **Ce que cet article ne confirme pas :** un identifiant foncier unique déjà généralisé, un échange électronique obligatoire des pièces, ou une plateforme unique qui dispenserait du dépôt papier dans chaque conservation.
-3. **La liquidation fiscale :** les droits d'enregistrement et de publicité restent régis par les textes fiscaux et par la pratique de la recette et de la conservation compétentes.
+Il faut distinguer cette base juridique de la généralisation effective des moyens techniques et des procédures électroniques dans toutes les conservations foncières. La publication du texte ne permet pas, à elle seule, d'affirmer que chaque service traite ou délivre désormais les documents exclusivement par voie électronique.
+
+## Ce qui est établi et ce qui reste à vérifier
+1. **Base légale :** l'article 45 bis, introduit par le décret exécutif n° 26-15, reconnaît le livret foncier sous forme électronique et précise les données qu'il comporte.
+2. **Déploiement pratique :** cette reconnaissance ne signifie pas que toutes les conservations foncières ont basculé simultanément vers un traitement entièrement électronique, ni que le dépôt papier a été supprimé à l'échelle nationale. Les modalités doivent être vérifiées auprès de la conservation compétente.
+3. **Règles de fond :** les exigences de forme authentique et de publicité foncière, notamment l'article 793 du Code civil, demeurent applicables. La numérisation ne remplace pas les conditions de validité ou de publication de l'acte.
+4. **Fiscalité :** les droits d'enregistrement et de publicité restent soumis aux textes fiscaux en vigueur et aux procédures des services compétents.
 
 ## Rôle du notaire
-Le notaire rédige l'acte, contrôle les titres et la capacité des parties, et dépose l'acte selon le mode accepté par la conservation compétente. Le dépôt électronique n'est pas présenté ici comme la règle générale.
+Le notaire rédige l'acte, vérifie les titres et la capacité des parties, puis le dépose auprès de la conservation foncière compétente selon les règles et les moyens procéduraux effectivement admis par ce service. Il convient de ne pas confondre la reconnaissance légale du livret électronique avec la preuve d'une dématérialisation intégrale de toutes les opérations dans toutes les wilayas.
 
 ## Liens utiles
 - Consultez la liste des [documents de vente immobilière](/fr/blog/documents-vente-immobilier-algerie).
 - Découvrez nos prestations de [vente et publicité foncière](/fr/services/vente-immobiliere).
 
 ## Conclusion et note importante
-Ce guide est purement informatif. **Note :** toute affirmation sur un identifiant foncier unique ou une interconnexion électronique doit renvoyer à un texte, une décision ou un communiqué officiel précisant la date et le champ d'application. À défaut, les formalités classiques de publicité et d'enregistrement restent la référence.
+Ce guide est purement informatif. **Note :** le livret foncier électronique dispose désormais d'une base légale expresse, issue de l'article 45 bis du décret n° 76-63, introduit par le décret exécutif n° 26-15. En revanche, le niveau de déploiement technique, les modalités de dépôt et de délivrance doivent être confirmés auprès de la conservation foncière compétente. Il serait inexact de nier le texte, comme il serait excessif d'affirmer que la dématérialisation est intégralement généralisée.
 
 ## Références et sources officielles
+- [Décret exécutif n° 26-15 — Journal officiel n° 6 de 2026 (texte français)](https://www.joradp.dz/FTP/jo-francais/2026/F2026006.pdf).
 - [Agence Nationale du Cadastre et de la Conservation Foncière (ANSCT)](https://www.anscf.dz).
 - [Ministère des Finances](https://www.mf.gov.dz).
 - [Journal Officiel de la République Algérienne](https://www.joradp.dz).

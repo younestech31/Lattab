@@ -15,8 +15,11 @@ arSlug: "bail-habitation-vs-commercial-algerie"
 ## Introduction
 La législation algérienne distingue les baux selon la finalité du bien : le bail d'habitation, régi par des règles sociales et civiles axées sur la stabilité familiale, et le bail commercial, encadré par des règles protégeant le fonds de commerce et l'activité économique.
 
-## Bail d'habitation : obligation d'écrit
-Conformément à l'Article 467 bis du Code civil (modifié par la loi 07-05), le contrat de bail d'habitation doit obligatoirement être rédigé par **écrit** et avoir une **date certaine**, sous peine de nullité. Bien que les parties disposent d'une liberté contractuelle sur certaines clauses, le respect de la forme légale est la garantie fondamentale de la validité du contrat.
+## Obligation d'écrit et de date certaine pour le bail
+L'article **467 bis** du Code civil ne doit pas être limité au seul bail d'habitation. Il prévoit, pour le contrat de bail, l'exigence d'un écrit et d'une date certaine, à peine de nullité, dans les conditions introduites par la loi n° 07-05. Il faut ensuite examiner les dispositions spéciales propres à la catégorie de bail concernée.
+
+## Bail commercial
+En plus de cette exigence de forme, le bail commercial est soumis aux règles particulières du Code de commerce, notamment aux articles 169 et suivants. Une distinction temporelle est essentielle : les baux commerciaux conclus à compter de la publication de la loi n° 05-02 au Journal officiel, le **9 février 2005**, relèvent de l'article 187 bis; les renouvellements des baux antérieurs restent régis, en vertu de l'article 187 ter, par la législation en vigueur à la date de conclusion du bail.
 
 ## Bail commercial
 Le bail commercial est intrinsèquement lié au fonds de commerce et à l'activité du commerçant. Il bénéficie de protections spécifiques (Articles 172 et suivants du Code de commerce) garantissant la stabilité professionnelle du commerçant et réglementant les conditions d'éviction.
@@ -35,6 +38,7 @@ Pour plus d'informations, consultez notre article sur le [bail commercial à Ora
 Le choix du type de bail et la rédaction appropriée garantissent les intérêts des parties. **Note :** Les pièces requises peuvent varier selon que le bailleur est un particulier ou une personne morale. Il est toujours recommandé de consulter un notaire pour authentifier vos contrats et assurer la sécurité juridique.
 
 ## Références et sources officielles
-- [Code civil algérien](https://www.joradp.dz) (Art. 467 bis).
+- [Code civil algérien](https://www.joradp.dz) (Art. 467 bis, introduit par la loi n° 07-05).
+- [Loi n° 05-02 — Journal officiel n° 11 du 9 février 2005](https://www.joradp.dz/FTP/jo-francais/2005/F2005011.pdf) (art. 187 bis et 187 ter).
 - [Code de commerce algérien](https://www.joradp.dz) (Art. 172, 187 bis).
 - [Direction Générale des Impôts](https://www.mfdgi.gov.dz).

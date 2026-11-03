@@ -2,7 +2,8 @@
 title: "Comment créer une SARL en Algérie : Procédures et statuts notariés"
 description: "Guide juridique sur la création d'une société à responsabilité limitée (SARL) en Algérie, la rédaction des statuts devant notaire et l'immatriculation."
 dateISO: "2026-05-18"
-dateModified: "2026-11-02"
+dateModified: "2026-11-03"
+lastLegalReview: "2026-11-03"
 category: "Sociétés"
 language: "fr"
 readTime: "7"
@@ -23,15 +24,20 @@ Selon les articles 566 et 567 du Code de commerce, tels que modifiés par la loi
 Le versement s'effectue entre les mains du notaire ou sur un compte dédié selon la procédure appliquée par l'établissement. Le « compte bancaire bloqué » n'est pas, à lui seul, une règle légale générale détachée de ces articles.
 
 ## Étapes de la constitution
-1. **Dénomination sociale :** attestation de réservation du nom auprès du CNRC.
-2. **Siège social :** bail notarié, titre de propriété ou convention de domiciliation.
-3. **Libération des apports en numéraire :** au moins un cinquième à la constitution, le reste dans les cinq ans.
-4. **Statuts authentiques :** signature devant notaire.
-5. **Publicité et immatriculation :** insertion au BOAL et immatriculation au registre du commerce.
+1. **Dénomination sociale :** réservation du nom auprès du CNRC.
+2. **Siège social :** justificatif légal du siège selon la situation.
+3. **Dépôt des apports en numéraire :** conformément à l'article 567 du Code de commerce, tel que modifié par la loi n° 15-20, au moins un cinquième (1/5) des apports en numéraire doit être libéré à la constitution. Le solde est libéré sur décision du gérant ou ses décisions, dans un délai maximal de cinq ans à compter de l'immatriculation au registre du commerce. **Les fonds sont déposés entre les mains du notaire** et ne sont remis au gérant qu'après l'accomplissement des formalités d'immatriculation. L'article 567 ne doit pas être présenté comme prévoyant une alternative générale de dépôt sur un compte bancaire.
+4. **Statuts authentiques :** établissement et signature des statuts devant notaire.
+5. **Publicité et immatriculation :** accomplissement des formalités de publicité et d'immatriculation prévues par les textes.
+
+L'article 567 bis 1 prévoit en outre que, si la société n'est pas constituée dans les six mois du dépôt des fonds, tout associé peut demander au notaire le retrait de son apport dans les conditions légales.
 
 ## Liens utiles
 - Comparez les structures avec notre article [Comparatif EURL, SARL et SPA](/fr/blog/comparaison-eurl-sarl-spa-algerie-2026).
 - Consultez nos services de [création de sociétés](/fr/services/creation-societe).
+
+## Références officielles
+- [Loi n° 15-20 — Journal officiel n° 71 de 2015](https://www.joradp.dz/ftp/jo-francais/2015/f2015071.pdf), modifiant notamment les articles 566 et 567 du Code de commerce.
 
 ## Avertissement légal
 Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.

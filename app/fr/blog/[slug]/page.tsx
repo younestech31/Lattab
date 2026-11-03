@@ -22,7 +22,8 @@ const serviceMappings: Record<string, string> = {
   'Juridique': 'استشارة قانونية',
 };
 
-export const revalidate = 86400;
+// Read Markdown article content at request time so legal corrections are not hidden by a 24-hour ISR cache.
+export const revalidate = 0;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {

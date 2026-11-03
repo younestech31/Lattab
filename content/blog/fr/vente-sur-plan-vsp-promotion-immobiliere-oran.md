@@ -16,19 +16,21 @@ arSlug: "vente-sur-plan-vsp-promotion-immobiliere-oran"
 La vente sur plan (VSP) est un contrat d'acquisition d'un bien immobilier à construire dans le cadre d'un projet de promotion immobilière à Oran. Ce régime est strictement encadré par la loi n° 11-04 et les garanties du FGCMPI.
 
 ## Conditions essentielles du contrat VSP notarié
-1. **L'authenticité et la publication :** Rédaction devant notaire et publication foncière pour garantir le transfert des droits réels.
-2. **L'agrément et le permis :** Vérification de l'agrément du promoteur et de l'existence d'un permis de construire publié.
-3. **La garantie FGCMPI :** Vérification de l'existence d'une **attestation de garantie spécifique au projet** délivrée par le fonds de garantie (FGCMPI), et non une simple carte d'adhésion générale.
-4. **Cahier des charges :** Respect des spécificités techniques, des délais et des modalités de paiement échelonné selon l'avancement des travaux.
+1. **Forme authentique et publication :** le contrat de vente sur plans est établi en la forme authentique et soumis aux formalités de publicité foncière.
+2. **Agrément et permis :** vérifier l'agrément du promoteur et les documents d'urbanisme relatifs au projet.
+3. **Garantie FGCMPI :** exiger la garantie propre au projet concerné; la simple preuve d'affiliation générale du promoteur ne suffit pas à établir la garantie de l'opération.
+4. **Échéancier réglementé de la VSP :** l'article 3 du décret exécutif n° 13-431 plafonne les versements selon les étapes : 20 % à la signature, 15 % à l'achèvement des fondations, 35 % à l'achèvement du gros œuvre, 25 % à l'achèvement de tous les corps d'état et des raccordements/aménagements extérieurs, puis 5 % au procès-verbal de prise de possession.
+5. **Distinction avec le contrat de réservation :** dans le contrat de réservation, l'avance ne peut dépasser 20 % du prix de vente et doit être hébergée dans un compte ouvert au nom du réservataire auprès du FGCMPI. Les versements de la VSP suivent, eux, les tranches liées à l'avancement indiquées ci-dessus.
 
 ## Liens utiles
 - Pour en savoir plus, consultez notre article sur la [Loi 11-04 sur la promotion immobilière](/fr/blog/loi-11-04-promotion-immobiliere-algerie).
 - Découvrez nos prestations de [ventes immobilières](/fr/services/vente-immobiliere).
 
 ## Conclusion et note importante
-Ce guide est purement informatif. **Note :** Tout paiement effectué au promoteur en dehors du cadre notarié ou avant l'obtention des garanties légales constitue une infraction grave mettant en péril vos droits. Exigez la transparence totale sur l'état d'avancement du projet.
+Ce guide est purement informatif. **Note :** avant tout versement, identifiez le contrat concerné : réservation ou vente sur plans. L'avance du contrat de réservation et les tranches de paiement de la VSP ne relèvent pas du même mécanisme. Chaque versement doit correspondre au texte réglementaire, au contrat et à l'étape réelle d'avancement des travaux; vérifiez également la garantie du projet auprès du FGCMPI.
 
 ## Références et sources officielles
-- [Loi n° 11-04](https://www.joradp.dz) portant règles régissant l'activité de promotion immobilière.
+- [Loi n° 11-04 — Journal officiel n° 14 de 2011](https://www.joradp.dz/FTP/jo-francais/2011/F2011014.pdf).
+- [Décret exécutif n° 13-431 — texte intégral du FGCMPI](https://www.fgcmpi.org.dz/Documents/reglementation/decrets/Dcretexcutifn_13_431.pdf).
 - [Fonds de Garantie et de Caution Mutuelle de la Promotion Immobilière (FGCMPI)](https://www.fgcmpi.org.dz).
 - [Ministère de l'Habitat, de l'Urbanisme et de la Ville](https://www.mhuv.gov.dz).
