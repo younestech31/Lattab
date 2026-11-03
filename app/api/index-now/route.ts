@@ -10,11 +10,14 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
-  if (!process.env.CRON_SECRET || !INDEXNOW_KEY) {
-    return NextResponse.json({ error: 'IndexNow authentication is not configured' }, { status: 503 });
+  if (!process.env.CRON_SECRET) {
+    return NextResponse.json({ error: 'CRON_SECRET not configured' }, { status: 503 });
   }
   if (!validateBearerAuth(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  if (!INDEXNOW_KEY) {
+    return NextResponse.json({ error: 'INDEXNOW_KEY not configured' }, { status: 503 });
   }
 
   const base = SITE_URL;
