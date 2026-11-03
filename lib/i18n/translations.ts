@@ -20,7 +20,9 @@ export const translations = {
       "Individuels": "سكنات فردية",
       "Collectifs et Semi-Collectifs": "سكنات جماعية وشبه جماعية",
       "Locaux Commerciaux et Locaux à Usage Professionnels": "محلات تجارية ومهنية",
+      "Locaux commerciaux": "محلات تجارية",
       "Locaux à Usage Professionnels": "محلات للاستعمال المهني",
+      "Locaux professionnels": "محلات مهنية",
       "Hangars": "مستودعات",
       "Terrains Nus": "أراضي بيضاء",
       "Terrains Agricoles en Plaine": "أراضي فلاحية في السهول",
@@ -44,10 +46,16 @@ export const translations = {
       "En zone urbaine": "يقع في منطقة حضرية",
       "En zone rurale": "يقع في منطقة ريفية",
       "Pleine propriété deux (02) façades avec raccordements": "ملكية تامة واجهتين مع توصيلات",
-      "Pleine propriété une (01) façade مع توصيلات": "ملكية تامة واجهة واحدة مع توصيلات",
+      "Pleine propriété une (01) façade avec raccordements": "ملكية تامة واجهة واحدة مع توصيلات",
       "Pleine propriété deux (02) façades sans raccordements": "ملكية تامة واجهتين بدون توصيلات",
       "Pleine propriété une (01) façade sans raccordements": "ملكية تامة واجهة واحدة بدون توصيلات",
+      "Pleine propriété (2 façades) avec raccordements": "ملكية تامة (واجهتان) مع توصيلات",
+      "Pleine propriété (1 façade) avec raccordements": "ملكية تامة (واجهة واحدة) مع توصيلات",
+      "Pleine propriété (2 façades) sans raccordements": "ملكية تامة (واجهتان) بدون توصيلات",
+      "Pleine propriété (1 façade) sans raccordements": "ملكية تامة (واجهة واحدة) بدون توصيلات",
       "Dans l'indivision": "في حالة شيوع",
+      "Terrain dans l'indivision": "أرض في حالة شيوع",
+      "Terrain industriel": "أرض صناعية",
       "Industriel": "صناعي",
       "Potentialité élevée": "إمكانيات عالية",
       "Potentialité moyenne": "إمكانيات متوسطة",
@@ -251,7 +259,9 @@ export const translations = {
       "Individuels": "Logements Individuels",
       "Collectifs et Semi-Collectifs": "Logements Collectifs et Semi-Collectifs",
       "Locaux Commerciaux et Locaux à Usage Professionnels": "Locaux Commerciaux et à Usage Professionnel",
+      "Locaux commerciaux": "Locaux commerciaux",
       "Locaux à Usage Professionnels": "Locaux à usage professionnel",
+      "Locaux professionnels": "Locaux professionnels",
       "Hangars": "Hangars",
       "Terrains Nus": "Terrains Nus",
       "Terrains Agricoles en Plaine": "Terrains Agricoles en Plaine",
@@ -278,7 +288,13 @@ export const translations = {
       "Pleine propriété une (01) façade avec raccordements": "Pleine propriété une (01) façade avec raccordements",
       "Pleine propriété deux (02) façades sans raccordements": "Pleine propriété deux (02) façades sans raccordements",
       "Pleine propriété une (01) façade sans raccordements": "Pleine propriété une (01) façade sans raccordements",
+      "Pleine propriété (2 façades) avec raccordements": "Pleine propriété (2 façades) avec raccordements",
+      "Pleine propriété (1 façade) avec raccordements": "Pleine propriété (1 façade) avec raccordements",
+      "Pleine propriété (2 façades) sans raccordements": "Pleine propriété (2 façades) sans raccordements",
+      "Pleine propriété (1 façade) sans raccordements": "Pleine propriété (1 façade) sans raccordements",
       "Dans l'indivision": "Dans l'indivision",
+      "Terrain dans l'indivision": "Terrain dans l'indivision",
+      "Terrain industriel": "Terrain industriel",
       "Industriel": "Industriel",
       "Potentialité élevée": "Potentialité élevée",
       "Potentialité moyenne": "Potentialité moyenne",
@@ -298,160 +314,160 @@ export const translations = {
       retry: 'Réessayer',
     },
     hero: {
-      badge: 'Notaire près le Tribunal de Fellaoucène - Oran',
-      eyebrow: 'Office Notarial',
+      badge: 'Notaire près le Tribunal de Fellaoucene Oran',
+      eyebrow: 'Office public notarial',
       title: 'Maître Lattab Mohamed — Notaire à Oran',
-      subtitle: 'Office Notarial - Oran',
-      description: 'Office Notarial — Maître Lattab Mohamed, Notaire à Oran — Information sur les procédures notariales selon la législation algérienne',
-      cta_book: 'Documents et démarches',
-      cta_services: 'Compétences de l\'Étude'
+      subtitle: 'Office public notarial de la commune d\'Oran',
+      description: 'Office public notarial — Maître Lattab Mohamed, notaire à Oran — Information sur les procédures notariales selon le droit algérien',
+      cta_book: 'Documents et procédures',
+      cta_services: 'Attributions notariales de l\'office'
     },
     services: {
-      title: 'Compétences de l\'Étude',
-      heading: 'Compétences notariales',
+      title: 'Attributions notariales de l\'office',
+      heading: 'Attributions notariales de l\'office',
       items: [
-        { title: 'Actes de vente immobilière', description: 'Le notaire rédige les actes de vente immobilière conformément aux procédures légales en vigueur, incluant la vérification du titre et de la situation juridique.', features: ['Actes de vente de logements', 'Actes de vente de locaux commerciaux', 'Actes de vente de terrains', 'Actes de vente de véhicules'] },
-        { title: 'Contrats de mariage', description: 'Authentification solennelle du mariage et rédaction des stipulations patrimoniales conformément au Code de la Famille algérien.', features: ['Actes de mariage officiels', 'Gestion des biens communs', 'Clauses professionnelles', 'Homologation consulaire'] },
-        { title: 'Procurations et mandats', description: 'Le notaire rédige les procurations légales avec une définition précise de l\'étendue des pouvoirs de représentation.', features: ['Procuration générale complète', 'Procuration spéciale spécifique', 'Procuration judiciaire', 'Procuration bancaire'] },
-        { title: 'Constitution de sociétés', description: 'Le notaire rédige les statuts de sociétés commerciales conformément aux dispositions du Code de Commerce.', features: ['SARL', 'Société de personnes', 'Société par actions', 'Modification des statuts'] },
-        { title: 'Hypothèques et assurances', description: 'L\'Étude documente les actes d\'hypothèque et les sûretés réelles selon les règles juridiques.', features: ['Hypothèque immobilière', 'Hypothèque possessive', 'Mainlevée d\'hypothèque', 'Actes d\'assurance'] },
-        { title: 'Successions et héritages', description: 'Liquidation des successions, dévolution successorale and publication of land transfer for the benefit of heirs.', features: ['Actes de notoriété (Fridha)', 'Attestations immobilières', 'Partages amiables', 'Mutation de propriété'] }
+        { title: 'Actes de vente et d\'achat immobiliers', description: 'Le notaire dresse les actes de vente et d\'achat immobiliers selon les procédures légales en vigueur, y compris la vérification de la propriété et de la situation juridique.', features: ['Actes de vente de biens résidentiels', 'Actes de vente de locaux commerciaux', 'Actes de vente de terrains', 'Actes de vente de véhicules'] },
+        { title: 'Actes de mariage et convention matrimoniale', description: 'Authentification de l\'acte de mariage officiel et des conventions financières conformément au Code de la famille algérien.', features: ['Actes de mariage officiels', 'Régime des biens communs', 'Conditions d\'études et de travail', 'Légalisation internationale'] },
+        { title: 'Procurations et mandats', description: 'Le notaire dresse les procurations légales avec une délimitation précise de l\'étendue des pouvoirs délégués.', features: ['Procuration générale', 'Procuration spéciale', 'Procuration judiciaire', 'Procuration bancaire'] },
+        { title: 'Constitution de sociétés', description: 'Le notaire dresse les actes constitutifs des sociétés commerciales conformément au droit commercial.', features: ['SARL', 'Sociétés en nom collectif', 'Sociétés par actions', 'Modification des statuts'] },
+        { title: 'Hypothèques et sûretés', description: 'L\'office authentifie les actes d\'hypothèque et de sûretés réelles selon les règles légales.', features: ['Hypothèque immobilière', 'Gage', 'Mainlevée', 'Contrats d\'assurance'] },
+        { title: 'Frédha et successions', description: 'Procédures de rédaction de la frédha notariale, inventaire de la succession et certificat notarié de transmission successorale.', features: ['Actes de frédha', 'Transmission de propriété', 'Partage amiable', 'Inventaire successoral'] }
       ],
-      cta: 'Renseignez-vous sur les procédures'
+      cta: 'Renseignement sur les procédures'
     },
     notaryRole: {
-      title: 'Le rôle du Notaire Public dans la protection de vos droits',
-      subtitle: 'Le notaire est un officier public nommé par l\'État — son rôle est d\'authentifier vos actes et protéger vos droits',
+      title: 'Le rôle du notaire public dans la protection de vos droits',
+      subtitle: 'Le notaire est un officier public nommé par l\'État — son rôle est d\'authentifier vos actes et de préserver vos droits',
       features: [
-        { title: 'Force exécutoire des actes', description: 'L\'acte notarié est immédiatement exécutoire sans nécessité de jugement judiciaire' },
-        { title: 'Vérification de la propriété', description: 'Le notaire vérifie la validité du titre de propriété, l\'absence d\'hypothèques et de complications juridiques avant l\'authentification' },
-        { title: 'Conservation des documents officiels', description: 'Les actes authentiques sont conservés dans les registres de l\'étude conformément aux archives nationales du notariat' },
-        { title: 'Équité entre les parties', description: 'Le notaire est impartial — il protège les droits de toutes les parties à l\'acte sans discrimination' },
-        { title: 'Procédures fiscales', description: 'L\'Étude se charge du calcul et du paiement des droits d\'enregistrement et des taxes immobilières dues' },
-        { title: 'Publicité foncière', description: 'L\'acte notarié est publié à la Conservation Foncière — une garantie officielle de la propriété' }
+        { title: 'Force exécutoire des actes', description: 'L\'acte notarié est immédiatement exécutoire sans recours à un jugement judiciaire' },
+        { title: 'Vérification de la propriété', description: 'Le notaire vérifie la validité du titre et l\'absence d\'hypothèques avant l\'authentification' },
+        { title: 'Conservation des archives', description: 'Les actes sont conservés dans les registres de l\'office conformément aux archives nationales du notariat' },
+        { title: 'Égalité des parties', description: 'Le notaire est impartial — il protège les droits de toutes les parties sans distinction' },
+        { title: 'Formalités fiscales', description: 'L\'office calcule et acquitte les droits d\'enregistrement et taxes immobilières dus' },
+        { title: 'Publicité foncière', description: 'L\'acte notarié est publié à la conservation foncière — garantie officielle de la propriété' }
       ]
     },
     legalUpdates: {
       title: 'Blog juridique et immobilier',
-      description: 'Articles juridiques relatifs aux procédures notariales.',
+      description: 'Articles juridiques sur les procédures notariales.',
       cta: 'Parcourir tous les articles',
       cta_mobile: 'Voir tous les articles'
     },
     faq: {
       title: 'Questions fréquentes',
-      badge: 'Questions fréquentes',
-      description: 'Pour plus d\'informations, vous pouvez contacter l\'Étude via les canaux officiels.',
+      badge: 'FAQ',
+      description: 'Pour plus d\'informations sur les procédures, vous pouvez contacter l\'office par les voies officielles.',
       contact_title: 'Plus d\'informations',
-      contact_description: 'Pour plus d\'informations, vous pouvez contacter l\'Étude via les canaux officiels.'
+      contact_description: 'Pour plus d\'informations, vous pouvez contacter l\'office par les voies officielles.'
     },
     contact: {
-      badge: 'Office Notarial',
-      title: 'Demande de renseignement administratif',
-      description: 'Vous pouvez contacter l\'office notarial pour vous renseigner sur les procédures et documents légaux requis.',
+      badge: 'Office public notarial',
+      title: 'Demande administrative',
+      description: 'Vous pouvez contacter l\'office public notarial pour vous renseigner sur les procédures et les documents légaux requis.',
       tabs: {
-        appointment: 'Renseignement administratif',
+        appointment: 'Demande administrative',
         inquiry: 'Renseignement général'
       },
       form: {
         name: 'Nom complet *',
         name_placeholder: 'Entrez votre nom complet',
-        phone: 'Numéro de téléphone *',
-        phone_placeholder: 'N° de téléphone (ex: 0555555555 ou +123...)',
-        phone_error: 'Veuillez entrer un numéro de téléphone valide',
-        email: 'E-mail (optionnel)',
-        email_placeholder: 'exemple@email.com',
-        company: 'Société/Entreprise (optionnel)',
+        phone: 'Téléphone *',
+        phone_placeholder: 'Numéro de téléphone (ex: 0555555555 ou +213...)',
+        phone_error: 'Entrez un numéro de téléphone valide',
+        email: 'E-mail (facultatif)',
+        email_placeholder: 'example@email.com',
+        company: 'Société / Institution (facultatif)',
         company_placeholder: 'Nom de la société',
-        service: 'Type de service requis *',
-        service_select: 'Choisissez un service',
+        service: 'Type de service demandé *',
+        service_select: 'Choisir le service',
         required_docs: 'Documents de base requis pour ce service :',
-        date: 'Date souhaitée de passage (optionnel)',
-        date_note: 'Note : L\'accueil s\'effectue durant les horaires d\'ouverture officiels.',
-        time: 'Période souhaitée',
-        time_morning: 'Matinée (08:30–12:00)',
+        date: 'Date préférée (facultatif)',
+        date_note: 'Note : l\'accueil se fait pendant les heures d\'ouverture officielles publiées.',
+        time: 'Créneau préféré',
+        time_morning: 'Matin (08:30–12:00)',
         time_afternoon: 'Après-midi (13:30–16:00)',
-        notes: 'Notes ou précision sur la démarche',
-        notes_placeholder: 'Précisez l\'objet de votre démarche ou vos questions...',
-        terms: 'J\'accepte les conditions et la politique de confidentialité (traitement administratif strictement réservé à la gestion des démarches sous le sceau du secret professionnel, Art. 14 Loi 06-02 et Loi 18-07).',
+        notes: 'Notes ou demande complémentaire',
+        notes_placeholder: 'Décrivez l\'objet de votre demande...',
+        terms: 'J\'accepte les conditions et la politique de confidentialité (traitement administratif exclusif sous le secret professionnel art. 14 loi 06-02 et loi 18-07).',
         submit_appointment: 'Envoyer la demande administrative',
         submit_inquiry: 'Envoyer la demande',
         loading: 'Envoi en cours...',
         success_appointment_title: 'Demande transmise avec succès ✓',
-        success_appointment_desc: 'Votre demande de renseignement administratif a été transmise via WhatsApp pour traitement durant les horaires d\'ouverture (Dimanche - Jeudi 08:30–12:00 et 13:30–16:00).',
-        success_inquiry_title: 'Votre demande a été reçue avec succès',
-        success_inquiry_desc: 'Votre demande a été enregistrée et l\'étude vous répondra pendant les heures de travail officielles.',
+        success_appointment_desc: 'La demande administrative a été transmise via WhatsApp pour traitement pendant les heures d\'ouverture (dimanche - jeudi 08:30–12:00 et 13:30–16:00).',
+        success_inquiry_title: 'Demande reçue avec succès',
+        success_inquiry_desc: 'Votre demande a été enregistrée ; l\'office y répondra pendant les heures d\'ouverture.',
         retry_whatsapp: 'Réessayer',
         fallback_whatsapp: 'Réessayer',
-        fallback_call: 'Ou appelez-nous directement : ',
+        fallback_call: 'Ou contactez-nous directement : ',
         print: 'Imprimer',
-        new_inquiry: 'Envoyer une nouvelle demande',
-        another_request: 'Soumettre une autre demande',
-        error_title: 'Une erreur est survenue lors de l\'envoi de votre demande. Veuillez réessayer ou nous contacter par téléphone :',
-        agree_error: 'Veuillez accepter les conditions d\'utilisation et la politique de confidentialité pour continuer',
+        new_inquiry: 'Nouvelle demande',
+        another_request: 'Autre demande',
+        error_title: 'Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone :',
+        agree_error: 'Veuillez accepter les conditions et la politique de confidentialité pour continuer',
         services_list: [
-          'Actes de vente immobilière',
-          'Actes de location',
+          'Actes de vente et d\'achat immobiliers',
+          'Baux et locations',
           'Procurations et mandats',
           'Actes de mariage et documents familiaux',
           'Constitution de sociétés',
-          'Hypothèques et assurances',
-          'Déclarations et certifications',
+          'Hypothèques et sûretés',
+          'Déclarations et légalisations',
         ],
         required_docs_hints: {
-          'Actes de vente immobilière': [
-            'Acte de propriété (du vendeur)',
-            'Certificat négatif ou d\'absence d\'hypothèque',
-            'Pièces d\'identité des deux parties',
+          'Actes de vente et d\'achat immobiliers': [
+            'Titre de propriété (vendeur)',
+            'Certificat de non-hypothèque',
+            'Pièces d\'identité des parties',
           ],
-          'Actes de location': [
-            'Acte de propriété du bien',
-            'Carte d\'identité du bailleur et du locataire',
+          'Baux et locations': [
+            'Titre de propriété',
+            'Pièces d\'identité du bailleur et du preneur',
           ],
           'Procurations et mandats': [
-            'Carte d\'identité du mandant et du mandataire',
+            'Pièces d\'identité du mandant et du mandataire',
             'Acte de naissance',
-            'Informations précises sur l\'objet de la procuration',
+            'Objet précis de la procuration',
           ],
           'Actes de mariage et documents familiaux': [
-            'Actes de naissance des deux parties',
-            'Cartes d\'identité',
+            'Actes de naissance des parties',
+            'Pièces d\'identité',
             'Deux témoins majeurs',
           ],
           'Constitution de sociétés': [
             'Pièces d\'identité et actes de naissance des associés',
-            'Dénomination sociale souhaitée',
-            'Acte de propriété ou de location du siège',
+            'Dénomination souhaitée',
+            'Titre ou bail du siège',
           ],
-          'Hypothèques et assurances': [
-            'Acte de propriété',
-            'Contrat de prêt ou document de créance',
+          'Hypothèques et sûretés': [
+            'Titre de propriété',
+            'Contrat de prêt ou titre de créance',
             'Pièces d\'identité',
           ],
-          'Déclarations et certifications': [
-            'Carte d\'identité',
-            'Objet précis de la certification',
+          'Déclarations et légalisations': [
+            'Pièce d\'identité',
+            'Objet précis de la légalisation',
           ]
         }
       },
       info: {
         address: 'Adresse',
         phone: 'Téléphone',
-        phone_office: '(Celle de l\'étude)',
+        phone_office: '(office)',
         phone_support: '',
         email: 'E-mail',
-        working_hours: 'Heures de travail',
+        working_hours: 'Horaires',
         working_hours_details: 'Dimanche - Jeudi 08:30–12:00 et 13:30–16:00',
-        office_name: 'Office Notarial - Oran',
-        notary_title: 'Office Notarial - Oran'
+        office_name: 'Office public notarial de la commune d\'Oran',
+        notary_title: 'Office public notarial de la commune d\'Oran'
       }
     },
     footer: {
       quick_links_title: 'Liens rapides',
-      services_title: 'Compétences notariales',
+      services_title: 'Attributions',
       tools_title: 'Outils',
       contact_title: 'Contact',
-      copyright: 'Tous droits réservés — Maître Lattab Mohamed, Notaire',
-      terms_link: 'Conditions d\'utilisation',
+      copyright: 'Tous droits réservés — Maître Lattab Mohamed, notaire',
+      terms_link: 'Conditions',
       privacy_link: 'Politique de confidentialité'
     },
     cookie_banner: {
@@ -460,19 +476,19 @@ export const translations = {
       accept: 'Accepter',
       reject: 'Refuser'
     }
-  },
+  }
 } as const;
 
 export type Language = keyof typeof translations;
 export type TranslationKeys = typeof translations['ar'];
-export type NavKeys = keyof TranslationKeys['nav'];
+
 export type CalculatorKeys = keyof TranslationKeys['calculator'];
+export type NavKeys = keyof TranslationKeys['nav'];
 export type HeroKeys = keyof TranslationKeys['hero'];
 export type ServicesKeys = keyof TranslationKeys['services'];
 export type NotaryRoleKeys = keyof TranslationKeys['notaryRole'];
 export type FAQKeys = keyof TranslationKeys['faq'];
 export type LegalUpdatesKeys = keyof TranslationKeys['legalUpdates'];
-export type ContactKeys = keyof TranslationKeys['contact'];
 export type FooterKeys = keyof TranslationKeys['footer'];
 
 export function t(lang: Language, section: 'nav', key: NavKeys): string;
