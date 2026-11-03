@@ -2,11 +2,11 @@
 import { SITE_URL } from '../config';
 
 const INDEXNOW_KEY = 'fa0c5260a1b1458b87b8ff3e7df53cf2';
-const HOST = new URL(SITE_URL).hostname;
 
 export async function pingIndexNow(urls: string[]) {
+  const host = new URL(SITE_URL).hostname;
   const payload = {
-    host: HOST,
+    host,
     key: INDEXNOW_KEY,
     keyLocation: `${SITE_URL}/${INDEXNOW_KEY}.txt`,
     urlList: urls,
@@ -23,7 +23,7 @@ export async function pingIndexNow(urls: string[]) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`IndexNow ping failed for ${HOST}:`, errorText);
+      console.error(`IndexNow ping failed for ${host}:`, errorText);
       return { success: false, status: response.status, error: errorText };
     }
 

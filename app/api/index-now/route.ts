@@ -4,8 +4,10 @@ import { blogPosts } from '@/lib/data/blog';
 import { validateBearerAuth } from '@/lib/utils/auth';
 
 const INDEX_NOW_KEY = process.env.INDEXNOW_KEY || '';
-const HOST = new URL(SITE_URL).host;
 const API_URL = 'https://api.indexnow.org/indexnow';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   if (!process.env.CRON_SECRET) {
@@ -24,13 +26,14 @@ export async function GET(req: NextRequest) {
   ];
 
   try {
+    const host = new URL(base).host;
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: JSON.stringify({
-        host: HOST,
+        host,
         key: INDEX_NOW_KEY,
         keyLocation: `${base}/${INDEX_NOW_KEY}.txt`,
         urlList: urlList,
