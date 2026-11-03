@@ -20,8 +20,9 @@ L'Algérie a mis en place un cadre législatif rénové destiné à encourager l
 - **Couverture sociale :** Affiliation directe à la CASNOS assurant la protection sociale de l'exploitant.
 
 ## Incitations en faveur des Startups
-- **Exonérations fiscales :** Exonération temporaire de l'IBS pour soutenir le démarrage d'activité.
-- **Accès au financement :** Possibilité de solliciter des fonds d'investissement et de capital-risque.
+- **Exonérations fiscales :** Bénéficiez d'une exonération de l'IBS pour une durée de **4 ans** (renouvelable 2 ans). 
+  *Note :* La taxe sur l'activité professionnelle (TAP) a été supprimée du régime général dès janvier 2024.
+- **Accès au financement :** Possibilité de solliciter des fonds d'investissement et de capital-risque liés au label "Startup".
 - **Structuration notariée :** Rédaction des statuts authentiques pour protéger la propriété intellectuelle et les parts des associés ; consultez notre guide [Comment créer une SARL](/fr/blog/comment-creer-sarl-en-algerie-2026).
 
 ## Liens utiles

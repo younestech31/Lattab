@@ -14,10 +14,15 @@ arSlug: "taxe-fonciere-gn31-algerie"
 ## Introduction
 La taxe foncière est un impôt réel annuel perçu sur les propriétés immobilières bâties et non bâties en Algérie. Ses recettes sont destinées au financement des collectivités locales et des communes.
 
-## Principes généraux de la taxe foncière
-1. **Redevable légal :** La taxe est due par le propriétaire ou l'usufruitier au 1er janvier de l'année d'imposition.
-2. **Base d'imposition :** Calculée sur la valeur locative fiscale déterminée par la recette des impôts.
-3. **Immatriculation foncière :** Le livret foncier et l'acte notarié facilitent l'identification précise des parcelles et constructions au niveau cadastral et fiscal.
+## Quand souscrire la déclaration G31 ?
+Contrairement aux idées reçues, le formulaire G31 (G N°31) ne se dépose pas chaque année, mais lors d'événements spécifiques (Art. 261 r et s du CIDTA) :
+1. **Première année :** Lors de l'acquisition d'un nouveau bien ou de la première imposition.
+2. **Changement de consistance :** Achèvement de travaux, surélévation, ou extension de surface.
+3. **Changement d'usage :** Transformation d'une habitation en local professionnel ou commercial.
+4. **Changement d'occupant :** Dans certains cas liés à la qualité du propriétaire ou du détenteur.
+
+## Base imposable et paiement annuel
+Une fois la déclaration validée, l'administration fiscale fixe la valeur locative et émet un avis de paiement annuel. L'acte notarié et le livret foncier sont les seuls garants de l'exactitude des données transmises pour éviter toute surtaxe liée à une mauvaise évaluation.
 
 ## Formulaires et ressources utiles
 - Utilisez notre [générateur du formulaire G31](/fr/formulaires/gn31) pour préparer votre déclaration foncière.

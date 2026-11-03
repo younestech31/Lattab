@@ -23,7 +23,7 @@ Le Code de commerce algérien propose différentes formes juridiques d'entrepris
    - **Responsabilité :** Limitée au montant des parts sociales détenues.
 3. **La Société par Actions (SPA) :**
    - **Associés :** Minimum 7 actionnaires.
-   - **Capital :** Capital social minimal fixé à 5 000 000 DZD avec un conseil d'administration et un commissaire aux comptes.
+   - **Capital :** Capital social minimal fixé à **5 000 000 DZD** en cas de recours à l'appel public à l'épargne, et **1 000 000 DZD** dans le cas contraire (conformément à l'Art. 594 du Code de commerce). Elle est gérée par un conseil d'administration.
 
 ## Liens utiles
 - Consultez notre guide détaillé sur la [Création d'une SARL](/fr/blog/comment-creer-sarl-en-algerie-2026).

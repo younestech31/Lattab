@@ -290,7 +290,7 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
                   إشعار قانوني وتنظيمي
                 </span>
                 <p className="text-emerald-100">
-                  هذا الموقع ذو طابع إعلامي محض. أتعاب الموثق محددة حصراً بالتعريفة الرسمية المقننة بموجب <strong>المرسوم التنفيذي رقم 08-243</strong>. لا يمارس المكتب أي إشهار تجاري أو مضاربة عملاً بأحكام المادتين 14 و22 من <strong>القانون رقم 06-02</strong> المنظم لمهنة التوثيق.
+                  هذا الموقع ذو طابع إعلامي مؤسسي محض. أتعاب الموثق محددة حصراً بالتعريفة الرسمية المقننة بموجب <strong>المرسوم التنفيذي رقم 08-243</strong>. يلتزم المكتب بالضوابط القانونية والأخلاقية للمهنة، ولا يقدم أي خدمات تجارية خارج الإطار المنظم بموجب <strong>القانون رقم 06-02</strong>.
                 </p>
               </div>
 
@@ -300,7 +300,7 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
                   Avis légal et réglementaire
                 </span>
                 <p className="text-emerald-100">
-                  Ce site a un caractère purement informatif. Les honoraires du notaire sont fixés exclusivement par la tarification officielle (<strong>Décret exécutif n° 08-243</strong>). Aucune publicité commerciale n&apos;est pratiquée, conformément aux articles 14 et 22 de la <strong>Loi n° 06-02</strong> portant organisation de la profession de notaire.
+                  Ce site a un caractère purement informatif و institutionnel. Les honoraires du notaire sont fixés exclusivement par la tarification officielle (<strong>Décret exécutif n° 08-243</strong>). L'étude respecte les règles déontologiques de la profession régie par la <strong>Loi n° 06-02</strong>.
                 </p>
               </div>
             </div>

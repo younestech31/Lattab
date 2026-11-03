@@ -14,8 +14,12 @@ arSlug: "promesse-de-vente-algerie"
 ## Introduction
 La promesse de vente notariée est un contrat préparatoire engageant le vendeur et l'acquéreur avant la signature de l'acte définitif. Elle accorde à l'acheteur le délai nécessaire pour l'obtention de son prêt bancaire tout en garantissant au vendeur le sérieux de l'engagement.
 
-## Forme et validité juridique
-En droit algérien, la promesse de vente d'un bien immobilier doit être **obligatoirement rédigée en la forme authentique par un notaire**. Les sous-seings privés sont nuls et de nul effet juridique.
+## Forme et fiscalité (2026)
+La promesse de vente immobilière doit être **obligatoirement rédigée en la forme authentique**. Selon l'Art. 40 de la Loi de Finances 2026, elle est soumise aux droits suivants :
+- **Lors de la promesse :** droit d'enregistrement de **2,5%** de la valeur.
+- **Lors de la réalisation :** droit complémentaire de **2,5%** pour le transfert de propriété.
+- **En cas d'annulation :** droit fixe de **5 000 DZD** si la promesse est résiliée avant exécution.
+Les actes sous seing privé sont nuls et ne produisent aucun effet translatif de propriété.
 
 ## Clauses et conditions suspensives
 - **Versement d'arrhes :** Fixation du montant de l'acompte et prévision des modalités de restitution ou de conservation en cas de désistement.

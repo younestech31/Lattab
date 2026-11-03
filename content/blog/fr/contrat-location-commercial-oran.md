@@ -14,13 +14,15 @@ arSlug: "contrat-location-commercial-oran"
 ## Introduction
 Le dynamisme économique de la wilaya d'Oran suscite un intérêt croissant pour la location de locaux commerciaux. Le bail commercial constitue la pierre angulaire de l'activité du commerçant, sécurisant son investissement tout en préservant le patrimoine du propriétaire.
 
-## Particularités du bail commercial en droit algérien
-Contrairement au bail d'habitation, le bail commercial est encadré par le Code de commerce algérien. Il accorde une protection spécifique à l'exploitant en vue de préserver son fonds de commerce, sa clientèle et son achalandage.
+## Particularités et durée du bail commercial
+Le bail commercial est encadré par le Code de commerce algérien (Art. 172 et suivants).
+- **Baux conclus après 2005 :** Selon l'Art. 187 bis, le bail prend fin de plein droit à l'expiration du terme fixé au contrat. Le locataire n'a plus de droit au renouvellement automatique ni d'indemnité d'éviction, sauf clause contraire expresse.
+- **Baux conclus avant 2005 :** Ils restent soumis aux dispositions transitoires accordant, sous conditions d'exploitation, un droit au bail ou une indemnité d'éviction.
 
 ## Clauses essentielles de l'acte notarié
-1. **L'authenticité de l'acte :** La rédaction par un notaire garantit la date certaine, l'opposabilité et le caractère exécutoire de l'engagement.
-2. **La destination des lieux :** La définition précise de l'activité commerciale exercée dans le local.
-3. **Le loyer et les charges :** La fixation du montant, les modalités de révision et la répartition des impôts et charges d'entretien.
+1. **Force exécutoire :** L'acte notarié facilite la récupération du local à la fin du bail sans recours systématique au juge de fond.
+2. **La destination des lieux :** Définir précisément l'activité pour éviter les déspécialisations non autorisées.
+3. **Le loyer et la durée :** Préciser les modalités de paiement et la durée ferme de l'engagement.
 
 ## Liens utiles
 - Comparez les régimes avec notre article [Bail d'habitation et commercial](/fr/blog/bail-habitation-vs-commercial-algerie).

@@ -2,7 +2,8 @@
 title: "Déclaration de la plus-value immobilière en Algérie : Formulaire G17 et rôle du notaire"
 description: "Guide informatif sur l'obligation du vendeur de déclarer la plus-value immobilière via le formulaire G17, les délais, et le rôle du notaire."
 dateISO: "2026-11-01"
-dateModified: "2026-11-01"
+dateModified: "2026-11-03"
+lastLegalReview: "2026-11-03"
 category: "Immobilier"
 language: "fr"
 readTime: "8"
@@ -22,7 +23,11 @@ La plus-value est calculée sur la base de la différence entre le prix de cessi
 > *Note :* Ces estimations sont indicatives, l'évaluation finale et la détermination de la base imposable relèvent de la compétence exclusive de l'administration fiscale.
 
 ## Procédures et délais
-La déclaration doit être déposée et les droits acquittés dans les délais légaux (généralement 30 jours après la date de l'acte) auprès de la recette des impôts territorialement compétente.
+La déclaration G17 doit impérativement être déposée et l'impôt acquitté dans un délai de **30 jours** à compter de la date de l'acte de vente notarié.
+- **Taux applicable :** La plus-value immobilière est imposée au taux de **15%** (IRG).
+- **Abattement pour durée de détention :** Un abattement de **5% par an** est appliqué sur la plus-value à partir de la 3ème année de détention.
+- **Exonération :** Des conditions particulières s'appliquent pour la cession de l'habitation principale unique.
+La déclaration est obligatoire même en l'absence de plus-value taxable.
 
 ## Démarches principales
 - Préparer le dossier selon la nature du bien.
@@ -33,4 +38,9 @@ La déclaration doit être déposée et les droits acquittés dans les délais l
 Le notaire rédige l'acte de vente, informe les parties de leurs obligations fiscales et les oriente vers l'administration fiscale compétente. Il ne se substitue toutefois pas aux services fiscaux pour le calcul définitif ou la perception de l'impôt.
 
 ## Conclusion et note importante
-Ces informations sont purement indicatives. Pour une étude précise liée à votre situation immobilière, consultez votre notaire ou adressez-vous directement à l'administration fiscale compétente.
+Ces informations sont purement indicatives. **Note :** Le régime fiscal peut varier selon l'origine du bien (acquisition, héritage, donation). Pour une étude précise liée à votre situation immobilière, consultez votre notaire ou adressez-vous directement à l'administration fiscale compétente.
+
+## Références et sources officielles
+- [Code des Impôts Directs et Taxes Assimilées](https://www.mfdgi.gov.dz).
+- [Direction Générale des Impôts - Déclaration G17](https://www.mfdgi.gov.dz).
+- [Journal Officiel de la République Algérienne](https://www.joradp.dz).
