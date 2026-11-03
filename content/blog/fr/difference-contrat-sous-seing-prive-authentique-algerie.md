@@ -28,4 +28,4 @@ Le Code civil et le Code de commerce algériens distinguent nettement l'**acte s
 - Lisez notre guide sur les [documents de vente immobilière](/fr/blog/documents-vente-immobilier-algerie).
 
 ## Avertissement légal
-Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.

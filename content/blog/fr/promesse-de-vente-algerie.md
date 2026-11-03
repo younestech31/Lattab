@@ -37,4 +37,4 @@ Il faut distinguer les effets obligatoires ou probatoires qu'un accord sous sein
 - Découvrez nos services de [vente immobilière](/fr/services/vente-immobiliere).
 
 ## Avertissement légal
-Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.

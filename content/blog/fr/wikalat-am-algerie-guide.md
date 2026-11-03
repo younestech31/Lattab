@@ -2,7 +2,8 @@
 title: "Responsabilité et obligations du mandataire en droit algérien"
 description: "Guide juridique sur les obligations du mandataire en Algérie, le devoir de reddition de comptes et les conseils au mandant pour sécuriser ses mandats."
 dateISO: "2026-05-18"
-dateModified: "2026-11-02"
+dateModified: "2026-11-04"
+lastLegalReview: "2026-11-04"
 category: "Juridique"
 language: "fr"
 readTime: "6"
@@ -28,5 +29,5 @@ La procuration notariée établit une relation juridique fondée sur la confianc
 - Pour comparer les types de procurations, consultez [Procuration générale et spéciale](/fr/blog/procuration-generale-algerie).
 - Découvrez nos services de [procurations notariées](/fr/services/procuration).
 
-## Avertissement legal
-Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
+## Avertissement légal
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.

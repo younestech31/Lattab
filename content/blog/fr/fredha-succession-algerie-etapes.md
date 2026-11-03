@@ -2,7 +2,8 @@
 title: "L'acte de Fredha et le règlement de la succession en Algérie"
 description: "Guide pratique sur l'établissement de l'acte notarié de Fredha en Algérie, la dévolution successorale et le transfert de propriété immobilière."
 dateISO: "2026-05-18"
-dateModified: "2026-11-03"
+dateModified: "2026-11-04"
+lastLegalReview: "2026-11-04"
 category: "Juridique"
 language: "fr"
 readTime: "7"
@@ -27,4 +28,4 @@ Les pièces et moyens de vérification varient selon la situation des héritiers
 - Découvrez nos services de [succession et règlement d'héritage](/fr/services/succession).
 
 ## Avertissement légal
-Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.

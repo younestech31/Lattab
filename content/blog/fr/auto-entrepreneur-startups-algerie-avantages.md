@@ -2,7 +2,8 @@
 title: "Cadre juridique de l'auto-entrepreneur et des startups en Algérie"
 description: "Guide d'information sur le statut de l'auto-entrepreneur et les avantages accordés aux startups en Algérie, du régime fiscal au rôle du notaire."
 dateISO: "2026-05-20"
-dateModified: "2026-11-03"
+dateModified: "2026-11-04"
+lastLegalReview: "2026-11-04"
 category: "Sociétés"
 language: "fr"
 readTime: "6"
@@ -33,4 +34,4 @@ L'Algérie a mis en place un cadre législatif rénové destiné à encourager l
 - Comparez les formes juridiques avec notre [comparatif EURL, SARL, SPA](/fr/blog/comparaison-eurl-sarl-spa-algerie-2026).
 
 ## Avertissement légal
-Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.

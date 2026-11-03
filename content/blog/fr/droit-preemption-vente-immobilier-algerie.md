@@ -1,6 +1,6 @@
 ---
 title: "Droit de préemption dans la vente immobilière en Algérie : Exercice et rôle du notaire"
-description: "Guide informatif sur le droit de préemption lors d'une vente immobilière, les bénéficiaires potentiels, et les procédures devant notaire بدون إغفال حقوق المشتري."
+description: "Guide informatif sur le droit de préemption lors d'une vente immobilière, les bénéficiaires potentiels, et les procédures devant notaire sans négliger les droits de l’acquéreur."
 dateISO: "2026-11-01"
 dateModified: "2026-11-04"
 lastLegalReview: "2026-11-04"

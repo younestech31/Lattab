@@ -26,4 +26,4 @@ Le règlement des successions en Algérie est régi par le Code de la famille. L
 - Découvrez nos services de [succession et règlement d'héritage](/fr/services/succession).
 
 ## Avertissement légal
-Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
