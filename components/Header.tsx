@@ -1,15 +1,12 @@
-import { headers } from 'next/headers';
-import HeaderShellServer from './header/HeaderShellServer';
 import HeaderClient from './header/HeaderClient';
-import type { Language } from '@/lib/i18n/translations';
 
-export default async function Header() {
-  const headersList = await headers();
-  const pathname = headersList.get('x-pathname') || '/';
-  
-  const lang: Language = pathname.startsWith('/fr') ? 'fr' : 'ar';
-  const isHomePage = pathname === '/' || pathname === '/fr';
-
+/**
+ * Header is a thin server wrapper around HeaderClient.
+ * Language, brand text, and nav must update on client-side language switches;
+ * that cannot be done reliably from a layout-level Server Component that only
+ * sees x-pathname on the first render.
+ */
+export default function Header() {
   return (
     <header
       id="main-header"
@@ -18,8 +15,7 @@ export default async function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <HeaderShellServer lang={lang} isHomePage={isHomePage} />
-          <HeaderClient lang={lang} isHomePage={isHomePage} />
+          <HeaderClient />
         </div>
       </div>
     </header>
