@@ -25,7 +25,7 @@ On ne dit pas que « la part revient automatiquement aux autres héritiers » da
 Ces qualifications ne s'emploient pas l'une pour l'autre, ni dans l'acte ni dans cet exposé.
 
 ## Conditions de validité (Cession)
-1. **L'authenticité :** Obligation de rédiger un acte notarié conformément aux Art. 404 et suivants du Code civil.
+1. **Qualification avant de déterminer la forme :** le seul intitulé de « renonciation » ou de « cession » ne suffit pas à fixer le régime applicable. L'article 404 du Code civil vise la vente d'une succession sans en détailler les éléments; l'article 405 traite de ses effets à l'égard des tiers et des formalités de transfert des droits compris dans la succession. Ces articles ne constituent pas une règle générale applicable à toute renonciation à succession, cession de quote-part, donation ou cession de droits. Il faut qualifier l'opération, identifier sa contrepartie et les droits concernés, puis appliquer les règles de forme, de publicité et de fiscalité correspondantes.
 2. **Capacité et consentement :** Vérification de la pleine capacité de l'héritier et absence de vice de consentement (ex: **contrainte**, dol, erreur).
 3. **Établissement de la Fredha :** On ne peut céder un droit sur une succession non ouverte ; l'acte de Fredha doit être établi au préalable pour prouver la qualité d'héritier.
 4. **Précision du bénéficiaire :** Identifier clairement le bénéficiaire de la cession et le montant de la soulte éventuelle (si c'est à titre onéreux).
@@ -38,6 +38,6 @@ Ces qualifications ne s'emploient pas l'une pour l'autre, ni dans l'acte ni dans
 Ce guide est purement informatif. **Note :** La fiscalité et les droits d'enregistrement varient considérablement selon que la cession est faite à titre gratuit ou onéreux, et selon le degré de parenté entre les héritiers. Il est impératif de consulter votre notaire pour optimiser le règlement successoral et éviter les contentieux fiscaux.
 
 ## Références et sources officielles
-- [Code civil algérien](https://www.joradp.dz) (Art. 404 et suivants).
+- [Code civil algérien — Ministère de la Justice](https://droit.mjustice.gov.dz/fr/content/code-civil) (les articles 404 et 405 concernent la vente d'une succession).
 - [Code de la famille algérien](https://www.joradp.dz).
 - [Direction Générale des Impôts](https://www.mfdgi.gov.dz).
