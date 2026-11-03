@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // French entry
       staticEntries.push({
         url: frUrl,
-        lastModified: new Date(entry.lastmod),
+        lastModified: getValidLastModified(entry.lastmod),
         changeFrequency: entry.changeFrequency,
         priority: entry.priority,
         alternates: {
@@ -54,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // Only Arabic exists
       staticEntries.push({
         url: arUrl,
-        lastModified: new Date(entry.lastmod),
+        lastModified: getValidLastModified(entry.lastmod),
         changeFrequency: entry.changeFrequency,
         priority: entry.priority,
         alternates: {
