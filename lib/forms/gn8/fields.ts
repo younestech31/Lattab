@@ -113,6 +113,103 @@ for (let i = 0; i < 18; i++) {
 }
 
 /**
+ * Coordinate mapping for official Algerian Série G N° 08 in French.
+ * Template: public/forms/gn8_fr.pdf (2 pages A4: 595.2 x 841.92 pt, bottom-left origin).
+ */
+export const GN8_FIELD_COORDINATES_FR: FormFieldCoord[] = [
+  // En-tête administratif
+  { id: 'directionWilaya', page: 1, x: 80, y: 738, size: 9, align: 'left', maxWidth: 95 },
+  { id: 'service', page: 1, x: 88, y: 725, size: 9, align: 'left', maxWidth: 95 },
+
+  // Régime fiscal (cases à cocher)
+  { id: 'regime_ibs', page: 1, x: 45, y: 677, size: 10, align: 'center', maxWidth: 12 },
+  { id: 'regime_irg', page: 1, x: 252, y: 677, size: 10, align: 'center', maxWidth: 12 },
+  { id: 'irg_categorie', page: 1, x: 375, y: 671, size: 8.5, align: 'left', maxWidth: 55 },
+  { id: 'regime_ifu', page: 1, x: 428, y: 677, size: 10, align: 'center', maxWidth: 12 },
+
+  // Renseignements contribuable
+  { id: 'nomRaisonSociale', page: 1, x: 180, y: 547, size: 9, align: 'left', maxWidth: 380 },
+  { id: 'formeJuridique', page: 1, x: 135, y: 516, size: 9, align: 'left', maxWidth: 420 },
+  { id: 'activitePrincipale', page: 1, x: 125, y: 497, size: 9, align: 'left', maxWidth: 430 },
+
+  // Activités secondaires
+  { id: 'activiteSec1', page: 1, x: 38, y: 461, size: 8.5, align: 'left', maxWidth: 520 },
+  { id: 'activiteSec1_adr', page: 1, x: 38, y: 446, size: 8.5, align: 'left', maxWidth: 520 },
+  { id: 'activiteSec2', page: 1, x: 38, y: 428, size: 8.5, align: 'left', maxWidth: 520 },
+  { id: 'activiteSec2_adr', page: 1, x: 38, y: 412, size: 8.5, align: 'left', maxWidth: 520 },
+  { id: 'activiteSec3', page: 1, x: 38, y: 394, size: 8.5, align: 'left', maxWidth: 520 },
+
+  // Adresses et coordonnées
+  { id: 'adresseSiege_line1', page: 1, x: 38, y: 350, size: 8.5, align: 'left', maxWidth: 520 },
+  { id: 'adresseSiege_line2', page: 1, x: 38, y: 335, size: 8.5, align: 'left', maxWidth: 520 },
+
+  { id: 'adresseEtablissementAlgerie_line1', page: 1, x: 38, y: 296, size: 8.5, align: 'left', maxWidth: 520 },
+  { id: 'adresseEtablissementAlgerie_line2', page: 1, x: 38, y: 280, size: 8.5, align: 'left', maxWidth: 520 },
+
+  { id: 'adresseResidence_line1', page: 1, x: 38, y: 250, size: 8.5, align: 'left', maxWidth: 520 },
+  { id: 'adresseResidence_line2', page: 1, x: 38, y: 234, size: 8.5, align: 'left', maxWidth: 520 },
+
+  { id: 'telephone', page: 1, x: 108, y: 216, size: 8.5, align: 'left', maxWidth: 190 },
+  { id: 'email', page: 1, x: 395, y: 216, size: 8.5, align: 'left', maxWidth: 165 },
+  { id: 'numeroRc', page: 1, x: 200, y: 201, size: 8.5, align: 'left', maxWidth: 350 },
+  { id: 'numeroAgrement', page: 1, x: 400, y: 183, size: 8.5, align: 'left', maxWidth: 155 },
+
+  // Qualité du déclarant (mentions inutiles rayées)
+  { id: 'strike_proprietaire', page: 1, x: 160, y: 169, size: 10, align: 'center', maxWidth: 55 },
+  { id: 'strike_locataire', page: 1, x: 232, y: 169, size: 10, align: 'center', maxWidth: 45 },
+  { id: 'strike_gerant_libre', page: 1, x: 288, y: 169, size: 10, align: 'center', maxWidth: 55 },
+  { id: 'strike_gerant_salarie', page: 1, x: 350, y: 169, size: 10, align: 'center', maxWidth: 40 },
+
+  { id: 'dateDebutActivite', page: 1, x: 290, y: 153, size: 9, align: 'left', maxWidth: 260 },
+
+  // Fait à ..., le ...
+  { id: 'faitA', page: 1, x: 365, y: 99, size: 8.5, align: 'left', maxWidth: 90 },
+  { id: 'dateDeclaration', page: 1, x: 480, y: 99, size: 8.5, align: 'left', maxWidth: 80 },
+];
+
+// NIF in FR template: 20 boxes at y=757, from x=356 to 556 (~10pt each)
+for (let i = 0; i < 20; i++) {
+  const boxCenter = 356 + i * 10.0 + 5.0;
+  GN8_FIELD_COORDINATES_FR.push({
+    id: `nif_${i}`,
+    page: 1,
+    x: Math.round(boxCenter),
+    y: 757,
+    size: 8.5,
+    align: 'center',
+    maxWidth: 9,
+  });
+}
+
+// NAI in FR template: 11 boxes at y=739, from x=355 to 460 (~9.5pt each)
+for (let i = 0; i < 11; i++) {
+  const boxCenter = 355 + i * 9.5 + 4.75;
+  GN8_FIELD_COORDINATES_FR.push({
+    id: `nai_${i}`,
+    page: 1,
+    x: Math.round(boxCenter),
+    y: 739,
+    size: 8.5,
+    align: 'center',
+    maxWidth: 9,
+  });
+}
+
+// NIN in FR template: 18 boxes at y=528, from x=220 to 455 (~13pt each)
+for (let i = 0; i < 18; i++) {
+  const boxCenter = 220 + i * 13.0 + 6.5;
+  GN8_FIELD_COORDINATES_FR.push({
+    id: `nin_${i}`,
+    page: 1,
+    x: Math.round(boxCenter),
+    y: 528,
+    size: 8.5,
+    align: 'center',
+    maxWidth: 11,
+  });
+}
+
+/**
  * Splits text into 2 lines if it exceeds maxLength, cutting at spaces.
  */
 function splitTwoLines(text: string, maxLength: number): [string, string] {
@@ -129,10 +226,18 @@ function splitTwoLines(text: string, maxLength: number): [string, string] {
 /**
  * Maps GN8 form state into key-value pairs consumed by fillOfficialPdf.
  */
-export function mapGN8ToFieldValues(data: GN8FormData): Record<string, string | number | boolean> {
+export function mapGN8ToFieldValues(
+  data: GN8FormData,
+  lang: 'ar' | 'fr' = 'ar'
+): Record<string, string | number | boolean> {
+  const isFr = lang === 'fr';
+  const cleanWilaya = data.directionWilaya
+    .replace(/^(مديرية الضرائب لولاية|DIW de)\s*/iu, '')
+    .trim();
+
   const values: Record<string, string | number | boolean> = {
     // Header
-    directionWilaya: data.directionWilaya.replace(/^مديرية الضرائب لولاية\s*/u, '').trim(),
+    directionWilaya: cleanWilaya,
     service: data.service.trim(),
 
     // Tax regime checkboxes
@@ -163,7 +268,7 @@ export function mapGN8ToFieldValues(data: GN8FormData): Record<string, string | 
     dateDebutActivite: data.dateDebutActivite.trim(),
 
     // Signature
-    faitA: (data.faitA || 'وهران').trim(),
+    faitA: (data.faitA || (isFr ? 'Oran' : 'وهران')).trim(),
     dateDeclaration: (data.dateDeclaration || '').trim(),
   };
 
@@ -181,8 +286,8 @@ export function mapGN8ToFieldValues(data: GN8FormData): Record<string, string | 
   values.adresseResidence_line2 = res2;
 
   // Strikethrough of unselected declarant capacities per Footnote (3):
-  // "شطب المعلومات غير الضرورية"
-  const strikeText = '───────';
+  // "شطب المعلومات غير الضرورية" / "Rayer les mentions inutiles"
+  const strikeText = '────────';
   values.strike_proprietaire = data.qualiteDeclarant !== 'proprietaire' ? strikeText : '';
   values.strike_locataire = data.qualiteDeclarant !== 'locataire' ? strikeText : '';
   values.strike_gerant_libre = data.qualiteDeclarant !== 'gerant_libre' ? strikeText : '';
@@ -208,3 +313,4 @@ export function mapGN8ToFieldValues(data: GN8FormData): Record<string, string | 
 
   return values;
 }
+

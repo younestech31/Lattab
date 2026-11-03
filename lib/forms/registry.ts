@@ -33,6 +33,7 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
   {
     slug: 'gn31',
     templatePath: '/forms/gn31.pdf',
+    templatePathFr: '/forms/gn31_fr.pdf',
     officialNumber: 'سلسلة ج رقم 31 / Série G N° 31',
     title: {
       ar: 'تصريح الرسم العقاري (ج رقم 31)',
@@ -57,6 +58,7 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
   {
     slug: 'gn8',
     templatePath: '/forms/gn8.pdf',
+    templatePathFr: '/forms/gn8_fr.pdf',
     officialNumber: 'سلسلة ج رقم 08 / Série G N° 08',
     title: {
       ar: 'تصريح بالوجود (ج رقم 08)',
@@ -76,6 +78,31 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
     badge: {
       ar: 'إلزامي خلال 30 يوماً',
       fr: 'Délai légal : 30 jours',
+    },
+  },
+  {
+    slug: 'gn51',
+    templatePath: '/forms/gn51.pdf',
+    templatePathFr: '/forms/gn51_fr.pdf',
+    officialNumber: 'سلسلة ج رقم 51 / Série G N° 51',
+    title: {
+      ar: 'التصريح بمداخيل إيجار العقارات (ج رقم 51)',
+      fr: 'Déclaration des revenus de location immobilière (Série G N° 51)',
+    },
+    shortDescription: {
+      ar: 'تصريح يقوم مقام حافظة إشعار بالدفع لمداخيل إيجار العقارات المبنية وغير المبنية ذات الطابع المدني (المادتان 42 و104 من قانون الضرائب المباشرة والرسوم المماثلة CIDTA).',
+      fr: 'Déclaration tenant lieu de bordereau avis de versement des revenus provenant de la location, à titre civil, de biens bâtis et non bâtis (Articles 42 et 104 du CIDTA).',
+    },
+    legalRef: {
+      ar: 'المادتان 42 و 104 من قانون الضرائب المباشرة والرسوم المماثلة (CIDTA)',
+      fr: 'Articles 42 et 104 du Code des Impôts Directs et Taxes Assimilées (CIDTA)',
+    },
+    category: 'impots',
+    pages: 2,
+    enabled: true,
+    badge: {
+      ar: 'يُكتتب قبل 20 من الشهر الموالي',
+      fr: 'Au plus tard le 20 du mois suivant',
     },
   },
 ];

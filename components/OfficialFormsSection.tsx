@@ -37,6 +37,15 @@ export default function OfficialFormsSection({ lang = 'ar' }: OfficialFormsSecti
         : 'Déclaration d\'activité à souscrire dans les 30 jours du début d\'exercice auprès des impôts.',
       badge: isAr ? 'إلزامي خلال 30 يوماً' : 'Délai : 30 jours',
     },
+    {
+      slug: 'gn51',
+      num: isAr ? 'سلسلة ج رقم 51' : 'Série G N° 51',
+      title: isAr ? 'تصريح بمداخيل إيجار العقارات' : 'Déclaration des revenus de location',
+      desc: isAr
+        ? 'تصريح دوري (شهري/فصلي) لاقتطاع وتصفية الضريبة على مداخيل إيجار العقارات (المادتان 42 و104 CIDTA).'
+        : 'Déclaration tenant lieu de bordereau d\'avis de versement pour l\'IRG/Location (Articles 42 et 104 du CIDTA).',
+      badge: isAr ? 'قبل 20 من الشهر' : 'Avant le 20',
+    },
   ];
 
   return (
@@ -58,8 +67,8 @@ export default function OfficialFormsSection({ lang = 'ar' }: OfficialFormsSecti
             </h2>
             <p className="text-sm sm:text-base text-gray-600 mt-2.5 leading-relaxed">
               {isAr
-                ? 'تعبئة وطباعة نماذج جبائية جزائرية رسمية (التصريح بفائض القيمة ج 17، الرسم العقاري ج 31، تصريح بالوجود ج 08) وفق قوالب المديرية العامة للضرائب.'
-                : 'Remplissage et impression des imprimés fiscaux officiels (plus-value G17, taxe foncière G31, déclaration d’existence G08) conformes aux modèles de la DGI.'}
+                ? 'تعبئة وطباعة نماذج جبائية جزائرية رسمية (فائض القيمة ج 17، الرسم العقاري ج 31، تصريح بالوجود ج 08، إيجار العقارات ج 51) وفق قوالب المديرية العامة للضرائب.'
+                : 'Remplissage et impression des imprimés fiscaux officiels (plus-value G17, taxe foncière G31, existence G08, location immobilière G51) conformes aux modèles de la DGI.'}
             </p>
           </div>
 
@@ -78,8 +87,8 @@ export default function OfficialFormsSection({ lang = 'ar' }: OfficialFormsSecti
           </div>
         </div>
 
-        {/* 3 Form Preview Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 4 Form Preview Cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {forms.map((item) => {
             const href = isAr ? `/formulaires/${item.slug}` : `/fr/formulaires/${item.slug}`;
             return (

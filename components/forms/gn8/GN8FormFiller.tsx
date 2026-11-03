@@ -6,7 +6,7 @@ import { useLang } from '@/lib/i18n';
 import { getFormBySlug } from '@/lib/forms/registry';
 import { GN8FormData, initialGN8Values } from '@/lib/forms/gn8/schema';
 import { computeGN8 } from '@/lib/forms/gn8/compute';
-import { GN8_FIELD_COORDINATES, mapGN8ToFieldValues } from '@/lib/forms/gn8/fields';
+import { GN8_FIELD_COORDINATES, GN8_FIELD_COORDINATES_FR, mapGN8ToFieldValues } from '@/lib/forms/gn8/fields';
 import { fillOfficialPdf, downloadPdfBytes } from '@/lib/forms/fillOfficialPdf';
 import { loadDraft, saveDraft, clearDraft } from '@/lib/forms/draftStorage';
 
@@ -103,10 +103,14 @@ export default function GN8FormFiller() {
     setDownloadError(null);
 
     try {
-      const fieldValues = mapGN8ToFieldValues(data);
+      const isFr = lang === 'fr';
+      const templateUrl = isFr && formDef.templatePathFr ? formDef.templatePathFr : formDef.templatePath;
+      const fieldCoords = isFr ? GN8_FIELD_COORDINATES_FR : GN8_FIELD_COORDINATES;
+      const fieldValues = mapGN8ToFieldValues(data, lang as 'ar' | 'fr');
+
       const pdfBytes = await fillOfficialPdf({
-        templateUrl: formDef.templatePath,
-        fields: GN8_FIELD_COORDINATES,
+        templateUrl,
+        fields: fieldCoords,
         values: fieldValues,
         debug: isDebug,
       });

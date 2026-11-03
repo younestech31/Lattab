@@ -27,6 +27,16 @@ export const KNOWN_STATIC_ROUTES = new Set([
   '/fr/services/contrat-mariage',
   '/services/hypotheque',
   '/fr/services/hypotheque',
+  '/formulaires',
+  '/fr/formulaires',
+  '/formulaires/gn17',
+  '/fr/formulaires/gn17',
+  '/formulaires/gn31',
+  '/fr/formulaires/gn31',
+  '/formulaires/gn8',
+  '/fr/formulaires/gn8',
+  '/formulaires/gn51',
+  '/fr/formulaires/gn51',
 ]);
 
 export const KNOWN_AR_BLOG_SLUGS = new Set([

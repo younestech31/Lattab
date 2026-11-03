@@ -6,7 +6,7 @@ import { useLang } from '@/lib/i18n';
 import { getFormBySlug } from '@/lib/forms/registry';
 import { GN31FormData, initialGN31Values } from '@/lib/forms/gn31/schema';
 import { computeGN31 } from '@/lib/forms/gn31/compute';
-import { GN31_FIELD_COORDINATES, mapGN31ToFieldValues } from '@/lib/forms/gn31/fields';
+import { GN31_FIELD_COORDINATES, GN31_FIELD_COORDINATES_FR, mapGN31ToFieldValues } from '@/lib/forms/gn31/fields';
 import { fillOfficialPdf, downloadPdfBytes } from '@/lib/forms/fillOfficialPdf';
 import { loadDraft, saveDraft, clearDraft } from '@/lib/forms/draftStorage';
 
@@ -103,10 +103,14 @@ export default function GN31FormFiller() {
     setDownloadError(null);
 
     try {
-      const fieldValues = mapGN31ToFieldValues(data);
+      const isFr = lang === 'fr';
+      const templateUrl = isFr && formDef.templatePathFr ? formDef.templatePathFr : formDef.templatePath;
+      const fieldCoords = isFr ? GN31_FIELD_COORDINATES_FR : GN31_FIELD_COORDINATES;
+      const fieldValues = mapGN31ToFieldValues(data, lang as 'ar' | 'fr');
+
       const pdfBytes = await fillOfficialPdf({
-        templateUrl: formDef.templatePath,
-        fields: GN31_FIELD_COORDINATES,
+        templateUrl,
+        fields: fieldCoords,
         values: fieldValues,
         debug: isDebug,
       });
