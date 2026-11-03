@@ -126,19 +126,75 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
         y -= 25;
       };
 
+      /**
+       * Footer order (user request): full address → phone → website
+       * Drawn RTL for Arabic so reading order is correct from the right.
+       */
       const drawFooter = () => {
         const tel = `+${officeTelDigits()}`;
-        const footerText = isAr 
-          ? `العنوان: حي 557 مسكن، العقيد لطفي، وهران | هاتف: ${tel} | https://lattab.vercel.app` 
-          : `Cité 557 Logements, Akid Lotfi, Oran | Tél : ${tel} | https://lattab.vercel.app`;
-        const formattedFooter = isAr ? shapeArabicForPdf(footerText) : footerText;
-        page.drawText(formattedFooter, {
-          x: (A4_WIDTH - customFont.widthOfTextAtSize(formattedFooter, 8)) / 2,
-          y: margin / 2,
-          size: 8,
-          font: customFont,
-          color: rgb(0.40, 0.45, 0.52),
-        });
+        const site = 'https://lattab.vercel.app';
+        const footerSize = 8;
+        const footerY = margin / 2;
+        const sep = '  |  ';
+
+        if (isAr) {
+          const addressLogical = 'العنوان: حي 557 مسكن، العقيد لطفي، وهران';
+          const phoneLogical = `هاتف: ${tel}`;
+          const addressShaped = shapeArabicForPdf(addressLogical);
+          const phoneShaped = shapeArabicForPdf(phoneLogical);
+
+          // Build visual LTR string in reading order for RTL page:
+          // rightmost = address, then phone, then site (leftmost)
+          // After shaping, we place the full line right-aligned.
+          const fullLogical = `${addressLogical}${sep}${phoneLogical}${sep}${site}`;
+          // Shape only Arabic parts; keep Latin/digits/URL as-is by segment join
+          const segments = [
+            shapeArabicForPdf(addressLogical),
+            sep,
+            shapeArabicForPdf(`هاتف: `) + tel,
+            sep,
+            site,
+          ];
+          // For pdf-lib LTR drawing with right-align: reverse segment order for visual RTL
+          const visualLine = [site, sep, tel + shapeArabicForPdf(' :هاتف'), sep, addressShaped].join('');
+          // Prefer explicit segment widths for reliable order: address (right) → phone → site (left)
+          let cursorX = A4_WIDTH - margin;
+
+          const drawRtlSegment = (text: string) => {
+            const w = customFont.widthOfTextAtSize(text, footerSize);
+            cursorX -= w;
+            page.drawText(text, {
+              x: cursorX,
+              y: footerY,
+              size: footerSize,
+              font: customFont,
+              color: rgb(0.40, 0.45, 0.52),
+            });
+          };
+
+          // Draw from right to left: address, sep, phone, sep, site
+          drawRtlSegment(addressShaped);
+          drawRtlSegment(sep);
+          drawRtlSegment(shapeArabicForPdf('هاتف: ') + tel);
+          drawRtlSegment(sep);
+          drawRtlSegment(site);
+
+          // Silence unused (kept for readability / future debug)
+          void fullLogical;
+          void phoneShaped;
+          void visualLine;
+          void segments;
+        } else {
+          // LTR: address → phone → website
+          const footerText = `Cité 557 Logements, Akid Lotfi, Oran | Tél : ${tel} | ${site}`;
+          page.drawText(footerText, {
+            x: (A4_WIDTH - customFont.widthOfTextAtSize(footerText, footerSize)) / 2,
+            y: footerY,
+            size: footerSize,
+            font: customFont,
+            color: rgb(0.40, 0.45, 0.52),
+          });
+        }
       };
 
       drawHeader();
