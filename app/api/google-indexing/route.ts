@@ -6,6 +6,9 @@ import { pingIndexNow as notifyIndexNow } from '@/lib/utils/indexnow';
 import { validateBearerAuth } from '@/lib/utils/auth';
 import { z } from 'zod';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 /** 
  * MANUAL USE ONLY — Google Indexing API is for JobPosting/BroadcastEvent only.
  * Do not use as a cron. Use /api/index-now for general content submission.
@@ -15,7 +18,6 @@ import { z } from 'zod';
  * PUT  /api/google-indexing          → submit all blog posts via IndexNow (Deploy Webhook)
  */
 
-type UrlNotificationSchema = z.infer<typeof UrlNotificationSchema>;
 const UrlNotificationSchema = z.object({
   url: z.string().url(),
   type: z.enum(['URL_UPDATED', 'URL_DELETED']).optional().default('URL_UPDATED'),
