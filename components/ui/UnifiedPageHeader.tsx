@@ -48,7 +48,7 @@ export default function UnifiedPageHeader({
       className={`
         relative bg-emerald-900 text-white overflow-hidden
         pt-24 md:pt-28
-        pb-8 md:pb-10
+        pb-14 md:pb-16
         ${className}
       `}
       dir={isRtl ? 'rtl' : 'ltr'}
