@@ -16,12 +16,14 @@ La promesse de vente notariée est un contrat préparatoire engageant le vendeur
 
 ## Forme et fiscalité (2026)
 La promesse de vente immobilière doit être **obligatoirement rédigée en la forme authentique**. Le barème ne se résume pas à un tableau sans cas d'application. L'article 40 de la loi de finances pour 2026 modifie l'article 252 du code de l'enregistrement. On distingue (la liquidation se fait à l'enregistrement sur la base du texte, non sur l'estimation de cet article) :
-- **Enregistrement de la promesse**, lorsqu'un droit proportionnel est dû tant que l'acte reste une promesse et que la vente n'est pas encore réalisée : **2,5 %** de la valeur que le code de l'enregistrement retient pour cette promesse.
-- **Réalisation de la promesse et vente translative :** lors de l'acte de vente qui exécute la promesse, le droit d'enregistrement de la vente est liquidé. Un **droit complémentaire de 2,5 %** peut être dû lorsque le texte distingue ce qui a été perçu à la promesse de ce qui est dû au transfert définitif. Les deux taux ne s'additionnent pas mécaniquement dans chaque dossier sans application de l'article 252 modifié.
-- **Résiliation de la promesse avant exécution :** si la promesse est résolue avant le transfert de propriété, un **droit fixe de 5 000 DA** peut être dû sur le fait de résiliation que le texte vise, et non sur tout désistement contractuel hors de ce cas.
+- **Enregistrement de la promesse immobilière :** droit de **2,5 %** conformément à l'article 252 modifié.
+- **Acte constatant la réalisation de la promesse et la vente :** droit de **2,5 %** conformément au même texte.
+- **Acte de résiliation de la promesse avant son exécution :** droit fixe de **5 000 DA**.
+
+Ces droits concernent les actes expressément visés par le texte. Le service de l'enregistrement applique l'article 252 en vigueur à l'acte présenté. Aucune imputation ou compensation automatique entre les deux droits ne doit être affirmée sans fondement textuel.
 
 Chaque dossier se rapporte au libellé en vigueur de l'article 252 après la modification de 2026, et non au seul tableau résumé.
-Les actes sous seing privé sont nuls et ne produisent aucun effet translatif de propriété.
+Il faut distinguer les effets obligatoires ou probatoires qu'un accord sous seing privé peut éventuellement produire selon son objet, de la forme authentique exigée par la loi pour certains actes immobiliers, ainsi que de la publicité foncière nécessaire au transfert du droit réel conformément à l'article 793 du Code civil. Il est donc inexact d'affirmer que tout accord sous seing privé est absolument dépourvu d'effet.
 
 ## Clauses et conditions suspensives
 - **Versement d'arrhes :** Fixation du montant de l'acompte et prévision des modalités de restitution ou de conservation en cas de désistement.
