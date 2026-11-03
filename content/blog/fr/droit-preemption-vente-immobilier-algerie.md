@@ -4,7 +4,6 @@ description: "Guide informatif sur le droit de préemption lors d'une vente immo
 dateISO: "2026-11-01"
 dateModified: "2026-11-04"
 lastLegalReview: "2026-11-04"
-lastLegalReview: "2026-11-03"
 category: "Immobilier"
 language: "fr"
 readTime: "8"
