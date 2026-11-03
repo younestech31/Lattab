@@ -29,7 +29,7 @@ export async function pingIndexNow(urls: string[]) {
 
     return { success: true, status: response.status };
   } catch (err) {
-    console.error(`IndexNow ping error for ${HOST}:`, err);
+    console.error(`IndexNow ping error for ${host}:`, err);
     return { success: false, error: err instanceof Error ? err.message : String(err) };
   }
 }
