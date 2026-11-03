@@ -49,18 +49,21 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
   const t = {
     ar: {
       title: `قائمة إرشادية بالوثائق المطلوبة: ${contractType}`,
-      downloadBtn: 'تحميل PDF احترافي',
+      downloadBtn: 'تحميل PDF',
       preparedDocs: `تم تجهيز ${checkedCount} من ${total} وثائق`,
+      generating: 'جاري توليد ملف PDF...',
     },
     fr: {
       title: `Liste indicative des pièces : ${contractType}`,
-      downloadBtn: 'Télécharger PDF Professionnel',
+      downloadBtn: 'Télécharger le PDF',
       preparedDocs: `${checkedCount} sur ${total} documents préparés`,
+      generating: 'Génération du PDF...',
     }
   }[lang] || {
     title: `قائمة إرشادية بالوثائق المطلوبة: ${contractType}`,
-    downloadBtn: 'تحميل PDF احترافي',
+    downloadBtn: 'تحميل PDF',
     preparedDocs: `تم تجهيز ${checkedCount} من ${total} وثائق`,
+    generating: 'جاري توليد ملف PDF...',
   };
 
   const handleExportPDF = async () => {
@@ -139,25 +142,8 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
 
         if (isAr) {
           const addressLogical = 'العنوان: حي 557 مسكن، العقيد لطفي، وهران';
-          const phoneLogical = `هاتف: ${tel}`;
           const addressShaped = shapeArabicForPdf(addressLogical);
-          const phoneShaped = shapeArabicForPdf(phoneLogical);
 
-          // Build visual LTR string in reading order for RTL page:
-          // rightmost = address, then phone, then site (leftmost)
-          // After shaping, we place the full line right-aligned.
-          const fullLogical = `${addressLogical}${sep}${phoneLogical}${sep}${site}`;
-          // Shape only Arabic parts; keep Latin/digits/URL as-is by segment join
-          const segments = [
-            shapeArabicForPdf(addressLogical),
-            sep,
-            shapeArabicForPdf(`هاتف: `) + tel,
-            sep,
-            site,
-          ];
-          // For pdf-lib LTR drawing with right-align: reverse segment order for visual RTL
-          const visualLine = [site, sep, tel + shapeArabicForPdf(' :هاتف'), sep, addressShaped].join('');
-          // Prefer explicit segment widths for reliable order: address (right) → phone → site (left)
           let cursorX = A4_WIDTH - margin;
 
           const drawRtlSegment = (text: string) => {
@@ -172,18 +158,12 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
             });
           };
 
-          // Draw from right to left: address, sep, phone, sep, site
+          // Draw from right to left: address → phone → site
           drawRtlSegment(addressShaped);
           drawRtlSegment(sep);
           drawRtlSegment(shapeArabicForPdf('هاتف: ') + tel);
           drawRtlSegment(sep);
           drawRtlSegment(site);
-
-          // Silence unused (kept for readability / future debug)
-          void fullLogical;
-          void phoneShaped;
-          void visualLine;
-          void segments;
         } else {
           // LTR: address → phone → website
           const footerText = `Cité 557 Logements, Akid Lotfi, Oran | Tél : ${tel} | ${site}`;
@@ -443,7 +423,7 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
             </svg>
-            {isAr ? 'جاري توليد ملف الـ PDF الاحترافي...' : 'Génération du PDF professionnel...'}
+            {t.generating}
           </>
         ) : (
           <>
