@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { SITE_URL } from '@/lib/config';
-import { blogPosts } from '@/lib/data/blog';
+import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { validateBearerAuth } from '@/lib/utils/auth';
 
 const INDEX_NOW_KEY = process.env.INDEXNOW_KEY || '';
@@ -22,7 +22,11 @@ export async function GET(req: NextRequest) {
     `${base}/`,
     `${base}/blog`,
     `${base}/calculateur-prix-referentiel`,
-    ...blogPosts.map(post => `${base}/blog/${post.slug}`)
+    ...blogPosts.map(post => `${base}/blog/${post.slug}`),
+    `${base}/fr`,
+    `${base}/fr/blog`,
+    `${base}/fr/calculateur-prix-referentiel`,
+    ...frBlogPosts.map(post => `${base}/fr/blog/${post.slug}`),
   ];
 
   try {
@@ -36,7 +40,7 @@ export async function GET(req: NextRequest) {
         host,
         key: INDEX_NOW_KEY,
         keyLocation: `${base}/${INDEX_NOW_KEY}.txt`,
-        urlList: urlList,
+        urlList,
       }),
     });
 
