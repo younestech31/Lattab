@@ -2,7 +2,8 @@
 title: "Droit des successions en Algérie : Principes et règlement notarié"
 description: "Présentation des règles de l'héritage en droit algérien selon le Code de la famille, le règlement des dettes et le rôle du notaire dans la dévolution."
 dateISO: "2026-05-18"
-dateModified: "2026-11-02"
+dateModified: "2026-11-04"
+lastLegalReview: "2026-11-04"
 category: "Juridique"
 language: "fr"
 readTime: "7"
@@ -17,7 +18,7 @@ Le règlement des successions en Algérie est régi par le Code de la famille. L
 ## Principes de la dévolution successorale
 1. **Causes d'héritage :** Le mariage légal et la parenté par le sang.
 2. **Conditions :** Décès certain du cujus, survie de l'héritier au jour de l'ouverture et absence d'empêchement légal.
-3. **Formalités notariées :** Établissement obligatoire de l'acte de Fredha et de l'attestation immobilière notariée transmise à la conservation foncière.
+3. **Établissement de la qualité d’héritier et transfert immobilier :** L’acte de Fredha sert à établir l’identité des héritiers et leurs quotes-parts. Lorsque la succession comprend des droits immobiliers, les formalités de transfert sont accomplies au moyen de l’attestation immobilière notariée publiée auprès de la conservation foncière compétente, selon la situation du titre.
 
 ## Liens utiles
 - Consultez notre article sur les [Étapes de la Fredha](/fr/blog/fredha-succession-algerie-etapes).
