@@ -3,6 +3,17 @@ import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL as base } from '@/lib/config';
 import { STATIC_LOCALE_MAP, BLOG_PAIRS_MAP, FR_TO_AR_BLOG_MAP } from '@/lib/data/localeMap';
 
+const FALLBACK_LAST_MODIFIED = new Date('2026-09-24T00:00:00.000Z');
+
+function getValidLastModified(primary?: string, fallback?: string): Date {
+  for (const value of [primary, fallback]) {
+    if (typeof value !== 'string' || !value.trim()) continue;
+    const timestamp = Date.parse(value);
+    if (Number.isFinite(timestamp)) return new Date(timestamp);
+  }
+  return FALLBACK_LAST_MODIFIED;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // Static and service routes
   const staticEntries: MetadataRoute.Sitemap = [];
@@ -21,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // Arabic entry
       staticEntries.push({
         url: arUrl,
-        lastModified: new Date(entry.lastmod),
+        lastModified: getValidLastModified(entry.lastmod),
         changeFrequency: entry.changeFrequency,
         priority: entry.priority,
         alternates: {
@@ -75,7 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       return {
         url: arUrl,
-        lastModified: new Date(post.dateModified || post.dateISO),
+        lastModified: getValidLastModified(post.dateModified, post.dateISO),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
         alternates: {
