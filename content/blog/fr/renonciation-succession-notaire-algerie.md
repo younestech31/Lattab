@@ -15,10 +15,14 @@ arSlug: "renonciation-succession-notaire-algerie"
 ## Introduction
 Un héritier peut renoncer ou céder à titre amiable sa quote-part indivise dans la succession de son auteur au profit de l'ensemble de ses cohéritiers ou de l'un d'entre eux. Cette opération nécessite la rédaction d'un acte authentique devant notaire conformément au Code de la famille et au Code civil algériens.
 
-## Distinction entre renonciation et cession de droits
-Il est important de distinguer deux actes juridiques distincts :
-1. **La renonciation (pure et simple) :** L'héritier décide de ne pas accepter la succession. Sa part accroît alors celle de ses cohéritiers par le seul effet de la loi.
-2. **La cession de droits successoraux :** L'héritier accepte sa part puis la cède à un tiers ou à un cohéritier, à titre gratuit (donation) ou onéreux (vente).
+## Trois opérations qui ne sont pas synonymes
+On ne dit pas que « la part revient automatiquement aux autres héritiers » dans tous les cas. Trois situations se distinguent :
+
+1. **La renonciation à la succession :** l'héritier déclare ne pas accepter la succession. L'effet sur le cercle des héritiers et sur les quotes-parts se tire des règles successorales applicables (y compris, le cas échéant, le droit de retour, l'ordre et le degré). Ce n'est ni une vente ni une donation de la part.
+2. **La cession d'une part déjà dévolue :** après l'ouverture de la succession et la constatation de la qualité et des parts (notamment par l'acte de notoriété lorsque celui-ci est requis), l'héritier dispose d'une part qui lui est acquise. Le bénéficiaire et la contrepartie sont ceux de l'acte ; la part ne « revient » pas d'elle-même aux autres sauf stipulation en ce sens.
+3. **La cession de droits successoraux :** transfert de ces droits à un cohéritier ou à un tiers, à titre onéreux ou gratuit. La forme et le régime fiscal suivent la nature de l'opération (vente, donation ou cession) et ne se confondent pas avec l'effet de la renonciation.
+
+Ces qualifications ne s'emploient pas l'une pour l'autre, ni dans l'acte ni dans cet exposé.
 
 ## Conditions de validité (Cession)
 1. **L'authenticité :** Obligation de rédiger un acte notarié conformément aux Art. 404 et suivants du Code civil.

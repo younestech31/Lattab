@@ -15,11 +15,18 @@ arSlug: "taxe-fonciere-gn31-algerie"
 La taxe foncière est un impôt réel annuel perçu sur les propriétés immobilières bâties et non bâties en Algérie. Ses recettes sont destinées au financement des collectivités locales et des communes.
 
 ## Quand souscrire la déclaration G31 ?
-Contrairement aux idées reçues, le formulaire G31 (G N°31) ne se dépose pas chaque année, mais lors d'événements spécifiques (Art. 261 r et s du CIDTA) :
-1. **Première année :** Lors de l'acquisition d'un nouveau bien ou de la première imposition.
-2. **Changement de consistance :** Achèvement de travaux, surélévation, ou extension de surface.
-3. **Changement d'usage :** Transformation d'une habitation en local professionnel ou commercial.
-4. **Changement d'occupant :** Dans certains cas liés à la qualité du propriétaire ou du détenteur.
+Contrairement à une idée reçue, le formulaire G31 ne se dépose pas automatiquement chaque année pour chaque immeuble. La taxe est annuelle une fois la base fixée ; la déclaration est souscrite lors des faits que le Code des impôts directs prévoit (notamment les articles 261 r et 261 s et les dispositions de déclaration qui s'y rattachent). Deux moments ne se confondent pas :
+
+- **L'acquisition d'un immeuble** est un fait juridique (vente, donation, succession) qui peut imposer d'informer l'administration.
+- **La première année d'application de la taxe** est l'année où l'immeuble devient imposable selon les règles d'assiette. Elle ne coïncide pas toujours, au calendrier, avec la date d'acquisition.
+
+La déclaration est requise, selon les textes, notamment :
+1. **Première imposition :** lorsque le bien devient taxable pour la première fois, ou à l'achèvement d'une construction qui n'était pas encore dans l'assiette.
+2. **Changement de consistance :** achèvement, surélévation ou extension qui modifie les éléments de l'assiette.
+3. **Changement d'affectation :** transformation d'une habitation en local professionnel ou commercial, ou l'inverse, lorsque l'assiette en est affectée.
+4. **Changement d'occupant ou de la qualité du redevable :** il ne suffit pas d'une formule générale. Si le texte subordonne la déclaration à un changement de la personne tenue ou du mode d'occupation, on se reporte à l'article du CIDTA applicable. Tout déménagement n'emporte pas, à lui seul, une obligation de déclarer.
+
+**Délai :** lorsque la loi impose la déclaration, le délai est celui de l'article qui crée l'obligation (souvent un délai bref à compter du fait générateur : achèvement, changement d'affectation, ou le fait que le texte désigne). Cet article ne pose pas un délai unique pour toutes les situations ; la recette compétente applique le délai du texte correspondant.
 
 ## Base imposable et paiement annuel
 Une fois la déclaration validée, l'administration fiscale fixe la valeur locative et émet un avis de paiement annuel. L'acte notarié et le livret foncier sont les seuls garants de l'exactitude des données transmises pour éviter toute surtaxe liée à une mauvaise évaluation.
