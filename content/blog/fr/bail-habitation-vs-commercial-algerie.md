@@ -21,9 +21,6 @@ L'article **467 bis** du Code civil ne doit pas être limité au seul bail d'hab
 ## Bail commercial
 En plus de cette exigence de forme, le bail commercial est soumis aux règles particulières du Code de commerce, notamment aux articles 169 et suivants. Une distinction temporelle est essentielle : les baux commerciaux conclus à compter de la publication de la loi n° 05-02 au Journal officiel, le **9 février 2005**, relèvent de l'article 187 bis; les renouvellements des baux antérieurs restent régis, en vertu de l'article 187 ter, par la législation en vigueur à la date de conclusion du bail.
 
-## Bail commercial
-Le bail commercial est intrinsèquement lié au fonds de commerce et à l'activité du commerçant. Il bénéficie de protections spécifiques (Articles 172 et suivants du Code de commerce) garantissant la stabilité professionnelle du commerçant et réglementant les conditions d'éviction.
-
 ## Démarches principales
 - Déterminer la nature de l'usage (habitation ou commercial).
 - Fixer la durée et le montant du loyer.

@@ -22,6 +22,11 @@ L'obligation de souscrire une déclaration de plus-value naît dès la conclusio
 La plus-value est calculée sur la base de la différence entre le prix de cession réel et le prix d'acquisition initial majoré des frais autorisés.
 > *Note :* Ces estimations sont indicatives, l'évaluation finale et la détermination de la base imposable relèvent de la compétence exclusive de l'administration fiscale.
 
+## Règles particulières de calcul — mise à jour 2026
+- Lorsqu'il est impossible de déterminer le prix d'acquisition ou la valeur de création (bien ancien, partage successoral, titre sans indication du prix, etc.), la valeur d'acquisition ou de création est fixée forfaitairement à **40 % du prix de cession** pour le calcul de la plus-value, conformément à l'article 78 du CIDTA modifié par l'article 9 de la loi de finances pour 2026.
+- Lorsque le bien cédé provient d'une donation ou d'une succession, la valeur vénale du bien à la date de la donation ou de la succession se substitue au prix d'acquisition.
+- Les droits d'enregistrement ainsi que les frais d'acquisition, d'entretien et d'amélioration justifiés peuvent être pris en compte dans les conditions de l'article 78, dans la limite de 30 % du prix d'acquisition ou de la valeur de création. En cas d'application du forfait de 40 %, ces frais ne sont pas ajoutés une seconde fois.
+
 ## Procédures et délais
 La déclaration G17 doit impérativement être déposée et l'impôt acquitté dans un délai de **30 jours** à compter de la date de l'acte de vente notarié.
 - **Taux applicable :** La plus-value immobilière est imposée au taux de **15%** (IRG).

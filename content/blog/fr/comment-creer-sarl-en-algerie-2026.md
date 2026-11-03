@@ -21,8 +21,6 @@ Selon les articles 566 et 567 du Code de commerce, tels que modifiés par la loi
 - **Libération :** au moins un cinquième des apports en numéraire doit être versé lors de la constitution. Le solde peut être libéré dans un délai n'excédant pas cinq ans, dans les conditions légales.
 - **Nombre d'associés :** de deux à cinquante.
 
-Le versement s'effectue entre les mains du notaire ou sur un compte dédié selon la procédure appliquée par l'établissement. Le « compte bancaire bloqué » n'est pas, à lui seul, une règle légale générale détachée de ces articles.
-
 ## Étapes de la constitution
 1. **Dénomination sociale :** réservation du nom auprès du CNRC.
 2. **Siège social :** justificatif légal du siège selon la situation.
@@ -40,4 +38,4 @@ L'article 567 bis 1 prévoit en outre que, si la société n'est pas constituée
 - [Loi n° 15-20 — Journal officiel n° 71 de 2015](https://www.joradp.dz/ftp/jo-francais/2015/f2015071.pdf), modifiant notamment les articles 566 et 567 du Code de commerce.
 
 ## Avertissement légal
-Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.

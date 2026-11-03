@@ -40,9 +40,6 @@ L'article 90 impose à tout détenteur du prix de le répartir dans les trois mo
 - Pour le bail commercial, consultez notre article [Le bail commercial à Oran](/fr/blog/contrat-location-commercial-oran).
 - Découvrez nos prestations relatives à la [création de sociétés](/fr/services/creation-societe).
 
-## Prix de cession et oppositions
-Il n'est pas exact d'affirmer que le prix doit toujours être déposé immédiatement chez le notaire ou à la Caisse des dépôts. Les articles 90 et 91 du Code de commerce organisent la détention et la distribution du prix ainsi que les recours judiciaires en cas de défaut de distribution ou d'opposition. La remise du prix doit être appréciée au regard des publications, oppositions et délais applicables au dossier.
-
 ## Sources officielles
 - [Code de commerce — Ministère du Commerce, Livre II, articles 79 et 83 à 95](https://www.commerce.gov.dz/media/reglementation/source/concurrence/code-commerce/fr/livre2ccfr.pdf).
 
