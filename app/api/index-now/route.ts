@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
   if (!validateBearerAuth(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  if (!INDEXNOW_KEY) {
+  if (!INDEX_NOW_KEY) {
     return NextResponse.json({ error: 'INDEXNOW_KEY not configured' }, { status: 503 });
   }
 
