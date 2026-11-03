@@ -13,22 +13,22 @@ arSlug: "nouvelle-loi-enregistrement-immobilier-2026"
 ---
 
 ## Introduction
-Les récentes mises à jour législatives s'inscrivent dans une stratégie nationale de numérisation de la conservation foncière et de modernisation des services du cadastre. Cette transition progressive vise à sécuriser les transactions, prévenir les chevauchements de titres et faciliter l'obtention électronique des documents fonciers via la coordination numérique entre notaires et conservations.
+Les administrations évoquent une modernisation de la conservation foncière et du cadastre. Cet article ne constate pas qu'une numérisation nationale, un identifiant foncier unique ou un échange électronique obligatoire entre le notaire, la conservation et le cadastre soit en vigueur sur tout le territoire. À la date de cette relecture, l'étude ne cite pas de texte au Journal officiel fixant la date et le champ territorial d'un tel dispositif.
 
-## Axes majeurs des évolutions réglementaires
-1. **L'identifiant foncier unique :** Interconnexion numérique entre les études notariales, la conservation foncière et les services du cadastre pour faciliter l'identification précise des biens.
-2. **L'authenticité obligatoire :** Confirmation du principe selon lequel aucun transfert de propriété immobilière n'est opposable sans acte notarié publié au registre foncier.
-3. **La conformité fiscale :** Exigence stricte de la liquidation préalable des droits d'enregistrement avant l'inscription de tout transfert de propriété.
+## Ce qui est établi et ce qui ne l'est pas ici
+1. **Ce qui demeure applicable :** les mutations de droits réels immobiliers pour lesquelles la loi impose la forme authentique, puis la publicité foncière de l'article 793 du Code civil pour l'opposabilité aux tiers.
+2. **Ce que cet article ne confirme pas :** un identifiant foncier unique déjà généralisé, un échange électronique obligatoire des pièces, ou une plateforme unique qui dispenserait du dépôt papier dans chaque conservation.
+3. **La liquidation fiscale :** les droits d'enregistrement et de publicité restent régis par les textes fiscaux et par la pratique de la recette et de la conservation compétentes.
 
 ## Rôle du notaire
-Le notaire rédige les actes, vérifie la chaîne de propriété, s'assure de la capacité des parties et procède à la transmission (numérique ou physique) de l'acte pour sa publication foncière.
+Le notaire rédige l'acte, contrôle les titres et la capacité des parties, et dépose l'acte selon le mode accepté par la conservation compétente. Le dépôt électronique n'est pas présenté ici comme la règle générale.
 
 ## Liens utiles
 - Consultez la liste des [documents de vente immobilière](/fr/blog/documents-vente-immobilier-algerie).
 - Découvrez nos prestations de [vente et publicité foncière](/fr/services/vente-immobiliere).
 
 ## Conclusion et note importante
-Ce guide est purement informatif. **Note :** La mise en œuvre de la numérisation et du numéro d'identification foncier est progressive à l'échelle nationale. Les modalités techniques de dépôt et de traitement peuvent varier selon le niveau de numérisation de la conservation foncière dont dépend votre bien.
+Ce guide est purement informatif. **Note :** toute affirmation sur un identifiant foncier unique ou une interconnexion électronique doit renvoyer à un texte, une décision ou un communiqué officiel précisant la date et le champ d'application. À défaut, les formalités classiques de publicité et d'enregistrement restent la référence.
 
 ## Références et sources officielles
 - [Agence Nationale du Cadastre et de la Conservation Foncière (ANSCT)](https://www.anscf.dz).

@@ -20,8 +20,9 @@ L'Algérie a mis en place un cadre législatif rénové destiné à encourager l
 - **Couverture sociale :** Affiliation directe à la CASNOS assurant la protection sociale de l'exploitant.
 
 ## Incitations en faveur des Startups
-- **Exonérations fiscales :** Bénéficiez d'une exonération de l'IBS pour une durée de **4 ans** (renouvelable 2 ans). 
-  *Note :* La taxe sur l'activité professionnelle (TAP) a été supprimée du régime général dès janvier 2024.
+- **Les avantages ne sont pas automatiques** pour toute société nouvelle. Il faut distinguer l'auto-entrepreneur, la société titulaire du label Startup, et la société de droit commun.
+- **Startup labellisée :** des exonérations ciblées peuvent s'appliquer si les conditions sont remplies, notamment une exonération d'IFU pour une durée limitée selon le dispositif fiscal 2026, et les exonérations d'IBS prévues par le régime du label. La durée et les conditions se lisent dans le texte fiscal en vigueur et dans la décision d'attribution, non dans une formule générale.
+- **TAP :** il n'est pas exact d'écrire qu'elle a disparu sans réserve. La DGI distingue le régime de droit commun et des règles transitoires visant certaines factures et décomptes établis en 2023 ou antérieurement lorsque les recettes sont encaissées en 2024 ou après.
 - **Accès au financement :** Possibilité de solliciter des fonds d'investissement et de capital-risque liés au label "Startup".
 - **Structuration notariée :** Rédaction des statuts authentiques pour protéger la propriété intellectuelle et les parts des associés ; consultez notre guide [Comment créer une SARL](/fr/blog/comment-creer-sarl-en-algerie-2026).
 

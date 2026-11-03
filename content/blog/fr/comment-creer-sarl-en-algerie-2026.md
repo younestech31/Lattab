@@ -14,12 +14,20 @@ arSlug: "comment-creer-sarl-en-algerie-2026"
 ## Introduction
 La Société à Responsabilité Limitée (SARL) est la forme juridique la plus répandue en Algérie. Elle permet de limiter la responsabilité des associés au montant de leurs apports. Le Code de commerce algérien impose la rédaction de ses statuts constitutifs sous la forme authentique par-devant notaire.
 
+## Capital et associés (loi 15-20)
+Selon les articles 566 et 567 du Code de commerce, tels que modifiés par la loi 15-20 :
+- **Capital :** les associés fixent librement le capital social dans les statuts.
+- **Libération :** au moins un cinquième des apports en numéraire doit être versé lors de la constitution. Le solde peut être libéré dans un délai n'excédant pas cinq ans, dans les conditions légales.
+- **Nombre d'associés :** de deux à cinquante.
+
+Le versement s'effectue entre les mains du notaire ou sur un compte dédié selon la procédure appliquée par l'établissement. Le « compte bancaire bloqué » n'est pas, à lui seul, une règle légale générale détachée de ces articles.
+
 ## Étapes de la constitution
-1. **Dénomination sociale :** Obtenir l'attestation de réservation de nom auprès du Centre National du Registre du Commerce (CNRC).
-2. **Siège social :** Justifier d'un bail commercial notarié, d'un titre de propriété ou d'une convention de domiciliation.
-3. **Blocage du capital :** Déposer le capital social dans un compte bancaire de société en formation.
-4. **Rédaction des statuts authentiques :** Signature des statuts rédigés par le notaire fixant la gérance, l'objet et la répartition des parts.
-5. **Publications et immatriculation :** Publication au BOAL, dans un journal d'annonces légales et délivrance du registre du commerce.
+1. **Dénomination sociale :** attestation de réservation du nom auprès du CNRC.
+2. **Siège social :** bail notarié, titre de propriété ou convention de domiciliation.
+3. **Libération des apports en numéraire :** au moins un cinquième à la constitution, le reste dans les cinq ans.
+4. **Statuts authentiques :** signature devant notaire.
+5. **Publicité et immatriculation :** insertion au BOAL et immatriculation au registre du commerce.
 
 ## Liens utiles
 - Comparez les structures avec notre article [Comparatif EURL, SARL et SPA](/fr/blog/comparaison-eurl-sarl-spa-algerie-2026).

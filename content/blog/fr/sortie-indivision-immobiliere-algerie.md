@@ -17,7 +17,7 @@ L'article 722 du Code civil algérien dispose que nul ne peut être contraint à
 
 ## Voies de sortie de l'indivision
 1. **Le partage amiable notarié :** Accord unanime des indivisaires majeurs et capables. L'acte notarié fixe les lots et les éventuelles soultes, puis est publié à la conservation foncière.
-2. **Le partage judiciaire obligatoire :** Conformément à l'Art. 181 du Code de la famille, le recours au tribunal est **obligatoire** en présence d'un héritier (associé) mineur, incapable, absent, ou en cas de désaccord persistant. Le juge ordonne alors une expertise pour le partage en nature ou la vente par licitation.
+2. **Le partage judiciaire :** il s'impose en cas de désaccord ou lorsque la loi exige une autorisation. La présence d'un **mineur** empêche en principe un partage purement amiable et renvoie à la voie judiciaire ou à une autorisation, notamment au regard de l'article 181 du Code de la famille pour le partage successoral. La seule qualité d'**absent** ne rend pas le partage judiciaire automatique : il faut examiner s'il peut être représenté ou si une autorisation particulière est requise.
 
 ## Liens utiles
 - Consultez notre article sur [L'acte de Fredha et la dévolution successorale](/fr/blog/fredha-succession-algerie-etapes).

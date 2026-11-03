@@ -15,11 +15,16 @@ arSlug: "prix-referentiel-immobilier-oran-2026"
 ## Introduction
 L'administration fiscale a mis en place une grille des **prix référentiels immobiliers** (actualisée pour 2025-2026). Ce référentiel ne constitue pas un prix fixe imposé, mais un ensemble de **fourchettes indicatives et d'indices de valeur** variant selon la wilaya, la commune, la zone et la nature du bien (logement, local, terrain). Ces données servent de base comparative pour l'évaluation de la valeur vénale et la liquidation des taxes fiscales.
 
-## Liquidation des droits et évaluation fiscale
-Lors de la rédaction de l'acte notarié, la recette des impôts compare le prix déclaré à la grille référentielle :
-1. **Droits d'enregistrement (5%) :** Calculés sur le prix déclaré ou sur la valeur référentielle si cette dernière est supérieure.
-2. **Taxe de publicité foncière (1%) :** Perçue pour la mutation au registre foncier et l'établissement du livret foncier.
-3. **Prévention des sous-déclarations :** Tendent à uniformiser les critères et à éviter les redressements fiscaux et pénalités applicables en cas d'insuffisance d'évaluation.
+## Prix déclaré, valeur de référence et valeur vénale
+Les grilles de la Direction générale des impôts pour 2025-2026 publient des **fourchettes** de valeurs immobilières de référence selon la zone et la nature du bien. Elles servent de repère d'évaluation et de contrôle fiscal. Elles ne constituent pas une règle selon laquelle les droits de chaque vente seraient automatiquement liquidés sur le haut de la fourchette.
+
+Il faut distinguer quatre notions :
+1. **La valeur déclarée :** le prix indiqué par les parties dans l'acte.
+2. **La valeur de référence :** la fourchette publiée pour la zone et le type de bien. Ce n'est pas un plancher obligatoire pour toute vente.
+3. **La valeur vénale estimée :** l'appréciation que l'administration peut retenir si le prix déclaré ne reflète pas l'opération.
+4. **Le redressement ou la réévaluation fiscale :** une procédure ultérieure, soumise à ses conditions légales, et non un calcul automatique sur le chiffre le plus élevé du tableau dès la signature.
+
+Les droits d'enregistrement et la taxe de publicité foncière sont liquidés selon les textes fiscaux en vigueur et sur la base retenue dans le dossier, après comparaison de la déclaration avec le référentiel.
 
 ## Rôle du notaire
 Le notaire applique le barème fiscal en vigueur, informe préalablement les parties du montant estimé des droits à acquitter et veille à l'utilisation des moyens de paiement bancaires légaux pour garantir la sécurité financière.
