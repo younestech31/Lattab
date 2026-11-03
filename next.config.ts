@@ -2,25 +2,9 @@ import type {NextConfig} from 'next';
 
 const isProd = process.env.NODE_ENV === 'production';
 
-const cspHeader = [
-  "default-src 'self'",
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  `frame-ancestors ${isProd ? "'self'" : "*"}`,
-  isProd ? "upgrade-insecure-requests" : "",
-  "font-src 'self' data:",
-  "img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://maps.gstatic.com",
-  "style-src 'self' 'unsafe-inline'",
-  `script-src ${isProd ? "'self' 'unsafe-inline'" : "'self' 'unsafe-eval' 'unsafe-inline'"}`,
-  `connect-src ${isProd ? "'self' https://va.vercel-insights.com" : "'self' ws: wss: http: https:"}`,
-  "frame-src 'self' https://www.google.com https://maps.google.com https://maps.googleapis.com",
-]
-  .filter(Boolean)
-  .join('; ');
-
+// The nonce-based CSP is set by middleware.ts. Keep only non-CSP headers here
+// so Next.js response headers cannot override the per-request nonce policy.
 const securityHeaders = [
-  { key: 'Content-Security-Policy', value: cspHeader },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=()' },
