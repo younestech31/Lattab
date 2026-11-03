@@ -2,7 +2,7 @@
 title: "Taxe foncière en Algérie et formulaire G31 : Principes et démarches"
 description: "Guide d'information sur la taxe foncière annuelle sur les propriétés bâties et non bâties, et le rôle du formulaire G31 auprès des impôts."
 dateISO: "2026-11-01"
-dateModified: "2026-11-02"
+dateModified: "2026-11-03"
 category: "Immobilier"
 language: "fr"
 readTime: "6"
@@ -15,18 +15,17 @@ arSlug: "taxe-fonciere-gn31-algerie"
 La taxe foncière est un impôt réel annuel perçu sur les propriétés immobilières bâties et non bâties en Algérie. Ses recettes sont destinées au financement des collectivités locales et des communes.
 
 ## Quand souscrire la déclaration G31 ?
-Contrairement à une idée reçue, le formulaire G31 ne se dépose pas automatiquement chaque année pour chaque immeuble. La taxe est annuelle une fois la base fixée ; la déclaration est souscrite lors des faits que le Code des impôts directs prévoit (notamment les articles 261 r et 261 s et les dispositions de déclaration qui s'y rattachent). Deux moments ne se confondent pas :
+La déclaration G31 n'est pas déposée automatiquement chaque année pour chaque immeuble. L'obligation dépend des faits prévus par le Code des impôts directs, notamment les articles 261 r et 261 s.
 
-- **L'acquisition d'un immeuble** est un fait juridique (vente, donation, succession) qui peut imposer d'informer l'administration.
-- **La première année d'application de la taxe** est l'année où l'immeuble devient imposable selon les règles d'assiette. Elle ne coïncide pas toujours, au calendrier, avec la date d'acquisition.
+Le propriétaire ou l'usufruitier souscrit la déclaration auprès du service fiscal compétent du lieu de situation du bien :
+1. Au cours de la première année d'application de la taxe à l'immeuble.
+2. Dans les deux mois suivant l'achèvement d'une construction nouvelle imposable.
+3. Dans les deux mois suivant un changement de consistance ou d'affectation qui modifie les éléments d'imposition.
+4. En cas d'occupation partielle d'une construction en cours, dans les conditions prévues par le texte.
 
-La déclaration est requise, selon les textes, notamment :
-1. **Première imposition :** lorsque le bien devient taxable pour la première fois, ou à l'achèvement d'une construction qui n'était pas encore dans l'assiette.
-2. **Changement de consistance :** achèvement, surélévation ou extension qui modifie les éléments de l'assiette.
-3. **Changement d'affectation :** transformation d'une habitation en local professionnel ou commercial, ou l'inverse, lorsque l'assiette en est affectée.
-4. **Changement d'occupant ou de la qualité du redevable :** il ne suffit pas d'une formule générale. Si le texte subordonne la déclaration à un changement de la personne tenue ou du mode d'occupation, on se reporte à l'article du CIDTA applicable. Tout déménagement n'emporte pas, à lui seul, une obligation de déclarer.
+La simple acquisition d'un immeuble ou le déménagement d'un occupant ne déclenche pas automatiquement une nouvelle déclaration dans tous les cas. Le défaut de déclaration peut entraîner les amendes prévues à l'article 261 t.
 
-**Délai :** lorsque la loi impose la déclaration, le délai est celui de l'article qui crée l'obligation (souvent un délai bref à compter du fait générateur : achèvement, changement d'affectation, ou le fait que le texte désigne). Cet article ne pose pas un délai unique pour toutes les situations ; la recette compétente applique le délai du texte correspondant.
+**Délai :** les deux mois concernent l'achèvement d'une construction nouvelle ou le changement de consistance/affectation. Ce n'est pas un délai uniforme pour toutes les situations; la déclaration initiale intervient au cours de la première année d'application de la taxe.
 
 ## Base imposable et paiement annuel
 Une fois la déclaration validée, l'administration fiscale fixe la valeur locative et émet un avis de paiement annuel. L'acte notarié et le livret foncier sont les seuls garants de l'exactitude des données transmises pour éviter toute surtaxe liée à une mauvaise évaluation.

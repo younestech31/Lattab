@@ -21,7 +21,9 @@ Lors d'un financement bancaire, l'établissement prêteur prend une inscription 
 3. **La radiation à la conservation foncière :** Publication de l'acte de mainlevée pour radier l'inscription du registre foncier.
 
 ## Note importante pour les propriétaires
-Le simple remboursement du prêt ou l'obtention de l'attestation bancaire ne suffit pas à radier l'hypothèque. **L'acte notarié est indispensable** pour que la radiation soit effective à la conservation foncière. Sans cette démarche, le bien reste grevé d'une charge hypothécaire au registre foncier, ce qui bloque toute revente future.
+Le remboursement du crédit ou l'obtention d'une attestation bancaire ne radie pas, à lui seul, l'inscription hypothécaire. Les formalités et la forme juridique nécessaires doivent être accomplies, notamment l'établissement de l'acte requis et son dépôt en vue de la radiation à la conservation foncière.
+
+**Il serait toutefois inexact d'affirmer que le bien est absolument invendable tant que l'inscription subsiste.** La possibilité et les effets d'une vente dépendent de la situation de la dette, des droits du créancier et des modalités de l'opération. Une vente peut, selon le dossier, être organisée avec règlement du créancier et radiation dans le cadre de l'opération. Il faut vérifier l'état foncier et les conditions de la banque avant toute promesse ou vente.
 
 ## Liens utiles
 - Consultez notre article sur l'[Achat par crédit bancaire](/fr/blog/achat-immobilier-credit-bancaire-algerie).

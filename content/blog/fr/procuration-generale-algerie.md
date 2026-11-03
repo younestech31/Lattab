@@ -20,9 +20,9 @@ La procuration notariée est le contrat par lequel une personne (le mandant) don
 2. **La procuration spéciale :** Mandat strictement délimité à un acte précis (vente d'un bien immobilier désigné, achat d'un véhicule, encaissement d'une somme déterminée). La forme spéciale est privilégiée pour limiter les risques juridiques et financiers.
 
 ## Responsabilités et protection du mandant
-- **Respect du mandat :** Le mandataire ne peut outrepasser ses pouvoirs sous peine de responsabilité.
-- **Reddition de comptes :** Le mandataire a l'obligation légale de rendre compte de sa gestion et de fournir les pièces justificatives.
-- **Révocation :** Le mandant peut révoquer le mandat à tout moment par un acte notarié de révocation, qu'il doit impérativement notifier au mandataire pour qu'elle lui soit opposable.
+- **Respect du mandat :** le mandataire ne peut dépasser les pouvoirs conférés et doit agir conformément au mandat et dans l'intérêt du mandant.
+- **Reddition de comptes :** il doit rendre compte de sa gestion et restituer ce qu'il a reçu pour le compte du mandant.
+- **Fin et révocation :** les articles 586 et 587 et suivants du Code civil régissent l'extinction et permettent au mandant de révoquer ou restreindre le mandat. Il serait excessif d'affirmer que toute révocation doit toujours prendre la forme d'un acte notarié unique ou que sa notification obéit à une formalité uniforme. Il faut tenir compte de la forme du mandat, de la nature de l'opération et des droits des tiers, puis informer le mandataire et les personnes susceptibles de traiter avec lui.
 
 ## Liens utiles
 - Pour les résidents à l'étranger, consultez [Procuration consulaire pour les Algériens de l'étranger](/fr/blog/notaire-algeriens-etranger-procuration-legalisation).

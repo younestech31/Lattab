@@ -2,7 +2,7 @@
 title: "Documents requis pour la vente immobilière en Algérie : Guide complet"
 description: "Liste détaillée des documents administratifs, de propriété, techniques et fiscaux nécessaires pour conclure un acte de vente notarié en Algérie."
 dateISO: "2026-05-18"
-dateModified: "2026-11-02"
+dateModified: "2026-11-03"
 category: "Immobilier"
 language: "fr"
 readTime: "9"
@@ -23,16 +23,16 @@ La conclusion d'un acte de vente immobilier en législation algérienne exige la
 
 2. **Titres de propriété foncière :**
    - Titre de propriété original publié à la conservation foncière (acte de vente, partage, donation ou attribution).
-   - Livret foncier individuel original (Livret Foncier) ; consultez notre [guide du livret foncier](/fr/blog/livret-foncier-algerie-guide).
+   - Livret foncier, **lorsqu'il a été établi pour le bien et que sa situation impose sa production**; il ne faut pas présumer qu'il existe dans chaque dossier. Consultez notre [guide du livret foncier](/fr/blog/livret-foncier-algerie-guide).
    - Certificat négatif récent délivré par la conservation foncière via l'étude notariale.
 
 3. **Documents techniques et d'urbanisme :**
    - Extrait de plan cadastral issu des services du cadastre.
-   - Permis de construire et certificat de conformité pour les constructions achevées.
+   - Permis de construire, certificat de conformité ou autres pièces d'urbanisme **lorsqu'ils sont requis selon la nature du bien, sa date de réalisation et son régime juridique**; le certificat de conformité n'est pas exigé uniformément pour toute vente.
 
 4. **Documents fiscaux et financiers :**
-   - Quitus fiscal ou attestation de libération fiscale du bien.
-   - Moyen de paiement légal (chèque de banque certifié ou virement bancaire).
+   - Pièces fiscales relatives au bien ou au vendeur, selon la nature de l'opération, la situation fiscale et les textes applicables; aucune pièce unique ne vaut pour tous les dossiers.
+   - Justificatif du moyen de paiement et respect des règles de paiement non-cash lorsque l'opération et son montant y sont légalement soumis; le notaire vérifie le moyen admis au regard du texte en vigueur.
    - Pour estimer les valeurs indicatives, utilisez notre [calculateur de prix référentiel](/fr/calculateur-prix-referentiel).
 
 ## Cas particuliers
