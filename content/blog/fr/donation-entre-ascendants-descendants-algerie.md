@@ -23,5 +23,10 @@ La donation (Hiba) est définie par le Code de la famille algérien comme la mut
 - Consultez notre article sur la [Fredha et les étapes de la succession](/fr/blog/fredha-succession-algerie-etapes).
 - Découvrez nos services de [succession et règlement d'héritage](/fr/services/succession).
 
+## Donation en période de maladie mortelle
+Selon l'article 204 du Code de la famille algérien, la donation faite pendant la maladie mortelle, ou dans les maladies et situations graves visées par le texte, est considérée comme un testament. Elle n'est donc pas simplement « interdite » : elle est soumise aux règles du testament, notamment aux limites légales et aux règles protégeant les droits des héritiers.
+
+La révocation d'une donation est également encadrée par les articles 211 et 212 et ne constitue pas un droit absolu des parents.
+
 ## Avertissement légal
-Cet article est fourni à titre strictly informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
+Cet article est fourni à titre strictement informatif. Il ne remplace pas une consultation notariale personnalisée ou l'examen des textes légaux et réglementaires en vigueur.
