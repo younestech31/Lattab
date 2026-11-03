@@ -146,8 +146,8 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
     // Format text representation
     let formattedText = String(rawValue);
     if (field.format === 'currency' && typeof rawValue === 'number') {
-      // Clean numeric formatting for official tax columns without appending mixed text
-      formattedText = Math.round(rawValue).toLocaleString('fr-DZ');
+      // Clean numeric formatting for official tax columns without appending mixed text or non-WinAnsi spaces
+      formattedText = Math.round(rawValue).toLocaleString('fr-DZ').replace(/[\u202F\u00A0]/g, ' ');
     } else if (field.format === 'percent' && typeof rawValue === 'number') {
       formattedText = `${rawValue} %`;
     }

@@ -1,3 +1,7 @@
+/**
+ * @file InquiryForm.tsx
+ * @client Uses form state, refs, validation, and browser window opening for WhatsApp direct channel.
+ */
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { User, Phone, FileText, CheckCircle } from 'lucide-react';

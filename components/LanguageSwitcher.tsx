@@ -1,3 +1,7 @@
+/**
+ * @file LanguageSwitcher.tsx
+ * @client Requires React context (useLang) and interactive click event handlers to toggle languages.
+ */
 'use client';
 import { useLang } from '@/lib/i18n';
 

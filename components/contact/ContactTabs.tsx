@@ -1,3 +1,7 @@
+/**
+ * @file ContactTabs.tsx
+ * @client Manages active tab state and URL hash navigation listeners on the client.
+ */
 'use client';
 import { useState, useEffect, Suspense } from 'react';
 import AppointmentForm from './AppointmentForm';

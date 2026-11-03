@@ -1,3 +1,7 @@
+/**
+ * @file PriceCalculator.tsx
+ * @client Highly interactive calculation tool utilizing useState, useEffect, useMemo, and animation hooks.
+ */
 'use client';
 
 import { useState, useMemo, useEffect, useRef } from 'react';

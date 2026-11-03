@@ -1,7 +1,9 @@
 import { AppointmentFormData as ZodAppointmentFormData } from '@/app/actions/appointment';
 import { buildInquiryWaUrl } from '@/lib/contact/channels';
 
-export type AppointmentFormData = ZodAppointmentFormData;
+export type AdministrativeInquiryData = ZodAppointmentFormData;
+/** @deprecated Use AdministrativeInquiryData */
+export type AppointmentFormData = AdministrativeInquiryData;
 
 export interface InquiryFormData {
   name: string;

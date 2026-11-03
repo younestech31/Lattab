@@ -1,3 +1,7 @@
+/**
+ * @file CookieBanner.tsx
+ * @client Uses useState, useEffect, and localStorage browser APIs to manage user cookie consent state.
+ */
 'use client';
 
 import { useState, useEffect } from 'react';

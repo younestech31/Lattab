@@ -1,3 +1,7 @@
+/**
+ * @file ReadingProgress.tsx
+ * @client Tracks document scroll position using window event listeners and useState.
+ */
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
 

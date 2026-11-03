@@ -1,3 +1,7 @@
+/**
+ * @file FloatingWhatsApp.tsx
+ * @client Uses useState and useEffect for entrance animations and stateful floating widget toggle.
+ */
 'use client';
 import { useLang } from '@/lib/i18n';
 import { useState, useEffect } from 'react';

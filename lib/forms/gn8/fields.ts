@@ -287,7 +287,7 @@ export function mapGN8ToFieldValues(
 
   // Strikethrough of unselected declarant capacities per Footnote (3):
   // "شطب المعلومات غير الضرورية" / "Rayer les mentions inutiles"
-  const strikeText = '────────';
+  const strikeText = '-------';
   values.strike_proprietaire = data.qualiteDeclarant !== 'proprietaire' ? strikeText : '';
   values.strike_locataire = data.qualiteDeclarant !== 'locataire' ? strikeText : '';
   values.strike_gerant_libre = data.qualiteDeclarant !== 'gerant_libre' ? strikeText : '';

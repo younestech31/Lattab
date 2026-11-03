@@ -1,3 +1,7 @@
+/**
+ * @file StickyMobileCTA.tsx
+ * @client Uses scroll event listeners and useState to toggle visibility of mobile call-to-action bar.
+ */
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';

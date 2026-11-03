@@ -1,3 +1,7 @@
+/**
+ * @file FAQAccordion.tsx
+ * @client Uses accordion state management and click event handlers for interactive expandable FAQ items.
+ */
 'use client';
 import { faqs } from '@/lib/data/faq';
 

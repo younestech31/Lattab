@@ -30,6 +30,10 @@ export function middleware(request: NextRequest) {
 
   const requestHeaders = new Headers(request.headers);
 
+  // Generate per-request nonce for strict CSP
+  const nonce = crypto.randomUUID();
+  requestHeaders.set('x-nonce', nonce);
+
   // Language detection based strictly on URL prefix (/fr = French, / = Arabic)
   let lang = 'ar';
   if (url.pathname.startsWith('/fr') && (url.pathname === '/fr' || url.pathname.startsWith('/fr/'))) {
@@ -48,6 +52,26 @@ export function middleware(request: NextRequest) {
   });
 
   response.headers.set('x-lang', lang);
+
+  const isProd = process.env.NODE_ENV === 'production';
+  const cspHeader = [
+    "default-src 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    `frame-ancestors ${isProd ? "'self'" : "*"}`,
+    isProd ? "upgrade-insecure-requests" : "",
+    "font-src 'self' data:",
+    "img-src 'self' data: blob: https://www.google.com https://maps.googleapis.com https://maps.gstatic.com",
+    "style-src 'self' 'unsafe-inline'",
+    `script-src ${isProd ? `'self' 'nonce-${nonce}'` : `'self' 'unsafe-eval' 'unsafe-inline' 'nonce-${nonce}'`}`,
+    `connect-src ${isProd ? "'self' https://va.vercel-insights.com" : "'self' ws: wss: http: https:"}`,
+    "frame-src 'self' https://www.google.com https://maps.google.com https://maps.googleapis.com",
+  ]
+    .filter(Boolean)
+    .join('; ');
+
+  response.headers.set('Content-Security-Policy', cspHeader);
 
   const isKnownRoute = isKnownPublicRoute(url.pathname);
   const isDynamic = request.method === 'POST' || url.searchParams.has('q');
