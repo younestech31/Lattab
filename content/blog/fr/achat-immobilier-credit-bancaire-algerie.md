@@ -15,10 +15,13 @@ arSlug: "achat-immobilier-credit-bancaire-algerie"
 L'acquisition d'un bien immobilier par crédit bancaire ou finance islamique en Algérie exige une coordination stricte entre l'acheteur, le vendeur et l'établissement financier. Le notaire, en tant qu'officier public, garantit la sécurité juridique des actes et leur publication foncière.
 
 ## Étapes de l'achat par financement bancaire
-1. **La promesse de vente notariée :** Rédigée par le notaire, elle constitue le document préalable indispensable pour l'instruction du dossier de crédit auprès de la banque.
+1. **La promesse de vente notariée :** Certaines banques peuvent la demander selon le produit de financement et leurs procédures. Elle ne doit pas être présentée comme une condition légale universelle à tout crédit immobilier.
 2. **La vérification foncière :** Le notaire demande un certificat négatif auprès de la conservation foncière pour s'assurer de l'absence de charges ou d'hypothèques antérieures.
 3. **L'acte d'affectation hypothécaire :** Après accord de la banque, une hypothèque conventionnelle est prise au profit de l'organisme prêteur.
 4. **L'acte de vente définitif :** Rédigé et publié par le notaire après déblocage des fonds.
+
+## Fiscalité de la promesse de vente (2026)
+L'article 40 de la loi de finances pour 2026, modifiant l'article 252 du Code de l'enregistrement, prévoit un droit de 2,5 % pour l'enregistrement de la promesse immobilière et un droit de 2,5 % pour l'acte constatant sa réalisation. La résiliation de la promesse avant son exécution est soumise au droit fixe de 5 000 DA prévu par le texte. Il ne faut pas présumer qu'un droit payé lors de la promesse est automatiquement imputé sur celui dû lors de la vente définitive : la liquidation dépend du texte applicable et de la qualification de l'acte.
 
 ## Liens et démarches utiles
 - Consultez nos services relatifs aux [ventes immobilières notariées](/fr/services/vente-immobiliere).
