@@ -113,7 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       return {
         url: frUrl,
-        lastModified: new Date(post.dateModified || post.dateISO),
+        lastModified: getValidLastModified(post.dateModified, post.dateISO),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
         alternates: {
