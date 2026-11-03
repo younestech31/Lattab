@@ -300,7 +300,7 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
                   Avis légal et réglementaire
                 </span>
                 <p className="text-emerald-100">
-                  Ce site a un caractère purement informatif و institutionnel. Les honoraires du notaire sont fixés exclusivement par la tarification officielle (<strong>Décret exécutif n° 08-243</strong>). L'étude respecte les règles déontologiques de la profession régie par la <strong>Loi n° 06-02</strong>.
+                  Ce site a un caractère purement informatif et institutionnel. Les honoraires du notaire sont fixés exclusivement par la tarification officielle (<strong>Décret exécutif n° 08-243</strong>). L&apos;étude respecte les règles déontologiques de la profession régie par la <strong>Loi n° 06-02</strong>.
                 </p>
               </div>
             </div>
