@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
 import ContactPageView from '@/components/ContactPageView';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'معلومات الاتصال والاستفسار الإداري — ديوان التوثيق - وهران | موثق وهران';
-  const desc = 'بيانات الاتصال والاستفسار الإداري لدى ديوان التوثيق ببلدية وهران، حي العقيد لطفي قرب محكمة فلاوسن. أوقات الاستقبال والموقع الجغرافي.';
+  const title = `معلومات الاتصال والاستفسار الإداري — ${OFFICE_INFO.officeNameShort.ar} | موثق وهران`;
+  const desc = `بيانات الاتصال والاستفسار الإداري لدى ${OFFICE_INFO.officeNameShort.ar}، حي العقيد لطفي قرب ${OFFICE_INFO.tribunal.ar}. أوقات الاستقبال والموقع الجغرافي.`;
 
   return {
     title: { absolute: title },

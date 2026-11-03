@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import { WORKING_HOURS, SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
+import { OFFICE_INFO, LAST_CONTENT_UPDATED, SITE_CONFIG, SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from '@/components/ui/PhoneLink';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import ObfuscatedContact from '@/components/ui/ObfuscatedContact';
@@ -112,7 +112,7 @@ const TermsPrivacyPage = () => {
               </div>
               <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
                 <p>
-                  تُعدّ هذه الوثيقة بياناً تنظيمياً وإجرائياً يحكم استخدام بوابة <strong>الديوان العمومي للتوثيق — الأستاذ لعطب محمد (موثق لدى محكمة فلاوسن بمجلس قضاء وهران)</strong>. تهدف هذه المنصة إلى توفير المعلومات الإجرائية والقانونية للمواطنين وتنظيم الاستقبال الإداري وفقاً لأرفع معايير الانضباط المهني.
+                  تُعدّ هذه الوثيقة بياناً تنظيمياً وإجرائياً يحكم استخدام بوابة <strong>{OFFICE_INFO.officeNameLong.ar} (موثق لدى {OFFICE_INFO.tribunal.ar} بـ{OFFICE_INFO.court.ar})</strong>. تهدف هذه المنصة إلى توفير المعلومات الإجرائية والقانونية للمواطنين وتنظيم الاستقبال الإداري وفقاً لأرفع معايير الانضباط المهني.
                 </p>
                 <p>
                   يخضع الديوان لإشراف وزارة العدل ورقابة <strong>الغرفة الوطنية للـموثقين</strong> و<strong>الغرفة الجهوية لموثقي ناحية الغرب</strong>، ويلتزم التزاماً صارماً بأحكام:
@@ -377,7 +377,7 @@ const TermsPrivacyPage = () => {
                     </div>
                     <div className="flex items-center gap-4 text-gray-700">
                       <Clock className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span>{WORKING_HOURS.full}</span>
+                      <span>{OFFICE_INFO.hours.ar}</span>
                     </div>
                   </div>
                 </div>
@@ -398,8 +398,8 @@ const TermsPrivacyPage = () => {
         </div>
         
         <div className="text-center mt-12 text-gray-500 text-sm">
-          <p>الإصدار: 1.2 | تاريخ آخر تحديث: 12/4/2026</p>
-          <p className="mt-2 font-medium">جميع الحقوق محفوظة © 2026 - ديوان التوثيق - وهران</p>
+          <p>الإصدار: {SITE_CONFIG.version} | تاريخ آخر تحديث: {LAST_CONTENT_UPDATED}</p>
+          <p className="mt-2 font-medium">جميع الحقوق محفوظة © 2026 - {OFFICE_INFO.officeNameShort.ar}</p>
         </div>
         </div>
       </div>

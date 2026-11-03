@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Home, Building2, Users, Scale, Heart, Lock, ArrowLeft, FileText } from 'lucide-react';
 import { SERVICES_DATA } from '@/lib/data/servicesData';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import PhoneLink from '@/components/ui/PhoneLink';
@@ -104,7 +104,7 @@ export default function ServicesPage() {
         badgeIcon={<Scale className="w-4 h-4" />}
         eyebrow="الديوان العمومي للتوثيق — الأستاذ لعطب محمد"
         title="دليل الخدمات والمعاملات التوثيقية"
-        description="يقدم ديوان التوثيق المعتمد لدى محكمة فلاوسن بوهران كافة المعاملات والعقود الرسمية طبقاً لأحكام القانون 06-02 المنظم لمهنة الموثق في الجزائر، مع حماية مصالح الأطراف وضمان الأمن القانوني."
+        description={`يقدم ديوان التوثيق المعتمد لدى ${OFFICE_INFO.tribunal.ar} كافة المعاملات والعقود الرسمية طبقاً لأحكام القانون 06-02 المنظم لمهنة الموثق في الجزائر، مع حماية مصالح الأطراف وضمان الأمن القانوني.`}
         breadcrumbs={[
           { name: 'الرئيسية', href: '/' },
           { name: 'الخدمات التوثيقية' },
@@ -182,7 +182,7 @@ export default function ServicesPage() {
                   البيانات الرسمية وأوقات الاستقبال
                 </h2>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  الديوان العمومي للتوثيق — الأستاذ لعطب محمد، موثق لدى محكمة فلاوسن بوهران. المقر: حي العقيد لطفي، وهران. أوقات الاستقبال: من الأحد إلى الخميس (08:30–12:00 و 13:30–16:00).
+                  {OFFICE_INFO.officialDesignation.ar} — {OFFICE_INFO.notaryName.ar}، موثق لدى {OFFICE_INFO.tribunal.ar}. المقر: حي العقيد لطفي، وهران. أوقات الاستقبال: {OFFICE_INFO.hours.ar}.
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-3 shrink-0">

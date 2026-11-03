@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Language } from '@/lib/i18n/translations';
+import { OFFICE_INFO } from '@/lib/config';
 
 interface ArticleAuthorBoxProps {
   lang: Language;
@@ -21,7 +22,7 @@ export default function ArticleAuthorBox({ lang }: ArticleAuthorBoxProps) {
         <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-white border-2 border-emerald-500/30 flex-shrink-0 flex items-center justify-center p-1.5 shadow-sm">
           <Image
             src="/logo-small.webp"
-            alt={isAr ? 'ديوان التوثيق ببلدية وهران' : 'Office Notarial - Oran'}
+            alt={OFFICE_INFO.title[lang]}
             width={96}
             height={96}
             className="w-full h-full object-contain"
@@ -31,7 +32,7 @@ export default function ArticleAuthorBox({ lang }: ArticleAuthorBoxProps) {
         <div className="space-y-2 flex-grow">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-lg md:text-xl font-bold text-gray-900">
-              {isAr ? 'ديوان التوثيق - وهران' : 'Office Notarial - Oran'}
+              {OFFICE_INFO.officeNameShort[lang]}
             </h3>
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
               {isAr ? 'موثق معتمد' : 'Notaire agréé'}
@@ -40,8 +41,8 @@ export default function ArticleAuthorBox({ lang }: ArticleAuthorBoxProps) {
 
           <p className="text-sm font-medium text-emerald-800">
             {isAr
-              ? 'موثق معتمد — محكمة فلاوسن، اختصاص المجلس القضائي لوهران'
-              : 'Notaire agréé près le Tribunal de Flaussen — Cour d\'Oran'}
+              ? `موثق معتمد — ${OFFICE_INFO.tribunal.ar}، اختصاص ${OFFICE_INFO.court.ar}`
+              : `Notaire agréé près le ${OFFICE_INFO.tribunal.fr} — ${OFFICE_INFO.court.fr}`}
           </p>
 
           <p className="text-xs md:text-sm text-gray-600 leading-relaxed">

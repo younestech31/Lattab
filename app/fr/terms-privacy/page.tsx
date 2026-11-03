@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { Shield, FileText, Scale, Lock, Phone, MapPin, Mail, Clock, CheckCircle, AlertTriangle, Info } from 'lucide-react';
-import { WORKING_HOURS, SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
+import { OFFICE_INFO, LAST_CONTENT_UPDATED, SITE_CONFIG, SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from '@/components/ui/PhoneLink';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import ObfuscatedContact from '@/components/ui/ObfuscatedContact';
@@ -106,7 +106,7 @@ const TermsPrivacyPageFR = () => {
                 </div>
                 <div className="prose prose-emerald prose-lg max-w-none text-gray-600 leading-relaxed">
                   <p>
-                    Ce document définit les règles organisationnelles et déontologiques régissant l&apos;utilisation du portail de l&apos;<strong>Office Public Notarial — Maître Lattab Mohamed (Notaire près le Tribunal de Fellaoucène, Cour d&apos;Oran)</strong>. Ce portail a pour vocation exclusive d&apos;éclairer les usagers sur les démarches juridiques et de faciliter la gestion administrative des rendez-vous.
+                    Ce document définit les règles organisationnelles et déontologiques régissant l&apos;utilisation du portail de l&apos;<strong>{OFFICE_INFO.officeNameLong.fr} (Notaire près le {OFFICE_INFO.tribunal.fr}, {OFFICE_INFO.court.fr})</strong>. Ce portail a pour vocation exclusive d&apos;éclairer les usagers sur les démarches juridiques et de faciliter la gestion administrative des rendez-vous.
                   </p>
                   <p>
                     L&apos;office notarial est placé sous la tutelle du Ministère de la Justice et sous la surveillance de la <strong>Chambre Nationale des Notaires</strong> ainsi que de la <strong>Chambre Régionale des Notaires (Région Ouest)</strong>, dans le respect scrupuleux de :
@@ -367,7 +367,7 @@ const TermsPrivacyPageFR = () => {
                       </div>
                       <div className="flex items-center gap-4 text-gray-700">
                         <Clock className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                        <span>Dimanche - Jeudi: {WORKING_HOURS.full}</span>
+                        <span>{OFFICE_INFO.hours.fr}</span>
                       </div>
                     </div>
                   </div>
@@ -388,8 +388,8 @@ const TermsPrivacyPageFR = () => {
           </div>
           
           <div className="text-center mt-12 text-gray-500 text-sm">
-            <p>Version: 1.2 | Dernière mise à jour : 12/04/2026</p>
-            <p className="mt-2 font-medium">Tous droits réservés &copy; 2026 - Office Notarial - Oran</p>
+            <p>Version: {SITE_CONFIG.version} | Dernière mise à jour : {LAST_CONTENT_UPDATED}</p>
+            <p className="mt-2 font-medium">Tous droits réservés &copy; 2026 - {OFFICE_INFO.officeNameShort.fr}</p>
           </div>
         </div>
       </div>

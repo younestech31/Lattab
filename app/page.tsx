@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 import { HomeContent } from '@/components/HomeContent';
 
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'موثق وهران — ديوان التوثيق - وهران | محكمة فلاوسن';
-  const desc = 'موثق معتمد لدى محكمة فلاوسن بوهران، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون وتقديم الإرشادات الإدارية الرسمية.';
+  const title = `موثق وهران — ${OFFICE_INFO.officeNameShort.ar} | ${OFFICE_INFO.tribunal.ar}`;
+  const desc = `موثق معتمد لدى ${OFFICE_INFO.tribunal.ar}، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون وتقديم الإرشادات الإدارية الرسمية.`;
 
   return {
     title,

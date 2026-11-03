@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language, translations } from '@/lib/i18n/translations';
-import { GOOGLE_MAPS_URL } from '@/lib/config';
+import { GOOGLE_MAPS_URL, OFFICE_INFO } from '@/lib/config';
 import PhoneLink from './ui/PhoneLink';
 import ObfuscatedContact from './ui/ObfuscatedContact';
 
@@ -57,14 +57,10 @@ export default function ContactInfo({ lang }: { lang: Language }) {
           </div>
           <div className="text-start">
             <h3 className="font-bold text-gray-800 mb-1">{t_info.phone}</h3>
-            <div className="text-gray-600 text-sm space-y-2">
+            <div className="text-gray-600 text-sm">
               <div className="flex items-center gap-2">
                 <PhoneLink type="office" lang={lang} className="hover:text-emerald-600 transition-colors font-medium" />
                 <span className="text-gray-600 text-xs ms-2">{t_info.phone_office}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <PhoneLink type="support" lang={lang} className="hover:text-emerald-600 transition-colors font-medium" />
-                <span className="text-gray-600 text-xs ms-2">{t_info.phone_support}</span>
               </div>
             </div>
           </div>
@@ -98,8 +94,8 @@ export default function ContactInfo({ lang }: { lang: Language }) {
           </div>
           <div className="text-start">
             <h3 className="font-bold text-gray-800 mb-1">{t_info.working_hours}</h3>
-            <p className="text-gray-600 text-sm" itemProp="openingHours" content="Su-Th 08:30-16:00">
-              {t_info.working_hours_details}
+            <p className="text-gray-600 text-sm" itemProp="openingHours" content={OFFICE_INFO.hours.schema}>
+              {OFFICE_INFO.hours[lang]}
             </p>
           </div>
         </div>

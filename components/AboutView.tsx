@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Language } from '@/lib/i18n/translations';
-import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
+import { SITE_URL, GOOGLE_MAPS_URL, OFFICE_INFO } from '@/lib/config';
 import { JsonLdScript } from '@/components/schema';
 import PhoneLink from '@/components/ui/PhoneLink';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
@@ -17,8 +17,8 @@ export default function AboutView({ lang }: AboutViewProps) {
   const homeUrl = isAr ? '/' : '/fr';
   const contactUrl = isAr ? '/contact' : '/fr/contact';
 
-  const brandTitle = isAr ? 'ديوان التوثيق ببلدية وهران' : 'Office Notarial - Oran';
-  const brandSubtitle = isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial Office Notarial - Oran';
+  const brandTitle = isAr ? OFFICE_INFO.officeNameShort.ar : OFFICE_INFO.officeNameShort.fr;
+  const brandSubtitle = isAr ? OFFICE_INFO.officialDesignation.ar : OFFICE_INFO.officialDesignation.fr;
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -44,10 +44,10 @@ export default function AboutView({ lang }: AboutViewProps) {
     '@type': 'AboutPage',
     '@id': `${pageUrl}#aboutpage`,
     url: pageUrl,
-    name: isAr ? 'عن ديوان التوثيق ببلدية وهران' : 'À propos de l\'office notarial de Office Notarial - Oran',
+    name: isAr ? `عن ${OFFICE_INFO.officeNameShort.ar}` : `À propos de ${OFFICE_INFO.officeNameShort.fr}`,
     description: isAr
-      ? 'نبذة تعريفية عن ديوان التوثيق - وهران، موثق معتمد لدى محكمة فلاوسن بوهران، المؤهلات العلمية، المسار المهني، ومبادئ العمل التوثيقي.'
-      : 'Présentation de Office Notarial - Oran, notaire agréé près le Tribunal de Flaussen à Oran : formation universitaire, parcours et déontologie.',
+      ? `نبذة تعريفية عن ${OFFICE_INFO.officeNameShort.ar}، موثق معتمد لدى ${OFFICE_INFO.tribunal.ar}، المؤهلات العلمية، المسار المهني، ومبادئ العمل التوثيقي.`
+      : `Présentation de ${OFFICE_INFO.officeNameShort.fr}, notaire agréé près le ${OFFICE_INFO.tribunal.fr} : formation universitaire, parcours et déontologie.`,
     mainEntity: {
       '@type': 'GovernmentService',
       '@id': isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`,

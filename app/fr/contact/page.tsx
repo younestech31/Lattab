@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
 import ContactPageView from '@/components/ContactPageView';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'Contact et renseignement administratif — Office Notarial - Oran | Notaire à Oran';
-  const desc = 'Contactez l\'office notarial à Oran (Akid Lotfi, près le Tribunal de Flaussen) pour vos démarches et renseignements administratifs. Horaires d\'ouverture et localisation.';
+  const title = `Contact et renseignement administratif — ${OFFICE_INFO.officeNameShort.fr} | Notaire à Oran`;
+  const desc = `Contactez l'office notarial à Oran (Akid Lotfi, près le ${OFFICE_INFO.tribunal.fr}) pour vos démarches et renseignements administratifs. Horaires d'ouverture et localisation.`;
 
   return {
     title: { absolute: title },

@@ -1,3 +1,5 @@
+import { OFFICE_INFO } from '@/lib/config';
+
 export const translations = {
   ar: {
     nav: {
@@ -75,11 +77,11 @@ export const translations = {
       retry: 'إعادة المحاولة',
     },
     hero: {
-      badge: 'موثق لدى محكمة فلاوسن وهران',
-      eyebrow: 'الديوان العمومي للتوثيق',
-      title: 'الأستاذ لعطب محمد — موثق بوهران',
-      subtitle: 'الديوان العمومي للتوثيق ببلدية وهران',
-      description: 'الديوان العمومي للتوثيق — الأستاذ لعطب محمد موثق بوهران — للإعلام حول الإجراءات التوثيقية وفق القانون الجزائري',
+      badge: `موثق لدى ${OFFICE_INFO.tribunal.ar}`,
+      eyebrow: OFFICE_INFO.officialDesignation.ar,
+      title: `${OFFICE_INFO.notaryName.ar} — موثق بوهران`,
+      subtitle: OFFICE_INFO.title.ar,
+      description: `${OFFICE_INFO.officialDesignation.ar} — ${OFFICE_INFO.notaryName.ar} موثق بوهران — للإعلام حول الإجراءات التوثيقية وفق القانون الجزائري`,
       cta_book: 'الوثائق والإجراءات',
       cta_services: 'الاختصاصات التوثيقية للمكتب'
     },
@@ -217,9 +219,9 @@ export const translations = {
         phone_support: '',
         email: 'البريد الإلكتروني',
         working_hours: 'أوقات العمل',
-        working_hours_details: 'الأحد - الخميس 08:30–12:00 و 13:30–16:00',
-        office_name: 'الديوان العمومي للتوثيق ببلدية وهران',
-        notary_title: 'الديوان العمومي للتوثيق ببلدية وهران'
+        working_hours_details: OFFICE_INFO.hours.ar,
+        office_name: OFFICE_INFO.title.ar,
+        notary_title: OFFICE_INFO.title.ar
       }
     },
     footer: {
@@ -314,11 +316,11 @@ export const translations = {
       retry: 'Réessayer',
     },
     hero: {
-      badge: 'Notaire près le Tribunal de Fellaoucene Oran',
-      eyebrow: 'Office public notarial',
-      title: 'Maître Lattab Mohamed — Notaire à Oran',
-      subtitle: 'Office public notarial de la commune d\'Oran',
-      description: 'Office public notarial — Maître Lattab Mohamed, notaire à Oran — Information sur les procédures notariales selon le droit algérien',
+      badge: `Notaire près le ${OFFICE_INFO.tribunal.fr}`,
+      eyebrow: OFFICE_INFO.officialDesignation.fr,
+      title: `${OFFICE_INFO.notaryName.fr} — Notaire à Oran`,
+      subtitle: OFFICE_INFO.title.fr,
+      description: `${OFFICE_INFO.officialDesignation.fr} — ${OFFICE_INFO.notaryName.fr}, notaire à Oran — Information sur les procédures notariales selon le droit algérien`,
       cta_book: 'Documents et procédures',
       cta_services: 'Attributions notariales de l\'office'
     },
@@ -456,9 +458,9 @@ export const translations = {
         phone_support: '',
         email: 'E-mail',
         working_hours: 'Horaires',
-        working_hours_details: 'Dimanche - Jeudi 08:30–12:00 et 13:30–16:00',
-        office_name: 'Office public notarial de la commune d\'Oran',
-        notary_title: 'Office public notarial de la commune d\'Oran'
+        working_hours_details: OFFICE_INFO.hours.fr,
+        office_name: OFFICE_INFO.title.fr,
+        notary_title: OFFICE_INFO.title.fr
       }
     },
     footer: {

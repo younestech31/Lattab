@@ -6,7 +6,7 @@ import { ReadingProgress } from '@/components/ReadingProgress';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, Clock } from 'lucide-react';
 import { blogPosts, frBlogPosts } from '@/lib/data/blog';
-import { SITE_URL, TITLE_TEMPLATE_SUFFIX } from '@/lib/config';
+import { SITE_URL, TITLE_TEMPLATE_SUFFIX, OFFICE_INFO } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
@@ -257,7 +257,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </li>
               <li>
                 <Link href="/services/vente-immobiliere" className="text-emerald-600 hover:underline font-medium">
-                  ← دليل توثيق عقود البيع العقاري بمحكمة فلاوسن
+                  ← دليل توثيق عقود البيع العقاري بـ{OFFICE_INFO.tribunal.ar}
                 </Link>
               </li>
               <li>

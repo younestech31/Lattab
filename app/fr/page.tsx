@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 export const revalidate = 86400; // 24h ISR
 import { HomeContent } from '@/components/HomeContent';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'Notaire à Oran — Office Notarial - Oran | Tribunal de Flaussen';
-  const desc = 'Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession et renseignements administratifs.';
+  const title = `Notaire à Oran — ${OFFICE_INFO.officeNameShort.fr} | ${OFFICE_INFO.tribunal.fr}`;
+  const desc = `Notaire à Oran agréé près le ${OFFICE_INFO.tribunal.fr}, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession et renseignements administratifs.`;
 
   return {
     title: { absolute: title },

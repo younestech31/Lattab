@@ -6,7 +6,7 @@ import { ReadingProgress } from '@/components/ReadingProgress';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, Clock } from 'lucide-react';
 import { frBlogPosts } from '@/lib/data/blog';
-import { SITE_URL, FR_TITLE_SUFFIX } from '@/lib/config';
+import { SITE_URL, FR_TITLE_SUFFIX, OFFICE_INFO } from '@/lib/config';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
@@ -247,7 +247,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               </li>
               <li>
                 <Link href="/fr/services/vente-immobiliere" className="text-emerald-600 hover:underline font-medium">
-                  → Guide des actes de vente immobilière à Oran (Tribunal de Flaussen)
+                  → Guide des actes de vente immobilière à Oran ({OFFICE_INFO.tribunal.fr})
                 </Link>
               </li>
               <li>

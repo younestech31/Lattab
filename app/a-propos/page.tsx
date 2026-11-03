@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import AboutView from '@/components/AboutView';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'عن المكتب — ديوان التوثيق - وهران | موثق وهران محكمة فلاوسن';
+  const title = `عن المكتب — ${OFFICE_INFO.officeNameShort.ar} | موثق وهران ${OFFICE_INFO.tribunal.ar}`;
   const desc = 'دليل إعلامي وتوعوي شامل حول الإجراءات والوثائق القانونية المطلوبة لإتمام المعاملات الرسمية في الجزائر.';
 
   return {

@@ -100,7 +100,7 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
                 </div>
                 <div>
                   <dt className="sr-only">{lang === 'ar' ? 'الاختصاص القضائي' : 'Juridiction'}</dt>
-                  <dd>{lang === 'ar' ? 'موثق لدى محكمة فلاوسن — ولاية وهران' : 'Notaire près le Tribunal de Fellaoucène — Wilaya d\'Oran'}</dd>
+                  <dd>{lang === 'ar' ? `موثق لدى ${OFFICE_INFO.tribunal.ar}` : `Notaire près le ${OFFICE_INFO.tribunal.fr}`}</dd>
                 </div>
                 <div>
                   <dt className="sr-only">{lang === 'ar' ? 'الإطار القانوني' : 'Cadre légal'}</dt>

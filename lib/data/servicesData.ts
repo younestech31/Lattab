@@ -1,3 +1,5 @@
+import { OFFICE_INFO } from '@/lib/config';
+
 export interface ServiceProcedureStep {
   name: string;
   text: string;
@@ -98,7 +100,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يمارس الموثق مهامه كضابط عمومي مفوض لدى محكمة فلاوسن ومجلس قضاء وهران، ويمتد اختصاصه التوثيقي لتحرير العقود لكافة التراب الوطني طبقاً للمادة 3 من القانون رقم 06-02 المنظم لمهنة التوثيق.',
+        `يمارس الموثق مهامه كضابط عمومي مفوض لدى ${OFFICE_INFO.tribunal.ar} و${OFFICE_INFO.court.ar}، ويمتد اختصاصه التوثيقي لتحرير العقود لكافة التراب الوطني طبقاً للمادة 3 من القانون رقم 06-02 المنظم لمهنة التوثيق.`,
         'تخضع المعاملات العقارية لأحكام الأمر 75-74 المتضمن إعداد مسح الأراضي وتأسيس السجل العقاري والقوانين المالية السارية.'
       ],
       inDepthContent: [
@@ -131,7 +133,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     fr: {
       title: 'Acte de vente immobilière à Oran',
       metaTitle: 'Acte de vente immobilière à Oran — Office Notarial - Oran | Notaire Oran',
-      metaDescription: 'Guide complet pour l\'acte de vente immobilière à Oran chez Office Notarial - Oran, notaire près le Tribunal de Flaussen. Procédure, pièces requises et publicité foncière.',
+      metaDescription: `Guide complet pour l'acte de vente immobilière à Oran chez Office Notarial - Oran, notaire près le ${OFFICE_INFO.tribunal.fr}. Procédure, pièces requises et publicité foncière.`,
       h1: 'Acte de vente immobilière à Oran — Sécurité juridique et publicité foncière',
       subtitle: 'Rédaction d\'actes notariés authentiques et transfert de propriété avec publication à la Conservation Foncière d\'Oran',
       targetAudience: [
@@ -180,7 +182,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Le notaire exerce ses fonctions d\'officier public près le Tribunal de Fellaoucène et la Cour d\'Oran, avec une compétence nationale d\'instrumentation conformément à l\'article 3 de la loi n° 06-02 portant organisation de la profession de notaire.',
+        `Le notaire exerce ses fonctions d'officier public près le ${OFFICE_INFO.tribunal.fr} et la ${OFFICE_INFO.court.fr}, avec une compétence nationale d'instrumentation conformément à l'article 3 de la loi n° 06-02 portant organisation de la profession de notaire.`,
         'Les actes authentiques répondent aux exigences de l\'ordonnance 75-74 portant établissement du cadastre et constitution du livre foncier ainsi qu\'à la législation fiscale en vigueur.'
       ],
       inDepthContent: [
@@ -269,7 +271,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يمارس الموثق مهامه كضابط عمومي مفوض لدى محكمة فلاوسن ومجلس قضاء وهران، ويمتد اختصاصه لتحرير العقود التأسيسية وتعديلات الشركات عبر كامل التراب الوطني طبقاً للمادة 3 من القانون 06-02.',
+        `يمارس الموثق مهامه كضابط عمومي مفوض لدى ${OFFICE_INFO.tribunal.ar} و${OFFICE_INFO.court.ar}، ويمتد اختصاصه لتحرير العقود التأسيسية وتعديلات الشركات عبر كامل التراب الوطني طبقاً للمادة 3 من القانون 06-02.`,
         'تخضع العقود التأسيسية والأنظمة الأساسية لأحكام القانون التجاري الجزائري والنصوص التنظيمية المعمول بها.'
       ],
       inDepthContent: [
@@ -435,7 +437,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'يمارس الموثق مهامه التوثيقية كضابط عمومي لدى محكمة فلاوسن ومجلس قضاء وهران، وتتمتع الوكالات التوثيقية بالقوة الثبوتية الرسمية وتُقبل لدى كافة الجهات الإدارية والقضائية عبر كامل التراب الوطني طبقاً للقانون 06-02.',
+        `يمارس الموثق مهامه التوثيقية كضابط عمومي لدى ${OFFICE_INFO.tribunal.ar} و${OFFICE_INFO.court.ar}، وتتمتع الوكالات التوثيقية بالقوة الثبوتية الرسمية وتُقبل لدى كافة الجهات الإدارية والقضائية عبر كامل التراب الوطني طبقاً للقانون 06-02.`,
         'يخضع عقد الوكالة لأحكام المواد 571 وما يليها من القانون المدني الجزائري، مع إمكانية إلغائها أو تقييدها بطلب رسمي من الموكل.'
       ],
       inDepthContent: [
@@ -800,7 +802,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     fr: {
       title: 'Contrat de mariage et régime patrimonial à Oran',
       metaTitle: 'Contrat de mariage à Oran — Office Notarial - Oran | Notaire Oran',
-      metaDescription: 'Célébration et rédaction du contrat de mariage à Oran chez Office Notarial - Oran. Clausses financières, biens communs et reconnaissance consulaire internationale.',
+      metaDescription: 'Célébration et rédaction du contrat de mariage à Oran chez Office Notarial - Oran. Clauses financières, biens communs et reconnaissance consulaire internationale.',
       h1: 'Contrat de mariage et clauses conventionnelles à Oran — Authenticité et sécurité juridique',
       subtitle: 'Authentification solennelle du mariage et rédaction des stipulations patrimoniales conformément à l\'article 19 du Code de la Famille algérien',
       targetAudience: [

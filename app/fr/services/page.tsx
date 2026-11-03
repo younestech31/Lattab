@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Home, Building2, Users, Scale, Heart, Lock, ArrowRight, FileText } from 'lucide-react';
 import { SERVICES_DATA } from '@/lib/data/servicesData';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import PhoneLink from '@/components/ui/PhoneLink';
@@ -104,7 +104,7 @@ export default function FrenchServicesPage() {
         badgeIcon={<Scale className="w-4 h-4" />}
         eyebrow="Office Public Notarial — Me Lattab Mohamed"
         title="Nomenclature des Actes et Services Notariaux"
-        description="Titulaire d’un office public près le Tribunal de Fellaoucène à Oran, notre étude assure l’authentification, la conservation et l’opposabilité de tous vos actes civils et commerciaux conformément à la loi 06-02 régissant le notariat en Algérie."
+        description={`Titulaire d’un office public près le ${OFFICE_INFO.tribunal.fr}, notre étude assure l’authentification, la conservation et l’opposabilité de tous vos actes civils et commerciaux conformément à la loi 06-02 régissant le notariat en Algérie.`}
         breadcrumbs={[
           { name: 'Accueil', href: '/fr' },
           { name: 'Services notariaux' },
@@ -182,7 +182,7 @@ export default function FrenchServicesPage() {
                   Informations officielles et réception
                 </h2>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Office Public Notarial — Maître Lattab Mohamed, notaire près le Tribunal de Fellaoucène à Oran. Siège : Quartier Akid Lotfi, Oran. Réception du public : du dimanche au jeudi (08h30–12h00 et 13h30–16h00).
+                  {OFFICE_INFO.officialDesignation.fr} — {OFFICE_INFO.notaryName.fr}, notaire près le {OFFICE_INFO.tribunal.fr}. Siège : Quartier Akid Lotfi, Oran. Réception du public : {OFFICE_INFO.hours.fr}.
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-3 shrink-0">

@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
 import AboutView from '@/components/AboutView';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'À propos — Office Notarial - Oran | Notaire à Oran';
-  const desc = 'Parcours et compétences de Office Notarial - Oran, notaire agréé près le Tribunal de Flaussen à Oran depuis 2008. Titulaire d\'un magister en droit privé.';
+  const title = `À propos — ${OFFICE_INFO.officeNameShort.fr} | Notaire à Oran`;
+  const desc = `Parcours et compétences de ${OFFICE_INFO.officeNameShort.fr}, notaire agréé près le ${OFFICE_INFO.tribunal.fr} depuis 2008. Titulaire d'un magister en droit privé.`;
 
   return {
     title: { absolute: title },

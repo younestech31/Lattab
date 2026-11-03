@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { AnalyticsWrapper } from "@/components/AnalyticsWrapper";
 import CookieBanner from '@/components/CookieBanner';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 import type { Viewport } from 'next';
 import DocumentLanguage from '@/components/DocumentLanguage';
 
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     default: 'الأستاذ لعطب محمد — موثق بوهران',
     template: '%s',
   },
-  description: 'مكتب الأستاذ لعطب محمد، موثق معتمد لدى محكمة فلاوسن وهران — للإعلام والتوثيق الرسمي للعقود العقارية والتجارية والأحوال الشخصية وفق القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.',
-  authors: [{ name: 'الأستاذ لعطب محمد - موثق بوهران', url: `${SITE_URL}/a-propos` }],
-  creator: 'الأستاذ لعطب محمد - موثق بوهران',
-  publisher: 'الأستاذ لعطب محمد - موثق بوهران',
+  description: `مكتب ${OFFICE_INFO.notaryName.ar}، موثق معتمد لدى ${OFFICE_INFO.tribunal.ar} — للإعلام والتوثيق الرسمي للعقود العقارية والتجارية والأحوال الشخصية وفق القانون الجزائري، مع حاسبة الأسعار المرجعية 2026.`,
+  authors: [{ name: `${OFFICE_INFO.notaryName.ar} - موثق بوهران`, url: `${SITE_URL}/a-propos` }],
+  creator: `${OFFICE_INFO.notaryName.ar} - موثق بوهران`,
+  publisher: `${OFFICE_INFO.notaryName.ar} - موثق بوهران`,
   category: 'legal services',
   robots: {
     index: true,
@@ -69,22 +69,22 @@ export const metadata: Metadata = {
     locale: 'ar_DZ',
     alternateLocale: ['fr_DZ'],
     url: SITE_URL,
-    siteName: 'الأستاذ لعطب محمد — موثق بوهران',
-    title: 'الأستاذ لعطب محمد — موثق بوهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد لدى محكمة فلاوسن وهران — للإعلام والتوثيق الرسمي للعقود وفق أحكام القانون الجزائري.',
+    siteName: `${OFFICE_INFO.notaryName.ar} — موثق بوهران`,
+    title: `${OFFICE_INFO.notaryName.ar} — موثق بوهران`,
+    description: `مكتب ${OFFICE_INFO.notaryName.ar}، موثق معتمد لدى ${OFFICE_INFO.tribunal.ar} — للإعلام والتوثيق الرسمي للعقود وفق أحكام القانون الجزائري.`,
     images: [
       {
         url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'الأستاذ لعطب محمد — موثق بوهران',
+        alt: `${OFFICE_INFO.notaryName.ar} — موثق بوهران`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'الأستاذ لعطب محمد — موثق بوهران',
-    description: 'مكتب الأستاذ لعطب محمد، موثق معتمد لدى محكمة فلاوسن وهران — للإعلام والتوثيق الرسمي للعقود وفق أحكام القانون الجزائري.',
+    title: `${OFFICE_INFO.notaryName.ar} — موثق بوهران`,
+    description: `مكتب ${OFFICE_INFO.notaryName.ar}، موثق معتمد لدى ${OFFICE_INFO.tribunal.ar} — للإعلام والتوثيق الرسمي للعقود وفق أحكام القانون الجزائري.`,
     images: [`${SITE_URL}/og-image.jpg`],
   },
   verification: {

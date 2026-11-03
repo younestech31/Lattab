@@ -7,7 +7,7 @@ import CalculatorCTA from '@/components/CalculatorCTA';
 import OfficialFormsSection from '@/components/OfficialFormsSection';
 import { Language } from '@/lib/i18n/translations';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
-import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
+import { SITE_URL, GOOGLE_MAPS_URL, OFFICE_INFO } from '@/lib/config';
 import NotaryRole from '@/components/NotaryRole';
 import Procedures from '@/components/Procedures';
 import LegalUpdates from '@/components/LegalUpdates';
@@ -34,12 +34,12 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
     "@type": "GovernmentService",
     "@id": notaryId,
     "url": pageUrl,
-    "name": isAr ? "ديوان التوثيق ببلدية وهران" : "Office Notarial - Oran",
-    "legalName": isAr ? "ديوان التوثيق ببلدية وهران" : "Office Notarial - Oran",
-    "alternateName": isAr ? "الديوان العمومي للتوثيق" : "Office notarial Office Notarial - Oran",
+    "name": OFFICE_INFO.title[lang],
+    "legalName": OFFICE_INFO.officeNameLong[lang],
+    "alternateName": OFFICE_INFO.officialDesignation[lang],
     "description": isAr
-      ? "الديوان العمومي للتوثيق — موثق معتمد لدى محكمة فلاوسن بوهران، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون."
-      : "Notaire à Oran agréé près le Tribunal de Flaussen, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Renseignements administratifs.",
+      ? `${OFFICE_INFO.officialDesignation.ar} — موثق معتمد لدى ${OFFICE_INFO.tribunal.ar}، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون.`
+      : `Notaire à Oran agréé près le ${OFFICE_INFO.tribunal.fr}, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Renseignements administratifs.`,
     "image": `${SITE_URL}/logo.webp`,
     "address": {
       "@type": "PostalAddress",
