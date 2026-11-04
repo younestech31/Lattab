@@ -1,5 +1,6 @@
 import { Language } from '@/lib/i18n/translations';
-import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
+import { SITE_URL, GOOGLE_MAPS_URL, OFFICE_INFO } from '@/lib/config';
+import { officeEmail, officeTelDigits } from '@/lib/contact/channels';
 import { JsonLdScript } from '@/components/schema';
 import MapComponent from '@/components/MapComponent';
 import PhoneLink from '@/components/ui/PhoneLink';
@@ -15,8 +16,8 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
   const pageUrl = isAr ? `${SITE_URL}/contact` : `${SITE_URL}/fr/contact`;
   const homeUrl = isAr ? '/' : '/fr';
 
-  const brandTitle = isAr ? 'ديوان التوثيق ببلدية وهران' : 'Office Notarial - Oran';
-  const brandSubtitle = isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial Office Notarial - Oran';
+  const brandTitle = OFFICE_INFO.title[lang];
+  const brandSubtitle = OFFICE_INFO.officialDesignation[lang];
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -51,6 +52,9 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
       '@id': `${SITE_URL}/#notary-office`,
       name: brandTitle,
       alternateName: brandSubtitle,
+      legalName: OFFICE_INFO.officeNameLong[lang],
+      telephone: `+${officeTelDigits()}`,
+      email: officeEmail(),
       address: {
         '@type': 'PostalAddress',
         streetAddress: isAr
