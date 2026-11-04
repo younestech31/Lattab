@@ -350,7 +350,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        'Le notaire est compétent pour instrumenter les actes constitutifs et modificatifs de sociétés sur l\'ensemble du territoire national conformément à l\'article 3 de la loi n° 06-02.',
+        'Le notaire est compétent pour instrumenter les actes constitutifs et modificatifs de sociétés sur l\'ensemble du territoire national conformément à l\'article 2 de la loi n° 06-02.',
         'Les statuts sont établis en conformité avec les dispositions du Code de Commerce algérien et des textes réglementaires en vigueur.'
       ],
       inDepthContent: [
