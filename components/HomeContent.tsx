@@ -15,6 +15,7 @@ import FAQ from '@/components/FAQ';
 import UsefulLinksSection from '@/components/UsefulLinksSection';
 import { JsonLdScript } from '@/components/schema';
 import { faqs } from '@/lib/data/faq';
+import { officeEmail, officeTelDigits } from '@/lib/contact/channels';
 
 const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
   <div
@@ -37,6 +38,8 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
     "name": OFFICE_INFO.title[lang],
     "legalName": OFFICE_INFO.officeNameLong[lang],
     "alternateName": OFFICE_INFO.officialDesignation[lang],
+    "telephone": `+${officeTelDigits()}`,
+    "email": officeEmail(),
     "description": isAr
       ? `${OFFICE_INFO.officialDesignation.ar} — موثق معتمد لدى ${OFFICE_INFO.tribunal.ar}، حي العقيد لطفي. توثيق عقود بيع العقارات، تأسيس الشركات، الوكالات، الفريضة، والرهون.`
       : `Notaire à Oran agréé près le ${OFFICE_INFO.tribunal.fr}, Akid Lotfi. Actes de vente immobilière, création de sociétés, procuration, succession. Renseignements administratifs.`,
