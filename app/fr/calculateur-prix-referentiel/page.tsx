@@ -111,7 +111,7 @@ export default function CalculatorPageFR() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Comment utiliser le calculateur des prix de référence 2026 ?</h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                L'outil présente les fourchettes de valeurs vénales publiées par la Direction Générale des Impôts dans son référentiel 2025–2026, selon les données disponibles pour la wilaya, la commune, la nature du bien et la zone. Sélectionnez les caractéristiques correspondant à votre recherche.
+                L’outil présente les fourchettes de valeurs vénales publiées par la Direction Générale des Impôts dans son référentiel 2025–2026, selon les données disponibles pour la wilaya, la commune, la nature du bien et la zone. Sélectionnez les caractéristiques correspondant à votre recherche.
               </p>
               <ul className="text-sm text-gray-500 space-y-2 list-disc list-inside">
                 <li>{"Définissez l'activité : Vente ou Location"}</li>
@@ -130,8 +130,8 @@ export default function CalculatorPageFR() {
                 <strong>redressement fiscal</strong>.
               </p>
               <ul className="text-sm text-gray-500 space-y-2 list-disc list-inside">
-                <li>Le traitement fiscal dépend de la nature de l'opération et des textes applicables.</li>
-                <li>L'administration fiscale compétente détermine l'assiette et les droits dus.</li>
+                <li>Le traitement fiscal dépend de la nature de l’opération et des textes applicables.</li>
+                <li>L’administration fiscale compétente détermine l'assiette et les droits dus.</li>
                 <li>Il convient de consulter la version officielle à jour et les documents propres au bien.</li>
               </ul>
             </div>
@@ -158,7 +158,7 @@ export default function CalculatorPageFR() {
               Le référentiel publié par la Direction Générale des Impôts pour 2025–2026 présente des fourchettes de valeurs vénales par région, wilaya, commune, zone et type de bien. Consultez la publication officielle pour vérifier la version applicable et toute mise à jour ultérieure.
             </p>
             <p className="mb-4 text-sm leading-7 text-gray-700">
-              Note territoriale : la base actuelle de l'outil reprend uniquement les données qui y sont intégrées et ne crée pas de tableaux indépendants pour les nouvelles wilayas. La loi n° 26-06 du 4 avril 2026 porte le découpage territorial à 69 wilayas et prévoit un transfert progressif des prérogatives durant 2026. La liste proposée dans l'outil ne remplace donc pas la vérification auprès du service fiscal compétent.
+              Note territoriale : la base actuelle de l’outil reprend uniquement les données qui y sont intégrées et ne crée pas de tableaux indépendants pour les nouvelles wilayas. La loi n° 26-06 du 4 avril 2026 porte le découpage territorial à 69 wilayas et prévoit un transfert progressif des prérogatives durant 2026. La liste proposée dans l'outil ne remplace donc pas la vérification auprès du service fiscal compétent.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="https://www.mfdgi.gov.dz/fr/services-num/autres-services-numeriques/referentiel-des-prix-de-limmobilier" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-xl bg-emerald-800 px-4 py-2.5 text-sm font-bold text-white hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
@@ -168,7 +168,7 @@ export default function CalculatorPageFR() {
                 Loi n° 26-06 — Journal officiel
               </a>
               <Link href="/fr/contact" className="inline-flex min-h-11 items-center rounded-xl border border-gray-300 px-4 py-2.5 text-sm font-bold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-                Coordonnées de l'office
+                Coordonnées de l’office
               </Link>
             </div>
           </section>
