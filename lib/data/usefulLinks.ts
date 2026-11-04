@@ -15,22 +15,22 @@ export type UsefulCategory = {
 export const USEFUL_LINK_CATEGORIES: UsefulCategory[] = [
   {
     id: 'justice',
-    title: { ar: 'القطاع القضائي والعدالة', fr: 'Secteur de la Justice' },
+    title: { ar: 'العدالة والتشريع والمراجع القانونية', fr: 'Justice, législation et références juridiques' },
     icon: 'scale',
   },
   {
     id: 'commerce',
-    title: { ar: 'الاستثمار وتأسيس الشركات', fr: 'Investissement et Entreprises' },
+    title: { ar: 'التجارة والسجل التجاري والاستثمار', fr: 'Commerce, registre du commerce et investissement' },
     icon: 'building',
   },
   {
     id: 'property_tax',
-    title: { ar: 'الضرائب والعقارات والسكن', fr: 'Fiscalité, Immobilier et Logement' },
+    title: { ar: 'الضرائب والعقار والسكن', fr: 'Fiscalité, immobilier et logement' },
     icon: 'book',
   },
   {
     id: 'local',
-    title: { ar: 'الإدارة المحلية والشؤون المحلية', fr: 'Administration et Affaires Locales' },
+    title: { ar: 'الخدمات الإدارية العمومية', fr: 'Services administratifs publics' },
     icon: 'landmark',
   },
 ];
@@ -38,87 +38,127 @@ export const USEFUL_LINK_CATEGORIES: UsefulCategory[] = [
 export const USEFUL_LINKS: UsefulLink[] = [
   {
     id: 'mjustice',
-    url: 'https://www.mjustice.dz',
-    name: { ar: 'وزارة العدل الجزائرية', fr: 'Ministère de la Justice Algérien' },
+    url: 'https://www.mjustice.gov.dz/ar/',
+    name: { ar: 'وزارة العدل', fr: 'Ministère de la Justice' },
     desc: {
-      ar: 'البوابة الرسمية لوزارة العدل والاطلاع على القوانين المنظمة لمهنة التوثيق والشؤون القضائية.',
-      fr: 'Portail officiel du Ministère de la Justice pour consulter les lois régissant le notariat.',
+      ar: 'البوابة الرسمية لقطاع العدالة، وتضم الأخبار والنصوص والخدمات والمعلومات المتعلقة بالجهات القضائية.',
+      fr: 'Portail institutionnel du secteur de la justice : actualités, textes, services et informations sur les juridictions.',
+    },
+    category: 'justice',
+  },
+  {
+    id: 'legal-portal',
+    url: 'https://droit.mjustice.gov.dz/ar/',
+    name: { ar: 'بوابة القانون الجزائري', fr: 'Portail du droit algérien' },
+    desc: {
+      ar: 'مرجع إلكتروني تابع لوزارة العدل للبحث في النصوص القانونية والاجتهاد القضائي، بما في ذلك مواد القانون المدني والأسرة والتجارة.',
+      fr: 'Portail du Ministère de la Justice pour consulter les textes juridiques et la jurisprudence, notamment en droit civil, familial et commercial.',
     },
     category: 'justice',
   },
   {
     id: 'joradp',
-    url: 'https://www.joradp.dz',
-    name: { ar: 'الأمانة العامة للحكومة - الجريدة الرسمية', fr: 'Secrétariat Général du Gouvernement - Journal Officiel' },
+    url: 'http://www.joradp.dz/HFR/Index.htm',
+    name: { ar: 'الجريدة الرسمية للجمهورية الجزائرية', fr: 'Journal officiel de la République algérienne' },
     desc: {
-      ar: 'المرجع الرسمي لتحميل المراسيم التنفيذية والقوانين العقارية والتشريعات المحدثة بالجمهورية.',
-      fr: 'Référence officielle pour télécharger les décrets exécutifs et les lois foncières de la République.',
+      ar: 'المرجع الرسمي لنشر القوانين والأوامر والمراسيم والقرارات التنظيمية. يُستحسن الرجوع إلى عدد الجريدة وتاريخ النشر عند الاستشهاد بنص.',
+      fr: 'Référence officielle pour la publication des lois, ordonnances, décrets et textes réglementaires. Vérifiez le numéro et la date du Journal lors de toute citation.',
     },
     category: 'justice',
   },
   {
-    id: 'cnn',
-    url: 'https://www.cnn.dz',
-    name: { ar: 'الغرفة الوطنية للموثقين', fr: 'Chambre Nationale des Notaires (CNN)' },
+    id: 'oran-court',
+    url: 'https://cour-oran.mjustice.dz/',
+    name: { ar: 'مجلس قضاء وهران', fr: 'Cour d’Oran' },
     desc: {
-      ar: 'الهيئة الممثلة لمهنة الموثقين لتنظيم الشأن التوثيقي ومتابعة المقاييس المهنية والأخلاقية.',
-      fr: 'Organe représentatif de la profession notariale pour réguler les normes déontologiques.',
+      ar: 'البوابة القضائية المحلية التابعة لوزارة العدل للاطلاع على المعلومات والإعلانات المتعلقة بمجلس قضاء وهران.',
+      fr: 'Portail officiel de la juridiction d’Oran, rattaché au Ministère de la Justice, pour ses informations et annonces.',
     },
     category: 'justice',
   },
   {
     id: 'aapi',
-    url: 'https://www.aapi.dz',
-    name: { ar: 'الوكالة الجزائرية لترقية الاستثمار (AAPI)', fr: 'Agence Algérienne de Promotion de l\'Investissement' },
+    url: 'https://aapi.dz/ar/',
+    name: { ar: 'الوكالة الجزائرية لترقية الاستثمار (AAPI)', fr: 'Agence algérienne de promotion de l’investissement (AAPI)' },
     desc: {
-      ar: 'البوابة الرسمية لتسجيل المشاريع الاستثمارية والاستفادة من المزايا الجبائية وشروط العقار الاقتصادي.',
-      fr: 'Portail pour l\'enregistrement des projets d\'investissement et l\'accès aux avantages fiscaux.',
+      ar: 'معلومات المستثمرين ومرافقة المشاريع الاستثمارية والإطار التنظيمي والمزايا المرتبطة بالاستثمار في الجزائر.',
+      fr: 'Informations destinées aux investisseurs, accompagnement des projets et renseignements sur le cadre et les avantages de l’investissement en Algérie.',
     },
     category: 'commerce',
   },
   {
     id: 'cnrc',
-    url: 'https://sidjilcom.cnrc.dz',
-    name: { ar: 'المركز الوطني للسجل التجاري - سجلكوم (CNRC)', fr: 'Centre National du Registre du Commerce (CNRC)' },
+    url: 'https://sidjilcom.cnrc.dz/ar/web/sidjilcom',
+    name: { ar: 'المركز الوطني للسجل التجاري — سجلكوم', fr: 'Centre national du registre du commerce — Sidjilcom' },
     desc: {
-      ar: 'التحقق من قيد الشركات التجارية، حجز التسميات الاجتماعية للمؤسسات، وإيداع الحسابات السنوية.',
-      fr: 'Vérification du registre des sociétés, réservation de dénominations et dépôt des comptes.',
+      ar: 'بوابة المركز الوطني للسجل التجاري للبحث عن التجار والشركات والتسميات والأنشطة، والاطلاع على خدمات السجل التجاري الإلكترونية.',
+      fr: 'Portail du CNRC pour rechercher des commerçants, sociétés, dénominations et activités, et accéder aux services électroniques du registre du commerce.',
+    },
+    category: 'commerce',
+  },
+  {
+    id: 'commerce-ministry',
+    url: 'https://www.commerce.gov.dz/ar/',
+    name: { ar: 'وزارة التجارة وترقية الصادرات', fr: 'Ministère du Commerce et de la Promotion des exportations' },
+    desc: {
+      ar: 'المعلومات والبيانات التنظيمية المتعلقة بالتجارة، وحماية المستهلك، والأنشطة التجارية، والهيئات التابعة للقطاع.',
+      fr: 'Informations institutionnelles et réglementaires relatives au commerce, à la protection du consommateur et aux organismes du secteur.',
+    },
+    category: 'commerce',
+  },
+  {
+    id: 'caci',
+    url: 'https://www.caci.dz/',
+    name: { ar: 'الغرفة الجزائرية للتجارة والصناعة (CACI)', fr: 'Chambre algérienne de commerce et d’industrie (CACI)' },
+    desc: {
+      ar: 'معلومات وخدمات الغرفة الجزائرية للتجارة والصناعة في مجالات المؤسسات والتبادل التجاري والتعاون الاقتصادي.',
+      fr: 'Informations et services de la CACI dans les domaines des entreprises, des échanges commerciaux et de la coopération économique.',
     },
     category: 'commerce',
   },
   {
     id: 'dgi',
-    url: 'https://mfdgi.gov.dz',
-    name: { ar: 'المديرية العامة للضرائب (DGI)', fr: 'Direction Générale des Impôts (DGI)' },
+    url: 'https://mfdgi.gov.dz/',
+    name: { ar: 'المديرية العامة للضرائب (DGI)', fr: 'Direction générale des impôts (DGI)' },
     desc: {
-      ar: 'بوابة المكلفين بالضريبة لحساب الرسوم، خدمات التسجيل، والتسيير الإلكتروني لرسوم العقود.',
-      fr: 'Portail des contribuables pour le calcul des taxes et l\'enregistrement des actes officiels.',
+      ar: 'المصدر الرسمي للمعلومات الجبائية، والتصريحات والدفع عن بُعد، والخدمات الرقمية الموجهة للمكلفين بالضريبة.',
+      fr: 'Source officielle des informations fiscales, des déclarations et paiements à distance ainsi que des services numériques destinés aux contribuables.',
+    },
+    category: 'property_tax',
+  },
+  {
+    id: 'housing-ministry',
+    url: 'https://www.mhuv.gov.dz/',
+    name: { ar: 'وزارة السكن والعمران والمدينة والتهيئة العمرانية', fr: 'Ministère de l’Habitat, de l’Urbanisme et de la Ville' },
+    desc: {
+      ar: 'الموقع المؤسساتي لقطاع السكن والعمران، بما في ذلك الأخبار والتنظيمات والمعلومات المتعلقة ببرامج السكن.',
+      fr: 'Site institutionnel du secteur de l’habitat et de l’urbanisme : actualités, réglementation et informations sur les programmes de logement.',
     },
     category: 'property_tax',
   },
   {
     id: 'enpi',
-    url: 'https://www.enpi.dz',
-    name: { ar: 'المؤسسة الوطنية للترقية العقارية (ENPI)', fr: 'Entreprise Nationale de Promotion Immobilière' },
+    url: 'https://enpi.dz/',
+    name: { ar: 'المؤسسة الوطنية للترقية العقارية (ENPI)', fr: 'Entreprise nationale de promotion immobilière (ENPI)' },
     desc: {
-      ar: 'البوابة الرسمية لمتابعة مشاريع السكن الترقوي الحر والمدعم الموجه للمواطنين.',
-      fr: 'Portail officiel pour le suivi des projets de promotion immobilière publique et libre.',
+      ar: 'الموقع الرسمي للمؤسسة الوطنية للترقية العقارية ومعلومات برامج السكن الترقوي والخدمات المرتبطة بها، وفق ما تعلنه المؤسسة.',
+      fr: 'Site officiel de l’ENPI et informations sur les programmes de logement promotionnel et les services proposés, selon les annonces de l’établissement.',
     },
     category: 'property_tax',
   },
   {
-    id: 'wilaya-oran',
-    url: 'http://www.wilaya-oran.dz',
-    name: { ar: 'البوابة الرسمية لولاية وهران', fr: 'Portail Officiel de la Wilaya d\'Oran' },
+    id: 'interior-services',
+    url: 'https://services.interieur.gov.dz/ar/',
+    name: { ar: 'بوابة الخدمات الإلكترونية لوزارة الداخلية', fr: 'Portail des services en ligne du Ministère de l’Intérieur' },
     desc: {
-      ar: 'البوابة الإدارية لمتابعة الشؤون الولائية والتنظيمية والقرارات المحلية لولاية وهران.',
-      fr: 'Portail administratif pour le suivi des affaires de la wilaya et des décisions locales.',
+      ar: 'بوابة الخدمات العمومية الرقمية، ومنها وثائق الحالة المدنية، والوثائق البيومترية، والشباك عن بُعد وبعض الإجراءات الإدارية.',
+      fr: 'Portail des services publics numériques : état civil, documents biométriques, guichet à distance et plusieurs démarches administratives.',
     },
     category: 'local',
   },
 ];
 
 export function getHomeUsefulLinks() {
-  const priorityIds = ['mjustice', 'joradp', 'cnrc', 'cnn'];
+  const priorityIds = ['mjustice', 'joradp', 'cnrc', 'dgi'];
   return USEFUL_LINKS.filter((link) => priorityIds.includes(link.id));
 }
