@@ -154,7 +154,9 @@ export default function UsefulLinksPageFR() {
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                    {categoryLinks.map((link) => (
+                    {categoryLinks.map((link) => {
+                      const resolvedUrl = link.urlFr ?? link.url;
+                      return (
                       <article
                         key={link.id}
                         className="group flex h-full flex-col justify-between gap-5 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
@@ -165,7 +167,7 @@ export default function UsefulLinksPageFR() {
                               {link.name[lang]}
                             </h3>
                             <span dir="ltr" className="rounded-md bg-gray-100 px-2 py-1 text-[11px] font-medium text-gray-600">
-                              {getLinkHost(link.url)}
+                              {getLinkHost(resolvedUrl)}
                             </span>
                           </div>
                           <p className="text-sm leading-7 text-gray-600">
@@ -174,7 +176,7 @@ export default function UsefulLinksPageFR() {
                         </div>
 
                         <a
-                          href={link.url}
+                          href={resolvedUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Ouvrir ${link.name[lang]} dans un nouvel onglet`}
@@ -185,7 +187,8 @@ export default function UsefulLinksPageFR() {
                           <span className="sr-only">S’ouvre dans un nouvel onglet</span>
                         </a>
                       </article>
-                    ))}
+                      );
+                    })}
                   </div>
                 </section>
               );
