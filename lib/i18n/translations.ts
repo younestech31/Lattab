@@ -151,7 +151,7 @@ export const translations = {
         time_afternoon: 'الفترة المسائية (13:30–16:00)',
         notes: 'ملاحظات أو استفسار إضافي',
         notes_placeholder: 'اكتب موضوع استفسارك أو المعاملة المطلوبة...',
-        terms: 'أوافق على الشروط وسياسة الخصوصية (معالجة إدارية حصرية تحت طائلة السر المهني وفق المادة 14 من القانون 06-02 والقانون 18-07).',
+        terms: 'أوافق على الشروط وسياسة الخصوصية (معالجة إدارية حصرية تلتزم بالسر المهني وحماية المعطيات الشخصية وفق التشريع الساري).',
         submit_appointment: 'إرسال الاستفسار الإداري',
         submit_inquiry: 'إرسال الاستفسار',
         loading: 'جاري الإرسال...',
@@ -234,7 +234,7 @@ export const translations = {
       privacy_link: 'سياسة الخصوصية'
     },
     cookie_banner: {
-      message: 'يستخدم هذا الموقع معالجة تقنية سحابية مخصصة حصراً للاستفسار الإداري وتقديم المعلومات حول الإجراءات التوثيقية، تحت طائلة السر المهني (المادة 14 من القانون 06-02) والقانون 18-07 المتعلق بحماية المعطيات الشخصية.',
+      message: 'يستخدم هذا الموقع معالجة تقنية مخصصة حصراً لتقديم المعلومات حول الإجراءات التوثيقية، مع الالتزام التام بالسر المهني وحماية المعطيات الشخصية وفق القانون.',
       privacy_policy: 'الاطلاع على سياسة الخصوصية',
       accept: 'موافقة',
       reject: 'رفض'
@@ -390,7 +390,7 @@ export const translations = {
         time_afternoon: 'Après-midi (13:30–16:00)',
         notes: 'Notes ou demande complémentaire',
         notes_placeholder: 'Décrivez l\'objet de votre demande...',
-        terms: 'J\'accepte les conditions et la politique de confidentialité (traitement administratif exclusif sous le secret professionnel art. 14 loi 06-02 et loi 18-07).',
+        terms: 'J\'accepte les conditions et la politique de confidentialité (traitement administratif exclusif respectant le secret professionnel et la protection des données personnelles).',
         submit_appointment: 'Envoyer la demande administrative',
         submit_inquiry: 'Envoyer la demande',
         loading: 'Envoi en cours...',
@@ -473,7 +473,7 @@ export const translations = {
       privacy_link: 'Politique de confidentialité'
     },
     cookie_banner: {
-      message: 'Ce site utilise un traitement technique cloud strictement limité à la gestion des demandes de renseignements administratifs et d\'information sur les procédures notariales, sous le sceau du secret professionnel (Art. 14 Loi 06-02) et conformément à la Loi 18-07 relative à la protection des données.',
+      message: 'Ce site utilise un traitement technique strictement limité à l\'information sur les procédures notariales, dans le respect total du secret professionnel et de la législation sur la protection des données.',
       privacy_policy: 'Voir la politique de confidentialité',
       accept: 'Accepter',
       reject: 'Refuser'

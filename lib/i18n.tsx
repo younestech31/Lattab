@@ -137,7 +137,7 @@ export function RegisterAlternatePath({ paths }: { paths: Record<Language, strin
     return () => {
       setAlternatePaths(null);
     };
-  }, [paths.ar, paths.fr, setAlternatePaths]);
+  }, [paths, setAlternatePaths]);
 
   return null;
 }
