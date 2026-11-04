@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: titleValue,
     description: enrichedDesc,
-    authors: [{ name: 'ديوان التوثيق - وهران', url: SITE_URL }],
+    authors: [{ name: OFFICE_INFO.officeNameLong.ar, url: SITE_URL }],
     alternates: {
       canonical: `${SITE_URL}/blog/${post.slug}`,
       languages,
@@ -83,12 +83,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: renderedTitle,
       description: enrichedDesc,
       url: `${SITE_URL}/blog/${post.slug}`,
-      siteName: 'ديوان التوثيق - وهران - موثق بوهران',
+      siteName: OFFICE_INFO.officeNameLong.ar,
       locale: 'ar_DZ',
       type: 'article',
       publishedTime: post.dateISO,
       ...(post.dateModified ? { modifiedTime: post.dateModified } : {}),
-      authors: ['ديوان التوثيق - وهران'],
+      authors: [OFFICE_INFO.officeNameLong.ar],
       section: post.category,
       tags: [post.category, 'قانون جزائري', 'توثيق', 'وهران'],
     },
@@ -192,13 +192,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               "author": {
                 "@type": "Organization",
                 "@id": `${SITE_URL}/#notary-office`,
-                "name": "ديوان التوثيق - وهران",
+                "name": OFFICE_INFO.officeNameLong.ar,
                 "url": SITE_URL
               },
               "publisher": {
                 "@type": "Organization",
                 "@id": `${SITE_URL}/#notary-office`,
-                "name": "الديوان العمومي للتوثيق",
+                "name": OFFICE_INFO.officialDesignation.ar,
                 "logo": {
                   "@type": "ImageObject",
                   "url": `${SITE_URL}/logo.webp`,
