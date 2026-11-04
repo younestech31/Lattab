@@ -46,7 +46,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     isPropertyRelated: true,
     relatedBlogSlugs: {
       ar: ['guide-acte-de-vente-immobilier', 'documents-vente-immobilier-algerie'],
-      fr: ['acte-de-vente-immobilier-oran', 'comment-creer-sarl-en-algerie-2026'],
+      fr: ['acte-de-vente-immobilier-oran', 'documents-vente-immobilier-algerie'],
     },
     ar: {
       title: 'عقد بيع عقار في وهران',
@@ -219,7 +219,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     isPropertyRelated: false,
     relatedBlogSlugs: {
       ar: ['comment-creer-sarl-en-algerie-2026', 'comparaison-eurl-sarl-spa-algerie-2026'],
-      fr: ['comment-creer-sarl-en-algerie-2026', 'cession-fonds-de-commerce-algerie'],
+      fr: ['comment-creer-sarl-en-algerie-2026', 'comparaison-eurl-sarl-spa-algerie-2026'],
     },
     ar: {
       title: 'تأسيس الشركات التجارية في وهران',
@@ -386,7 +386,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     isPropertyRelated: false,
     relatedBlogSlugs: {
       ar: ['procuration-generale-algerie', 'wikalat-am-algerie-guide'],
-      fr: ['comment-creer-sarl-en-algerie-2026', 'acte-de-vente-immobilier-oran'],
+      fr: ['procuration-generale-algerie', 'notaire-algeriens-etranger-procuration-legalisation'],
     },
     ar: {
       title: 'الوكالات الرسمية والتفويضات في وهران',
@@ -551,7 +551,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     isPropertyRelated: true,
     relatedBlogSlugs: {
       ar: ['fredha-succession-algerie-etapes', 'succession-heritage-algerie'],
-      fr: ['acte-de-vente-immobilier-oran', 'cession-fonds-de-commerce-algerie'],
+      fr: ['fredha-succession-algerie-etapes', 'succession-heritage-algerie'],
     },
     ar: {
       title: 'الفريضة ونقل الملكية العقارية بالإرث في وهران',
@@ -718,7 +718,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     isPropertyRelated: false,
     relatedBlogSlugs: {
       ar: ['contrat-mariage-chez-notaire-algerie', 'donation-entre-ascendants-descendants-algerie'],
-      fr: ['acte-de-vente-immobilier-oran', 'comment-creer-sarl-en-algerie-2026'],
+      fr: ['contrat-mariage-chez-notaire-algerie'],
     },
     ar: {
       title: 'عقود الزواج والاتفاق المالي بين الزوجين بوهران',
@@ -885,7 +885,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     isPropertyRelated: true,
     relatedBlogSlugs: {
       ar: ['achat-immobilier-credit-bancaire-algerie', 'guide-acte-de-vente-immobilier'],
-      fr: ['acte-de-vente-immobilier-oran', 'comment-creer-sarl-en-algerie-2026'],
+      fr: ['mainlevee-hypotheque-apres-credit-algerie', 'achat-immobilier-credit-bancaire-algerie'],
     },
     ar: {
       title: 'الرهن العقاري والتأمينات العينية بوهران',
