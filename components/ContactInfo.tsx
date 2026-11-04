@@ -30,13 +30,13 @@ export default function ContactInfo({ lang }: { lang: Language }) {
               >
                 {isAr ? (
                   <>
-                    حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768
+                    حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768،
                     <br />
                     العقيد لطفي، وهران
                   </>
                 ) : (
                   <>
-                    Cité 557 Logements, Bâtiment D24, 1er Étage, N° 768
+                    Cité 557 Logements, Bâtiment D24, 1er Étage, N° 768,
                     <br />
                     Akid Lotfi, Oran
                   </>
