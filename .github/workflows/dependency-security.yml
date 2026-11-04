@@ -30,9 +30,9 @@ jobs:
           const fs = require("node:fs");
 
           const manifest = JSON.parse(fs.readFileSync("package.json", "utf8"));
-          const lock = JSON.parse(fs.readFileSync("bun.lock", "utf8"));
+          const lockText = fs.readFileSync("bun.lock", "utf8");
 
-          function versionOf(spec, name) {
+          function parseVersion(spec, name) {
             if (typeof spec !== "string") {
               throw new Error(`Missing ${name} dependency in package.json`);
             }
@@ -56,22 +56,21 @@ jobs:
             console.log(`OK: ${label} ${actual.join(".")}`);
           }
 
-          const lockedPackages = lock.packages || {};
           function lockedVersion(name) {
-            const entry = lockedPackages[name];
-            if (!Array.isArray(entry) || typeof entry[0] !== "string") {
-              throw new Error(`Missing resolved ${name} entry in bun.lock`);
-            }
-            const match = entry[0].match(/@?(\d+)\.(\d+)\.(\d+)$/);
-            if (!match) throw new Error(`Cannot parse locked ${name} version: ${entry[0]}`);
-            return match.slice(1).map(Number);
+            // bun.lock is JSONC (it contains trailing commas), not strict JSON.
+            // Read the exact top-level package entry without JSON.parse().
+            const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const pattern = new RegExp(`^\\s*"${escaped}":\\s*\\["${escaped}@(\\d+\\.\\d+\\.\\d+)"`, "m");
+            const match = lockText.match(pattern);
+            if (!match) throw new Error(`Missing or unparseable resolved ${name} entry in bun.lock`);
+            return match[1].split(".").map(Number);
           }
 
-          const nextManifest = versionOf(manifest.dependencies?.next, "next");
-          const sharpManifest = versionOf(manifest.devDependencies?.sharp ?? manifest.dependencies?.sharp, "sharp");
-          assertMinimum("package.json next", nextManifest, [15, 5, 28]);
-          assertMinimum("package.json sharp", sharpManifest, [0, 35, 5]);
+          const nextSpec = manifest.dependencies?.next ?? manifest.devDependencies?.next;
+          const sharpSpec = manifest.dependencies?.sharp ?? manifest.devDependencies?.sharp;
 
+          assertMinimum("package.json next", parseVersion(nextSpec, "next"), [15, 5, 28]);
+          assertMinimum("package.json sharp", parseVersion(sharpSpec, "sharp"), [0, 35, 5]);
           assertMinimum("bun.lock next", lockedVersion("next"), [15, 5, 28]);
           assertMinimum("bun.lock sharp", lockedVersion("sharp"), [0, 35, 5]);
           NODE
