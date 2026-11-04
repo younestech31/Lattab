@@ -180,13 +180,13 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               ...(post.dateModified ? { "dateModified": post.dateModified } : {}),
               "author": {
                 "@type": "Organization",
-                "@id": `${SITE_URL}/fr#notary-office`,
+                "@id": `${SITE_URL}/#notary-office`,
                 "name": "Office Notarial - Oran",
                 "url": `${SITE_URL}/fr`
               },
               "publisher": {
                 "@type": "Organization",
-                "@id": `${SITE_URL}/fr#notary-office`,
+                "@id": `${SITE_URL}/#notary-office`,
                 "name": "Office Notarial - Oran",
                 "logo": {
                   "@type": "ImageObject",
