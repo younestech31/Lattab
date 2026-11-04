@@ -100,7 +100,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        `يمارس الموثق مهامه كضابط عمومي مفوض لدى ${OFFICE_INFO.tribunal.ar} و${OFFICE_INFO.court.ar}، ويمتد اختصاصه التوثيقي لتحرير العقود لكافة التراب الوطني طبقاً للمادة 3 من القانون رقم 06-02 المنظم لمهنة التوثيق.`,
+        `يمارس الموثق مهامه كضابط عمومي مفوض لدى ${OFFICE_INFO.tribunal.ar} و${OFFICE_INFO.court.ar}، ويمتد اختصاصه التوثيقي لتحرير العقود لكافة التراب الوطني وفق المادة 2 من القانون رقم 06-02 لاختصاصه الوطني، والمادة 3 لصفته كضابط عمومي.`,
         'تخضع المعاملات العقارية لأحكام الأمر 75-74 المتضمن إعداد مسح الأراضي وتأسيس السجل العقاري والقوانين المالية السارية.'
       ],
       inDepthContent: [
@@ -182,7 +182,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        `Le notaire exerce ses fonctions d'officier public près le ${OFFICE_INFO.tribunal.fr} et la ${OFFICE_INFO.court.fr}, avec une compétence nationale d'instrumentation conformément à l'article 3 de la loi n° 06-02 portant organisation de la profession de notaire.`,
+        `Le notaire exerce ses fonctions d'officier public près le ${OFFICE_INFO.tribunal.fr} et la ${OFFICE_INFO.court.fr}, avec une compétence nationale d'instrumentation prévue par l'article 2 de la loi n° 06-02 portant organisation de la profession de notaire.`,
         'Les actes authentiques répondent aux exigences de l\'ordonnance 75-74 portant établissement du cadastre et constitution du livre foncier ainsi qu\'à la législation fiscale en vigueur.'
       ],
       inDepthContent: [
@@ -271,7 +271,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         }
       ],
       jurisdictionNotes: [
-        `يمارس الموثق مهامه كضابط عمومي مفوض لدى ${OFFICE_INFO.tribunal.ar} و${OFFICE_INFO.court.ar}، ويمتد اختصاصه لتحرير العقود التأسيسية وتعديلات الشركات عبر كامل التراب الوطني طبقاً للمادة 3 من القانون 06-02.`,
+        `يمارس الموثق مهامه كضابط عمومي مفوض لدى ${OFFICE_INFO.tribunal.ar} و${OFFICE_INFO.court.ar}، ويمتد اختصاصه لتحرير العقود التأسيسية وتعديلات الشركات عبر كامل التراب الوطني طبقاً للمادة 2 من القانون 06-02.`,
         'تخضع العقود التأسيسية والأنظمة الأساسية لأحكام القانون التجاري الجزائري والنصوص التنظيمية المعمول بها.'
       ],
       inDepthContent: [
