@@ -127,10 +127,15 @@ export default function ServiceDetailView({ service, lang }: ServiceDetailViewPr
 
         {/* Required Documents */}
         <section className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+          <h2 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-3">
             <span className="w-2.5 h-7 bg-emerald-600 rounded-full" />
             {isAr ? 'الملف والوثائق المطلوبة' : 'Dossier et pièces à fournir'}
           </h2>
+          <p className="text-sm text-gray-500 leading-relaxed mb-6">
+            {isAr
+              ? 'القوائم الواردة أدناه إرشادية وليست حصرية؛ تختلف الوثائق بحسب طبيعة العقد ووضعية الأطراف والعقار، وقد تطلب الجهات المختصة وثائق إضافية وفق النصوص السارية.'
+              : 'Les listes ci-dessous sont indicatives et non exhaustives. Les pièces varient selon l’acte, la situation des parties et du bien ; les services compétents peuvent demander des documents complémentaires selon les textes en vigueur.'}
+          </p>
           <div className="space-y-6">
             {content.requiredDocuments.map((cat, idx) => (
               <div key={idx} className="border-b border-gray-100 pb-6 last:border-b-0 last:pb-0">
