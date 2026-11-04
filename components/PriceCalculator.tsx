@@ -30,21 +30,17 @@ const uiTranslations = {
     areaSq: 'المساحة (بالمتر المربع m²)',
     areaHa: 'المساحة (بالهكتار Ha)',
     areaPlaceholder: 'أدخل المساحة',
-    resultTitle: 'النتيجة التقريبية',
+    resultTitle: 'النطاق التقديري',
     rateLabel: 'السعر للمتر المرجعي:',
     rentRateLabel: 'مبلغ الإيجار المرجعي للمتر:',
-    declarationLabel: 'إجمالي التصريح المرجعي:',
-    rentTotalLabel: 'إجمالي مبلغ الإيجار الشهري المرجعي:',
-    irgLabel: 'الضريبة على الدخل الإجمالي (IRG) المقدرة',
-    minLimit: 'الحد الأدنى',
-    maxLimit: 'الحد الأقصى',
-    irgNote: '* هذه الضريبة تُدفع شهرياً أو سنوياً حسب الحالة.',
+    declarationLabel: 'القيمة الإجمالية التقديرية وفق النطاق:',
+    rentTotalLabel: 'قيمة الإيجار الشهرية التقديرية وفق النطاق:',
     copy: 'نسخ',
     copied: 'تم النسخ!',
     whatsapp: 'واتساب',
     placeholderText: 'يرجى ملء جميع الحقول أعلاه لإظهار السعر المرجعي التقريبي',
     warningTitle: 'تنبيه هام:',
-    warningText: 'هذه الحاسبة تقدم تقديراً مبدئياً مبنياً على الأسعار المرجعية المعتمدة من طرف المديرية العامة للضرائب لمختلف الولايات (الفترة 2012-2026). الأسعار قابلة للتحديث أو التغيير بناءً على وضعية العقار وخبرة إدارة الضرائب. الأرقام الناتجة هي للاستئناس فقط ولا تتحمل إدارة الموقع أي مسؤولية قانونية عن صحتها النهائية وقت إبرام العقد.',
+    warningText: 'تعرض هذه الأداة نطاقات القيم السوقية الواردة في مرجع المديرية العامة للضرائب للفترة 2025–2026، وفق البيانات المتاحة لكل ولاية وبلدية ونوع عقار. الأرقام معلوماتية واستدلالية، وليست تقييماً فردياً أو سعراً ملزماً. لا تحتسب الأداة ضريبة IRG أو حقوق التسجيل أو أتعاب الموثق. يرجى مراجعة المرجع الرسمي والجهة الجبائية المختصة، خاصة عند تغير التقسيم الإداري أو اختلاف وضعية العقار.',
     notSupportedMessage: 'بيانات هذه البلدية قيد التحديث وسيتم إضافتها قريباً. يرجى اختيار بلدية أخرى أو المحاولة لاحقاً.'
   },
   fr: {
@@ -62,21 +58,17 @@ const uiTranslations = {
     areaSq: 'Superficie (en mètre carré m²)',
     areaHa: 'Superficie (en Hectare Ha)',
     areaPlaceholder: 'Entrez la superficie',
-    resultTitle: 'Estimation Approximative',
+    resultTitle: 'Fourchette indicative',
     rateLabel: 'Prix de référence par m² :',
     rentRateLabel: 'Loyer de référence par m² :',
-    declarationLabel: 'Valeur totale réglementaire estimée :',
-    rentTotalLabel: 'Loyer mensuel total réglementaire estimé :',
-    irgLabel: 'Impôt sur le Revenu Global (IRG) estimé',
-    minLimit: 'Limite min',
-    maxLimit: 'Limite max',
-    irgNote: '* Cet impôt est payé mensuellement ou annuellement selon le cas.',
+    declarationLabel: 'Valeur totale indicative selon la fourchette :',
+    rentTotalLabel: 'Loyer mensuel total indicatif selon la fourchette :',
     copy: 'Copier',
     copied: 'Copié !',
     whatsapp: 'WhatsApp',
     placeholderText: 'Veuillez remplir tous les champs ci-dessus pour afficher l\'estimation du prix de référence',
     warningTitle: 'Avis important :',
-    warningText: 'Ce calculateur fournit une estimation basée sur les prix de référence approuvés par la Direction Générale des Impôts (période 2012-2026). Les prix sont susceptibles d\'être mis à jour ou modifiés en fonction de la situation réelle du bien. Les chiffres obtenus sont indicatifs, et le cabinet n\'assume aucune responsabilité quant à leur exactitude finale lors de la conclusion du contrat.',
+    warningText: 'Cet outil présente les fourchettes de valeurs vénales du référentiel de la Direction Générale des Impôts pour 2025–2026, selon les données disponibles par wilaya, commune et type de bien. Les résultats sont indicatifs et ne constituent ni une évaluation individuelle ni un prix obligatoire. L\'outil ne calcule pas l\'IRG, les droits d\'enregistrement ou les honoraires du notaire. Consultez la publication officielle et le service fiscal compétent, notamment en cas d\'évolution du découpage territorial ou de situation particulière du bien.',
     notSupportedMessage: 'Les données de cette commune sont en cours de mise à jour. Veuillez sélectionner une autre commune.'
   }
 };
@@ -312,24 +304,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
     const totalMin = min * Number(area);
     const totalMax = max * Number(area);
 
-    let taxRate = 0;
-    if (calculationMode === 'rent') {
-      const catName = selectedCategory?.categorie;
-      // IRG rates in Algeria: 7% for residential, 15% for commercial/professional/industrial
-      if (catName === 'Individuels' || catName === 'Collectifs et Semi-Collectifs') {
-        taxRate = 0.07;
-      } else if (
-        catName?.includes('Locaux') || 
-        catName === 'Hangars' || 
-        catName?.includes('Terrains')
-      ) {
-        taxRate = 0.15;
-      } else {
-        taxRate = 0.15; // Default for non-residential categories
-      }
-    }
-
-    return { totalMin, totalMax, min, max, taxRate };
+    return { totalMin, totalMax, min, max };
   };
 
   const result = calculatePrice();
@@ -644,26 +619,7 @@ export default function PriceCalculator({ initialData, initialCommunes, initialR
                       </div>
                     </div>
 
-                    {calculationMode === 'rent' && result.taxRate > 0 && (
-                      <div className="mt-6 pt-6 border-t border-emerald-500/30">
-                        <p className="text-emerald-100 text-sm mb-3">
-                          {ui.irgLabel} ({parseFloat((result.taxRate * 100).toFixed(10))}%):
-                        </p>
-                        <div className="grid grid-cols-2 gap-4" dir="ltr">
-                          <div className="bg-emerald-900/40 rounded-lg p-3">
-                            <p className="text-xs text-emerald-300 mb-1">{ui.minLimit}</p>
-                            <p className="font-bold text-white">{formatter.format(result.totalMin * result.taxRate)}</p>
-                          </div>
-                          <div className="bg-emerald-900/40 rounded-lg p-3">
-                            <p className="text-xs text-emerald-300 mb-1">{ui.maxLimit}</p>
-                            <p className="font-bold text-white">{formatter.format(result.totalMax * result.taxRate)}</p>
-                          </div>
-                        </div>
-                        <p className="text-[10px] text-emerald-200 mt-3 text-right" dir={isAr ? 'rtl' : 'ltr'}>
-                          {ui.irgNote}
-                        </p>
-                      </div>
-                    )}
+
                     {/* Action Bar */}
                     <div className="flex flex-wrap gap-3 mt-8 justify-center no-print" dir={isAr ? 'rtl' : 'ltr'}>
                       <button onClick={handleCopy} aria-label={ui.copy} className="border border-white/30 text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm flex items-center gap-2 min-h-[44px]">
