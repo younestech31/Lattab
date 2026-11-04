@@ -14,15 +14,15 @@ export const faqs: FAQItem[] = [
   },
   {
     questionAr: 'ما الفرق بين العقد العرفي والعقد الرسمي؟',
-    answerAr: 'العقد الرسمي هو الذي يحرره الموثق ويتمتع بحجة إثبات قوية لا يمكن الطعن فيها إلا بدعوى الزور، بينما العقد العرفي هو الذي يحرره الأطراف بأنفسهم ولا يتمتع بنفس قوة الإثبات. العقد الرسمي موصى به في المعاملات العقارية والتجارية المهمة.',
+    answerAr: 'العقد الرسمي يحرره موظف أو ضابط عمومي مختص وفق الأشكال القانونية، وتكون له الحجية التي يقررها القانون. وتخضع منازعة ما أثبته محرر العقد أو الطعن في رسميته لقواعد وإجراءات قانونية مختلفة بحسب طبيعة الادعاء؛ لذلك لا يصح اختزال جميع أوجه المنازعة في طريق واحد.',
     questionFr: 'Quelle est la différence entre un acte sous seing privé et un acte authentique ?',
-    answerFr: 'L\'acte authentique est rédigé par un notaire et possède une force probante supérieure, ne pouvant être contesté que par une procédure d\'inscription en faux. À l\'inverse, l\'acte sous seing privé est établi par les parties seules et ne garantit pas le même niveau de sécurité juridique ni la même force exécutoire.',
+    answerFr: 'L’acte authentique est reçu par un officier public compétent dans les formes prévues par la loi et bénéficie de la force probante que lui reconnaissent les textes. Les contestations relatives à son authenticité ou à son contenu obéissent à des règles différentes selon leur nature ; elles ne se résument pas toutes à une seule procédure.',
   },
   {
     questionAr: 'ما هي المدة المتوقعة لتحرير عقد البيع؟',
-    answerAr: 'تختلف المدة حسب تعقيد المعاملة. العقد الابتدائي يمكن تحريره في نفس يوم المراجعة إذا كانت الوثائق كاملة. أما العقد النهائي والسند العقاري فيستغرق عادة من أسبوع إلى شهر حسب إجراءات المحافظة العقارية.',
+    answerAr: 'تختلف المدة بحسب طبيعة العقد، واكتمال الوثائق، والتحريات المطلوبة، وآجال معالجة الإدارات المختصة. لذلك لا يمكن تحديد أجل موحد أو ضمان موعد مسبق لإتمام التسجيل أو الشهر العقاري قبل دراسة الملف.',
     questionFr: 'Quel est le délai prévu pour la rédaction d\'un acte de vente ?',
-    answerFr: 'Les délais varient selon la complexité du dossier. Un acte préliminaire peut souvent être établi rapidement si tous les documents sont réunis. Pour l\'acte définitif et l\'obtention du livret foncier, il faut généralement compter entre une semaine et un mois, selon les délais de réponse de la conservation foncière.',
+    answerFr: 'Le délai dépend de la nature de l’acte, de la complétude des pièces, des vérifications nécessaires et du traitement par les administrations compétentes. Il n’est donc pas possible d’annoncer un délai uniforme ni de garantir à l’avance la date d’enregistrement ou de publicité foncière.',
   },
   {
     questionAr: 'هل يمكنني الحصول على نسخة من العقد الموثق؟',
@@ -56,14 +56,14 @@ export const faqs: FAQItem[] = [
   },
   {
     questionAr: 'ما هي صلاحيات الوكالة العامة؟',
-    answerAr: 'الوكالة العامة تتيح للوكيل القيام بجميع التصرفات القانونية نيابة عن الموكل، مثل إدارة الأموال، البيع والشراء، التقاضي. يمكن تقييد هذه الصلاحيات في الوكالة الخاصة.',
+    answerAr: 'الأصل أن الوكالة العامة تخول الوكيل القيام بأعمال الإدارة في الحدود التي يحددها القانون ونص الوكالة. أما أعمال التصرف، مثل بيع عقار أو رهنه أو التنازل عن حق، فتستلزم وكالة خاصة تحدد التصرف المقصود والصلاحيات الممنوحة، وفق المادة 574 من القانون المدني. وتُفحص كل وكالة بحسب صياغتها وموضوعها.',
     questionFr: 'Quels sont les pouvoirs conférés par une procuration générale ?',
-    answerFr: 'La procuration générale autorise le mandataire à effectuer tous les actes de gestion et de disposition au nom du mandant (administration, vente, achat, actions en justice). Pour limiter ces prérogatives, il est recommandé d\'opter pour une procuration spéciale.',
+    answerFr: 'En principe, la procuration générale couvre les actes d’administration dans les limites fixées par la loi et le mandat. Les actes de disposition, tels que la vente ou l’hypothèque d’un immeuble ou la renonciation à un droit, exigent un mandat spécial précisant l’opération et les pouvoirs conférés, conformément à l’article 574 du Code civil. Chaque mandat doit être examiné selon son objet et sa rédaction.',
   },
   {
     questionAr: 'ما هي حاسبة السعر المرجعي للعقارات؟',
-    answerAr: 'هي أداة إعلامية استرشادية لمساعدة المواطنين على تقدير القيمة التجارية الدنيا للعقارات (الأسعار المرجعية) المعتمدة من طرف مصالح الضرائب، لتفادي إشكالات التصريح الناقص.',
+    answerAr: 'هي أداة معلوماتية تعرض نطاقات القيم المرجعية الواردة في مرجع المديرية العامة للضرائب للفترة المتاحة، بحسب المنطقة ونوع العقار. ولا تمثل سعراً أدنى ملزماً لكل عملية، ولا تحسب أتعاب الموثق أو تحدد نهائياً الوعاء والحقوق الجبائية المستحقة.',
     questionFr: 'Qu\'est-ce que le calculateur de prix de référence immobilier ?',
-    answerFr: 'Il s\'agit d\'un outil informatif pour estimer la valeur vénale minimale des biens (prix de référence) admise par l\'administration fiscale, afin d\'éviter d\'éventuels redressements.',
+    answerFr: 'Cet outil présente les fourchettes de valeurs du référentiel immobilier publié par la Direction générale des impôts, selon la zone et le type de bien. Il ne constitue pas un prix minimum obligatoire pour chaque opération et ne calcule ni les émoluments du notaire ni les droits fiscaux définitifs.',
   },
 ];
