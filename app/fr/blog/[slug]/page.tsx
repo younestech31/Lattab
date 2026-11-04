@@ -172,15 +172,17 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
           >
             <SchemaScriptLoader schemas={[{
               "@context": "https://schema.org",
-              "@type": "Article",
+              "@type": "BlogPosting",
               "@id": `${SITE_URL}/fr/blog/${post.slug}#article`,
               "headline": post.title,
               "description": post.description,
               "datePublished": post.dateISO,
               "dateModified": post.dateModified || post.dateISO,
               "author": {
-                "@type": "Person",
-                "name": "Office Notarial - Oran"
+                "@type": "Organization",
+                "@id": `${SITE_URL}/#organization`,
+                "name": "Office Notarial - Oran",
+                "url": `${SITE_URL}/fr/a-propos`
               },
               "publisher": {
                 "@type": "Organization",

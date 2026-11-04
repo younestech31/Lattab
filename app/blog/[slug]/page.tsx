@@ -181,15 +181,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           >
             <SchemaScriptLoader schemas={[{
               "@context": "https://schema.org",
-              "@type": "Article",
+              "@type": "BlogPosting",
               "@id": `${SITE_URL}/blog/${post.slug}#article`,
               "headline": post.title,
               "description": post.description,
               "datePublished": post.dateISO,
               "dateModified": post.dateModified || post.dateISO,
               "author": {
-                "@type": "Person",
-                "name": "ديوان التوثيق - وهران"
+                "@type": "Organization",
+                "@id": `${SITE_URL}/#organization`,
+                "name": "ديوان التوثيق - وهران",
+                "url": `${SITE_URL}/a-propos`
               },
               "publisher": {
                 "@type": "Organization",
