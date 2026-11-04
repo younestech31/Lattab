@@ -7,20 +7,27 @@ export const INSTITUTIONAL_ACT_TYPES = [
   'الوكالات والتفويضات',
   'عقود الزواج والمستندات العائلية',
   'عقود الزواج والاتفاق المالي',
+  'عقود الإيجار والتأجير',
+  'التصريحات والمصادقات',
   'تأسيس الشركات والمؤسسات',
   'الرهن والتأمينات',
   'التصريحات والمصادقات',
   'الفريضة والتركات',
   // French institutional act types
   'Actes de vente immobilière',
+  'Actes de vente et d\'achat immobiliers',
+  'Baux et locations',
   'Actes de location',
   'Procurations et mandats',
   'Actes de mariage et documents familiaux',
+  'Actes de mariage et convention matrimoniale',
   'Contrats de mariage',
   'Constitution de sociétés',
   'Hypothèques et assurances',
   'Déclarations et certifications',
+  'Déclarations et légalisations',
   'Successions et héritages',
+  'Frédha et successions',
 ] as const;
 
 export const AdministrativeInquirySchema = z.object({
