@@ -19,14 +19,8 @@ export const SLUG_TO_CLUSTER: Record<string, ArticleCluster> = {
   'droit-preemption-vente-immobilier-algerie': 'immobilier',
   'mainlevee-hypotheque-apres-credit-algerie': 'immobilier',
   'sortie-indivision-immobiliere-algerie': 'immobilier',
-  'taxe-fonciere-gn31-algerie': 'immobilier',
   // French
   'acte-de-vente-immobilier-oran': 'immobilier',
-  'bail-habitation-vs-commercial-algerie': 'immobilier',
-  'declaration-plus-value-gn17-vente-immobilier-algerie': 'immobilier',
-  'droit-preemption-vente-immobilier-algerie': 'immobilier',
-  'mainlevee-hypotheque-apres-credit-algerie': 'immobilier',
-  'sortie-indivision-immobiliere-algerie': 'immobilier',
   'taxe-fonciere-gn31-algerie': 'immobilier',
 
   // Societes
