@@ -60,14 +60,14 @@ export default function InquiryForm({ services }: { services: readonly string[] 
       return;
     }
 
-    const waUrl = buildInquiryWaUrl(lang, cleanedService);
+    const waUrl = buildInquiryWaUrl(lang, cleanedService, { name: cleanedName, phone: cleanedPhone, message: cleanedMessage });
     window.open(waUrl, '_blank', 'noopener,noreferrer');
     setIsInquirySubmitted(true);
   };
 
   const handleRetryOpen = () => {
     const cleanedService = cleanText(inquiryData.service);
-    const waUrl = buildInquiryWaUrl(lang, cleanedService);
+    const waUrl = buildInquiryWaUrl(lang, cleanedService, { name: cleanText(inquiryData.name), phone: cleanText(inquiryData.phone), message: cleanText(inquiryData.message) });
     window.open(waUrl, '_blank', 'noopener,noreferrer');
   };
 
