@@ -75,7 +75,7 @@ export default function ServicesPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'الخدمات التوثيقية بديوان التوثيق بوهران',
-    description: 'قائمة المعاملات والخدمات القانونية والتوثيقية المعتمدة رسمياً',
+    description: 'قائمة إرشادية بأبرز العقود والمعاملات التي تدخل ضمن الاختصاصات التوثيقية',
     itemListElement: serviceList.map((service, index) => ({
       '@type': 'ListItem',
       position: index + 1,
@@ -104,7 +104,7 @@ export default function ServicesPage() {
         badgeIcon={<Scale className="w-4 h-4" />}
         eyebrow="الديوان العمومي للتوثيق — الأستاذ لعطب محمد"
         title="دليل الخدمات والمعاملات التوثيقية"
-        description={`يقدم ديوان التوثيق المعتمد لدى ${OFFICE_INFO.tribunal.ar} كافة المعاملات والعقود الرسمية طبقاً لأحكام القانون 06-02 المنظم لمهنة الموثق في الجزائر، مع حماية مصالح الأطراف وضمان الأمن القانوني.`}
+        description={`يعرض هذا الدليل أبرز العقود والمعاملات التي تدخل ضمن الاختصاصات التوثيقية، مع بيان الوثائق والإجراءات العامة وفق القانون الجزائري.`}
         breadcrumbs={[
           { name: 'الرئيسية', href: '/' },
           { name: 'الخدمات التوثيقية' },
@@ -190,7 +190,7 @@ export default function ServicesPage() {
                   href="/contact"
                   className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 rounded-xl font-bold transition text-sm flex items-center gap-2 shadow-sm"
                 >
-                  معلومات الاتصال والمواعيد
+                  معلومات الاتصال والاستفسار الإداري
                 </Link>
                 <PhoneLink
                   type="office"
