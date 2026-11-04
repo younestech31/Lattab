@@ -69,21 +69,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: titleValue,
     description: enrichedDesc,
-    authors: [{ name: 'Office Notarial - Oran', url: SITE_URL }],
+    authors: [{ name: OFFICE_INFO.officeNameLong.fr, url: SITE_URL }],
     alternates: {
       canonical: `${SITE_URL}/fr/blog/${post.slug}`,
       languages: languages,
     },
     openGraph: {
-      title: post.title,
+      title: renderedTitle,
       description: enrichedDesc,
       url: `${SITE_URL}/fr/blog/${post.slug}`,
-      siteName: 'Office Notarial - Oran - Notaire à Oran',
+      siteName: OFFICE_INFO.officeNameLong.fr,
       locale: 'fr_DZ',
       type: 'article',
       publishedTime: post.dateISO,
       ...(post.dateModified ? { modifiedTime: post.dateModified } : {}),
-      authors: ['Office Notarial - Oran'],
+      authors: [OFFICE_INFO.officeNameLong.fr],
       section: post.category,
       tags: [post.category, 'Droit Algérien', 'Notariat', 'Oran'],
     },
@@ -184,7 +184,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               "author": {
                 "@type": "Organization",
                 "@id": `${SITE_URL}/#notary-office`,
-                "name": "Office Notarial - Oran",
+                "name": OFFICE_INFO.officeNameLong.fr,
                 "url": `${SITE_URL}/fr`
               },
               "publisher": {
@@ -217,7 +217,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               "isPartOf": {
                 "@type": "WebSite",
                 "url": SITE_URL,
-                "name": "Office Notarial - Oran"
+                "name": OFFICE_INFO.officeNameLong.fr
               }
             }, {
               "@context": "https://schema.org",
