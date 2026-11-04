@@ -30,6 +30,19 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
   const pageUrl = isAr ? SITE_URL : `${SITE_URL}/fr`;
   const notaryId = `${SITE_URL}/#notary-office`;
 
+  const websiteSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    "url": SITE_URL,
+    "name": OFFICE_INFO.officeNameLong.ar,
+    "alternateName": [
+      OFFICE_INFO.officeNameLong.fr,
+      "ديوان التوثيق بوهران",
+      "Office Notarial de Maître Lattab Mohamed à Oran"
+    ]
+  };
+
   const notarySchema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Notary",
@@ -90,7 +103,7 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
     }))
   };
 
-  return [notarySchema, faqSchema];
+  return [websiteSchema, notarySchema, faqSchema];
 }
 
 export async function HomeContent({ lang }: { lang: Language }) {
