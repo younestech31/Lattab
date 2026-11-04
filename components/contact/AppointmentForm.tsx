@@ -81,7 +81,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
   if (state.success || isInquirySubmitted) {
     const waUrl = whatsappUrlRef.current || buildInquiryWaUrl(lang, inquiryData.service);
     return (
-      <div className="p-8 bg-emerald-50 rounded-2xl border border-emerald-200 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
+      <div role="status" aria-live="polite" className="p-8 bg-emerald-50 rounded-2xl border border-emerald-200 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
         <div className="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto shadow-lg">
           <CheckCircle className="w-8 h-8" />
         </div>
@@ -89,6 +89,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
           <h3 className="text-2xl font-bold text-gray-900 mb-4">{t_form.success_appointment_title}</h3>
           <p className="text-gray-600 max-w-md mx-auto leading-relaxed">
             {t_form.success_appointment_desc}
+          <span className="block mt-2 text-sm">{lang === 'fr' ? 'Le bureau n’a pas encore reçu votre demande : vous devez envoyer le message dans WhatsApp.' : 'لم يتلق المكتب طلبك بعد؛ يجب إرسال الرسالة عبر واتساب لإتمام الإرسال.'}</span>
           </p>
         </div>
 
