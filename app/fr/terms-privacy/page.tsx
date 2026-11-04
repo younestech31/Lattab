@@ -8,7 +8,7 @@ import ObfuscatedContact from '@/components/ui/ObfuscatedContact';
 
 export const metadata: Metadata = {
   title: { absolute: "Conditions & Confidentialité — Office Notarial" },
-  description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Office Notarial - Oran à Oran: traitement de vos données, obligations juridiques et secret professionnel.",
+  description: "Conditions d’utilisation et politique de confidentialité du site de l’office notarial à Oran : données personnelles, sécurité et secret professionnel.",
   alternates: {
     canonical: `${SITE_URL}/fr/terms-privacy`,
     languages: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: `${SITE_URL}/fr/terms-privacy`,
     title: "Conditions & Confidentialité — Office Notarial",
-    description: "Découvrez les conditions d'utilisation et la politique de confidentialité de l'étude notariale de Office Notarial - Oran à Oran.",
+    description: "Conditions d’utilisation et politique de confidentialité du site de l’office notarial à Oran.",
     siteName: 'Office Notarial - Oran',
     images: [{ url: `${SITE_URL}/logo.webp`, width: 512, height: 512, alt: "Conditions d'Utilisation" }],
     locale: 'fr_DZ',
