@@ -228,13 +228,13 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
                   >
                     {lang === 'ar' ? (
                       <>
-                        حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768
+                        حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768،
                         <br />
                         العقيد لطفي، وهران
                       </>
                     ) : (
                       <>
-                        Cité 557 Logements, Immeuble D24, 1er Étage, Appt 768
+                        Cité 557 Logements, Immeuble D24, 1er Étage, Appt 768,
                         <br />
                         Akid Lotfi, Oran
                       </>
