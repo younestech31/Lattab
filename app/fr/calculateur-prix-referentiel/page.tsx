@@ -12,11 +12,11 @@ import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = "Calculateur indicatif des fourchettes de valeurs vénales immobilières en Algérie, fondé sur le référentiel de la Direction Générale des Impôts pour 2025–2026 et les données disponibles dans l'outil.";
+  const desc = "Calculateur indicatif du référentiel immobilier DGI 2025–2026 : fourchettes de valeurs par zone et type de bien.";
   assertDescriptionLength(desc, 'calculateur-prix-referentiel-fr');
 
   return {
-    title: { absolute: 'Calculateur des prix immobiliers de référence 2025–2026 — Algérie' },
+    title: { absolute: 'Référentiel immobilier 2025–2026 — calculateur indicatif' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/fr/calculateur-prix-referentiel`,
@@ -83,7 +83,7 @@ export default function CalculatorPageFR() {
           badgeIcon={<Calculator className="w-4 h-4" />}
           eyebrow="Office notarial"
           title="Calculateur des prix immobiliers de référence 2025–2026"
-          description="Outil d'estimation indicatif basé sur les barèmes officiels approuvés par la Direction Générale des Impôts (DGI) et le Ministère des Finances en Algérie."
+          description="Outil indicatif présentant les fourchettes du référentiel immobilier publié par la Direction Générale des Impôts (DGI) pour 2025–2026."
           breadcrumbs={[
             { name: 'Accueil', href: '/fr' },
             { name: 'Calculateur prix de référence' },
@@ -109,7 +109,7 @@ export default function CalculatorPageFR() {
               <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6">
                 <Info className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Comment utiliser le calculateur des prix de référence 2026 ?</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Comment utiliser le calculateur du référentiel 2025–2026 ?</h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
                 L’outil présente les fourchettes de valeurs vénales publiées par la Direction Générale des Impôts dans son référentiel 2025–2026, selon les données disponibles pour la wilaya, la commune, la nature du bien et la zone. Sélectionnez les caractéristiques correspondant à votre recherche.
               </p>
@@ -127,7 +127,6 @@ export default function CalculatorPageFR() {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Comment interpréter les limites de la fourchette de référence ?</h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
                 {"Le référentiel de la DGI présente des fourchettes de valeurs vénales immobilières. La valeur vénale peut intervenir dans la détermination de l'assiette fiscale selon la nature de l'opération et les textes applicables. La limite inférieure publiée ne constitue pas, à elle seule, un seuil légal général à appliquer automatiquement à chaque acte ; le résultat de cet outil ne suffit pas à déterminer le traitement fiscal d'une opération. "}
-                <strong>redressement fiscal</strong>.
               </p>
               <ul className="text-sm text-gray-500 space-y-2 list-disc list-inside">
                 <li>Le traitement fiscal dépend de la nature de l’opération et des textes applicables.</li>
