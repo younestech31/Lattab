@@ -9,8 +9,8 @@ import Footer from '@/components/Footer';
 import { AnalyticsWrapper } from "@/components/AnalyticsWrapper";
 import CookieBanner from '@/components/CookieBanner';
 import { SITE_URL, OFFICE_INFO } from '@/lib/config';
+import { headers } from 'next/headers';
 import type { Viewport } from 'next';
-import DocumentLanguage from '@/components/DocumentLanguage';
 
 const cairo = Cairo({ 
   subsets: ['arabic', 'latin'], 
@@ -92,9 +92,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default async function RootLayout({children}: {children: React.ReactNode}) {
+  const requestHeaders = await headers();
+  const lang = requestHeaders.get('x-lang') === 'fr' ? 'fr' : 'ar';
+  const isArabic = lang === 'ar';
+
   return (
-    <html lang="ar" dir="rtl" className={cairo.variable} suppressHydrationWarning>
+    <html lang={lang === "fr" ? "fr-DZ" : "ar-DZ"} dir={isArabic ? "rtl" : "ltr"} className={cairo.variable}>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -109,7 +113,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         {/* next/font/google self-hosts Cairo at build time — no runtime Google Fonts connection occurs */}
       </head>
       <body className={`${cairo.className} font-cairo`} suppressHydrationWarning>
-        <DocumentLanguage />
         <LanguageProvider>
           <a 
             href="#main-content" 
@@ -131,7 +134,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             {children}
           </main>
           <div className="no-print">
-            <Footer />
+            <Footer lang={lang} />
           </div>
           <AnalyticsWrapper />
           <CookieBanner />
