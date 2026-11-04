@@ -99,15 +99,15 @@ export const translations = {
       cta: 'الاستفسار حول الإجراءات'
     },
     notaryRole: {
-      title: 'دور الموثق العمومي في حماية حقوقكم',
-      subtitle: 'الموثق مسؤول قانوني معيَّن من الدولة — دوره توثيق عقودكم وحفظ حقوقكم',
+      title: 'مهام الموثق العمومي في تحرير العقود الرسمية',
+      subtitle: 'الموثق ضابط عمومي مفوض من الدولة، يتولى تحرير العقود الرسمية والتحقق من قانونيتها وحفظ أصولها وفق التشريع.',
       features: [
-        { title: 'القوة التنفيذية للعقود', description: 'العقد الموثق قابل للتنفيذ الفوري دون الحاجة إلى حكم قضائي' },
-        { title: 'التحقق من الملكية', description: 'يتحقق الموثق من صحة الملكية وخلوّها من الرهون والتعقيدات القانونية قبل التوثيق' },
+        { title: 'القوة التنفيذية للعقود', description: 'يُعد العقد التوثيقي سنداً رسمياً له القوة التنفيذية وفق الشروط والإجراءات القانونية.' },
+        { title: 'التحقق من الملكية', description: 'يدقق الموثق في سندات الملكية والقيود والوثائق العقارية المتاحة قبل تحرير العقد، وفق الإجراءات القانونية.' },
         { title: 'حفظ الوثائق الرسمية', description: 'تُحفَظ الوثائق الموثقة في سجلات المكتب وفق الأرشيف الوطني للتوثيق' },
-        { title: 'المساواة بين الطرفين', description: 'الموثق محايد — يحمي حقوق جميع أطراف العقد دون تمييز' },
-        { title: 'الإجراءات الضريبية', description: 'يتولى المكتب حساب وتسديد الرسوم التسجيلية والضرائب العقارية المستحقة' },
-        { title: 'الإشهار العقاري', description: 'يُشهَر العقد الموثق في المحافظة العقارية — ضمان رسمي للملكية' }
+        { title: 'المساواة بين الطرفين', description: 'يلتزم الموثق الحياد وتوضيح الآثار القانونية للعقد للأطراف، مع مراعاة حقوقهم وفق القانون.' },
+        { title: 'الإجراءات الضريبية', description: 'يستكمل الموثق الإجراءات الجبائية المرتبطة بالعقد لدى الجهات المختصة وفق التشريع المعمول به.' },
+        { title: 'الإشهار العقاري', description: 'يودع العقد لدى المحافظة العقارية المختصة لإجراء الشهر، وتترتب آثاره وفق التشريع العقاري.' }
       ]
     },
     legalUpdates: {
@@ -344,15 +344,15 @@ export const translations = {
       cta: 'Renseignement sur les procédures'
     },
     notaryRole: {
-      title: 'Le rôle du notaire public dans la protection de vos droits',
-      subtitle: 'Le notaire est un officier public nommé par l\'État — son rôle est d\'authentifier vos actes et de préserver vos droits',
+      title: 'Les missions du notaire public dans l’authentification des actes',
+      subtitle: 'Le notaire est un officier public délégué par l’État. Il établit les actes authentiques, en vérifie la légalité et en conserve les originaux conformément à la loi.',
       features: [
-        { title: 'Force exécutoire des actes', description: 'L\'acte notarié est immédiatement exécutoire sans recours à un jugement judiciaire' },
-        { title: 'Vérification de la propriété', description: 'Le notaire vérifie la validité du titre et l\'absence d\'hypothèques avant l\'authentification' },
+        { title: 'Force exécutoire des actes', description: 'L’acte notarié constitue un titre authentique doté de la force exécutoire dans les conditions et formes prévues par la loi.' },
+        { title: 'Vérification de la propriété', description: 'Le notaire examine les titres, inscriptions et pièces foncières disponibles avant l’établissement de l’acte, selon les formalités légales.' },
         { title: 'Conservation des archives', description: 'Les actes sont conservés dans les registres de l\'office conformément aux archives nationales du notariat' },
-        { title: 'Égalité des parties', description: 'Le notaire est impartial — il protège les droits de toutes les parties sans distinction' },
-        { title: 'Formalités fiscales', description: 'L\'office calcule et acquitte les droits d\'enregistrement et taxes immobilières dus' },
-        { title: 'Publicité foncière', description: 'L\'acte notarié est publié à la conservation foncière — garantie officielle de la propriété' }
+        { title: 'Égalité des parties', description: 'Le notaire observe une obligation d’impartialité et informe les parties des effets juridiques de l’acte, conformément à la loi.' },
+        { title: 'Formalités fiscales', description: 'Le notaire accomplit les formalités fiscales liées à l’acte auprès des services compétents, selon la réglementation applicable.' },
+        { title: 'Publicité foncière', description: 'L’acte est déposé auprès de la conservation foncière compétente pour sa publicité, dont les effets sont régis par la législation foncière.' }
       ]
     },
     legalUpdates: {
