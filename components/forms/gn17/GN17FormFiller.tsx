@@ -18,8 +18,8 @@ import GN17Step4Liquidation from './GN17Step4Liquidation';
 
 function readGN17Draft() {
   return loadDraft<GN17FormData>('gn17', (value) => {
-    const parsed = gn17FormSchema.safeParse(value);
-    return parsed.success ? parsed.data : null;
+    const parsed = gn17FormSchema.partial().safeParse(value);
+    return parsed.success ? { ...initialGN17Values, ...parsed.data } : null;
   });
 }
 

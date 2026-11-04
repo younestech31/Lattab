@@ -18,8 +18,8 @@ import GN8Step4Review from './GN8Step4Review';
 
 function readGN8Draft() {
   return loadDraft<GN8FormData>('gn8', (value) => {
-    const parsed = gn8FormSchema.safeParse(value);
-    return parsed.success ? parsed.data : null;
+    const parsed = gn8FormSchema.partial().safeParse(value);
+    return parsed.success ? { ...initialGN8Values, ...parsed.data } : null;
   });
 }
 

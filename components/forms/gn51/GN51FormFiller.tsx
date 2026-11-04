@@ -22,8 +22,8 @@ import GN51Step4Payment from './GN51Step4Payment';
 
 function readGN51Draft() {
   return loadDraft<GN51FormData>('gn51', (value) => {
-    const parsed = gn51FormSchema.safeParse(value);
-    return parsed.success ? parsed.data : null;
+    const parsed = gn51FormSchema.partial().safeParse(value);
+    return parsed.success ? { ...initialGN51Values, ...parsed.data } : null;
   });
 }
 

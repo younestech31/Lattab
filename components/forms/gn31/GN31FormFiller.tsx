@@ -18,8 +18,8 @@ import GN31Step4Review from './GN31Step4Review';
 
 function readGN31Draft() {
   return loadDraft<GN31FormData>('gn31', (value) => {
-    const parsed = gn31FormSchema.safeParse(value);
-    return parsed.success ? parsed.data : null;
+    const parsed = gn31FormSchema.partial().safeParse(value);
+    return parsed.success ? { ...initialGN31Values, ...parsed.data } : null;
   });
 }
 
