@@ -7,6 +7,7 @@ import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, Clock } from 'lucide-react';
 import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL, TITLE_TEMPLATE_SUFFIX, OFFICE_INFO } from '@/lib/config';
+import { BLOG_PAIRS_MAP } from '@/lib/data/localeMap';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
@@ -42,7 +43,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
-  const frPost = frBlogPosts.find(fp => fp.arSlug === post.slug);
+  const frSlug = BLOG_PAIRS_MAP[post.slug];
+  const frPost = frBlogPosts.find(fp => fp.arSlug === post.slug || fp.slug === frSlug);
   const languages: Record<string, string> = {
     'ar-DZ': `${SITE_URL}/blog/${post.slug}`,
     'x-default': `${SITE_URL}/blog/${post.slug}`,
@@ -57,8 +59,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const hasSuffix = post.title.length + TITLE_TEMPLATE_SUFFIX.length <= 60;
-  const titleValue = hasSuffix ? post.title : { absolute: post.title };
   const renderedTitle = hasSuffix ? `${post.title}${TITLE_TEMPLATE_SUFFIX}` : post.title;
+  const titleValue = hasSuffix ? renderedTitle : { absolute: post.title };
 
   assertTitleLength(renderedTitle, `blog slug: ${slug}`);
 
@@ -78,7 +80,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       languages,
     },
     openGraph: {
-      title: post.title,
+      title: renderedTitle,
       description: enrichedDesc,
       url: `${SITE_URL}/blog/${post.slug}`,
       siteName: 'ديوان التوثيق - وهران - موثق بوهران',
@@ -92,7 +94,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: renderedTitle,
       description: enrichedDesc,
     },
   };
