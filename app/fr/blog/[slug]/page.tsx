@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: renderedTitle,
       description: enrichedDesc,
     },
   };
