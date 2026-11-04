@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useActionState, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Calendar, User, Phone, FileText, Building, CheckCircle, Loader2, AlertTriangle, Printer, ExternalLink, Clock } from 'lucide-react';
+import { User, Phone, FileText, Building, CheckCircle, Loader2, AlertTriangle, Printer, ExternalLink } from 'lucide-react';
 import { AdministrativeInquiryData } from './types';
 import { validateAppointment, AppointmentState } from '@/app/actions/appointment';
 import { useLang } from '@/lib/i18n';
@@ -26,8 +26,6 @@ export default function AppointmentForm({ services }: { services: readonly strin
     name: '',
     phone: '',
     service: '',
-    date: '',
-    time: '',
     notes: '',
     company: '',
     honeypot: '',
@@ -35,18 +33,8 @@ export default function AppointmentForm({ services }: { services: readonly strin
 
   const [inquiryAgreed, setInquiryAgreed] = useState(false);
   const [isInquirySubmitted, setIsInquirySubmitted] = useState(false);
-  const [minDate, setMinDate] = useState<string>('');
-  const [maxDate, setMaxDate] = useState<string>('');
   const whatsappUrlRef = useRef<string | null>(null);
 
-  useEffect(() => {
-    const now = new Date();
-    setMinDate(now.toISOString().split('T')[0]);
-
-    const max = new Date();
-    max.setDate(max.getDate() + 90);
-    setMaxDate(max.toISOString().split('T')[0]);
-  }, []);
 
   useEffect(() => {
     const serviceParam = searchParams.get('service');
@@ -81,7 +69,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
   if (state.success || isInquirySubmitted) {
     const waUrl = whatsappUrlRef.current || buildInquiryWaUrl(lang, inquiryData.service);
     return (
-      <div className="p-8 bg-emerald-50 rounded-2xl border border-emerald-200 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
+      <div role="status" aria-live="polite" className="p-8 bg-emerald-50 rounded-2xl border border-emerald-200 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
         <div className="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto shadow-lg">
           <CheckCircle className="w-8 h-8" />
         </div>
@@ -89,6 +77,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
           <h3 className="text-2xl font-bold text-gray-900 mb-4">{t_form.success_appointment_title}</h3>
           <p className="text-gray-600 max-w-md mx-auto leading-relaxed">
             {t_form.success_appointment_desc}
+          <span className="block mt-2 text-sm">{lang === 'fr' ? 'Le bureau n’a pas encore reçu votre demande : vous devez envoyer le message dans WhatsApp.' : 'لم يتلق المكتب طلبك بعد؛ يجب إرسال الرسالة عبر واتساب لإتمام الإرسال.'}</span>
           </p>
         </div>
 
@@ -110,18 +99,6 @@ export default function AppointmentForm({ services }: { services: readonly strin
             <span className="text-gray-500">{t_form.service}:</span>
             <span className="font-medium text-gray-900">{inquiryData.service}</span>
           </div>
-          {inquiryData.date && (
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-500">{t_form.date}:</span>
-              <span className="font-medium text-gray-900">{inquiryData.date}</span>
-            </div>
-          )}
-          {inquiryData.time && (
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-500">{t_form.time}:</span>
-              <span className="font-medium text-gray-900">{inquiryData.time}</span>
-            </div>
-          )}
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 no-print">
@@ -216,7 +193,7 @@ export default function AppointmentForm({ services }: { services: readonly strin
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-1 gap-6">
         <div>
           <label htmlFor="inquiry_service" className="block text-sm font-medium text-gray-700 mb-2 text-start">
             {t_form.service}
@@ -247,43 +224,6 @@ export default function AppointmentForm({ services }: { services: readonly strin
           )}
         </div>
 
-        <div>
-          <label htmlFor="inquiry_date" className="block text-sm font-medium text-gray-700 mb-2 text-start">
-            <Calendar className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
-            {t_form.date}
-          </label>
-          <input
-            id="inquiry_date"
-            name="date"
-            type="date"
-            value={inquiryData.date}
-            onChange={(e) => setInquiryData({ ...inquiryData, date: e.target.value })}
-            min={minDate}
-            max={maxDate}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all"
-          />
-          <p className="text-xs text-gray-500 mt-2 text-start">{t_form.date_note}</p>
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-1 gap-6">
-        <div>
-          <label htmlFor="inquiry_time_period" className="block text-sm font-medium text-gray-700 mb-2 text-start">
-            <Clock className={`inline w-4 h-4 ${isAr ? 'ms-2' : 'me-2'}`} />
-            {t_form.time}
-          </label>
-          <select
-            id="inquiry_time_period"
-            name="time"
-            value={inquiryData.time}
-            onChange={(e) => setInquiryData({ ...inquiryData, time: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all bg-white"
-          >
-            <option value="">{isAr ? 'خلال أوقات العمل الرسمية (08:30–12:00 أو 13:30–16:00)' : 'Pendant les heures d\'ouverture (08h30–12h00 ou 13h30–16h00)'}</option>
-            <option value={t_form.time_morning}>{t_form.time_morning}</option>
-            <option value={t_form.time_afternoon}>{t_form.time_afternoon}</option>
-          </select>
-        </div>
       </div>
 
       <input

@@ -47,7 +47,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
       ? 'بيانات الاتصال بديوان التوثيق ببلدية وهران: العنوان بحي العقيد لطفي، أرقام الهاتف، البريد الإلكتروني، مواعيد العمل، والموقع على الخريطة.'
       : 'Coordonnées de l\'office notarial de Office Notarial - Oran à Oran : adresse à Akid Lotfi, téléphones, horaires et plan d\'accès.',
     mainEntity: {
-      '@type': 'GovernmentService',
+      '@type': 'Notary',
       '@id': isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`,
       name: brandTitle,
       alternateName: brandSubtitle,

@@ -73,13 +73,14 @@ export default function InquiryForm({ services }: { services: readonly string[] 
 
   if (isInquirySubmitted) {
     return (
-      <div className="text-center py-12" role="alert" aria-live="assertive">
+      <div className="text-center py-12" role="status" aria-live="polite">
         <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
           <CheckCircle className="w-10 h-10 text-emerald-600" />
         </div>
         <h3 className="text-2xl font-bold text-gray-800 mb-2">{t_form.success_inquiry_title}</h3>
         <p className="text-gray-600 mb-6 max-w-lg mx-auto">
           {t_form.success_appointment_desc}
+          <span className="block mt-2 text-sm">{lang === 'fr' ? 'Le bureau n’a pas encore reçu votre demande : vous devez envoyer le message dans WhatsApp.' : 'لم يتلق المكتب طلبك بعد؛ يجب إرسال الرسالة عبر واتساب لإتمام الإرسال.'}</span>
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button

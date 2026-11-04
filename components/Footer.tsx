@@ -1,8 +1,6 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLang, Language } from '@/lib/i18n';
+import type { Language } from '@/lib/i18n';
 import { translations } from '@/lib/i18n/translations';
 import { OFFICE_INFO, GOOGLE_MAPS_URL } from '@/lib/config';
 import PhoneLink from './ui/PhoneLink';
@@ -13,8 +11,7 @@ interface FooterProps {
 }
 
 export default function Footer({ lang: propLang }: FooterProps = {}) {
-  const { lang: contextLang } = useLang();
-  const lang = contextLang || propLang || 'ar';
+  const lang = propLang || 'ar';
   const isRTL = lang === 'ar';
 
   const getHref = (href: string) => {
@@ -33,7 +30,6 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
     { href: '/calculateur-prix-referentiel', label: translations[lang].nav.calculator },
     { href: '/blog', label: translations[lang].nav.blog },
     { href: '/useful-links', label: translations[lang].nav.useful_links },
-    { href: '/#faq', label: translations[lang].nav.faq },
     { href: '/terms-privacy', label: translations[lang].footer.terms_link },
   ];
 
