@@ -166,11 +166,11 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       steps: [
         {
           name: 'Vérification préalable des titres et de la situation hypothécaire',
-          text: 'L\'étude notariale audite les titres de propriété, confronte les données du livret foncier avec le plan cadastral, et sollicite l\'état négatif auprès de la Conservation Foncière compétente d\'Oran pour sécuriser la transaction.'
+          text: 'L\’étude examine les titres de propriété et les données du livret foncier et des documents cadastraux. Elle sollicite, lorsque cela est requis, les renseignements fonciers auprès de la Conservation Foncière compétente. L’analyse reste limitée aux documents et inscriptions accessibles auprès des services concernés.'
         },
         {
           name: 'Contrôle d\'adéquation avec le référentiel des prix 2026',
-          text: 'Vérification du prix déclaré au regard des valeurs vénales de référence de l\'administration fiscale à Oran, afin de prémunir les parties contre les pénalités de redressement et le droit de préemption.'
+          text: 'Consultation des fourchettes de valeurs de référence publiées par l’administration fiscale et examen du prix déclaré lorsque cela est pertinent. Le référentiel ne détermine pas à lui seul la valeur juridique de l’opération et ne garantit pas l’absence d’un contrôle fiscal ou de l’exercice d’un droit de préemption.'
         },
         {
           name: 'Signature de l\'acte authentique de vente à l\'étude',
@@ -178,7 +178,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Enregistrement et formalité de publicité foncière',
-          text: 'L\'office notarial effectue l\'enregistrement auprès de la recette des impôts puis procède au dépôt du dossier à la Conservation Foncière pour mutation du droit réel et délivrance du livret foncier au nom de l\'acquéreur.'
+          text: 'L’office accomplit les formalités d’enregistrement et dépose le dossier de publicité foncière auprès de la Conservation Foncière compétente. Cette administration examine le dossier, effectue la publicité et met à jour les inscriptions relevant de sa compétence.'
         }
       ],
       jurisdictionNotes: [
@@ -189,15 +189,15 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         {
           heading: 'Force probante et exécutoire de l\'acte notarié',
           paragraphs: [
-            'En droit algérien, l\'acte notarié est revêtu de la formule exécutoire de plein droit sans nécessiter de décision judiciaire préalable. En tant qu\'officier public impartial, le notaire assure la validité formelle et matérielle du contrat et vérifie la capacité juridique de chaque intervenant.',
-            'L\'intervention notariale protège l\'acquéreur par la vérification rigoureuse de la chaîne de propriété antérieure et certifie l\'inscription régulière au livre foncier.'
+            'En droit algérien, l’acte notarié constitue un acte authentique auquel la loi attache une force probante et, dans les conditions prévues par les textes, une force exécutoire. Le notaire vérifie notamment la capacité des parties, leurs qualités et leur consentement dans le cadre de ses attributions.',
+            'La vérification des titres et des formalités contribue à la régularité de la transaction. La publicité foncière et la mise à jour des inscriptions relèvent de la Conservation Foncière compétente.'
           ]
         },
         {
           heading: 'Frais d\'enregistrement et barème réglementaire',
           paragraphs: [
             'Les frais d\'acte comportent les droits fiscaux d\'enregistrement (versés au Trésor public), la taxe de publicité foncière et les émoluments du notaire, strictement encadrés par le décret exécutif n° 08-243.',
-            'Le simulateur d\'évaluation fiscale permet aux usagers d\'anticiper les coûts légaux et de préparer leur dossier conformément au barème officiel.'
+            'L’outil du site présente les fourchettes de valeurs immobilières issues du référentiel fiscal disponible. Il ne calcule pas les émoluments notariaux et ne remplace pas la détermination des droits par les services compétents.'
           ]
         }
       ],
