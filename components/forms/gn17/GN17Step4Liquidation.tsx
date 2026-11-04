@@ -33,10 +33,10 @@ export default function GN17Step4Liquidation({
           </div>
           <div>
             <h3 className="font-bold text-gray-900 text-base">
-              {isAr ? '1. خيار تخفيض 50% الخاص بالسكن الرئيسي' : '1. Abattement spécial de 50% (Logement collectif unique)'}
+              {isAr ? '1. تخفيض 50% للسكن الوحيد والرئيسي' : '1. Réduction de 50% pour l’habitation principale et unique'}
             </h3>
             <p className="text-xs text-gray-500">
-              {isAr ? 'المادة 80 مكرر / قانون الضرائب المباشرة' : 'Art. 80 bis du CIDTA'}
+              {isAr ? 'المادة 104-5 (أ) من قانون الضرائب المباشرة / قانون المالية 2025' : 'Art. 104-5 (a) du CIDTA / LF 2025'}
             </p>
           </div>
         </div>
@@ -52,8 +52,8 @@ export default function GN17Step4Liquidation({
             <div className="text-sm">
               <span className="font-bold text-gray-900 block">
                 {isAr
-                  ? 'العقار المتنازل عنه عبارة عن سكن جماعي يشكل الملكية العقارية السكنية الوحيدة للمتنازل'
-                  : 'Le bien cédé est un logement collectif constituant l\'unique propriété immobilière bâtie du cédant.'}
+                  ? 'العقار المتنازل عنه سكن فردي أو جماعي، ويشكل الملكية السكنية الوحيدة والسكن الرئيسي للمتنازل'
+                  : 'Le logement cédé, individuel ou collectif, constitue l’unique propriété et l’habitation principale du cédant.'}
               </span>
               <span className="text-xs text-gray-600 block mt-1">
                 {isAr

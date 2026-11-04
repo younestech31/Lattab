@@ -33,9 +33,9 @@ export const GN17_FIELD_COORDINATES: FormFieldCoord[] = [
   { id: 'situationBien', page: 1, x: 45, y: 216, size: 9, align: 'right', maxWidth: 420 },
   { id: 'commune', page: 1, x: 300, y: 199, size: 9, align: 'right', maxWidth: 110 },
   { id: 'originePropriete', page: 1, x: 45, y: 163, size: 9, align: 'right', maxWidth: 420 },
-  { id: 'dateActeOrigine', page: 1, x: 360, y: 151, size: 9, align: 'left', maxWidth: 80 },
+  { id: 'dateActeOrigine', page: 1, x: 360, y: 151, size: 9, align: 'left', maxWidth: 80, format: 'date' },
   { id: 'refPublicationOrigine', page: 1, x: 40, y: 151, size: 9, align: 'left', maxWidth: 200 },
-  { id: 'dateActeCession', page: 1, x: 40, y: 140, size: 9, align: 'left', maxWidth: 80 },
+  { id: 'dateActeCession', page: 1, x: 40, y: 140, size: 9, align: 'left', maxWidth: 80, format: 'date' },
   { id: 'natureActeCession', page: 1, x: 140, y: 128, size: 9, align: 'right', maxWidth: 270 },
 
   // الصفحة 2 — جدول تصفية فائض القيمة (القسم III)
@@ -107,9 +107,9 @@ export const GN17_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   { id: 'articleImposition', page: 1, x: 215, y: 179.5, size: 9, align: 'left', maxWidth: 350 },
   { id: 'natureActeCession', page: 1, x: 185, y: 167.5, size: 9, align: 'left', maxWidth: 380 },
   { id: 'originePropriete', page: 1, x: 155, y: 156.0, size: 9, align: 'left', maxWidth: 410 },
-  { id: 'dateActeOrigine', page: 1, x: 190, y: 144.0, size: 9, align: 'left', maxWidth: 90 },
+  { id: 'dateActeOrigine', page: 1, x: 190, y: 144.0, size: 9, align: 'left', maxWidth: 90, format: 'date' },
   { id: 'refPublicationOrigine', page: 1, x: 290, y: 144.0, size: 8.5, align: 'left', maxWidth: 275 },
-  { id: 'dateActeCession', page: 1, x: 170, y: 132.5, size: 9, align: 'left', maxWidth: 120 },
+  { id: 'dateActeCession', page: 1, x: 170, y: 132.5, size: 9, align: 'left', maxWidth: 120, format: 'date' },
   { id: 'natureActe', page: 1, x: 125, y: 121.0, size: 9, align: 'left', maxWidth: 440 },
 
   // III - Éléments à déclarer
@@ -149,7 +149,7 @@ export function mapGN17ToFieldValues(
 
   return {
     wilaya: data.wilaya,
-    wilayaBien: data.wilaya,
+    wilayaBien: '',
     inspection: '',
     recette: data.recette.replace(/^(قباضة الضرائب|Recette des Impôts)\s*/ui, '').trim(),
 
@@ -178,9 +178,10 @@ export function mapGN17ToFieldValues(
     natureBien: data.natureBien,
     situationBien: data.situationBien,
     cadastreRef: data.cadastreRef || '',
-    commune: data.commune || (isFr ? 'Oran' : 'وهران'),
-    natureDroitsReels: isFr ? 'Pleine propriété' : 'ملكية تامة',
-    articleImposition: data.cadastreRef || '',
+    // Never infer a commune, right type, or tax article from unrelated fields.
+    commune: data.commune || '',
+    natureDroitsReels: '',
+    articleImposition: '',
     originePropriete: data.originePropriete || '',
     dateActeOrigine: data.dateActeOrigine || '',
     refPublicationOrigine: data.refPublicationOrigine || '',

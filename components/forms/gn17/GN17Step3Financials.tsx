@@ -102,8 +102,9 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               step="1000"
               required
               value={data.valeurOrigine || ''}
+              disabled={data.acquisitionPriceUnknown}
               onChange={(e) => updateData({ valeurOrigine: Number(e.target.value) || 0 })}
-              className="w-full px-3.5 py-2.5 text-sm font-semibold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
+              className="w-full px-3.5 py-2.5 text-sm font-semibold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 disabled:bg-gray-100 disabled:text-gray-500"
               placeholder="12000000"
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
@@ -120,17 +121,16 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               <label className="inline-flex items-center gap-1.5 cursor-pointer text-xs text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
                 <input
                   type="checkbox"
-                  checked={data.useFlatExpenses}
-                  onChange={(e) => {
-                    const checked = e.target.checked;
-                    updateData({
-                      useFlatExpenses: checked,
-                      fraisAcquisition: checked ? Math.round(data.valeurOrigine * 0.03) : data.fraisAcquisition,
-                    });
-                  }}
+                  checked={data.acquisitionPriceUnknown}
+                  onChange={(e) => updateData({
+                    acquisitionPriceUnknown: e.target.checked,
+                    fraisCession: e.target.checked ? 0 : data.fraisCession,
+                    fraisAutres: e.target.checked ? 0 : data.fraisAutres,
+                    fraisAcquisition: e.target.checked ? 0 : data.fraisAcquisition,
+                  })}
                   className="rounded text-emerald-600 focus:ring-emerald-500"
                 />
-                <span>{isAr ? '3% حكمية' : '3% forfaitaire'}</span>
+                <span>{isAr ? 'تعذر تحديد قيمة الاقتناء (40% من سعر البيع)' : 'Prix d’acquisition indéterminable (forfait 40% du prix de vente)'}</span>
               </label>
             </div>
             <input
@@ -138,12 +138,15 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               min="0"
               step="1000"
               value={data.fraisAcquisition || ''}
-              onChange={(e) => updateData({ fraisAcquisition: Number(e.target.value) || 0, useFlatExpenses: false })}
-              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
+              disabled={data.acquisitionPriceUnknown}
+              onChange={(e) => updateData({ fraisAcquisition: Number(e.target.value) || 0 })}
+              className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 disabled:bg-gray-100 disabled:text-gray-500"
               placeholder="360000"
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
-              {isAr ? 'المصاريف المثبتة قانوناً أو النسبة القانونية الحكمية 3%' : 'Frais justifiés ou déduction forfaitaire de 3%'}
+              {data.acquisitionPriceUnknown
+                ? (isAr ? 'تعتمد قيمة اقتناء جزافية قدرها 40% من سعر البيع؛ لا تضاف مصاريف أخرى وفق توجيه المديرية العامة للضرائب.' : 'La valeur d’acquisition est évaluée forfaitairement à 40% du prix de vente ; aucune autre dépense ne s’ajoute.')
+                : (isAr ? 'تُحتسب الحقوق والرسوم والمصاريف المثبتة ضمن سقف إجمالي قدره 30% من قيمة الاقتناء.' : 'Droits, taxes et frais justifiés retenus dans la limite globale de 30% de la valeur d’acquisition.')}
             </span>
           </div>
         </div>

@@ -235,7 +235,7 @@ export function mapGN51ToFieldValues(
     periodicite: data.periodicite.trim(),
 
     // Signature
-    faitA: (data.faitA || (isFr ? 'Oran' : 'وهران')).trim(),
+    faitA: data.faitA.trim(),
     dateDeclaration: (data.dateDeclaration || '').trim(),
 
     // Paiement

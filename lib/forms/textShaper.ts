@@ -80,7 +80,6 @@ export function shapeArabicForPdf(text: string): string {
 
     return result;
   } catch (err) {
-    console.warn('shapeArabicForPdf error:', err);
-    return text.trim();
+    throw new Error(`فشل تشكيل النص العربي لملف PDF: ${err instanceof Error ? err.message : String(err)}`);
   }
 }

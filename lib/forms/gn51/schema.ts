@@ -2,15 +2,15 @@ import { z } from 'zod';
 
 export const gn51FormSchema = z.object({
   // En-tête administratif
-  wilaya: z.string().default('وهران'),
-  structure: z.string().default('قباضة الضرائب وهران المركز'),
+  wilaya: z.string().default(''),
+  structure: z.string().default(''),
 
   // I. Bailleur (المؤجر)
   bailleurNom: z.string().default(''),
   bailleurAdresse: z.string().default(''),
-  bailleurCommune: z.string().default('وهران'),
-  bailleurWilaya: z.string().default('وهران'),
-  bailleurCodePostal: z.string().default('31000'),
+  bailleurCommune: z.string().default(''),
+  bailleurWilaya: z.string().default(''),
+  bailleurCodePostal: z.string().default(''),
   bailleurNif: z.string().default(''),
   bailleurNin: z.string().default(''),
 
@@ -26,11 +26,11 @@ export const gn51FormSchema = z.object({
   // II. Bien loué (العقار المؤجر)
   natureBien: z.string().default('شقة / Appartement'),
   lieuSituation: z.string().default(''),
-  communeBien: z.string().default('وهران'),
-  wilayaBien: z.string().default('وهران'),
-  codePostalBien: z.string().default('31000'),
+  communeBien: z.string().default(''),
+  wilayaBien: z.string().default(''),
+  codePostalBien: z.string().default(''),
   articleImposition: z.string().default(''),
-  destination: z.enum(['habitation', 'commercial', 'agricole']).default('habitation'),
+  destination: z.enum(['habitation', 'commercial', 'agricole', 'unspecified']).default('unspecified'),
   dateDebutContrat: z.string().default(''),
   dateFinContrat: z.string().default(''),
   periodicite: z.string().default('شهريا / Mensuelle'),
@@ -46,28 +46,28 @@ export const gn51FormSchema = z.object({
   loyerExcedentaire: z.coerce.number().min(0).default(0),
 
   // Mode de paiement & certification
-  modePaiement: z.enum(['cheque_bancaire', 'cheque_postal', 'numeraire']).default('numeraire'),
+  modePaiement: z.enum(['cheque_bancaire', 'cheque_postal', 'numeraire', 'unspecified']).default('unspecified'),
   chequeBanqueNum: z.string().default(''),
   chequeBanqueDate: z.string().default(''),
   chequeBanqueAgence: z.string().default(''),
   chequePostalNum: z.string().default(''),
   chequePostalDate: z.string().default(''),
 
-  faitA: z.string().default('وهران'),
+  faitA: z.string().default(''),
   dateDeclaration: z.string().default(''),
 });
 
 export type GN51FormData = z.infer<typeof gn51FormSchema>;
 
 export const initialGN51Values: GN51FormData = {
-  wilaya: 'وهران',
-  structure: 'قباضة الضرائب وهران المركز',
+  wilaya: '',
+  structure: '',
 
   bailleurNom: '',
   bailleurAdresse: '',
-  bailleurCommune: 'وهران',
-  bailleurWilaya: 'وهران',
-  bailleurCodePostal: '31000',
+  bailleurCommune: '',
+  bailleurWilaya: '',
+  bailleurCodePostal: '',
   bailleurNif: '',
   bailleurNin: '',
 
@@ -79,16 +79,16 @@ export const initialGN51Values: GN51FormData = {
   preneurNif: '',
   preneurNin: '',
 
-  natureBien: 'شقة / Appartement',
+  natureBien: '',
   lieuSituation: '',
-  communeBien: 'وهران',
-  wilayaBien: 'وهران',
-  codePostalBien: '31000',
+  communeBien: '',
+  wilayaBien: '',
+  codePostalBien: '',
   articleImposition: '',
-  destination: 'habitation',
+  destination: 'unspecified',
   dateDebutContrat: '',
   dateFinContrat: '',
-  periodicite: 'شهريا / Mensuelle',
+  periodicite: '',
 
   isOverThreshold: false,
   loyerHabitation: 0,
@@ -97,13 +97,13 @@ export const initialGN51Values: GN51FormData = {
   loyerAgricole: 0,
   loyerExcedentaire: 0,
 
-  modePaiement: 'numeraire',
+  modePaiement: 'unspecified',
   chequeBanqueNum: '',
   chequeBanqueDate: '',
   chequeBanqueAgence: '',
   chequePostalNum: '',
   chequePostalDate: '',
 
-  faitA: 'وهران',
+  faitA: '',
   dateDeclaration: '',
 };

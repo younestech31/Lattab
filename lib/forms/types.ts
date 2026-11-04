@@ -39,4 +39,5 @@ export interface FillPdfOptions {
   values: Record<string, string | number | boolean | undefined | null>;
   fontUrl?: string;
   debug?: boolean;
+  expectedPages?: number;
 }

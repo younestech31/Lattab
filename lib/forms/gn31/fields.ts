@@ -56,10 +56,10 @@ export const GN31_FIELD_COORDINATES: FormFieldCoord[] = [
   { id: 'nature_terrain', page: 1, x: 356, y: 182, size: 10, align: 'center', maxWidth: 16 },
 
   // ب. تواريخ
-  { id: 'dateAchat', page: 1, x: 50, y: 144, size: 9, align: 'right', maxWidth: 450 },
-  { id: 'dateAchevement', page: 1, x: 50, y: 130, size: 9, align: 'right', maxWidth: 450 },
-  { id: 'dateOccupationPartielle', page: 1, x: 50, y: 115, size: 9, align: 'right', maxWidth: 450 },
-  { id: 'dateOccupationTotale', page: 1, x: 50, y: 101, size: 9, align: 'right', maxWidth: 450 },
+  { id: 'dateAchat', page: 1, x: 50, y: 144, size: 9, align: 'right', maxWidth: 450, format: 'date' },
+  { id: 'dateAchevement', page: 1, x: 50, y: 130, size: 9, align: 'right', maxWidth: 450, format: 'date' },
+  { id: 'dateOccupationPartielle', page: 1, x: 50, y: 115, size: 9, align: 'right', maxWidth: 450, format: 'date' },
+  { id: 'dateOccupationTotale', page: 1, x: 50, y: 101, size: 9, align: 'right', maxWidth: 450, format: 'date' },
 
   // ──────────────────────────────────────────
   // PAGE 2 — مواصفات ومساحات الملكية
@@ -203,10 +203,10 @@ export const GN31_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   { id: 'nature_terrain', page: 1, x: 200, y: 160, size: 10, align: 'center', maxWidth: 16 },
 
   // B. Dates
-  { id: 'dateAchat', page: 1, x: 135, y: 121, size: 9, align: 'left', maxWidth: 420 },
-  { id: 'dateAchevement', page: 1, x: 210, y: 108, size: 9, align: 'left', maxWidth: 340 },
-  { id: 'dateOccupationPartielle', page: 1, x: 245, y: 96, size: 9, align: 'left', maxWidth: 300 },
-  { id: 'dateOccupationTotale', page: 1, x: 190, y: 82, size: 9, align: 'left', maxWidth: 360 },
+  { id: 'dateAchat', page: 1, x: 135, y: 121, size: 9, align: 'left', maxWidth: 420, format: 'date' },
+  { id: 'dateAchevement', page: 1, x: 210, y: 108, size: 9, align: 'left', maxWidth: 340, format: 'date' },
+  { id: 'dateOccupationPartielle', page: 1, x: 245, y: 96, size: 9, align: 'left', maxWidth: 300, format: 'date' },
+  { id: 'dateOccupationTotale', page: 1, x: 190, y: 82, size: 9, align: 'left', maxWidth: 360, format: 'date' },
 
   // PAGE 2 — Consistance & Superficies
   // 1- Maison individuelle
@@ -327,7 +327,7 @@ export function mapGN31ToFieldValues(
     dateOccupationTotale: data.dateOccupationTotale || '',
 
     // Signature
-    faitA: (data.faitA || (isFr ? 'Oran' : 'وهران')).trim(),
+    faitA: data.faitA.trim(),
     dateDeclaration: (data.dateDeclaration || '').trim(),
     faitA_p4: data.declarationType === 'change' ? (data.faitA || (isFr ? 'Oran' : 'وهران')).trim() : '',
     dateDeclaration_p4: data.declarationType === 'change' ? (data.dateDeclaration || '').trim() : '',

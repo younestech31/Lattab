@@ -52,7 +52,7 @@ export const gn17FormSchema = z.object({
   fraisAutres: z.coerce.number().min(0).default(0), // ج: مصاريف أخرى مثبتة قانوناً
   valeurOrigine: z.coerce.number().min(0).default(0),
   fraisAcquisition: z.coerce.number().min(0).default(0),
-  useFlatExpenses: z.boolean().default(false), // 3%
+  acquisitionPriceUnknown: z.boolean().default(false), // 40% of sale price per Art. 78 CIDTA / LF 2026
   anneeDetention: z.coerce.number().min(0).max(100).default(0),
 
   // IV. Liquidation de l'impôt (الضريبة)
@@ -102,7 +102,7 @@ export const initialGN17Values: GN17FormData = {
   fraisAutres: 0,
   valeurOrigine: 0,
   fraisAcquisition: 0,
-  useFlatExpenses: false,
+  acquisitionPriceUnknown: false,
   anneeDetention: 0,
   isSolePrimaryResidence: false,
   faitA: '',

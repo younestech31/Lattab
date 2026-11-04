@@ -152,7 +152,7 @@ export default function GN8Step2Identity({ data, updateData, isAr }: Props) {
               type="text"
               maxLength={18}
               value={data.nin}
-              onChange={(e) => updateData({ nin: e.target.value.replace(/\D/g, '') })}
+              onChange={(e) => updateData({ nin: digitsOnly(e.target.value) })}
               placeholder="100000000000000000"
               className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 tracking-wider focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />

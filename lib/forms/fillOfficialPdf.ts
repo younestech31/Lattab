@@ -12,28 +12,18 @@ function fitTextInBox(
   text: string,
   initialSize: number,
   maxWidth?: number
-): { fontSize: number; textWidth: number; fittedText: string } {
+): { fontSize: number; textWidth: number; fittedText: string; fits: boolean } {
   let size = initialSize;
   let textWidth = font.widthOfTextAtSize(text, size);
-
   if (!maxWidth || maxWidth <= 0 || textWidth <= maxWidth) {
-    return { fontSize: size, textWidth, fittedText: text };
+    return { fontSize: size, textWidth, fittedText: text, fits: true };
   }
-
-  // 1. Smoothly scale font size down to minimum 9pt
-  while (textWidth > maxWidth && size > 9) {
-    size -= 0.5;
+  // Preserve every character. Reduce the font only to a legible 6pt minimum.
+  while (textWidth > maxWidth && size > 6) {
+    size = Math.max(6, size - 0.5);
     textWidth = font.widthOfTextAtSize(text, size);
   }
-
-  // 2. Truncate if still exceeds maxWidth at 9pt
-  let fittedText = text;
-  while (textWidth > maxWidth && fittedText.length > 3) {
-    fittedText = fittedText.slice(0, -1);
-    textWidth = font.widthOfTextAtSize(fittedText + '...', size);
-  }
-
-  return { fontSize: size, textWidth: font.widthOfTextAtSize(fittedText + '...', size), fittedText: fittedText + '...' };
+  return { fontSize: size, textWidth, fittedText: text, fits: textWidth <= maxWidth };
 }
 
 /**
@@ -52,60 +42,62 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
 
   // 2. Load PDF document into pdf-lib
   const pdfDoc = await PDFDocument.load(templateBytes);
+  if (options.expectedPages !== undefined && pdfDoc.getPageCount() !== options.expectedPages) {
+    throw new Error(`عدد صفحات النموذج غير مطابق: المتوقع ${options.expectedPages}، والملف يحتوي على ${pdfDoc.getPageCount()} صفحة.`);
+  }
   pdfDoc.registerFontkit(fontkit);
 
-  // 3. Load & embed required Arabic custom font (Amiri-Regular)
-  let customFont: PDFFont;
-  try {
-    let fontRes = await fetch(fontUrl);
-    if (!fontRes.ok) {
-      const altUrl = fontUrl.toLowerCase();
-      if (altUrl !== fontUrl) {
-        fontRes = await fetch(altUrl);
+  // Load Amiri only when at least one value contains Arabic.
+  const requiresArabicFont = Object.values(values).some(
+    (value) => value !== undefined && value !== null && value !== '' && hasArabic(String(value))
+  );
+  let customFont: PDFFont | null = null;
+  if (requiresArabicFont) {
+    try {
+      let fontRes = await fetch(fontUrl);
+      if (!fontRes.ok) {
+        const altUrl = fontUrl.toLowerCase();
+        if (altUrl !== fontUrl) fontRes = await fetch(altUrl);
       }
-    }
-    if (!fontRes.ok) {
-      throw new Error(`فشل جلب الخط العربي (HTTP ${fontRes.status})`);
-    }
-    const fontBytes = await fontRes.arrayBuffer();
-    customFont = await pdfDoc.embedFont(fontBytes);
-
-    // Override fontkit layout engine so that custom-shaped Presentation Forms glyphs are rendered as-is
-    const fontEmbedder = (customFont as unknown as { embedder?: { font?: { layout?: (text: string) => unknown; glyphForCodePoint?: (codePoint: number) => { advanceWidth: number } | null } } }).embedder;
-    const fkFont = fontEmbedder?.font;
-    if (fkFont && typeof fkFont.glyphForCodePoint === 'function') {
-      fkFont.layout = (text: string) => {
-        const glyphs = Array.from(text).map((ch) => fkFont.glyphForCodePoint!(ch.codePointAt(0) || 0));
-        return {
-          glyphs,
-          positions: glyphs.map((g: { advanceWidth: number } | null) => ({
-            xAdvance: g ? g.advanceWidth : 0,
-            yAdvance: 0,
-            xOffset: 0,
-            yOffset: 0,
-          })),
+      if (!fontRes.ok) throw new Error(`فشل جلب الخط العربي (HTTP ${fontRes.status})`);
+      const fontBytes = await fontRes.arrayBuffer();
+      customFont = await pdfDoc.embedFont(fontBytes);
+      const fontEmbedder = (customFont as unknown as { embedder?: { font?: { layout?: (text: string) => unknown; glyphForCodePoint?: (codePoint: number) => { advanceWidth: number } | null } } }).embedder;
+      const fkFont = fontEmbedder?.font;
+      if (fkFont && typeof fkFont.glyphForCodePoint === 'function') {
+        fkFont.layout = (text: string) => {
+          const glyphs = Array.from(text).map((ch) => fkFont.glyphForCodePoint!(ch.codePointAt(0) || 0));
+          return {
+            glyphs,
+            positions: glyphs.map((g: { advanceWidth: number } | null) => ({
+              xAdvance: g ? g.advanceWidth : 0,
+              yAdvance: 0,
+              xOffset: 0,
+              yOffset: 0,
+            })),
+          };
         };
-      };
+      }
+    } catch (err: unknown) {
+      const errMsg = err instanceof Error ? err.message : String(err);
+      throw new Error(`فشل تحميل أو تضمين الخط العربي الرسمي (${fontUrl}): ${errMsg}`);
     }
-  } catch (err: unknown) {
-    const errMsg = err instanceof Error ? err.message : String(err);
-    throw new Error(`فشل تحميل أو تضمين الخط العربي الرسمي (${fontUrl}): ${errMsg}`);
   }
-
-  // Standard fallback font for ASCII / numbers / debug
   const standardFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-
   const pageCount = pdfDoc.getPageCount();
 
-  // 4. Fill fields onto coordinates
+  // 4. Validate and fill every configured coordinate.
   for (const field of fields) {
     const pageIndex = field.page - 1;
-    if (pageIndex < 0 || pageIndex >= pageCount) {
-      console.warn(`Field ${field.id} has invalid page ${field.page}. Max pages is ${pageCount}.`);
-      continue;
+    if (!Number.isInteger(pageIndex) || pageIndex < 0 || pageIndex >= pageCount) {
+      throw new Error(`حقل PDF "${field.id}" يشير إلى صفحة غير موجودة (${field.page} من ${pageCount}).`);
     }
-
     const page = pdfDoc.getPage(pageIndex);
+    const pageWidth = page.getWidth();
+    const pageHeight = page.getHeight();
+    if (!Number.isFinite(field.x) || !Number.isFinite(field.y) || field.x < 0 || field.y < 0 || field.x >= pageWidth || field.y >= pageHeight) {
+      throw new Error(`إحداثيات حقل PDF "${field.id}" تقع خارج حدود الصفحة ${field.page}.`);
+    }
     const rawValue = values[field.id];
 
     // Debug overlay if requested
@@ -152,8 +144,13 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
       formattedText = `${rawValue} %`;
     }
 
+    if (field.format === 'date') {
+      const isoDate = formattedText.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (isoDate) formattedText = `${isoDate[3]}/${isoDate[2]}/${isoDate[1]}`;
+    }
     const isArabic = hasArabic(formattedText);
-    const activeFont = isArabic ? customFont : (customFont || standardFont);
+    if (isArabic && !customFont) throw new Error(`تعذر تجهيز الخط العربي للحقل "${field.id}".`);
+    const activeFont = isArabic ? customFont! : standardFont;
     const initialFontSize = field.size || 10;
     const fontColor = field.color
       ? rgb(field.color.r, field.color.g, field.color.b)
@@ -162,12 +159,13 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
     const rawTextToDraw = shapeArabicForPdf(formattedText);
 
     // Fit text within box bounds
-    const { fontSize, textWidth, fittedText } = fitTextInBox(
+    const { fontSize, textWidth, fittedText, fits } = fitTextInBox(
       activeFont,
       rawTextToDraw,
       initialFontSize,
       field.maxWidth
     );
+    if (!fits) throw new Error(`النص في الحقل "${field.id}" أطول من المساحة المتاحة. لم يتم اقتطاعه؛ اختصره أو راجع مساحة الخانة.`);
 
     // Handle text alignment
     let drawX = field.x;
@@ -192,21 +190,7 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
         color: fontColor,
       });
     } catch (err) {
-      if (isArabic) {
-        throw new Error(`خطأ في كتابة النص العربي للحقل ${field.id}: ${err instanceof Error ? err.message : String(err)}`);
-      }
-      // Non-Arabic fallback
-      try {
-        page.drawText(String(rawValue), {
-          x: drawX,
-          y: field.y,
-          size: fontSize,
-          font: standardFont,
-          color: fontColor,
-        });
-      } catch {
-        // Ignore non-fatal drawing error on standard fallback
-      }
+      throw new Error(`تعذر رسم النص في حقل PDF "${field.id}": ${err instanceof Error ? err.message : String(err)}`);
     }
   }
 

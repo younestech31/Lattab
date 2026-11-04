@@ -84,7 +84,7 @@ export default function GN17FormFiller() {
       otherExpenses: data.fraisAutres,
       acquisitionPrice: data.valeurOrigine,
       acquisitionExpenses: data.fraisAcquisition,
-      useFlatExpenses: data.useFlatExpenses,
+      acquisitionPriceUnknown: data.acquisitionPriceUnknown,
       acquisitionDate: data.dateActeOrigine,
       saleDate: data.dateActeCession,
       detentionYears: data.anneeDetention,
@@ -135,6 +135,7 @@ export default function GN17FormFiller() {
 
       const pdfBytes = await fillOfficialPdf({
         templateUrl,
+        expectedPages: formDef.pages,
         fields: fieldCoords,
         values: fieldValues,
         debug: isDebug,

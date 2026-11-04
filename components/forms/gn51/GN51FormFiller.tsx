@@ -104,6 +104,12 @@ export default function GN51FormFiller() {
 
   const handleDownload = async () => {
     if (!formDef) return;
+    if (calcResult.thresholdMismatch) {
+      setDownloadError(isAr
+        ? 'تعذر إنشاء ج51: يجب أن يتوافق مجموع الإيجارات السنوي مع شريحة 1.800.000 دج.'
+        : 'Impossible de générer G51 : le total annuel doit correspondre au seuil de 1.800.000 DA.');
+      return;
+    }
     setIsDownloading(true);
     setDownloadError(null);
 

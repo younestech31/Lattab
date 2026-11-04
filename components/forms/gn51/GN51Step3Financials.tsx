@@ -85,6 +85,14 @@ export default function GN51Step3Financials({ data, updateData, calc, isAr }: Pr
         </div>
       </div>
 
+      {calc.thresholdMismatch && (
+        <div role="alert" className="rounded-xl border border-red-300 bg-red-50 p-4 text-xs text-red-900">
+          {isAr
+            ? 'اختيار شريحة الضريبة لا يتوافق مع مجموع الإيجارات السنوي. صحّح المجموع أو اختيار الشريحة قبل تنزيل التصريح.'
+            : 'Le seuil sélectionné ne correspond pas au montant annuel total des loyers. Corrigez le montant ou la tranche avant de télécharger.'}
+        </div>
+      )}
+
       {/* Case 1: ≤ 1.800.000 DA */}
       {!data.isOverThreshold ? (
         <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-6">
@@ -155,10 +163,10 @@ export default function GN51Step3Financials({ data, updateData, calc, isAr }: Pr
             <div className="pt-4 grid sm:grid-cols-12 gap-3 items-center">
               <div className="sm:col-span-6">
                 <label className="text-xs font-bold text-gray-800 block">
-                  {isAr ? 'عقارات غير مبنية ذات استعمال غير فلاحي' : 'Propriétés non bâties non agricoles'}
+                  {isAr ? 'أراضٍ غير مبنية ذات استعمال صناعي' : 'Terrains non bâtis à usage industriel'}
                 </label>
                 <span className="text-[11px] text-gray-500">
-                  {isAr ? 'معدل الضريبة: 15%' : 'Taux officiel : 15%'}
+                  {isAr ? 'معدل الضريبة: 15% للأراضي ذات الاستعمال الصناعي' : 'Taux : 15% pour les terrains à usage industriel'}
                 </span>
               </div>
               <div className="sm:col-span-3">

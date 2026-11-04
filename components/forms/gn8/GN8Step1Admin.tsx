@@ -215,7 +215,7 @@ export default function GN8Step1Admin({ data, updateData, isAr }: Props) {
               type="text"
               maxLength={20}
               value={data.nif}
-              onChange={(e) => updateData({ nif: e.target.value.replace(/\D/g, '') })}
+              onChange={(e) => updateData({ nif: digitsOnly(e.target.value) })}
               placeholder="00000000000000000000"
               className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 tracking-wider focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />

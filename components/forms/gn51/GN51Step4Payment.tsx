@@ -29,6 +29,13 @@ export default function GN51Step4Payment({
 
   return (
     <div className="space-y-8">
+      {calc.thresholdMismatch && (
+        <div role="alert" className="rounded-xl border border-red-300 bg-red-50 p-4 text-xs text-red-900">
+          {isAr
+            ? 'لا يمكن تنزيل ج51: المبلغ السنوي المختار لا يطابق شريحة 1.800.000 دج. راجع المجموع السنوي.'
+            : 'Téléchargement bloqué : le montant annuel ne correspond pas au seuil de 1.800.000 DA. Vérifiez le total.'}
+        </div>
+      )}
       {/* Mode de paiement */}
       <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-4">
         <div className="flex items-center gap-2 text-emerald-900 font-bold text-base">

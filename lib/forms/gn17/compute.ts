@@ -4,7 +4,7 @@ export interface GN17ComputeInput {
   otherExpenses?: number; // ج: مصاريف أخرى مثبتة قانوناً
   acquisitionPrice: number; // د: سعر أو قيمة التملك الأصلية
   acquisitionExpenses: number; // هـ: مصاريف التملك والصيانة
-  useFlatExpenses?: boolean; // خيار المصاريف الحكمية 3% من سعر التملك
+  acquisitionPriceUnknown?: boolean; // 40% of sale price when the original value cannot be determined
   acquisitionDate?: string; // تاريخ التملك (YYYY-MM-DD)
   saleDate?: string; // تاريخ التنازل (YYYY-MM-DD)
   detentionYears?: number; // عدد سنوات الحيازة (يدوياً أو محسوبة)
@@ -16,10 +16,10 @@ export interface GN17ComputeResult {
   saleExpenses: number; // ب
   otherExpenses: number; // ج: مصاريف أخرى مثبتة قانوناً
   netSalePrice: number; // (أ - ب - ج) الأساس الصافي للتنازل
-  acquisitionPrice: number; // د
-  acquisitionExpenses: number; // هـ
-  totalAcquisitionCost: number; // د + هـ
-  grossPlusValue: number; // و = (أ - ب - ج) - (د + هـ)
+  acquisitionPrice: number; // د (القيمة الفعلية أو 40% جزافياً)
+  acquisitionExpenses: number; // هـ بعد تطبيق سقف الخصم
+  totalAcquisitionCost: number; // د
+  grossPlusValue: number; // و = صافي سعر التنازل بعد الخصومات - د
   yearsHeld: number; // عدد سنوات الحيازة
   abattementRate: number; // نسبة التخفيض للـمدة (0% إلى 50%)
   abattementAmount: number; // ز = و × نسبة التخفيض
@@ -53,25 +53,36 @@ export function calculateDetentionYears(acquisitionDate?: string, saleDate?: str
  * Computes official Algerian Capital Gain Tax (IRG Plus-Value Immobilière - G N° 17).
  * Rule: 5% per year starting from 3rd year of possession, capped at 50%.
  * Base Tax: 15%.
- * Special reduction: 50% on collective housing sole primary residence.
+ * Special reduction: 50% on the sole primary residence in an individual or collective building.
  */
 export function computeGN17(input: GN17ComputeInput): GN17ComputeResult {
   const salePrice = Math.max(0, Number(input.salePrice) || 0);
   const saleExpenses = Math.max(0, Number(input.saleExpenses) || 0);
-  const otherExpenses = Math.max(0, Number(input.otherExpenses) || 0);
-  const acquisitionPrice = Math.max(0, Number(input.acquisitionPrice) || 0);
+  const requestedOtherExpenses = Math.max(0, Number(input.otherExpenses) || 0);
+  const requestedAcquisitionExpenses = Math.max(0, Number(input.acquisitionExpenses) || 0);
+  const acquisitionPriceUnknown = Boolean(input.acquisitionPriceUnknown);
+  const acquisitionPrice = acquisitionPriceUnknown
+    ? Math.round(salePrice * 0.40)
+    : Math.max(0, Number(input.acquisitionPrice) || 0);
 
-  // If 3% flat expense requested or acquisitionExpenses not provided
-  let acquisitionExpenses = Math.max(0, Number(input.acquisitionExpenses) || 0);
-  if (input.useFlatExpenses && acquisitionPrice > 0) {
-    acquisitionExpenses = Math.round(acquisitionPrice * 0.03);
+  // DGI rules: aggregate deductible rights/taxes and documented expenses are
+  // capped at 30% of acquisition/creation value. The 40% forfait excludes
+  // additional acquisition, maintenance and improvement expenses altogether.
+  let deductibleSaleExpenses = 0;
+  let deductibleOtherExpenses = 0;
+  let deductibleAcquisitionExpenses = 0;
+  if (!acquisitionPriceUnknown) {
+    const requestedTotal = saleExpenses + requestedOtherExpenses + requestedAcquisitionExpenses;
+    const allowedTotal = Math.min(requestedTotal, Math.round(acquisitionPrice * 0.30));
+    if (requestedTotal > 0 && allowedTotal > 0) {
+      const scale = allowedTotal / requestedTotal;
+      deductibleSaleExpenses = Math.floor(saleExpenses * scale);
+      deductibleOtherExpenses = Math.floor(requestedOtherExpenses * scale);
+      deductibleAcquisitionExpenses = Math.max(0, allowedTotal - deductibleSaleExpenses - deductibleOtherExpenses);
+    }
   }
-
-  // الأساس الصافي للتنازل = (أ - ب - ج)
-  const netSalePrice = Math.max(0, salePrice - saleExpenses - otherExpenses);
-  const totalAcquisitionCost = acquisitionPrice + acquisitionExpenses;
-
-  // Plus-value brute (و) = ((أ - ب - ج) - (د + هـ))
+  const netSalePrice = Math.max(0, salePrice - deductibleSaleExpenses - deductibleOtherExpenses - deductibleAcquisitionExpenses);
+  const totalAcquisitionCost = acquisitionPrice;
   const rawPlusValue = netSalePrice - totalAcquisitionCost;
   const grossPlusValue = Math.max(0, rawPlusValue);
 
@@ -111,11 +122,11 @@ export function computeGN17(input: GN17ComputeInput): GN17ComputeResult {
 
   return {
     salePrice,
-    saleExpenses,
-    otherExpenses,
+    saleExpenses: deductibleSaleExpenses,
+    otherExpenses: deductibleOtherExpenses,
     netSalePrice,
     acquisitionPrice,
-    acquisitionExpenses,
+    acquisitionExpenses: deductibleAcquisitionExpenses,
     totalAcquisitionCost,
     grossPlusValue,
     yearsHeld,

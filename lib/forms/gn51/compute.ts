@@ -13,6 +13,8 @@ export interface GN51ComputeResult {
   totalGrossLoyer: number;
   totalTaxDue: number;
   taxExcedentaire: number;
+  annualGrossLoyer: number;
+  thresholdMismatch: boolean;
 }
 
 export function computeGN51(data: GN51FormData): GN51ComputeResult {
@@ -35,8 +37,12 @@ export function computeGN51(data: GN51FormData): GN51ComputeResult {
 
   const totalGrossUnder = loyerHabitation + loyerCommercial + loyerNonBati + loyerAgricole;
   const totalTaxUnder = taxHabitation + taxCommercial + taxNonBati + taxAgricole;
+  const annualGrossLoyer = isOver ? loyerExcedentaire : totalGrossUnder;
+  const thresholdMismatch = isOver
+    ? loyerExcedentaire <= 1_800_000
+    : totalGrossUnder > 1_800_000;
 
-  const totalGrossLoyer = isOver ? loyerExcedentaire : totalGrossUnder;
+  const totalGrossLoyer = annualGrossLoyer;
   const totalTaxDue = isOver ? taxExcedentaire : totalTaxUnder;
 
   return {
@@ -52,5 +58,7 @@ export function computeGN51(data: GN51FormData): GN51ComputeResult {
     totalGrossLoyer,
     totalTaxDue,
     taxExcedentaire,
+    annualGrossLoyer,
+    thresholdMismatch,
   };
 }
