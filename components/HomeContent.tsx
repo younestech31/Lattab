@@ -31,7 +31,7 @@ function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
 
   const notarySchema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "GovernmentService",
+    "@type": "Notary",
     "@id": notaryId,
     "url": pageUrl,
     "name": OFFICE_INFO.title[lang],
