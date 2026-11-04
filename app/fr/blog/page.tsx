@@ -33,7 +33,7 @@ export async function generateMetadata({
     };
   }
 
-  const desc = 'Un guide complet des lois immobilières et des procédures notariales en Algérie. Articles spécialisés de l’Office de Office Notarial - Oran.';
+  const desc = 'Un guide complet des lois immobilières et des procédures notariales en Algérie. Articles spécialisés de l’Office Public Notarial de Maître Lattab Mohamed à Oran.';
   assertDescriptionLength(desc, 'French blog page main');
 
   return {
