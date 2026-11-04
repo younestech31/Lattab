@@ -8,7 +8,7 @@ import ObfuscatedContact from '@/components/ui/ObfuscatedContact';
 
 export const metadata: Metadata = {
   title: { absolute: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران' },
-  description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لديوان التوثيق - وهران بوهران: كيفية جمع بياناتك واستخدامها وحمايتها، والتزاماتنا القانونية والمهنية تجاهك كعميل.',
+  description: 'الشروط والأحكام وسياسة الخصوصية لموقع ديوان التوثيق بوهران: جمع البيانات الشخصية ومعالجتها وحمايتها وحقوق المستخدمين.',
   alternates: {
     canonical: `${SITE_URL}/terms-privacy`,
     languages: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: `${SITE_URL}/terms-privacy`,
     title: 'الشروط والأحكام وسياسة الخصوصية — موثق وهران',
-    description: 'تعرف على الشروط والأحكام وسياسة الخصوصية لديوان التوثيق - وهران بوهران: كيفية جمع بياناتك واستخدامها وحمايتها.',
+    description: 'الشروط والأحكام وسياسة الخصوصية لموقع ديوان التوثيق بوهران، بما يشمل جمع البيانات الشخصية واستخدامها وحمايتها.',
     siteName: 'ديوان التوثيق ببلدية وهران',
     locale: 'ar_DZ',
     alternateLocale: ['fr_DZ'],
