@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLang } from '@/lib/i18n';
 import { getFormBySlug } from '@/lib/forms/registry';
-import { GN51FormData, initialGN51Values } from '@/lib/forms/gn51/schema';
+import { GN51FormData, initialGN51Values, gn51FormSchema } from '@/lib/forms/gn51/schema';
 import { computeGN51 } from '@/lib/forms/gn51/compute';
 import {
   GN51_FIELD_COORDINATES,
@@ -20,6 +20,13 @@ import GN51Step2Property from './GN51Step2Property';
 import GN51Step3Financials from './GN51Step3Financials';
 import GN51Step4Payment from './GN51Step4Payment';
 
+function readGN51Draft() {
+  return loadDraft<GN51FormData>('gn51', (value) => {
+    const parsed = gn51FormSchema.safeParse(value);
+    return parsed.success ? parsed.data : null;
+  });
+}
+
 export default function GN51FormFiller() {
   const { lang } = useLang();
   const isAr = lang === 'ar';
@@ -28,7 +35,7 @@ export default function GN51FormFiller() {
 
   const formDef = getFormBySlug('gn51');
   const [data, setData] = useState<GN51FormData>(() => {
-    const draft = loadDraft<GN51FormData>('gn51');
+    const draft = readGN51Draft();
     return draft?.data ?? initialGN51Values;
   });
   const [savedAt, setSavedAt] = useState<string | null>(() => {
@@ -63,8 +70,8 @@ export default function GN51FormFiller() {
       return;
     }
     const timer = setTimeout(() => {
-      saveDraft('gn51', data);
-      setSavedAt(new Date().toISOString());
+      const saved = saveDraft('gn51', data);
+      setSavedAt(saved ? new Date().toISOString() : null);
     }, 500);
     return () => clearTimeout(timer);
   }, [data]);
@@ -121,6 +128,7 @@ export default function GN51FormFiller() {
 
       const pdfBytes = await fillOfficialPdf({
         templateUrl,
+        expectedPages: formDef.pages,
         fields: fieldCoords,
         values: fieldValues,
         debug: isDebug,

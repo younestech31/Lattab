@@ -257,8 +257,8 @@ export default function GN31Step3Property({ data, updateData, isAr }: Props) {
                   <input
                     type="radio"
                     name="isLoue"
-                    checked={!data.isLoue}
-                    onChange={() => updateData({ isLoue: false })}
+                    checked={data.isLoueSelected && !data.isLoue}
+                    onChange={() => updateData({ isLoue: false, isLoueSelected: true })}
                     className="text-emerald-700 focus:ring-emerald-500"
                   />
                   <span>{isAr ? 'غير مؤجر (شاغل ذاتي)' : 'Non loué'}</span>
@@ -267,8 +267,8 @@ export default function GN31Step3Property({ data, updateData, isAr }: Props) {
                   <input
                     type="radio"
                     name="isLoue"
-                    checked={data.isLoue}
-                    onChange={() => updateData({ isLoue: true })}
+                    checked={data.isLoueSelected && data.isLoue}
+                    onChange={() => updateData({ isLoue: true, isLoueSelected: true })}
                     className="text-emerald-700 focus:ring-emerald-500"
                   />
                   <span>{isAr ? 'مُؤجَّر' : 'Loué'}</span>

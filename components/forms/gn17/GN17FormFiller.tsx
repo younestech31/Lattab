@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLang } from '@/lib/i18n';
 import { getFormBySlug } from '@/lib/forms/registry';
-import { GN17FormData, initialGN17Values } from '@/lib/forms/gn17/schema';
+import { GN17FormData, initialGN17Values, gn17FormSchema } from '@/lib/forms/gn17/schema';
 import { computeGN17 } from '@/lib/forms/gn17/compute';
 import { GN17_FIELD_COORDINATES, GN17_FIELD_COORDINATES_FR, mapGN17ToFieldValues } from '@/lib/forms/gn17/fields';
 import { fillOfficialPdf, downloadPdfBytes } from '@/lib/forms/fillOfficialPdf';
@@ -16,6 +16,13 @@ import GN17Step2Property from './GN17Step2Property';
 import GN17Step3Financials from './GN17Step3Financials';
 import GN17Step4Liquidation from './GN17Step4Liquidation';
 
+function readGN17Draft() {
+  return loadDraft<GN17FormData>('gn17', (value) => {
+    const parsed = gn17FormSchema.safeParse(value);
+    return parsed.success ? parsed.data : null;
+  });
+}
+
 export default function GN17FormFiller() {
   const { lang } = useLang();
   const isAr = lang === 'ar';
@@ -24,7 +31,7 @@ export default function GN17FormFiller() {
 
   const formDef = getFormBySlug('gn17');
   const [data, setData] = useState<GN17FormData>(() => {
-    const draft = loadDraft<GN17FormData>('gn17');
+    const draft = readGN17Draft();
     return draft?.data ?? initialGN17Values;
   });
   const [savedAt, setSavedAt] = useState<string | null>(() => {
@@ -59,8 +66,8 @@ export default function GN17FormFiller() {
       return;
     }
     const timer = setTimeout(() => {
-      saveDraft('gn17', data);
-      setSavedAt(new Date().toISOString());
+      const saved = saveDraft('gn17', data);
+      setSavedAt(saved ? new Date().toISOString() : null);
     }, 500);
     return () => clearTimeout(timer);
   }, [data]);
@@ -96,7 +103,7 @@ export default function GN17FormFiller() {
     data.fraisAutres,
     data.valeurOrigine,
     data.fraisAcquisition,
-    data.useFlatExpenses,
+    data.acquisitionPriceUnknown,
     data.dateActeOrigine,
     data.dateActeCession,
     data.anneeDetention,

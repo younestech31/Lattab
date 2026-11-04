@@ -10,11 +10,11 @@ export const gn8FormSchema = z.object({
   nai: z.string().default(''), // 11 digits (رقم المادة)
 
   // النظام الجبائي
-  regime: z.enum(['ibs', 'irg', 'ifu']).default('ifu'),
+  regime: z.enum(['ibs', 'irg', 'ifu', 'unspecified']).default('unspecified'),
   irgCategorie: z.string().default(''), // صنف الخضوع في IRG (مثل BIC, BNC, مهن حرة)
 
   // معلومات المكلف بالضريبة
-  taxpayerType: z.enum(['physique', 'morale', 'auto_entrepreneur']).default('physique'),
+  taxpayerType: z.enum(['physique', 'morale', 'auto_entrepreneur', 'unspecified']).default('unspecified'),
   nomRaisonSociale: z.string().default(''),
   nin: z.string().default(''), // 18 digits (رقم التعريف الوطني)
   formeJuridique: z.string().default(''),
@@ -37,7 +37,7 @@ export const gn8FormSchema = z.object({
   numeroAgrement: z.string().default(''), // رقم الاعتماد / بطاقة الحرفي / المقاول الذاتي
 
   // صفة المصرح وتاريخ البداية
-  qualiteDeclarant: z.enum(['proprietaire', 'locataire', 'gerant_libre', 'gerant_salarie']).default('proprietaire'),
+  qualiteDeclarant: z.enum(['proprietaire', 'locataire', 'gerant_libre', 'gerant_salarie', 'unspecified']).default('unspecified'),
   dateDebutActivite: z.string().default(''),
 
   // التصديق والإقرار
@@ -52,9 +52,9 @@ export const initialGN8Values: GN8FormData = {
   service: '',
   nif: '',
   nai: '',
-  regime: 'ifu',
+  regime: 'unspecified',
   irgCategorie: '',
-  taxpayerType: 'physique',
+  taxpayerType: 'unspecified',
   nomRaisonSociale: '',
   nin: '',
   formeJuridique: '',
@@ -71,7 +71,7 @@ export const initialGN8Values: GN8FormData = {
   email: '',
   numeroRc: '',
   numeroAgrement: '',
-  qualiteDeclarant: 'proprietaire',
+  qualiteDeclarant: 'unspecified',
   dateDebutActivite: '',
   faitA: '',
   dateDeclaration: '',

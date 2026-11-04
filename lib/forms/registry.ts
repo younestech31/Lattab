@@ -101,8 +101,8 @@ export const FORM_REGISTRY: FormalFormDefinition[] = [
     pages: 2,
     enabled: true,
     badge: {
-      ar: 'يُكتتب قبل 20 من الشهر الموالي',
-      fr: 'Au plus tard le 20 du mois suivant',
+      ar: 'اليوم 20 بعد تحصيل الإيجار',
+      fr: 'Le 20 après encaissement du loyer',
     },
   },
 ];

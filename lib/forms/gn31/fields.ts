@@ -1,5 +1,6 @@
 import { FormFieldCoord } from '../types';
 import { GN31FormData } from './schema';
+import { digitsOnly } from '../normalizeDigits';
 
 /**
  * Coordinate mapping for official Algerian Tax Declaration Série G N° 31 (Taxe Foncière).
@@ -299,7 +300,7 @@ export function mapGN31ToFieldValues(
   data: GN31FormData,
   lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
-  const isFr = lang === 'fr';
+  
   const cleanWilaya = data.directionWilaya
     .replace(/^(مديرية الضرائب لولاية|DIW de)\s*/iu, '')
     .trim();
@@ -329,24 +330,24 @@ export function mapGN31ToFieldValues(
     // Signature
     faitA: data.faitA.trim(),
     dateDeclaration: (data.dateDeclaration || '').trim(),
-    faitA_p4: data.declarationType === 'change' ? (data.faitA || (isFr ? 'Oran' : 'وهران')).trim() : '',
+    faitA_p4: data.declarationType === 'change' ? data.faitA.trim() : '',
     dateDeclaration_p4: data.declarationType === 'change' ? (data.dateDeclaration || '').trim() : '',
   };
 
   // NIF digits (up to 20)
-  const cleanNif = (data.nif || '').replace(/\D/g, '');
+  const cleanNif = digitsOnly(data.nif || '');
   for (let i = 0; i < 20; i++) {
     values[`nif_${i}`] = cleanNif[i] || '';
   }
 
   // NAI digits (up to 11)
-  const cleanNai = (data.nai || '').replace(/\D/g, '');
+  const cleanNai = digitsOnly(data.nai || '');
   for (let i = 0; i < 11; i++) {
     values[`nai_${i}`] = cleanNai[i] || '';
   }
 
   // NIN digits (up to 18)
-  const cleanNin = (data.nin || '').replace(/\D/g, '');
+  const cleanNin = digitsOnly(data.nin || '');
   for (let i = 0; i < 18; i++) {
     values[`nin_${i}`] = cleanNin[i] || '';
   }
@@ -364,7 +365,7 @@ export function mapGN31ToFieldValues(
 
     values.qualite_prop_occupant = data.qualitePhysique === 'proprietaire' ? 'X' : '';
     values.qualite_usufruitier = data.qualitePhysique === 'usufruitier' ? 'X' : '';
-  } else {
+  } else if (data.occupantType === 'morale') {
     values.nomSociete = data.nomSociete;
     values.siegeSocial = data.siegeSocial;
     values.telSociete = data.telSociete;
@@ -386,8 +387,8 @@ export function mapGN31ToFieldValues(
   if (data.natureBien === 'individuel') {
     values.indiv_res_principale = data.usageResidence === 'principale' ? 'X' : '';
     values.indiv_res_secondaire = data.usageResidence === 'secondaire' ? 'X' : '';
-    values.indiv_loue = data.isLoue ? 'X' : '';
-    values.indiv_non_loue = !data.isLoue ? 'X' : '';
+    values.indiv_loue = data.isLoueSelected && data.isLoue ? 'X' : '';
+    values.indiv_non_loue = data.isLoueSelected && !data.isLoue ? 'X' : '';
 
     if (data.superficieTotale > 0) values.indiv_sup_totale = `${data.superficieTotale}`;
     if (data.superficieHabitation > 0) values.indiv_sup_habitation = `${data.superficieHabitation}`;
@@ -397,8 +398,8 @@ export function mapGN31ToFieldValues(
   } else if (data.natureBien === 'appartement') {
     values.app_res_principale = data.usageResidence === 'principale' ? 'X' : '';
     values.app_res_secondaire = data.usageResidence === 'secondaire' ? 'X' : '';
-    values.app_loue = data.isLoue ? 'X' : '';
-    values.app_non_loue = !data.isLoue ? 'X' : '';
+    values.app_loue = data.isLoueSelected && data.isLoue ? 'X' : '';
+    values.app_non_loue = data.isLoueSelected && !data.isLoue ? 'X' : '';
 
     if (data.superficieTotale > 0) values.app_sup_totale = `${data.superficieTotale}`;
     if (data.superficieHabitation > 0) values.app_sup_habitation = `${data.superficieHabitation}`;

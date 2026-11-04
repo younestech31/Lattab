@@ -13,8 +13,10 @@ export interface GN17ComputeInput {
 
 export interface GN17ComputeResult {
   salePrice: number; // أ
-  saleExpenses: number; // ب
-  otherExpenses: number; // ج: مصاريف أخرى مثبتة قانوناً
+  saleExpenses: number; // ب (المبلغ الفعلي المثبت)
+  otherExpenses: number; // ج (المبلغ الفعلي المثبت)
+  deductibleExpensesTotal: number; // مجموع الخصومات المسموح بها بعد تطبيق سقف 30%
+  deductibleExpensesCap: number; // 30% من قيمة الاقتناء
   netSalePrice: number; // (أ - ب - ج) الأساس الصافي للتنازل
   acquisitionPrice: number; // د (القيمة الفعلية أو 40% جزافياً)
   acquisitionExpenses: number; // هـ بعد تطبيق سقف الخصم
@@ -65,23 +67,15 @@ export function computeGN17(input: GN17ComputeInput): GN17ComputeResult {
     ? Math.round(salePrice * 0.40)
     : Math.max(0, Number(input.acquisitionPrice) || 0);
 
-  // DGI rules: aggregate deductible rights/taxes and documented expenses are
-  // capped at 30% of acquisition/creation value. The 40% forfait excludes
-  // additional acquisition, maintenance and improvement expenses altogether.
-  let deductibleSaleExpenses = 0;
-  let deductibleOtherExpenses = 0;
-  let deductibleAcquisitionExpenses = 0;
-  if (!acquisitionPriceUnknown) {
-    const requestedTotal = saleExpenses + requestedOtherExpenses + requestedAcquisitionExpenses;
-    const allowedTotal = Math.min(requestedTotal, Math.round(acquisitionPrice * 0.30));
-    if (requestedTotal > 0 && allowedTotal > 0) {
-      const scale = allowedTotal / requestedTotal;
-      deductibleSaleExpenses = Math.floor(saleExpenses * scale);
-      deductibleOtherExpenses = Math.floor(requestedOtherExpenses * scale);
-      deductibleAcquisitionExpenses = Math.max(0, allowedTotal - deductibleSaleExpenses - deductibleOtherExpenses);
-    }
-  }
-  const netSalePrice = Math.max(0, salePrice - deductibleSaleExpenses - deductibleOtherExpenses - deductibleAcquisitionExpenses);
+  // The DGI caps the combined deductible amount at 30% of acquisition value.
+  // Keep real itemized expenses for the PDF, but use only the capped total
+  // when calculating the taxable gain. The 40% forfait excludes extra costs.
+  const requestedTotal = saleExpenses + requestedOtherExpenses + requestedAcquisitionExpenses;
+  const deductibleExpensesCap = acquisitionPriceUnknown ? 0 : Math.round(acquisitionPrice * 0.30);
+  const deductibleExpensesTotal = acquisitionPriceUnknown
+    ? 0
+    : Math.min(requestedTotal, deductibleExpensesCap);
+  const netSalePrice = Math.max(0, salePrice - deductibleExpensesTotal);
   const totalAcquisitionCost = acquisitionPrice;
   const rawPlusValue = netSalePrice - totalAcquisitionCost;
   const grossPlusValue = Math.max(0, rawPlusValue);
@@ -122,11 +116,13 @@ export function computeGN17(input: GN17ComputeInput): GN17ComputeResult {
 
   return {
     salePrice,
-    saleExpenses: deductibleSaleExpenses,
-    otherExpenses: deductibleOtherExpenses,
+    saleExpenses: acquisitionPriceUnknown ? 0 : saleExpenses,
+    otherExpenses: acquisitionPriceUnknown ? 0 : requestedOtherExpenses,
+    deductibleExpensesTotal,
+    deductibleExpensesCap,
     netSalePrice,
     acquisitionPrice,
-    acquisitionExpenses: deductibleAcquisitionExpenses,
+    acquisitionExpenses: acquisitionPriceUnknown ? 0 : requestedAcquisitionExpenses,
     totalAcquisitionCost,
     grossPlusValue,
     yearsHeld,

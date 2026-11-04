@@ -1,5 +1,6 @@
 import { FormFieldCoord } from '../types';
 import { GN17FormData } from './schema';
+import { digitsOnly } from '../normalizeDigits';
 import { GN17ComputeResult } from './compute';
 
 /**
@@ -145,7 +146,7 @@ export function mapGN17ToFieldValues(
   calc: GN17ComputeResult,
   lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
-  const isFr = lang === 'fr';
+  
 
   return {
     wilaya: data.wilaya,
@@ -158,21 +159,21 @@ export function mapGN17ToFieldValues(
     cedantDateLieu: '',
     cedantFiliation: '',
     cedantAdresse: data.cedantAdresse,
-    cedantNin: data.cedantNin || '',
-    cedantNif: data.cedantNif || '',
+    cedantNin: digitsOnly(data.cedantNin || ''),
+    cedantNif: digitsOnly(data.cedantNif || ''),
     cedantProfession: '',
 
     // Buyer 1
     buyer1NomPrenom: data.buyer1NomPrenom,
     buyer1DateLieu: '',
     buyer1Adresse: data.buyer1Adresse || '',
-    buyer1Nif: data.buyer1Nif || '',
+    buyer1Nif: digitsOnly(data.buyer1Nif || ''),
 
     // Buyer 2
     buyer2NomPrenom: data.buyer2NomPrenom || '',
     buyer2DateLieu: '',
     buyer2Adresse: data.buyer2Adresse || '',
-    buyer2Nif: data.buyer2Nif || '',
+    buyer2Nif: digitsOnly(data.buyer2Nif || ''),
 
     // Property
     natureBien: data.natureBien,

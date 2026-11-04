@@ -17,6 +17,7 @@ export function computeGN8(data: GN8FormData): GN8Summary {
     physique: { ar: 'شخص طبيعي', fr: 'Personne physique' },
     morale: { ar: 'شخص معنوي (شركة)', fr: 'Personne morale (Société)' },
     auto_entrepreneur: { ar: 'مقاول ذاتي', fr: 'Auto-entrepreneur' },
+    unspecified: { ar: 'لم تحدد الصفة', fr: 'Statut non sélectionné' },
   };
 
   // Regime display
@@ -27,6 +28,7 @@ export function computeGN8(data: GN8FormData): GN8Summary {
       fr: `Impôt sur le Revenu Global (IRG)${data.irgCategorie ? ` - Catégorie ${data.irgCategorie}` : ''}`,
     },
     ifu: { ar: 'الضريبة الجزافية الوحيدة (IFU)', fr: 'Impôt Forfaitaire Unique (IFU)' },
+    unspecified: { ar: 'لم يحدد النظام الجبائي', fr: 'Régime non sélectionné' },
   };
 
   // Declarant capacity display
@@ -35,6 +37,7 @@ export function computeGN8(data: GN8FormData): GN8Summary {
     locataire: { ar: 'مستأجر', fr: 'Locataire' },
     gerant_libre: { ar: 'مسير حر', fr: 'Gérant libre' },
     gerant_salarie: { ar: 'مسير أجير', fr: 'Gérant salarié' },
+    unspecified: { ar: 'لم تحدد الصفة', fr: 'Qualité non sélectionnée' },
   };
 
   // Days since start calculation
@@ -66,7 +69,7 @@ export function computeGN8(data: GN8FormData): GN8Summary {
       { ar: 'نسخة من الشهادة التي تتضمن رقم التعريف الجبائي (NIF)', fr: 'Copie de l\'attestation portant le NIF' },
       { ar: 'وثيقة إثبات مكان مزاولة النشاط (عقد إيجار، ملكية، شهادة إقامة أو فضاء مشترك)', fr: 'Justificatif du lieu d\'activité (bail, propriété, certificat de résidence ou coworking)' }
     );
-  } else {
+  } else if (data.taxpayerType === 'physique') {
     // Personne physique
     requiredDocuments.push(
       { ar: 'نسخة من السجل التجاري أو كل وثيقة تقوم مقامه (اعتماد، بطاقة حرفي/فلاح)', fr: 'Copie du registre du commerce, agrément ou carte d\'artisan/agriculteur' },

@@ -46,6 +46,40 @@ export default function FormWizardShell({
   const isAr = lang === 'ar';
 
   const formatCurrency = (val: number) => Math.round(val).toLocaleString('fr-DZ') + ' دج';
+  const legalNotice = {
+    gn17: {
+      title: isAr ? 'أجل التصريح ج17: 30 يوماً' : 'Délai de la déclaration G17 : 30 jours',
+      reference: isAr ? 'المادة 80 من قانون الضرائب المباشرة' : 'Article 80 du CIDTA',
+      body: isAr
+        ? 'يجب اكتتاب تصريح ج17 وتسديد الضريبة المستحقة في أجل لا يتجاوز ثلاثين (30) يوماً ابتداءً من تاريخ عملية البيع.'
+        : 'La déclaration G17 et le paiement de l’impôt dû doivent intervenir dans un délai maximal de trente (30) jours à compter de la date de la vente.',
+    },
+    gn31: {
+      title: isAr ? 'أجل التصريح ج31' : 'Délai de la déclaration G31',
+      reference: isAr ? 'المادتان 261-ر و261-س من قانون الضرائب المباشرة' : 'Articles 261-r et 261-s du CIDTA',
+      body: isAr
+        ? 'يكتتب التصريح خلال السنة الأولى من تطبيق الرسم العقاري، أو خلال شهرين من الإتمام النهائي للبناء الجديد أو تغيير قوام العقار أو تخصيصه، وكذلك في حالة الإشغال الجزئي لملكية قيد البناء.'
+        : 'La déclaration est souscrite la première année d’application de la taxe, ou dans les deux mois suivant l’achèvement d’une construction nouvelle, un changement de consistance ou d’affectation, ainsi qu’en cas d’occupation partielle d’une propriété en cours de construction.',
+    },
+    gn8: {
+      title: isAr ? 'أجل التصريح ج08: 30 يوماً' : 'Délai de la déclaration G08 : 30 jours',
+      reference: isAr ? 'المادة 51 من قانون الرسوم على رقم الأعمال والمادة 183 من CIDTA' : 'Article 51 du CTCA et article 183 du CIDTA',
+      body: isAr
+        ? 'يكتتب تصريح الوجود خلال ثلاثين (30) يوماً من تاريخ بداية النشاط لدى المصلحة الجبائية المختصة بمكان ممارسة النشاط.'
+        : 'La déclaration d’existence est souscrite dans les trente (30) jours suivant le début de l’activité auprès du service fiscal compétent du lieu d’exercice.',
+    },
+    gn51: {
+      title: isAr ? 'أجل التصريح ج51: اليوم العشرون' : 'Délai de la déclaration G51 : le 20',
+      reference: isAr ? 'المادة 42-1 من قانون الضرائب المباشرة' : 'Article 42-1 du CIDTA',
+      body: isAr
+        ? 'يتم التصريح والدفع في أجل أقصاه اليوم العشرون (20) من الشهر أو الفصل أو السداسي أو السنة الموالية لتحصيل الإيجار، بحسب دورية التحصيل.'
+        : 'La déclaration et le paiement doivent intervenir au plus tard le 20 du mois, trimestre, semestre ou année suivant l’encaissement du loyer, selon la périodicité applicable.',
+    },
+  }[form.slug] || {
+    title: isAr ? 'تنبيه إجرائي' : 'Information procédurale',
+    reference: form.officialNumber,
+    body: isAr ? 'يرجى التحقق من الآجال لدى المصلحة الجبائية المختصة.' : 'Veuillez vérifier le délai auprès du service fiscal compétent.',
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -70,27 +104,19 @@ export default function FormWizardShell({
         )}
       </div>
 
-      {/* Statutory 30-Day Legal Warning Card */}
+      {/* Form-specific statutory deadline notice */}
       <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-5 mb-8 text-amber-950 shadow-sm flex items-start gap-4">
         <div className="w-10 h-10 rounded-xl bg-amber-800 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
           <Clock className="w-5 h-5" />
         </div>
         <div className="text-xs sm:text-sm leading-relaxed space-y-1">
-          <div className="font-bold text-amber-900 flex items-center gap-2">
-            <span>
-              {isAr
-                ? 'تنبيه قانوني هام: الأجل الإلزامي للتصريح (30 يوماً)'
-                : 'Délai légal impératif de déclaration : 30 jours'}
-            </span>
+          <div className="font-bold text-amber-900 flex flex-wrap items-center gap-2">
+            <span>{legalNotice.title}</span>
             <span className="text-[11px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-semibold">
-              {isAr ? 'المادة 80 مكرر' : 'Art. 80 bis'}
+              {legalNotice.reference}
             </span>
           </div>
-          <p className="text-amber-900/90">
-            {isAr
-              ? 'يجب إيداع هذا التصريح رسمياً مصحوباً بدفع مبلغ الضريبة المستحق لدى قباضة الضرائب التابع لها موقع العقار خلال أجل أقصاه ثلاثون (30) يوماً ابتداءً من تاريخ تحرير العقد التوثيقي، تفادياً للغرامات التأخيرية والزيادات الجبائية المنصوص عليها قانوناً.'
-              : 'Cette déclaration doit être déposée auprès de la recette des impôts du lieu de situation de l\'immeuble dans un délai maximum de 30 jours à compter de la date de passation de l\'acte notarié, sous peine des pénalités prévues par le CIDTA.'}
-          </p>
+          <p className="text-amber-900/90">{legalNotice.body}</p>
         </div>
       </div>
 

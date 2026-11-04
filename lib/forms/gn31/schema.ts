@@ -12,7 +12,7 @@ export const gn31FormSchema = z.object({
   nin: z.string().default(''), // 18 digits (رقم التعريف الوطني)
 
   // Declaration Type
-  declarationType: z.enum(['first_year', 'change']).default('first_year'),
+  declarationType: z.enum(['first_year', 'change', 'unspecified']).default('unspecified'),
 
   // Section I: موقع الملكية
   propWilaya: z.string().default(''),
@@ -21,7 +21,7 @@ export const gn31FormSchema = z.object({
   propDetails: z.string().default(''),
 
   // Section II: تعيين الشاغل
-  occupantType: z.enum(['physique', 'morale']).default('physique'),
+  occupantType: z.enum(['physique', 'morale', 'unspecified']).default('unspecified'),
 
   // Personne physique
   nomPrenom: z.string().default(''),
@@ -32,7 +32,7 @@ export const gn31FormSchema = z.object({
   codePostal: z.string().default(''),
   telephone: z.string().default(''),
   email: z.string().default(''),
-  qualitePhysique: z.enum(['proprietaire', 'usufruitier']).default('proprietaire'),
+  qualitePhysique: z.enum(['proprietaire', 'usufruitier', 'unspecified']).default('unspecified'),
 
   // Personne morale
   nomSociete: z.string().default(''),
@@ -40,10 +40,10 @@ export const gn31FormSchema = z.object({
   telSociete: z.string().default(''),
   faxSociete: z.string().default(''),
   emailSociete: z.string().default(''),
-  qualiteMorale: z.enum(['proprietaire', 'concessionnaire']).default('proprietaire'),
+  qualiteMorale: z.enum(['proprietaire', 'concessionnaire', 'unspecified']).default('unspecified'),
 
   // Section III: معلومات تخص الملكية
-  natureBien: z.enum(['individuel', 'appartement', 'collectif', 'professionnel', 'terrain']).default('individuel'),
+  natureBien: z.enum(['individuel', 'appartement', 'collectif', 'professionnel', 'terrain', 'unspecified']).default('unspecified'),
 
   // Dates
   dateAchat: z.string().default(''),
@@ -52,8 +52,9 @@ export const gn31FormSchema = z.object({
   dateOccupationTotale: z.string().default(''),
 
   // Residential details (Page 2)
-  usageResidence: z.enum(['principale', 'secondaire']).default('principale'),
+  usageResidence: z.enum(['principale', 'secondaire', 'unspecified']).default('unspecified'),
   isLoue: z.boolean().default(false),
+  isLoueSelected: z.boolean().default(false),
 
   // Areas (m²)
   superficieTotale: z.coerce.number().min(0).default(0),
@@ -84,12 +85,12 @@ export const initialGN31Values: GN31FormData = {
   nif: '',
   nai: '',
   nin: '',
-  declarationType: 'first_year',
+  declarationType: 'unspecified',
   propWilaya: '',
   propCommune: '',
   propRue: '',
   propDetails: '',
-  occupantType: 'physique',
+  occupantType: 'unspecified',
   nomPrenom: '',
   dateLieuNaissance: '',
   adresseResidence: '',
@@ -98,20 +99,21 @@ export const initialGN31Values: GN31FormData = {
   codePostal: '',
   telephone: '',
   email: '',
-  qualitePhysique: 'proprietaire',
+  qualitePhysique: 'unspecified',
   nomSociete: '',
   siegeSocial: '',
   telSociete: '',
   faxSociete: '',
   emailSociete: '',
-  qualiteMorale: 'proprietaire',
-  natureBien: 'individuel',
+  qualiteMorale: 'unspecified',
+  natureBien: 'unspecified',
   dateAchat: '',
   dateAchevement: '',
   dateOccupationPartielle: '',
   dateOccupationTotale: '',
-  usageResidence: 'principale',
+  usageResidence: 'unspecified',
   isLoue: false,
+  isLoueSelected: false,
   superficieTotale: 0,
   superficieHabitation: 0,
   superficieProfessionnelle: 0,

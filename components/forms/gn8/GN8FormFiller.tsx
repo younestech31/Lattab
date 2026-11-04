@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLang } from '@/lib/i18n';
 import { getFormBySlug } from '@/lib/forms/registry';
-import { GN8FormData, initialGN8Values } from '@/lib/forms/gn8/schema';
+import { GN8FormData, initialGN8Values, gn8FormSchema } from '@/lib/forms/gn8/schema';
 import { computeGN8 } from '@/lib/forms/gn8/compute';
 import { GN8_FIELD_COORDINATES, GN8_FIELD_COORDINATES_FR, mapGN8ToFieldValues } from '@/lib/forms/gn8/fields';
 import { fillOfficialPdf, downloadPdfBytes } from '@/lib/forms/fillOfficialPdf';
@@ -16,6 +16,13 @@ import GN8Step2Identity from './GN8Step2Identity';
 import GN8Step3Location from './GN8Step3Location';
 import GN8Step4Review from './GN8Step4Review';
 
+function readGN8Draft() {
+  return loadDraft<GN8FormData>('gn8', (value) => {
+    const parsed = gn8FormSchema.safeParse(value);
+    return parsed.success ? parsed.data : null;
+  });
+}
+
 export default function GN8FormFiller() {
   const { lang } = useLang();
   const isAr = lang === 'ar';
@@ -24,7 +31,7 @@ export default function GN8FormFiller() {
 
   const formDef = getFormBySlug('gn8');
   const [data, setData] = useState<GN8FormData>(() => {
-    const draft = loadDraft<GN8FormData>('gn8');
+    const draft = readGN8Draft();
     return draft?.data ?? initialGN8Values;
   });
   const [savedAt, setSavedAt] = useState<string | null>(() => {
@@ -59,8 +66,8 @@ export default function GN8FormFiller() {
       return;
     }
     const timer = setTimeout(() => {
-      saveDraft('gn8', data);
-      setSavedAt(new Date().toISOString());
+      const saved = saveDraft('gn8', data);
+      setSavedAt(saved ? new Date().toISOString() : null);
     }, 500);
     return () => clearTimeout(timer);
   }, [data]);
@@ -110,6 +117,7 @@ export default function GN8FormFiller() {
 
       const pdfBytes = await fillOfficialPdf({
         templateUrl,
+        expectedPages: formDef.pages,
         fields: fieldCoords,
         values: fieldValues,
         debug: isDebug,

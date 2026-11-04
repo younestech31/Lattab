@@ -63,7 +63,8 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               min="0"
               step="1000"
               value={data.fraisCession || ''}
-              onChange={(e) => updateData({ fraisCession: Number(e.target.value) || 0 })}
+              disabled={data.acquisitionPriceUnknown}
+              onChange={(e) => updateData({ fraisCession: Number(e.target.value) || 0 })
               className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
               placeholder="0"
             />
@@ -82,7 +83,8 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
               min="0"
               step="1000"
               value={data.fraisAutres || ''}
-              onChange={(e) => updateData({ fraisAutres: Number(e.target.value) || 0 })}
+              disabled={data.acquisitionPriceUnknown}
+              onChange={(e) => updateData({ fraisAutres: Number(e.target.value) || 0 })
               className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
               placeholder="0"
             />
@@ -122,12 +124,7 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
                 <input
                   type="checkbox"
                   checked={data.acquisitionPriceUnknown}
-                  onChange={(e) => updateData({
-                    acquisitionPriceUnknown: e.target.checked,
-                    fraisCession: e.target.checked ? 0 : data.fraisCession,
-                    fraisAutres: e.target.checked ? 0 : data.fraisAutres,
-                    fraisAcquisition: e.target.checked ? 0 : data.fraisAcquisition,
-                  })}
+                  onChange={(e) => updateData({ acquisitionPriceUnknown: e.target.checked })}
                   className="rounded text-emerald-600 focus:ring-emerald-500"
                 />
                 <span>{isAr ? 'تعذر تحديد قيمة الاقتناء (40% من سعر البيع)' : 'Prix d’acquisition indéterminable (forfait 40% du prix de vente)'}</span>
@@ -145,8 +142,8 @@ export default function GN17Step3Financials({ data, updateData, calc, isAr }: Pr
             />
             <span className="text-[11px] text-gray-500 mt-1 block">
               {data.acquisitionPriceUnknown
-                ? (isAr ? 'تعتمد قيمة اقتناء جزافية قدرها 40% من سعر البيع؛ لا تضاف مصاريف أخرى وفق توجيه المديرية العامة للضرائب.' : 'La valeur d’acquisition est évaluée forfaitairement à 40% du prix de vente ; aucune autre dépense ne s’ajoute.')
-                : (isAr ? 'تُحتسب الحقوق والرسوم والمصاريف المثبتة ضمن سقف إجمالي قدره 30% من قيمة الاقتناء.' : 'Droits, taxes et frais justifiés retenus dans la limite globale de 30% de la valeur d’acquisition.')}
+                ? (isAr ? 'تعتمد قيمة اقتناء جزافية قدرها 40% من سعر البيع؛ لا تخصم أي مصاريف إضافية.' : 'La valeur d’acquisition est évaluée forfaitairement à 40% du prix de vente ; aucun frais supplémentaire n’est déduit.')
+                : (isAr ? `تُطبع المصاريف المثبتة بقيمتها الفعلية، ويُحتسب الخصم الإجمالي في حدود 30% من قيمة الاقتناء (السقف: ${formatCurrency(calc.deductibleExpensesCap)}).` : `Les frais justifiés sont affichés à leur valeur réelle ; la déduction calculée est plafonnée à 30% de la valeur d’acquisition (plafond : ${formatCurrency(calc.deductibleExpensesCap)}).`)}
             </span>
           </div>
         </div>

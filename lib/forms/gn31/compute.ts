@@ -35,8 +35,10 @@ export function computeGN31(data: GN31FormData): GN31Summary {
 
   const occupantSummary =
     data.occupantType === 'physique'
-      ? `${data.nomPrenom || 'المصرح'} (${data.qualitePhysique === 'proprietaire' ? 'مالك / شاغل' : 'منتفع'})`
-      : `${data.nomSociete || 'الشركة'} (${data.qualiteMorale === 'proprietaire' ? 'مالك' : 'صاحب امتياز'})`;
+      ? `${data.nomPrenom || 'المصرح'} (${data.qualitePhysique === 'proprietaire' ? 'مالك / شاغل' : data.qualitePhysique === 'usufruitier' ? 'منتفع' : 'صفة غير محددة'})`
+      : data.occupantType === 'morale'
+        ? `${data.nomSociete || 'الشركة'} (${data.qualiteMorale === 'proprietaire' ? 'مالك' : data.qualiteMorale === 'concessionnaire' ? 'صاحب امتياز' : 'صفة غير محددة'})`
+        : 'لم تحدد صفة المصرح';
 
   let totalAreaDisplay = '';
   if (data.natureBien === 'terrain') {

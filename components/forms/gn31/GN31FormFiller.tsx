@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLang } from '@/lib/i18n';
 import { getFormBySlug } from '@/lib/forms/registry';
-import { GN31FormData, initialGN31Values } from '@/lib/forms/gn31/schema';
+import { GN31FormData, initialGN31Values, gn31FormSchema } from '@/lib/forms/gn31/schema';
 import { computeGN31 } from '@/lib/forms/gn31/compute';
 import { GN31_FIELD_COORDINATES, GN31_FIELD_COORDINATES_FR, mapGN31ToFieldValues } from '@/lib/forms/gn31/fields';
 import { fillOfficialPdf, downloadPdfBytes } from '@/lib/forms/fillOfficialPdf';
@@ -16,6 +16,13 @@ import GN31Step2Occupant from './GN31Step2Occupant';
 import GN31Step3Property from './GN31Step3Property';
 import GN31Step4Review from './GN31Step4Review';
 
+function readGN31Draft() {
+  return loadDraft<GN31FormData>('gn31', (value) => {
+    const parsed = gn31FormSchema.safeParse(value);
+    return parsed.success ? parsed.data : null;
+  });
+}
+
 export default function GN31FormFiller() {
   const { lang } = useLang();
   const isAr = lang === 'ar';
@@ -24,7 +31,7 @@ export default function GN31FormFiller() {
 
   const formDef = getFormBySlug('gn31');
   const [data, setData] = useState<GN31FormData>(() => {
-    const draft = loadDraft<GN31FormData>('gn31');
+    const draft = readGN31Draft();
     return draft?.data ?? initialGN31Values;
   });
   const [savedAt, setSavedAt] = useState<string | null>(() => {
@@ -59,8 +66,8 @@ export default function GN31FormFiller() {
       return;
     }
     const timer = setTimeout(() => {
-      saveDraft('gn31', data);
-      setSavedAt(new Date().toISOString());
+      const saved = saveDraft('gn31', data);
+      setSavedAt(saved ? new Date().toISOString() : null);
     }, 500);
     return () => clearTimeout(timer);
   }, [data]);
@@ -110,6 +117,7 @@ export default function GN31FormFiller() {
 
       const pdfBytes = await fillOfficialPdf({
         templateUrl,
+        expectedPages: formDef.pages,
         fields: fieldCoords,
         values: fieldValues,
         debug: isDebug,

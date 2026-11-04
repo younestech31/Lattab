@@ -1,6 +1,7 @@
 'use client';
 
 import { GN8FormData } from '@/lib/forms/gn8/schema';
+import { digitsOnly } from '@/lib/forms/normalizeDigits';
 import { User, Briefcase, Building } from 'lucide-react';
 
 interface Props {

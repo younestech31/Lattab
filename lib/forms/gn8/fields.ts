@@ -231,7 +231,7 @@ export function mapGN8ToFieldValues(
   data: GN8FormData,
   lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
-  const isFr = lang === 'fr';
+  
   const cleanWilaya = data.directionWilaya
     .replace(/^(مديرية الضرائب لولاية|DIW de)\s*/iu, '')
     .trim();
@@ -269,7 +269,7 @@ export function mapGN8ToFieldValues(
     dateDebutActivite: data.dateDebutActivite.trim(),
 
     // Signature
-    faitA: (data.faitA || (isFr ? 'Oran' : 'وهران')).trim(),
+    faitA: data.faitA.trim(),
     dateDeclaration: (data.dateDeclaration || '').trim(),
   };
 

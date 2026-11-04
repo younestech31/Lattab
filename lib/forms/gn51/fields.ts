@@ -1,6 +1,7 @@
 import { FormFieldCoord } from '../types';
 import { GN51FormData } from './schema';
 import { GN51ComputeResult } from './compute';
+import { digitsOnly } from '../normalizeDigits';
 
 /**
  * Coordinate mapping for official Algerian Série G N° 51 (Arabic).
@@ -190,7 +191,6 @@ export function mapGN51ToFieldValues(
   calc: GN51ComputeResult,
   lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
-  const isFr = lang === 'fr';
   const cleanWilaya = data.wilaya
     .replace(/^(مديرية الضرائب لولاية|DIW de)\s*/iu, '')
     .trim();
@@ -205,8 +205,8 @@ export function mapGN51ToFieldValues(
     bailleurCommune: data.bailleurCommune.trim(),
     bailleurWilaya: data.bailleurWilaya.trim(),
     bailleurCodePostal: data.bailleurCodePostal.trim(),
-    bailleurNif: data.bailleurNif.trim(),
-    bailleurNin: data.bailleurNin.trim(),
+    bailleurNif: digitsOnly(data.bailleurNif),
+    bailleurNin: digitsOnly(data.bailleurNin),
 
     // Preneur
     preneurNom: data.preneurNom.trim(),
@@ -214,8 +214,8 @@ export function mapGN51ToFieldValues(
     preneurCommune: data.preneurCommune.trim(),
     preneurWilaya: data.preneurWilaya.trim(),
     preneurCodePostal: data.preneurCodePostal.trim(),
-    preneurNif: data.preneurNif.trim(),
-    preneurNin: data.preneurNin.trim(),
+    preneurNif: digitsOnly(data.preneurNif),
+    preneurNin: digitsOnly(data.preneurNin),
 
     // Bien loué
     natureBien: data.natureBien.trim(),
