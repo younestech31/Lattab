@@ -22,8 +22,6 @@ export interface AppointmentFormData {
   name: string;
   phone: string;
   service: string;
-  date?: string;
-  time?: string;
   notes?: string;
   company?: string;
   honeypot?: string;
