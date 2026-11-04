@@ -33,7 +33,7 @@ export async function generateMetadata({
     };
   }
 
-  const desc = 'Un guide complet des lois immobilières et des procédures notariales en Algérie. Articles spécialisés de l’Office Public Notarial de Maître Lattab Mohamed à Oran.';
+  const desc = 'Articles d’information sur le droit immobilier, les formalités notariales et la création de sociétés en Algérie, avec références officielles.';
   assertDescriptionLength(desc, 'French blog page main');
 
   return {
@@ -125,7 +125,7 @@ export default async function FrenchBlogList({
       <WebPageSchema
         url={`${SITE_URL}/fr/blog`}
         name="Blog Juridique et Immobilier | Office Notarial - Oran - Notaire"
-        description="Textes et lois juridiques, prix référentiels immobiliers à Oran 2026, explications sur la création de sociétés et tout ce qui concerne les transactions notariales en Algérie."
+        description="Articles sur le droit immobilier, les formalités notariales et la création de sociétés en Algérie, avec des repères utiles et des références officielles, dont le référentiel 2025–2026."
         breadcrumbs={[
           { name: "Accueil", item: `${SITE_URL}/fr` },
           { name: "Blog", item: `${SITE_URL}/fr/blog` }
