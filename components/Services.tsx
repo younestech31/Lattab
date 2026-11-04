@@ -6,17 +6,17 @@ import { Home, FileText, Users, Building2, Lock, Heart, Scale } from 'lucide-rea
 // Keys must match the `title` field from translations exactly
 const SERVICE_ICON_MAP: Record<string, React.ReactNode> = {
   'عقود البيع والشراء العقارية': <Home className="w-8 h-8" />,
-  'Actes de vente immobilière':   <Home className="w-8 h-8" />,
+  'Actes de vente et d\'achat immobiliers': <Home className="w-8 h-8" />,
   'عقود الزواج والاتفاق المالي': <Heart className="w-8 h-8" />,
-  'Contrats de mariage':          <Heart className="w-8 h-8" />,
+  'Actes de mariage et convention matrimoniale': <Heart className="w-8 h-8" />,
   'الوكالات والتفويضات':         <Users className="w-8 h-8" />,
   'Procurations et mandats':      <Users className="w-8 h-8" />,
   'تأسيس الشركات والمؤسسات':    <Building2 className="w-8 h-8" />,
   'Constitution de sociétés':     <Building2 className="w-8 h-8" />,
   'الرهن والتأمينات':            <Lock className="w-8 h-8" />,
-  'Hypothèques et assurances':    <Lock className="w-8 h-8" />,
-  'الفريضة والتركات':           <Scale className="w-8 h-8" />,
-  'Successions et héritages':     <Scale className="w-8 h-8" />,
+  'Hypothèques et sûretés': <Lock className="w-8 h-8" />,
+  'الفريضة والتركات': <Scale className="w-8 h-8" />,
+  'Frédha et successions': <Scale className="w-8 h-8" />,
 };
 
 const SERVICE_TO_SLUG_MAP: Record<string, string> = {
@@ -29,12 +29,12 @@ const SERVICE_TO_SLUG_MAP: Record<string, string> = {
   'الفريضة والتركات': 'succession',
   
   // French
-  'Actes de vente immobilière': 'vente-immobiliere',
-  'Contrats de mariage': 'contrat-mariage',
+  'Actes de vente et d\'achat immobiliers': 'vente-immobiliere',
+  'Actes de mariage et convention matrimoniale': 'contrat-mariage',
   'Procurations et mandats': 'procuration',
   'Constitution de sociétés': 'creation-societe',
-  'Hypothèques et assurances': 'hypotheque',
-  'Successions et héritages': 'succession',
+  'Hypothèques et sûretés': 'hypotheque',
+  'Frédha et successions': 'succession',
 };
 
 interface ServicesProps {
@@ -118,7 +118,7 @@ export default function Services({ lang }: ServicesProps) {
         {/* CTA */}
         <div className="text-center mt-12">
           <Link
-            href="/#contact"
+            href={lang === 'fr' ? '/fr#inquiry' : '/#inquiry'}
             className="inline-flex items-center gap-2 bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white px-8 py-4 rounded-xl font-bold transition-colors shadow-sm min-h-11 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
