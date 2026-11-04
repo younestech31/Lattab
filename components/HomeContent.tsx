@@ -27,7 +27,7 @@ const SectionSkeleton = ({ height = 'h-64' }: { height?: string }) => (
 function buildHomeSchemas(lang: Language): Record<string, unknown>[] {
   const isAr = lang === 'ar';
   const pageUrl = isAr ? SITE_URL : `${SITE_URL}/fr`;
-  const notaryId = isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`;
+  const notaryId = `${SITE_URL}/#notary-office`;
 
   const notarySchema: Record<string, unknown> = {
     "@context": "https://schema.org",
