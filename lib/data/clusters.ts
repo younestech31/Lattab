@@ -14,8 +14,20 @@ export const SLUG_TO_CLUSTER: Record<string, ArticleCluster> = {
   'loi-11-04-promotion-immobiliere-algerie': 'immobilier',
   'nouvelle-loi-enregistrement-immobilier-2026': 'immobilier',
   'difference-contrat-sous-seing-prive-authentique-algerie': 'immobilier',
+  'bail-habitation-vs-commercial-algerie': 'immobilier',
+  'declaration-plus-value-gn17-vente-immobilier-algerie': 'immobilier',
+  'droit-preemption-vente-immobilier-algerie': 'immobilier',
+  'mainlevee-hypotheque-apres-credit-algerie': 'immobilier',
+  'sortie-indivision-immobiliere-algerie': 'immobilier',
+  'taxe-fonciere-gn31-algerie': 'immobilier',
   // French
   'acte-de-vente-immobilier-oran': 'immobilier',
+  'bail-habitation-vs-commercial-algerie': 'immobilier',
+  'declaration-plus-value-gn17-vente-immobilier-algerie': 'immobilier',
+  'droit-preemption-vente-immobilier-algerie': 'immobilier',
+  'mainlevee-hypotheque-apres-credit-algerie': 'immobilier',
+  'sortie-indivision-immobiliere-algerie': 'immobilier',
+  'taxe-fonciere-gn31-algerie': 'immobilier',
 
   // Societes
   'comment-creer-sarl-en-algerie-2026': 'societes',
@@ -23,6 +35,7 @@ export const SLUG_TO_CLUSTER: Record<string, ArticleCluster> = {
   'auto-entrepreneur-startups-algerie-avantages': 'societes',
   'cession-fonds-de-commerce-algerie': 'societes',
   'contrat-location-commercial-oran': 'societes',
+  'cession-fonds-de-commerce-algerie': 'societes',
 
   // Famille / Statut personnel / Procurations
   'contrat-mariage-chez-notaire-algerie': 'famille',
@@ -31,6 +44,8 @@ export const SLUG_TO_CLUSTER: Record<string, ArticleCluster> = {
   'donation-entre-ascendants-descendants-algerie': 'famille',
   'procuration-generale-algerie': 'famille',
   'wikalat-am-algerie-guide': 'famille',
+  'notaire-algeriens-etranger-procuration-legalisation': 'famille',
+  'renonciation-succession-notaire-algerie': 'famille',
 };
 
 export const CLUSTER_NAMES = {
