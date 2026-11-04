@@ -7,6 +7,7 @@ import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
 import { Calendar, Clock } from 'lucide-react';
 import { frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL, FR_TITLE_SUFFIX, OFFICE_INFO } from '@/lib/config';
+import { FR_TO_AR_BLOG_MAP } from '@/lib/data/localeMap';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import ArticleActionLinks from '@/components/ArticleActionLinks';
@@ -42,13 +43,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
+  const arSlug = post.arSlug || FR_TO_AR_BLOG_MAP[post.slug];
   const languages: Record<string, string> = {
     'fr-DZ': `${SITE_URL}/fr/blog/${post.slug}`,
   };
   
-  if (post.arSlug) {
-    languages['ar-DZ'] = `${SITE_URL}/blog/${post.arSlug}`;
-    languages['x-default'] = `${SITE_URL}/blog/${post.arSlug}`;
+  if (arSlug) {
+    languages['ar-DZ'] = `${SITE_URL}/blog/${arSlug}`;
+    languages['x-default'] = `${SITE_URL}/blog/${arSlug}`;
   }
 
   const hasSuffix = post.title.length + FR_TITLE_SUFFIX.length <= 60;
@@ -118,6 +120,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
   const cleanContentForWords = stripFrontmatterAndLeadingH1(content);
   const wordCount = Math.round(cleanContentForWords.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length);
   
+  const arSlug = post.arSlug || FR_TO_AR_BLOG_MAP[post.slug];
   const relatedPosts = getRelatedPostsByCluster(slug, 'fr', 3);
   const clusterKey = SLUG_TO_CLUSTER[slug] || 'immobilier';
   const clusterHeading = CLUSTER_NAMES.fr[clusterKey];
@@ -126,7 +129,7 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <RegisterAlternatePath 
         paths={{
-          ar: post.arSlug ? `/blog/${post.arSlug}` : `/blog`,
+          ar: arSlug ? `/blog/${arSlug}` : `/blog`,
           fr: `/fr/blog/${post.slug}`
         }}
       />
