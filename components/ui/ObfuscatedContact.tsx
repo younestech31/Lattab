@@ -42,13 +42,13 @@ export default function ObfuscatedContact({
     }
   };
 
-  const defaultLabel = ariaLabel || (
-    type === 'phone'
-      ? (lang === 'fr' ? 'Appeler l\'office notarial' : 'الاتصال بأمانة ديوان التوثيق')
-      : type === 'email'
-        ? (lang === 'fr' ? 'Envoyer un courriel à l\'office notarial' : 'إرسال بريد إلكتروني للديوان')
-        : (lang === 'fr' ? 'Demande de renseignement administratif via WhatsApp' : 'استفسار إداري عبر واتساب')
-  );
+  const defaultLabel = type === 'phone'
+    ? `${ariaLabel || (lang === 'fr' ? "Appeler l'office notarial" : 'الاتصال بأمانة ديوان التوثيق')} : 0562 29 69 81`
+    : ariaLabel || (
+        type === 'email'
+          ? (lang === 'fr' ? "Envoyer un courriel à l'office notarial" : 'إرسال بريد إلكتروني للديوان')
+          : (lang === 'fr' ? 'Demande de renseignement administratif via WhatsApp' : 'استفسار إداري عبر واتساب')
+      );
 
   return (
     <a
