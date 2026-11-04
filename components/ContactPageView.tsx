@@ -48,7 +48,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
       : 'Coordonnées de l\'office notarial de Office Notarial - Oran à Oran : adresse à Akid Lotfi, téléphones, horaires et plan d\'accès.',
     mainEntity: {
       '@type': 'Notary',
-      '@id': isAr ? `${SITE_URL}/#notary-office` : `${SITE_URL}/fr#notary-office`,
+      '@id': `${SITE_URL}/#notary-office`,
       name: brandTitle,
       alternateName: brandSubtitle,
       address: {
