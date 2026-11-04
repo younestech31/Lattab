@@ -8,7 +8,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: 'Formulaires fiscaux officiels à remplir — G17 G31 G08 G51 | Office notarial Oran',
-  description: 'Remplissage et impression des formulaires fiscaux officiels de la DGI : plus-value immobilière G17, taxe foncière G31, déclaration d’existence G08 et location immobilière G51 conformes aux modèles réglementaires et prêts pour dépôt.',
+  description: 'Préparez et imprimez les formulaires de la DGI : G17 (plus-value immobilière), G31 (taxe foncière), G08 (déclaration d’existence) et G51 (revenus locatifs).',
   alternates: {
     canonical: `${SITE_URL}/fr/formulaires`,
     languages: {
@@ -86,7 +86,7 @@ export default function FormulairesPageFR() {
         eyebrow="Assistance administrative & fiscale"
         badgeText="Imprimés officiels DGI"
         title="Formulaires officiels"
-        description="Remplissage et impression des imprimés fiscaux officiels (plus-value G17, taxe foncière G31, déclaration d’existence G08) conformes aux modèles de la DGI, avec traitement local garantissant votre confidentialité."
+        description="Préparation indicative et impression des formulaires DGI G17, G31, G08 et G51. Vérifiez les données et les exigences actuelles auprès du service fiscal compétent avant le dépôt."
         breadcrumbs={[
           { name: 'Accueil', href: '/fr' },
           { name: 'Formulaires officiels' },
