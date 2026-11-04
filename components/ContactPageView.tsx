@@ -46,7 +46,7 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
     name: isAr ? 'الاتصال والاستفسار الإداري — ديوان التوثيق ببلدية وهران' : 'Contact et renseignements administratifs — Office Notarial - Oran',
     description: isAr
       ? 'بيانات الاتصال بديوان التوثيق ببلدية وهران: العنوان بحي العقيد لطفي، أرقام الهاتف، البريد الإلكتروني، مواعيد العمل، والموقع على الخريطة.'
-      : 'Coordonnées de l\'office notarial de Office Notarial - Oran à Oran : adresse à Akid Lotfi, téléphones, horaires et plan d\'accès.',
+      : 'Coordonnées de l’étude de Maître Lattab Mohamed à Oran : adresse à Akid Lotfi, téléphone, courriel, horaires et plan d’accès.',
     mainEntity: {
       '@type': 'Notary',
       '@id': `${SITE_URL}/#notary-office`,
