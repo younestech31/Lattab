@@ -1,0 +1,33 @@
+name: Useful links health check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * 1'
+  push:
+    branches:
+      - main
+    paths:
+      - 'lib/data/usefulLinks.ts'
+      - 'scripts/check-useful-links.mjs'
+      - '.github/workflows/useful-links-health.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-links:
+    name: Check official link destinations
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check external destinations
+        run: node scripts/check-useful-links.mjs
