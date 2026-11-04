@@ -13,7 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/api/',
           '/scripts/',
-          '/*?*q=',
         ],
       },
       {
@@ -23,7 +22,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
       {
-        // Block high-volume scraper bots that provide no SEO or citation value
+        // Block high-volume scraper bots that provide no search or citation value
         userAgent: ['Bytespider', 'Omgilibot', 'peer39_crawler', 'CCBot', 'MJ12bot'],
         disallow: ['/'],
       },
@@ -31,4 +30,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
-
