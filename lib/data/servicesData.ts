@@ -445,20 +445,20 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
           heading: 'الفرق بين الوكالة العامة والوكالة الخاصة بالتصرف',
           paragraphs: [
             'تقتصر الوكالة العامة كقاعدة عامة على أعمال الإدارة وحفظ الحقوق، مثل استخراج الوثائق ومتابعة الملفات الإدارية والتمثيل العادي. بينما تشترط المادة 574 من القانون المدني الجزائري وكالة خاصة محددة بالاسم والصلاحيات لأي عمل من أعمال التصرف كالبيع، الرهن، التبرع، أو الصلح.',
-            'في المعاملات العقارية بوهران، تحرص المحافظات العقارية على عدم قبول أي وكالة ما لم تتضمن وصفاً دقيقاً للعقار ورقم دفتري صريح وصلاحية بيع واضحة باسم الموكل.'
+            'في الوكالات المتعلقة بالبيع العقاري، ينبغي أن يحدد سند الوكالة العقار والتصرف المقصود والصلاحيات الممنوحة بدقة، مع مراعاة الوثائق والمتطلبات التي تطلبها المحافظة العقارية المختصة عند إيداع الملف.'
           ]
         },
         {
           heading: 'إلغاء الوكالة وانقضاؤها القانوني',
           paragraphs: [
-            'يحق للموكل في أي وقت عزل الوكيل وإلغاء الوكالة بموجب عقد توثيقي مفسوخ يُبلَّغ رسمياً للوكيل وللجهات المعنية بواسطة محضر قضائي. كما تنتهي الوكالة حكماً بوفاة الموكل أو الوكيل أو فقدان أحدهما لأهليته القانونية.'
+            'يجوز للموكل، كأصل عام ووفق أحكام القانون المدني وشروط الوكالة، عزل الوكيل أو إنهاء التفويض باتباع الإجراءات القانونية وإخطار المعنيين والجهات التي سبق إبلاغها بالوكالة. كما قد تنقضي الوكالة لأسباب أخرى يحددها القانون، ومنها وفاة أحد الطرفين أو فقدان الأهلية في الحالات المقررة.'
           ]
         }
       ],
       faq: [
         {
           question: 'هل يمكن تحرير وكالة لبيع عقار بوهران من دون تحديد ثمن البيع؟',
-          answer: 'يُفضل قانوناً تحديد حد أدنى للثمن أو منح الوكيل صلاحية البيع وفق السعر المرجعي الرائج، وذلك لحماية الموكل من أي غبن قانوني.'
+          answer: 'تُصاغ صلاحية البيع بما يعبّر بوضوح عن إرادة الموكل وحدود التفويض، ويمكنه تحديد الثمن أو وضع ضوابط له في نص الوكالة. ولا يُعد مرجع الأسعار الجبائي وحده سعراً أدنى إلزامياً للبيع؛ وتُدرس كل حالة بحسب العقار والوكالة والوثائق المطلوبة.'
         },
         {
           question: 'هل يحق للموكل إلغاء الوكالة في أي وقت؟',
@@ -523,24 +523,24 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
           heading: 'Mandat général vs Mandat spécial de disposition',
           paragraphs: [
             'Aux termes de l\'article 574 du Code Civil algérien, un mandat formulé en termes généraux ne confère de pouvoir que pour les actes d\'administration. Tout acte de disposition (vente d\'immeuble, hypothèque, transaction, renonciation) exige impérativement un mandat spécial décrivant l\'objet précis de l\'opération.',
-            'Les conservations foncières d\'Oran appliquent une vigilance stricte quant à la désignation cadastrale exacte de l\'immeuble dans la procuration de vente.'
+            'Pour une procuration relative à une vente immobilière, la désignation du bien et l’étendue des pouvoirs doivent être précisées. Les pièces et mentions exigées sont à vérifier auprès de la Conservation Foncière compétente lors du dépôt du dossier.'
           ]
         },
         {
           heading: 'Révocation et extinction de la procuration notariée',
           paragraphs: [
-            'Le mandant conserve le droit imprescriptible de révoquer sa procuration par acte notarié de révocation, signifié au mandataire par voie d\'huissier de justice. Le mandat s\'éteint également de plein droit par le décès du mandant ou du mandataire.'
+            'En principe, le mandant peut révoquer le mandat dans les conditions prévues par le Code civil et l’acte, en accomplissant les formalités requises et en informant le mandataire ainsi que les organismes concernés. Le mandat peut également prendre fin pour d’autres causes prévues par la loi, notamment le décès ou l’incapacité dans les cas prévus.'
           ]
         }
       ],
       faq: [
         {
           question: 'Une procuration notariée de vente immobilière a-t-elle une durée de validité limitée ?',
-          answer: 'En l\'absence de terme contractuel expressément prévu dans l\'acte, la procuration demeure valable jusqu\'à son exécution, sa révocation formelle ou le décès du mandant.'
+          answer: 'La durée et les causes de fin du mandat dépendent de l’acte et des dispositions du Code civil. Il faut vérifier l’existence d’un terme, d’une condition particulière ou d’un événement légal d’extinction ; l’absence de date de fin ne suffit pas à répondre à toutes les situations.'
         },
         {
           question: 'Le mandataire doit-il obligatoirement être présent lors de la signature de la procuration ?',
-          answer: 'Non, seule la présence physique et la signature du mandant sont requises pour établir la procuration notariée en droit algérien.'
+          answer: 'En règle générale, le mandant doit comparaître pour consentir et signer l’acte. La situation du mandataire et les éventuelles pièces à fournir doivent être vérifiées selon l’objet du mandat et les exigences légales applicables.'
         }
       ]
     }
