@@ -81,8 +81,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       return {
         url: arUrl,
-        ...(getValidLastModified(post.dateModified, post.dateISO)
-          ? { lastModified: getValidLastModified(post.dateModified, post.dateISO) }
+        ...(getValidLastModified(post.dateModified)
+          ? { lastModified: getValidLastModified(post.dateModified) }
           : {}),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
@@ -110,8 +110,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       return {
         url: frUrl,
-        ...(getValidLastModified(post.dateModified, post.dateISO)
-          ? { lastModified: getValidLastModified(post.dateModified, post.dateISO) }
+        ...(getValidLastModified(post.dateModified)
+          ? { lastModified: getValidLastModified(post.dateModified) }
           : {}),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
