@@ -342,7 +342,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Signature de l\'acte constitutif et enregistrement fiscal',
-          text: 'Signature solennelle des statuts devant Office Notarial - Oran et enregistrement immédiat auprès de la recette des impôts d\'Oran.'
+          text: 'Signature des statuts devant le notaire, puis accomplissement des formalités d’enregistrement et des autres démarches requises auprès des services compétents.'
         },
         {
           name: 'Publication au BOAL et retrait du registre du commerce',
@@ -471,7 +471,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       metaTitle: 'Procuration notariée à Oran — Office Notarial - Oran | Notaire Oran',
       metaDescription: 'Rédaction de procurations notariées à Oran (générale, spéciale de vente immobilière, bancaire, succession) chez Office Notarial - Oran.',
       h1: 'Procuration notariée à Oran — Mandat authentique et représentation légale',
-      subtitle: 'Rédaction d\'actes de mandat conformes aux exigences du Code Civil algérien garantissant la sécurité juridique du mandant et du mandataire',
+      subtitle: 'Rédaction d’actes de mandat selon les exigences du Code civil algérien, avec une définition claire de l’objet et des pouvoirs confiés.',
       targetAudience: [
         'Résidents à l\'étranger ou hors wilaya d\'Oran mandatant un proche pour accomplir des actes administratifs ou patrimoniaux.',
         'Membres d\'une succession confiant à un cohéritier la gestion des biens successoraux et les formalités foncières.',
@@ -503,7 +503,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Contrôle de la capacité et du libre consentement',
-          text: 'Vérification par le notaire du discernement et de la pleine capacité civile du mandant afin de prémunir l\'acte contre toute contestation.'
+          text: 'Le notaire procède aux vérifications relatives à l’identité, à la capacité et au consentement du mandant dans le cadre de ses attributions, sans pouvoir garantir l’absence de toute contestation ultérieure.'
         },
         {
           name: 'Rédaction solennelle de l\'acte authentique de procuration',
@@ -511,7 +511,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Signature et délivrance de la grosse et des expéditions',
-          text: 'Signature par le mandant sur le registre officiel de l\'étude et remise immédiate de l\'expédition authentique opposable aux tiers.'
+          text: 'Signature de l’acte par le mandant et délivrance des expéditions ou copies authentiques selon les formalités et délais applicables.'
         }
       ],
       jurisdictionNotes: [
@@ -690,7 +690,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
           heading: 'Distinction entre acte de notoriété (Fridha) et attestation notariée immobilière',
           paragraphs: [
             'La Fridha constate uniquement la qualité d\'héritier et la quote-part respective de chacun dans la masse successorale. Elle est indispensable pour débloquer les comptes bancaires et pensions du défunt.',
-            'En revanche, le transfert légal de la propriété immobilière exige obligatoirement une attestation notariée soumise à la formalité de publicité foncière. Sans cette attestation publiée, aucun héritier ne peut vendre ni hypothéquer le bien hérité.'
+            'Le règlement de la succession immobilière implique l’établissement des actes notariés requis et l’accomplissement de la publicité foncière pour mettre à jour les inscriptions. Les possibilités de disposition du bien doivent être appréciées au regard de la situation successorale, des titres et des formalités applicables.'
           ]
         },
         {
@@ -771,7 +771,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       ],
       jurisdictionNotes: [
         'يتمتع الموثق بكامل الصلاحية القانونية لتحرير عقود الزواج الرسمية التي تنتج نفس الآثار القانونية لعقود الزواج المحررة أمام ضابط الحالة المدنية بالبلدية.',
-        'تُسجل عقود الزواج الموثقة لدى بلدية وهران والبلديات المعنية لتحديث القيود العائلية الرسمية فوراً.'
+        'تُستكمل إجراءات تسجيل عقد الزواج وإرسال الإشعارات إلى مصالح الحالة المدنية المختصة وفق الإجراءات والآجال المعمول بها.'
       ],
       inDepthContent: [
         {
@@ -845,7 +845,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Remise du livret de famille et notification à l\'état civil',
-          text: 'Délivrance immédiate du livret de famille et transmission de l\'avis de mariage à la mairie du lieu de naissance pour mention en marge.'
+          text: 'Accomplissement des formalités relatives à l’avis de mariage et à la mise à jour des actes d’état civil auprès des services compétents, selon les délais applicables.'
         }
       ],
       jurisdictionNotes: [
@@ -970,7 +970,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       title: 'Hypothèque immobilière et sûretés à Oran',
       metaTitle: 'Acte d\'hypothèque à Oran — Office Notarial - Oran | Notaire Oran',
       metaDescription: 'Rédaction d\'actes d\'hypothèque immobilière, inscription de sûretés et mainlevée d\'hypothèque à Oran chez Office Notarial - Oran.',
-      h1: 'Hypothèque immobilière et sûretés réelles à Oran — Garantie de crédit et mainlevée',
+      h1: 'Constitution et mainlevée d’hypothèque immobilière à Oran',
       subtitle: 'Constitution d\'hypothèques conventionnelles, inscription au livre foncier et délivrance de mainlevée conformément au Code Civil algérien',
       targetAudience: [
         'Emprunteurs souscrivant un crédit bancaire immobilier, crédit promoteur ou prêt d\'investissement dans la wilaya d\'Oran.',
@@ -1004,7 +1004,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
         },
         {
           name: 'Rédaction de l\'acte notarié d\'affectation hypothécaire',
-          text: 'Établissement des clauses précisant l\'assiette hypothécaire, le montant garanti, les assurances incendie obligatoires et les déchéances de terme.'
+          text: 'Rédaction des clauses relatives au bien grevé, au montant garanti, aux assurances éventuellement exigées par le prêteur et aux conditions de déchéance prévues dans l’acte.'
         },
         {
           name: 'Signature solennelle de l\'emprunteur et de la banque',
@@ -1024,7 +1024,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
           heading: 'Effets juridiques : Droit de préférence et Droit de suite',
           paragraphs: [
             'L\'inscription de l\'hypothèque à la Conservation Foncière accorde au créancier inscrit le droit d\'être désintéressé par préférence sur le prix de vente de l\'immeuble et de poursuivre la saisie immobilière en quelques mains que le bien parvienne.',
-            'L\'emprunteur conserve la jouissance et la disposition de son immeuble, sous réserve de ne poser aucun acte matériel ou juridique de nature à déprécier la garantie.'
+            'Les droits de jouissance et de disposition du constituant s’apprécient selon la nature de l’hypothèque, les clauses de l’acte et les dispositions légales applicables.'
           ]
         },
         {
