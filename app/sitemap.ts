@@ -3,15 +3,13 @@ import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL as base } from '@/lib/config';
 import { STATIC_LOCALE_MAP, BLOG_PAIRS_MAP, FR_TO_AR_BLOG_MAP } from '@/lib/data/localeMap';
 
-const FALLBACK_LAST_MODIFIED = new Date('2026-09-24T00:00:00.000Z');
-
-function getValidLastModified(primary?: string, fallback?: string): Date {
+function getValidLastModified(primary?: string, fallback?: string): Date | undefined {
   for (const value of [primary, fallback]) {
     if (typeof value !== 'string' || !value.trim()) continue;
     const timestamp = Date.parse(value);
     if (Number.isFinite(timestamp)) return new Date(timestamp);
   }
-  return FALLBACK_LAST_MODIFIED;
+  return undefined;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -32,7 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // Arabic entry
       staticEntries.push({
         url: arUrl,
-        lastModified: getValidLastModified(entry.lastmod),
         changeFrequency: entry.changeFrequency,
         priority: entry.priority,
         alternates: {
@@ -43,7 +40,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // French entry
       staticEntries.push({
         url: frUrl,
-        lastModified: getValidLastModified(entry.lastmod),
         changeFrequency: entry.changeFrequency,
         priority: entry.priority,
         alternates: {
@@ -54,7 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // Only Arabic exists
       staticEntries.push({
         url: arUrl,
-        lastModified: getValidLastModified(entry.lastmod),
         changeFrequency: entry.changeFrequency,
         priority: entry.priority,
         alternates: {
@@ -86,7 +81,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       return {
         url: arUrl,
-        lastModified: getValidLastModified(post.dateModified, post.dateISO),
+        ...(getValidLastModified(post.dateModified, post.dateISO)
+          ? { lastModified: getValidLastModified(post.dateModified, post.dateISO) }
+          : {}),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
         alternates: {
@@ -113,7 +110,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       return {
         url: frUrl,
-        lastModified: getValidLastModified(post.dateModified, post.dateISO),
+        ...(getValidLastModified(post.dateModified, post.dateISO)
+          ? { lastModified: getValidLastModified(post.dateModified, post.dateISO) }
+          : {}),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
         alternates: {
