@@ -100,11 +100,11 @@ export default function FrenchServicesPage() {
 
       <UnifiedPageHeader
         lang="fr"
-        badgeText="Prestations et actes authentiques notariés"
+        badgeText="Actes et formalités notariés"
         badgeIcon={<Scale className="w-4 h-4" />}
         eyebrow="Office Public Notarial — Me Lattab Mohamed"
-        title="Nomenclature des Actes et Services Notariaux"
-        description={`Titulaire d’un office public près le ${OFFICE_INFO.tribunal.fr}, notre étude assure l’authentification, la conservation et l’opposabilité de tous vos actes civils et commerciaux conformément à la loi 06-02 régissant le notariat en Algérie.`}
+        title="Guide des actes et formalités notariés"
+        description={`Ce guide présente les principaux actes relevant des attributions notariales, ainsi que les formalités et pièces généralement requises selon la législation algérienne applicable.`}
         breadcrumbs={[
           { name: 'Accueil', href: '/fr' },
           { name: 'Services notariaux' },
@@ -190,7 +190,7 @@ export default function FrenchServicesPage() {
                   href="/fr/contact"
                   className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 rounded-xl font-bold transition text-sm flex items-center gap-2 shadow-sm"
                 >
-                  Coordonnées et démarches
+                  Coordonnées et renseignements administratifs
                 </Link>
                 <PhoneLink
                   type="office"
