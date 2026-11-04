@@ -1,6 +1,7 @@
 export type UsefulLink = {
   id: string;
   url: string;
+  urlFr?: string;
   name: { ar: string; fr: string };
   desc: { ar: string; fr: string };
   category: 'justice' | 'commerce' | 'property_tax' | 'local';
@@ -39,6 +40,7 @@ export const USEFUL_LINKS: UsefulLink[] = [
   {
     id: 'mjustice',
     url: 'https://www.mjustice.gov.dz/ar/',
+    urlFr: 'https://www.mjustice.gov.dz/fr/',
     name: { ar: 'وزارة العدل', fr: 'Ministère de la Justice' },
     desc: {
       ar: 'البوابة الرسمية لقطاع العدالة، وتضم الأخبار والنصوص والخدمات والمعلومات المتعلقة بالجهات القضائية.',
@@ -49,6 +51,7 @@ export const USEFUL_LINKS: UsefulLink[] = [
   {
     id: 'legal-portal',
     url: 'https://droit.mjustice.gov.dz/ar/',
+    urlFr: 'https://droit.mjustice.gov.dz/fr/',
     name: { ar: 'بوابة القانون الجزائري', fr: 'Portail du droit algérien' },
     desc: {
       ar: 'مرجع إلكتروني تابع لوزارة العدل للبحث في النصوص القانونية والاجتهاد القضائي، بما في ذلك مواد القانون المدني والأسرة والتجارة.',
@@ -79,6 +82,7 @@ export const USEFUL_LINKS: UsefulLink[] = [
   {
     id: 'aapi',
     url: 'https://aapi.dz/ar/',
+    urlFr: 'https://aapi.dz/',
     name: { ar: 'الوكالة الجزائرية لترقية الاستثمار (AAPI)', fr: 'Agence algérienne de promotion de l’investissement (AAPI)' },
     desc: {
       ar: 'معلومات المستثمرين ومرافقة المشاريع الاستثمارية والإطار التنظيمي والمزايا المرتبطة بالاستثمار في الجزائر.',
@@ -109,6 +113,7 @@ export const USEFUL_LINKS: UsefulLink[] = [
   {
     id: 'caci',
     url: 'https://www.caci.dz/',
+    urlFr: 'https://www.caci.dz/fr/Pages/Accueil.aspx',
     name: { ar: 'الغرفة الجزائرية للتجارة والصناعة (CACI)', fr: 'Chambre algérienne de commerce et d’industrie (CACI)' },
     desc: {
       ar: 'معلومات وخدمات الغرفة الجزائرية للتجارة والصناعة في مجالات المؤسسات والتبادل التجاري والتعاون الاقتصادي.',
