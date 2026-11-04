@@ -39,14 +39,14 @@ export default function AppointmentForm({ services }: { services: readonly strin
   useEffect(() => {
     const serviceParam = searchParams.get('service');
     if (serviceParam && services.includes(decodeURIComponent(serviceParam))) {
-      setInquiryData((prev) => ({ ...prev, service: decodeURIComponent(serviceParam) }));
+      setInquiryData((prev) => ({ ...prev, service: serviceParam }));
     }
   }, [searchParams, services]);
 
   useEffect(() => {
     if (state.success && !isInquirySubmitted) {
       setIsInquirySubmitted(true);
-      const url = whatsappUrlRef.current || buildInquiryWaUrl(lang, inquiryData.service);
+      const url = whatsappUrlRef.current || buildInquiryWaUrl(lang, inquiryData.service, { name: inquiryData.name, phone: inquiryData.phone, company: inquiryData.company, message: inquiryData.notes });
       window.location.href = url;
     }
   }, [state.success, isInquirySubmitted, inquiryData, lang]);
@@ -61,13 +61,13 @@ export default function AppointmentForm({ services }: { services: readonly strin
   };
 
   const handleFormSubmit = (formData: FormData) => {
-    const url = buildInquiryWaUrl(lang, inquiryData.service);
+    const url = buildInquiryWaUrl(lang, inquiryData.service, { name: inquiryData.name, phone: inquiryData.phone, company: inquiryData.company, message: inquiryData.notes });
     whatsappUrlRef.current = url;
     formAction(formData);
   };
 
   if (state.success || isInquirySubmitted) {
-    const waUrl = whatsappUrlRef.current || buildInquiryWaUrl(lang, inquiryData.service);
+    const waUrl = whatsappUrlRef.current || buildInquiryWaUrl(lang, inquiryData.service, { name: inquiryData.name, phone: inquiryData.phone, company: inquiryData.company, message: inquiryData.notes });
     return (
       <div role="status" aria-live="polite" className="p-8 bg-emerald-50 rounded-2xl border border-emerald-200 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
         <div className="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto shadow-lg">
