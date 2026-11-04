@@ -65,7 +65,7 @@ const uiTranslations = {
     title: 'الوثائق والإجراءات المطلوبة',
     description: 'دليل شامل للوثائق المطلوبة والإجراءات المتبعة لكل نوع من المعاملات التوثيقية',
     generalTitle: 'وثائق عامة مطلوبة في أغلب العقود',
-    generalSubtitle: 'هذه الوثائق تُطلب غالبًا مهما كان نوع العقد',
+    generalSubtitle: 'قائمة إرشادية للوثائق الشائعة؛ تختلف المتطلبات بحسب نوع العقد ووضعية الأطراف والعقار، وقد تُطلب وثائق تكميلية.',
     accordionTitle: 'الوثائق والإجراءات حسب نوع المعاملة',
     docsTitle: 'الوثائق المطلوبة',
     stepsTitle: 'خطوات الإجراء',
@@ -79,7 +79,7 @@ const uiTranslations = {
       'إذا كان العقار غير ممسوح أو توجد به مشاكل في السندات فقد تتعقد الإجراءات.',
       'في حالة وجود ورثة قصر أو محجور عليهم يلزم أحيانًا إذن قضائي.',
       'إذا كان أحد الأطراف أجنبيًا قد تُطلب وثائق إضافية أو ترجمة رسمية.',
-      'الموثق يملك صلاحية طلب أي وثيقة إضافية لضمان صحة العقد.'
+      'قد يطلب الموثق وثائق تكميلية تقتضيها طبيعة العقد ووضعية الأطراف أو العقار، للتحقق من استيفاء المتطلبات القانونية.'
     ]
   },
   fr: {
@@ -87,7 +87,7 @@ const uiTranslations = {
     title: 'Documents et procédures requis',
     description: 'Guide complet des documents nécessaires et des étapes à suivre pour chaque type de transaction notariale',
     generalTitle: 'Documents généraux requis pour la plupart des actes',
-    generalSubtitle: 'Ces documents sont généralement demandés quel que soit le type d\'acte',
+    generalSubtitle: 'Liste indicative des pièces courantes ; les exigences varient selon l’acte et la situation des parties ou du bien, et des pièces complémentaires peuvent être demandées.',
     accordionTitle: 'Documents et procédures par type de transaction',
     docsTitle: 'Documents requis',
     stepsTitle: 'Étapes de la procédure',
@@ -101,7 +101,7 @@ const uiTranslations = {
       'Si le bien n\'est pas cadastré ou présente des problèmes de titres, les procédures peuvent être compliquées.',
       'En présence d\'héritiers mineurs ou d\'interdits, une autorisation judiciaire est parfois nécessaire.',
       'Si l\'une des parties est étrangère, des documents supplémentaires ou une traduction officielle peuvent être requis.',
-      'Le notaire a le pouvoir de demander tout document supplémentaire pour garantir la validité de l\'acte.'
+      'Le notaire peut demander des pièces complémentaires nécessaires au regard de la nature de l’acte et de la situation des parties ou du bien, afin de vérifier le respect des exigences légales.'
     ]
   }
 };
