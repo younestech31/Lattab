@@ -55,17 +55,16 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid body parameter', details: parsed.error.flatten() }, { status: 400 });
   }
 
-  const blogUrls = parsed.data.urls ?? blogPosts.map(post => `${SITE_URL}/blog/${post.slug}`);
-  
+  // Do not rely on an implicit global blog-post list: submit only explicitly supplied URLs.
+  const blogUrls = parsed.data.urls ?? [];
   if (blogUrls.length === 0) {
-    return NextResponse.json({ message: 'No blog posts to index' }, { status: 200 });
+    return NextResponse.json({ message: 'No blog post URLs supplied' }, { status: 200 });
   }
 
   await notifyIndexNow(blogUrls);
-  
-  return NextResponse.json({ message: 'IndexNow submitted', count: blogUrls.length }, { 
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
-}
 
+  return NextResponse.json(
+    { message: 'IndexNow submitted', count: blogUrls.length },
+    { status: 200, headers: { 'Content-Type': 'application/json' } },
+  );
+}
