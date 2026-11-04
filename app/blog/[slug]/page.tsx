@@ -85,7 +85,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       locale: 'ar_DZ',
       type: 'article',
       publishedTime: post.dateISO,
-      modifiedTime: post.dateModified || post.dateISO,
+      ...(post.dateModified ? { modifiedTime: post.dateModified } : {}),
       authors: ['ديوان التوثيق - وهران'],
       section: post.category,
       tags: [post.category, 'قانون جزائري', 'توثيق', 'وهران'],
@@ -186,15 +186,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               "headline": post.title,
               "description": post.description,
               "datePublished": post.dateISO,
-              "dateModified": post.dateModified || post.dateISO,
+              ...(post.dateModified ? { "dateModified": post.dateModified } : {}),
               "author": {
                 "@type": "Organization",
-                "@id": `${SITE_URL}/#organization`,
+                "@id": `${SITE_URL}/#notary-office`,
                 "name": "ديوان التوثيق - وهران",
-                "url": `${SITE_URL}/a-propos`
+                "url": SITE_URL
               },
               "publisher": {
                 "@type": "Organization",
+                "@id": `${SITE_URL}/#notary-office`,
                 "name": "الديوان العمومي للتوثيق",
                 "logo": {
                   "@type": "ImageObject",
