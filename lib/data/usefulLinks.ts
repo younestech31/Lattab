@@ -103,10 +103,10 @@ export const USEFUL_LINKS: UsefulLink[] = [
   {
     id: 'commerce-ministry',
     url: 'https://www.commerce.gov.dz/ar/',
-    name: { ar: 'وزارة التجارة وترقية الصادرات', fr: 'Ministère du Commerce et de la Promotion des exportations' },
+    name: { ar: 'وزارة التجارة الداخلية وضبط السوق الوطنية', fr: 'Ministère du Commerce intérieur et de la Régulation du marché national' },
     desc: {
-      ar: 'المعلومات والبيانات التنظيمية المتعلقة بالتجارة، وحماية المستهلك، والأنشطة التجارية، والهيئات التابعة للقطاع.',
-      fr: 'Informations institutionnelles et réglementaires relatives au commerce, à la protection du consommateur et aux organismes du secteur.',
+      ar: 'المعلومات والنصوص التنظيمية المتعلقة بالتجارة الداخلية، وضبط السوق، وحماية المستهلك، والهيئات التابعة للقطاع.',
+      fr: 'Informations institutionnelles et textes réglementaires relatifs au commerce intérieur, à la régulation du marché, à la protection du consommateur et aux organismes du secteur.',
     },
     category: 'commerce',
   },
