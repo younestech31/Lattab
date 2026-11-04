@@ -16,7 +16,7 @@ const CalculatorCTA = ({ lang = 'ar' }: CalculatorCTAProps) => {
           <div className={`flex-1 text-center ${isAr ? 'md:text-right' : 'md:text-left'}`}>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
               {isAr ? 'حاسبة السعر المرجعي للعقار ' : 'Calculateur des prix de référence immobilier '}
-              <span className="block text-amber-300 mt-1">2026</span>
+              <span className="block text-amber-300 mt-1">2025–2026</span>
             </h2>
             <p className="text-emerald-200 text-sm md:text-base leading-relaxed mb-6">
               {isAr
