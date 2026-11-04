@@ -3,7 +3,7 @@ title: "Déclaration de la plus-value immobilière en Algérie : Formulaire G17 
 description: "Guide informatif sur l'obligation du vendeur de déclarer la plus-value immobilière via le formulaire G17, les délais, et le rôle du notaire."
 dateISO: "2026-11-01"
 dateModified: "2026-11-04"
-lastLegalReview: "2026-11-03"
+lastLegalReview: "2026-11-04"
 category: "Immobilier"
 language: "fr"
 readTime: "8"
@@ -46,6 +46,6 @@ Le notaire rédige l'acte de vente, informe les parties de leurs obligations fis
 Ces informations sont purement indicatives. **Note :** Le régime fiscal peut varier selon l'origine du bien (acquisition, héritage, donation). Pour une étude précise liée à votre situation immobilière, consultez votre notaire ou adressez-vous directement à l'administration fiscale compétente.
 
 ## Références et sources officielles
-- [Code des Impôts Directs et Taxes Assimilées](https://www.mfdgi.gov.dz).
-- [Direction générale des impôts — plus-value immobilière](https://mfdgi.gov.dz/fr/particuliers/irg-plus-values-de-cession-a-titre-onereux-des-immeubles-batis-ou-non-batis).
+- [Direction générale des impôts — plus-value immobilière et référentiel officiel](https://mfdgi.gov.dz/fr/particuliers/irg-plus-values-de-cession-a-titre-onereux-des-immeubles-batis-ou-non-batis).
+
 - [Journal Officiel de la République Algérienne](https://www.joradp.dz).
