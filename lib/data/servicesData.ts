@@ -122,11 +122,11 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       faq: [
         {
           question: 'ما هو الوقت التقديري لإشهار عقد البيع واستلام الدفتر العقاري بوهران؟',
-          answer: 'يستغرق تحرير وتوقيع العقد بضعة أيام بعد استكمال الوثائق، في حين تستغرق إجراءات التسجيل والإشهار لدى المحافظة العقارية المختصة بوهران عادة ما بين شهر إلى ثلاثة أشهر بحسب سرعة معالجة الملفات لدى المحافظة العقارية.'
+          answer: 'تختلف المدة بحسب اكتمال الوثائق وطبيعة العقار وآجال معالجة الملف لدى مصالح التسجيل والمحافظة العقارية. لا يوجد أجل موحد يمكن ضمانه مسبقاً، وتُتابع الإجراءات وفق الآجال القانونية وما تقرره الجهات المختصة.'
         },
         {
           question: 'هل يمكن شراء عقار بوهران عن طريق قرض بنكي؟',
-          answer: 'نعم، يتولى المكتب التنسيق المباشر مع البنك المقرض لتحرير عقد البيع مقترناً بعقد الرهن الرسمي للدرجة الأولى لصالح البنك، واستيفاء كافة الشروط القانونية المقررة.'
+          answer: 'يمكن إبرام البيع بتمويل بنكي وفق موافقة البنك وشروطه. وعند الاقتضاء، يحرر الموثق عقد البيع وعقد الرهن الرسمي لفائدة البنك وفق الوثائق والشروط القانونية المطلوبة.'
         }
       ]
     },
@@ -204,11 +204,11 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
       faq: [
         {
           question: 'Quel est le délai moyen pour obtenir le livret foncier après la vente à Oran ?',
-          answer: 'La signature de l\'acte s\'effectue rapidement après dépôt des pièces requises. Les formalités d\'enregistrement et de publication à la Conservation Foncière d\'Oran prennent généralement entre un et trois mois selon les délais de traitement administratif.'
+          answer: 'Le délai dépend de la complétude du dossier, de la nature du bien et du traitement par les services de l’enregistrement et de la Conservation Foncière. Il n’existe pas de délai uniforme pouvant être garanti à l’avance ; les formalités suivent les délais applicables et le traitement des administrations compétentes.'
         },
         {
           question: 'Est-il possible d\'acquérir un bien immobilier à crédit via une banque algérienne ?',
-          answer: 'Oui, l\'office notarial collabore avec l\'ensemble des institutions financières pour instrumenter simultanément l\'acte de vente et l\'acte d\'affectation hypothécaire au profit de l\'établissement prêteur.'
+          answer: 'Une acquisition à crédit peut être réalisée sous réserve de l’accord et des conditions de la banque. Le notaire établit les actes requis, notamment l’acte de vente et, le cas échéant, l’acte hypothécaire au profit de l’établissement prêteur.'
         }
       ]
     }
