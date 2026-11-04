@@ -291,8 +291,8 @@ export const DocumentChecklist = ({ documents, contractType }: DocumentChecklist
       // Legal Note section
       y -= 10;
       const noteText = isAr 
-        ? 'ملاحظة: هذه قائمة إرشادية غير شاملة. للموثق، وفقاً للقانون 06-02 المنظم لمهنة التوثيق، طلب أي وثيقة إضافية يقتضيها انتظام العقد وحماية الأطراف.' 
-        : 'Note : Liste indicative non exhaustive. Conformément à la loi 06-02, le notaire peut demander toute pièce complémentaire nécessaire à la régularité de l’acte.';
+        ? 'ملاحظة: هذه قائمة إرشادية غير حصرية. قد تُطلب وثائق إضافية بحسب طبيعة العقد ووضعية الأطراف والعقار، ووفقاً للقانون 06-02 والنصوص السارية.' 
+        : 'Note : Liste indicative et non exhaustive. Des pièces complémentaires peuvent être demandées selon la nature de l’acte et la situation des parties ou du bien, conformément à la loi 06-02 et aux textes en vigueur.';
       
       const noteLines = wrapLines(noteText, 8.5, usableWidth - 20);
       const noteHeight = noteLines.length * 13 + 24;
