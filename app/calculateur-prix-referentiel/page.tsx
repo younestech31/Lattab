@@ -5,18 +5,18 @@ import Link from 'next/link';
 import { Calculator, AlertCircle, TrendingDown, Info } from 'lucide-react';
 import WebPageSchema from '@/components/WebPageSchema';
 import { SchemaScriptLoader } from '@/components/SchemaScriptLoader';
-import { SITE_URL, GOOGLE_MAPS_URL } from '@/lib/config';
+import { SITE_URL } from '@/lib/config';
 import PriceCalculator from '@/components/PriceCalculator';
 import CalculatorSkeleton from '@/components/CalculatorSkeleton';
 import UnifiedPageHeader from '@/components/ui/UnifiedPageHeader';
 import { assertDescriptionLength } from '@/lib/utils/metaValidation';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const desc = 'حاسبة السعر المرجعي الرسمي للعقار بالجزائر 2026 (58 ولاية). تقدير فوري لقيمة العقارات التجارية والسكنية بناءً على جداول وزارة المالية والضرائب.';
+  const desc = 'حاسبة استرشادية لنطاقات القيمة السوقية للعقار في الجزائر، اعتماداً على مرجع المديرية العامة للضرائب للفترة 2025–2026 والبيانات المتاحة في الأداة.';
   assertDescriptionLength(desc, 'calculateur-prix-referentiel');
 
   return {
-    title: { absolute: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر' },
+    title: { absolute: 'حاسبة مرجع أسعار العقار 2025–2026 — الجزائر' },
     description: desc,
     alternates: {
       canonical: `${SITE_URL}/calculateur-prix-referentiel`,
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر',
+      title: 'حاسبة مرجع أسعار العقار 2025–2026 — الجزائر',
       description: desc,
       url: `${SITE_URL}/calculateur-prix-referentiel`,
       siteName: 'ديوان التوثيق ببلدية وهران',
@@ -36,14 +36,14 @@ export async function generateMetadata(): Promise<Metadata> {
         url: `${SITE_URL}/calculateur-prix-referentiel/opengraph-image`, 
         width: 1200, 
         height: 630, 
-        alt: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر' 
+        alt: 'حاسبة مرجع أسعار العقار 2025–2026 — الجزائر' 
       }],
       locale: 'ar_DZ',
       alternateLocale: ['fr_DZ'],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر',
+      title: 'حاسبة مرجع أسعار العقار 2025–2026 — الجزائر',
       description: desc,
       images: [`${SITE_URL}/calculateur-prix-referentiel/opengraph-image`],
     },
@@ -55,58 +55,26 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function CalculatorPage() {
-  const serviceSchema = {
+  const webApplicationSchema = {
     '@context': 'https://schema.org',
-    '@type': 'GovernmentService',
-    '@id': `${SITE_URL}/#notary-office`,
-    name: 'حاسبة السعر المرجعي العقاري 2026 — الجزائر',
+    '@type': 'WebApplication',
+    '@id': `${SITE_URL}/calculateur-prix-referentiel#application`,
+    name: 'حاسبة مرجع أسعار العقار 2025–2026 — الجزائر',
     url: `${SITE_URL}/calculateur-prix-referentiel`,
-    description:
-      'حاسبة السعر المرجعي العقاري — أداة إعلامية استرشادية بناءً على الجداول الرسمية المعتمدة من المديرية العامة للضرائب ووزارة المالية.',
-    provider: {
-      '@type': 'GovernmentService',
-      '@id': `${SITE_URL}/#notary-office`,
-      name: 'ديوان التوثيق ببلدية وهران',
-      legalName: 'ديوان التوثيق ببلدية وهران',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'حي 557 مسكن، العمارة D24، الطابق الأول، رقم 768، العقيد لطفي',
-        addressLocality: 'وهران',
-        addressRegion: 'وهران',
-        postalCode: '31000',
-        addressCountry: 'DZ',
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 35.7277124,
-        longitude: -0.5931358,
-      },
-      hasMap: GOOGLE_MAPS_URL,
-      areaServed: { '@type': 'AdministrativeArea', name: 'Oran' },
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-          opens: '08:30',
-          closes: '12:00',
-        },
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-          opens: '13:30',
-          closes: '16:00',
-        },
-      ],
-    },
+    description: 'أداة معلوماتية تعرض نطاقات القيمة السوقية الواردة في مرجع المديرية العامة للضرائب للفترة 2025–2026، بحسب البيانات المدرجة فيها.',
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'DZD' },
+    provider: { '@id': `${SITE_URL}/#notary-office` },
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <SchemaScriptLoader schemas={[serviceSchema]} />
+      <SchemaScriptLoader schemas={[webApplicationSchema]} />
       <WebPageSchema
         url={`${SITE_URL}/calculateur-prix-referentiel`}
-        name="حاسبة السعر المرجعي للعقار 2026"
-        description="السعر المرجعي الرسمي للعقار في الجزائر 2026 (58 ولاية). بيانات رسمية من وزارة المالية والمديرية العامة للضرائب."
+        name="حاسبة مرجع أسعار العقار 2025–2026"
+        description="نطاقات القيمة السوقية للعقار الواردة في مرجع المديرية العامة للضرائب للفترة 2025–2026، وفق البيانات المتاحة في الأداة."
         breadcrumbs={[
           { name: 'الرئيسية', item: `${SITE_URL}/` },
           { name: 'حاسبة السعر المرجعي', item: `${SITE_URL}/calculateur-prix-referentiel` },
@@ -118,7 +86,7 @@ export default function CalculatorPage() {
           badgeText="الخدمات والأدوات الرقمية الاسترشادية"
           badgeIcon={<Calculator className="w-4 h-4" />}
           eyebrow="الديوان العمومي للتوثيق"
-          title="حاسبة السعر المرجعي للعقار 2026"
+          title="حاسبة مرجع أسعار العقار 2025–2026"
           description="حاسبة السعر المرجعي العقاري — أداة إعلامية استرشادية بناءً على الجداول الرسمية المعتمدة من المديرية العامة للضرائب ووزارة المالية."
           breadcrumbs={[
             { name: 'الرئيسية', href: '/' },
@@ -139,7 +107,7 @@ export default function CalculatorPage() {
 
         <div className="container mx-auto px-4 py-16 max-w-5xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            الدليل الشامل للسعر المرجعي العقاري 2026
+            دليل قراءة مرجع أسعار العقار 2025–2026
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -148,17 +116,15 @@ export default function CalculatorPage() {
                 <Info className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">
-                كيف تستخدم حاسبة السعر المرجعي للعقار 2026؟
+                كيف تستخدم حاسبة مرجع أسعار العقار 2025–2026؟
               </h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                تعتمد هذه الحاسبة على جداول أسعار رسمية من المديرية العامة للضرائب. ما
-                عليك سوى تحديد منطقتك، فئة عقارك (شقة، أرض، فيلا)، مساحته بدقة، والمنطقة
-                العمرانية ضمن البلدية.
+                تعرض الأداة نطاقات القيمة السوقية المنشورة في مرجع المديرية العامة للضرائب للفترة 2025–2026، وفق البيانات المتاحة لكل منطقة ونوع عقار. اختر الولاية والبلدية أو المنطقة، ثم طبيعة العقار وصنفه والمنطقة العمرانية والمساحة.
               </p>
               <ul className="text-sm text-gray-500 space-y-2 list-disc list-inside">
                 <li>حدد النشاط: بيع أم إيجار</li>
                 <li>اختر المنطقة والعقار</li>
-                <li>ستحصل على السعر الأدنى والأقصى المطلوب في العقد التوثيقي</li>
+                <li>تظهر حدود النطاق المنشور في المرجع، ولا تمثل سعراً ملزماً أو تقييماً فردياً نهائياً للعقار</li>
               </ul>
             </div>
 
@@ -167,17 +133,15 @@ export default function CalculatorPage() {
                 <AlertCircle className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">
-                ماذا يحدث إذا صرّحت بسعر أقل من المرجعي؟
+                كيف تُقرأ حدود النطاق الواردة في المرجع؟
               </h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                قانونياً، للموثق الحق في رفض تمرير عقد بيع إذا كان السعر المصرح به فيه
-                غبن لخزينة الدولة. إذا مر العقد، ستقوم مصلحة الضرائب بإجراء تقويم ضريبي
-                إداري (Redressement Fiscal).
+                يتضمن مرجع المديرية العامة للضرائب نطاقات للقيم السوقية للعقارات. وقد تدخل القيمة السوقية في تحديد الوعاء الجبائي بحسب طبيعة العملية والنصوص السارية. لا يجوز اعتبار الحد الأدنى في الجدول حداً قانونياً عاماً واجب التطبيق آلياً على كل عقد؛ كما لا تكفي نتيجة هذه الأداة وحدها لتحديد المعالجة الجبائية.
               </p>
               <ul className="text-sm text-gray-500 space-y-2 list-disc list-inside">
-                <li>غرامات تأخير قاسية جداً</li>
-                <li>تغريم الطرفين ومراجعة الضريبة على الدخل</li>
-                <li>إمكانية إلغاء الصفقة قانونياً</li>
+                <li>تختلف المعالجة الجبائية بحسب طبيعة العملية والنصوص المطبقة.</li>
+                <li>يرجع تحديد الوعاء والحقوق المستحقة إلى الإدارة الجبائية المختصة.</li>
+                <li>ينبغي الرجوع إلى المرجع الرسمي المحيّن والوثائق الخاصة بالعقار.</li>
               </ul>
             </div>
 
@@ -186,31 +150,40 @@ export default function CalculatorPage() {
                 <TrendingDown className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">
-                الفرق بين السعر المرجعي والسعر السوقي
+                النطاق المرجعي والقيمة الفعلية للعقار
               </h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                <strong>السعر المرجعي:</strong> هو السعر الإداري الذي تعتمده الدولة كحد
-                أدنى لتجنب التهرب الضريبي.
+                <strong>النطاق المرجعي:</strong> حدود دنيا وعليا للقيم السوقية تعرضها جداول المديرية العامة للضرائب خلال فترة محددة.
                 <br />
                 <br />
-                <strong>السعر السوقي:</strong> هو السعر الحقيقي الذي تتفق عليه مع المشتري
-                أو البائع وفق العرض والطلب.
+                <strong>القيمة الفعلية:</strong> تتعلق بخصائص العقار وموقعه وحالته ووثائقه وظروف العملية، ولا يمكن لهذه الأداة أن تحل محل تقييم فردي أو تحقق إداري.
               </p>
               <p className="text-sm text-gray-500 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                يجب دائماً أن يكون السعر المصرح به في العقد أكبر من أو يساوي السعر المرجعي
-                المحسوب هنا!
+                النتيجة استرشادية فقط؛ ولا تقرر وحدها صحة الثمن المصرح به أو الرسوم والضرائب المستحقة أو أتعاب الموثق.
               </p>
             </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <Link
-              href="/#contact"
-              className="inline-flex py-4 px-8 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold text-lg transition-colors shadow-lg shadow-emerald-600/30"
-            >
-              هل تحتاج لاستشارة حول سعر عقارك؟ تواصل معنا
-            </Link>
-          </div>
+          <section className="mt-12 rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
+            <h3 className="mb-3 text-lg font-bold text-gray-900">المصدر الرسمي وحدود البيانات</h3>
+            <p className="mb-3 text-sm leading-7 text-gray-700">
+              المرجع المنشور من المديرية العامة للضرائب للفترة 2025–2026 يعرض نطاقات للقيم السوقية حسب المناطق والولايات والبلديات وأنواع العقارات. يرجى الرجوع إلى النسخة الرسمية عند الاستعمال والتحقق من أي تحديث لاحق.
+            </p>
+            <p className="mb-4 text-sm leading-7 text-gray-700">
+              ملاحظة إدارية: قاعدة الأداة تعرض البيانات المدرجة لديها ولا تنشئ جداول مستقلة للولايات المستحدثة. وقد صدر القانون رقم 26-06 المؤرخ في 4 أبريل 2026 بالتقسيم الإقليمي الجديد إلى 69 ولاية، مع انتقال تدريجي للصلاحيات خلال سنة 2026؛ لذلك لا تعتبر قائمة الاختيار بديلاً عن التحقق لدى الإدارة الجبائية المختصة من التسمية والاختصاص المعمول بهما.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href="https://www.mfdgi.gov.dz/services-pro-ar/autres-services-numeriques-ar/referentiel-des-prix-de-limmobilier-ar" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-xl bg-emerald-800 px-4 py-2.5 text-sm font-bold text-white hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
+                مرجع أسعار العقار — المديرية العامة للضرائب
+              </a>
+              <a href="https://www.joradp.dz/FTP/jo-francais/2026/F2026025.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-xl border border-gray-300 px-4 py-2.5 text-sm font-bold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
+                القانون رقم 26-06 — الجريدة الرسمية
+              </a>
+              <Link href="/contact" className="inline-flex min-h-11 items-center rounded-xl border border-gray-300 px-4 py-2.5 text-sm font-bold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
+                معلومات الاتصال بالمكتب
+              </Link>
+            </div>
+          </section>
         </div>
       </div>
     </div>
