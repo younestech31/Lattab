@@ -74,7 +74,9 @@ export function middleware(request: NextRequest) {
   response.headers.set('Content-Security-Policy', cspHeader);
 
   const isKnownRoute = isKnownPublicRoute(url.pathname);
-  const isDynamic = request.method === 'POST' || url.searchParams.has('q');
+  // Query-string variants (search, prefilled inquiry links, campaign parameters) are not separate indexable pages.
+  // Keep their links crawlable, but let the clean canonical route represent the content in search.
+  const isDynamic = request.method === 'POST' || url.searchParams.size > 0;
 
   // Dynamic/search requests or unknown routes (404 candidates)
   if (isDynamic || !isKnownRoute) {
