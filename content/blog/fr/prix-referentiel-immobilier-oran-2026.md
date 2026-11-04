@@ -1,9 +1,9 @@
 ---
-title: "Prix référentiel immobilier à Oran : Référentiel fiscal et droits d'enregistrement"
-description: "Guide sur la grille des prix référentiels de la Direction des impôts d'Oran, les critères d'évaluation et le calcul des droits d'enregistrement."
+title: "Référentiel immobilier 2025–2026 à Oran : comprendre les fourchettes fiscales"
+description: "Guide informatif sur le référentiel immobilier 2025–2026 de la DGI et les fourchettes de valeurs selon la zone et le type de bien, avec leurs limites fiscales."
 dateISO: "2026-05-18"
 dateModified: "2026-11-04"
-lastLegalReview: "2026-11-03"
+lastLegalReview: "2026-11-04"
 category: "Immobilier"
 language: "fr"
 readTime: "8"
@@ -27,16 +27,17 @@ Il faut distinguer quatre notions :
 Les droits d'enregistrement et la taxe de publicité foncière sont liquidés selon les textes fiscaux en vigueur et sur la base retenue dans le dossier, après comparaison de la déclaration avec le référentiel. Les grilles 2025-2026 sont des fourchettes qui varient selon la wilaya, la commune, la zone et le type de bien. Elles ne sont ni un plancher unique ni une règle automatique de calcul des droits de tous les actes.
 
 ## Rôle du notaire
-Le notaire applique le barème fiscal en vigueur, informe préalablement les parties du montant estimé des droits à acquitter et veille à l'utilisation des moyens de paiement bancaires légaux pour garantir la sécurité financière.
+Le notaire accomplit les formalités liées à l’acte conformément aux règles de paiement applicables, sans se substituer à l’administration fiscale pour déterminer l’assiette ou les droits définitifs.
 
 ## Liens utiles
 - Utilisez notre [calculateur de prix référentiel](/fr/calculateur-prix-referentiel).
 - Consultez la liste des [documents de vente immobilière](/fr/blog/documents-vente-immobilier-algerie).
 
 ## Conclusion et note importante
-Ce guide est purement informatif sur les méthodes d'évaluation fiscale. **Note :** L'administration fiscale conserve le droit légal de procéder à une réévaluation (préemption fiscale ou redressement) si la valeur déclarée, même conforme à la fourchette référentielle, apparaît manifestement inférieure à la valeur vénale réelle du marché au moment de la transaction. Il s’agit alors, lorsque les conditions légales sont réunies, d’une réévaluation ou d’un redressement fiscal, et non d’une « préemption fiscale ».
+Ce guide est purement informatif sur les méthodes d'évaluation fiscale. **Note :** L’administration fiscale peut, lorsque les conditions légales et procédurales sont réunies, examiner la valeur déclarée et engager une procédure de rectification ou de réévaluation conformément aux textes applicables. Cette procédure fiscale doit être distinguée du droit de préemption, qui relève de règles distinctes.
 
 ## Références et sources officielles
-- [Direction Générale des Impôts](https://www.mfdgi.gov.dz).
-- [Code de l'enregistrement](https://www.mfdgi.gov.dz).
+- [Référentiel immobilier 2025–2026 — Direction générale des impôts](https://www.mfdgi.gov.dz/fr/a-propos/actu-fr/ref-immobiliersfr-2025-2026).
+- [Page de téléchargement du référentiel immobilier](https://www.mfdgi.gov.dz/fr/services-num/autres-services-numeriques/referentiel-des-prix-de-limmobilier).
+- [DGI — Plus-values immobilières](https://www.mfdgi.gov.dz/fr/particuliers/irg-plus-values-de-cession-a-titre-onereux-des-immeubles-batis-ou-non-batis).
 - [Journal Officiel de la République Algérienne](https://www.joradp.dz).
