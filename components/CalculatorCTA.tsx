@@ -20,8 +20,8 @@ const CalculatorCTA = ({ lang = 'ar' }: CalculatorCTAProps) => {
             </h2>
             <p className="text-emerald-200 text-sm md:text-base leading-relaxed mb-6">
               {isAr
-                ? 'أداة إعلامية للتعرف على الأسعار المرجعية لوزارة المالية عبر ولايات الوطن (58 ولاية).'
-                : 'Outil d\'information sur les prix de référence officiels du Ministère des Finances pour les 58 wilayas.'}
+                ? 'أداة معلوماتية للاطلاع على نطاقات القيم المرجعية للعقار الواردة في مرجع المديرية العامة للضرائب، وفق البيانات المتاحة في الأداة.'
+                : 'Outil d\'information présentant les fourchettes de valeurs immobilières du référentiel de la Direction Générale des Impôts, selon les données disponibles dans l\'outil.'}
             </p>
             
             <div className={`flex justify-center ${isAr ? 'md:justify-start' : 'md:justify-start'}`}>
