@@ -100,8 +100,8 @@ export default function ContactPageView({ lang }: ContactPageViewProps) {
         eyebrow={isAr ? 'الديوان العمومي للتوثيق' : 'Office notarial'}
         title={isAr ? 'الاتصال والاستفسار الإداري — ديوان التوثيق ببلدية وهران' : 'Contact et renseignements administratifs — Office Notarial - Oran'}
         description={isAr
-          ? 'مكتب التوثيق يستقبلكم لدراسة ملفاتكم وإنجاز كافة المعاملات القانونية والعقارية بحي العقيد لطفي بوهران.'
-          : 'Notre étude vous accueille à Akid Lotfi pour étudier vos dossiers et accomplir vos actes juridiques et immobiliers.'}
+          ? 'للحصول على معلومات إدارية حول الملفات والوثائق والإجراءات التوثيقية، يمكنكم التواصل مع الديوان العمومي للتوثيق بحي العقيد لطفي في وهران.'
+          : 'Pour obtenir des renseignements administratifs sur les dossiers, les pièces et les formalités notariales, vous pouvez contacter l’office public notarial situé à Akid Lotfi, Oran.'}
         breadcrumbs={[
           { name: isAr ? 'الرئيسية' : 'Accueil', href: homeUrl },
           { name: isAr ? 'اتصل بنا' : 'Contact' },
