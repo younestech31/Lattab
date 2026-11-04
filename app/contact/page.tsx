@@ -5,7 +5,7 @@ import { SITE_URL, OFFICE_INFO } from '@/lib/config';
 export const revalidate = 86400; // 24h ISR
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = `معلومات الاتصال والاستفسار الإداري — ${OFFICE_INFO.officeNameShort.ar} | موثق وهران`;
+  const title = `الاتصال والاستفسار الإداري — ديوان التوثيق وهران`;
   const desc = `بيانات الاتصال والاستفسار الإداري لدى ${OFFICE_INFO.officeNameShort.ar}، حي العقيد لطفي قرب ${OFFICE_INFO.tribunal.ar}. أوقات الاستقبال والموقع الجغرافي.`;
 
   return {
