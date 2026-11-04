@@ -174,6 +174,7 @@ export const translations = {
           'عقود الزواج والمستندات العائلية',
           'تأسيس الشركات والمؤسسات',
           'الرهن والتأمينات',
+          'الفريضة والتركات',
           'التصريحات والمصادقات',
         ],
         required_docs_hints: {
@@ -205,6 +206,11 @@ export const translations = {
             'سند الملكية',
             'عقد القرض أو وثيقة الدين',
             'وثائق الهوية',
+          ],
+          'الفريضة والتركات': [
+            'شهادات وفاة المورث',
+            'شهادات الميلاد والوثائق العائلية للورثة',
+            'وثائق هوية الورثة',
           ],
           'التصريحات والمصادقات': [
             'بطاقة الهوية',
@@ -413,6 +419,7 @@ export const translations = {
           'Actes de mariage et documents familiaux',
           'Constitution de sociétés',
           'Hypothèques et sûretés',
+          'Frédha et successions',
           'Déclarations et légalisations',
         ],
         required_docs_hints: {
@@ -444,6 +451,11 @@ export const translations = {
             'Titre de propriété',
             'Contrat de prêt ou titre de créance',
             'Pièces d\'identité',
+          ],
+          'Frédha et successions': [
+            'Acte de décès du défunt',
+            'Actes de naissance et documents d’état civil des héritiers',
+            'Pièces d’identité des héritiers',
           ],
           'Déclarations et légalisations': [
             'Pièce d\'identité',
