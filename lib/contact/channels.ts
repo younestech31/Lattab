@@ -15,36 +15,61 @@ export function officeEmail(): string {
 }
 
 /**
- * Builds a sanitized WhatsApp inquiry URL.
- * Only allows https://wa.me/<digits>?text=. Rejects any other scheme.
- * Strips <> and control characters from service, collapses whitespace, max 80 chars.
+ * Builds a sanitized WhatsApp inquiry URL. User-entered details are included
+ * only in the message prepared on the visitor's device; they are not stored here.
  */
-export function buildInquiryWaUrl(lang: 'ar' | 'fr' = 'ar', service: string = ''): string {
-  const sanitizedService = (service || '')
+export interface InquiryMessageDetails {
+  name?: string;
+  phone?: string;
+  company?: string;
+  message?: string;
+}
+
+function sanitizeMessageField(value: string | undefined, maxLength: number): string {
+  return (value || '')
     .replace(/[<>]/g, '')
     .replace(/[\x00-\x1F\x7F-\x9F]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
-    .slice(0, 80);
+    .slice(0, maxLength);
+}
 
+export function buildInquiryWaUrl(
+  lang: 'ar' | 'fr' = 'ar',
+  service: string = '',
+  details: InquiryMessageDetails = {},
+): string {
+  const sanitizedService = sanitizeMessageField(service, 100);
+  const name = sanitizeMessageField(details.name, 100);
+  const phone = sanitizeMessageField(details.phone, 25);
+  const company = sanitizeMessageField(details.company, 100);
+  const extraMessage = sanitizeMessageField(details.message, 700);
   const digits = officeTelDigits();
 
-  let message = '';
-  if (lang === 'fr') {
-    // French formal, no sales wording
-    message = sanitizedService
-      ? `Bonjour, je souhaite effectuer une demande de renseignement administratif concernant : ${sanitizedService}. Office notarial, Akid Lotfi, Oran.`
-      : `Bonjour, je souhaite effectuer une demande de renseignement administratif. Office notarial, Akid Lotfi, Oran.`;
-  } else {
-    message = sanitizedService
-      ? `السلام عليكم، أود الاستفسار الإداري حول: ${sanitizedService}. المكتب: ديوان التوثيق، العقيد لطفي، وهران.`
-      : `السلام عليكم، أود الاستفسار الإداري. المكتب: ديوان التوثيق، العقيد لطفي، وهران.`;
-  }
+  const lines = lang === 'fr'
+    ? [
+        'Bonjour, je souhaite effectuer une demande de renseignement administratif.',
+        'Service concerné : ' + (sanitizedService || 'Non précisé'),
+        'Nom : ' + (name || 'Non précisé'),
+        'Téléphone : ' + (phone || 'Non précisé'),
+        ...(company ? ['Société / institution : ' + company] : []),
+        ...(extraMessage ? ['Précisions : ' + extraMessage] : []),
+        'Office notarial, Akid Lotfi, Oran.',
+      ]
+    : [
+        'السلام عليكم، أود تقديم استفسار إداري.',
+        'نوع الخدمة: ' + (sanitizedService || 'غير محدد'),
+        'الاسم: ' + (name || 'غير محدد'),
+        'رقم الهاتف: ' + (phone || 'غير محدد'),
+        ...(company ? ['المؤسسة: ' + company] : []),
+        ...(extraMessage ? ['تفاصيل إضافية: ' + extraMessage] : []),
+        'المكتب: ديوان التوثيق، العقيد لطفي، وهران.',
+      ];
 
-  const url = `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
-  if (!url.startsWith(`https://wa.me/${digits}?text=`)) {
+  const message = lines.join('\n');
+  const url = 'https://wa.me/' + digits + '?text=' + encodeURIComponent(message);
+  if (!url.startsWith('https://wa.me/' + digits + '?text=')) {
     throw new Error('Invalid WhatsApp URL generated');
   }
-
   return url;
 }
