@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { SITE_URL } from '@/lib/config';
 import { blogPosts, frBlogPosts } from '@/lib/data/blog';
+import { STATIC_LOCALE_MAP } from '@/lib/data/localeMap';
 import { validateBearerAuth } from '@/lib/utils/auth';
 
 const INDEX_NOW_KEY = process.env.INDEXNOW_KEY || '';
@@ -21,16 +22,17 @@ export async function GET(req: NextRequest) {
   }
 
   const base = SITE_URL;
-  const urlList = [
-    `${base}/`,
-    `${base}/blog`,
-    `${base}/calculateur-prix-referentiel`,
-    ...blogPosts.map(post => `${base}/blog/${post.slug}`),
-    `${base}/fr`,
-    `${base}/fr/blog`,
-    `${base}/fr/calculateur-prix-referentiel`,
-    ...frBlogPosts.map(post => `${base}/fr/blog/${post.slug}`),
+  // IndexNow notifies participating search engines; it is not Google's Indexing API.
+  // Build the list from the same canonical route registry used by the sitemap.
+  const staticUrls = STATIC_LOCALE_MAP.flatMap((entry) => [
+    new URL(entry.arPath, base).toString(),
+    ...(entry.frPath ? [new URL(entry.frPath, base).toString()] : []),
+  ]);
+  const articleUrls = [
+    ...blogPosts.map((post) => new URL(`/blog/${post.slug}`, base).toString()),
+    ...frBlogPosts.map((post) => new URL(`/fr/blog/${post.slug}`, base).toString()),
   ];
+  const urlList = Array.from(new Set([...staticUrls, ...articleUrls]));
 
   try {
     const host = new URL(base).host;
