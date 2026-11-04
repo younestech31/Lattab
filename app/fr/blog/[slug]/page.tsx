@@ -80,7 +80,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       locale: 'fr_DZ',
       type: 'article',
       publishedTime: post.dateISO,
-      modifiedTime: post.dateModified || post.dateISO,
+      ...(post.dateModified ? { modifiedTime: post.dateModified } : {}),
       authors: ['Office Notarial - Oran'],
       section: post.category,
       tags: [post.category, 'Droit Algérien', 'Notariat', 'Oran'],
@@ -177,15 +177,16 @@ export default async function FrenchBlogPostPage({ params }: { params: Promise<{
               "headline": post.title,
               "description": post.description,
               "datePublished": post.dateISO,
-              "dateModified": post.dateModified || post.dateISO,
+              ...(post.dateModified ? { "dateModified": post.dateModified } : {}),
               "author": {
                 "@type": "Organization",
-                "@id": `${SITE_URL}/#organization`,
+                "@id": `${SITE_URL}/fr#notary-office`,
                 "name": "Office Notarial - Oran",
-                "url": `${SITE_URL}/fr/a-propos`
+                "url": `${SITE_URL}/fr`
               },
               "publisher": {
                 "@type": "Organization",
+                "@id": `${SITE_URL}/fr#notary-office`,
                 "name": "Office Notarial - Oran",
                 "logo": {
                   "@type": "ImageObject",
