@@ -35,7 +35,7 @@ export const SLUG_TO_CLUSTER: Record<string, ArticleCluster> = {
   'auto-entrepreneur-startups-algerie-avantages': 'societes',
   'cession-fonds-de-commerce-algerie': 'societes',
   'contrat-location-commercial-oran': 'societes',
-  'cession-fonds-de-commerce-algerie': 'societes',
+
 
   // Famille / Statut personnel / Procurations
   'contrat-mariage-chez-notaire-algerie': 'famille',
