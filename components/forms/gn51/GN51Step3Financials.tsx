@@ -258,17 +258,26 @@ export default function GN51Step3Financials({ data, updateData, calc, isAr }: Pr
         </div>
       )}
 
-      {/* Live Total Due Card */}
+      {/* Final amount card: distinguish the provisional levy from the liberatory tax. */}
       <div className="bg-emerald-900 text-white rounded-2xl p-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <span className="text-xs uppercase tracking-wider text-emerald-300 font-semibold block">
-            {isAr ? 'إجمالي الضريبة المستحقة للدفع (IRG/Location)' : 'Total IRG à payer (Location immobilière)'}
+        <div className="space-y-2">
+          <span className="text-xs uppercase tracking-wider text-emerald-200 font-semibold block">
+            {data.isOverThreshold
+              ? (isAr ? 'الاقتطاع الضريبي المؤقت (7%)' : 'Prélèvement fiscal provisoire (7%)')
+              : (isAr ? 'الضريبة المحررة من الضريبة' : 'IRG libératoire')}
           </span>
-          <span className="text-xs text-emerald-200 mt-0.5 block">
+          <span className="text-xs text-emerald-100 block">
             {isAr
-              ? `إجمالي مبالغ الإيجار المصرح بها: ${formatDa(calc.totalGrossLoyer)}`
-              : `Total des loyers bruts déclarés : ${formatDa(calc.totalGrossLoyer)}`}
+              ? `إجمالي مبالغ الإيجار السنوية: ${formatDa(calc.totalGrossLoyer)}`
+              : `Total annuel brut des loyers : ${formatDa(calc.totalGrossLoyer)}`}
           </span>
+          {data.isOverThreshold && (
+            <p className="max-w-2xl text-xs leading-relaxed text-amber-100">
+              {isAr
+                ? 'هذا المبلغ اقتطاع مؤقت وليس التصفية النهائية للضريبة؛ يُحتسب قرضاً ضريبياً يُخصم عند تحديد الضريبة النهائية على الدخل الإجمالي، مع مراعاة الشروط والتخفيضات القانونية المطبقة.'
+                : 'Ce montant est un prélèvement provisoire, et non la liquidation définitive de l’IRG. Il constitue un crédit d’impôt imputable sur l’imposition définitive, selon les règles applicables.'}
+            </p>
+          )}
         </div>
         <div className="text-3xl font-extrabold text-amber-300 tracking-tight">
           {formatDa(calc.totalTaxDue)}

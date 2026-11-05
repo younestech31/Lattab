@@ -105,6 +105,33 @@ async function runTestSuite(): Promise<TestResult[]> {
     throw new Error('GN08 mapper must not strike every declarant capacity when none was selected.');
   }
 
+  const gn51UnderThreshold = computeGN51({
+    ...initialGN51Values,
+    isOverThreshold: false,
+    loyerHabitation: 900000,
+    loyerCommercial: 900000,
+  });
+  if (
+    gn51UnderThreshold.thresholdMismatch ||
+    gn51UnderThreshold.totalGrossLoyer !== 1800000 ||
+    gn51UnderThreshold.totalTaxDue !== 198000
+  ) {
+    throw new Error('GN51 threshold boundary at exactly 1,800,000 DA must use category rates (7% + 15%).');
+  }
+
+  const gn51OverThreshold = computeGN51({
+    ...initialGN51Values,
+    isOverThreshold: true,
+    loyerExcedentaire: 2400000,
+  });
+  if (
+    gn51OverThreshold.thresholdMismatch ||
+    gn51OverThreshold.totalTaxDue !== 168000 ||
+    gn51OverThreshold.taxExcedentaire !== 168000
+  ) {
+    throw new Error('GN51 amount above 1,800,000 DA must use the provisional 7% calculation.');
+  }
+
   const results: TestResult[] = [];
 
   // ──────────────────────────────────────────

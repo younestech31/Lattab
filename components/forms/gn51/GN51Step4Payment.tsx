@@ -247,11 +247,28 @@ export default function GN51Step4Payment({
             <span className="font-bold text-gray-900">{data.preneurNom || '—'}</span>
           </div>
           <div className="bg-white p-3 rounded-xl border border-gray-100">
-            <span className="text-gray-500 block">{isAr ? 'الضريبة المستحقة' : 'IRG à payer'}</span>
+            <span className="text-gray-500 block">
+              {calc.isOverThreshold
+                ? (isAr ? 'الاقتطاع المؤقت (7%)' : 'Prélèvement provisoire (7%)')
+                : (isAr ? 'الضريبة المحررة من الضريبة' : 'IRG libératoire')}
+            </span>
             <span className="font-extrabold text-emerald-800 text-sm">{formatDa(calc.totalTaxDue)}</span>
           </div>
         </div>
       </div>
+
+      {calc.isOverThreshold && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs leading-relaxed text-amber-950">
+          <p className="font-bold mb-1">
+            {isAr ? 'تنبيه بشأن الإخضاع المؤقت' : 'Précision sur l’imposition provisoire'}
+          </p>
+          <p>
+            {isAr
+              ? 'مبلغ 7% المبيّن في هذا التصريح هو اقتطاع مؤقت يُصرّح به ويدفع عبر ج51، ويُحتسب قرضاً ضريبياً يخصم من الضريبة النهائية على الدخل الإجمالي. وتُجرى التصفية النهائية وفق التصريح السنوي ج01؛ وقد ينطبق تخفيض 25% على مداخيل الإيجار السكني المستوفية للشروط، ولا يطبق على العقود المبرمة مع الشركات.'
+              : 'Le montant de 7 % déclaré sur ce formulaire est un prélèvement provisoire acquitté via la G51 et constitue un crédit d’impôt imputable sur l’IRG définitif. La liquidation définitive s’effectue via la déclaration annuelle G01 ; l’abattement de 25 % peut concerner les revenus locatifs d’habitation remplissant les conditions, mais ne s’applique pas aux contrats conclus avec des sociétés.'}
+          </p>
+        </div>
+      )}
 
       {/* Institutional Legal Disclaimer (Law 06-02 compliance) */}
       <div className="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-5 flex items-start gap-3.5 shadow-sm text-xs text-blue-950 leading-relaxed">
