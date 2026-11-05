@@ -346,13 +346,6 @@ async function runTestSuite(): Promise<TestResult[]> {
       values: gn17ValuesAr,
     });
     await savePdfArtifact('gn17-ar', pdfBytes);
-    await savePdfArtifact('gn17-fr', pdfBytes);
-    await savePdfArtifact('gn31-ar', pdfBytes);
-    await savePdfArtifact('gn31-fr', pdfBytes);
-    await savePdfArtifact('gn08-ar', pdfBytes);
-    await savePdfArtifact('gn08-fr', pdfBytes);
-    await savePdfArtifact('gn51-ar', pdfBytes);
-    await savePdfArtifact('gn51-fr', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
@@ -436,6 +429,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       fields: GN17_FIELD_COORDINATES_FR,
       values: gn17ValuesFr,
     });
+    await savePdfArtifact('gn17-fr', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
@@ -525,6 +519,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       fields: GN31_FIELD_COORDINATES,
       values: gn31ValuesAr,
     });
+    await savePdfArtifact('gn31-ar', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
@@ -614,6 +609,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       fields: GN31_FIELD_COORDINATES_FR,
       values: gn31ValuesFr,
     });
+    await savePdfArtifact('gn31-fr', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
@@ -684,6 +680,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       fields: GN8_FIELD_COORDINATES,
       values: gn8ValuesAr,
     });
+    await savePdfArtifact('gn08-ar', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
@@ -754,6 +751,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       fields: GN8_FIELD_COORDINATES_FR,
       values: gn8ValuesFr,
     });
+    await savePdfArtifact('gn08-fr', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
@@ -837,6 +835,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       fields: GN51_FIELD_COORDINATES,
       values: gn51ValuesAr,
     });
+    await savePdfArtifact('gn51-ar', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
@@ -920,6 +919,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       fields: GN51_FIELD_COORDINATES_FR,
       values: gn51ValuesFr,
     });
+    await savePdfArtifact('gn51-fr', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
