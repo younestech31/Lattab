@@ -32,7 +32,9 @@ Run the focused parser/schema tests with:
 bun run test:nae
 ```
 
-The tests cover quoted delimiters, escaped quotes, embedded newlines, CRLF, malformed quoting, and the six-digit schema constraint.
+GitHub Actions runs this focused test suite when NAE source, tooling, tests, or lockfile changes are pushed to `main` or submitted in a pull request.
+
+The tests cover quoted delimiters, escaped quotes, embedded newlines, CRLF, malformed quoting, invalid quote placement, trailing empty columns, and the six-digit schema constraint.
 
 ## Validation policy
 
