@@ -40,11 +40,13 @@ export function NAEExplorerPage({
   lang, params,
 }: {
   lang: NAEPageLanguage;
-  params: { q?: string | string[]; sector?: string | string[]; group?: string | string[]; subgroup?: string | string[]; compare?: string | string[] };
+  params: { q?: string | string[]; sector?: string | string[]; group?: string | string[]; subgroup?: string | string[]; compare?: string | string[]; page?: string | string[] };
 }) {
   const ar = lang === "ar";
   const action = ar ? "/nae" : "/fr/nae";
   const q = first(params.q).trim();
+  const requestedPageValue = Number.parseInt(first(params.page), 10);
+  const requestedPage = Number.isSafeInteger(requestedPageValue) && requestedPageValue > 0 ? requestedPageValue : 1;
   const compareParamPresent = params.compare !== undefined;
   const compareCodes = normalizeNAECompareCodes(
     params.compare,
@@ -66,11 +68,6 @@ export function NAEExplorerPage({
   const subgroup = sectorNode?.groups.find((item) => item.code === group)?.subgroups.some((item) => item.code === rawSubgroup) ? rawSubgroup : undefined;
   if (group) baseParams.set("group", group);
   if (subgroup) baseParams.set("subgroup", subgroup);
-  const baseHref = baseParams.size ? `${action}?${baseParams.toString()}` : action;
-  const clearCompareParams = new URLSearchParams(baseParams);
-  clearCompareParams.set("compare", "");
-  const clearCompareHref = `${action}?${clearCompareParams.toString()}`;
-
   const filters = {
     ...(sector ? { sectorCode: sector } : {}),
     ...(group ? { groupCode: group } : {}),
@@ -81,7 +78,21 @@ export function NAEExplorerPage({
     ? filterNAEByTaxonomy(getNAEActivities(), filters).map((activity) => ({ activity, match: undefined }))
     : [];
   const results = q ? search : browsed;
-  const shown = results.slice(0, 50);
+  const pageSize = 50;
+  const totalPages = Math.max(1, Math.ceil(results.length / pageSize));
+  const currentPage = Math.min(requestedPage, totalPages);
+  const shown = results.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  if (currentPage > 1) baseParams.set("page", String(currentPage));
+  const baseHref = baseParams.size ? `${action}?${baseParams.toString()}` : action;
+  const clearCompareParams = new URLSearchParams(baseParams);
+  clearCompareParams.set("compare", "");
+  const clearCompareHref = `${action}?${clearCompareParams.toString()}`;
+  const paginationHref = (page: number) => {
+    const next = new URLSearchParams(baseParams);
+    if (compareParamPresent) next.set("compare", compareCodes.join(","));
+    next.set("page", String(page));
+    return `${action}?${next.toString()}`;
+  };
   const manifest = getNAEDatasetManifest();
   const groupOptions = sectorNode?.groups ?? [];
   const subgroupOptions = groupOptions.find((item) => item.code === group)?.subgroups ?? [];
@@ -191,6 +202,13 @@ export function NAEExplorerPage({
                   </article>;
                 })}
               </div>:<div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-12 text-center text-gray-600">{t.noResults}</div>}
+              {results.length > 0 && totalPages > 1 && (
+                <nav aria-label={ar ? "صفحات النتائج" : "Pagination des résultats"} className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                  {currentPage > 1 && <Link href={paginationHref(currentPage - 1)} rel="prev" className="inline-flex min-h-10 items-center rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-white">{ar ? "السابق" : "Précédent"}</Link>}
+                  <span className="text-sm font-medium text-gray-600">{ar ? `صفحة ${currentPage} من ${totalPages}` : `Page ${currentPage} sur ${totalPages}`}</span>
+                  {currentPage < totalPages && <Link href={paginationHref(currentPage + 1)} rel="next" className="inline-flex min-h-10 items-center rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-white">{ar ? "التالي" : "Suivant"}</Link>}
+                </nav>
+              }
             </section>
           ) : (
             <section className="mt-8" aria-labelledby="nae-browse-title">

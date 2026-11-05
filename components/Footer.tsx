@@ -30,6 +30,7 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
     { href: '/calculateur-prix-referentiel', label: translations[lang].nav.calculator },
     { href: '/blog', label: translations[lang].nav.blog },
     { href: '/useful-links', label: translations[lang].nav.useful_links },
+    { href: '/nae', label: lang === 'ar' ? 'دليل النشاطات' : 'Nomenclature des activités' },
     { href: '/terms-privacy', label: translations[lang].footer.terms_link },
   ];
 

@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/config";
 import { NAEExplorerPage } from "@/lib/nae/presentation";
 
-type Params = Promise<{q?:string|string[];sector?:string|string[];group?:string|string[];subgroup?:string|string[];compare?:string|string[]}>;
+type Params = Promise<{q?:string|string[];sector?:string|string[];group?:string|string[];subgroup?:string|string[];compare?:string|string[];page?:string|string[]}>;
 export async function generateMetadata({searchParams}:{searchParams:Params}):Promise<Metadata>{
  const p=await searchParams;
- const filtered=p.compare!==undefined || [p.q,p.sector,p.group,p.subgroup].some(v=>Array.isArray(v)?v.some(Boolean):Boolean(v));
+ const filtered=p.compare!==undefined || p.page!==undefined || [p.q,p.sector,p.group,p.subgroup].some(v=>Array.isArray(v)?v.some(Boolean):Boolean(v));
  const url=`${SITE_URL}/nae`;
  return {title:{absolute:"مستكشف النشاطات الاقتصادية الجزائرية (NAE) | الديوان العمومي للتوثيق"},description:"أداة مرجعية للبحث في رموز النشاطات الاقتصادية الجزائرية وتسمياتها ومحتواها، مع تصفح التصنيف حسب القطاعات والمجموعات.",
   alternates:{canonical:url,languages:{"ar-DZ":`${SITE_URL}/nae`,"fr-DZ":`${SITE_URL}/fr/nae`,"x-default":`${SITE_URL}/nae`}},
