@@ -30,14 +30,8 @@ export default function GN17FormFiller() {
   const isDebug = searchParams.get('debug') === '1';
 
   const formDef = getFormBySlug('gn17');
-  const [data, setData] = useState<GN17FormData>(() => {
-    const draft = readGN17Draft();
-    return draft?.data ?? initialGN17Values;
-  });
-  const [savedAt, setSavedAt] = useState<string | null>(() => {
-    const draft = loadDraft<GN17FormData>('gn17');
-    return draft?.savedAt ?? null;
-  });
+  const [data, setData] = useState<GN17FormData>(initialGN17Values);
+  const [savedAt, setSavedAt] = useState<string | null>(null);
 
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
@@ -46,9 +40,10 @@ export default function GN17FormFiller() {
   const isMountedRef = useRef(false);
   const skipNextSaveRef = useRef(false);
 
-  // Client-side hydration sync for localStorage draft
+  // Load and validate the saved draft only after hydration to keep server and
+  // first client render identical and avoid rendering unvalidated stored data.
   useEffect(() => {
-    const draft = loadDraft<GN17FormData>('gn17');
+    const draft = readGN17Draft();
     if (draft?.data) {
       setData(draft.data);
       setSavedAt(draft.savedAt);
