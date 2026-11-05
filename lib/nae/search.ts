@@ -53,6 +53,7 @@ interface IndexedActivity {
 
 export interface NAESearchIndex {
   entries: IndexedActivity[];
+  language: NAESearchLanguage;
 }
 
 /**
@@ -110,6 +111,7 @@ export function createNAESearchIndex(
   language: NAESearchLanguage = "ar",
 ): NAESearchIndex {
   return {
+    language,
     entries: activities.map((activity) => ({
       activity,
       labels: createTextIndex(activity, language),
@@ -148,9 +150,18 @@ const MATCH_ORDER: Record<NAESearchMatchKind, number> = {
   accessory: 7,
 };
 
-function compareMatches(a: NAESearchMatch, b: NAESearchMatch): number {
+function compareMatches(
+  a: NAESearchMatch,
+  b: NAESearchMatch,
+  preferredLanguage: NAESearchLanguage,
+): number {
   const order = MATCH_ORDER[a.kind] - MATCH_ORDER[b.kind];
   if (order !== 0) return order;
+
+  const languagePriority = (match: NAESearchMatch) =>
+    match.language === preferredLanguage ? 0 : match.language ? 1 : 2;
+  const languageOrder = languagePriority(a) - languagePriority(b);
+  if (languageOrder !== 0) return languageOrder;
 
   const fieldPriority = (field: NAESearchMatchField) =>
     field === "label_ar" ? 0 : field === "label_fr" ? 1 : 2;
@@ -160,6 +171,7 @@ function compareMatches(a: NAESearchMatch, b: NAESearchMatch): number {
 function findBestTextMatch(
   entry: IndexedActivity,
   query: string,
+  preferredLanguage: NAESearchLanguage,
 ): NAESearchMatch | null {
   const matches: NAESearchMatch[] = [];
 
@@ -185,7 +197,7 @@ function findBestTextMatch(
     matches.push({ kind: "accessory", field: "accessoires_fr", language: "fr" });
   }
 
-  matches.sort(compareMatches);
+  matches.sort((a, b) => compareMatches(a, b, preferredLanguage));
   return matches[0] ?? null;
 }
 
@@ -202,9 +214,13 @@ function findCodeMatch(
   return null;
 }
 
-function compareResults(a: NAESearchResult, b: NAESearchResult): number {
-  const rank = MATCH_ORDER[a.match.kind] - MATCH_ORDER[b.match.kind];
-  if (rank !== 0) return rank;
+function compareResults(
+  a: NAESearchResult,
+  b: NAESearchResult,
+  preferredLanguage: NAESearchLanguage,
+): number {
+  const matchOrder = compareMatches(a.match, b.match, preferredLanguage);
+  if (matchOrder !== 0) return matchOrder;
   return a.activity.code.localeCompare(b.activity.code, "en");
 }
 
@@ -217,6 +233,7 @@ export function searchNAE(
   const rawCodeQuery = rawQuery.trim().replace(/[\s.-]/gu, "");
   if (!query && !/^\d{1,6}$/.test(rawCodeQuery)) return [];
 
+  const preferredLanguage = options.language ?? index.language;
   const results: NAESearchResult[] = [];
 
   for (const entry of index.entries) {
@@ -226,15 +243,15 @@ export function searchNAE(
     if (options.subgroupCode && activity.subgroup_code !== options.subgroupCode) continue;
 
     const codeMatch = findCodeMatch(activity.code, rawQuery);
-    const textMatch = query ? findBestTextMatch(entry, query) : null;
+    const textMatch = query ? findBestTextMatch(entry, query, preferredLanguage) : null;
     const bestMatch = [codeMatch, textMatch]
       .filter((match): match is NAESearchMatch => match !== null)
-      .sort(compareMatches)[0];
+      .sort((a, b) => compareMatches(a, b, preferredLanguage))[0];
 
     if (bestMatch) results.push({ activity, match: bestMatch });
   }
 
-  results.sort(compareResults);
+  results.sort((a, b) => compareResults(a, b, preferredLanguage));
   const limit = options.limit;
   return typeof limit === "number" && Number.isFinite(limit) && limit >= 0
     ? results.slice(0, Math.floor(limit))
