@@ -104,6 +104,7 @@ export default function HeaderClient() {
       if (href === '/blog') return '/fr/blog';
       if (href === '/calculateur-prix-referentiel') return '/fr/calculateur-prix-referentiel';
       if (href === '/useful-links') return '/fr/useful-links';
+      if (href === '/nae') return '/fr/nae';
       if (href === '/formulaires') return '/fr/formulaires';
     }
     return href;
@@ -114,6 +115,7 @@ export default function HeaderClient() {
     { href: '/#services', label: text.services },
     { href: '/calculateur-prix-referentiel', label: text.calculator },
     { href: '/formulaires', label: text.forms },
+    { href: '/nae', label: lang === 'ar' ? 'دليل النشاطات' : 'Nomenclature des activités' },
     { href: '/useful-links', label: text.useful_links },
     { href: '/blog', label: text.blog },
     { href: '/#notary-role', label: text.notary_role },

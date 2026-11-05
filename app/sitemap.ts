@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL as base } from '@/lib/config';
 import { STATIC_LOCALE_MAP, BLOG_PAIRS_MAP, FR_TO_AR_BLOG_MAP } from '@/lib/data/localeMap';
+import { getNAEActivities, getNAEDatasetManifest } from '@/lib/nae/data';
+import { isNAEActivityIndexable } from '@/lib/nae/presentation';
 
 function getValidLastModified(primary?: string, fallback?: string): Date | undefined {
   for (const value of [primary, fallback]) {
@@ -121,9 +123,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     });
 
-  return [
-    ...staticEntries,
-    ...blogEntries,
-    ...frBlogEntries,
-  ];
+  const manifest = getNAEDatasetManifest();
+  const importedAt = Date.parse(manifest.imported_at);
+  const naeLastModified = Number.isFinite(importedAt) ? new Date(importedAt) : undefined;
+
+  const naeEntries: MetadataRoute.Sitemap = getNAEActivities().flatMap((activity) => {
+    const arIndexable = isNAEActivityIndexable(activity, 'ar');
+    const frIndexable = isNAEActivityIndexable(activity, 'fr');
+    if (!arIndexable && !frIndexable) return [];
+
+    const arUrl = `${base}/nae/${activity.code}`;
+    const frUrl = `${base}/fr/nae/${activity.code}`;
+    const languages: Record<string, string> = {};
+    if (arIndexable) languages['ar-DZ'] = arUrl;
+    if (frIndexable) languages['fr-DZ'] = frUrl;
+    languages['x-default'] = arIndexable ? arUrl : frUrl;
+
+    const entries: MetadataRoute.Sitemap = [];
+    if (arIndexable) entries.push({url:arUrl,...(naeLastModified?{lastModified:naeLastModified}:{}),changeFrequency:'yearly',priority:0.45,alternates:{languages}});
+    if (frIndexable) entries.push({url:frUrl,...(naeLastModified?{lastModified:naeLastModified}:{}),changeFrequency:'yearly',priority:0.45,alternates:{languages}});
+    return entries;
+  });
+
+  return [...staticEntries, ...blogEntries, ...frBlogEntries, ...naeEntries];
 }

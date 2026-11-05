@@ -6,6 +6,7 @@ export interface RouteLocaleEntry {
 }
 
 export const STATIC_LOCALE_MAP: RouteLocaleEntry[] = [
+  { arPath: "/nae", frPath: "/fr/nae", priority: 0.85, changeFrequency: "monthly" },
   {
     arPath: '/',
     frPath: '/fr',
