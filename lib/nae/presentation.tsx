@@ -1,5 +1,6 @@
 import Link from "next/link";
 import NAECompareButton from "@/components/nae/NAECompareButton";
+import NAEActivityActions from "@/components/nae/NAEActivityActions";
 import NAECompareRestore from "@/components/nae/NAECompareRestore";
 import NAEPrintButton from "@/components/nae/NAEPrintButton";
 import UnifiedPageHeader from "@/components/ui/UnifiedPageHeader";
@@ -344,7 +345,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
       breadcrumbs={[{name:t.home,href:ar?"/":"/fr"},{name:t.explorer,href:action},{name:activity.code}]} />
     <main className="py-10 md:py-14"><div className="container mx-auto max-w-5xl px-4">
       <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm md:p-7">
-        <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-xs font-semibold text-gray-500">{t.code}</p><p className="mt-1 font-mono text-2xl font-bold tracking-wide text-emerald-900" dir="ltr">{activity.code}</p></div><Link href={`${action}?q=${activity.code}`} className="inline-flex min-h-10 items-center rounded-lg border border-emerald-800 px-4 py-2 text-sm font-bold text-emerald-900 hover:bg-emerald-50">{t.back}</Link></div>
+        <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-xs font-semibold text-gray-500">{t.code}</p><p className="mt-1 font-mono text-2xl font-bold tracking-wide text-emerald-900" dir="ltr">{activity.code}</p><NAEActivityActions code={activity.code} lang={lang} /></div><Link href={`${action}?q=${activity.code}`} className="inline-flex min-h-10 items-center rounded-lg border border-emerald-800 px-4 py-2 text-sm font-bold text-emerald-900 hover:bg-emerald-50">{t.back}</Link></div>
         <div className="mt-6 border-t border-gray-100 pt-5"><h2 className="text-lg font-bold text-gray-900">{t.classification}</h2><dl className="mt-4 grid gap-4 sm:grid-cols-3">
           <div className="rounded-xl bg-gray-50 p-4"><dt className="text-xs text-gray-500">{t.sector}</dt><dd className="mt-1 font-semibold text-gray-900">{activity.sector_code} — {sector?.label_ar??""}</dd></div>
           <div className="rounded-xl bg-gray-50 p-4"><dt className="text-xs text-gray-500">{t.group}</dt><dd className="mt-1 font-mono font-semibold text-gray-900" dir="ltr">{activity.group_code}</dd></div>
