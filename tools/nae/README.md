@@ -32,9 +32,9 @@ Run the focused parser/schema tests with:
 bun run test:nae
 ```
 
-GitHub Actions runs this focused test suite when NAE source, tooling, tests, fixtures, or lockfile changes are pushed to `main` or submitted in a pull request. It also runs the importer end-to-end against a small synthetic CSV fixture and verifies the generated manifest and sector JSON. This fixture is not the official CNRC dataset.
+GitHub Actions runs parser, schema, search, and taxonomy tests when NAE source, tooling, tests, fixtures, or lockfile changes are pushed to `main` or submitted in a pull request. It also runs the importer end-to-end against a small synthetic CSV fixture and verifies the generated manifest and sector JSON. This fixture is not the official CNRC dataset.
 
-The tests cover quoted delimiters, escaped quotes, embedded newlines, CRLF, malformed quoting, invalid quote placement, trailing empty columns, and the six-digit schema constraint.
+The tests cover quoted delimiters, escaped quotes, embedded newlines, CRLF, malformed quoting, invalid quote placement, trailing empty columns, six-digit codes, Arabic normalization, French accent-insensitive search, code ranking, content and accessory matches, hierarchy filters, and locale-aware label priority.
 
 ## Validation policy
 
