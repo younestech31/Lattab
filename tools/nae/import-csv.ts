@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { parseSemicolonCsv } from "../../lib/nae/csv";
 import { NAE_SOURCE_HEADERS, naeActivitySchema, type NAEActivity } from "../../lib/nae/schema";
 import { NAE_SECTORS } from "../../lib/nae/sectors";
 
@@ -17,46 +18,6 @@ const manifestPath = path.join(outputDir, "manifest.json");
 
 type CsvRow = Record<string, string>;
 type Issue = { row: number; code?: string; field: string; message: string };
-
-function parseSemicolonCsv(source: string): string[][] {
-  const rows: string[][] = [];
-  let row: string[] = [];
-  let field = "";
-  let quoted = false;
-
-  for (let i = 0; i < source.length; i += 1) {
-    const char = source[i];
-    if (quoted) {
-      if (char === '"' && source[i + 1] === '"') {
-        field += '"';
-        i += 1;
-      } else if (char === '"') {
-        quoted = false;
-      } else {
-        field += char;
-      }
-    } else if (char === '"' && field.length === 0) {
-      quoted = true;
-    } else if (char === ";") {
-      row.push(field);
-      field = "";
-    } else if (char === "\n") {
-      row.push(field.replace(/\r$/, ""));
-      if (row.some((cell) => cell.length > 0)) rows.push(row);
-      row = [];
-      field = "";
-    } else {
-      field += char;
-    }
-  }
-
-  if (quoted) throw new Error("CSV contains an unterminated quoted field.");
-  if (field.length > 0 || row.length > 0) {
-    row.push(field.replace(/\r$/, ""));
-    if (row.some((cell) => cell.length > 0)) rows.push(row);
-  }
-  return rows;
-}
 
 function emptyToNull(value: string): string | null {
   const trimmed = value.trim();
