@@ -24,6 +24,16 @@ bun run nae:import -- --input ./path/to/export.csv --output ./data/nae
 
 The importer uses the repository's existing `tsx` and `zod` dependencies. It writes one JSON file per sector, a manifest, and a Markdown quality report. Generated files are deterministic apart from the manifest's `imported_at` timestamp.
 
+## Tests
+
+Run the focused parser/schema tests with:
+
+```bash
+bun run test:nae
+```
+
+The tests cover quoted delimiters, escaped quotes, embedded newlines, CRLF, malformed quoting, and the six-digit schema constraint.
+
 ## Validation policy
 
 - Invalid headers, malformed rows, duplicate codes, invalid six-digit codes, and hierarchy-prefix mismatches stop the import.
