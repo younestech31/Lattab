@@ -71,7 +71,7 @@ test("normalizes French accents and punctuation", () => {
 test("finds labels across Arabic normalization differences", () => {
   const index = createNAESearchIndex(records);
   const results = searchNAE(index, "اعلام آلي");
-  assert.deepEqual(results.map((item) => item.activity.code), ["611001"]);
+  assert.deepEqual(results.map((item) => item.activity.code), ["611001", "611002"]);
   assert.equal(results[0]?.match.kind, "label_contains");
   assert.equal(results[0]?.match.field, "label_ar");
 });
@@ -148,4 +148,19 @@ test("builds a hierarchy without inventing group or subgroup names", () => {
   assert.equal(services?.groups[0]?.subgroups[0]?.code, "6110");
   assert.equal(services?.groups[0]?.subgroups[0]?.count, 2);
   assert.equal("label_ar" in (services?.groups[0] ?? {}), false);
+});
+
+test("prefers the active interface language when label matches have equal rank", () => {
+  const bilingual = activity({
+    code: "611004",
+    sector_code: "6",
+    group_code: "611",
+    subgroup_code: "6110",
+    label_ar: "Test service",
+    label_fr: "Test service",
+  });
+  const arabic = searchNAE(createNAESearchIndex([bilingual], "ar"), "test service")[0];
+  const french = searchNAE(createNAESearchIndex([bilingual], "fr"), "test service")[0];
+  assert.equal(arabic?.match.field, "label_ar");
+  assert.equal(french?.match.field, "label_fr");
 });
