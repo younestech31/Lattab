@@ -51,11 +51,11 @@ export function NAEExplorerPage({
   const comparedActivities = compareCodes
     .map((code) => getNAEActivityByCode(code))
     .filter((activity): activity is NAEActivity => Boolean(activity));
+  const rawSector = first(params.sector);
+  const sector = isSectorCode(rawSector) ? rawSector : undefined;
   const baseParams = new URLSearchParams();
   if (q) baseParams.set("q", q);
   if (sector) baseParams.set("sector", sector);
-  const rawSector = first(params.sector);
-  const sector = isSectorCode(rawSector) ? rawSector : undefined;
   const taxonomy = buildNAETaxonomy(getNAEActivities());
   const sectorNode = taxonomy.find((item) => item.code === sector);
   const rawGroup = first(params.group);
@@ -203,17 +203,22 @@ export function NAEExplorerPage({
             </section>
           )}
 
-          {compareParamPresent && <NAECompareRestore selectedCodes={compareCodes} compareParamPresent={compareParamPresent} />}
+          <NAECompareRestore selectedCodes={compareCodes} compareParamPresent={compareParamPresent} />
 
           {comparedActivities.length > 0 && (
-            <section className="mt-10 rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm md:p-7 print:mt-0 print:border-0 print:p-0 print:shadow-none" aria-labelledby="nae-compare-title">
-              <div className="mb-5 flex flex-wrap items-start justify-between gap-3 print:hidden">
+            <section data-nae-compare-print className="mt-10 rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm md:p-7 print:mt-0 print:border-0 print:p-0 print:shadow-none" aria-labelledby="nae-compare-title">
+              <style>{`@media print {
+                body:has([data-nae-compare-print]) * { visibility: hidden !important; }
+                [data-nae-compare-print], [data-nae-compare-print] * { visibility: visible !important; }
+                [data-nae-compare-print] { position: absolute !important; inset: 0 !important; width: 100% !important; margin: 0 !important; }
+              }`}</style>
+              <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h2 id="nae-compare-title" className="text-lg font-bold text-gray-900">{ar ? "مقارنة النشاطات المختارة" : "Comparaison des activités sélectionnées"}</h2>
+                  <h2 id="nae-compare-title" className="text-lg font-bold text-gray-900">{ar ? "ورقة مقارنة مرجعية للنشاطات المختارة" : "Feuille de comparaison de référence des activités sélectionnées"}</h2>
                   <p className="mt-1 text-sm text-gray-500">{ar ? `${comparedActivities.length} من 3 نشاطات مختارة — تحفظ الاختيارات على هذا الجهاز فقط.` : `${comparedActivities.length} sur 3 activités sélectionnées — choix conservés sur cet appareil uniquement.`}</p>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  <NAEPrintButton lang={lang} />
+                <div className="flex flex-wrap gap-2 print:hidden">
+                  {comparedActivities.length >= 2 && <NAEPrintButton lang={lang} />
                   <Link href={clearCompareHref} className="inline-flex min-h-10 items-center justify-center rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
                     {ar ? "مسح المقارنة" : "Effacer la comparaison"}
                   </Link>
@@ -233,6 +238,7 @@ export function NAEExplorerPage({
                           <th key={activity.code} className="border-b border-gray-200 p-3 text-start align-top">
                             <span className="block font-mono text-xs font-bold text-emerald-800" dir="ltr">{activity.code}</span>
                             <span className="mt-1 block font-bold leading-6 text-gray-900">{getNAEActivityTitle(activity, lang)}</span>
+                            <span className="mt-2 block print:hidden"><NAECompareButton code={activity.code} selectedCodes={compareCodes} baseHref={baseHref} lang={lang} /></span>
                           </th>
                         ))}
                       </tr>
@@ -262,7 +268,7 @@ export function NAEExplorerPage({
                       ))}
                     </tbody>
                   </table>
-                  <p className="mt-3 text-xs leading-5 text-gray-500 print:hidden">{ar?"تُعرض الحقول التي تختلف بين الاختيارات فقط. القيم التنظيمية الناقصة تعني أنها غير متوفرة في ملف المصدر، ولا تعني عدم وجود شرط قانوني.":"Seuls les champs différents entre les activités choisies sont affichés. Une donnée réglementaire manquante dans le fichier ne signifie pas l’absence d’une exigence légale."}</p>
+                  <p className="mt-3 text-xs leading-5 text-gray-600">{ar?"تُعرض الحقول التي تختلف بين الاختيارات فقط. هذه ورقة مقارنة مرجعية وليست قراراً إدارياً أو استشارة قانونية. القيم التنظيمية الناقصة تعني أنها غير متوفرة في ملف المصدر، ولا تعني عدم وجود شرط قانوني.":"Seuls les champs différents sont affichés. Cette feuille est une référence comparative et non une décision administrative ni un conseil juridique. Une donnée réglementaire absente du fichier ne signifie pas l’absence d’une exigence légale."}</p>
                 </div>
               )}
             </section>
