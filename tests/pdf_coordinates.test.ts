@@ -14,12 +14,21 @@ import { mapGN51ToFieldValues, GN51_FIELD_COORDINATES, GN51_FIELD_COORDINATES_FR
 import { computeGN51 } from '../lib/forms/gn51/compute';
 import { GN51FormData, initialGN51Values } from '../lib/forms/gn51/schema';
 import { digitsOnly } from '../lib/forms/normalizeDigits';
+import { createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+
+const savedPdfDigests = new Map<string, string>();
 
 async function savePdfArtifact(name: string, bytes: Uint8Array): Promise<void> {
   const outputDir = join(process.cwd(), 'artifacts', 'pdf');
   await mkdir(outputDir, { recursive: true });
+
+  const digest = createHash('sha256').update(bytes).digest('hex');
+  if ([...savedPdfDigests.values()].includes(digest)) {
+    throw new Error(`PDF artifact "${name}" duplicates another generated form; verify each test saves its own output.`);
+  }
+  savedPdfDigests.set(name, digest);
   await writeFile(join(outputDir, `${name}.pdf`), bytes);
 }
 
@@ -947,6 +956,17 @@ async function runTestSuite(): Promise<TestResult[]> {
       success: false,
       errors: [err instanceof Error ? err.message : String(err)],
     });
+  }
+
+  const expectedArtifacts = [
+    'gn17-ar', 'gn17-fr', 'gn31-ar', 'gn31-fr',
+    'gn08-ar', 'gn08-fr', 'gn51-ar', 'gn51-fr',
+  ];
+  if (
+    savedPdfDigests.size !== expectedArtifacts.length ||
+    expectedArtifacts.some((name) => !savedPdfDigests.has(name))
+  ) {
+    throw new Error('The PDF QA suite must save exactly one generated output for each of the eight official variants.');
   }
 
   return results;
