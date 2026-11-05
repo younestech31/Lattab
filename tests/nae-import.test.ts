@@ -9,7 +9,7 @@ test("parses semicolon-delimited rows and CRLF", () => {
 
 test("preserves semicolons and escaped quotes inside quoted fields", () => {
   assert.deepEqual(
-    parseSemicolonCsv('code;description\n123456;"A; \"""quoted\""" value"\n'),
+    parseSemicolonCsv('code;description\n123456;"A; ""quoted"" value"\n'),
     [["code", "description"], ["123456", 'A; "quoted" value']],
   );
 });
