@@ -1,6 +1,9 @@
 import Link from "next/link";
+import NAECompareButton from "@/components/nae/NAECompareButton";
+import NAECompareRestore from "@/components/nae/NAECompareRestore";
+import NAEPrintButton from "@/components/nae/NAEPrintButton";
 import UnifiedPageHeader from "@/components/ui/UnifiedPageHeader";
-import { getNAEActivities, getNAEDatasetManifest, getNAESearchIndex } from "@/lib/nae/data";
+import { getNAEActivities, getNAEActivityByCode, getNAEDatasetManifest, getNAESearchIndex } from "@/lib/nae/data";
 import { buildNAETaxonomy, filterNAEByTaxonomy, searchNAE, type NAESearchLanguage } from "@/lib/nae/search";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
@@ -36,11 +39,21 @@ export function NAEExplorerPage({
   lang, params,
 }: {
   lang: NAEPageLanguage;
-  params: { q?: string | string[]; sector?: string | string[]; group?: string | string[]; subgroup?: string | string[] };
+  params: { q?: string | string[]; sector?: string | string[]; group?: string | string[]; subgroup?: string | string[]; compare?: string | string[] };
 }) {
   const ar = lang === "ar";
   const action = ar ? "/nae" : "/fr/nae";
   const q = first(params.q).trim();
+  const compareParamPresent = params.compare !== undefined;
+  const compareCodes = [...new Set(first(params.compare).split(",").filter((code) => /^[0-9]{6}$/.test(code)))]
+    .filter((code) => Boolean(getNAEActivityByCode(code)))
+    .slice(0, 3);
+  const comparedActivities = compareCodes
+    .map((code) => getNAEActivityByCode(code))
+    .filter((activity): activity is NAEActivity => Boolean(activity));
+  const baseParams = new URLSearchParams();
+  if (q) baseParams.set("q", q);
+  if (sector) baseParams.set("sector", sector);
   const rawSector = first(params.sector);
   const sector = isSectorCode(rawSector) ? rawSector : undefined;
   const taxonomy = buildNAETaxonomy(getNAEActivities());
@@ -49,6 +62,13 @@ export function NAEExplorerPage({
   const group = sectorNode?.groups.some((item) => item.code === rawGroup) ? rawGroup : undefined;
   const rawSubgroup = first(params.subgroup);
   const subgroup = sectorNode?.groups.find((item) => item.code === group)?.subgroups.some((item) => item.code === rawSubgroup) ? rawSubgroup : undefined;
+  if (group) baseParams.set("group", group);
+  if (subgroup) baseParams.set("subgroup", subgroup);
+  const baseHref = baseParams.size ? `${action}?${baseParams.toString()}` : action;
+  const clearCompareParams = new URLSearchParams(baseParams);
+  clearCompareParams.set("compare", "");
+  const clearCompareHref = `${action}?${clearCompareParams.toString()}`;
+
   const filters = {
     ...(sector ? { sectorCode: sector } : {}),
     ...(group ? { groupCode: group } : {}),
@@ -113,6 +133,7 @@ export function NAEExplorerPage({
             <h2 id="nae-search-title" className="text-lg font-bold text-gray-900">{t.searchTitle}</h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">{t.description}</p>
             <form action={action} method="get" className="mt-5 space-y-4">
+              {compareParamPresent && <input type="hidden" name="compare" value={compareCodes.join(",")} />}
               <div className="flex flex-col gap-3 sm:flex-row">
                 <label className="sr-only" htmlFor="nae-query">{t.placeholder}</label>
                 <input id="nae-query" name="q" type="search" defaultValue={q} placeholder={t.placeholder} autoComplete="off"
@@ -161,7 +182,10 @@ export function NAEExplorerPage({
                     {!validPrimary&&<p className="mt-1 text-xs text-amber-800">{ar?"التسمية بهذه اللغة غير متاحة في ملف المصدر.":"Le libellé dans cette langue n’est pas disponible dans la source."}</p>}
                     <p className="mt-3 text-xs text-gray-500">{t.sector}: {activity.sector_code} — {sectorInfo?.label_ar??""}<span className="mx-2">·</span>{t.group}: <bdi>{activity.group_code}</bdi><span className="mx-2">·</span>{t.subgroup}: <bdi>{activity.subgroup_code}</bdi></p>
                     {excerpt&&<div className="mt-3 rounded-xl bg-gray-50 p-3"><p className="mb-1 text-[11px] font-semibold text-gray-500">{t.excerpt}</p><p dir="ltr" lang="fr" className="text-sm leading-6 text-gray-700">{excerpt.length>230?`${excerpt.slice(0,227).trimEnd()}…`:excerpt}</p></div>}
-                    <div className="mt-auto pt-4"><Link href={`${action}/${activity.code}`} className="inline-flex min-h-10 items-center rounded-lg border border-emerald-800 px-4 py-2 text-sm font-bold text-emerald-900 hover:bg-emerald-50">{t.reference}<span className="ms-2" aria-hidden="true">←</span></Link></div>
+                    <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">
+                      <Link href={`${action}/${activity.code}`} className="inline-flex min-h-10 items-center rounded-lg border border-emerald-800 px-4 py-2 text-sm font-bold text-emerald-900 hover:bg-emerald-50">{t.reference}<span className="ms-2" aria-hidden="true">←</span></Link>
+                      <NAECompareButton code={activity.code} selectedCodes={compareCodes} baseHref={baseHref} lang={lang} />
+                    </div>
                   </article>;
                 })}
               </div>:<div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-12 text-center text-gray-600">{t.noResults}</div>}
@@ -176,6 +200,71 @@ export function NAEExplorerPage({
                   <div className="mt-3 flex flex-wrap gap-1.5">{item.groups.slice(0,5).map((g)=><span key={g.code} className="rounded-md bg-gray-100 px-2 py-1 font-mono text-xs text-gray-600">{g.code}</span>)}{item.groups.length>5&&<span className="px-1 py-1 text-xs text-gray-400">+{item.groups.length-5}</span>}</div>
                 </Link>)}
               </div>
+            </section>
+          )}
+
+          {compareParamPresent && <NAECompareRestore selectedCodes={compareCodes} compareParamPresent={compareParamPresent} />}
+
+          {comparedActivities.length > 0 && (
+            <section className="mt-10 rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm md:p-7 print:mt-0 print:border-0 print:p-0 print:shadow-none" aria-labelledby="nae-compare-title">
+              <div className="mb-5 flex flex-wrap items-start justify-between gap-3 print:hidden">
+                <div>
+                  <h2 id="nae-compare-title" className="text-lg font-bold text-gray-900">{ar ? "مقارنة النشاطات المختارة" : "Comparaison des activités sélectionnées"}</h2>
+                  <p className="mt-1 text-sm text-gray-500">{ar ? `${comparedActivities.length} من 3 نشاطات مختارة — تحفظ الاختيارات على هذا الجهاز فقط.` : `${comparedActivities.length} sur 3 activités sélectionnées — choix conservés sur cet appareil uniquement.`}</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <NAEPrintButton lang={lang} />
+                  <Link href={clearCompareHref} className="inline-flex min-h-10 items-center justify-center rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
+                    {ar ? "مسح المقارنة" : "Effacer la comparaison"}
+                  </Link>
+                </div>
+              </div>
+              {comparedActivities.length < 2 ? (
+                <p className="rounded-xl bg-gray-50 p-4 text-sm leading-6 text-gray-600">
+                  {ar ? "اختر نشاطاً آخر لإظهار الفروق بين النشاطات. يمكنك اختيار ثلاثة نشاطات كحد أقصى." : "Sélectionnez une autre activité pour afficher les différences. Trois activités au maximum."}
+                </p>
+              ) : (
+                <div className="overflow-x-auto print:overflow-visible">
+                  <table className="w-full min-w-[720px] border-collapse text-sm print:min-w-0">
+                    <thead>
+                      <tr>
+                        <th className="w-36 border-b border-gray-200 p-3 text-start text-xs font-semibold text-gray-500">{ar ? "عنصر المقارنة" : "Élément"}</th>
+                        {comparedActivities.map((activity) => (
+                          <th key={activity.code} className="border-b border-gray-200 p-3 text-start align-top">
+                            <span className="block font-mono text-xs font-bold text-emerald-800" dir="ltr">{activity.code}</span>
+                            <span className="mt-1 block font-bold leading-6 text-gray-900">{getNAEActivityTitle(activity, lang)}</span>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {([
+                        {key:"label_ar",label:ar?"التسمية العربية":"Libellé arabe",value:(a:NAEActivity)=>usable(a.label_ar)?a.label_ar:(ar?"غير متوفر":"Non disponible"),dir:"rtl"},
+                        {key:"label_fr",label:ar?"التسمية الفرنسية":"Libellé français",value:(a:NAEActivity)=>usable(a.label_fr)?a.label_fr:(ar?"غير متوفر":"Non disponible"),dir:"ltr"},
+                        {key:"sector",label:ar?"القطاع":"Secteur",value:(a:NAEActivity)=>a.sector_code+" — "+(NAE_SECTORS[a.sector_code as NAESectorCode]?.label_ar??""),dir:"auto"},
+                        {key:"group",label:ar?"المجموعة":"Groupe",value:(a:NAEActivity)=>a.group_code,dir:"ltr"},
+                        {key:"subgroup",label:ar?"المجموعة الفرعية":"Sous-groupe",value:(a:NAEActivity)=>a.subgroup_code,dir:"ltr"},
+                        {key:"content",label:ar?"محتوى النشاط":"Contenu de l’activité",value:(a:NAEActivity)=>a.contenue_fr,dir:"ltr"},
+                        {key:"accessories",label:ar?"الأنشطة الإضافية":"Activités accessoires",value:(a:NAEActivity)=>a.accessoires_fr??(ar?"لا تتضمن نسخة البيانات قيمة":"Aucune valeur dans l’export"),dir:"ltr"},
+                        {key:"tutelle",label:ar?"الجهة الوصية":"Tutelle",value:(a:NAEActivity)=>a.tutelle_fr??(ar?"لا تتضمن نسخة البيانات قيمة":"Aucune valeur dans l’export"),dir:"ltr"},
+                        {key:"authorization",label:ar?"نوع الترخيص أو الإجراء":"Autorisation ou procédure",value:(a:NAEActivity)=>a.type_autorisation_fr??(ar?"لا تتضمن نسخة البيانات قيمة":"Aucune valeur dans l’export"),dir:"ltr"},
+                        {key:"references",label:ar?"المراجع النصية":"Références textuelles",value:(a:NAEActivity)=>a.references_texte_fr??(ar?"لا تتضمن نسخة البيانات قيمة":"Aucune valeur dans l’export"),dir:"ltr"},
+                      ] as const).filter((row)=>{
+                        const values=comparedActivities.map(row.value);
+                        return new Set(values).size>1;
+                      }).map((row)=>(
+                        <tr key={row.key} className="border-b border-gray-100 align-top">
+                          <th scope="row" className="bg-gray-50 p-3 text-start font-semibold leading-6 text-gray-700">{row.label}</th>
+                          {comparedActivities.map((activity)=>(
+                            <td key={activity.code} dir={row.dir} className="whitespace-pre-line break-words p-3 align-top leading-6 text-gray-800">{row.value(activity)}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p className="mt-3 text-xs leading-5 text-gray-500 print:hidden">{ar?"تُعرض الحقول التي تختلف بين الاختيارات فقط. القيم التنظيمية الناقصة تعني أنها غير متوفرة في ملف المصدر، ولا تعني عدم وجود شرط قانوني.":"Seuls les champs différents entre les activités choisies sont affichés. Une donnée réglementaire manquante dans le fichier ne signifie pas l’absence d’une exigence légale."}</p>
+                </div>
+              )}
             </section>
           )}
 
