@@ -72,6 +72,26 @@ function fitTextInBox(
 }
 
 /**
+ * Converts valid HTML date-input values to the DD/MM/YYYY format printed on
+ * Algerian administrative forms. Invalid or already formatted values are kept.
+ */
+export function formatPdfDate(value: string): string {
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return value;
+
+  const [, year, month, day] = match;
+  const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
+  if (
+    date.getUTCFullYear() !== Number(year) ||
+    date.getUTCMonth() !== Number(month) - 1 ||
+    date.getUTCDate() !== Number(day)
+  ) {
+    return value;
+  }
+  return day + "/" + month + "/" + year;
+}
+
+/**
  * Generic PDF filling engine for official Algerian administrative and tax templates.
  * Operates purely on client-side memory using pdf-lib. Never modifies template structure.
  */
@@ -206,22 +226,11 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
       formattedText = `${rawValue} %`;
     }
 
-    // HTML date inputs return ISO dates. Official paper forms use DD/MM/YYYY.
-    const isoDate = formattedText.match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);
-    if (isoDate) {
-      const [, year, month, day] = isoDate;
-      const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
-      if (
-        date.getUTCFullYear() === Number(year) &&
-        date.getUTCMonth() === Number(month) - 1 &&
-        date.getUTCDate() === Number(day)
-      ) {
-        formattedText = `${day}/${month}/${year}`;
-      }
-    }
+    // HTML date inputs return ISO dates; official forms use DD/MM/YYYY.
+    formattedText = formatPdfDate(formattedText);
 
     const isArabic = hasArabic(formattedText);
-    const activeFont = isArabic ? customFont : (customFont || standardFont);
+    const activeFont = isArabic ? customFont : standardFont;
     const initialFontSize = field.size || 10;
     const fontColor = field.color
       ? rgb(field.color.r, field.color.g, field.color.b)
