@@ -28,3 +28,28 @@ jobs:
 
       - name: Run PDF coordinate and mapping tests
         run: bun run test:pdf
+
+      - name: Install PDF rendering tools
+        if: always()
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Render PDFs for visual QA
+        if: always()
+        run: |
+          mkdir -p artifacts/png
+          for file in artifacts/pdf/*.pdf; do
+            [ -e "$file" ] || continue
+            name="$(basename "$file" .pdf)"
+            pdftoppm -png -r 120 "$file" "artifacts/png/$name"
+          done
+
+      - name: Upload generated PDFs and page previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-tax-form-pdf-qa
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 7
