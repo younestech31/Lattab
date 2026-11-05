@@ -1,0 +1,44 @@
+name: NAE validation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "lib/nae/**"
+      - "tools/nae/**"
+      - "tests/nae-*.test.ts"
+      - "package.json"
+      - "bun.lock"
+      - ".github/workflows/nae-validation.yml"
+  pull_request:
+    paths:
+      - "lib/nae/**"
+      - "tools/nae/**"
+      - "tests/nae-*.test.ts"
+      - "package.json"
+      - "bun.lock"
+      - ".github/workflows/nae-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parser-and-schema-tests:
+    name: Parser and schema tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.4"
+
+      - name: Install locked dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run NAE tests
+        run: bun run test:nae
