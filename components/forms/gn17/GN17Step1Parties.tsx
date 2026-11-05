@@ -146,7 +146,44 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
 
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-1">
-              {isAr ? 'رقم التعريف الجبائي / الوطني (NIF / NIN)' : 'NIF ou NIN'}
+              {isAr ? 'بلدية إقامة المتنازل' : 'Commune de résidence du cédant'}
+            </label>
+            <input
+              type="text"
+              value={data.cedantCommune}
+              onChange={(e) => updateData({ cedantCommune: e.target.value })}
+              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium text-gray-700 mb-1">
+              {isAr ? 'ولاية إقامة المتنازل' : 'Wilaya de résidence du cédant'}
+            </label>
+            <input
+              type="text"
+              value={data.cedantWilaya}
+              onChange={(e) => updateData({ cedantWilaya: e.target.value })}
+              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium text-gray-700 mb-1">
+              {isAr ? 'الرمز البريدي للمتنازل' : 'Code postal du cédant'}
+            </label>
+            <input
+              type="text"
+              inputMode="numeric"
+              value={data.cedantCodePostal}
+              onChange={(e) => updateData({ cedantCodePostal: e.target.value })}
+              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium text-gray-700 mb-1">
+              {isAr ? 'رقم التعريف الجبائي (NIF)' : 'Numéro d’identification fiscale (NIF)'}
             </label>
             <div className="relative">
               <Hash className="w-4 h-4 text-gray-400 absolute top-3 end-3 pointer-events-none" />
@@ -155,7 +192,23 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
                 value={data.cedantNif}
                 onChange={(e) => updateData({ cedantNif: e.target.value })}
                 className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 text-xs"
-                placeholder="1980310100..."
+                placeholder="NIF"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium text-gray-700 mb-1">
+              {isAr ? 'رقم التعريف الوطني (NIN)' : 'Numéro d’identification national (NIN)'}
+            </label>
+            <div className="relative">
+              <Hash className="w-4 h-4 text-gray-400 absolute top-3 end-3 pointer-events-none" />
+              <input
+                type="text"
+                value={data.cedantNin}
+                onChange={(e) => updateData({ cedantNin: e.target.value })}
+                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 text-xs"
+                placeholder="NIN"
               />
             </div>
           </div>

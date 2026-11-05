@@ -12,6 +12,9 @@ export const gn17FormSchema = z.object({
   cedantLieuNaissance: z.string().optional(),
   cedantFiliation: z.string().optional(), // ابن ... و ...
   cedantAdresse: z.string().min(2, 'العنوان مطلوب'),
+  cedantCommune: z.string().default(''),
+  cedantWilaya: z.string().default(''),
+  cedantCodePostal: z.string().default(''),
   cedantNin: z.string().default(''), // NIN (رقم التعريف الوطني)
   cedantNif: z.string().default(''), // NIF
   cedantProfession: z.string().optional(),
@@ -72,6 +75,9 @@ export const initialGN17Values: GN17FormData = {
   cedantLieuNaissance: '',
   cedantFiliation: '',
   cedantAdresse: '',
+  cedantCommune: '',
+  cedantWilaya: '',
+  cedantCodePostal: '',
   cedantNin: '',
   cedantNif: '',
   cedantProfession: '',

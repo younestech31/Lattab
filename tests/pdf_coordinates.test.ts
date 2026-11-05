@@ -33,6 +33,28 @@ async function runTestSuite(): Promise<TestResult[]> {
     throw new Error(`Arabic/Persian digit normalization failed: ${normalizedDigitSample}`);
   }
 
+  const gn17NoSellerAddressDefaults = mapGN17ToFieldValues({
+    ...initialGN17Values,
+    cedantCommune: '',
+    cedantWilaya: '',
+    cedantCodePostal: '',
+    commune: '',
+  }, computeGN17({
+    salePrice: 0,
+    saleExpenses: 0,
+    otherExpenses: 0,
+    acquisitionPrice: 0,
+    acquisitionExpenses: 0,
+  }), 'ar');
+  if (
+    gn17NoSellerAddressDefaults.cedantCommune !== '' ||
+    gn17NoSellerAddressDefaults.cedantWilaya !== '' ||
+    gn17NoSellerAddressDefaults.cedantCodePostal !== '' ||
+    gn17NoSellerAddressDefaults.commune !== ''
+  ) {
+    throw new Error('GN17 mapper must not invent the seller commune, wilaya, postal code, or property commune.');
+  }
+
   const gn31Unspecified = mapGN31ToFieldValues({
     ...initialGN31Values,
     occupantType: 'unspecified',

@@ -176,9 +176,9 @@ export function mapGN17ToFieldValues(
     // Cédant
     cedantNomPrenom: data.cedantNomPrenom,
     cedantAdresse: data.cedantAdresse,
-    cedantCommune: data.commune || (isFr ? 'Oran' : 'وهران'),
-    cedantWilaya: data.wilaya,
-    cedantCodePostal: '31000',
+    cedantCommune: data.cedantCommune,
+    cedantWilaya: data.cedantWilaya,
+    cedantCodePostal: data.cedantCodePostal,
     cedantNin: data.cedantNin || '',
     cedantNif: data.cedantNif || '',
 
@@ -196,7 +196,7 @@ export function mapGN17ToFieldValues(
     natureBien: data.natureBien,
     situationBien: data.situationBien,
     cadastreRef: data.cadastreRef || '',
-    commune: data.commune || (isFr ? 'Oran' : 'وهران'),
+    commune: data.commune,
     natureDroitsReels: isFr ? 'Pleine propriété' : 'ملكية تامة',
     articleImposition: data.cadastreRef || '',
     natureOperation: isFr ? 'Cession à titre onéreux' : 'تنازل بمقابل مادي',
