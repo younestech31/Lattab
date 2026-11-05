@@ -95,6 +95,8 @@ export default function GN17FormFiller() {
       acquisitionDate: data.dateActeOrigine,
       saleDate: data.dateActeCession,
       detentionYears: data.anneeDetention,
+      acquisitionDate: data.dateActeOrigine,
+      saleDate: data.dateActeCession,
       isSolePrimaryResidence: data.isSolePrimaryResidence,
     });
   }, [

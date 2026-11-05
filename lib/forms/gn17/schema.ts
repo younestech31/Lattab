@@ -1,9 +1,6 @@
 import { z } from 'zod';
 
 export const gn17FormSchema = z.object({
-  // Tax Bureau & Administrative routing
-  wilaya: z.string().default(''),
-  recette: z.string().default(''),
   // En-tête administratif
   wilaya: z.string().default(''),
   recette: z.string().default(''),
@@ -58,8 +55,6 @@ export const gn17FormSchema = z.object({
 export type GN17FormData = z.infer<typeof gn17FormSchema>;
 
 export const initialGN17Values: GN17FormData = {
-  wilaya: '',
-  recette: '',
   wilaya: '',
   recette: '',
   cedantNomPrenom: '',

@@ -212,7 +212,6 @@ async function runTestSuite(): Promise<TestResult[]> {
       dateActeOrigine: '2018-04-15',
       dateActeCession: '2026-11-02',
       natureActeCession: 'عقد بيع رسمي توثيقي',
-      dateActeCession: '02/11/2026',
       faitA: 'وهران',
       dateDeclaration: '04/11/2026',
     };
@@ -294,7 +293,6 @@ async function runTestSuite(): Promise<TestResult[]> {
       dateActeOrigine: '2018-04-15',
       dateActeCession: '2026-11-02',
       natureActeCession: 'Acte notarié de vente immobilière',
-      dateActeCession: '02/11/2026',
       faitA: 'Oran',
       dateDeclaration: '04/11/2026',
     };
