@@ -214,8 +214,12 @@ export function mapGN17ToFieldValues(
     netImposablePlusValue: calc.netImposablePlusValue,
 
     baseImposable: calc.netImposablePlusValue,
-    check15: calc.taxRate === 15,
-    checkExonere: calc.taxRate === 0,
+    // The Arabic official template prints the fixed 15% rate in the form itself.
+    // Only the French template has a selectable "15% / Exonéré" checkbox row.
+    ...(isFr ? {
+      check15: calc.taxRate === 15,
+      checkExonere: calc.taxRate === 0,
+    } : {}),
     grossTax: calc.grossTax,
     residenceAbattementAmount: calc.isSolePrimaryResidence ? calc.residenceAbattementAmount : 0,
     netTaxDue: calc.netTaxDue,
