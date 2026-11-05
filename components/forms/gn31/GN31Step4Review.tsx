@@ -2,13 +2,11 @@
 
 import { GN31FormData } from '@/lib/forms/gn31/schema';
 import { GN31Summary } from '@/lib/forms/gn31/compute';
+import FormDownloadPanel from '@/components/forms/shared/FormDownloadPanel';
 import {
-  FileDown,
-  Printer,
   Scale,
   CheckCircle2,
   AlertTriangle,
-  Loader2,
 } from 'lucide-react';
 
 interface Props {
@@ -135,41 +133,18 @@ export default function GN31Step4Review({
         </p>
       </div>
 
-      {/* 4. Download Action Banner */}
-      <div className="bg-white border-2 border-emerald-600 rounded-2xl p-7 text-center space-y-4 shadow-sm">
-        <div className="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center mx-auto">
-          <Printer className="w-7 h-7" />
-        </div>
-        <div>
-          <h4 className="text-xl font-bold text-gray-900">
-            {isAr ? 'تحميل استمارة ج رقم 31 الرسمية (PDF)' : 'Télécharger le formulaire officiel Série G N° 31 (PDF)'}
-          </h4>
-          <p className="text-xs text-gray-600 max-w-lg mx-auto mt-1 leading-relaxed">
-            {isAr
-              ? 'تتم المعالجة وتعبئة الإحداثيات والخطوط محلياً وفورياً داخل متصفحك، وتحميل ملف PDF رسمي مكون من 4 صفحات كاملة وجاهزة للطباعة والتوقيع.'
-              : 'Génération instantanée et locale du fichier PDF officiel de 4 pages, sans aucun transit de données personnelles sur nos serveurs.'}
-          </p>
-        </div>
+      <FormDownloadPanel
+        formCode={isAr ? 'سلسلة ج رقم 31' : 'Série G N° 31'}
+        officialTitle={isAr ? 'التصريح بالرسم العقاري' : 'Déclaration de la taxe foncière'}
+        pages={4}
+        isAr={isAr}
+        isDownloading={isDownloading}
+        onDownload={onDownload}
+        description={isAr
+          ? 'إنشاء نسخة PDF من الاستمارة الرسمية ذات الصفحات الأربع، لمراجعتها وطباعتها والتوقيع عليها قبل الإيداع لدى المصلحة المختصة.'
+          : 'Génération du formulaire officiel de quatre pages en PDF, à vérifier, imprimer et signer avant son dépôt auprès du service compétent.'}
+      />
 
-        <button
-          type="button"
-          onClick={onDownload}
-          disabled={isDownloading}
-          className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 disabled:bg-emerald-400 text-white font-bold text-base transition shadow-md shadow-emerald-700/20"
-        >
-          {isDownloading ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              <span>{isAr ? 'جاري إعداد وتحميل استمارة ج 31...' : 'Génération du PDF en cours...'}</span>
-            </>
-          ) : (
-            <>
-              <FileDown className="w-5 h-5" />
-              <span>{isAr ? 'تحميل الاستمارة الرسمية المعبأة (PDF)' : 'Télécharger le PDF officiel rempli'}</span>
-            </>
-          )}
-        </button>
-      </div>
     </div>
   );
 }

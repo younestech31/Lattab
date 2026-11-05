@@ -2,7 +2,8 @@
 
 import { GN51FormData } from '@/lib/forms/gn51/schema';
 import { GN51ComputeResult } from '@/lib/forms/gn51/compute';
-import { CreditCard, Download, ShieldCheck, FileCheck } from 'lucide-react';
+import FormDownloadPanel from '@/components/forms/shared/FormDownloadPanel';
+import { CreditCard, ShieldCheck, FileCheck } from 'lucide-react';
 
 interface Props {
   data: GN51FormData;
@@ -269,22 +270,24 @@ export default function GN51Step4Payment({
         </div>
       </div>
 
-      {/* Action CTA */}
-      <div className="pt-2 text-center">
-        <button
-          type="button"
-          onClick={onDownload}
-          disabled={isDownloading}
-          className="inline-flex items-center justify-center gap-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-base px-8 py-4 rounded-xl shadow-md hover:shadow-lg transition disabled:opacity-50 cursor-pointer"
-        >
-          <Download className="w-5 h-5" />
-          <span>
-            {isDownloading
-              ? (isAr ? 'جارٍ إعداد وطباعة النموذج الرسمي...' : 'Génération du PDF officiel en cours...')
-              : (isAr ? 'تحميل استمارة ج 51 الرسمية (PDF جاهز للإيداع)' : 'Télécharger le formulaire officiel G51 (PDF)')}
-          </span>
-        </button>
-      </div>
+      <FormDownloadPanel
+        formCode={isAr ? 'سلسلة ج رقم 51' : 'Série G N° 51'}
+        officialTitle={isAr ? 'التصريح بمداخيل إيجار العقارات' : 'Déclaration des revenus de location immobilière'}
+        pages={2}
+        isAr={isAr}
+        isDownloading={isDownloading}
+        onDownload={onDownload}
+        disabled={calc.thresholdMismatch}
+        disabledReason={calc.thresholdMismatch
+          ? (isAr
+              ? 'لا يمكن إنشاء الملف قبل تصحيح توافق مبلغ الإيجار السنوي مع الشريحة المختارة.'
+              : 'Corrigez la cohérence entre le montant annuel des loyers et la tranche sélectionnée avant de générer le PDF.')
+          : undefined}
+        description={isAr
+          ? 'إنشاء ملف PDF للتصريح بمداخيل الإيجار. راجع طبيعة الإيجار والمبالغ وطريقة الدفع قبل الطباعة والإيداع.'
+          : 'Génération du PDF de déclaration des revenus locatifs. Vérifiez la nature de la location, les montants et le mode de paiement avant impression et dépôt.'}
+      />
+
     </div>
   );
 }

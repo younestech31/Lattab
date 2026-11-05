@@ -2,14 +2,11 @@
 
 import { GN8FormData } from '@/lib/forms/gn8/schema';
 import { GN8Summary } from '@/lib/forms/gn8/compute';
+import FormDownloadPanel from '@/components/forms/shared/FormDownloadPanel';
 import {
-  FileDown,
-  Printer,
   CheckCircle2,
   AlertTriangle,
-  Loader2,
   FileText,
-  Clock,
   ShieldCheck,
 } from 'lucide-react';
 
@@ -173,52 +170,20 @@ export default function GN8Step4Review({
         </div>
       </div>
 
-      {/* 4. Action Banner & Download */}
-      <div className="bg-gradient-to-br from-emerald-900 to-teal-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
-        <div className="space-y-2">
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-300 bg-emerald-800/60 px-3 py-1 rounded-full">
-            <Clock className="w-3.5 h-3.5" />
-            <span>{isAr ? 'جاهز للطباعة والإيداع القانوني' : 'Prêt pour l\'impression et le dépôt'}</span>
-          </span>
-          <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
-            {isAr ? 'تحميل استمارة ج رقم 08 الرسمية (PDF)' : 'Télécharger le formulaire Série G N° 08 (PDF)'}
-          </h3>
-          <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed max-w-2xl">
-            {isAr
-              ? 'يتم توليد ملف PDF رسمي ثنائي الصفحات مطابق تماماً للنموذج المعتمد من المديرية العامة للضرائب لعام 2024: الصفحة الأولى مملوءة ببياناتك بدقة، والصفحة الثانية تتضمن قائمة الوثائق المرفقة.'
-              : 'Génération instantanée du PDF officiel conforme au modèle de la Direction Générale des Impôts (2 pages A4).'}
-          </p>
-        </div>
+      <FormDownloadPanel
+        formCode={isAr ? 'سلسلة ج رقم 08' : 'Série G N° 08'}
+        officialTitle={isAr ? 'التصريح بالوجود' : 'Déclaration d’existence'}
+        pages={2}
+        isAr={isAr}
+        isDownloading={isDownloading}
+        onDownload={onDownload}
+        onPrintSummary={() => window.print()}
+        printSummaryLabel={isAr ? 'طباعة ملخص البيانات' : 'Imprimer le récapitulatif'}
+        description={isAr
+          ? 'إنشاء التصريح الرسمي بالوجود في ملف PDF من صفحتين، مع إبقاء قائمة الوثائق الثبوتية ضمن النموذج.'
+          : 'Génération de la déclaration officielle d’existence en PDF de deux pages, avec la liste des pièces justificatives du formulaire.'}
+      />
 
-        <div className="flex flex-wrap items-center gap-4 pt-2">
-          <button
-            onClick={onDownload}
-            disabled={isDownloading}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-emerald-950 font-bold text-sm shadow-md hover:bg-emerald-50 active:scale-95 transition disabled:opacity-50 disabled:pointer-events-none"
-          >
-            {isDownloading ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                <span>{isAr ? 'جاري إعداد النموذج الرسمي...' : 'Génération du PDF...'}</span>
-              </>
-            ) : (
-              <>
-                <FileDown className="w-4 h-4 text-emerald-800" />
-                <span>{isAr ? 'تحميل النموذج الرسمي PDF' : 'Télécharger le PDF officiel'}</span>
-              </>
-            )}
-          </button>
-
-          <button
-            onClick={() => window.print()}
-            type="button"
-            className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-800/60 text-white font-semibold text-sm border border-emerald-700/50 hover:bg-emerald-800 transition"
-          >
-            <Printer className="w-4 h-4 text-emerald-300" />
-            <span>{isAr ? 'طباعة الملخص' : 'Imprimer le récapitulatif'}</span>
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

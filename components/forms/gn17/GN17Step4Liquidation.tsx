@@ -2,6 +2,7 @@
 
 import { GN17FormData } from '@/lib/forms/gn17/schema';
 import { GN17ComputeResult } from '@/lib/forms/gn17/compute';
+import FormDownloadPanel from '@/components/forms/shared/FormDownloadPanel';
 import { Percent, ShieldAlert, FileDown, CheckCircle, MapPin, Calendar, Loader2 } from 'lucide-react';
 
 interface Props {
@@ -162,36 +163,18 @@ export default function GN17Step4Liquidation({
         </div>
       </div>
 
-      {/* Download Action Box */}
-      <div className="bg-gradient-to-r from-emerald-800 to-emerald-950 text-white rounded-2xl p-7 text-center space-y-4 shadow-lg">
-        <h4 className="text-xl font-bold text-white">
-          {isAr ? 'جاهز لتحميل الاستمارة الرسمية ج 17' : 'Votre formulaire Série G N° 17 est prêt'}
-        </h4>
-        <p className="text-emerald-200 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-          {isAr
-            ? 'سيتم توليد ملف PDF الأصلي الصادر عن المديرية العامة للضرائب (صفحتان كاملتان A4) مع كتابة كافة بيانات الأطراف والعقار والحسابات بدقة في الخانات المحددة رسمياً.'
-            : 'Génération du PDF officiel DGI (2 pages A4) avec inscription directe de toutes vos données dans les cases réglementaires.'}
-        </p>
+      <FormDownloadPanel
+        formCode={isAr ? 'سلسلة ج رقم 17' : 'Série G N° 17'}
+        officialTitle={isAr ? 'التصريح بفائض القيمة العقارية' : 'Déclaration de plus-value immobilière'}
+        pages={2}
+        isAr={isAr}
+        isDownloading={isDownloading}
+        onDownload={onDownload}
+        description={isAr
+          ? 'إنشاء الاستمارة الرسمية مع بيانات الأطراف والعقار وعناصر حساب فائض القيمة.'
+          : 'Génération de l’imprimé officiel avec les données des parties, du bien et les éléments de calcul de la plus-value.'}
+      />
 
-        <button
-          type="button"
-          onClick={onDownload}
-          disabled={isDownloading}
-          className="inline-flex items-center gap-3 px-8 py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold text-base transition-all shadow-md hover:shadow-lg disabled:opacity-60 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2"
-        >
-          {isDownloading ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              <span>{isAr ? 'جاري تجهيز وتعبئة الاستمارة...' : 'Génération du PDF en cours...'}</span>
-            </>
-          ) : (
-            <>
-              <FileDown className="w-5 h-5" />
-              <span>{isAr ? 'تحميل الاستمارة الرسمية مملوءة (PDF)' : 'Télécharger l\'imprimé officiel rempli (PDF)'}</span>
-            </>
-          )}
-        </button>
-      </div>
     </div>
   );
 }
