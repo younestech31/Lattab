@@ -272,6 +272,7 @@ export interface NAETaxonomyGroup {
 export interface NAETaxonomySector {
   code: NAESectorCode;
   label_ar: string;
+  label_fr: string;
   count: number;
   groups: NAETaxonomyGroup[];
 }
@@ -330,6 +331,7 @@ export function buildNAETaxonomy(
       return [{
         code: sector.code,
         label_ar: sector.label_ar,
+        label_fr: sector.label_fr,
         count: groupNodes.reduce((sum, group) => sum + group.count, 0),
         groups: groupNodes,
       }];

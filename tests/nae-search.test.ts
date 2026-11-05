@@ -143,6 +143,7 @@ test("builds a hierarchy without inventing group or subgroup names", () => {
   assert.equal(tree.length, 2);
   const services = tree.find((sector) => sector.code === "6");
   assert.equal(services?.label_ar, "الخدمات");
+  assert.equal(services?.label_fr, "Services");
   assert.equal(services?.count, 2);
   assert.equal(services?.groups[0]?.code, "611");
   assert.equal(services?.groups[0]?.subgroups[0]?.code, "6110");

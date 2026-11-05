@@ -122,7 +122,7 @@ export function NAEExplorerPage({
   const comparisonRows = [
     { key: "label_ar", label: ar ? "التسمية العربية" : "Libellé arabe", value: (a: NAEActivity) => usable(a.label_ar) ? a.label_ar : t.noValue, dir: "rtl" as const },
     { key: "label_fr", label: ar ? "التسمية الفرنسية" : "Libellé français", value: (a: NAEActivity) => usable(a.label_fr) ? a.label_fr : t.noValue, dir: "ltr" as const },
-    { key: "sector", label: t.sector, value: (a: NAEActivity) => a.sector_code + " — " + (NAE_SECTORS[a.sector_code as NAESectorCode]?.label_ar ?? ""), dir: "auto" as const },
+    { key: "sector", label: t.sector, value: (a: NAEActivity) => a.sector_code + " — " + (NAE_SECTORS[a.sector_code as NAESectorCode]?.[lang === "ar" ? "label_ar" : "label_fr"] ?? ""), dir: "auto" as const },
     { key: "group", label: t.group, value: (a: NAEActivity) => a.group_code, dir: "ltr" as const },
     { key: "subgroup", label: t.subgroup, value: (a: NAEActivity) => a.subgroup_code, dir: "ltr" as const },
     { key: "content", label: t.content, value: (a: NAEActivity) => a.contenue_fr || t.noValue, dir: "ltr" as const },
@@ -155,7 +155,7 @@ export function NAEExplorerPage({
                 <div className="grid gap-3 pt-4 sm:grid-cols-3">
                   <label className="block text-sm font-medium text-gray-700"><span className="mb-1.5 block">{t.sector}</span>
                     <select name="sector" defaultValue={sector ?? ""} className="min-h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-gray-800">
-                      <option value="">{t.allSectors}</option>{taxonomy.map((item) => <option key={item.code} value={item.code}>{item.code} — {item.label_ar}</option>)}
+                      <option value="">{t.allSectors}</option>{taxonomy.map((item) => <option key={item.code} value={item.code}>{item.code} — {lang === "ar" ? item.label_ar : item.label_fr}</option>)}
                     </select>
                   </label>
                   <label className="block text-sm font-medium text-gray-700"><span className="mb-1.5 block">{t.group}</span>
@@ -186,7 +186,8 @@ export function NAEExplorerPage({
               {shown.length ? (
                 <div className="divide-y divide-gray-200 overflow-hidden rounded-2xl border border-gray-200 bg-white">
                   {shown.map(({ activity }) => {
-                    const sectorLabel = NAE_SECTORS[activity.sector_code as NAESectorCode]?.label_ar ?? "";
+                    const sector = NAE_SECTORS[activity.sector_code as NAESectorCode];
+                    const sectorLabel = sector ? (lang === "ar" ? sector.label_ar : sector.label_fr) : "";
                     const otherLabel = lang === "ar" ? activity.label_fr : activity.label_ar;
                     return (
                       <article key={activity.code} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
@@ -230,7 +231,7 @@ export function NAEExplorerPage({
                     className="group flex min-h-24 items-center justify-between gap-4 rounded-xl border border-gray-200 bg-white p-4 transition hover:border-emerald-300 hover:shadow-sm">
                     <div className="flex min-w-0 items-center gap-3">
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-50 font-mono text-base font-bold text-emerald-900">{item.code}</span>
-                      <span className="font-semibold leading-6 text-gray-800 group-hover:text-emerald-900">{item.label_ar}</span>
+                      <span className="font-semibold leading-6 text-gray-800 group-hover:text-emerald-900">{lang === "ar" ? item.label_ar : item.label_fr}</span>
                     </div>
                     <span className="shrink-0 text-xs text-gray-500">{item.count.toLocaleString(ar ? "ar-DZ" : "fr-FR")}</span>
                   </Link>
@@ -248,7 +249,7 @@ export function NAEExplorerPage({
                 <div><h2 id="nae-compare-title" className="text-lg font-bold text-gray-900">{t.selected}</h2><p className="mt-1 text-xs text-gray-500">{comparedActivities.length} / 3</p></div>
                 <div className="flex items-center gap-2 print:hidden">
                   {comparedActivities.length >= 2 && <NAEPrintButton lang={lang} />}
-                  <Link href={baseHref} className="rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700">{t.clearCompare}</Link>
+                  <Link href={`${baseHref}${baseHref.includes("?") ? "&" : "?"}compare=`} className="rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700">{t.clearCompare}</Link>
                 </div>
               </div>
               {comparedActivities.length < 2 ? <p className="text-sm text-gray-600">{t.compareHint}</p> : (
@@ -342,7 +343,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
             <div className="mt-6 border-t border-gray-100 pt-5">
               <h2 className="text-sm font-bold text-gray-700">{t.classification}</h2>
               <dl className="mt-3 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.sector}</dt><dd className="mt-1 font-semibold text-gray-900">{activity.sector_code} — {sector?.label_ar ?? ""}</dd></div>
+                <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.sector}</dt><dd className="mt-1 font-semibold text-gray-900">{activity.sector_code} — {sector ? (ar ? sector.label_ar : sector.label_fr) : ""}</dd></div>
                 <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.group}</dt><dd className="mt-1 font-mono font-semibold text-gray-900" dir="ltr">{activity.group_code}</dd></div>
                 <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.subgroup}</dt><dd className="mt-1 font-mono font-semibold text-gray-900" dir="ltr">{activity.subgroup_code}</dd></div>
               </dl>
