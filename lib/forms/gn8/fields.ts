@@ -12,22 +12,22 @@ export const GN8_FIELD_COORDINATES: FormFieldCoord[] = [
   // الترويسة الإدارية
   // ──────────────────────────────────────────
   { id: 'directionWilaya', page: 1, x: 380, y: 739, size: 9, align: 'right', maxWidth: 80 },
-  { id: 'service', page: 1, x: 380, y: 726, size: 9, align: 'right', maxWidth: 140 },
+  { id: 'service', page: 1, x: 380, y: 725, size: 9, align: 'right', maxWidth: 140 },
 
   // ──────────────────────────────────────────
   // النظام الجبائي (خانات اختيار مربعة رسمية)
   // ──────────────────────────────────────────
-  { id: 'regime_ibs', page: 1, x: 389, y: 676, size: 10, align: 'center', maxWidth: 12 },
-  { id: 'regime_irg', page: 1, x: 231, y: 676, size: 10, align: 'center', maxWidth: 12 },
-  { id: 'irg_categorie', page: 1, x: 265, y: 670, size: 8.5, align: 'right', maxWidth: 75 },
-  { id: 'regime_ifu', page: 1, x: 44, y: 675, size: 10, align: 'center', maxWidth: 12 },
+  { id: 'regime_ibs', page: 1, x: 384, y: 679, size: 10, align: 'center', maxWidth: 12 },
+  { id: 'regime_irg', page: 1, x: 231, y: 679, size: 10, align: 'center', maxWidth: 12 },
+  { id: 'irg_categorie', page: 1, x: 250, y: 666, size: 8.5, align: 'right', maxWidth: 90 },
+  { id: 'regime_ifu', page: 1, x: 45, y: 679, size: 10, align: 'center', maxWidth: 12 },
 
   // ──────────────────────────────────────────
   // معلومات المكلف بالضريبة
   // ──────────────────────────────────────────
-  { id: 'nomRaisonSociale', page: 1, x: 40, y: 551, size: 9, align: 'right', maxWidth: 410 },
+  { id: 'nomRaisonSociale', page: 1, x: 40, y: 551, size: 9, align: 'right', maxWidth: 430 },
   { id: 'formeJuridique', page: 1, x: 40, y: 515, size: 9, align: 'right', maxWidth: 460 },
-  { id: 'activitePrincipale', page: 1, x: 40, y: 497, size: 9, align: 'right', maxWidth: 455 },
+  { id: 'activitePrincipale', page: 1, x: 40, y: 497, size: 9, align: 'right', maxWidth: 450 },
 
   // النشاطات الثانوية وعناوينها
   { id: 'activiteSec1', page: 1, x: 40, y: 463, size: 8.5, align: 'right', maxWidth: 520 },
@@ -39,36 +39,36 @@ export const GN8_FIELD_COORDINATES: FormFieldCoord[] = [
   // ──────────────────────────────────────────
   // العناوين والاتصال
   // ──────────────────────────────────────────
-  { id: 'adresseSiege_line1', page: 1, x: 40, y: 365, size: 8.5, align: 'right', maxWidth: 365 },
-  { id: 'adresseSiege_line2', page: 1, x: 40, y: 355, size: 8.5, align: 'right', maxWidth: 520 },
+  { id: 'adresseSiege_line1', page: 1, x: 40, y: 365, size: 8.5, align: 'right', maxWidth: 340 },
+  { id: 'adresseSiege_line2', page: 1, x: 40, y: 354, size: 8.5, align: 'right', maxWidth: 520 },
 
-  { id: 'adresseEtablissementAlgerie_line1', page: 1, x: 40, y: 331, size: 8.5, align: 'right', maxWidth: 310 },
-  { id: 'adresseEtablissementAlgerie_line2', page: 1, x: 40, y: 321, size: 8.5, align: 'right', maxWidth: 520 },
+  { id: 'adresseEtablissementAlgerie_line1', page: 1, x: 40, y: 331, size: 8.5, align: 'right', maxWidth: 260 },
+  { id: 'adresseEtablissementAlgerie_line2', page: 1, x: 40, y: 320, size: 8.5, align: 'right', maxWidth: 520 },
 
-  { id: 'adresseResidence_line1', page: 1, x: 40, y: 287, size: 8.5, align: 'right', maxWidth: 260 },
-  { id: 'adresseResidence_line2', page: 1, x: 40, y: 277, size: 8.5, align: 'right', maxWidth: 520 },
+  { id: 'adresseResidence_line1', page: 1, x: 40, y: 287, size: 8.5, align: 'right', maxWidth: 250 },
+  { id: 'adresseResidence_line2', page: 1, x: 40, y: 276, size: 8.5, align: 'right', maxWidth: 520 },
 
-  { id: 'telephone', page: 1, x: 340, y: 265, size: 8.5, align: 'right', maxWidth: 170 },
-  { id: 'email', page: 1, x: 40, y: 265, size: 8.5, align: 'left', maxWidth: 210 },
-  { id: 'numeroRc', page: 1, x: 40, y: 251, size: 8.5, align: 'right', maxWidth: 460 },
-  { id: 'numeroAgrement', page: 1, x: 40, y: 232, size: 8.5, align: 'right', maxWidth: 350 },
+  { id: 'telephone', page: 1, x: 340, y: 265, size: 8.5, align: 'right', maxWidth: 140 },
+  { id: 'email', page: 1, x: 40, y: 265, size: 8.5, align: 'left', maxWidth: 200 },
+  { id: 'numeroRc', page: 1, x: 40, y: 251, size: 8.5, align: 'right', maxWidth: 420 },
+  { id: 'numeroAgrement', page: 1, x: 40, y: 233, size: 8.5, align: 'right', maxWidth: 340 },
 
   // ──────────────────────────────────────────
   // صفة المصرح وتاريخ بداية النشاط
   // تشطيب الصفات غير المعنية وفق الحاشية (3) الرسمية
   // ──────────────────────────────────────────
-  { id: 'strike_proprietaire', page: 1, x: 486, y: 220, size: 10, align: 'center', maxWidth: 32 },
-  { id: 'strike_locataire', page: 1, x: 450, y: 220, size: 10, align: 'center', maxWidth: 36 },
-  { id: 'strike_gerant_libre', page: 1, x: 409, y: 220, size: 10, align: 'center', maxWidth: 40 },
-  { id: 'strike_gerant_salarie', page: 1, x: 366, y: 220, size: 10, align: 'center', maxWidth: 44 },
+  { id: 'strike_proprietaire', page: 1, x: 482, y: 221, size: 10, align: 'center', maxWidth: 26 },
+  { id: 'strike_locataire', page: 1, x: 445, y: 221, size: 10, align: 'center', maxWidth: 30 },
+  { id: 'strike_gerant_libre', page: 1, x: 410, y: 221, size: 10, align: 'center', maxWidth: 30 },
+  { id: 'strike_gerant_salarie', page: 1, x: 375, y: 221, size: 10, align: 'center', maxWidth: 30 },
 
   { id: 'dateDebutActivite', page: 1, x: 180, y: 204, size: 9, align: 'right', maxWidth: 180 },
 
   // ──────────────────────────────────────────
   // الإقرار والتصديق
   // ──────────────────────────────────────────
-  { id: 'faitA', page: 1, x: 165, y: 154, size: 8.5, align: 'right', maxWidth: 65 },
-  { id: 'dateDeclaration', page: 1, x: 55, y: 154, size: 8.5, align: 'right', maxWidth: 80 },
+  { id: 'faitA', page: 1, x: 170, y: 154, size: 8.5, align: 'right', maxWidth: 65 },
+  { id: 'dateDeclaration', page: 1, x: 60, y: 154, size: 8.5, align: 'right', maxWidth: 75 },
 ];
 
 // NIF: 20 individual boxes at y=755, dividers from x=46 to x=284 (box width ~11.9 pt)
@@ -99,9 +99,9 @@ for (let i = 0; i < 11; i++) {
   });
 }
 
-// NIN: 18 individual boxes at y=531, dividers from x=285 to x=492 (box width ~11.5 pt)
+// NIN: 18 individual boxes at y=531, dividers from x=285 to x=483 (box width ~11.0 pt)
 for (let i = 0; i < 18; i++) {
-  const boxCenter = 285 + i * 11.5 + 5.75;
+  const boxCenter = 285.3 + i * 11.0 + 5.5;
   GN8_FIELD_COORDINATES.push({
     id: `nin_${i}`,
     page: 1,
@@ -123,19 +123,19 @@ export const GN8_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   { id: 'service', page: 1, x: 88, y: 725, size: 9, align: 'left', maxWidth: 95 },
 
   // Régime fiscal (cases à cocher)
-  { id: 'regime_ibs', page: 1, x: 45, y: 677, size: 10, align: 'center', maxWidth: 12 },
-  { id: 'regime_irg', page: 1, x: 252, y: 677, size: 10, align: 'center', maxWidth: 12 },
+  { id: 'regime_ibs', page: 1, x: 49, y: 682, size: 10, align: 'center', maxWidth: 12 },
+  { id: 'regime_irg', page: 1, x: 248, y: 682, size: 10, align: 'center', maxWidth: 12 },
   { id: 'irg_categorie', page: 1, x: 375, y: 671, size: 8.5, align: 'left', maxWidth: 55 },
-  { id: 'regime_ifu', page: 1, x: 428, y: 677, size: 10, align: 'center', maxWidth: 12 },
+  { id: 'regime_ifu', page: 1, x: 427, y: 682, size: 10, align: 'center', maxWidth: 12 },
 
   // Renseignements contribuable
-  { id: 'nomRaisonSociale', page: 1, x: 180, y: 547, size: 9, align: 'left', maxWidth: 380 },
-  { id: 'formeJuridique', page: 1, x: 135, y: 516, size: 9, align: 'left', maxWidth: 420 },
-  { id: 'activitePrincipale', page: 1, x: 125, y: 497, size: 9, align: 'left', maxWidth: 430 },
+  { id: 'nomRaisonSociale', page: 1, x: 185, y: 547, size: 9, align: 'left', maxWidth: 375 },
+  { id: 'formeJuridique', page: 1, x: 135, y: 516, size: 9, align: 'left', maxWidth: 425 },
+  { id: 'activitePrincipale', page: 1, x: 130, y: 497, size: 9, align: 'left', maxWidth: 430 },
 
   // Activités secondaires
   { id: 'activiteSec1', page: 1, x: 38, y: 461, size: 8.5, align: 'left', maxWidth: 520 },
-  { id: 'activiteSec1_adr', page: 1, x: 38, y: 446, size: 8.5, align: 'left', maxWidth: 520 },
+  { id: 'activiteSec1_adr', page: 1, x: 38, y: 445, size: 8.5, align: 'left', maxWidth: 520 },
   { id: 'activiteSec2', page: 1, x: 38, y: 428, size: 8.5, align: 'left', maxWidth: 520 },
   { id: 'activiteSec2_adr', page: 1, x: 38, y: 412, size: 8.5, align: 'left', maxWidth: 520 },
   { id: 'activiteSec3', page: 1, x: 38, y: 394, size: 8.5, align: 'left', maxWidth: 520 },
@@ -150,21 +150,21 @@ export const GN8_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   { id: 'adresseResidence_line1', page: 1, x: 38, y: 250, size: 8.5, align: 'left', maxWidth: 520 },
   { id: 'adresseResidence_line2', page: 1, x: 38, y: 234, size: 8.5, align: 'left', maxWidth: 520 },
 
-  { id: 'telephone', page: 1, x: 108, y: 216, size: 8.5, align: 'left', maxWidth: 190 },
+  { id: 'telephone', page: 1, x: 108, y: 216, size: 8.5, align: 'left', maxWidth: 180 },
   { id: 'email', page: 1, x: 395, y: 216, size: 8.5, align: 'left', maxWidth: 165 },
-  { id: 'numeroRc', page: 1, x: 200, y: 201, size: 8.5, align: 'left', maxWidth: 350 },
-  { id: 'numeroAgrement', page: 1, x: 400, y: 183, size: 8.5, align: 'left', maxWidth: 155 },
+  { id: 'numeroRc', page: 1, x: 200, y: 201, size: 8.5, align: 'left', maxWidth: 360 },
+  { id: 'numeroAgrement', page: 1, x: 405, y: 183, size: 8.5, align: 'left', maxWidth: 155 },
 
   // Qualité du déclarant (mentions inutiles rayées)
-  { id: 'strike_proprietaire', page: 1, x: 160, y: 169, size: 10, align: 'center', maxWidth: 55 },
-  { id: 'strike_locataire', page: 1, x: 232, y: 169, size: 10, align: 'center', maxWidth: 45 },
-  { id: 'strike_gerant_libre', page: 1, x: 288, y: 169, size: 10, align: 'center', maxWidth: 55 },
-  { id: 'strike_gerant_salarie', page: 1, x: 350, y: 169, size: 10, align: 'center', maxWidth: 40 },
+  { id: 'strike_proprietaire', page: 1, x: 185, y: 169, size: 10, align: 'center', maxWidth: 55 },
+  { id: 'strike_locataire', page: 1, x: 250, y: 169, size: 10, align: 'center', maxWidth: 45 },
+  { id: 'strike_gerant_libre', page: 1, x: 315, y: 169, size: 10, align: 'center', maxWidth: 55 },
+  { id: 'strike_gerant_salarie', page: 1, x: 370, y: 169, size: 10, align: 'center', maxWidth: 40 },
 
   { id: 'dateDebutActivite', page: 1, x: 290, y: 153, size: 9, align: 'left', maxWidth: 260 },
 
   // Fait à ..., le ...
-  { id: 'faitA', page: 1, x: 365, y: 99, size: 8.5, align: 'left', maxWidth: 90 },
+  { id: 'faitA', page: 1, x: 365, y: 99, size: 8.5, align: 'left', maxWidth: 80 },
   { id: 'dateDeclaration', page: 1, x: 480, y: 99, size: 8.5, align: 'left', maxWidth: 80 },
 ];
 
@@ -314,4 +314,3 @@ export function mapGN8ToFieldValues(
 
   return values;
 }
-

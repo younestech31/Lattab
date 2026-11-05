@@ -11,86 +11,86 @@ export const GN51_FIELD_COORDINATES: FormFieldCoord[] = [
   // ──────────────────────────────────────────
   // PAGE 1 — الترويسة الإدارية
   // ──────────────────────────────────────────
-  { id: 'wilaya', page: 1, x: 250, y: 737, size: 9, align: 'right', maxWidth: 140 },
-  { id: 'structure', page: 1, x: 220, y: 722, size: 9, align: 'right', maxWidth: 170 },
+  { id: 'wilaya', page: 1, x: 290, y: 738, size: 9, align: 'right', maxWidth: 140 },
+  { id: 'structure', page: 1, x: 280, y: 724, size: 9, align: 'right', maxWidth: 150 },
 
   // ──────────────────────────────────────────
   // I — المؤجر (Bailleur)
   // ──────────────────────────────────────────
-  { id: 'bailleurNom', page: 1, x: 45, y: 551, size: 9, align: 'right', maxWidth: 390 },
-  { id: 'bailleurAdresse', page: 1, x: 45, y: 537, size: 9, align: 'right', maxWidth: 430 },
-  { id: 'bailleurCommune', page: 1, x: 310, y: 522, size: 9, align: 'right', maxWidth: 110 },
-  { id: 'bailleurWilaya', page: 1, x: 150, y: 522, size: 9, align: 'right', maxWidth: 90 },
-  { id: 'bailleurCodePostal', page: 1, x: 48, y: 522, size: 9, align: 'left', maxWidth: 60 },
-  { id: 'bailleurNif', page: 1, x: 138, y: 508, size: 8.5, align: 'left', maxWidth: 235 },
-  { id: 'bailleurNin', page: 1, x: 162, y: 494, size: 8.5, align: 'left', maxWidth: 210 },
+  { id: 'bailleurNom', page: 1, x: 45, y: 554, size: 9, align: 'right', maxWidth: 450 },
+  { id: 'bailleurAdresse', page: 1, x: 45, y: 541, size: 9, align: 'right', maxWidth: 465 },
+  { id: 'bailleurCommune', page: 1, x: 370, y: 527, size: 8.5, align: 'right', maxWidth: 120 },
+  { id: 'bailleurWilaya', page: 1, x: 220, y: 527, size: 8.5, align: 'right', maxWidth: 100 },
+  { id: 'bailleurCodePostal', page: 1, x: 95, y: 527, size: 8.5, align: 'center', maxWidth: 50 },
+  { id: 'bailleurNif', page: 1, x: 275, y: 504, size: 8.5, align: 'left', maxWidth: 190 },
+  { id: 'bailleurNin', page: 1, x: 295, y: 492, size: 8.5, align: 'left', maxWidth: 175 },
 
   // ──────────────────────────────────────────
   // I — المستأجر (Preneur)
   // ──────────────────────────────────────────
-  { id: 'preneurNom', page: 1, x: 45, y: 457, size: 9, align: 'right', maxWidth: 390 },
-  { id: 'preneurAdresse', page: 1, x: 45, y: 444, size: 9, align: 'right', maxWidth: 430 },
-  { id: 'preneurCommune', page: 1, x: 310, y: 430, size: 9, align: 'right', maxWidth: 110 },
-  { id: 'preneurWilaya', page: 1, x: 150, y: 430, size: 9, align: 'right', maxWidth: 90 },
-  { id: 'preneurCodePostal', page: 1, x: 48, y: 430, size: 9, align: 'left', maxWidth: 60 },
-  { id: 'preneurNif', page: 1, x: 138, y: 416, size: 8.5, align: 'left', maxWidth: 235 },
-  { id: 'preneurNin', page: 1, x: 162, y: 402, size: 8.5, align: 'left', maxWidth: 210 },
+  { id: 'preneurNom', page: 1, x: 45, y: 459, size: 9, align: 'right', maxWidth: 450 },
+  { id: 'preneurAdresse', page: 1, x: 45, y: 445, size: 9, align: 'right', maxWidth: 465 },
+  { id: 'preneurCommune', page: 1, x: 370, y: 431, size: 8.5, align: 'right', maxWidth: 120 },
+  { id: 'preneurWilaya', page: 1, x: 220, y: 431, size: 8.5, align: 'right', maxWidth: 100 },
+  { id: 'preneurCodePostal', page: 1, x: 95, y: 431, size: 8.5, align: 'center', maxWidth: 50 },
+  { id: 'preneurNif', page: 1, x: 280, y: 420, size: 8.5, align: 'left', maxWidth: 190 },
+  { id: 'preneurNin', page: 1, x: 298, y: 408, size: 8.5, align: 'left', maxWidth: 175 },
 
   // ──────────────────────────────────────────
   // II — العقار المستأجر (Bien loué)
   // ──────────────────────────────────────────
-  { id: 'natureBien', page: 1, x: 45, y: 357, size: 9, align: 'right', maxWidth: 350 },
-  { id: 'lieuSituation', page: 1, x: 45, y: 344, size: 9, align: 'right', maxWidth: 370 },
-  { id: 'communeBien', page: 1, x: 310, y: 329, size: 9, align: 'right', maxWidth: 110 },
-  { id: 'wilayaBien', page: 1, x: 150, y: 329, size: 9, align: 'right', maxWidth: 90 },
-  { id: 'codePostalBien', page: 1, x: 48, y: 329, size: 9, align: 'left', maxWidth: 60 },
-  { id: 'articleImposition', page: 1, x: 45, y: 316, size: 9, align: 'right', maxWidth: 330 },
+  { id: 'natureBien', page: 1, x: 45, y: 353, size: 9, align: 'right', maxWidth: 430 },
+  { id: 'lieuSituation', page: 1, x: 45, y: 338, size: 9, align: 'right', maxWidth: 440 },
+  { id: 'communeBien', page: 1, x: 370, y: 324, size: 8.5, align: 'right', maxWidth: 120 },
+  { id: 'wilayaBien', page: 1, x: 220, y: 324, size: 8.5, align: 'right', maxWidth: 100 },
+  { id: 'codePostalBien', page: 1, x: 95, y: 324, size: 8.5, align: 'center', maxWidth: 50 },
+  { id: 'articleImposition', page: 1, x: 45, y: 307, size: 9, align: 'right', maxWidth: 420 },
 
   // استعمال العقار (خانات اختيار)
-  { id: 'dest_habitation', page: 1, x: 342, y: 304, size: 10, align: 'center', maxWidth: 14 },
-  { id: 'dest_commercial', page: 1, x: 202, y: 304, size: 10, align: 'center', maxWidth: 14 },
-  { id: 'dest_agricole', page: 1, x: 72, y: 304, size: 10, align: 'center', maxWidth: 14 },
+  { id: 'dest_habitation', page: 1, x: 378, y: 298, size: 10, align: 'center', maxWidth: 14 },
+  { id: 'dest_commercial', page: 1, x: 232, y: 298, size: 10, align: 'center', maxWidth: 14 },
+  { id: 'dest_agricole', page: 1, x: 60, y: 298, size: 10, align: 'center', maxWidth: 14 },
 
-  { id: 'dateDebutContrat', page: 1, x: 300, y: 284, size: 9, align: 'right', maxWidth: 130 },
+  { id: 'dateDebutContrat', page: 1, x: 330, y: 284, size: 9, align: 'right', maxWidth: 140 },
   { id: 'dateFinContrat', page: 1, x: 120, y: 284, size: 9, align: 'right', maxWidth: 140 },
-  { id: 'periodicite', page: 1, x: 45, y: 271, size: 9, align: 'right', maxWidth: 345 },
+  { id: 'periodicite', page: 1, x: 45, y: 272, size: 9, align: 'right', maxWidth: 430 },
 
   // ──────────────────────────────────────────
   // III — جدول مبالغ الإيجار ≤ 1.800.000 دج
   // ──────────────────────────────────────────
-  { id: 'loyerHabitation', page: 1, x: 160, y: 176, size: 9, format: 'currency', align: 'left', maxWidth: 115 },
-  { id: 'taxHabitation', page: 1, x: 34, y: 176, size: 9, format: 'currency', align: 'left', maxWidth: 72 },
+  { id: 'loyerHabitation', page: 1, x: 160, y: 176, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxHabitation', page: 1, x: 34, y: 176, size: 9, format: 'currency', align: 'left', maxWidth: 75 },
 
-  { id: 'loyerCommercial', page: 1, x: 160, y: 152, size: 9, format: 'currency', align: 'left', maxWidth: 115 },
-  { id: 'taxCommercial', page: 1, x: 34, y: 152, size: 9, format: 'currency', align: 'left', maxWidth: 72 },
+  { id: 'loyerCommercial', page: 1, x: 160, y: 156, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxCommercial', page: 1, x: 34, y: 156, size: 9, format: 'currency', align: 'left', maxWidth: 75 },
 
-  { id: 'loyerNonBati', page: 1, x: 160, y: 123, size: 9, format: 'currency', align: 'left', maxWidth: 115 },
-  { id: 'taxNonBati', page: 1, x: 34, y: 123, size: 9, format: 'currency', align: 'left', maxWidth: 72 },
+  { id: 'loyerNonBati', page: 1, x: 160, y: 122, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxNonBati', page: 1, x: 34, y: 122, size: 9, format: 'currency', align: 'left', maxWidth: 75 },
 
-  { id: 'loyerAgricole', page: 1, x: 160, y: 109, size: 9, format: 'currency', align: 'left', maxWidth: 115 },
-  { id: 'taxAgricole', page: 1, x: 34, y: 109, size: 9, format: 'currency', align: 'left', maxWidth: 72 },
+  { id: 'loyerAgricole', page: 1, x: 160, y: 108, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxAgricole', page: 1, x: 34, y: 108, size: 9, format: 'currency', align: 'left', maxWidth: 75 },
 
-  { id: 'totalTaxDue_p1', page: 1, x: 34, y: 96, size: 9, format: 'currency', align: 'left', maxWidth: 72 },
+  { id: 'totalTaxDue_p1', page: 1, x: 34, y: 94, size: 9, format: 'currency', align: 'left', maxWidth: 75 },
 
   // ──────────────────────────────────────────
   // PAGE 2 — جدول الإيجارات > 1.800.000 دج والإقرار
   // ──────────────────────────────────────────
-  { id: 'loyerExcedentaire', page: 2, x: 160, y: 757, size: 9, format: 'currency', align: 'left', maxWidth: 115 },
-  { id: 'taxExcedentaire', page: 2, x: 34, y: 757, size: 9, format: 'currency', align: 'left', maxWidth: 72 },
+  { id: 'loyerExcedentaire', page: 2, x: 160, y: 762, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxExcedentaire', page: 2, x: 34, y: 762, size: 9, format: 'currency', align: 'left', maxWidth: 75 },
 
   // الإقرار
-  { id: 'faitA', page: 2, x: 420, y: 606, size: 9, align: 'right', maxWidth: 75 },
-  { id: 'dateDeclaration', page: 2, x: 300, y: 606, size: 9, align: 'left', maxWidth: 95 },
+  { id: 'faitA', page: 2, x: 440, y: 606, size: 9, align: 'right', maxWidth: 70 },
+  { id: 'dateDeclaration', page: 2, x: 366, y: 606, size: 9, align: 'left', maxWidth: 70 },
 
   // طرق التسديد
-  { id: 'chequeBanqueNum', page: 2, x: 380, y: 373, size: 8.5, align: 'left', maxWidth: 90 },
-  { id: 'chequeBanqueDate', page: 2, x: 270, y: 373, size: 8.5, align: 'left', maxWidth: 70 },
-  { id: 'chequeBanqueAgence', page: 2, x: 50, y: 373, size: 8.5, align: 'right', maxWidth: 150 },
+  { id: 'chequeBanqueNum', page: 2, x: 380, y: 354, size: 8.5, align: 'left', maxWidth: 90 },
+  { id: 'chequeBanqueDate', page: 2, x: 270, y: 354, size: 8.5, align: 'left', maxWidth: 70 },
+  { id: 'chequeBanqueAgence', page: 2, x: 50, y: 354, size: 8.5, align: 'right', maxWidth: 150 },
 
-  { id: 'chequePostalNum', page: 2, x: 350, y: 352, size: 8.5, align: 'left', maxWidth: 120 },
-  { id: 'chequePostalDate', page: 2, x: 200, y: 352, size: 8.5, align: 'left', maxWidth: 80 },
+  { id: 'chequePostalNum', page: 2, x: 350, y: 333, size: 8.5, align: 'left', maxWidth: 120 },
+  { id: 'chequePostalDate', page: 2, x: 200, y: 333, size: 8.5, align: 'left', maxWidth: 80 },
 
-  { id: 'pay_numeraire', page: 2, x: 527, y: 330, size: 10, align: 'center', maxWidth: 14 },
+  { id: 'pay_numeraire', page: 2, x: 527, y: 313, size: 10, align: 'center', maxWidth: 14 },
 ];
 
 /**
@@ -102,7 +102,7 @@ export const GN51_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   // PAGE 1 — En-tête administratif
   // ──────────────────────────────────────────
   { id: 'wilaya', page: 1, x: 85, y: 738, size: 9, align: 'left', maxWidth: 100 },
-  { id: 'structure', page: 1, x: 90, y: 725, size: 9, align: 'left', maxWidth: 100 },
+  { id: 'structure', page: 1, x: 115, y: 725, size: 9, align: 'left', maxWidth: 100 },
 
   // ──────────────────────────────────────────
   // I — Bailleur
@@ -137,9 +137,9 @@ export const GN51_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   { id: 'articleImposition', page: 1, x: 230, y: 317, size: 9, align: 'left', maxWidth: 320 },
 
   // Destination (cases à cocher)
-  { id: 'dest_habitation', page: 1, x: 235, y: 305, size: 10, align: 'center', maxWidth: 14 },
-  { id: 'dest_commercial', page: 1, x: 440, y: 305, size: 10, align: 'center', maxWidth: 14 },
-  { id: 'dest_agricole', page: 1, x: 555, y: 305, size: 10, align: 'center', maxWidth: 14 },
+  { id: 'dest_habitation', page: 1, x: 233, y: 308, size: 10, align: 'center', maxWidth: 14 },
+  { id: 'dest_commercial', page: 1, x: 415, y: 308, size: 10, align: 'center', maxWidth: 14 },
+  { id: 'dest_agricole', page: 1, x: 557, y: 308, size: 10, align: 'center', maxWidth: 14 },
 
   { id: 'dateDebutContrat', page: 1, x: 155, y: 294, size: 9, align: 'left', maxWidth: 90 },
   { id: 'dateFinContrat', page: 1, x: 280, y: 294, size: 9, align: 'left', maxWidth: 90 },
@@ -148,25 +148,25 @@ export const GN51_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   // ──────────────────────────────────────────
   // III — Tableau loyers ≤ 1.800.000 DA
   // ──────────────────────────────────────────
-  { id: 'loyerHabitation', page: 1, x: 351, y: 185, size: 9, format: 'currency', align: 'left', maxWidth: 110 },
-  { id: 'taxHabitation', page: 1, x: 503, y: 184, size: 9, format: 'currency', align: 'left', maxWidth: 80 },
+  { id: 'loyerHabitation', page: 1, x: 351, y: 185, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxHabitation', page: 1, x: 503, y: 184, size: 9, format: 'currency', align: 'left', maxWidth: 70 },
 
-  { id: 'loyerCommercial', page: 1, x: 351, y: 160, size: 9, format: 'currency', align: 'left', maxWidth: 110 },
-  { id: 'taxCommercial', page: 1, x: 503, y: 160, size: 9, format: 'currency', align: 'left', maxWidth: 80 },
+  { id: 'loyerCommercial', page: 1, x: 351, y: 160, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxCommercial', page: 1, x: 503, y: 160, size: 9, format: 'currency', align: 'left', maxWidth: 70 },
 
-  { id: 'loyerNonBati', page: 1, x: 351, y: 118, size: 9, format: 'currency', align: 'left', maxWidth: 110 },
-  { id: 'taxNonBati', page: 1, x: 503, y: 122, size: 9, format: 'currency', align: 'left', maxWidth: 80 },
+  { id: 'loyerNonBati', page: 1, x: 351, y: 118, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxNonBati', page: 1, x: 503, y: 122, size: 9, format: 'currency', align: 'left', maxWidth: 70 },
 
-  { id: 'loyerAgricole', page: 1, x: 351, y: 100, size: 9, format: 'currency', align: 'left', maxWidth: 110 },
-  { id: 'taxAgricole', page: 1, x: 502, y: 99, size: 9, format: 'currency', align: 'left', maxWidth: 80 },
+  { id: 'loyerAgricole', page: 1, x: 351, y: 100, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxAgricole', page: 1, x: 502, y: 99, size: 9, format: 'currency', align: 'left', maxWidth: 70 },
 
-  { id: 'totalTaxDue_p1', page: 1, x: 502, y: 84, size: 9, format: 'currency', align: 'left', maxWidth: 80 },
+  { id: 'totalTaxDue_p1', page: 1, x: 502, y: 84, size: 9, format: 'currency', align: 'left', maxWidth: 70 },
 
   // ──────────────────────────────────────────
   // PAGE 2 — Tableau loyers > 1.800.000 DA & Paiement
   // ──────────────────────────────────────────
-  { id: 'loyerExcedentaire', page: 2, x: 351, y: 752, size: 9, format: 'currency', align: 'left', maxWidth: 110 },
-  { id: 'taxExcedentaire', page: 2, x: 507, y: 752, size: 9, format: 'currency', align: 'left', maxWidth: 80 },
+  { id: 'loyerExcedentaire', page: 2, x: 351, y: 752, size: 9, format: 'currency', align: 'left', maxWidth: 100 },
+  { id: 'taxExcedentaire', page: 2, x: 507, y: 752, size: 9, format: 'currency', align: 'left', maxWidth: 70 },
 
   // Attestation
   { id: 'faitA', page: 2, x: 85, y: 548, size: 9, align: 'left', maxWidth: 80 },
