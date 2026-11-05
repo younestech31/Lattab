@@ -22,6 +22,18 @@ test("rejects unterminated quoted fields", () => {
   assert.throws(() => parseSemicolonCsv('a;b\n1;"unfinished'), /unterminated quoted field/i);
 });
 
+test("rejects a quote inside an unquoted field", () => {
+  assert.throws(() => parseSemicolonCsv('a;b\n1;bad"quote\n'), /quote in an unquoted field/i);
+});
+
+test("rejects characters after a closing quote", () => {
+  assert.throws(() => parseSemicolonCsv('a;b\n1;"value"x\n'), /after a closing quote/i);
+});
+
+test("allows an empty quoted field and preserves trailing empty columns", () => {
+  assert.deepEqual(parseSemicolonCsv('a;b;c\n1;"";\n'), [["a", "b", "c"], ["1", "", ""]]);
+});
+
 test("schema requires six-digit codes and nullable optional source fields", () => {
   const valid = {
     code: "123456",
