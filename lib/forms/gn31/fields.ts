@@ -116,7 +116,7 @@ for (let i = 0; i < 20; i++) {
   GN31_FIELD_COORDINATES.push({
     id: `nif_${i}`,
     page: 1,
-    x: Math.round(boxCenter),
+    x: Math.round(boxCenter - 5),
     y: 684,
     size: 8.5,
     align: 'center',
@@ -130,7 +130,7 @@ for (let i = 0; i < 11; i++) {
   GN31_FIELD_COORDINATES.push({
     id: `nai_${i}`,
     page: 1,
-    x: Math.round(boxCenter),
+    x: Math.round(boxCenter - 4),
     y: 668,
     size: 8,
     align: 'center',
@@ -144,7 +144,7 @@ for (let i = 0; i < 18; i++) {
   GN31_FIELD_COORDINATES.push({
     id: `nin_${i}`,
     page: 1,
-    x: Math.round(boxCenter),
+    x: Math.round(boxCenter - 4),
     y: 651,
     size: 8.5,
     align: 'center',
@@ -256,7 +256,7 @@ for (let i = 0; i < 20; i++) {
   GN31_FIELD_COORDINATES_FR.push({
     id: `nif_${i}`,
     page: 1,
-    x: Math.round(boxCenter),
+    x: Math.round(boxCenter - 4.5),
     y: 692,
     size: 9,
     align: 'center',
@@ -270,7 +270,7 @@ for (let i = 0; i < 11; i++) {
   GN31_FIELD_COORDINATES_FR.push({
     id: `nai_${i}`,
     page: 1,
-    x: Math.round(boxCenter),
+    x: Math.round(boxCenter - 4),
     y: 672,
     size: 8.5,
     align: 'center',
@@ -284,7 +284,7 @@ for (let i = 0; i < 18; i++) {
   GN31_FIELD_COORDINATES_FR.push({
     id: `nin_${i}`,
     page: 1,
-    x: Math.round(boxCenter),
+    x: Math.round(boxCenter - 4),
     y: 653,
     size: 8.5,
     align: 'center',
