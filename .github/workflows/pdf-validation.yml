@@ -35,7 +35,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y poppler-utils
 
-      - name: Render PDFs for visual QA
+      - name: Include official source templates for visual comparison
+        if: always()
+        run: |
+          mkdir -p artifacts/templates artifacts/template-png
+          cp public/forms/*.pdf artifacts/templates/
+          for file in artifacts/templates/*.pdf; do
+            name="$(basename "$file" .pdf)"
+            pdftoppm -png -r 120 "$file" "artifacts/template-png/$name"
+          done
+
+      - name: Render generated PDFs for visual QA
         if: always()
         run: |
           mkdir -p artifacts/png
