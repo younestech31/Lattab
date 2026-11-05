@@ -59,6 +59,7 @@ export function NAEExplorerPage({
     ...(subgroup ? { subgroupCode: subgroup } : {}),
   };
   const hasFilters = Boolean(sector || group || subgroup);
+  const hasCriteria = Boolean(q || hasFilters);
   const resultItems = q
     ? searchNAE(getNAESearchIndex(lang as NAESearchLanguage), q, { ...filters, language: lang }).map(({ activity }) => ({ activity }))
     : hasFilters
