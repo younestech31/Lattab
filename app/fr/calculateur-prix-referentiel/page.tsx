@@ -60,7 +60,6 @@ export default function CalculatorPageFR() {
     "url": `${SITE_URL}/fr/calculateur-prix-referentiel`,
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Web",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DZD" },
     "provider": { "@id": `${SITE_URL}/#notary-office` }
   };
 

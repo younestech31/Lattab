@@ -64,7 +64,6 @@ export default function CalculatorPage() {
     description: 'أداة معلوماتية تعرض نطاقات القيمة السوقية الواردة في مرجع المديرية العامة للضرائب للفترة 2025–2026، بحسب البيانات المدرجة فيها.',
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'DZD' },
     provider: { '@id': `${SITE_URL}/#notary-office` },
   };
 

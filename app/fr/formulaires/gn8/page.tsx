@@ -88,41 +88,9 @@ export default function GN8PageFR() {
     }
   };
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'Quel est le délai légal de souscription de la déclaration d\'existence G N° 08 ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'La déclaration d\'existence doit être souscrite dans les trente (30) jours suivant le début effectif d\'activité auprès du service fiscal du lieu d\'exercice (Inspection ou Centre des Impôts), conformément à l\'article 51 du CTCA et à l\'article 183 du CIDTA.',
-        },
-      },
-      {
-        '@type': 'Question',
-        'name': 'Qui est soumis à la souscription de cette déclaration ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Toute personne physique ou morale (société commerciale, profession libérale, artisan, commerçant individuel ou auto-entrepreneur) qui entreprend une activité assujettie à l\'impôt sur le revenu global (IRG), à l\'impôt sur les bénéfices des sociétés (IBS) ou à l\'impôt forfaitaire unique (IFU).',
-        },
-      },
-      {
-        '@type': 'Question',
-        'name': 'Quels sont les documents à joindre à la déclaration G 08 ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Les pièces justificatives obligatoires figurent au verso (page 2) de l\'imprimé : statuts et spécimen de signature pour les personnes morales, copie du registre du commerce ou agrément, titre d\'occupation du local (bail ou propriété) et extrait de naissance N° 12 du gérant, ou carte d\'auto-entrepreneur.',
-        },
-      },
-    ],
-  };
-
   return (
     <div>
       <JsonLdScript schema={serviceSchema} />
-      <JsonLdScript schema={faqSchema} />
       <UnifiedPageHeader
         lang="fr"
         eyebrow="Direction Générale des Impôts — Série G N° 08"

@@ -43,6 +43,7 @@ export const KNOWN_STATIC_ROUTES = new Set([
 // Any syntactically valid article slug can pass the middleware indexability check. Next.js
 // still returns its normal 404/noindex response for a slug that is not in generateStaticParams.
 const BLOG_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const NAE_CODE_PATTERN = /^[0-9]{6}$/;
 const OPENGRAPH_SUFFIX = '/opengraph-image';
 
 function isBlogRoute(pathname: string, prefix: '/blog/' | '/fr/blog/'): boolean {
@@ -56,7 +57,23 @@ function isBlogRoute(pathname: string, prefix: '/blog/' | '/fr/blog/'): boolean 
   return BLOG_SLUG_PATTERN.test(slug);
 }
 
+function isNAERoute(pathname: string, prefix: '/nae/' | '/fr/nae/'): boolean {
+  if (!pathname.startsWith(prefix)) return false;
+
+  let code = pathname.slice(prefix.length);
+  if (code.endsWith(OPENGRAPH_SUFFIX)) {
+    code = code.slice(0, -OPENGRAPH_SUFFIX.length);
+  }
+
+  return NAE_CODE_PATTERN.test(code);
+}
+
 export function isKnownPublicRoute(pathname: string): boolean {
   if (KNOWN_STATIC_ROUTES.has(pathname)) return true;
-  return isBlogRoute(pathname, '/blog/') || isBlogRoute(pathname, '/fr/blog/');
+  return (
+    isBlogRoute(pathname, '/blog/') ||
+    isBlogRoute(pathname, '/fr/blog/') ||
+    isNAERoute(pathname, '/nae/') ||
+    isNAERoute(pathname, '/fr/nae/')
+  );
 }

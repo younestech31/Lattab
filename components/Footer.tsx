@@ -282,7 +282,7 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
           <div className="bg-emerald-900/90 rounded-2xl p-5 mb-6 border border-emerald-800 text-xs sm:text-sm text-emerald-100 leading-relaxed">
             <div className="grid md:grid-cols-2 gap-4 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-emerald-800">
               {/* Arabic notice */}
-              <div className="pt-3 md:pt-0 md:pe-4 text-right" dir="rtl">
+              <div className="pt-3 md:pt-0 md:pe-4 text-right" dir="rtl" lang="ar">
                 <span className="inline-block px-2 py-0.5 rounded bg-emerald-800 text-amber-300 font-semibold text-[11px] mb-2 border border-emerald-700">
                   إشعار قانوني وتنظيمي
                 </span>
@@ -292,7 +292,7 @@ export default function Footer({ lang: propLang }: FooterProps = {}) {
               </div>
 
               {/* French notice */}
-              <div className="pt-3 md:pt-0 md:ps-4 text-left" dir="ltr">
+              <div className="pt-3 md:pt-0 md:ps-4 text-left" dir="ltr" lang="fr">
                 <span className="inline-block px-2 py-0.5 rounded bg-emerald-800 text-amber-300 font-semibold text-[11px] mb-2 border border-emerald-700">
                   Avis légal et réglementaire
                 </span>

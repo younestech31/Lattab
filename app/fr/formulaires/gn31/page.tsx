@@ -88,41 +88,9 @@ export default function GN31PageFR() {
     }
   };
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'Quel est le délai légal de souscription de la déclaration Série G N° 31 ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'La déclaration Série G N° 31 doit être souscrite dans un délai de deux mois suivant l\'achèvement ou l\'occupation totale ou partielle de l\'immeuble, ou dans les deux mois suivant l\'achèvement de toute modification de structure ou d\'affectation, conformément aux Articles 261-r et 261-s du CIDTA.',
-        },
-      },
-      {
-        '@type': 'Question',
-        'name': 'Quelles sont les propriétés soumises à la déclaration Série G N° 31 ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'La déclaration couvre l\'ensemble des propriétés bâties (logements individuels, appartements en copropriété, immeubles collectifs, locaux professionnels et commerciaux) ainsi que les propriétés non bâties (terres agricoles et terrains à bâtir).',
-        },
-      },
-      {
-        '@type': 'Question',
-        'name': 'Quelle est la valeur juridique du document généré et où le déposer ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Le document généré est un exemplaire destiné à la vérification et à la préparation matérielle de la déclaration. Il doit être imprimé, signé et déposé auprès de l\'inspection ou de la recette des impôts du lieu de situation de l\'immeuble.',
-        },
-      },
-    ],
-  };
-
   return (
     <div>
       <JsonLdScript schema={serviceSchema} />
-      <JsonLdScript schema={faqSchema} />
       <UnifiedPageHeader
         lang="fr"
         eyebrow="Direction Générale des Impôts — Série G N° 31"

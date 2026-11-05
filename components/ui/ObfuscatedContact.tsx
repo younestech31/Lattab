@@ -30,18 +30,6 @@ export default function ObfuscatedContact({
     }
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    if (type === 'phone') {
-      window.location.href = `tel:+${officeTelDigits()}`;
-    } else if (type === 'email') {
-      window.location.href = `mailto:${officeEmail()}`;
-    } else if (type === 'whatsapp') {
-      const url = buildInquiryWaUrl(lang, service);
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
-  };
-
   const defaultLabel = type === 'phone'
     ? `${ariaLabel || (lang === 'fr' ? "Appeler l'office notarial" : 'الاتصال بأمانة ديوان التوثيق')} : 0562 29 69 81`
     : ariaLabel || (
@@ -50,13 +38,19 @@ export default function ObfuscatedContact({
           : (lang === 'fr' ? 'Demande de renseignement administratif via WhatsApp' : 'استفسار إداري عبر واتساب')
       );
 
+  const href = type === 'phone'
+    ? `tel:+${officeTelDigits()}`
+    : type === 'email'
+    ? `mailto:${officeEmail()}`
+    : buildInquiryWaUrl(lang, service);
+
   return (
     <a
-      href="#"
-      role="button"
-      onClick={handleClick}
+      href={href}
+      target={type === 'whatsapp' ? '_blank' : undefined}
+      rel={type === 'whatsapp' ? 'noopener noreferrer' : undefined}
       onPointerDown={handleReveal}
-      onKeyDown={handleReveal}
+      onMouseEnter={handleReveal}
       onFocus={handleReveal}
       className={`inline-flex items-center gap-2 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 rounded-lg transition-colors ${className}`}
       aria-label={defaultLabel}

@@ -74,41 +74,9 @@ export default function GN51PageFR() {
     },
   };
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'Quel est le délai légal pour déposer la déclaration Série G N° 51 ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'La déclaration tenant lieu de bordereau avis de versement doit être souscrite au plus tard le vingt (20) du mois qui suit celui de la perception des loyers auprès de la recette des impôts du lieu de situation du bien loué.',
-        },
-      },
-      {
-        '@type': 'Question',
-        'name': 'Quels sont les taux applicables selon la nature du bien loué ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Pour un montant annuel inférieur ou égal à 1.800.000 DA : 7% pour les biens à usage d\'habitation, 15% pour les locaux commerciaux, professionnels ou terrains non bâtis, et 10% pour les terrains agricoles. Au-delà de 1.800.000 DA, une imposition provisoire au taux unique de 7% s\'applique.',
-        },
-      },
-      {
-        '@type': 'Question',
-        'name': 'Comment s\'effectue le règlement de l\'impôt ?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Le paiement s\'effectue au guichet de la recette des impôts compétente en numéraire, par chèque bancaire ou par chèque postal contre remise d\'une quittance officielle.',
-        },
-      },
-    ],
-  };
-
   return (
     <div>
       <JsonLdScript schema={serviceSchema} />
-      <JsonLdScript schema={faqSchema} />
       <UnifiedPageHeader
         lang="fr"
         eyebrow="Direction Générale des Impôts — Série G N° 51"
