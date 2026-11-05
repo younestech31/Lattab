@@ -79,6 +79,38 @@ async function runTestSuite(): Promise<TestResult[]> {
     throw new Error(`Arabic/Persian digit normalization failed: ${normalizedDigitSample}`);
   }
 
+  // The PDF engine must reject both a template with the wrong page count
+  // and text that cannot fit, rather than producing a plausible but incomplete PDF.
+  let pageMismatchRejected = false;
+  try {
+    await fillOfficialPdf({
+      templateUrl: '/forms/gn17.pdf',
+      expectedPages: 99,
+      fields: [],
+      values: {},
+    });
+  } catch (error) {
+    pageMismatchRejected = error instanceof Error && error.message.includes('عدد صفحات النموذج غير مطابق');
+  }
+  if (!pageMismatchRejected) {
+    throw new Error('PDF engine must reject a template whose page count differs from expectedPages.');
+  }
+
+  let overflowRejected = false;
+  try {
+    await fillOfficialPdf({
+      templateUrl: '/forms/gn17.pdf',
+      expectedPages: 2,
+      fields: [{ id: 'overflow_test', page: 1, x: 40, y: 40, size: 10, maxWidth: 1 }],
+      values: { overflow_test: 'A deliberately long value that must never be truncated.' },
+    });
+  } catch (error) {
+    overflowRejected = error instanceof Error && error.message.includes('أطول من المساحة المخصصة');
+  }
+  if (!overflowRejected) {
+    throw new Error('PDF engine must reject overflowing text instead of truncating official data.');
+  }
+
   // Digit fields use x as the left edge of the draw box. Check their centers
   // against the official template's digit-cell centers in both languages.
   assertDigitBoxCenters('GN08 AR', GN8_FIELD_COORDINATES, [
