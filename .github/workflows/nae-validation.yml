@@ -9,6 +9,7 @@ on:
       - "tools/nae/**"
       - "tests/nae-*.test.ts"
       - "tests/fixtures/**"
+      - "data/nae/**"
       - "package.json"
       - "bun.lock"
       - ".github/workflows/nae-validation.yml"
