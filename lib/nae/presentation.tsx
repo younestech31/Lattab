@@ -218,7 +218,7 @@ export function NAEExplorerPage({
                   <p className="mt-1 text-sm text-gray-500">{ar ? `${comparedActivities.length} من 3 نشاطات مختارة — تحفظ الاختيارات على هذا الجهاز فقط.` : `${comparedActivities.length} sur 3 activités sélectionnées — choix conservés sur cet appareil uniquement.`}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 print:hidden">
-                  {comparedActivities.length >= 2 && <NAEPrintButton lang={lang} />
+                  {comparedActivities.length >= 2 && <NAEPrintButton lang={lang} />}
                   <Link href={clearCompareHref} className="inline-flex min-h-10 items-center justify-center rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
                     {ar ? "مسح المقارنة" : "Effacer la comparaison"}
                   </Link>
