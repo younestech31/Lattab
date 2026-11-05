@@ -33,6 +33,56 @@ async function runTestSuite(): Promise<TestResult[]> {
     throw new Error(`Arabic/Persian digit normalization failed: ${normalizedDigitSample}`);
   }
 
+  const gn31Unspecified = mapGN31ToFieldValues({
+    ...initialGN31Values,
+    occupantType: 'unspecified',
+    natureBien: 'individuel',
+    faitA: '',
+  }, 'ar');
+  if (
+    gn31Unspecified.nomSociete ||
+    gn31Unspecified.siegeSocial ||
+    gn31Unspecified.qualite_societe_prop ||
+    gn31Unspecified.qualite_societe_concession ||
+    gn31Unspecified.indiv_loue ||
+    gn31Unspecified.indiv_non_loue ||
+    gn31Unspecified.faitA !== ''
+  ) {
+    throw new Error('GN31 mapper must not invent an occupant type, rental status, or signing city.');
+  }
+
+  const gn31ExplicitNonRented = mapGN31ToFieldValues({
+    ...initialGN31Values,
+    occupantType: 'physique',
+    natureBien: 'individuel',
+    isLoueSelected: true,
+    isLoue: false,
+  }, 'ar');
+  if (gn31ExplicitNonRented.indiv_non_loue !== 'X' || gn31ExplicitNonRented.indiv_loue) {
+    throw new Error('GN31 mapper did not preserve the explicit non-rented selection.');
+  }
+
+  const gn31ExplicitRented = mapGN31ToFieldValues({
+    ...initialGN31Values,
+    occupantType: 'physique',
+    natureBien: 'appartement',
+    isLoueSelected: true,
+    isLoue: true,
+  }, 'ar');
+  if (gn31ExplicitRented.app_loue !== 'X' || gn31ExplicitRented.app_non_loue) {
+    throw new Error('GN31 mapper did not preserve the explicit rented selection.');
+  }
+
+  const gn8UnspecifiedQuality = mapGN8ToFieldValues(initialGN8Values, 'ar');
+  if (
+    gn8UnspecifiedQuality.strike_proprietaire ||
+    gn8UnspecifiedQuality.strike_locataire ||
+    gn8UnspecifiedQuality.strike_gerant_libre ||
+    gn8UnspecifiedQuality.strike_gerant_salarie
+  ) {
+    throw new Error('GN08 mapper must not strike every declarant capacity when none was selected.');
+  }
+
   const results: TestResult[] = [];
 
   // ──────────────────────────────────────────

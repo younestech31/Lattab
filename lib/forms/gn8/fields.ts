@@ -289,10 +289,11 @@ export function mapGN8ToFieldValues(
   // Strikethrough of unselected declarant capacities per Footnote (3):
   // "شطب المعلومات غير الضرورية" / "Rayer les mentions inutiles"
   const strikeText = '-------';
-  values.strike_proprietaire = data.qualiteDeclarant !== 'proprietaire' ? strikeText : '';
-  values.strike_locataire = data.qualiteDeclarant !== 'locataire' ? strikeText : '';
-  values.strike_gerant_libre = data.qualiteDeclarant !== 'gerant_libre' ? strikeText : '';
-  values.strike_gerant_salarie = data.qualiteDeclarant !== 'gerant_salarie' ? strikeText : '';
+  const hasDeclarantQuality = data.qualiteDeclarant !== 'unspecified';
+  values.strike_proprietaire = hasDeclarantQuality && data.qualiteDeclarant !== 'proprietaire' ? strikeText : '';
+  values.strike_locataire = hasDeclarantQuality && data.qualiteDeclarant !== 'locataire' ? strikeText : '';
+  values.strike_gerant_libre = hasDeclarantQuality && data.qualiteDeclarant !== 'gerant_libre' ? strikeText : '';
+  values.strike_gerant_salarie = hasDeclarantQuality && data.qualiteDeclarant !== 'gerant_salarie' ? strikeText : '';
 
   // NIF digits (up to 20)
   const cleanNif = digitsOnly(data.nif || '');

@@ -327,9 +327,9 @@ export function mapGN31ToFieldValues(
     dateOccupationTotale: data.dateOccupationTotale || '',
 
     // Signature
-    faitA: (data.faitA || (isFr ? 'Oran' : 'وهران')).trim(),
+    faitA: (data.faitA || '').trim(),
     dateDeclaration: (data.dateDeclaration || '').trim(),
-    faitA_p4: data.declarationType === 'change' ? (data.faitA || (isFr ? 'Oran' : 'وهران')).trim() : '',
+    faitA_p4: data.declarationType === 'change' ? (data.faitA || '').trim() : '',
     dateDeclaration_p4: data.declarationType === 'change' ? (data.dateDeclaration || '').trim() : '',
   };
 
@@ -364,7 +364,7 @@ export function mapGN31ToFieldValues(
 
     values.qualite_prop_occupant = data.qualitePhysique === 'proprietaire' ? 'X' : '';
     values.qualite_usufruitier = data.qualitePhysique === 'usufruitier' ? 'X' : '';
-  } else {
+  } else if (data.occupantType === 'morale') {
     values.nomSociete = data.nomSociete;
     values.siegeSocial = data.siegeSocial;
     values.telSociete = data.telSociete;
@@ -374,6 +374,8 @@ export function mapGN31ToFieldValues(
     values.qualite_societe_prop = data.qualiteMorale === 'proprietaire' ? 'X' : '';
     values.qualite_societe_concession = data.qualiteMorale === 'concessionnaire' ? 'X' : '';
   }
+  // When occupantType is unspecified, leave both identity blocks and their
+  // checkboxes empty rather than interpreting "unspecified" as a company.
 
   // Section III Nature
   values.nature_individuel = data.natureBien === 'individuel' ? 'X' : '';
@@ -386,8 +388,8 @@ export function mapGN31ToFieldValues(
   if (data.natureBien === 'individuel') {
     values.indiv_res_principale = data.usageResidence === 'principale' ? 'X' : '';
     values.indiv_res_secondaire = data.usageResidence === 'secondaire' ? 'X' : '';
-    values.indiv_loue = data.isLoue ? 'X' : '';
-    values.indiv_non_loue = !data.isLoue ? 'X' : '';
+    values.indiv_loue = data.isLoueSelected && data.isLoue ? 'X' : '';
+    values.indiv_non_loue = data.isLoueSelected && !data.isLoue ? 'X' : '';
 
     if (data.superficieTotale > 0) values.indiv_sup_totale = `${data.superficieTotale}`;
     if (data.superficieHabitation > 0) values.indiv_sup_habitation = `${data.superficieHabitation}`;
@@ -397,8 +399,8 @@ export function mapGN31ToFieldValues(
   } else if (data.natureBien === 'appartement') {
     values.app_res_principale = data.usageResidence === 'principale' ? 'X' : '';
     values.app_res_secondaire = data.usageResidence === 'secondaire' ? 'X' : '';
-    values.app_loue = data.isLoue ? 'X' : '';
-    values.app_non_loue = !data.isLoue ? 'X' : '';
+    values.app_loue = data.isLoueSelected && data.isLoue ? 'X' : '';
+    values.app_non_loue = data.isLoueSelected && !data.isLoue ? 'X' : '';
 
     if (data.superficieTotale > 0) values.app_sup_totale = `${data.superficieTotale}`;
     if (data.superficieHabitation > 0) values.app_sup_habitation = `${data.superficieHabitation}`;

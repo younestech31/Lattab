@@ -3,7 +3,7 @@
 import { GN17FormData } from '@/lib/forms/gn17/schema';
 import { GN17ComputeResult } from '@/lib/forms/gn17/compute';
 import FormDownloadPanel from '@/components/forms/shared/FormDownloadPanel';
-import { Percent, ShieldAlert, FileDown, CheckCircle, MapPin, Calendar, Loader2 } from 'lucide-react';
+import { Percent, ShieldAlert, CheckCircle, MapPin, Calendar } from 'lucide-react';
 
 interface Props {
   data: GN17FormData;
