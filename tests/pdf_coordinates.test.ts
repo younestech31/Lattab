@@ -27,11 +27,54 @@ interface TestResult {
   errors: string[];
 }
 
+function assertDigitBoxCenters(
+  label: string,
+  fields: Array<{ id: string; x: number; maxWidth?: number }>,
+  specs: Array<{ prefix: string; count: number; start: number; step: number; cellWidth: number }>
+): void {
+  for (const spec of specs) {
+    for (let i = 0; i < spec.count; i++) {
+      const field = fields.find((item) => item.id === `${spec.prefix}_${i}`);
+      if (!field || field.maxWidth === undefined) {
+        throw new Error(`${label}: missing digit box ${spec.prefix}_${i} or maxWidth.`);
+      }
+      const expectedCenter = spec.start + i * spec.step + spec.cellWidth / 2;
+      const actualCenter = field.x + field.maxWidth / 2;
+      if (Math.abs(actualCenter - expectedCenter) > 1.1) {
+        throw new Error(`${label}: ${field.id} is misaligned (expected center ${expectedCenter.toFixed(2)}, got ${actualCenter.toFixed(2)}).`);
+      }
+    }
+  }
+}
+
 async function runTestSuite(): Promise<TestResult[]> {
   const normalizedDigitSample = digitsOnly('٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
   if (normalizedDigitSample !== '01234567890123456789') {
     throw new Error(`Arabic/Persian digit normalization failed: ${normalizedDigitSample}`);
   }
+
+  // Digit fields use x as the left edge of the draw box. Check their centers
+  // against the official template's digit-cell centers in both languages.
+  assertDigitBoxCenters('GN08 AR', GN8_FIELD_COORDINATES, [
+    { prefix: 'nif', count: 20, start: 46, step: 11.9, cellWidth: 11.9 },
+    { prefix: 'nai', count: 11, start: 159, step: 11.36, cellWidth: 11.36 },
+    { prefix: 'nin', count: 18, start: 285.3, step: 11, cellWidth: 11 },
+  ]);
+  assertDigitBoxCenters('GN08 FR', GN8_FIELD_COORDINATES_FR, [
+    { prefix: 'nif', count: 20, start: 356, step: 10, cellWidth: 10 },
+    { prefix: 'nai', count: 11, start: 355, step: 9.5, cellWidth: 9.5 },
+    { prefix: 'nin', count: 18, start: 220, step: 13, cellWidth: 13 },
+  ]);
+  assertDigitBoxCenters('GN31 AR', GN31_FIELD_COORDINATES, [
+    { prefix: 'nif', count: 20, start: 196.5, step: 12.35, cellWidth: 12.35 },
+    { prefix: 'nai', count: 11, start: 330.7, step: 9.33, cellWidth: 9.33 },
+    { prefix: 'nin', count: 18, start: 272.2, step: 9.77, cellWidth: 9.77 },
+  ]);
+  assertDigitBoxCenters('GN31 FR', GN31_FIELD_COORDINATES_FR, [
+    { prefix: 'nif', count: 20, start: 247, step: 9.85, cellWidth: 9.85 },
+    { prefix: 'nai', count: 11, start: 246, step: 9.7, cellWidth: 9.7 },
+    { prefix: 'nin', count: 18, start: 258, step: 9.7, cellWidth: 9.7 },
+  ]);
 
   const gn17NoSellerAddressDefaults = mapGN17ToFieldValues({
     ...initialGN17Values,
