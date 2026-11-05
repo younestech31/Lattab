@@ -30,14 +30,8 @@ export default function GN8FormFiller() {
   const isDebug = searchParams.get('debug') === '1';
 
   const formDef = getFormBySlug('gn8');
-  const [data, setData] = useState<GN8FormData>(() => {
-    const draft = readGN8Draft();
-    return draft?.data ?? initialGN8Values;
-  });
-  const [savedAt, setSavedAt] = useState<string | null>(() => {
-    const draft = loadDraft<GN8FormData>('gn8');
-    return draft?.savedAt ?? null;
-  });
+  const [data, setData] = useState<GN8FormData>(initialGN8Values);
+  const [savedAt, setSavedAt] = useState<string | null>(null);
 
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
@@ -46,9 +40,10 @@ export default function GN8FormFiller() {
   const isMountedRef = useRef(false);
   const skipNextSaveRef = useRef(false);
 
-  // Client-side hydration sync for localStorage draft
+  // Load and validate the saved draft only after hydration to keep server and
+  // first client render identical and avoid rendering unvalidated stored data.
   useEffect(() => {
-    const draft = loadDraft<GN8FormData>('gn8');
+    const draft = readGN8Draft();
     if (draft?.data) {
       setData(draft.data);
       setSavedAt(draft.savedAt);
