@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/config";
 import { getNAEActivityByCode } from "@/lib/nae/data";
-import { getNAEActivityTitle, getNAEPageDescription, isNAEActivityIndexable, NAEActivityDetailPage } from "@/lib/nae/presentation";
+import { NAEActivityDetailPage } from "@/lib/nae/presentation";
+import { getNAEActivityTitle, getNAEPageDescription, isNAEActivityIndexable } from "@/lib/nae/seo";
 
 export const revalidate = 604800;
 

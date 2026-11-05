@@ -58,6 +58,9 @@ jobs:
 
       - name: Run NAE tests
         run: bun run test:nae
+
+      - name: Type-check application and NAE routes
+        run: bun run tsc --noEmit --pretty false
       - name: Smoke-test NAE CSV importer
         run: |
           bun run nae:import -- --input tests/fixtures/nae-mini.csv --output "$RUNNER_TEMP/nae-import"

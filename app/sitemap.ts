@@ -3,7 +3,7 @@ import { blogPosts, frBlogPosts } from '@/lib/data/blog';
 import { SITE_URL as base } from '@/lib/config';
 import { STATIC_LOCALE_MAP, BLOG_PAIRS_MAP, FR_TO_AR_BLOG_MAP } from '@/lib/data/localeMap';
 import { getNAEActivities, getNAEDatasetManifest } from '@/lib/nae/data';
-import { isNAEActivityIndexable } from '@/lib/nae/presentation';
+import { isNAEActivityIndexable } from '@/lib/nae/seo';
 
 function getValidLastModified(primary?: string, fallback?: string): Date | undefined {
   for (const value of [primary, fallback]) {

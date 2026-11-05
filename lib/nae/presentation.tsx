@@ -5,32 +5,8 @@ import { buildNAETaxonomy, filterNAEByTaxonomy, searchNAE, type NAESearchLanguag
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
 
-export type NAEPageLanguage = "ar" | "fr";
-
-export function hasValidNAELabel(activity: NAEActivity, lang: NAEPageLanguage): boolean {
-  const value = lang === "ar" ? activity.label_ar : activity.label_fr;
-  return Boolean(value.trim()) && value.trim() !== "#NOM?";
-}
-
-export function isNAEActivityIndexable(activity: NAEActivity, lang: NAEPageLanguage): boolean {
-  return hasValidNAELabel(activity, lang) && activity.contenue_fr.trim().length >= 60;
-}
-
-export function getNAEActivityTitle(activity: NAEActivity, lang: NAEPageLanguage): string {
-  const preferred = lang === "ar" ? activity.label_ar : activity.label_fr;
-  const fallback = lang === "ar" ? activity.label_fr : activity.label_ar;
-  if (preferred.trim() && preferred.trim() !== "#NOM?") return preferred.trim();
-  if (fallback.trim() && fallback.trim() !== "#NOM?") return fallback.trim();
-  return activity.code;
-}
-
-export function getNAEPageDescription(activity: NAEActivity, lang: NAEPageLanguage): string {
-  const title = getNAEActivityTitle(activity, lang);
-  if (lang === "ar") return `بطاقة مرجعية للنشاط الاقتصادي «${title}»، رمز NAE ${activity.code}. تتضمن التسمية والتصنيف ومحتوى النشاط والبيانات التنظيمية المتاحة في ملف المصدر.`;
-  const content = activity.contenue_fr.replace(/\s+/gu, " ").trim();
-  const excerpt = content.length > 150 ? `${content.slice(0, 147).trimEnd()}…` : content;
-  return excerpt ? `Code NAE ${activity.code} — ${title}. ${excerpt}` : `Fiche de référence de l’activité ${title}, code NAE ${activity.code}.`;
-}
+import { getNAEActivityTitle, type NAEPageLanguage } from "./seo";
+export type { NAEPageLanguage } from "./seo";
 
 function first(value: string | string[] | undefined): string {
   return Array.isArray(value) ? value[0] ?? "" : value ?? "";
@@ -105,7 +81,7 @@ export function NAEExplorerPage({
     sourceDate:"تاريخ إصدار ملف المصدر",unknown:"غير موثق",fingerprint:"بصمة ملف المصدر",
     portal:"بوابة Sidjilcom التابعة للمركز الوطني للسجل التجاري",
     notice:"تنبيه استرشادي",
-    disclaimer:"هذا الدليل أداة معلوماتية استرشادية. لا يمثل قراراً إدارياً أو استشارة قانونية، ولا يثبت وحده أهلية ممارسة نشاط أو استيفاء شروط الترخيص أو جواز جمع نشاطات في سجل واحد. غياب حقل تنظيمي لا يعني عدم وجود شرط أو ترخيص؛ يرجى التحقق لدى الجهة المختصة ومن النصوص السارية.",
+    disclaimer:"هذه الأداة ليست بوابة رسمية تابعة للمركز الوطني للسجل التجاري أو Sidjilcom. وهي أداة استرشادية لا تمثل قراراً إدارياً أو استشارة قانونية، ولا تثبت وحدها أهلية ممارسة نشاط أو استيفاء شروط الترخيص أو جواز جمع نشاطات في سجل واحد. غياب حقل تنظيمي لا يعني عدم وجود شرط أو ترخيص؛ يرجى التحقق لدى الجهة المختصة ومن النصوص السارية.",
     sourceLanguage:"تظهر أسماء القطاعات الموثقة بالعربية. أسماء المجموعات والمجموعات الفرعية غير متوفرة في ملف المصدر، لذلك تعرض برموزها.",
   } : {
     badge:"Référence des activités économiques",title:"Explorateur des activités économiques",
@@ -123,7 +99,7 @@ export function NAEExplorerPage({
     sourceDate:"Date de révision du fichier source",unknown:"Non documentée",fingerprint:"Empreinte du fichier",
     portal:"Portail Sidjilcom du Centre national du registre du commerce",
     notice:"Information indicative",
-    disclaimer:"Ce guide est un outil d'information indicative. Il ne constitue ni une décision administrative ni un conseil juridique. Il ne prouve pas, à lui seul, l'aptitude à exercer une activité, le respect des conditions d'autorisation ou la possibilité de regrouper plusieurs activités dans un même registre. L’absence d’un champ réglementaire ne signifie pas l’absence d’une condition ou d’une autorisation ; vérifiez auprès de l’autorité compétente et dans les textes en vigueur.",
+    disclaimer:"Cet outil n’est pas un portail officiel du CNRC ni de Sidjilcom. Il fournit une information indicative et ne constitue ni une décision administrative ni un conseil juridique. Il ne prouve pas, à lui seul, l'aptitude à exercer une activité, le respect des conditions d'autorisation ou la possibilité de regrouper plusieurs activités dans un même registre. L’absence d’un champ réglementaire ne signifie pas l’absence d’une condition ou d’une autorisation ; vérifiez auprès de l’autorité compétente et dans les textes en vigueur.",
     sourceLanguage:"Les noms vérifiés des secteurs sont affichés en arabe. Le fichier source ne fournit pas les noms des groupes et sous-groupes : leurs codes sont conservés.",
   };
 
@@ -233,7 +209,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     noValue:"لا تتضمن نسخة البيانات قيمة لهذا الحقل.",related:"أنشطة أخرى في المجموعة الفرعية نفسها",
     relatedInfo:"تجميع تصنيفي فقط؛ لا يعني التكافؤ القانوني أو إمكانية جمع الأنشطة في سجل واحد.",
     back:"العودة إلى المستكشف",sidjilcom:"التحقق من التسمية عبر بوابة Sidjilcom",notice:"حدود الاستعمال",
-    disclaimer:"هذه البطاقة معلوماتية استرشادية مبنية على ملف التسمية المتاح. لا تمثل قراراً إدارياً أو استشارة قانونية، ولا تثبت وحدها أهلية ممارسة النشاط أو استيفاء شروط الترخيص أو جواز جمع عدة نشاطات في سجل تجاري واحد. غياب حقل تنظيمي في الملف لا يعني عدم وجود شرط أو ترخيص؛ يجب التحقق لدى الجهة المختصة ومن النصوص السارية.",
+    disclaimer:"هذه البطاقة مبنية على ملف التسمية المتاح، وهذا الموقع ليس بوابة رسمية تابعة للمركز الوطني للسجل التجاري أو Sidjilcom. لا تمثل البطاقة قراراً إدارياً أو استشارة قانونية، ولا تثبت وحدها أهلية ممارسة النشاط أو استيفاء شروط الترخيص أو جواز جمع عدة نشاطات في سجل تجاري واحد. غياب حقل تنظيمي في الملف لا يعني عدم وجود شرط أو ترخيص؛ يجب التحقق لدى الجهة المختصة ومن النصوص السارية.",
   }:{
     badge:"Fiche de référence",home:"Accueil",explorer:"Explorateur NAE",code:"Code activité",classification:"Classification",
     sector:"Secteur",group:"Groupe",subgroup:"Sous-groupe",sourceLabel:"Libellé tel qu’il figure dans la source",
@@ -243,7 +219,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     noValue:"Aucune valeur pour ce champ dans l’export disponible.",related:"Autres activités du même sous-groupe",
     relatedInfo:"Regroupement de classification uniquement ; cela ne signifie ni équivalence juridique ni possibilité de cumul dans un même registre.",
     back:"Retour à l’explorateur",sidjilcom:"Vérifier la nomenclature sur Sidjilcom",notice:"Limites d’utilisation",
-    disclaimer:"Cette fiche est informative et indicative, fondée sur le fichier de nomenclature disponible. Elle ne constitue ni une décision administrative ni un conseil juridique. Elle ne prouve pas, à elle seule, l’aptitude à exercer l’activité, le respect des conditions d’autorisation ou la possibilité de regrouper plusieurs activités dans un même registre. L’absence d’un champ réglementaire ne signifie pas l’absence d’une condition ou d’une autorisation ; vérifiez auprès de l’autorité compétente et dans les textes en vigueur.",
+    disclaimer:"Cette fiche est fondée sur le fichier de nomenclature disponible et ce site n’est pas un portail officiel du CNRC ni de Sidjilcom. Elle ne constitue ni une décision administrative ni un conseil juridique. Elle ne prouve pas, à elle seule, l’aptitude à exercer l’activité, le respect des conditions d’autorisation ou la possibilité de regrouper plusieurs activités dans un même registre. L’absence d’un champ réglementaire ne signifie pas l’absence d’une condition ou d’une autorisation ; vérifiez auprès de l’autorité compétente et dans les textes en vigueur.",
   };
   const field=(value:string|null)=><p dir="ltr" lang="fr" className="whitespace-pre-line text-sm leading-7 text-gray-800">{value||t.noValue}</p>;
 
