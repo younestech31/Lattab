@@ -325,9 +325,9 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
         description={activity.code}
         breadcrumbs={[{ name: t.home, href: ar ? "/" : "/fr" }, { name: t.explorer, href: action }, { name: activity.code }]} />
       <main className="py-8 md:py-10">
-        <div className="container mx-auto max-w-5xl space-y-5 px-4">
-          <section data-nae-detail-print className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7">
-            <style>{"@media print { body:has([data-nae-detail-print]) * { visibility:hidden!important; } [data-nae-detail-print], [data-nae-detail-print] * { visibility:visible!important; } [data-nae-detail-print] { position:absolute!important; inset:0!important; width:100%!important; margin:0!important; border:0!important; box-shadow:none!important; } }"}</style>
+        <div data-nae-detail-print className="container mx-auto max-w-5xl space-y-5 px-4">
+          <style>{"@media print { body:has([data-nae-detail-print]) * { visibility:hidden!important; } [data-nae-detail-print], [data-nae-detail-print] * { visibility:visible!important; } [data-nae-detail-print] { position:absolute!important; inset:0!important; width:100%!important; margin:0!important; border:0!important; box-shadow:none!important; } }"}</style>
+          <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold text-gray-500">{ar ? "رمز النشاط" : "Code activité"}</p>
