@@ -70,7 +70,7 @@ function markdownCell(value: string): string {
 async function main(): Promise<void> {
   const buffer = await readFile(inputPath);
   const sourceHash = createHash("sha256").update(buffer).digest("hex");
-  const sourceText = buffer.toString("utf8").replace(/^\uFEFF/, "");
+  const sourceText = new TextDecoder("utf-8", { fatal: true }).decode(buffer).replace(/^\uFEFF/, "");
   const matrix = parseSemicolonCsv(sourceText);
   if (matrix.length < 2) throw new Error("CSV has no activity rows.");
 
