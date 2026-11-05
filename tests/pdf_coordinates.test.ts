@@ -1,5 +1,5 @@
 import { PDFDocument } from 'pdf-lib';
-import { fillOfficialPdf } from '../lib/forms/fillOfficialPdf';
+import { fillOfficialPdf, formatPdfDate } from '../lib/forms/fillOfficialPdf';
 import { mapGN17ToFieldValues, GN17_FIELD_COORDINATES, GN17_FIELD_COORDINATES_FR } from '../lib/forms/gn17/fields';
 import { computeGN17 } from '../lib/forms/gn17/compute';
 import { GN17FormData, initialGN17Values } from '../lib/forms/gn17/schema';
@@ -48,6 +48,15 @@ function assertDigitBoxCenters(
 }
 
 async function runTestSuite(): Promise<TestResult[]> {
+  if (
+    formatPdfDate('2026-11-05') !== '05/11/2026' ||
+    formatPdfDate('2000-02-29') !== '29/02/2000' ||
+    formatPdfDate('2026-02-30') !== '2026-02-30' ||
+    formatPdfDate('05/11/2026') !== '05/11/2026'
+  ) {
+    throw new Error('PDF date formatting must convert valid ISO dates and preserve invalid/already formatted values.');
+  }
+
   const normalizedDigitSample = digitsOnly('٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
   if (normalizedDigitSample !== '01234567890123456789') {
     throw new Error(`Arabic/Persian digit normalization failed: ${normalizedDigitSample}`);
