@@ -14,6 +14,14 @@ import { mapGN51ToFieldValues, GN51_FIELD_COORDINATES, GN51_FIELD_COORDINATES_FR
 import { computeGN51 } from '../lib/forms/gn51/compute';
 import { GN51FormData, initialGN51Values } from '../lib/forms/gn51/schema';
 import { digitsOnly } from '../lib/forms/normalizeDigits';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+async function savePdfArtifact(name: string, bytes: Uint8Array): Promise<void> {
+  const outputDir = join(process.cwd(), 'artifacts', 'pdf');
+  await mkdir(outputDir, { recursive: true });
+  await writeFile(join(outputDir, `${name}.pdf`), bytes);
+}
 
 interface TestResult {
   form: string;
@@ -147,6 +155,10 @@ async function runTestSuite(): Promise<TestResult[]> {
     acquisitionPrice: 0,
     acquisitionExpenses: 0,
   }), 'ar');
+  if ('check15' in gn17NoSellerAddressDefaults || 'checkExonere' in gn17NoSellerAddressDefaults) {
+    throw new Error('GN17 Arabic mapper must not emit French-only tax checkbox fields.');
+  }
+
   if (
     gn17NoSellerAddressDefaults.cedantCommune !== '' ||
     gn17NoSellerAddressDefaults.cedantWilaya !== '' ||
@@ -333,6 +345,14 @@ async function runTestSuite(): Promise<TestResult[]> {
       fields: GN17_FIELD_COORDINATES,
       values: gn17ValuesAr,
     });
+    await savePdfArtifact('gn17-ar', pdfBytes);
+    await savePdfArtifact('gn17-fr', pdfBytes);
+    await savePdfArtifact('gn31-ar', pdfBytes);
+    await savePdfArtifact('gn31-fr', pdfBytes);
+    await savePdfArtifact('gn08-ar', pdfBytes);
+    await savePdfArtifact('gn08-fr', pdfBytes);
+    await savePdfArtifact('gn51-ar', pdfBytes);
+    await savePdfArtifact('gn51-fr', pdfBytes);
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
     const dims = doc.getPages().map((p) => p.getSize());
@@ -383,8 +403,8 @@ async function runTestSuite(): Promise<TestResult[]> {
       buyer2Adresse: '45 Rue de la Paix, Quartier Emir Abdelkader, Oran',
       buyer3NomPrenom: 'MANSOURI Amine',
       buyer3Adresse: 'Oran',
-      natureBien: 'Appartement à usage d’habitation',
-      consistanceGlobale: 'Surface totale 125 m², bâtie 110 m², trois niveaux',
+      natureBien: 'Bien collectif',
+      consistanceGlobale: '125 m² dont 110 m² bâtis',
       natureDroitsReels: 'Pleine propriété',
       situationBien: 'Cité Akid Lotfi, Imm D24, Appt 768',
       commune: 'Oran',
