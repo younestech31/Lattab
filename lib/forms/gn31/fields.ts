@@ -1,5 +1,6 @@
 import { FormFieldCoord } from '../types';
 import { GN31FormData } from './schema';
+import { digitsOnly } from '../normalizeDigits';
 
 /**
  * Coordinate mapping for official Algerian Tax Declaration Série G N° 31 (Taxe Foncière).
@@ -333,19 +334,19 @@ export function mapGN31ToFieldValues(
   };
 
   // NIF digits (up to 20)
-  const cleanNif = (data.nif || '').replace(/\D/g, '');
+  const cleanNif = digitsOnly(data.nif || '');
   for (let i = 0; i < 20; i++) {
     values[`nif_${i}`] = cleanNif[i] || '';
   }
 
   // NAI digits (up to 11)
-  const cleanNai = (data.nai || '').replace(/\D/g, '');
+  const cleanNai = digitsOnly(data.nai || '');
   for (let i = 0; i < 11; i++) {
     values[`nai_${i}`] = cleanNai[i] || '';
   }
 
   // NIN digits (up to 18)
-  const cleanNin = (data.nin || '').replace(/\D/g, '');
+  const cleanNin = digitsOnly(data.nin || '');
   for (let i = 0; i < 18; i++) {
     values[`nin_${i}`] = cleanNin[i] || '';
   }

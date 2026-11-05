@@ -1,6 +1,7 @@
 import { FormFieldCoord } from '../types';
 import { GN17FormData } from './schema';
 import { GN17ComputeResult } from './compute';
+import { digitsOnly } from '../normalizeDigits';
 
 /**
  * Coordinate mapping for official Algerian Série G N° 17 (2 pages A4).
@@ -231,7 +232,7 @@ export function mapGN17ToFieldValues(
   };
 
   // NIF individual boxes (15 digits)
-  const cleanNif = (data.cedantNif || '').replace(/\D/g, '');
+  const cleanNif = digitsOnly(data.cedantNif || '');
   if (cleanNif.length >= 10) {
     for (let i = 0; i < 15; i++) {
       values[`nif_${i}`] = cleanNif[i] || '';

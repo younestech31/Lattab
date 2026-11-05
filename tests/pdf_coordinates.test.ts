@@ -13,6 +13,7 @@ import { GN8FormData, initialGN8Values } from '../lib/forms/gn8/schema';
 import { mapGN51ToFieldValues, GN51_FIELD_COORDINATES, GN51_FIELD_COORDINATES_FR } from '../lib/forms/gn51/fields';
 import { computeGN51 } from '../lib/forms/gn51/compute';
 import { GN51FormData, initialGN51Values } from '../lib/forms/gn51/schema';
+import { digitsOnly } from '../lib/forms/normalizeDigits';
 
 interface TestResult {
   form: string;
@@ -27,6 +28,11 @@ interface TestResult {
 }
 
 async function runTestSuite(): Promise<TestResult[]> {
+  const normalizedDigitSample = digitsOnly('٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
+  if (normalizedDigitSample !== '01234567890123456789') {
+    throw new Error(`Arabic/Persian digit normalization failed: ${normalizedDigitSample}`);
+  }
+
   const results: TestResult[] = [];
 
   // ──────────────────────────────────────────
