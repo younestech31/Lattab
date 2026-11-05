@@ -47,6 +47,23 @@ function assertDigitBoxCenters(
   }
 }
 
+function assertMappedValuesHaveCoordinates(
+  label: string,
+  values: Record<string, string | number | boolean>,
+  fields: Array<{ id: string }>
+): void {
+  const ids = new Set(fields.map((field) => field.id));
+  if (ids.size !== fields.length) {
+    throw new Error(`${label}: coordinate list contains duplicate field IDs.`);
+  }
+  for (const [id, value] of Object.entries(values)) {
+    if (value === '' || value === false || value === null || value === undefined) continue;
+    if (!ids.has(id)) {
+      throw new Error(`${label}: mapper produced "${id}" but no PDF coordinate exists for it.`);
+    }
+  }
+}
+
 async function runTestSuite(): Promise<TestResult[]> {
   if (
     formatPdfDate('2026-11-05') !== '05/11/2026' ||
@@ -276,11 +293,13 @@ async function runTestSuite(): Promise<TestResult[]> {
       isSolePrimaryResidence: true,
       detentionYears: 8,
     });
+    const gn17ValuesAr = mapGN17ToFieldValues(gn17DataAr, gn17CalcAr, 'ar');
+    assertMappedValuesHaveCoordinates('GN17 AR', gn17ValuesAr, GN17_FIELD_COORDINATES);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn17.pdf',
       expectedPages: 2,
       fields: GN17_FIELD_COORDINATES,
-      values: mapGN17ToFieldValues(gn17DataAr, gn17CalcAr, 'ar'),
+      values: gn17ValuesAr,
     });
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
@@ -357,11 +376,13 @@ async function runTestSuite(): Promise<TestResult[]> {
       isSolePrimaryResidence: true,
       detentionYears: 8,
     });
+    const gn17ValuesFr = mapGN17ToFieldValues(gn17DataFr, gn17CalcFr, 'fr');
+    assertMappedValuesHaveCoordinates('GN17 FR', gn17ValuesFr, GN17_FIELD_COORDINATES_FR);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn17_fr.pdf',
       expectedPages: 2,
       fields: GN17_FIELD_COORDINATES_FR,
-      values: mapGN17ToFieldValues(gn17DataFr, gn17CalcFr, 'fr'),
+      values: gn17ValuesFr,
     });
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
@@ -444,11 +465,13 @@ async function runTestSuite(): Promise<TestResult[]> {
       faitA: 'وهران',
       dateDeclaration: '04/11/2026',
     };
+    const gn31ValuesAr = mapGN31ToFieldValues(gn31DataAr, 'ar');
+    assertMappedValuesHaveCoordinates('GN31 AR', gn31ValuesAr, GN31_FIELD_COORDINATES);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn31.pdf',
       expectedPages: 4,
       fields: GN31_FIELD_COORDINATES,
-      values: mapGN31ToFieldValues(gn31DataAr, 'ar'),
+      values: gn31ValuesAr,
     });
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
@@ -531,11 +554,13 @@ async function runTestSuite(): Promise<TestResult[]> {
       faitA: 'Oran',
       dateDeclaration: '04/11/2026',
     };
+    const gn31ValuesFr = mapGN31ToFieldValues(gn31DataFr, 'fr');
+    assertMappedValuesHaveCoordinates('GN31 FR', gn31ValuesFr, GN31_FIELD_COORDINATES_FR);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn31_fr.pdf',
       expectedPages: 4,
       fields: GN31_FIELD_COORDINATES_FR,
-      values: mapGN31ToFieldValues(gn31DataFr, 'fr'),
+      values: gn31ValuesFr,
     });
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
@@ -599,11 +624,13 @@ async function runTestSuite(): Promise<TestResult[]> {
       faitA: 'وهران',
       dateDeclaration: '04/11/2026',
     };
+    const gn8ValuesAr = mapGN8ToFieldValues(gn8DataAr, 'ar');
+    assertMappedValuesHaveCoordinates('GN08 AR', gn8ValuesAr, GN8_FIELD_COORDINATES);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn8.pdf',
       expectedPages: 2,
       fields: GN8_FIELD_COORDINATES,
-      values: mapGN8ToFieldValues(gn8DataAr, 'ar'),
+      values: gn8ValuesAr,
     });
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
@@ -667,11 +694,13 @@ async function runTestSuite(): Promise<TestResult[]> {
       faitA: 'Oran',
       dateDeclaration: '04/11/2026',
     };
+    const gn8ValuesFr = mapGN8ToFieldValues(gn8DataFr, 'fr');
+    assertMappedValuesHaveCoordinates('GN08 FR', gn8ValuesFr, GN8_FIELD_COORDINATES_FR);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn8_fr.pdf',
       expectedPages: 2,
       fields: GN8_FIELD_COORDINATES_FR,
-      values: mapGN8ToFieldValues(gn8DataFr, 'fr'),
+      values: gn8ValuesFr,
     });
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
@@ -748,11 +777,13 @@ async function runTestSuite(): Promise<TestResult[]> {
       chequePostalDate: '',
     };
     const gn51CalcAr = computeGN51(gn51DataAr);
+    const gn51ValuesAr = mapGN51ToFieldValues(gn51DataAr, gn51CalcAr, 'ar');
+    assertMappedValuesHaveCoordinates('GN51 AR', gn51ValuesAr, GN51_FIELD_COORDINATES);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn51.pdf',
       expectedPages: 2,
       fields: GN51_FIELD_COORDINATES,
-      values: mapGN51ToFieldValues(gn51DataAr, gn51CalcAr, 'ar'),
+      values: gn51ValuesAr,
     });
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
@@ -829,11 +860,13 @@ async function runTestSuite(): Promise<TestResult[]> {
       chequePostalDate: '',
     };
     const gn51CalcFr = computeGN51(gn51DataFr);
+    const gn51ValuesFr = mapGN51ToFieldValues(gn51DataFr, gn51CalcFr, 'fr');
+    assertMappedValuesHaveCoordinates('GN51 FR', gn51ValuesFr, GN51_FIELD_COORDINATES_FR);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn51_fr.pdf',
       expectedPages: 2,
       fields: GN51_FIELD_COORDINATES_FR,
-      values: mapGN51ToFieldValues(gn51DataFr, gn51CalcFr, 'fr'),
+      values: gn51ValuesFr,
     });
     const doc = await PDFDocument.load(pdfBytes);
     const pageCount = doc.getPageCount();
