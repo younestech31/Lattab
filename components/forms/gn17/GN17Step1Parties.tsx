@@ -1,7 +1,7 @@
 'use client';
 
 import { GN17FormData } from '@/lib/forms/gn17/schema';
-import { User, Users, Building, MapPin, Hash, Briefcase } from 'lucide-react';
+import { User, Users, Building, MapPin, Hash } from 'lucide-react';
 
 interface Props {
   data: GN17FormData;
@@ -16,7 +16,7 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
       <div className="bg-emerald-50/60 border border-emerald-100 rounded-2xl p-5 space-y-4">
         <h3 className="font-bold text-emerald-900 text-sm flex items-center gap-2">
           <Building className="w-4 h-4 text-emerald-700" />
-          <span>{isAr ? 'بيانات التوجيه الجبائي (القباضة والمفتشية)' : 'Rattachement fiscal (Recette & Inspection)'}</span>
+          <span>{isAr ? 'بيانات التوجيه الجبائي (الولاية والهيكل المستقبِل)' : 'Rattachement fiscal (Wilaya & structure destinataire)'}</span>
         </h3>
         <div className="grid sm:grid-cols-3 gap-4">
           <div>
@@ -31,18 +31,22 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
               placeholder={isAr ? 'وهران' : 'Oran'}
             />
           </div>
-          <div>
+          <div className="sm:col-span-2">
             <label className="block text-xs font-medium text-gray-700 mb-1">
-              {isAr ? 'مفتشية الضرائب المختصة' : 'Inspection des Impôts'}
+              {isAr ? 'هيكل استقبال التصريح (Structure)' : 'Structure destinataire de la déclaration'}
             </label>
             <input
               type="text"
-              value={data.inspection}
-              onChange={(e) => updateData({ inspection: e.target.value })}
+              value={data.recette}
+              onChange={(e) => updateData({ recette: e.target.value })}
               className="w-full px-3.5 py-2 text-sm bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-              placeholder={isAr ? 'مفتشية الضرائب وهران شرق' : 'Inspection Oran Est'}
+              placeholder={isAr ? 'مصلحة الضرائب المختصة' : 'Structure compétente'}
             />
           </div>
+        </div>
+      </div>
+
+      {/* Cédant
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-1">
               {isAr ? 'قباضة الضرائب لموقع العقار' : 'Recette des Impôts du lieu de situation'}
@@ -89,44 +93,9 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
             />
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-gray-700 mb-1">
-              {isAr ? 'تاريخ الازدياد' : 'Date de naissance'}
-            </label>
-            <input
-              type="date"
-              value={data.cedantDateNaissance}
-              onChange={(e) => updateData({ cedantDateNaissance: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-medium text-gray-700 mb-1">
-              {isAr ? 'مكان الازدياد' : 'Lieu de naissance'}
-            </label>
-            <input
-              type="text"
-              value={data.cedantLieuNaissance}
-              onChange={(e) => updateData({ cedantLieuNaissance: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
-              placeholder={isAr ? 'وهران' : 'Oran'}
-            />
-          </div>
-
           <div className="sm:col-span-2">
-            <label className="block text-xs font-medium text-gray-700 mb-1">
-              {isAr ? 'النسب (ابن... و...)' : 'Filiation (Fils/Fille de... et de...)'}
-            </label>
-            <input
-              type="text"
-              value={data.cedantFiliation}
-              onChange={(e) => updateData({ cedantFiliation: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
-              placeholder={isAr ? 'ابن أحمد وفاطمة منصوري' : 'Fils de Ahmed et de Fatima MANSOURI'}
-            />
-          </div>
-
+            <label className="block text-xs font-semibold text-gray-700 mb-1">
+              {isAr ? 'عنوان المتنازل *' : 'Adresse du cédant *'}
           <div className="sm:col-span-2">
             <label className="block text-xs font-semibold text-gray-700 mb-1">
               {isAr ? 'العنوان الشخصي أو المقر الاجتماعي *' : 'Adresse personnelle ou Siège social *'}
@@ -213,21 +182,10 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-medium text-gray-700 mb-1">
-              {isAr ? 'المهنة أو النشاط' : 'Profession'}
-            </label>
-            <div className="relative">
-              <Briefcase className="w-4 h-4 text-gray-400 absolute top-3 end-3 pointer-events-none" />
-              <input
-                type="text"
-                value={data.cedantProfession}
-                onChange={(e) => updateData({ cedantProfession: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
-                placeholder={isAr ? 'تاجر / موظف' : 'Commerçant / Salarié'}
-              />
-            </div>
-          </div>
+        </div>
+      </div>
+
+      {/* Cessionnaires
         </div>
       </div>
 
@@ -247,112 +205,97 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
           </div>
         </div>
 
-        {/* Buyer 1 */}
+        {/* Buyer 1: official form includes name and address only. */}
         <div className="space-y-4 p-4 rounded-xl bg-gray-50/80 border border-gray-100">
           <div className="font-semibold text-xs text-emerald-800 uppercase tracking-wider">
-            {isAr ? 'المشتري الأول (الرئيسي) *' : 'Acquéreur N° 1 (Principal) *'}
+            {isAr ? 'المشتري الأول *' : 'Acquéreur N° 1 *'}
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="sm:col-span-2">
-              <label className="block text-xs font-medium text-gray-700 mb-1">
-                {isAr ? 'الاسم واللقب *' : 'Nom et Prénom *'}
-              </label>
-              <input
-                type="text"
-                required
-                value={data.buyer1NomPrenom}
-                onChange={(e) => updateData({ buyer1NomPrenom: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-emerald-500"
-                placeholder={isAr ? 'كريم قدور' : 'Karim KADDOUR'}
-              />
-            </div>
+          <div>
+            <label className="block text-xs font-medium text-gray-700 mb-1">
+              {isAr ? 'الاسم واللقب أو التسمية الاجتماعية *' : 'Nom, prénom ou raison sociale *'}
+            </label>
+            <input
+              type="text"
+              required
+              value={data.buyer1NomPrenom}
+              onChange={(e) => updateData({ buyer1NomPrenom: e.target.value })}
+              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-gray-700 mb-1">
+              {isAr ? 'العنوان' : 'Adresse'}
+            </label>
+            <input
+              type="text"
+              value={data.buyer1Adresse}
+              onChange={(e) => updateData({ buyer1Adresse: e.target.value })}
+              className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-emerald-500"
+            />
+          </div>
+        </div>
 
+        <details className="group border border-dashed border-gray-200 rounded-xl p-4">
+          <summary className="text-xs font-semibold text-gray-700 cursor-pointer list-none flex items-center justify-between">
+            <span>{isAr ? '+ إضافة المشتري الثاني' : '+ Ajouter un 2ème acquéreur'}</span>
+            <span className="text-emerald-700 text-xs font-bold group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div className="space-y-4 mt-4 pt-3 border-t border-gray-100">
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-1">
-                {isAr ? 'تاريخ ومكان الازدياد' : 'Date et lieu de naissance'}
+                {isAr ? 'الاسم واللقب أو التسمية الاجتماعية' : 'Nom, prénom ou raison sociale'}
               </label>
               <input
                 type="text"
-                value={data.buyer1DateLieu}
-                onChange={(e) => updateData({ buyer1DateLieu: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-emerald-500"
-                placeholder={isAr ? '1985-04-12 بوهران' : '12/04/1985 à Oran'}
+                value={data.buyer2NomPrenom}
+                onChange={(e) => updateData({ buyer2NomPrenom: e.target.value })}
+                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white"
               />
             </div>
-
             <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">
-                {isAr ? 'رقم التعريف الوطني / الجبائي' : 'NIN / NIF'}
-              </label>
-              <input
-                type="text"
-                value={data.buyer1Nif}
-                onChange={(e) => updateData({ buyer1Nif: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-emerald-500 text-xs"
-                placeholder="1085..."
-              />
-            </div>
-
-            <div className="sm:col-span-2">
               <label className="block text-xs font-medium text-gray-700 mb-1">
                 {isAr ? 'العنوان' : 'Adresse'}
               </label>
               <input
                 type="text"
-                value={data.buyer1Adresse}
-                onChange={(e) => updateData({ buyer1Adresse: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-emerald-500"
-                placeholder={isAr ? 'وهران' : 'Oran'}
+                value={data.buyer2Adresse}
+                onChange={(e) => updateData({ buyer2Adresse: e.target.value })}
+                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white"
               />
             </div>
           </div>
-        </div>
+        </details>
 
-        {/* Optional Buyer 2 */}
-        <div className="pt-2">
-          <details className="group border border-dashed border-gray-200 rounded-xl p-4">
-            <summary className="text-xs font-semibold text-gray-700 cursor-pointer list-none flex items-center justify-between">
-              <span>{isAr ? '+ إضافة مشتري ثانٍ (في حالة الشراء على الشياع)' : '+ Ajouter un 2ème acquéreur (Indivision)'}</span>
-              <span className="text-emerald-700 text-xs font-bold group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <div className="grid sm:grid-cols-2 gap-4 mt-4 pt-3 border-t border-gray-100">
-              <div className="sm:col-span-2">
-                <label className="block text-xs font-medium text-gray-700 mb-1">
-                  {isAr ? 'الاسم واللقب (المشتري 2)' : 'Nom et Prénom (Acheteur 2)'}
-                </label>
-                <input
-                  type="text"
-                  value={data.buyer2NomPrenom}
-                  onChange={(e) => updateData({ buyer2NomPrenom: e.target.value })}
-                  className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
-                  {isAr ? 'تاريخ ومكان الازدياد' : 'Date et lieu de naissance'}
-                </label>
-                <input
-                  type="text"
-                  value={data.buyer2DateLieu}
-                  onChange={(e) => updateData({ buyer2DateLieu: e.target.value })}
-                  className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
-                  {isAr ? 'العنوان' : 'Adresse'}
-                </label>
-                <input
-                  type="text"
-                  value={data.buyer2Adresse}
-                  onChange={(e) => updateData({ buyer2Adresse: e.target.value })}
-                  className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white"
-                />
-              </div>
+        <details className="group border border-dashed border-gray-200 rounded-xl p-4">
+          <summary className="text-xs font-semibold text-gray-700 cursor-pointer list-none flex items-center justify-between">
+            <span>{isAr ? '+ إضافة المشتري الثالث' : '+ Ajouter un 3ème acquéreur'}</span>
+            <span className="text-emerald-700 text-xs font-bold group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div className="space-y-4 mt-4 pt-3 border-t border-gray-100">
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">
+                {isAr ? 'الاسم واللقب أو التسمية الاجتماعية' : 'Nom, prénom ou raison sociale'}
+              </label>
+              <input
+                type="text"
+                value={data.buyer3NomPrenom}
+                onChange={(e) => updateData({ buyer3NomPrenom: e.target.value })}
+                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white"
+              />
             </div>
-          </details>
-        </div>
-      </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">
+                {isAr ? 'العنوان' : 'Adresse'}
+              </label>
+              <input
+                type="text"
+                value={data.buyer3Adresse}
+                onChange={(e) => updateData({ buyer3Adresse: e.target.value })}
+                className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-xl bg-white"
+              />
+            </div>
+          </div>
+        </details>
     </div>
   );
 }
