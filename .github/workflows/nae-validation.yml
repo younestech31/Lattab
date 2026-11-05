@@ -42,3 +42,18 @@ jobs:
 
       - name: Run NAE tests
         run: bun run test:nae
+      - name: Smoke-test NAE CSV importer
+        run: |
+          bun run nae:import -- --input tests/fixtures/nae-mini.csv --output "$RUNNER_TEMP/nae-import"
+          bun -e '
+            import assert from "node:assert/strict";
+            import { readFile } from "node:fs/promises";
+            const dir = `${process.env.RUNNER_TEMP}/nae-import`;
+            const manifest = JSON.parse(await readFile(`${dir}/manifest.json`, "utf8"));
+            const sector = JSON.parse(await readFile(`${dir}/sector-1.json`, "utf8"));
+            assert.equal(manifest.record_count, 2);
+            assert.equal(manifest.sector_counts["1"], 2);
+            assert.equal(sector.length, 2);
+            assert.equal(manifest.field_coverage.contenue_fr, 2);
+            assert.equal(manifest.field_coverage.accessoires_fr, 1);
+          '
