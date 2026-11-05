@@ -34,14 +34,8 @@ export default function GN51FormFiller() {
   const isDebug = searchParams.get('debug') === '1';
 
   const formDef = getFormBySlug('gn51');
-  const [data, setData] = useState<GN51FormData>(() => {
-    const draft = readGN51Draft();
-    return draft?.data ?? initialGN51Values;
-  });
-  const [savedAt, setSavedAt] = useState<string | null>(() => {
-    const draft = loadDraft<GN51FormData>('gn51');
-    return draft?.savedAt ?? null;
-  });
+  const [data, setData] = useState<GN51FormData>(initialGN51Values);
+  const [savedAt, setSavedAt] = useState<string | null>(null);
 
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
@@ -50,9 +44,10 @@ export default function GN51FormFiller() {
   const isMountedRef = useRef(false);
   const skipNextSaveRef = useRef(false);
 
-  // Client-side hydration sync for localStorage draft
+  // Load and validate the saved draft only after hydration to keep server and
+  // first client render identical and avoid rendering unvalidated stored data.
   useEffect(() => {
-    const draft = loadDraft<GN51FormData>('gn51');
+    const draft = readGN51Draft();
     if (draft?.data) {
       setData(draft.data);
       setSavedAt(draft.savedAt);
