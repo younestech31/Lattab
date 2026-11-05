@@ -33,9 +33,27 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
   };
 
   const buyerFields = [
-    { number: 1, nameKey: 'buyer1NomPrenom' as const, addressKey: 'buyer1Adresse' as const },
-    { number: 2, nameKey: 'buyer2NomPrenom' as const, addressKey: 'buyer2Adresse' as const },
-    { number: 3, nameKey: 'buyer3NomPrenom' as const, addressKey: 'buyer3Adresse' as const },
+    {
+      number: 1,
+      name: data.buyer1NomPrenom,
+      address: data.buyer1Adresse,
+      updateName: (value: string) => updateData({ buyer1NomPrenom: value }),
+      updateAddress: (value: string) => updateData({ buyer1Adresse: value }),
+    },
+    {
+      number: 2,
+      name: data.buyer2NomPrenom,
+      address: data.buyer2Adresse,
+      updateName: (value: string) => updateData({ buyer2NomPrenom: value }),
+      updateAddress: (value: string) => updateData({ buyer2Adresse: value }),
+    },
+    {
+      number: 3,
+      name: data.buyer3NomPrenom,
+      address: data.buyer3Adresse,
+      updateName: (value: string) => updateData({ buyer3NomPrenom: value }),
+      updateAddress: (value: string) => updateData({ buyer3Adresse: value }),
+    },
   ];
 
   return (
@@ -197,8 +215,8 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
                   <input
                     type="text"
                     required={buyer.number === 1}
-                    value={data[buyer.nameKey]}
-                    onChange={(e) => updateData({ [buyer.nameKey]: e.target.value })}
+                    value={buyer.name}
+                    onChange={(e) => buyer.updateName(e.target.value)}
                     className={inputClass + ' mt-1.5'}
                   />
                 </label>
@@ -208,8 +226,8 @@ export default function GN17Step1Parties({ data, updateData, isAr }: Props) {
                 {text.address}
                 <input
                   type="text"
-                  value={data[buyer.addressKey]}
-                  onChange={(e) => updateData({ [buyer.addressKey]: e.target.value })}
+                  value={buyer.address}
+                  onChange={(e) => buyer.updateAddress(e.target.value)}
                   className={inputClass + ' mt-1.5'}
                 />
               </label>
