@@ -7,6 +7,7 @@ import { getNAEActivities, getNAEActivityByCode, getNAEDatasetManifest, getNAESe
 import { buildNAETaxonomy, filterNAEByTaxonomy, searchNAE, type NAESearchLanguage } from "@/lib/nae/search";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
+import { normalizeNAECompareCodes } from "@/lib/nae/comparison";
 
 import { getNAEActivityTitle, type NAEPageLanguage } from "./seo";
 export type { NAEPageLanguage } from "./seo";
@@ -45,9 +46,10 @@ export function NAEExplorerPage({
   const action = ar ? "/nae" : "/fr/nae";
   const q = first(params.q).trim();
   const compareParamPresent = params.compare !== undefined;
-  const compareCodes = [...new Set(first(params.compare).split(",").filter((code) => /^[0-9]{6}$/.test(code)))]
-    .filter((code) => Boolean(getNAEActivityByCode(code)))
-    .slice(0, 3);
+  const compareCodes = normalizeNAECompareCodes(
+    params.compare,
+    (code) => Boolean(getNAEActivityByCode(code)),
+  );
   const comparedActivities = compareCodes
     .map((code) => getNAEActivityByCode(code))
     .filter((activity): activity is NAEActivity => Boolean(activity));
