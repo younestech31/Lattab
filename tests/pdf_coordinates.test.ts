@@ -55,6 +55,50 @@ async function runTestSuite(): Promise<TestResult[]> {
     throw new Error('GN17 mapper must not invent the seller commune, wilaya, postal code, or property commune.');
   }
 
+  const gn17ThreeBuyers = mapGN17ToFieldValues({
+    ...initialGN17Values,
+    buyer1NomPrenom: 'Buyer One',
+    buyer1Adresse: 'Address One',
+    buyer2NomPrenom: 'Buyer Two',
+    buyer2Adresse: 'Address Two',
+    buyer3NomPrenom: 'Buyer Three',
+    buyer3Adresse: 'Address Three',
+    natureBien: 'Appartement',
+    consistanceGlobale: '100 m² bâtis',
+    natureDroitsReels: 'Pleine propriété',
+    situationBien: 'Rue 1',
+    natureOperation: 'onerous',
+  }, computeGN17({
+    salePrice: 0,
+    saleExpenses: 0,
+    otherExpenses: 0,
+    acquisitionPrice: 0,
+    acquisitionExpenses: 0,
+  }), 'fr');
+  if (
+    gn17ThreeBuyers.buyer3NomPrenom !== 'Buyer Three' ||
+    gn17ThreeBuyers.buyer3Adresse !== 'Address Three' ||
+    gn17ThreeBuyers.consistanceGlobale !== '100 m² bâtis' ||
+    gn17ThreeBuyers.natureOperation !== 'Cession à titre onéreux'
+  ) {
+    throw new Error('GN17 mapper must preserve all three buyers and map the official property fields separately.');
+  }
+
+  const gn17CoordinateIds = new Set([
+    ...GN17_FIELD_COORDINATES.map((field) => field.id),
+    ...GN17_FIELD_COORDINATES_FR.map((field) => field.id),
+  ]);
+  for (const id of ['inspection', 'buyer1Nif', 'buyer2Nif', 'cadastreRef', 'refPublicationOrigine']) {
+    if (gn17CoordinateIds.has(id)) {
+      throw new Error(`GN17 coordinate map still includes non-official field: ${id}`);
+    }
+  }
+  for (const id of ['buyer3NomPrenom', 'buyer3Adresse', 'consistanceGlobale', 'articleImposition', 'codePostalBien']) {
+    if (!gn17CoordinateIds.has(id)) {
+      throw new Error(`GN17 coordinate map is missing official field: ${id}`);
+    }
+  }
+
   const gn31Unspecified = mapGN31ToFieldValues({
     ...initialGN31Values,
     occupantType: 'unspecified',
@@ -146,20 +190,28 @@ async function runTestSuite(): Promise<TestResult[]> {
       cedantAdresse: 'حي 557 مسكن عمارة د24 رقم 768 حي العقيد لطفي بلدية بئر الجير ولاية وهران',
       cedantNin: '198531010012345678',
       cedantNif: '099931010012345',
+      cedantCommune: 'وهران',
+      cedantWilaya: 'وهران',
+      cedantCodePostal: '31000',
       buyer1NomPrenom: 'منصوري فاطمة الزهراء بنت العربي',
-      buyer1Nif: '199031020054321',
       buyer1Adresse: 'حي الصنوبر فيلا رقم 12 بلدية بئر الجير ولاية وهران',
       buyer2NomPrenom: 'منصوري محمد الأمين بن العربي',
-      buyer2Nif: '199231020098765',
       buyer2Adresse: 'شارع فلسطين رقم 45 حي الأمير عبد القادر وهران',
-      natureBien: 'شقة ذات طابع سكني مجهزة بالكامل (F4) بالطابق الثالث مصعد متوفر',
-      situationBien: 'المجموعة الملكية رقم 14 القسم 3 بلدية وهران الغربية',
-      cadastreRef: 'القسم 03 مجموعة 14 رقم 78 ملكية تامة مشهرة',
+      buyer3NomPrenom: 'منصوري أمين',
+      buyer3Adresse: 'بلدية وهران',
+      natureBien: 'شقة ذات طابع سكني',
+      consistanceGlobale: 'مساحة إجمالية 125 م²، مبنية 110 م²، ثلاثة طوابق',
+      natureDroitsReels: 'ملكية تامة',
+      situationBien: 'حي العقيد لطفي، عمارة D24، الشقة 768',
       commune: 'وهران',
-      originePropriete: 'عقد بيع توثيقي مشهر بالمحافظة العقارية لوهران',
-      dateActeOrigine: '15/04/2018',
-      refPublicationOrigine: 'حجم 1420 رقم 45 مشهر بتاريخ 20/05/2018',
-      natureActeCession: 'عقد بيع رسمي توثيقي مشهر',
+      wilayaBien: 'وهران',
+      codePostalBien: '31000',
+      articleImposition: '31/0456/078',
+      natureOperation: 'onerous',
+      originePropriete: 'اقتناء بموجب عقد بيع موثق',
+      dateActeOrigine: '2018-04-15',
+      dateActeCession: '2026-11-02',
+      natureActeCession: 'عقد بيع رسمي توثيقي',
       dateActeCession: '02/11/2026',
       faitA: 'وهران',
       dateDeclaration: '04/11/2026',
@@ -220,19 +272,27 @@ async function runTestSuite(): Promise<TestResult[]> {
       cedantAdresse: 'Cité 557 Logements, Imm. D24, Appt 768, Quartier Akid Lotfi, Bir El Djir, Oran',
       cedantNin: '198531010012345678',
       cedantNif: '099931010012345',
+      cedantCommune: 'Oran',
+      cedantWilaya: 'Oran',
+      cedantCodePostal: '31000',
       buyer1NomPrenom: 'MANSOURI Fatima Zohra bent Larbi',
-      buyer1Nif: '199031020054321',
       buyer1Adresse: 'Cité Les Pins, Villa N° 12, Bir El Djir, Oran',
       buyer2NomPrenom: 'MANSOURI Mohamed El Amine ben Larbi',
-      buyer2Nif: '199231020098765',
       buyer2Adresse: '45 Rue de la Paix, Quartier Emir Abdelkader, Oran',
-      natureBien: 'Appartement standing F4 usage habitation 3eme etage',
-      situationBien: 'Groupe de propriété N° 14, Section 3, Oran Ouest',
-      cadastreRef: 'Sec. 03 Ilot 14 N° 78',
+      buyer3NomPrenom: 'MANSOURI Amine',
+      buyer3Adresse: 'Oran',
+      natureBien: 'Appartement à usage d’habitation',
+      consistanceGlobale: 'Surface totale 125 m², bâtie 110 m², trois niveaux',
+      natureDroitsReels: 'Pleine propriété',
+      situationBien: 'Cité Akid Lotfi, Imm D24, Appt 768',
       commune: 'Oran',
-      originePropriete: 'Acte authentique de vente notarié publié à la conservation foncière',
-      dateActeOrigine: '15/04/2018',
-      refPublicationOrigine: 'Vol 1420 N° 45 du 20/05/2018',
+      wilayaBien: 'Oran',
+      codePostalBien: '31000',
+      articleImposition: '31/0456/078',
+      natureOperation: 'onerous',
+      originePropriete: 'Acquisition par acte authentique de vente',
+      dateActeOrigine: '2018-04-15',
+      dateActeCession: '2026-11-02',
       natureActeCession: 'Acte notarié de vente immobilière',
       dateActeCession: '02/11/2026',
       faitA: 'Oran',
