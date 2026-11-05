@@ -11,3 +11,6 @@ public/logo-optimized.png
 public/favicon-1.ico
 tsconfig.tsbuildinfo
 .aistudio/
+
+# NAE source export is kept local and must not be committed
+/data-source/cnrc-2026.csv
