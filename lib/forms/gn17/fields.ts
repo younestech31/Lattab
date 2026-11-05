@@ -20,27 +20,26 @@ export const GN17_FIELD_COORDINATES: FormFieldCoord[] = [
   { id: 'cedantCodePostal', page: 1, x: 80, y: 499, size: 8.5, align: 'center', maxWidth: 60 },
   { id: 'cedantNin', page: 1, x: 45, y: 460, size: 9, align: 'right', maxWidth: 430 },
 
-  // القسم I — المشتري 1
-  { id: 'buyer1NomPrenom', page: 1, x: 190, y: 419, size: 9, align: 'right', maxWidth: 220 },
-  { id: 'buyer1Nif', page: 1, x: 45, y: 419, size: 8.5, align: 'left', maxWidth: 140 },
+  // Acquéreurs (nom et adresse uniquement sur l'imprimé officiel)
+  { id: 'buyer1NomPrenom', page: 1, x: 190, y: 419, size: 9, align: 'right', maxWidth: 300 },
   { id: 'buyer1Adresse', page: 1, x: 45, y: 405, size: 9, align: 'right', maxWidth: 470 },
-
-  // القسم I — المشتري 2 (إن وجد)
-  { id: 'buyer2NomPrenom', page: 1, x: 190, y: 380, size: 9, align: 'right', maxWidth: 220 },
-  { id: 'buyer2Nif', page: 1, x: 45, y: 380, size: 8.5, align: 'left', maxWidth: 140 },
+  { id: 'buyer2NomPrenom', page: 1, x: 190, y: 380, size: 9, align: 'right', maxWidth: 300 },
   { id: 'buyer2Adresse', page: 1, x: 45, y: 366, size: 9, align: 'right', maxWidth: 470 },
+  { id: 'buyer3NomPrenom', page: 1, x: 190, y: 341, size: 9, align: 'right', maxWidth: 300 },
+  { id: 'buyer3Adresse', page: 1, x: 45, y: 327, size: 9, align: 'right', maxWidth: 470 },
 
-  // القسم II — تعيين العقار
+  // Désignation du bien
   { id: 'natureBien', page: 1, x: 350, y: 246, size: 9, align: 'right', maxWidth: 120 },
-  { id: 'cadastreRef', page: 1, x: 40, y: 246, size: 9, align: 'right', maxWidth: 165 },
+  { id: 'consistanceGlobale', page: 1, x: 40, y: 246, size: 9, align: 'right', maxWidth: 165 },
   { id: 'natureDroitsReels', page: 1, x: 45, y: 231, size: 9, align: 'right', maxWidth: 420 },
   { id: 'situationBien', page: 1, x: 45, y: 216, size: 9, align: 'right', maxWidth: 420 },
   { id: 'commune', page: 1, x: 370, y: 198, size: 9, align: 'right', maxWidth: 90 },
   { id: 'wilayaBien', page: 1, x: 220, y: 198, size: 9, align: 'right', maxWidth: 90 },
+  { id: 'codePostalBien', page: 1, x: 80, y: 198, size: 8.5, align: 'center', maxWidth: 60 },
+  { id: 'articleImposition', page: 1, x: 45, y: 185, size: 9, align: 'right', maxWidth: 420 },
   { id: 'natureOperation', page: 1, x: 45, y: 174, size: 9, align: 'right', maxWidth: 440 },
   { id: 'originePropriete', page: 1, x: 45, y: 163, size: 9, align: 'right', maxWidth: 440 },
   { id: 'dateActeOrigine', page: 1, x: 330, y: 151, size: 9, align: 'right', maxWidth: 100 },
-  { id: 'refPublicationOrigine', page: 1, x: 45, y: 151, size: 8.5, align: 'right', maxWidth: 220 },
   { id: 'dateActeCession', page: 1, x: 330, y: 139, size: 9, align: 'right', maxWidth: 100 },
   { id: 'natureActeCession', page: 1, x: 45, y: 127, size: 9, align: 'right', maxWidth: 430 },
 
@@ -72,7 +71,7 @@ for (let i = 0; i < 15; i++) {
   GN17_FIELD_COORDINATES.push({
     id: `nif_${i}`,
     page: 1,
-    x: Math.round(boxCenter),
+    x: Math.round(boxCenter - 5),
     y: 473,
     size: 8.5,
     align: 'center',
@@ -97,20 +96,22 @@ export const GN17_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   { id: 'cedantCodePostal', page: 1, x: 450, y: 475, size: 8.5, align: 'left', maxWidth: 60 },
   { id: 'cedantNin', page: 1, x: 230, y: 440, size: 9, align: 'left', maxWidth: 335 },
 
-  // I - Désignation de ou des acquéreur(s)
+  // Acquéreurs (nom et adresse uniquement)
   { id: 'buyer1NomPrenom', page: 1, x: 200, y: 403, size: 9, align: 'left', maxWidth: 360 },
   { id: 'buyer1Adresse', page: 1, x: 90, y: 389, size: 9, align: 'left', maxWidth: 475 },
-
   { id: 'buyer2NomPrenom', page: 1, x: 200, y: 361, size: 9, align: 'left', maxWidth: 360 },
   { id: 'buyer2Adresse', page: 1, x: 90, y: 348, size: 9, align: 'left', maxWidth: 475 },
+  { id: 'buyer3NomPrenom', page: 1, x: 200, y: 319, size: 9, align: 'left', maxWidth: 360 },
+  { id: 'buyer3Adresse', page: 1, x: 90, y: 306, size: 9, align: 'left', maxWidth: 475 },
 
-  // II - Désignation du bien ou des droits réels cédés
+  // Désignation du bien
   { id: 'natureBien', page: 1, x: 152, y: 236, size: 9, align: 'left', maxWidth: 95 },
-  { id: 'cadastreRef', page: 1, x: 448, y: 236, size: 8.5, align: 'left', maxWidth: 120 },
+  { id: 'consistanceGlobale', page: 1, x: 448, y: 236, size: 8.5, align: 'left', maxWidth: 120 },
   { id: 'natureDroitsReels', page: 1, x: 185, y: 222, size: 9, align: 'left', maxWidth: 380 },
   { id: 'situationBien', page: 1, x: 215, y: 208, size: 9, align: 'left', maxWidth: 350 },
   { id: 'commune', page: 1, x: 90, y: 191, size: 9, align: 'left', maxWidth: 100 },
   { id: 'wilayaBien', page: 1, x: 245, y: 191, size: 9, align: 'left', maxWidth: 110 },
+  { id: 'codePostalBien', page: 1, x: 450, y: 191, size: 8.5, align: 'left', maxWidth: 60 },
   { id: 'articleImposition', page: 1, x: 235, y: 178, size: 8.5, align: 'left', maxWidth: 330 },
   { id: 'natureOperation', page: 1, x: 195, y: 166, size: 9, align: 'left', maxWidth: 370 },
   { id: 'originePropriete', page: 1, x: 165, y: 154, size: 9, align: 'left', maxWidth: 400 },
@@ -148,7 +149,7 @@ for (let i = 0; i < 15; i++) {
   GN17_FIELD_COORDINATES_FR.push({
     id: `nif_${i}`,
     page: 1,
-    x: Math.round(boxCenter),
+    x: Math.round(boxCenter - 5),
     y: 453,
     size: 8.5,
     align: 'center',
@@ -166,50 +167,45 @@ export function mapGN17ToFieldValues(
   lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
   const isFr = lang === 'fr';
-
   const values: Record<string, string | number | boolean> = {
     wilaya: data.wilaya,
-    wilayaBien: data.wilaya,
-    inspection: '',
-    recette: data.recette.replace(/^(قباضة الضرائب|Recette des Impôts)\s*/ui, '').trim(),
+    recette: data.recette.trim(),
 
-    // Cédant
     cedantNomPrenom: data.cedantNomPrenom,
     cedantAdresse: data.cedantAdresse,
     cedantCommune: data.cedantCommune,
     cedantWilaya: data.cedantWilaya,
-    cedantCodePostal: data.cedantCodePostal,
-    cedantNin: data.cedantNin || '',
-    cedantNif: data.cedantNif || '',
+    cedantCodePostal: digitsOnly(data.cedantCodePostal),
+    cedantNin: digitsOnly(data.cedantNin),
 
-    // Buyer 1
     buyer1NomPrenom: data.buyer1NomPrenom,
-    buyer1Adresse: data.buyer1Adresse || '',
-    buyer1Nif: data.buyer1Nif || '',
+    buyer1Adresse: data.buyer1Adresse,
+    buyer2NomPrenom: data.buyer2NomPrenom,
+    buyer2Adresse: data.buyer2Adresse,
+    buyer3NomPrenom: data.buyer3NomPrenom,
+    buyer3Adresse: data.buyer3Adresse,
 
-    // Buyer 2
-    buyer2NomPrenom: data.buyer2NomPrenom || '',
-    buyer2Adresse: data.buyer2Adresse || '',
-    buyer2Nif: data.buyer2Nif || '',
-
-    // Property
     natureBien: data.natureBien,
+    consistanceGlobale: data.consistanceGlobale,
+    natureDroitsReels: data.natureDroitsReels,
     situationBien: data.situationBien,
-    cadastreRef: data.cadastreRef || '',
     commune: data.commune,
-    natureDroitsReels: isFr ? 'Pleine propriété' : 'ملكية تامة',
-    articleImposition: data.cadastreRef || '',
-    natureOperation: isFr ? 'Cession à titre onéreux' : 'تنازل بمقابل مادي',
-    originePropriete: data.originePropriete || '',
-    dateActeOrigine: data.dateActeOrigine || '',
-    refPublicationOrigine: data.refPublicationOrigine || '',
+    wilayaBien: data.wilayaBien,
+    codePostalBien: digitsOnly(data.codePostalBien),
+    articleImposition: data.articleImposition,
+    natureOperation: data.natureOperation === 'onerous'
+      ? (isFr ? 'Cession à titre onéreux' : 'تنازل بمقابل مادي')
+      : data.natureOperation === 'donation'
+        ? (isFr ? 'Donation' : 'هبة')
+        : '',
+    originePropriete: data.originePropriete,
+    dateActeOrigine: data.dateActeOrigine,
+    dateActeCession: data.dateActeCession,
     natureActeCession: data.natureActeCession,
-    dateActeCession: data.dateActeCession || '',
 
-    // Financials (Table III)
     montantCession: calc.salePrice,
     fraisCession: calc.saleExpenses,
-    fraisAutres: calc.otherExpenses > 0 ? calc.otherExpenses : 0,
+    fraisAutres: calc.otherExpenses,
     valeurOrigine: calc.acquisitionPrice,
     fraisAcquisition: calc.acquisitionExpenses,
     grossPlusValue: calc.grossPlusValue,
@@ -217,27 +213,20 @@ export function mapGN17ToFieldValues(
     abattementAmount: calc.abattementAmount,
     netImposablePlusValue: calc.netImposablePlusValue,
 
-    // Tax Liquidation (Table IV)
     baseImposable: calc.netImposablePlusValue,
-    taxRate: calc.taxRate,
     check15: calc.taxRate === 15,
     checkExonere: calc.taxRate === 0,
     grossTax: calc.grossTax,
     residenceAbattementAmount: calc.isSolePrimaryResidence ? calc.residenceAbattementAmount : 0,
     netTaxDue: calc.netTaxDue,
 
-    // Fait à
     faitA: data.faitA,
     dateDeclaration: data.dateDeclaration,
   };
 
-  // NIF individual boxes (15 digits)
   const cleanNif = digitsOnly(data.cedantNif || '');
-  if (cleanNif.length >= 10) {
-    for (let i = 0; i < 15; i++) {
-      values[`nif_${i}`] = cleanNif[i] || '';
-    }
+  for (let i = 0; i < 15; i++) {
+    values[`nif_${i}`] = cleanNif[i] || '';
   }
-
   return values;
 }

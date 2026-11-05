@@ -4,50 +4,41 @@ export const gn17FormSchema = z.object({
   // Tax Bureau & Administrative routing
   wilaya: z.string().default(''),
   recette: z.string().default(''),
-  inspection: z.string().default(''),
+  // En-tête administratif
+  wilaya: z.string().default(''),
+  recette: z.string().default(''),
 
-  // I. Cédant (المتنازل)
+  // I. Désignation du cédant
   cedantNomPrenom: z.string().min(2, 'الاسم واللقب مطلوب'),
-  cedantDateNaissance: z.string().optional(),
-  cedantLieuNaissance: z.string().optional(),
-  cedantFiliation: z.string().optional(), // ابن ... و ...
   cedantAdresse: z.string().min(2, 'العنوان مطلوب'),
   cedantCommune: z.string().default(''),
   cedantWilaya: z.string().default(''),
   cedantCodePostal: z.string().default(''),
-  cedantNin: z.string().default(''), // NIN (رقم التعريف الوطني)
-  cedantNif: z.string().default(''), // NIF
-  cedantProfession: z.string().optional(),
+  cedantNin: z.string().default(''),
+  cedantNif: z.string().default(''),
 
-  // Cessionnaire 1 (المشتري الأول)
-  buyer1NomPrenom: z.string().min(2, 'اسم ولقب المشتري مطلوب'),
-  buyer1DateLieu: z.string().optional(),
-  buyer1Adresse: z.string().optional(),
-  buyer1Nif: z.string().optional(),
+  // I. Désignation des acquéreurs (three official rows)
+  buyer1NomPrenom: z.string().min(2, 'اسم ولقب المشتري الأول مطلوب'),
+  buyer1Adresse: z.string().default(''),
+  buyer2NomPrenom: z.string().default(''),
+  buyer2Adresse: z.string().default(''),
+  buyer3NomPrenom: z.string().default(''),
+  buyer3Adresse: z.string().default(''),
 
-  // Cessionnaire 2 (اختياري)
-  buyer2NomPrenom: z.string().optional(),
-  buyer2DateLieu: z.string().optional(),
-  buyer2Adresse: z.string().optional(),
-  buyer2Nif: z.string().optional(),
-
-  // Cessionnaire 3 (اختياري)
-  buyer3NomPrenom: z.string().optional(),
-  buyer3DateLieu: z.string().optional(),
-  buyer3Adresse: z.string().optional(),
-  buyer3Nif: z.string().optional(),
-
-  // II. Designation du bien (تعيين العقار)
-  natureBien: z.string().min(2, 'طبيعة العقار مطلوبة'), // شقة، فيلا، قطعة أرض...
+  // II. Désignation du bien ou des droits réels cédés
+  natureBien: z.string().min(2, 'طبيعة العقار مطلوبة'),
+  consistanceGlobale: z.string().default(''),
+  natureDroitsReels: z.string().default(''),
   situationBien: z.string().min(2, 'موقع العقار مطلوب'),
   commune: z.string().default(''),
-  cadastreRef: z.string().optional(), // القسم ورقم القطعة
-  originePropriete: z.string().optional(), // عقد شراء، هبة، فريضة...
-  dateActeOrigine: z.string().optional(),
-  refPublicationOrigine: z.string().optional(), // مجلد ... رقم ...
-  dateAchevement: z.string().optional(),
+  wilayaBien: z.string().default(''),
+  codePostalBien: z.string().default(''),
+  articleImposition: z.string().default(''),
+  natureOperation: z.enum(['onerous', 'donation', 'unspecified']).default('unspecified'),
+  originePropriete: z.string().default(''),
+  dateActeOrigine: z.string().default(''),
+  dateActeCession: z.string().default(''),
   natureActeCession: z.string().default(''),
-  dateActeCession: z.string().optional(),
 
   // III. Montants & Plus-value (المبالغ)
   montantCession: z.coerce.number().min(0).default(0),
@@ -69,40 +60,34 @@ export type GN17FormData = z.infer<typeof gn17FormSchema>;
 export const initialGN17Values: GN17FormData = {
   wilaya: '',
   recette: '',
-  inspection: '',
+  wilaya: '',
+  recette: '',
   cedantNomPrenom: '',
-  cedantDateNaissance: '',
-  cedantLieuNaissance: '',
-  cedantFiliation: '',
   cedantAdresse: '',
   cedantCommune: '',
   cedantWilaya: '',
   cedantCodePostal: '',
   cedantNin: '',
   cedantNif: '',
-  cedantProfession: '',
   buyer1NomPrenom: '',
-  buyer1DateLieu: '',
   buyer1Adresse: '',
-  buyer1Nif: '',
   buyer2NomPrenom: '',
-  buyer2DateLieu: '',
   buyer2Adresse: '',
-  buyer2Nif: '',
   buyer3NomPrenom: '',
-  buyer3DateLieu: '',
   buyer3Adresse: '',
-  buyer3Nif: '',
   natureBien: '',
+  consistanceGlobale: '',
+  natureDroitsReels: '',
   situationBien: '',
   commune: '',
-  cadastreRef: '',
+  wilayaBien: '',
+  codePostalBien: '',
+  articleImposition: '',
+  natureOperation: 'unspecified',
   originePropriete: '',
   dateActeOrigine: '',
-  refPublicationOrigine: '',
-  dateAchevement: '',
-  natureActeCession: '',
   dateActeCession: '',
+  natureActeCession: '',
   montantCession: 0,
   fraisCession: 0,
   fraisAutres: 0,
