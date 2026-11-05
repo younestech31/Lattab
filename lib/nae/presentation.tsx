@@ -208,7 +208,7 @@ export function NAEExplorerPage({
                   <span className="text-sm font-medium text-gray-600">{ar ? `صفحة ${currentPage} من ${totalPages}` : `Page ${currentPage} sur ${totalPages}`}</span>
                   {currentPage < totalPages && <Link href={paginationHref(currentPage + 1)} rel="next" className="inline-flex min-h-10 items-center rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-white">{ar ? "التالي" : "Suivant"}</Link>}
                 </nav>
-              }
+              )}
             </section>
           ) : (
             <section className="mt-8" aria-labelledby="nae-browse-title">
