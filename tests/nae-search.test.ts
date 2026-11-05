@@ -128,7 +128,7 @@ test("applies hierarchy filters and result limits", () => {
     ["611001", "611002"],
   );
   assert.deepEqual(
-    searchNAE(index, "informatique", { subgroupCode: "1234" })
+    searchNAE(index, "production agricole", { subgroupCode: "1234" })
       .map((item) => item.activity.code),
     ["123456"],
   );
