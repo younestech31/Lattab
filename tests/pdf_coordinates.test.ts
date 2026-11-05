@@ -2,17 +2,17 @@ import { PDFDocument } from 'pdf-lib';
 import { fillOfficialPdf } from '../lib/forms/fillOfficialPdf';
 import { mapGN17ToFieldValues, GN17_FIELD_COORDINATES, GN17_FIELD_COORDINATES_FR } from '../lib/forms/gn17/fields';
 import { computeGN17 } from '../lib/forms/gn17/compute';
-import { GN17FormData } from '../lib/forms/gn17/schema';
+import { GN17FormData, initialGN17Values } from '../lib/forms/gn17/schema';
 
 import { mapGN31ToFieldValues, GN31_FIELD_COORDINATES, GN31_FIELD_COORDINATES_FR } from '../lib/forms/gn31/fields';
-import { GN31FormData } from '../lib/forms/gn31/schema';
+import { GN31FormData, initialGN31Values } from '../lib/forms/gn31/schema';
 
 import { mapGN8ToFieldValues, GN8_FIELD_COORDINATES, GN8_FIELD_COORDINATES_FR } from '../lib/forms/gn8/fields';
-import { GN8FormData } from '../lib/forms/gn8/schema';
+import { GN8FormData, initialGN8Values } from '../lib/forms/gn8/schema';
 
 import { mapGN51ToFieldValues, GN51_FIELD_COORDINATES, GN51_FIELD_COORDINATES_FR } from '../lib/forms/gn51/fields';
 import { computeGN51 } from '../lib/forms/gn51/compute';
-import { GN51FormData } from '../lib/forms/gn51/schema';
+import { GN51FormData, initialGN51Values } from '../lib/forms/gn51/schema';
 
 interface TestResult {
   form: string;
@@ -34,6 +34,7 @@ async function runTestSuite(): Promise<TestResult[]> {
   // ──────────────────────────────────────────
   try {
     const gn17DataAr: GN17FormData = {
+      ...initialGN17Values,
       wilaya: 'وهران',
       recette: 'العقيد لطفي',
       cedantNomPrenom: 'بن أحمد عبد القادر بن محمد بن عبد الله الشريف الحسني',
@@ -57,17 +58,19 @@ async function runTestSuite(): Promise<TestResult[]> {
       dateActeCession: '02/11/2026',
       faitA: 'وهران',
       dateDeclaration: '04/11/2026',
+    };
+    const gn17CalcAr = computeGN17({
       salePrice: 18500000,
       saleExpenses: 250000,
       otherExpenses: 150000,
       acquisitionPrice: 12000000,
       acquisitionExpenses: 600000,
       isSolePrimaryResidence: true,
-      holdingYears: 8,
-    };
-    const gn17CalcAr = computeGN17(gn17DataAr);
+      detentionYears: 8,
+    });
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn17.pdf',
+      expectedPages: 2,
       fields: GN17_FIELD_COORDINATES,
       values: mapGN17ToFieldValues(gn17DataAr, gn17CalcAr, 'ar'),
     });
@@ -105,6 +108,7 @@ async function runTestSuite(): Promise<TestResult[]> {
   // ──────────────────────────────────────────
   try {
     const gn17DataFr: GN17FormData = {
+      ...initialGN17Values,
       wilaya: 'Oran',
       recette: 'Akid Lotfi',
       cedantNomPrenom: 'BENAHMED Abdelkader ben Mohamed ben Abdallah Cherif',
@@ -128,17 +132,19 @@ async function runTestSuite(): Promise<TestResult[]> {
       dateActeCession: '02/11/2026',
       faitA: 'Oran',
       dateDeclaration: '04/11/2026',
+    };
+    const gn17CalcFr = computeGN17({
       salePrice: 18500000,
       saleExpenses: 250000,
       otherExpenses: 150000,
       acquisitionPrice: 12000000,
       acquisitionExpenses: 600000,
       isSolePrimaryResidence: true,
-      holdingYears: 8,
-    };
-    const gn17CalcFr = computeGN17(gn17DataFr);
+      detentionYears: 8,
+    });
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn17_fr.pdf',
+      expectedPages: 2,
       fields: GN17_FIELD_COORDINATES_FR,
       values: mapGN17ToFieldValues(gn17DataFr, gn17CalcFr, 'fr'),
     });
@@ -176,6 +182,7 @@ async function runTestSuite(): Promise<TestResult[]> {
   // ──────────────────────────────────────────
   try {
     const gn31DataAr: GN31FormData = {
+      ...initialGN31Values,
       directionWilaya: 'مديرية الضرائب لولاية وهران',
       commune: 'وهران',
       inspection: 'مفتشية الضرائب وهران وسط',
@@ -224,6 +231,7 @@ async function runTestSuite(): Promise<TestResult[]> {
     };
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn31.pdf',
+      expectedPages: 4,
       fields: GN31_FIELD_COORDINATES,
       values: mapGN31ToFieldValues(gn31DataAr, 'ar'),
     });
@@ -261,6 +269,7 @@ async function runTestSuite(): Promise<TestResult[]> {
   // ──────────────────────────────────────────
   try {
     const gn31DataFr: GN31FormData = {
+      ...initialGN31Values,
       directionWilaya: 'DIW de Oran',
       commune: 'Oran',
       inspection: 'Inspection Oran Centre',
@@ -309,6 +318,7 @@ async function runTestSuite(): Promise<TestResult[]> {
     };
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn31_fr.pdf',
+      expectedPages: 4,
       fields: GN31_FIELD_COORDINATES_FR,
       values: mapGN31ToFieldValues(gn31DataFr, 'fr'),
     });
@@ -346,6 +356,7 @@ async function runTestSuite(): Promise<TestResult[]> {
   // ──────────────────────────────────────────
   try {
     const gn8DataAr: GN8FormData = {
+      ...initialGN8Values,
       directionWilaya: 'مديرية الضرائب لولاية وهران',
       service: 'مفتشية الضرائب وهران شرق',
       nif: '09993101001234500000',
@@ -375,6 +386,7 @@ async function runTestSuite(): Promise<TestResult[]> {
     };
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn8.pdf',
+      expectedPages: 2,
       fields: GN8_FIELD_COORDINATES,
       values: mapGN8ToFieldValues(gn8DataAr, 'ar'),
     });
@@ -412,6 +424,7 @@ async function runTestSuite(): Promise<TestResult[]> {
   // ──────────────────────────────────────────
   try {
     const gn8DataFr: GN8FormData = {
+      ...initialGN8Values,
       directionWilaya: 'DIW de Oran',
       service: 'Inspection Oran Est',
       nif: '09993101001234500000',
@@ -441,6 +454,7 @@ async function runTestSuite(): Promise<TestResult[]> {
     };
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn8_fr.pdf',
+      expectedPages: 2,
       fields: GN8_FIELD_COORDINATES_FR,
       values: mapGN8ToFieldValues(gn8DataFr, 'fr'),
     });
@@ -478,6 +492,7 @@ async function runTestSuite(): Promise<TestResult[]> {
   // ──────────────────────────────────────────
   try {
     const gn51DataAr: GN51FormData = {
+      ...initialGN51Values,
       wilaya: 'مديرية الضرائب لولاية وهران',
       structure: 'قباضة الضرائب العقيد لطفي',
       bailleurNom: 'الأستاذ لعطب محمد بن الحاج عبد القادر',
@@ -506,7 +521,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       periodicite: 'إيجار شهري يدفع مقدماً كل بداية شهر',
       loyerHabitation: 0,
       loyerCommercial: 900000,
-      loyerNonBati: 0,
+      loyerNonBatiNonAgricole: 0,
       loyerAgricole: 0,
       faitA: 'وهران',
       dateDeclaration: '04/11/2026',
@@ -520,6 +535,7 @@ async function runTestSuite(): Promise<TestResult[]> {
     const gn51CalcAr = computeGN51(gn51DataAr);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn51.pdf',
+      expectedPages: 2,
       fields: GN51_FIELD_COORDINATES,
       values: mapGN51ToFieldValues(gn51DataAr, gn51CalcAr, 'ar'),
     });
@@ -557,6 +573,7 @@ async function runTestSuite(): Promise<TestResult[]> {
   // ──────────────────────────────────────────
   try {
     const gn51DataFr: GN51FormData = {
+      ...initialGN51Values,
       wilaya: 'DIW de Oran',
       structure: 'Recette Akid Lotfi',
       bailleurNom: 'Maître LATTAB Mohamed ben El Hadj Abdelkader',
@@ -585,7 +602,7 @@ async function runTestSuite(): Promise<TestResult[]> {
       periodicite: 'Loyer mensuel payable d avance au 1er du mois',
       loyerHabitation: 0,
       loyerCommercial: 900000,
-      loyerNonBati: 0,
+      loyerNonBatiNonAgricole: 0,
       loyerAgricole: 0,
       faitA: 'Oran',
       dateDeclaration: '04/11/2026',
@@ -599,6 +616,7 @@ async function runTestSuite(): Promise<TestResult[]> {
     const gn51CalcFr = computeGN51(gn51DataFr);
     const pdfBytes = await fillOfficialPdf({
       templateUrl: '/forms/gn51_fr.pdf',
+      expectedPages: 2,
       fields: GN51_FIELD_COORDINATES_FR,
       values: mapGN51ToFieldValues(gn51DataFr, gn51CalcFr, 'fr'),
     });

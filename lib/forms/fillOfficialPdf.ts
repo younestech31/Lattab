@@ -49,33 +49,26 @@ function fitTextInBox(
   text: string,
   initialSize: number,
   maxWidth?: number
-): { fontSize: number; textWidth: number; fittedText: string } {
+): { fontSize: number; textWidth: number; fittedText: string; fits: boolean } {
   let size = initialSize;
   let textWidth = font.widthOfTextAtSize(text, size);
 
   if (!maxWidth || maxWidth <= 0 || textWidth <= maxWidth) {
-    return { fontSize: size, textWidth, fittedText: text };
+    return { fontSize: size, textWidth, fittedText: text, fits: true };
   }
 
-  // 1. Smoothly scale font size down to minimum 6.5pt
+  // Reduce the font gradually, but never delete or shorten official data.
   while (textWidth > maxWidth && size > 6.5) {
-    size -= 0.25;
+    size = Math.max(6.5, size - 0.25);
     textWidth = font.widthOfTextAtSize(text, size);
   }
 
-  if (textWidth <= maxWidth) {
-    return { fontSize: size, textWidth, fittedText: text };
-  }
-
-  // 2. Truncate only if still exceeds maxWidth at 6.5pt
-  let fittedText = text;
-  while (textWidth > maxWidth && fittedText.length > 3) {
-    fittedText = fittedText.slice(0, -1);
-    textWidth = font.widthOfTextAtSize(fittedText + '...', size);
-  }
-
-  const finalString = fittedText !== text ? fittedText + '...' : fittedText;
-  return { fontSize: size, textWidth: font.widthOfTextAtSize(finalString, size), fittedText: finalString };
+  return {
+    fontSize: size,
+    textWidth,
+    fittedText: text,
+    fits: textWidth <= maxWidth,
+  };
 }
 
 /**
@@ -125,12 +118,45 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
 
   const pageCount = pdfDoc.getPageCount();
 
+  // Refuse to produce a document from an unexpected or incomplete template.
+  if (options.expectedPages !== undefined && pageCount !== options.expectedPages) {
+    throw new Error(
+      `عدد صفحات النموذج غير مطابق: المتوقع ${options.expectedPages}، والملف يحتوي على ${pageCount} صفحة.`
+    );
+  }
+
+  // Validate every configured coordinate before drawing anything. Invalid fields
+  // must stop generation instead of being silently skipped.
+  for (const field of fields) {
+    if (!Number.isInteger(field.page) || field.page < 1 || field.page > pageCount) {
+      throw new Error(`حقل PDF "${field.id}" يشير إلى صفحة غير موجودة (${field.page} من ${pageCount}).`);
+    }
+    if (!Number.isFinite(field.x) || !Number.isFinite(field.y) || field.x < 0 || field.y < 0) {
+      throw new Error(`إحداثيات حقل PDF "${field.id}" غير صالحة.`);
+    }
+    if (field.size !== undefined && (!Number.isFinite(field.size) || field.size <= 0)) {
+      throw new Error(`حجم الخط للحقل "${field.id}" غير صالح.`);
+    }
+    if (field.maxWidth !== undefined && (!Number.isFinite(field.maxWidth) || field.maxWidth <= 0)) {
+      throw new Error(`عرض المساحة المخصصة للحقل "${field.id}" غير صالح.`);
+    }
+
+    const page = pdfDoc.getPage(field.page - 1);
+    const pageWidth = page.getWidth();
+    const pageHeight = page.getHeight();
+    if (field.x >= pageWidth || field.y >= pageHeight) {
+      throw new Error(`إحداثيات حقل PDF "${field.id}" تقع خارج حدود الصفحة ${field.page}.`);
+    }
+    if (field.maxWidth !== undefined && field.x + field.maxWidth > pageWidth) {
+      throw new Error(`مساحة حقل PDF "${field.id}" تتجاوز الحد الأفقي للصفحة ${field.page}.`);
+    }
+  }
+
   // 4. Fill fields onto coordinates
   for (const field of fields) {
     const pageIndex = field.page - 1;
-    if (pageIndex < 0 || pageIndex >= pageCount) {
-      console.warn(`Field ${field.id} has invalid page ${field.page}. Max pages is ${pageCount}.`);
-      continue;
+    if (!Number.isInteger(pageIndex) || pageIndex < 0 || pageIndex >= pageCount) {
+      throw new Error(`حقل PDF "${field.id}" يشير إلى صفحة غير موجودة (${field.page} من ${pageCount}).`);
     }
 
     const page = pdfDoc.getPage(pageIndex);
@@ -180,6 +206,20 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
       formattedText = `${rawValue} %`;
     }
 
+    // HTML date inputs return ISO dates. Official paper forms use DD/MM/YYYY.
+    const isoDate = formattedText.match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);
+    if (isoDate) {
+      const [, year, month, day] = isoDate;
+      const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
+      if (
+        date.getUTCFullYear() === Number(year) &&
+        date.getUTCMonth() === Number(month) - 1 &&
+        date.getUTCDate() === Number(day)
+      ) {
+        formattedText = `${day}/${month}/${year}`;
+      }
+    }
+
     const isArabic = hasArabic(formattedText);
     const activeFont = isArabic ? customFont : (customFont || standardFont);
     const initialFontSize = field.size || 10;
@@ -190,12 +230,24 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
     const rawTextToDraw = shapeArabicForPdf(formattedText);
 
     // Fit text within box bounds
-    const { fontSize, textWidth, fittedText } = fitTextInBox(
+    const { fontSize, textWidth, fittedText, fits } = fitTextInBox(
       activeFont,
       rawTextToDraw,
       initialFontSize,
       field.maxWidth
     );
+
+    // Preserve all user-entered information. Never truncate names, identifiers,
+    // addresses, dates, or legal references to make them fit.
+    if (!fits) {
+      throw new Error(
+        `النص في الحقل "${field.id}" أطول من المساحة المخصصة حتى عند حجم خط 6.5pt. لم يتم حذف أي جزء من البيانات؛ راجع الإحداثيات أو قسّم النص على أسطر مناسبة.`
+      );
+    }
+
+    if (!field.maxWidth && field.x + textWidth > page.getWidth()) {
+      throw new Error(`النص في الحقل "${field.id}" يتجاوز الحد الأفقي للصفحة.`);
+    }
 
     // Handle text alignment
     let drawX = field.x;
@@ -223,18 +275,10 @@ export async function fillOfficialPdf(options: FillPdfOptions): Promise<Uint8Arr
       if (isArabic) {
         throw new Error(`خطأ في كتابة النص العربي للحقل ${field.id}: ${err instanceof Error ? err.message : String(err)}`);
       }
-      // Non-Arabic fallback
-      try {
-        page.drawText(String(rawValue), {
-          x: drawX,
-          y: field.y,
-          size: fontSize,
-          font: standardFont,
-          color: fontColor,
-        });
-      } catch {
-        // Ignore non-fatal drawing error on standard fallback
-      }
+      // Never swallow a drawing error: a generated PDF must not silently omit data.
+      throw new Error(
+        `تعذر رسم النص في الحقل "${field.id}": ${err instanceof Error ? err.message : String(err)}`
+      );
     }
   }
 
