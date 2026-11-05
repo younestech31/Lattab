@@ -1,7 +1,6 @@
 import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { NAE_SOURCE_HEADERS, naeActivitySchema, type NAEActivity } from "../../lib/nae/schema";
 import { NAE_SECTORS } from "../../lib/nae/sectors";
 
