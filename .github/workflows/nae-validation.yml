@@ -17,6 +17,7 @@ on:
       - "lib/nae/**"
       - "tools/nae/**"
       - "tests/nae-*.test.ts"
+      - "tests/fixtures/**"
       - "package.json"
       - "bun.lock"
       - ".github/workflows/nae-validation.yml"
