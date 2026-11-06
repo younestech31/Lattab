@@ -67,7 +67,7 @@
     "normal": 1641,
     "red": 145
   },
-  "status_semantics": "normal=free, green=regulated, red=prohibited according to the UpGrowth dataset publisher's status definitions; this is not an independently issued CNRC status dictionary and does not determine authorization timing or current code lifecycle.",
+  "status_semantics": "normal=free, green=regulated, red=blocked/closed to new registration according to the UpGrowth dataset publisher's status definitions; this is not an independently issued CNRC status dictionary and does not determine authorization timing or current code lifecycle.",
   "taxonomy_names": {
     "sectors": "official Arabic labels are maintained separately in lib/nae/sectors.ts",
     "groups": "not supplied by this CSV; do not infer labels",

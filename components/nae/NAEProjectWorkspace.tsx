@@ -23,8 +23,8 @@ const LEGAL_SOURCE_URLS: Record<string, string> = {
 };
 
 const STATUS_LABELS = {
-  ar: { free: "حر حسب المصدر", regulated: "منظم حسب المصدر", prohibited: "محظور حسب المصدر", unknown: "غير محدد" },
-  fr: { free: "Libre selon la source", regulated: "Réglementée selon la source", prohibited: "Interdite selon la source", unknown: "Non renseigné" },
+  ar: { free: "حر حسب المصدر", regulated: "منظم حسب المصدر", blocked: "مغلق للتسجيل حسب المصدر", unknown: "غير محدد" },
+  fr: { free: "Libre selon la source", regulated: "Réglementée selon la source", blocked: "Fermée à l’inscription selon la source", unknown: "Non renseigné" },
 } as const;
 
 export default function NAEProjectWorkspace({

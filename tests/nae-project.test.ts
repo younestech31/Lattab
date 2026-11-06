@@ -101,7 +101,7 @@ test("reported catalogue changes remain cautions, not official lifecycle decisio
 test("raw UpGrowth status values map to source-reported status categories", () => {
   assert.equal(getNAEProjectRegulatoryStatus("normal"), "free");
   assert.equal(getNAEProjectRegulatoryStatus("green"), "regulated");
-  assert.equal(getNAEProjectRegulatoryStatus("red"), "prohibited");
+  assert.equal(getNAEProjectRegulatoryStatus("red"), "blocked");
   assert.equal(getNAEProjectRegulatoryStatus("unknown"), "unknown");
 });
 

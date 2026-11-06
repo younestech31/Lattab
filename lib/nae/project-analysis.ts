@@ -1,6 +1,6 @@
 import { normalizeNAESearchText } from "./search";
 
-export type NAEProjectRegulatoryStatus = "free" | "regulated" | "prohibited" | "unknown";
+export type NAEProjectRegulatoryStatus = "free" | "regulated" | "blocked" | "unknown";
 
 export interface NAEProjectActivity {
   code: string;
@@ -43,7 +43,7 @@ export function getNAEProjectRegulatoryStatus(rawStatus: string): NAEProjectRegu
   switch (rawStatus.trim().toLowerCase()) {
     case "normal": return "free";
     case "green": return "regulated";
-    case "red": return "prohibited";
+    case "red": return "blocked";
     default: return "unknown";
   }
 }
@@ -63,19 +63,19 @@ export function analyzeNAEProject(
   const subgroups = new Set(unique.map((item) => item.subgroup_code));
   const primaryActivity = unique.find((item) => item.code === primaryCode) ?? unique[0];
   const statusCounts: Record<NAEProjectRegulatoryStatus, number> = {
-    free: 0, regulated: 0, prohibited: 0, unknown: 0,
+    free: 0, regulated: 0, blocked: 0, unknown: 0,
   };
   for (const item of unique) statusCounts[getNAEProjectRegulatoryStatus(item.status)] += 1;
 
   const findings: NAEProjectFinding[] = [];
-  if (statusCounts.prohibited > 0) {
+  if (statusCounts.blocked > 0) {
     findings.push({
-      id: "source-prohibited-status",
+      id: "source-blocked-status",
       severity: "stop",
-      title_ar: "نشاط مصنّف محظور في مصدر البيانات",
-      title_fr: "Activité signalée comme interdite dans la source",
-      message_ar: "تتضمن القائمة نشاطاً يحمل حالة «محظور» حسب قاموس حالات مجموعة البيانات. لا تعتمد هذا الاختيار قبل التحقق من CNRC والنصوص السارية.",
-      message_fr: "La sélection comprend une activité signalée comme interdite dans le dictionnaire de statuts de la source. Vérifiez auprès du CNRC et les textes en vigueur avant de retenir ce choix.",
+      title_ar: "نشاط مصنّف مغلق للتسجيل حسب المصدر",
+      title_fr: "Activité signalée comme fermée à l’inscription dans la source",
+      message_ar: "تتضمن القائمة نشاطاً يحمل حالة «مغلق للتسجيل» حسب قاموس حالات مجموعة البيانات. لا تعتمد هذا الاختيار قبل التحقق من CNRC والنصوص السارية.",
+      message_fr: "La sélection comprend une activité signalée comme fermée à l’inscription dans le dictionnaire de statuts de la source. Vérifiez auprès du CNRC et les textes en vigueur avant de retenir ce choix.",
       legal_reference: "upgrowth-status-dictionary",
     });
   }

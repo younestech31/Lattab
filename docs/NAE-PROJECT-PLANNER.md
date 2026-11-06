@@ -23,7 +23,7 @@ The current activity detail routes remain available. The internal group/subgroup
 
 - A multi-term project-search module that can match different terms against different fields rather than requiring the entire project description to appear in one field.
 - Search evidence is returned with every match so the interface can state whether the result matched a label, content, or accessory description.
-- A preliminary rules engine that detects source-reported regulated/prohibited states, multi-sector selections, the conditional sectors 5/6 exception, taxonomy proximity, export intent, and missing regulatory metadata.
+- A preliminary rules engine that detects source-reported regulated/blocked states, multi-sector selections, the conditional sectors 5/6 exception, taxonomy proximity, export intent, and missing regulatory metadata.
 - Versioned legal-rule data for Decree 15-249 articles 2, 9 and 11; Decree 20-355 articles 4 and 4 bis; and Law 26-12 article 4 bis.
 - A source-observations ledger that keeps reported catalogue withdrawals and changes separate from the imported historical CSV.
 - Client-side local project draft storage (version 1), with no account, external database, or transmission to the notary office.

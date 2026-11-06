@@ -60,7 +60,8 @@
         "status": "full_change_set_not_yet_imported"
       },
       "record_count_observed": 2134,
-      "record_count_note": "The UpGrowth browser page displays 2,134 activity rows and says historical withdrawn codes are retained. This count is not a verified count of currently active codes and is not directly comparable to the 2,136-row 2026-10-01 CSV without a full code-by-code diff."
+      "record_count_note": "The UpGrowth page displays 2,134 rows and states that historical withdrawn-code pages are retained for existing registrations and links. The displayed count alone does not identify the active-vs-historical split and cannot be reconciled with the 2,136-row 2026-10-01 CSV without a complete code-by-code comparison.",
+      "source_page_verified_at": "2026-11-04"
     }
   ],
   "policy": {

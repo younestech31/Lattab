@@ -192,8 +192,8 @@ export function NAEExplorerPage({
                     const sourceStatus = getNAEProjectRegulatoryStatus(activity.status);
                     const sourceNote = getNAEActivitySourceNote(activity.code);
                     const sourceStatusLabel = ar
-                      ? ({ free: "حر حسب المصدر", regulated: "منظم حسب المصدر", prohibited: "محظور حسب المصدر", unknown: "الحالة غير محددة" } as const)[sourceStatus]
-                      : ({ free: "Libre selon la source", regulated: "Réglementée selon la source", prohibited: "Interdite selon la source", unknown: "Statut non renseigné" } as const)[sourceStatus];
+                      ? ({ free: "حر حسب المصدر", regulated: "منظم حسب المصدر", blocked: "مغلق للتسجيل حسب المصدر", unknown: "الحالة غير محددة" } as const)[sourceStatus]
+                      : ({ free: "Libre selon la source", regulated: "Réglementée selon la source", blocked: "Fermée à l’inscription selon la source", unknown: "Statut non renseigné" } as const)[sourceStatus];
                     const evidenceLabels = searchHit ? searchHit.evidence.map((field) => {
                       if (field === "label_ar") return ar ? "مطابقة في التسمية العربية" : "Correspondance dans le libellé arabe";
                       if (field === "label_fr") return ar ? "مطابقة في التسمية الفرنسية" : "Correspondance dans le libellé français";
@@ -377,8 +377,8 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
               <dl className="mt-3 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.sector}</dt><dd className="mt-1 font-semibold text-gray-900">{activity.sector_code} — {sector ? (ar ? sector.label_ar : sector.label_fr) : ""}</dd></div>
                 <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{ar ? "حالة النشاط حسب المصدر" : "Statut selon la source"}</dt><dd className="mt-1 font-semibold text-gray-900">{ar
-                  ? ({ free: "حر", regulated: "منظم", prohibited: "محظور", unknown: "غير محدد" } as const)[getNAEProjectRegulatoryStatus(activity.status)]
-                  : ({ free: "Libre", regulated: "Réglementée", prohibited: "Interdite", unknown: "Non renseigné" } as const)[getNAEProjectRegulatoryStatus(activity.status)]}</dd></div>
+                  ? ({ free: "حر", regulated: "منظم", blocked: "مغلق للتسجيل", unknown: "غير محدد" } as const)[getNAEProjectRegulatoryStatus(activity.status)]
+                  : ({ free: "Libre", regulated: "Réglementée", blocked: "Fermée à l’inscription", unknown: "Non renseigné" } as const)[getNAEProjectRegulatoryStatus(activity.status)]}</dd></div>
               </dl>
               <p className="mt-2 text-xs leading-5 text-gray-500">{ar ? "حالة المصدر مستندة إلى قاموس UpGrowth ونسخة البيانات المؤرخة 01 أكتوبر 2026، وليست حكماً مستقلاً على توقيت الترخيص أو الوضع الحالي للرمز." : "Statut interprété à partir du dictionnaire UpGrowth et de l’instantané du 1er octobre 2026 ; il ne détermine pas le moment de l’autorisation ni l’état actuel du code."}</p>
               <div className="mt-4">

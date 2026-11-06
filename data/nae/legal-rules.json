@@ -66,5 +66,12 @@
       "source_kind": "official_journal",
       "decision_limit": "This is a post-registration compliance reminder, not a pre-registration compatibility rule."
     }
-  ]
+  ],
+  "status_dictionary": {
+    "normal": "free",
+    "green": "regulated",
+    "red": "blocked_closed_to_new_registration",
+    "source": "UpGrowth dataset publisher",
+    "caveat": "Source-reported category for this dated snapshot; not an independent legal determination."
+  }
 }
