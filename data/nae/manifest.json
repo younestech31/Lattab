@@ -4,7 +4,7 @@
   "source_sha256": "d443511fa8b798acf4240de4eca3868fd7cb67879afa4397fa985a0106001ed5",
   "source_encoding": "UTF-8 with optional BOM",
   "source_delimiter": ";",
-  "source_revision_date": null,
+  "source_revision_date": "2026-10-01",
   "source_acquired_at": null,
   "imported_at": "2026-11-05T17:41:03.015Z",
   "record_count": 2136,
@@ -67,10 +67,16 @@
     "normal": 1641,
     "red": 145
   },
-  "status_semantics": "undocumented; retained as raw source data and must not be interpreted in the UI",
+  "status_semantics": "normal=free, green=regulated, red=prohibited according to the UpGrowth dataset publisher's status definitions; this is not an independently issued CNRC status dictionary and does not determine authorization timing or current code lifecycle.",
   "taxonomy_names": {
     "sectors": "official Arabic labels are maintained separately in lib/nae/sectors.ts",
     "groups": "not supplied by this CSV; do not infer labels",
     "subgroups": "not supplied by this CSV; do not infer labels"
-  }
+  },
+  "status_mapping_source": "https://www.upgrowth.dz/ar/datasets/cnrc-2026",
+  "source_publisher": "UpGrowth",
+  "source_attribution": "CNRC/Sidjilcom NAE nomenclature, republished by UpGrowth",
+  "source_license": "CC BY 4.0",
+  "source_license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "monitoring_source_observations": "data/nae/source-observations.json"
 }
