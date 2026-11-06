@@ -42,9 +42,9 @@ const rawActivities: unknown[] = [
   ...sector5, ...sector6, ...sector7,
 ];
 
-const activities = z.array(naeActivitySchema).parse(
-  rawActivities.map((activity) => applyNAELabelOverrides(activity as NAEActivity)),
-) as NAEActivity[];
+// Validate the untouched source rows first, then apply display-only corrections.
+const sourceActivities = z.array(naeActivitySchema).parse(rawActivities) as NAEActivity[];
+const activities = sourceActivities.map(applyNAELabelOverrides);
 const manifest = datasetManifest as unknown as NAEDatasetManifest;
 
 if (manifest.record_count !== activities.length) {
