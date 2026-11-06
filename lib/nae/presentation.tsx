@@ -36,7 +36,6 @@ export function NAEExplorerPage({
 }) {
   void params;
   const ar = lang === "ar";
-  const action = ar ? "/nae" : "/fr/nae";
   const sourceRevisionDate = getNAEDatasetManifest().source_revision_date ?? (ar ? "غير محدد" : "non précisée");
   const copy = ar
     ? {
