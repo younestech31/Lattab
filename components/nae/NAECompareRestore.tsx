@@ -27,8 +27,9 @@ export default function NAECompareRestore({
   useEffect(() => {
     try {
       if (compareParamPresent) {
-        if (selectedCodes.length) {
-          window.localStorage.setItem(STORAGE_KEY, JSON.stringify(selectedCodes));
+        const currentCodes = serializedCodes ? serializedCodes.split(",") : [];
+        if (currentCodes.length) {
+          window.localStorage.setItem(STORAGE_KEY, JSON.stringify(currentCodes));
         } else {
           window.localStorage.removeItem(STORAGE_KEY);
         }
