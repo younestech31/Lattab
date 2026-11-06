@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-11-06",
+  "notice": {
+    "ar": "هذه القواعد العامة أداة فرز أولي وليست قراراً إدارياً. يجب التحقق من النص الخاص بكل نشاط ومن النسخة السارية قبل اتخاذ إجراء.",
+    "fr": "Ces règles générales servent au pré-examen et ne constituent pas une décision administrative. Vérifiez les textes propres à chaque activité et leur version en vigueur."
+  },
+  "rules": [
+    {
+      "id": "decree-15-249-article-2",
+      "instrument": "المرسوم التنفيذي 15-249 المؤرخ في 29 سبتمبر 2015",
+      "article": "2",
+      "topic": "homogeneous-classification-and-complementary-operations",
+      "effect": "classification_and_complementary_operations",
+      "summary_ar": "تُنظم المدونة في قطاعات ومجموعات ومجموعات فرعية متجانسة. وتشمل العمليات التكميلية النقل والتسليم للزبائن، وتركيب وتنصيب المعدات، وتوفير قطع الغيار، والاستشارة والتكوين.",
+      "summary_fr": "La NAE est structurée en secteurs, groupes et sous-groupes homogènes. Les opérations complémentaires comprennent le transport et la livraison, le montage et l’installation, les pièces de rechange, le conseil et la formation.",
+      "source_url": "https://www.joradp.dz/FTP/jo-francais/2015/F2015052.pdf",
+      "source_kind": "official_journal",
+      "decision_limit": "La qualification d’une opération comme complémentaire doit être appréciée au regard de l’activité principale et de son contenu."
+    },
+    {
+      "id": "decree-15-249-article-9",
+      "instrument": "المرسوم التنفيذي 15-249 المؤرخ في 29 سبتمبر 2015",
+      "article": "9",
+      "topic": "multi-sector-registration",
+      "effect": "general-prohibition-with-conditional-exception",
+      "summary_ar": "الأصل عدم جمع أكثر من قطاع نشاط في مستخرج سجل تجاري واحد، مع إمكانية السماح ببعض نشاطات القطاعين 5 و6 في حالات مشروطة لأسباب المنفعة التجارية وتموين التجمعات أو المناطق المعزولة أو ضعيفة التغطية.",
+      "summary_fr": "En principe, le cumul de plusieurs secteurs sur un même extrait n’est pas admis. Une exception conditionnelle concerne certaines activités des secteurs 5 et 6 pour des raisons d’utilité commerciale et d’approvisionnement.",
+      "source_url": "https://www.joradp.dz/FTP/jo-francais/2015/F2015052.pdf",
+      "source_kind": "official_journal",
+      "decision_limit": "The exception is not automatic and the engine does not decide eligibility."
+    },
+    {
+      "id": "decree-15-249-article-11",
+      "instrument": "المرسوم التنفيذي 15-249 المؤرخ في 29 سبتمبر 2015",
+      "article": "11",
+      "topic": "export-in-main-activity",
+      "effect": "export-permitted-subject-to-applicable-regulation",
+      "summary_ar": "يمكن للمتعامل تصدير المنتجات في إطار نشاطاته التجارية ووفق التنظيم المعمول به، دون افتراض وجوب إضافة قطاع التصدير لمجرد نية التصدير.",
+      "summary_fr": "L’opérateur peut exporter des produits dans le cadre de ses activités commerciales, conformément à la réglementation en vigueur.",
+      "source_url": "https://www.joradp.dz/FTP/jo-francais/2015/F2015052.pdf",
+      "source_kind": "official_journal",
+      "decision_limit": "Does not waive product-specific export controls or other applicable rules."
+    },
+    {
+      "id": "decree-20-355-articles-4-and-4-bis",
+      "instrument": "المرسوم التنفيذي 20-355 المؤرخ في 30 نوفمبر 2020",
+      "article": "4 و4 مكرر",
+      "topic": "authorization-timing",
+      "effect": "authorization-usually-before-exercise-except-special-law",
+      "summary_ar": "لا يلزم طالب النشاط المنظم، كقاعدة عامة، بإرفاق نسخة الترخيص أو الاعتماد بملف التسجيل التجاري؛ لكن الممارسة الفعلية مشروطة بالحصول عليه. ويُستثنى ما يفرض فيه تشريع خاص صراحةً الترخيص قبل التسجيل.",
+      "summary_fr": "En règle générale, le postulant n’a pas à joindre l’autorisation au dossier d’inscription, mais l’exercice effectif reste subordonné à son obtention. Exception lorsque des dispositions législatives imposent expressément une autorisation préalable à l’inscription.",
+      "source_url": "https://www.commerce.gov.dz/fr/telecharger/reglementation/934/article",
+      "source_kind": "official_journal",
+      "decision_limit": "The special-law exception must be checked activity by activity."
+    },
+    {
+      "id": "law-26-12-article-4-bis",
+      "instrument": "القانون 26-12 المؤرخ في 8 يونيو 2026",
+      "article": "4 مكرر",
+      "topic": "post-registration-update",
+      "effect": "one-month-amendment-deadline",
+      "summary_ar": "يلتزم كل تاجر، شخصاً طبيعياً أو معنوياً، بالشروع في إجراءات تعديل مستخرج السجل التجاري خلال أجل أقصاه شهر من التغييرات التي تطرأ على بيانات المستخرج و/أو القانون الأساسي للشخص المعنوي.",
+      "summary_fr": "Tout commerçant, personne physique ou morale, doit engager les procédures de modification de l’extrait du registre du commerce dans un délai maximal d’un mois à compter des changements concernés.",
+      "source_url": "https://www.joradp.dz/FTP/jo-francais/2026/F2026044.pdf",
+      "source_kind": "official_journal",
+      "decision_limit": "This is a post-registration compliance reminder, not a pre-registration compatibility rule."
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+import { normalizeNAESearchText } from "./search";
+
+export type NAEProjectRegulatoryStatus = "free" | "regulated" | "prohibited" | "unknown";
+
+export interface NAEProjectActivity {
+  code: string;
+  label_ar: string;
+  label_fr: string;
+  status: string;
+  sector_code: string;
+  group_code: string;
+  subgroup_code: string;
+  tutelle_fr?: string | null;
+  type_autorisation_fr?: string | null;
+  references_texte_fr?: string | null;
+}
+
+export interface NAEProjectFinding {
+  id: string;
+  severity: "info" | "caution" | "stop";
+  title_ar: string;
+  title_fr: string;
+  message_ar: string;
+  message_fr: string;
+  legal_reference: string;
+}
+
+export interface NAEProjectAnalysis {
+  selectedCount: number;
+  sectors: string[];
+  sameGroup: boolean;
+  sameSubgroup: boolean;
+  statusCounts: Record<NAEProjectRegulatoryStatus, number>;
+  findings: NAEProjectFinding[];
+}
+
+export function getNAEProjectRegulatoryStatus(rawStatus: string): NAEProjectRegulatoryStatus {
+  switch (rawStatus.trim().toLowerCase()) {
+    case "normal": return "free";
+    case "green": return "regulated";
+    case "red": return "prohibited";
+    default: return "unknown";
+  }
+}
+
+/**
+ * Applies only broad, source-backed NAE rules. It deliberately does not decide
+ * whether an individual combination is administratively accepted.
+ */
+export function analyzeNAEProject(
+  activities: readonly NAEProjectActivity[],
+  description = "",
+): NAEProjectAnalysis {
+  const unique = [...new Map(activities.map((item) => [item.code, item])).values()];
+  const sectors = [...new Set(unique.map((item) => item.sector_code))].sort();
+  const groups = new Set(unique.map((item) => item.group_code));
+  const subgroups = new Set(unique.map((item) => item.subgroup_code));
+  const statusCounts: Record<NAEProjectRegulatoryStatus, number> = {
+    free: 0, regulated: 0, prohibited: 0, unknown: 0,
+  };
+  for (const item of unique) statusCounts[getNAEProjectRegulatoryStatus(item.status)] += 1;
+
+  const findings: NAEProjectFinding[] = [];
+  if (statusCounts.prohibited > 0) {
+    findings.push({
+      id: "source-prohibited-status",
+      severity: "stop",
+      title_ar: "نشاط مصنّف محظور في مصدر البيانات",
+      title_fr: "Activité signalée comme interdite dans la source",
+      message_ar: "تتضمن القائمة نشاطاً يحمل حالة «محظور» حسب قاموس حالات مجموعة البيانات. لا تعتمد هذا الاختيار قبل التحقق من CNRC والنصوص السارية.",
+      message_fr: "La sélection comprend une activité signalée comme interdite dans le dictionnaire de statuts de la source. Vérifiez auprès du CNRC et les textes en vigueur avant de retenir ce choix.",
+      legal_reference: "upgrowth-status-dictionary",
+    });
+  }
+  if (statusCounts.regulated > 0) {
+    findings.push({
+      id: "regulated-activity",
+      severity: "caution",
+      title_ar: "توجد نشاطات منظمة",
+      title_fr: "Activités réglementées détectées",
+      message_ar: "تحقق من الاعتماد أو الترخيص الخاص بكل نشاط ومن الجهة المختصة. لا يستنتج توقيت إرفاق الترخيص من حالة النشاط وحدها؛ فقد يلزم قبل التسجيل في حالات ينص عليها تشريع خاص.",
+      message_fr: "Vérifiez l’agrément ou l’autorisation propre à chaque activité et l’autorité compétente. Le moment de sa présentation ne peut pas être déduit du seul statut.",
+      legal_reference: "decree-20-355-articles-4-and-4-bis",
+    });
+  }
+  if (statusCounts.unknown > 0) {
+    findings.push({
+      id: "unknown-source-status",
+      severity: "caution",
+      title_ar: "حالة بعض النشاطات غير معروفة",
+      title_fr: "Statut source inconnu pour certaines activités",
+      message_ar: "لا تتوفر قيمة حالة قابلة للتفسير لبعض النشاطات في نسخة البيانات. لا يعني ذلك أنها حرة أو غير منظمة.",
+      message_fr: "Le statut de certaines activités n’est pas disponible ou reconnu dans la version des données. Cela ne signifie pas qu’elles sont libres ou non réglementées.",
+      legal_reference: "dataset-manifest",
+    });
+  }
+  if (sectors.length > 1) {
+    findings.push({
+      id: "multiple-sectors",
+      severity: "caution",
+      title_ar: "القائمة تجمع أكثر من قطاع",
+      title_fr: "Plusieurs secteurs dans la sélection",
+      message_ar: "الأصل عدم جمع تسجيل أكثر من قطاع نشاط في مستخرج واحد. توجد حالة استثنائية مشروطة لبعض نشاطات التوزيع بالتجزئة والخدمات، ولا يعني ظهور القطاعين 5 و6 أن الجمع مقبول تلقائياً.",
+      message_fr: "En principe, le cumul de plusieurs secteurs sur un même extrait n’est pas admis. Une exception conditionnelle existe pour certaines activités des secteurs 5 et 6 ; leur présence ne rend pas le cumul automatiquement admissible.",
+      legal_reference: "decree-15-249-article-9",
+    });
+  }
+  if (sectors.length === 2 && sectors.includes("5") && sectors.includes("6")) {
+    findings.push({
+      id: "retail-services-exception",
+      severity: "caution",
+      title_ar: "تحقق من الاستثناء المشروط للقطاعين 5 و6",
+      title_fr: "Vérifier l’exception conditionnelle entre les secteurs 5 et 6",
+      message_ar: "قد يسمح بجمع بعض نشاطات التوزيع بالتجزئة والخدمات لأسباب المنفعة التجارية وتموين المناطق المعزولة أو ضعيفة التغطية. يلزم التحقق من النشاطات والشروط لدى الجهة المختصة.",
+      message_fr: "Le cumul de certaines activités de détail et de services peut être autorisé pour des raisons d’utilité commerciale et d’approvisionnement de localités enclavées ou mal desservies. Les conditions doivent être vérifiées.",
+      legal_reference: "decree-15-249-article-9",
+    });
+  }
+  if (unique.length > 1 && (groups.size === 1 || subgroups.size === 1)) {
+    findings.push({
+      id: "taxonomy-not-legal-approval",
+      severity: "info",
+      title_ar: "التقارب في التصنيف ليس موافقة قانونية",
+      title_fr: "La proximité taxonomique ne vaut pas autorisation juridique",
+      message_ar: "وجود نشاطات في المجموعة أو المجموعة الفرعية نفسها يوضح تقاربها في التصنيف فقط، ولا يثبت وحده إمكانية جمعها في مستخرج سجل تجاري واحد.",
+      message_fr: "L’appartenance au même groupe ou sous-groupe indique une proximité de classification, mais ne prouve pas à elle seule que le cumul est admis sur un même extrait.",
+      legal_reference: "decree-15-249-articles-2-and-9",
+    });
+  }
+
+  const normalizedDescription = normalizeNAESearchText(description);
+  const exportIntent = ["تصدير", "exporter", "exportation", "export"].some((term) =>
+    normalizedDescription.includes(normalizeNAESearchText(term))
+  );
+  if (exportIntent && !sectors.includes("7")) {
+    findings.push({
+      id: "export-does-not-require-sector-7-by-default",
+      severity: "info",
+      title_ar: "التصدير لا يستلزم إضافة القطاع 7 تلقائياً",
+      title_fr: "L’exportation n’impose pas automatiquement le secteur 7",
+      message_ar: "تنص المادة 11 من المرسوم 15-249 على إمكانية تصدير المتعامل لمنتجاته في إطار نشاطاته التجارية ووفق التنظيم المعمول به. لا تضف نشاط التصدير لمجرد ذكر نية التصدير.",
+      message_fr: "L’article 11 du décret 15-249 permet à l’opérateur d’exporter des produits dans le cadre de ses activités commerciales, conformément à la réglementation. N’ajoutez pas automatiquement le secteur 7.",
+      legal_reference: "decree-15-249-article-11",
+    });
+  }
+
+  if (unique.some((item) => !item.tutelle_fr || !item.type_autorisation_fr)) {
+    findings.push({
+      id: "incomplete-regulatory-metadata",
+      severity: "info",
+      title_ar: "البيانات التنظيمية غير مكتملة في المصدر",
+      title_fr: "Métadonnées réglementaires incomplètes",
+      message_ar: "غياب الجهة الوصية أو نوع الترخيص في ملف البيانات لا يثبت عدم وجود شرط أو ترخيص. يلزم التحقق من النصوص الخاصة بالنشاط.",
+      message_fr: "L’absence de tutelle ou de type d’autorisation dans le fichier ne prouve pas l’absence d’une exigence. Vérifiez les textes propres à l’activité.",
+      legal_reference: "dataset-field-coverage",
+    });
+  }
+
+  return {
+    selectedCount: unique.length,
+    sectors,
+    sameGroup: unique.length > 0 && groups.size === 1,
+    sameSubgroup: unique.length > 0 && subgroups.size === 1,
+    statusCounts,
+    findings,
+  };
+}

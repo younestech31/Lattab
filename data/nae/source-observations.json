@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "dataset_snapshot": {
+    "source_file": "cnrc-2026.csv",
+    "source_sha256": "d443511fa8b798acf4240de4eca3868fd7cb67879afa4397fa985a0106001ed5",
+    "published_revision_date": "2026-10-01",
+    "publisher": "UpGrowth",
+    "source_attribution": "CNRC / Sidjilcom nomenclature, republished by UpGrowth",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "status_mapping": {
+    "normal": "free",
+    "green": "regulated",
+    "red": "prohibited",
+    "meaning_source": "https://www.upgrowth.dz/ar/datasets/cnrc-2026",
+    "meaning_source_kind": "secondary_dataset_publisher",
+    "display_policy": "Display as a source-reported catalogue status with snapshot date. Do not infer authorization timing, legal eligibility, or current lifecycle from this field."
+  },
+  "monitoring_observations": [
+    {
+      "observed_at": "2026-11-02",
+      "source": "https://www.upgrowth.dz/ar/outils/nomenclature",
+      "source_kind": "secondary_monitoring_of_sidjilcom",
+      "source_note": "UpGrowth reports reading the CNRC/Sidjilcom catalogue on 2026-11-02 and reports a catalogue refresh observed on 2026-10-29. These are monitoring observations requiring official confirmation before replacing source records.",
+      "reported_withdrawals": [
+        {
+          "code": "301205",
+          "status": "withdrawal_reported_unverified",
+          "reported_effective_date": "2026-10-29"
+        },
+        {
+          "code": "501308",
+          "status": "withdrawal_reported_unverified",
+          "reported_effective_date": "2026-10-29"
+        }
+      ],
+      "reported_supervisory_authority_changes": [
+        {
+          "code": "105427",
+          "old_value": "MINISTÈRE DE LA DÉFENSE NATIONALE",
+          "new_value_reported": "Autorité nationale compétente des systèmes d'aéronefs sans pilote",
+          "status": "requires_official_record_check"
+        },
+        {
+          "code": "503323",
+          "old_value": "MINISTÈRE DE LA DÉFENSE NATIONALE",
+          "new_value_reported": "Autorité nationale compétente des systèmes d'aéronefs sans pilote",
+          "status": "requires_official_record_check"
+        }
+      ],
+      "reported_content_changes": {
+        "count": 26,
+        "known_examples": ["601202", "607074", "605033", "615080"],
+        "status": "full_change_set_not_yet_imported"
+      }
+    }
+  ],
+  "policy": {
+    "withdrawal_observations_do_not_delete_historical_records": true,
+    "unverified_observations_must_not_be_presented_as_official_fact": true,
+    "new_records_and_changed_field_values_require_source_record_capture": true
+  }
+}
