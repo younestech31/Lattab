@@ -46,7 +46,7 @@ type Draft = { version: 1; description: string; codes: string[]; primaryCode: st
 const KEY = "lattab.nae.project.v1";
 
 function usableLabel(value: string | null | undefined): value is string {
-  return Boolean(value?.trim()) && value.trim() !== "#NOM?";
+  return typeof value === "string" && value.trim().length > 0 && value.trim() !== "#NOM?";
 }
 function fieldName(field: string, ar: boolean) {
   const names: Record<string, [string, string]> = {
