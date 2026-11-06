@@ -13,12 +13,36 @@ export interface NAEProjectAnalysis {
 const DECREE_15_249 = "https://www.joradp.dz/FTP/jo-arabe/2015/A2015052.pdf";
 const DECREE_20_355 = "https://www.joradp.dz/FTP/JO-francais/2020/F2020073.pdf";
 const COMPLEMENTARY = [
-  { terms:["نقل","توصيل","تسليم","transport","livraison"], ar:"النقل والتسليم للزبائن", fr:"transport et livraison à la clientèle" },
-  { terms:["تركيب","تنصيب","installation","montage"], ar:"تركيب وتنصيب المعدات", fr:"montage et installation du matériel" },
-  { terms:["قطع الغيار","قطع","غيار","pieces detachees","pièces détachées"], ar:"توفير قطع الغيار", fr:"fourniture de pièces de rechange" },
-  { terms:["استشارة","استشارات","conseil"], ar:"الاستشارة", fr:"conseil" },
-  { terms:["تكوين","تدريب","formation"], ar:"التكوين", fr:"formation" }
+  { terms:["نقل","النقل","توصيل","التوصيل","تسليم","التسليم","transport","livraison"], ar:"النقل والتسليم للزبائن", fr:"transport et livraison à la clientèle" },
+  { terms:["تركيب","التركيب","تنصيب","التنصيب","installation","montage"], ar:"تركيب وتنصيب المعدات", fr:"montage et installation du matériel" },
+  { terms:["قطع الغيار","pieces detachees","pièces détachées"], ar:"توفير قطع الغيار", fr:"fourniture de pièces de rechange" },
+  { terms:["استشارة","الاستشارة","استشارات","conseil"], ar:"الاستشارة", fr:"conseil" },
+  { terms:["تكوين","التكوين","تدريب","التدريب","formation"], ar:"التكوين", fr:"formation" }
 ] as const;
+
+function tokenForms(token: string): Set<string> {
+  const forms = new Set([token]);
+  if (token.startsWith("ال") && token.length > 3) forms.add(token.slice(2));
+  if (token.startsWith("بال") && token.length > 4) {
+    forms.add(token.slice(2));
+    forms.add(token.slice(3));
+  }
+  if (token.startsWith("لل") && token.length > 4) forms.add(token.slice(2));
+  return forms;
+}
+
+function containsNormalizedPhrase(normalizedText: string, rawPhrase: string): boolean {
+  const tokens = normalizedText.split(" ").filter(Boolean);
+  const phrase = normalizeNAESearchText(rawPhrase).split(" ").filter(Boolean);
+  if (!phrase.length || phrase.length > tokens.length) return false;
+
+  return tokens.some((_, start) =>
+    phrase.every((expected, offset) => {
+      const actual = tokens[start + offset];
+      return actual !== undefined && tokenForms(actual).has(expected);
+    }),
+  );
+}
 
 export function analyzeNAEProject(input: readonly NAEActivity[], description = "", requestedPrimaryCode: string | null = null): NAEProjectAnalysis {
   const activities = [...new Map(input.map((activity) => [activity.code, activity])).values()];
@@ -91,7 +115,7 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
   });
 
   const text = normalizeNAESearchText(description);
-  const operations = COMPLEMENTARY.filter((operation) => operation.terms.some((term) => text.includes(normalizeNAESearchText(term))));
+  const operations = COMPLEMENTARY.filter((operation) => operation.terms.some((term) => containsNormalizedPhrase(text, term)));
   if (operations.length) findings.push({
     id:"complementary-operations", severity:"info",
     title_ar:"قد تكون بعض الأعمال المذكورة عمليات تكميلية",

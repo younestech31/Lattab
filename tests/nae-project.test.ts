@@ -60,6 +60,22 @@ test("recognizes complementary operations cautiously", () => {
   assert.match(finding.detail_ar, /لا يعني أن كل عملية مغطاة تلقائياً/);
 });
 
+test("does not mistake unrelated uses of the word قطع for spare-parts supply", () => {
+  const result = analyzeNAEProject(
+    [activity({ code: "507202", sector_code: "5", group_code: "507", subgroup_code: "5072" })],
+    "بيع قطع نقدية قديمة",
+  );
+  assert.equal(result.findings.some((item) => item.id === "complementary-operations"), false);
+});
+
+test("recognizes Arabic definite-article forms of complementary operations", () => {
+  const result = analyzeNAEProject(
+    [activity({ code: "507202", sector_code: "5", group_code: "507", subgroup_code: "5072" })],
+    "بيع معدات مع التركيب والتوصيل وتوفير قطع الغيار",
+  );
+  assert.ok(result.findings.some((item) => item.id === "complementary-operations"));
+});
+
 test("same subgroup is not a legal compatibility decision", () => {
   const result = analyzeNAEProject([
     activity({ code: "301101", sector_code: "3", group_code: "301", subgroup_code: "3011" }),

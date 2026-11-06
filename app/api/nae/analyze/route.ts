@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getNAEActivityByCode } from "@/lib/nae/data";
+import { getNAEActivities, getNAEActivityByCode } from "@/lib/nae/data";
 import { analyzeNAEProject } from "@/lib/nae/project-analysis";
 import { NAE_SECTORS } from "@/lib/nae/sectors";
 
@@ -12,9 +12,10 @@ export async function POST(request: NextRequest) {
   if (!body || typeof body !== "object") return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
 
   const input = body as { codes?: unknown; description?: unknown; primaryCode?: unknown; lang?: unknown };
-  if (!Array.isArray(input.codes) || input.codes.length > 50 ||
+  const catalogSize = getNAEActivities().length;
+  if (!Array.isArray(input.codes) || input.codes.length > catalogSize ||
       input.codes.some((code) => typeof code !== "string" || !/^\d{6}$/.test(code))) {
-    return NextResponse.json({ error: "Expected up to 50 six-digit activity codes" }, { status: 400 });
+    return NextResponse.json({ error: `Expected up to ${catalogSize} six-digit activity codes` }, { status: 400 });
   }
 
   const codes = [...new Set(input.codes as string[])];
