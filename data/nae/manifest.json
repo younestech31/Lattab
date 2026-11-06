@@ -97,5 +97,13 @@
     },
     "basis": "UpGrowth dataset documentation, which describes the CNRC status field as free / regulated / blocked.",
     "limitation": "The catalog status does not, by itself, prove that no separate sector-specific title or other legal requirement applies."
+  },
+  "display_label_overrides": {
+    "file": "data/nae/label-overrides.json",
+    "verified_at": "2026-11-06",
+    "count": 5,
+    "corrected_fields": 7,
+    "attribution": "UpGrowth (2026), Nomenclature CNRC 2026, CC BY 4.0",
+    "policy": "Display-only; raw CSV and sector JSON values are preserved. Overrides apply only while a field still equals the literal #NOM?. A corrected future source value takes precedence."
   }
 }

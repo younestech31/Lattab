@@ -52,6 +52,16 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
 
   const primaryCode = requestedPrimaryCode && activities.some((activity) => activity.code === requestedPrimaryCode) ? requestedPrimaryCode : activities[0].code;
   const nonExport = sectors.filter((sector) => sector !== "7");
+  if (sectors.includes("4")) findings.push({
+    id: "sector-4-import-resale-context",
+    severity: "info",
+    title_ar: "تنبيه خاص بقطاع الاستيراد لإعادة البيع على الحالة",
+    title_fr: "Point de vigilance pour le secteur de l’importation pour revente en l’état",
+    detail_ar: "يشير تصنيف القطاع 4 إلى الاستيراد لإعادة البيع على الحالة. هذه المعلومة تصف قطاع النشاط ولا تحسم وحدها المتطلبات المرتبطة بالسلعة أو شروط الاستيراد أو الإجراءات الجمركية والقطاعية. راجع المعلومات الخاصة بكل نشاط والجهة المعنية قبل اعتماد ملف المؤسسة. هذا تنبيه للمراجعة وليس حكماً بالجواز أو المنع.",
+    detail_fr: "Le secteur 4 correspond à l’importation pour la revente en l’état. Cette classification décrit le secteur et ne détermine pas, à elle seule, les exigences propres aux marchandises, les conditions d’importation ou les formalités douanières et sectorielles. Vérifiez les informations propres à chaque activité et auprès de l’autorité concernée. Il s’agit d’un point de vérification, pas d’un avis d’autorisation ou d’interdiction.",
+    article: "Décret exécutif 15-249, article 3",
+    sourceUrl: "https://www.commerce.gov.dz/ar/reglementation/decret-executif-n15-249",
+  });
   if (nonExport.length > 1) {
     if (nonExport.length === 2 && nonExport.includes("5") && nonExport.includes("6")) findings.push({
       id:"sector-5-6-conditional", severity:"warning",

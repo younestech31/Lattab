@@ -14,6 +14,7 @@ import {
   searchNAE,
 } from "../lib/nae/search";
 import type { NAEActivity } from "../lib/nae/schema";
+import { applyNAELabelOverrides } from "../lib/nae/label-overrides";
 
 const activities = [
   ...sector1, ...sector2, ...sector3, ...sector4,
@@ -31,6 +32,46 @@ test("bundled NAE data matches the verified source manifest", () => {
     [sector1.length, sector2.length, sector3.length, sector4.length, sector5.length, sector6.length, sector7.length],
     [452, 81, 185, 278, 365, 754, 21],
   );
+});
+
+test("fills the five affected NAE source labels from sourced language-specific overrides only", () => {
+  const byCode = new Map(activities.map((item) => [item.code, item]));
+  const raw443102 = byCode.get("443102")!;
+  const corrected443102 = applyNAELabelOverrides(raw443102);
+  assert.equal(raw443102.label_ar, "#NOM?");
+  assert.equal(corrected443102.label_ar, "استيراد قطع الغيار و اللواحق المتعلقة بالمعدات و الآلات الكهرومنزلية");
+
+  const raw607042 = byCode.get("607042")!;
+  assert.equal(raw607042.label_ar, "#NOM?");
+  assert.equal(applyNAELabelOverrides(raw607042).label_ar, "مؤسسة الوقاية من الأخطار المهنية.");
+
+  const raw308006 = byCode.get("308006")!;
+  const corrected308006 = applyNAELabelOverrides(raw308006);
+  assert.equal(corrected308006.label_fr, "distribution en gros de tous produits phytosanitaires à usage agricole.");
+  assert.equal(corrected308006.label_en, "wholesale distribution of all phytosanitary products for agricultural use.");
+  assert.equal(raw308006.label_fr, "#NOM?");
+  assert.equal(raw308006.label_en, "#NOM?");
+
+  const raw310012 = byCode.get("310012")!;
+  const corrected310012 = applyNAELabelOverrides(raw310012);
+  assert.equal(corrected310012.label_fr, "distribution en gros de kit de pétrole liquéfié et accessoires (gpl).");
+  assert.equal(corrected310012.label_en, "wholesale distribution of liquefied petroleum kits and accessories (LPG).");
+  assert.equal(raw310012.label_fr, "#NOM?");
+  assert.equal(raw310012.label_en, "#NOM?");
+
+  const raw431103 = byCode.get("431103")!;
+  assert.equal(raw431103.label_fr, "#NOM?");
+  assert.equal(
+    applyNAELabelOverrides(raw431103).label_fr,
+    "importation de moteurs et turbines industrielles ou autres y compris leurs pièces détachées et leurs accessoires.",
+  );
+  assert.equal(applyNAELabelOverrides(raw431103).label_en, raw431103.label_en);
+});
+
+test("does not replace a source label if a future dataset already contains a real value", () => {
+  const raw = activities.find((item) => item.code === "443102")!;
+  const alreadyFixed = { ...raw, label_ar: "تسمية أحدث من ملف المصدر" };
+  assert.equal(applyNAELabelOverrides(alreadyFixed).label_ar, "تسمية أحدث من ملف المصدر");
 });
 
 test("real Arabic activity labels are searchable after normalization", () => {

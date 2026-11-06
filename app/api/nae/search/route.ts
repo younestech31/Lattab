@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getNAESearchIndex } from "@/lib/nae/data";
 import { searchNAEProject } from "@/lib/nae/project-search";
 import { getNAEStatusInfo } from "@/lib/nae/status";
+import { NAE_PROJECT_DESCRIPTION_MAX_LENGTH } from "@/lib/nae/project-draft";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,7 @@ export async function POST(request: NextRequest) {
   if (!body || typeof body !== "object") return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
 
   const input = body as { q?: unknown; lang?: unknown };
-  const query = typeof input.q === "string" ? input.q.trim().slice(0, 180) : "";
+  const query = typeof input.q === "string" ? input.q.trim().slice(0, NAE_PROJECT_DESCRIPTION_MAX_LENGTH) : "";
   const language = input.lang === "fr" ? "fr" : "ar";
   if (query.length < 2) return NextResponse.json({ query, results: [] });
 
