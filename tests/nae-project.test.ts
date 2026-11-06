@@ -43,13 +43,11 @@ test("treats sectors 5 and 6 as a conditional exception", () => {
   assert.ok(result.findings.some((finding) => finding.id === "sector-5-6-conditional"));
 });
 
-test("flags blocked and regulated statuses independently", () => {
-  const result = analyzeNAEProject([
-    activity({ code: "301205", sector_code: "3", group_code: "301", subgroup_code: "3012", status: "red" }),
-    activity({ code: "301112", sector_code: "3", group_code: "301", subgroup_code: "3011", status: "green" }),
-  ]);
-  assert.ok(result.findings.some((finding) => finding.id === "catalog-blocked" && finding.severity === "critical"));
-  assert.ok(result.findings.some((finding) => finding.id === "catalog-regulated" && finding.severity === "warning"));
+test("keeps the source status as a concise label instead of long analysis findings", () => {
+  assert.equal(getNAEStatusInfo("red", "ar").label, "محظور");
+  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم");
+  assert.equal(getNAEStatusInfo("green", "fr").label, "Réglementée");
+  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée");
 });
 
 test("recognizes complementary operations cautiously", () => {
