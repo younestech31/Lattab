@@ -46,7 +46,6 @@ const AR_TO_FR: Record<string, string[]> = {
   "صيدلي": ["pharmacie", "pharmaceutique"],
   "ادوية": ["médicaments", "produits pharmaceutiques"],
   "دواء": ["médicament", "produit pharmaceutique"],
-  "ادوية": ["médicaments", "produits pharmaceutiques"],
   "شبه صيدلانية": ["parapharmaceutique"],
   "مستلزمات طبية": ["dispositifs médicaux", "matériel médical"],
   // Real estate
@@ -81,8 +80,6 @@ const AR_TO_FR: Record<string, string[]> = {
   "عزل": ["étanchéité", "isolation"],
   // Import and trade
   "استيراد": ["importation", "import"],
-  "استيراد": ["importation", "import"],
-  "استيراد": ["importation"],
   "بيع": ["vente", "commerce"],
   "تجزئة": ["détail"],
   "جملة": ["gros"],
