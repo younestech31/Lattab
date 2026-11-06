@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { NAEActivity } from "../lib/nae/schema";
-import { analyzeNAEProject, getNAEProjectRegulatoryStatus } from "../lib/nae/project-analysis";
+import { analyzeNAEProject, getNAEProjectRegulatoryStatus, requiresVerificationBeforeProjectSelection } from "../lib/nae/project-analysis";
 import { searchNAEProject } from "../lib/nae/project-search";
 
 function activity(
@@ -96,6 +96,12 @@ test("reported catalogue changes remain cautions, not official lifecycle decisio
     },
   ]);
   assert.ok(result.findings.some((finding) => finding.id === "catalog-freshness-observation"));
+});
+
+test("reported withdrawals require a manual check before adding to a new project", () => {
+  assert.equal(requiresVerificationBeforeProjectSelection({ catalog_note_kind: "withdrawal_report" }), true);
+  assert.equal(requiresVerificationBeforeProjectSelection({ catalog_note_kind: "content_change_report" }), false);
+  assert.equal(requiresVerificationBeforeProjectSelection({ catalog_note_kind: undefined }), false);
 });
 
 test("raw UpGrowth status values map to source-reported status categories", () => {

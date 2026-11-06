@@ -39,6 +39,12 @@ export interface NAEProjectAnalysis {
   findings: NAEProjectFinding[];
 }
 
+export function requiresVerificationBeforeProjectSelection(
+  activity: Pick<NAEProjectActivity, "catalog_note_kind">,
+): boolean {
+  return activity.catalog_note_kind === "withdrawal_report";
+}
+
 export function getNAEProjectRegulatoryStatus(rawStatus: string): NAEProjectRegulatoryStatus {
   switch (rawStatus.trim().toLowerCase()) {
     case "normal": return "free";
