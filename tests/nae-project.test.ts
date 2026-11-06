@@ -56,6 +56,19 @@ test("project search tolerates common Arabic prefixes and French plurals", () =>
   assert.ok(searchNAEProject(rows, "installations de réseaux informatiques", "fr").some((hit) => hit.activity.code === "611003"));
 });
 
+test("Arabic descriptions can match French activity text through curated indicative synonyms", () => {
+  const rows = [
+    activity("611005", "6", "normal", {
+      label_ar: "#NOM?",
+      label_fr: "Maintenance informatique",
+      contenue_fr: "Maintenance des ordinateurs et réparation de matériel informatique",
+    }),
+  ];
+  const hits = searchNAEProject(rows, "صيانة حواسيب", "ar");
+  assert.equal(hits[0]?.activity.code, "611005");
+  assert.ok(hits[0]?.evidence.includes("curated_synonym"));
+});
+
 test("project search keeps match evidence for explainable results", () => {
   const rows = [activity("611001", "6", "normal", {
     label_ar: "صيانة أجهزة الإعلام الآلي",

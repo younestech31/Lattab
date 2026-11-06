@@ -5,7 +5,8 @@ export type NAEProjectSearchEvidence =
   | "label_ar"
   | "label_fr"
   | "contenue_fr"
-  | "accessoires_fr";
+  | "accessoires_fr"
+  | "curated_synonym";
 
 export interface NAEProjectSearchHit {
   activity: NAEActivity;
@@ -54,6 +55,54 @@ function tokenVariants(term: string): string[] {
     if (term.endsWith("x") && term.length > 4) variants.add(term.slice(0, -1));
   }
   return [...variants].filter((variant) => variant.length > 2);
+}
+
+const CURATED_SYNONYMS: Record<string, string[]> = {
+  "بيع": ["vente", "commerce"],
+  "تجارة": ["commerce", "vente"],
+  "جملة": ["gros", "grossiste"],
+  "بالجملة": ["gros", "grossiste"],
+  "تجزئة": ["detail", "vente au detail"],
+  "صيانة": ["maintenance", "reparation"],
+  "اصلاح": ["reparation", "reparation de materiel"],
+  "تركيب": ["installation", "montage"],
+  "تنصيب": ["installation", "montage"],
+  "شبكات": ["reseaux", "reseau"],
+  "شبكة": ["reseau", "reseaux"],
+  "اعلام": ["informatique"],
+  "الي": ["informatique"],
+  "حواسيب": ["ordinateurs", "ordinateur", "informatique"],
+  "حاسوب": ["ordinateur", "informatique"],
+  "اجهزة": ["materiel", "equipement"],
+  "معدات": ["materiel", "equipement"],
+  "نقل": ["transport"],
+  "توصيل": ["livraison"],
+  "تسليم": ["livraison"],
+  "استيراد": ["importation"],
+  "تصدير": ["exportation", "export"],
+  "انتاج": ["production", "fabrication"],
+  "تصنيع": ["fabrication", "production"],
+  "تأجير": ["location"],
+  "عقارات": ["immobilier", "immobiliere"],
+  "تكوين": ["formation"],
+  "تدريب": ["formation"],
+  "استشارة": ["conseil"],
+  "توزيع": ["distribution"],
+};
+
+function expandedTokenVariants(term: string): { variants: string[]; usesSynonym: boolean } {
+  const direct = tokenVariants(term);
+  const variants = new Set(direct);
+  let usesSynonym = false;
+  for (const candidate of direct) {
+    for (const synonym of CURATED_SYNONYMS[candidate] ?? []) {
+      for (const synonymVariant of tokenVariants(normalizeNAESearchText(synonym))) {
+        variants.add(synonymVariant);
+        usesSynonym = true;
+      }
+    }
+  }
+  return { variants: [...variants], usesSynonym };
 }
 
 function usable(value: string | null | undefined): value is string {
@@ -105,13 +154,19 @@ export function searchNAEProject(
     const evidence = new Set<NAEProjectSearchEvidence>();
     let score = 0;
     for (const term of terms) {
-      const variants = tokenVariants(term);
-      const matches = fields.filter((field) => variants.some((variant) => field.value.includes(variant)));
+      const directVariants = tokenVariants(term);
+      const expanded = expandedTokenVariants(term);
+      const matches = fields.filter((field) => expanded.variants.some((variant) => field.value.includes(variant)));
       if (!matches.length) continue;
       matchedTerms.push(term);
       const best = matches.reduce((current, item) => item.weight > current.weight ? item : current);
       score += best.weight;
       evidence.add(best.key);
+      const directMatch = fields.some((field) => directVariants.some((variant) => field.value.includes(variant)));
+      if (!directMatch && expanded.usesSynonym) {
+        evidence.add("curated_synonym");
+        score -= 1;
+      }
     }
 
     if (!matchedTerms.length) continue;

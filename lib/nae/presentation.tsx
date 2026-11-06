@@ -198,7 +198,8 @@ export function NAEExplorerPage({
                       if (field === "label_ar") return ar ? "مطابقة في التسمية العربية" : "Correspondance dans le libellé arabe";
                       if (field === "label_fr") return ar ? "مطابقة في التسمية الفرنسية" : "Correspondance dans le libellé français";
                       if (field === "contenue_fr") return ar ? "مطابقة في محتوى النشاط" : "Correspondance dans le contenu";
-                      return ar ? "مطابقة في الأنشطة الإضافية" : "Correspondance dans les activités accessoires";
+                      if (field === "accessoires_fr") return ar ? "مطابقة في الأنشطة الملحقة" : "Correspondance dans les opérations accessoires";
+                      return ar ? "مطابقة بمرادف مساعد مُراجع" : "Correspondance par synonyme indicatif";
                     }) : [];
                     return (
                       <article key={activity.code} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">

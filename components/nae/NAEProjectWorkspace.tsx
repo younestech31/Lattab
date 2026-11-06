@@ -11,6 +11,17 @@ import {
   type NAEProjectDraft,
 } from "./project-storage";
 
+const LEGAL_SOURCE_URLS: Record<string, string> = {
+  "decree-15-249-article-2": "https://www.joradp.dz/FTP/jo-francais/2015/F2015052.pdf",
+  "decree-15-249-article-9": "https://www.joradp.dz/FTP/jo-francais/2015/F2015052.pdf",
+  "decree-15-249-article-11": "https://www.joradp.dz/FTP/jo-francais/2015/F2015052.pdf",
+  "decree-15-249-articles-2-and-9": "https://www.joradp.dz/FTP/jo-francais/2015/F2015052.pdf",
+  "decree-20-355-articles-4-and-4-bis": "https://www.commerce.gov.dz/fr/telecharger/reglementation/934/article",
+  "upgrowth-status-dictionary": "https://www.upgrowth.dz/ar/datasets/cnrc-2026",
+  "source-observations.json": "https://www.upgrowth.dz/ar/outils/nomenclature",
+  "dataset-field-coverage": "https://www.upgrowth.dz/ar/datasets/cnrc-2026",
+};
+
 const STATUS_LABELS = {
   ar: { free: "حر حسب المصدر", regulated: "منظم حسب المصدر", prohibited: "محظور حسب المصدر", unknown: "غير محدد" },
   fr: { free: "Libre selon la source", regulated: "Réglementée selon la source", prohibited: "Interdite selon la source", unknown: "Non renseigné" },
@@ -165,6 +176,12 @@ export default function NAEProjectWorkspace({
                   <li key={finding.id} className="border-s-2 border-gray-300 ps-3">
                     <p className="text-sm font-semibold text-gray-900">{ar ? finding.title_ar : finding.title_fr}</p>
                     <p className="mt-1 text-sm leading-6 text-gray-700">{ar ? finding.message_ar : finding.message_fr}</p>
+                    {LEGAL_SOURCE_URLS[finding.legal_reference] && (
+                      <a href={LEGAL_SOURCE_URLS[finding.legal_reference]} target="_blank" rel="noopener noreferrer"
+                        className="mt-1 inline-flex text-xs font-semibold text-emerald-800 underline underline-offset-4">
+                        {ar ? "فتح المرجع القانوني أو المصدر" : "Ouvrir la référence juridique ou la source"}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
