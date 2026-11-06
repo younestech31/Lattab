@@ -108,6 +108,36 @@ test("searches Arabic project wording through reviewed synonyms", () => {
 });
 
 
+test("finds an activity by its exact six-digit code in the unified project search", () => {
+  const records = [
+    activity({ code: "507202", sector_code: "5", group_code: "507", subgroup_code: "5072" }),
+    activity({ code: "613201", sector_code: "6", group_code: "613", subgroup_code: "6132" }),
+  ];
+  const result = searchNAEProject(createNAESearchIndex(records, "ar"), "507202");
+  assert.equal(result[0]?.activity.code, "507202");
+  assert.ok(result[0]?.matchedFields.includes("code"));
+});
+
+test("searches the original French designation without changing either source label", () => {
+  const frenchLabel = "Vente au détail de matériel informatique";
+  const arabicLabel = "بيع بالتجزئة لمعدات الإعلام الآلي";
+  const records = [
+    activity({
+      code: "507202",
+      sector_code: "5",
+      group_code: "507",
+      subgroup_code: "5072",
+      label_fr: frenchLabel,
+      label_ar: arabicLabel,
+    }),
+  ];
+  const result = searchNAEProject(createNAESearchIndex(records, "fr"), frenchLabel);
+  assert.equal(result[0]?.activity.code, "507202");
+  assert.equal(result[0]?.activity.label_fr, frenchLabel);
+  assert.equal(result[0]?.activity.label_ar, arabicLabel);
+  assert.ok(result[0]?.matchedFields.includes("label_fr"));
+});
+
 test("keeps group and subgroup signals internal without generating explanatory findings", () => {
   const result = analyzeNAEProject([
     activity({ code: "301101", sector_code: "3", group_code: "301", subgroup_code: "3011" }),
