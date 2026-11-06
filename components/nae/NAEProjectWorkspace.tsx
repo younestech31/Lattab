@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { NAE_PROJECT_DRAFT_STORAGE_KEY, parseNAEProjectDraft, type NAEProjectDraft } from "@/lib/nae/project-draft";
+import { NAE_PROJECT_DRAFT_STORAGE_KEY, NAE_PROJECT_DESCRIPTION_MAX_LENGTH, parseNAEProjectDraft, type NAEProjectDraft } from "@/lib/nae/project-draft";
 
 type Lang = "ar" | "fr";
 type StatusInfo = { label: string; className: string };
@@ -13,6 +13,7 @@ type Hit = {
   status: string;
   statusInfo: StatusInfo;
   matchedFields: string[];
+  matchedTerms: string[];
   usedSynonym: boolean;
 };
 type ProjectActivity = {
@@ -21,6 +22,9 @@ type ProjectActivity = {
   label_fr: string;
   status: string;
   statusInfo: StatusInfo;
+  tutelle_fr: string | null;
+  type_autorisation_fr: string | null;
+  references_texte_fr: string | null;
 };
 type Finding = {
   id: string;
@@ -95,6 +99,14 @@ export default function NAEProjectWorkspace({
         updating: "يتم تحديث المراجعة تلقائياً…",
         evidence: "سبب المطابقة",
         synonym: "تطابق عبر مرادف",
+        matchedTerms: "المصطلح الذي أدى إلى المطابقة",
+        characters: "حرف",
+        regulatoryInfo: "المعلومات التنظيمية المتاحة (كما وردت بالفرنسية)",
+        tutelle: "الجهة الوصية",
+        procedure: "نوع الإجراء أو الترخيص",
+        references: "المراجع النصية",
+        fieldMissing: "غير مدرج في نسخة البيانات",
+        regulatoryMissing: "لا تورد نسخة البيانات حقول الوصاية أو الإجراء لهذا النشاط؛ لا يعني ذلك عدم وجود شرط أو ترخيص.",
         add: "إضافة",
         added: "مضاف",
         project: "نشاطات المشروع",
@@ -133,6 +145,14 @@ export default function NAEProjectWorkspace({
         updating: "Mise à jour automatique…",
         evidence: "Correspondance",
         synonym: "Correspondance par synonyme",
+        matchedTerms: "Terme ayant déclenché la correspondance",
+        characters: "caractères",
+        regulatoryInfo: "Informations réglementaires disponibles (libellés source en français)",
+        tutelle: "Autorité de tutelle",
+        procedure: "Type d’autorisation ou de démarche",
+        references: "Références textuelles",
+        fieldMissing: "Non renseigné dans cette version des données",
+        regulatoryMissing: "La source ne renseigne pas les champs de tutelle ou de procédure pour cette activité ; cela ne prouve pas l’absence d’une exigence.
         add: "Ajouter",
         added: "Ajoutée",
         project: "Activités du projet",
@@ -350,16 +370,17 @@ export default function NAEProjectWorkspace({
           id="nae-project-description"
           type="search"
           value={description}
-          onChange={(event) => setDescription(event.target.value.slice(0, 180))}
+          onChange={(event) => setDescription(event.target.value.slice(0, NAE_PROJECT_DESCRIPTION_MAX_LENGTH))}
           placeholder={t.placeholder}
-          maxLength={180}
+          maxLength={NAE_PROJECT_DESCRIPTION_MAX_LENGTH}
           autoComplete="off"
           dir="auto"
           aria-controls="nae-project-search-results"
           className="min-h-12 w-full rounded-xl border border-gray-300 bg-white px-4 text-base text-gray-900 placeholder:text-gray-400 focus-visible:border-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/20"
         />
-        <p className="mt-2 min-h-5 text-xs text-gray-500" aria-live="polite">
-          {searching ? t.searching : query.length < 2 ? "" : ""}
+        <p className="mt-2 flex min-h-5 items-center justify-between gap-3 text-xs text-gray-500" aria-live="polite">
+          <span>{searching ? t.searching : ""}</span>
+          <span dir="ltr" className="tabular-nums">{description.length}/{NAE_PROJECT_DESCRIPTION_MAX_LENGTH} {t.characters}</span>
         </p>
       </div>
 
@@ -393,6 +414,11 @@ export default function NAEProjectWorkspace({
                       {t.evidence}: {hit.matchedFields.map((field) => fieldName(field, ar)).join(ar ? "، " : ", ")}
                       {hit.usedSynonym ? ` · ${t.synonym}` : ""}
                     </p>
+                    {hit.usedSynonym && hit.matchedTerms.length > 0 && (
+                      <p className="mt-1 text-xs text-gray-500">
+                        {t.matchedTerms}: <bdi dir="ltr" className="font-medium">{hit.matchedTerms.slice(0, 4).join(" · ")}</bdi>
+                      </p>
+                    )}
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
                     <Link
@@ -459,6 +485,29 @@ export default function NAEProjectWorkspace({
                     <p dir="ltr" lang="fr" className="text-sm leading-6 text-gray-700">
                       {item ? (usableLabel(item.label_fr) ? item.label_fr : t.notAvailable) : ""}
                     </p>
+                    {item && (
+                      <div className="mt-3 rounded-lg border border-gray-100 bg-gray-50 p-3">
+                        <p className="mb-2 text-xs font-semibold text-gray-700">{t.regulatoryInfo}</p>
+                        {item.tutelle_fr || item.type_autorisation_fr || item.references_texte_fr ? (
+                          <dl className="grid gap-2 text-xs sm:grid-cols-2">
+                            <div>
+                              <dt className="font-semibold text-gray-600">{t.tutelle}</dt>
+                              <dd dir="ltr" lang="fr" className="mt-0.5 leading-5 text-gray-800">{item.tutelle_fr || t.fieldMissing}</dd>
+                            </div>
+                            <div>
+                              <dt className="font-semibold text-gray-600">{t.procedure}</dt>
+                              <dd dir="ltr" lang="fr" className="mt-0.5 leading-5 text-gray-800">{item.type_autorisation_fr || t.fieldMissing}</dd>
+                            </div>
+                            <div className="sm:col-span-2">
+                              <dt className="font-semibold text-gray-600">{t.references}</dt>
+                              <dd dir="ltr" lang="fr" className="mt-0.5 whitespace-pre-line leading-5 text-gray-800">{item.references_texte_fr || t.fieldMissing}</dd>
+                            </div>
+                          </dl>
+                        ) : (
+                          <p className="text-xs leading-5 text-gray-600">{t.regulatoryMissing}</p>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div className="flex items-center gap-3">
                     {primary !== code && (
@@ -535,6 +584,8 @@ export default function NAEProjectWorkspace({
                 <th>{t.code}</th>
                 <th dir="rtl">{t.arabic}</th>
                 <th dir="ltr">{t.french}</th>
+                <th>{ar ? "الحالة" : "Statut"}</th>
+                <th>{ar ? "الوصاية والإجراء" : "Tutelle et procédure"}</th>
                 <th>{t.role}</th>
               </tr>
             </thead>
@@ -544,6 +595,14 @@ export default function NAEProjectWorkspace({
                   <td dir="ltr" className="font-mono">{item.code}</td>
                   <td dir="rtl" lang="ar">{usableLabel(item.label_ar) ? item.label_ar : t.notAvailable}</td>
                   <td dir="ltr" lang="fr">{usableLabel(item.label_fr) ? item.label_fr : t.notAvailable}</td>
+                  <td>{item.statusInfo.label}</td>
+                  <td dir="ltr" lang="fr" className="text-xs">
+                    {[
+                      item.tutelle_fr,
+                      item.type_autorisation_fr,
+                      item.references_texte_fr,
+                    ].filter(Boolean).join(" — ") || t.fieldMissing}
+                  </td>
                   <td>{item.code === data.analysis.primaryCode ? t.mainRole : t.additionalRole}</td>
                 </tr>
               ))}
