@@ -82,6 +82,7 @@ export default function NAEProjectWorkspace({
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState("");
   const [data, setData] = useState<ResponseData | null>(null);
+  const [analysisSignature, setAnalysisSignature] = useState("");
   const [analyzing, setAnalyzing] = useState(false);
   const [analysisError, setAnalysisError] = useState("");
   const [ready, setReady] = useState(false);
@@ -94,6 +95,7 @@ export default function NAEProjectWorkspace({
         results: "نتائج البحث",
         noResults: "لا توجد نتائج مطابقة. جرّب كلمة أخرى أو أدخل رمز النشاط.",
         searching: "جارٍ البحث…",
+        updating: "يتم تحديث المراجعة تلقائياً…",
         evidence: "سبب المطابقة",
         synonym: "تطابق عبر مرادف",
         add: "إضافة",
@@ -131,6 +133,7 @@ export default function NAEProjectWorkspace({
         results: "Résultats",
         noResults: "Aucun résultat correspondant. Essayez un autre terme ou saisissez le code.",
         searching: "Recherche…",
+        updating: "Mise à jour automatique…",
         evidence: "Correspondance",
         synonym: "Correspondance par synonyme",
         add: "Ajouter",
@@ -247,10 +250,14 @@ export default function NAEProjectWorkspace({
   }, [description, lang, ready, t.error]);
 
   // Re-run the preliminary checks automatically whenever the description or list changes.
+  const currentAnalysisSignature = JSON.stringify([description, codes, primary, lang]);
+  const analysisIsCurrent = Boolean(data && analysisSignature === currentAnalysisSignature);
+
   useEffect(() => {
     if (!ready) return;
     if (!codes.length) {
       setData(null);
+      setAnalysisSignature("");
       setAnalyzing(false);
       setAnalysisError("");
       return;
@@ -270,7 +277,10 @@ export default function NAEProjectWorkspace({
         });
         if (!response.ok) throw new Error("analysis");
         const payload = (await response.json()) as ResponseData;
-        if (active) setData(payload);
+        if (active) {
+          setData(payload);
+          setAnalysisSignature(currentAnalysisSignature);
+        }
       } catch (error) {
         if (active && !(error instanceof DOMException && error.name === "AbortError")) {
           setAnalysisError(t.error);
@@ -285,7 +295,7 @@ export default function NAEProjectWorkspace({
       window.clearTimeout(timer);
       controller.abort();
     };
-  }, [codes, description, lang, primary, ready, t.error]);
+  }, [codes, currentAnalysisSignature, description, lang, primary, ready, t.error]);
 
   const activityByCode = useMemo(
     () => new Map((data?.activities ?? []).map((item) => [item.code, item])),
@@ -307,7 +317,7 @@ export default function NAEProjectWorkspace({
     setPrimary(null);
   }
 
-  const printReady = Boolean(data && data.activities.length === codes.length && !analyzing);
+  const printReady = Boolean(analysisIsCurrent && data && data.activities.length === codes.length && !analyzing);
 
   return (
     <section
@@ -515,11 +525,11 @@ export default function NAEProjectWorkspace({
           >
             {t.print}
           </button>
-          {analyzing && <span className="text-xs text-gray-500">{ar ? "يتم تحديث المراجعة تلقائياً…" : "Mise à jour automatique…"}</span>}
+          {analyzing && <span className="text-xs text-gray-500">{t.updating}</span>}
         </div>
       </div>
 
-      {data && (
+      {analysisIsCurrent && data && (
         <div data-nae-print-sheet className="hidden">
           <header className="mb-6 border-b-2 border-gray-800 pb-4 text-center">
             <h1 className="text-2xl font-bold">{t.printTitle}</h1>
