@@ -142,6 +142,7 @@ export default function NAEProjectWorkspace({
                       <span className="text-xs text-gray-500">{STATUS_LABELS[lang][status]}</span>
                     </div>
                     <p className="mt-1 text-sm font-semibold text-gray-900">{ar ? (activity.label_ar || activity.label_fr) : (activity.label_fr || activity.label_ar)}</p>
+                    {activity.catalog_note_kind && <p className="mt-1 text-xs leading-5 text-amber-800">{ar ? activity.catalog_note_ar : activity.catalog_note_fr}</p>}
                     <p className="mt-1 text-xs text-gray-500">{t.sectors}: {activity.sector_code}</p>
                   </div>
                   <div className="print-hidden flex shrink-0 flex-wrap items-center gap-2">

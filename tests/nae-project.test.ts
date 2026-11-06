@@ -66,6 +66,25 @@ test("project search keeps match evidence for explainable results", () => {
   assert.ok(hit?.evidence.includes("label_ar"));
 });
 
+test("article 2 complementary operations are flagged without auto-adding an activity", () => {
+  const result = analyzeNAEProject([
+    activity("611003", "6"),
+  ], "صيانة أجهزة الحاسوب وتركيبها وتوصيلها للزبائن");
+  assert.ok(result.findings.some((finding) => finding.id === "complementary-installation"));
+  assert.ok(result.findings.some((finding) => finding.id === "complementary-transport-delivery"));
+});
+
+test("reported catalogue changes remain cautions, not official lifecycle decisions", () => {
+  const result = analyzeNAEProject([
+    {
+      ...activity("301205", "3"),
+      catalog_note_kind: "withdrawal_report",
+      catalog_note_ar: "رصد ثانوي غير مؤكد",
+    },
+  ]);
+  assert.ok(result.findings.some((finding) => finding.id === "catalog-freshness-observation"));
+});
+
 test("raw UpGrowth status values map to source-reported status categories", () => {
   assert.equal(getNAEProjectRegulatoryStatus("normal"), "free");
   assert.equal(getNAEProjectRegulatoryStatus("green"), "regulated");

@@ -41,11 +41,11 @@ function projectTerms(value: string): string[] {
 
 function tokenVariants(term: string): string[] {
   const variants = new Set([term]);
-  if (/^[\\u0600-\\u06FF]+$/u.test(term)) {
+  if (/^\p{Script=Arabic}+$/u.test(term)) {
     let current = term;
     if (current.startsWith("و") && current.length > 3) current = current.slice(1);
     variants.add(current);
-    if (current.startsWith("بال") && current.length > 4) variants.add(current.slice(2));
+    if (current.startsWith("بال") && current.length > 4) variants.add(current.slice(3));
     if (current.startsWith("لل") && current.length > 4) variants.add(current.slice(2));
     if (current.startsWith("ال") && current.length > 4) variants.add(current.slice(2));
     if ((current.startsWith("ب") || current.startsWith("ل")) && current.length > 4) variants.add(current.slice(1));

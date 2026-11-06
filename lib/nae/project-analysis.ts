@@ -13,6 +13,9 @@ export interface NAEProjectActivity {
   tutelle_fr?: string | null;
   type_autorisation_fr?: string | null;
   references_texte_fr?: string | null;
+  catalog_note_ar?: string;
+  catalog_note_fr?: string;
+  catalog_note_kind?: string;
 }
 
 export interface NAEProjectFinding {
@@ -128,7 +131,60 @@ export function analyzeNAEProject(
     });
   }
 
+  const selectedWithCatalogNotes = unique.filter((item) => item.catalog_note_kind);
+  if (selectedWithCatalogNotes.length > 0) {
+    findings.push({
+      id: "catalog-freshness-observation",
+      severity: "caution",
+      title_ar: "توجد ملاحظة تحديث على بعض الرموز المختارة",
+      title_fr: "Une observation de mise à jour concerne certaines activités",
+      message_ar: "تتضمن القائمة نشاطاً ورد بشأنه تقرير تحديث من مصدر متابعة ثانوي بعد نسخة البيانات الحالية. هذه الملاحظة ليست تأكيداً رسمياً؛ تحقّق من سجل CNRC قبل الاعتماد.",
+      message_fr: "La sélection comprend une activité faisant l’objet d’un signalement de mise à jour par une source secondaire après l’instantané actuel. Ce signalement n’est pas une confirmation officielle ; vérifiez la fiche CNRC.",
+      legal_reference: "source-observations.json",
+    });
+  }
+
   const normalizedDescription = normalizeNAESearchText(description);
+  const complementaryOperations = [
+    {
+      id: "complementary-transport-delivery",
+      terms: ["نقل", "توصيل", "تسليم", "transport", "livraison", "livrer"],
+      title_ar: "النقل أو التسليم للزبائن",
+      title_fr: "Transport ou livraison à la clientèle",
+    },
+    {
+      id: "complementary-installation",
+      terms: ["تركيب", "تنصيب", "montage", "installation"],
+      title_ar: "تركيب وتنصيب المعدات",
+      title_fr: "Montage et installation du matériel",
+    },
+    {
+      id: "complementary-spare-parts",
+      terms: ["قطع غيار", "pieces de rechange", "piece detachee"],
+      title_ar: "توفير قطع الغيار",
+      title_fr: "Fourniture de pièces de rechange",
+    },
+    {
+      id: "complementary-consulting-training",
+      terms: ["استشارة", "تكوين", "تدريب", "conseil", "formation"],
+      title_ar: "الاستشارة والتكوين",
+      title_fr: "Conseil et formation",
+    },
+  ];
+  for (const operation of complementaryOperations) {
+    if (operation.terms.some((term) => normalizedDescription.includes(normalizeNAESearchText(term)))) {
+      findings.push({
+        id: operation.id,
+        severity: "info",
+        title_ar: operation.title_ar,
+        title_fr: operation.title_fr,
+        message_ar: "ورد هذا النوع من العمليات ضمن العمليات التكميلية في المادة 2 من المرسوم 15-249، متى أُنجز تكميلياً للنشاط الرئيسي. لا تضف رمزاً مستقلاً آلياً؛ افحص محتوى النشاط وما إذا كانت العملية مستقلة بذاتها.",
+        message_fr: "Ce type d’opération figure parmi les opérations complémentaires de l’article 2 du décret 15-249 lorsqu’il est accessoire à l’activité principale. N’ajoutez pas automatiquement un code distinct ; vérifiez le contenu et le caractère autonome de l’opération.",
+        legal_reference: "decree-15-249-article-2",
+      });
+    }
+  }
+
   const exportIntent = ["تصدير", "exporter", "exportation", "export"].some((term) =>
     normalizedDescription.includes(normalizeNAESearchText(term))
   );

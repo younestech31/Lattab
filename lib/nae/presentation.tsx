@@ -10,6 +10,7 @@ import { getNAEActivities, getNAEActivityByCode } from "@/lib/nae/data";
 import { buildNAETaxonomy, filterNAEByTaxonomy } from "@/lib/nae/search";
 import { searchNAEProject } from "@/lib/nae/project-search";
 import { getNAEProjectRegulatoryStatus } from "@/lib/nae/project-analysis";
+import { getNAEActivitySourceNote } from "@/lib/nae/source-observations";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
 import { normalizeNAECompareCodes } from "@/lib/nae/comparison";
@@ -189,6 +190,7 @@ export function NAEExplorerPage({
                     const sectorLabel = sector ? (lang === "ar" ? sector.label_ar : sector.label_fr) : "";
                     const otherLabel = lang === "ar" ? activity.label_fr : activity.label_ar;
                     const sourceStatus = getNAEProjectRegulatoryStatus(activity.status);
+                    const sourceNote = getNAEActivitySourceNote(activity.code);
                     const sourceStatusLabel = ar
                       ? ({ free: "حر حسب المصدر", regulated: "منظم حسب المصدر", prohibited: "محظور حسب المصدر", unknown: "الحالة غير محددة" } as const)[sourceStatus]
                       : ({ free: "Libre selon la source", regulated: "Réglementée selon la source", prohibited: "Interdite selon la source", unknown: "Statut non renseigné" } as const)[sourceStatus];
@@ -209,6 +211,7 @@ export function NAEExplorerPage({
                           {usable(otherLabel) && otherLabel !== localLabel(activity, lang) && <p className="mt-0.5 text-sm text-gray-500">{otherLabel}</p>}
                           <p className="mt-1 text-xs text-gray-500">{sectorLabel}</p>
                           {evidenceLabels.length > 0 && <p className="mt-1 text-xs text-gray-500">{ar ? "سبب الظهور: " : "Correspondance : "}{evidenceLabels.join(ar ? "؛ " : " · ")}</p>}
+                          {sourceNote && <p className="mt-2 text-xs leading-5 text-amber-800">{ar ? sourceNote.message_ar : sourceNote.message_fr}</p>}
                         </div>
                         <div className="flex shrink-0 flex-wrap items-center gap-2">
                           <Link href={action + "/" + activity.code} className="inline-flex min-h-10 items-center rounded-lg bg-emerald-800 px-4 text-sm font-semibold text-white hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2">{t.open}</Link>
@@ -223,6 +226,7 @@ export function NAEExplorerPage({
                             tutelle_fr: activity.tutelle_fr,
                             type_autorisation_fr: activity.type_autorisation_fr,
                             references_texte_fr: activity.references_texte_fr,
+                            ...(sourceNote ? { catalog_note_ar: sourceNote.message_ar, catalog_note_fr: sourceNote.message_fr, catalog_note_kind: sourceNote.kind } : {}),
                           }} lang={lang} />
                           <NAECompareButton code={activity.code} selectedCodes={compareCodes} baseHref={baseHref} lang={lang} />
                         </div>
@@ -315,6 +319,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
   const ar = lang === "ar";
   const action = ar ? "/nae" : "/fr/nae";
   const title = getNAEActivityTitle(activity, lang);
+  const sourceNote = getNAEActivitySourceNote(activity.code);
   const preferred = ar ? activity.label_ar : activity.label_fr;
   const hasPreferred = usable(preferred);
   const sector = NAE_SECTORS[activity.sector_code as NAESectorCode];
@@ -331,7 +336,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     home: "الرئيسية", explorer: "دليل النشاطات", classification: "التصنيف",
     sector: "القطاع",
     content: "محتوى النشاط", accessories: "الأنشطة الإضافية", regulatory: "المعلومات التنظيمية المتاحة (بالفرنسية)",
-    related: "أنشطة ضمن المجموعة الفرعية نفسها", noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
+    related: "أنشطة قريبة في التصنيف", noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
     missingLabel: "التسمية العربية غير متاحة في المصدر؛ عُرضت التسمية الفرنسية.",
     disclaimer: "مرجع استرشادي غير رسمي؛ لا يثبت وحده شروط الترخيص أو إمكانية جمع الأنشطة. تحقّق لدى المركز الوطني للسجل التجاري والجهة المختصة.",
     openSource: "Sidjilcom",
@@ -339,7 +344,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     home: "Accueil", explorer: "Nomenclature", classification: "Classification",
     sector: "Secteur",
     content: "Contenu de l’activité", accessories: "Activités accessoires", regulatory: "Informations réglementaires",
-    related: "Activités du même sous-groupe", noContent: "Aucune description disponible dans le fichier.",
+    related: "Activités proches dans la classification", noContent: "Aucune description disponible dans le fichier.",
     missingLabel: "Le libellé français est absent de la source ; le libellé arabe est affiché.",
     disclaimer: "Référence indicative non officielle ; elle ne prouve pas les conditions d’autorisation ni la possibilité de cumul. Vérifiez auprès du CNRC et de l’autorité compétente.",
     openSource: "Sidjilcom",
@@ -385,8 +390,10 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
                   tutelle_fr: activity.tutelle_fr,
                   type_autorisation_fr: activity.type_autorisation_fr,
                   references_texte_fr: activity.references_texte_fr,
+                  ...(sourceNote ? { catalog_note_ar: sourceNote.message_ar, catalog_note_fr: sourceNote.message_fr, catalog_note_kind: sourceNote.kind } : {}),
                 }} lang={lang} />
               </div>
+              {sourceNote && <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">{ar ? sourceNote.message_ar : sourceNote.message_fr}</p>}
             </div>
           </section>
 
