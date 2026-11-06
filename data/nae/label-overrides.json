@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "verified_at": "2026-11-06",
+  "attribution": "UpGrowth (2026), Nomenclature CNRC 2026, CC BY 4.0",
+  "license": "CC BY 4.0",
+  "source_pages": {
+    "ar": "https://www.upgrowth.dz/ar/outils/nomenclature",
+    "fr": "https://www.upgrowth.dz/outils/recherche-code-activite",
+    "en": "https://www.upgrowth.dz/en/tools/business-activity-finder"
+  },
+  "policy": "Display-only corrections for source cells containing the literal #NOM?. Raw sector JSON and the original CSV values remain unchanged. An override is applied only while the current raw value still equals its recorded from value.",
+  "overrides": {
+    "443102": {
+      "label_ar": {
+        "from": "#NOM?",
+        "value": "استيراد قطع الغيار و اللواحق المتعلقة بالمعدات و الآلات الكهرومنزلية",
+        "source_language": "ar",
+        "source_url": "https://www.upgrowth.dz/ar/outils/nomenclature"
+      }
+    },
+    "607042": {
+      "label_ar": {
+        "from": "#NOM?",
+        "value": "مؤسسة الوقاية من الأخطار المهنية.",
+        "source_language": "ar",
+        "source_url": "https://www.upgrowth.dz/ar/outils/nomenclature"
+      }
+    },
+    "308006": {
+      "label_fr": {
+        "from": "#NOM?",
+        "value": "distribution en gros de tous produits phytosanitaires à usage agricole.",
+        "source_language": "fr",
+        "source_url": "https://www.upgrowth.dz/outils/recherche-code-activite"
+      },
+      "label_en": {
+        "from": "#NOM?",
+        "value": "wholesale distribution of all phytosanitary products for agricultural use.",
+        "source_language": "en",
+        "source_url": "https://www.upgrowth.dz/en/tools/business-activity-finder"
+      }
+    },
+    "310012": {
+      "label_fr": {
+        "from": "#NOM?",
+        "value": "distribution en gros de kit de pétrole liquéfié et accessoires (gpl).",
+        "source_language": "fr",
+        "source_url": "https://www.upgrowth.dz/outils/recherche-code-activite"
+      },
+      "label_en": {
+        "from": "#NOM?",
+        "value": "wholesale distribution of liquefied petroleum kits and accessories (LPG).",
+        "source_language": "en",
+        "source_url": "https://www.upgrowth.dz/en/tools/business-activity-finder"
+      }
+    },
+    "431103": {
+      "label_fr": {
+        "from": "#NOM?",
+        "value": "importation de moteurs et turbines industrielles ou autres y compris leurs pièces détachées et leurs accessoires.",
+        "source_language": "fr",
+        "source_url": "https://www.upgrowth.dz/outils/recherche-code-activite"
+      }
+    }
+  }
+}
