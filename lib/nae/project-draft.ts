@@ -6,6 +6,7 @@ export interface NAEProjectDraft {
 }
 
 export const NAE_PROJECT_DRAFT_STORAGE_KEY = "lattab.nae.project.v1";
+export const NAE_PROJECT_DESCRIPTION_MAX_LENGTH = 600;
 
 const EMPTY_DRAFT: NAEProjectDraft = {
   version: 1,
@@ -41,7 +42,7 @@ export function parseNAEProjectDraft(raw: string | null): NAEProjectDraft {
     return {
       version: 1,
       description:
-        typeof value.description === "string" ? value.description.slice(0, 180) : "",
+        typeof value.description === "string" ? value.description.slice(0, NAE_PROJECT_DESCRIPTION_MAX_LENGTH) : "",
       codes,
       primaryCode,
     };
