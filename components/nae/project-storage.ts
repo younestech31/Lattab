@@ -51,6 +51,8 @@ function readActivity(value: unknown): NAEProjectActivity | null {
     tutelle_fr: nullableValue("tutelle_fr"),
     type_autorisation_fr: nullableValue("type_autorisation_fr"),
     references_texte_fr: nullableValue("references_texte_fr"),
+    contenue_fr: stringValue("contenue_fr"),
+    accessoires_fr: nullableValue("accessoires_fr"),
     catalog_note_ar: stringValue("catalog_note_ar"),
     catalog_note_fr: stringValue("catalog_note_fr"),
     catalog_note_kind: stringValue("catalog_note_kind"),

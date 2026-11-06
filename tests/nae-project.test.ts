@@ -119,6 +119,30 @@ test("sectors five and six remain a conditional exception, not automatic approva
   assert.ok(result.findings.some((finding) => finding.id === "multiple-sectors"));
 });
 
+test("complementary operation analysis checks the primary activity text", () => {
+  const covered = analyzeNAEProject([
+    {
+      ...activity("611003", "6"),
+      contenue_fr: "Maintenance et installation de matériel informatique",
+      accessoires_fr: null,
+    },
+  ], "صيانة وتركيب معدات الإعلام الآلي", "611003");
+  const finding = covered.findings.find((item) => item.id === "complementary-installation");
+  assert.ok(finding);
+  assert.match(finding.message_fr, /correspondance textuelle/);
+
+  const notFound = analyzeNAEProject([
+    {
+      ...activity("611004", "6"),
+      contenue_fr: "Conseil en gestion",
+      accessoires_fr: null,
+    },
+  ], "تركيب معدات", "611004");
+  const noMatch = notFound.findings.find((item) => item.id === "complementary-installation");
+  assert.ok(noMatch);
+  assert.match(noMatch.message_fr, /Aucune mention directe/);
+});
+
 test("export intent does not automatically require sector seven", () => {
   const result = analyzeNAEProject([activity("101101", "1")], "إنتاج وتصدير المنتجات");
   assert.ok(result.findings.some((finding) => finding.id === "export-does-not-require-sector-7-by-default"));

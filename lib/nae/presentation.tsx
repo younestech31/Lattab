@@ -226,6 +226,8 @@ export function NAEExplorerPage({
                             tutelle_fr: activity.tutelle_fr,
                             type_autorisation_fr: activity.type_autorisation_fr,
                             references_texte_fr: activity.references_texte_fr,
+                            contenue_fr: activity.contenue_fr,
+                            accessoires_fr: activity.accessoires_fr,
                             ...(sourceNote ? { catalog_note_ar: sourceNote.message_ar, catalog_note_fr: sourceNote.message_fr, catalog_note_kind: sourceNote.kind } : {}),
                           }} lang={lang} />
                           <NAECompareButton code={activity.code} selectedCodes={compareCodes} baseHref={baseHref} lang={lang} />
@@ -390,6 +392,8 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
                   tutelle_fr: activity.tutelle_fr,
                   type_autorisation_fr: activity.type_autorisation_fr,
                   references_texte_fr: activity.references_texte_fr,
+                  contenue_fr: activity.contenue_fr,
+                  accessoires_fr: activity.accessoires_fr,
                   ...(sourceNote ? { catalog_note_ar: sourceNote.message_ar, catalog_note_fr: sourceNote.message_fr, catalog_note_kind: sourceNote.kind } : {}),
                 }} lang={lang} />
               </div>

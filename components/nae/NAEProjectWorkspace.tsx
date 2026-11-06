@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { NAE_SECTORS } from "@/lib/nae/sectors";
 import { analyzeNAEProject, getNAEProjectRegulatoryStatus } from "@/lib/nae/project-analysis";
 import {
   NAE_PROJECT_CHANGE_EVENT,
@@ -49,8 +50,8 @@ export default function NAEProjectWorkspace({
   }, [description]);
 
   const analysis = useMemo(
-    () => analyzeNAEProject(draft.activities, draft.description),
-    [draft.activities, draft.description],
+    () => analyzeNAEProject(draft.activities, draft.description, draft.primaryCode),
+    [draft.activities, draft.description, draft.primaryCode],
   );
 
   function update(next: NAEProjectDraft) {
@@ -133,6 +134,7 @@ export default function NAEProjectWorkspace({
             {draft.activities.map((activity) => {
               const isPrimary = draft.primaryCode === activity.code;
               const status = getNAEProjectRegulatoryStatus(activity.status);
+              const sector = NAE_SECTORS[activity.sector_code as keyof typeof NAE_SECTORS];
               return (
                 <li key={activity.code} className="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
                   <div className="min-w-0">
@@ -143,7 +145,7 @@ export default function NAEProjectWorkspace({
                     </div>
                     <p className="mt-1 text-sm font-semibold text-gray-900">{ar ? (activity.label_ar || activity.label_fr) : (activity.label_fr || activity.label_ar)}</p>
                     {activity.catalog_note_kind && <p className="mt-1 text-xs leading-5 text-amber-800">{ar ? activity.catalog_note_ar : activity.catalog_note_fr}</p>}
-                    <p className="mt-1 text-xs text-gray-500">{t.sectors}: {activity.sector_code}</p>
+                    <p className="mt-1 text-xs text-gray-500">{t.sectors}: {activity.sector_code} — {sector ? (ar ? sector.label_ar : sector.label_fr) : ""}</p>
                   </div>
                   <div className="print-hidden flex shrink-0 flex-wrap items-center gap-2">
                     <Link href={`${ar ? "" : "/fr"}/nae/${activity.code}`} className="text-xs font-semibold text-emerald-800 underline underline-offset-4">{ar ? "التفاصيل" : "Détails"}</Link>

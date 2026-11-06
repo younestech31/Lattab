@@ -13,6 +13,8 @@ export interface NAEProjectActivity {
   tutelle_fr?: string | null;
   type_autorisation_fr?: string | null;
   references_texte_fr?: string | null;
+  contenue_fr?: string;
+  accessoires_fr?: string | null;
   catalog_note_ar?: string;
   catalog_note_fr?: string;
   catalog_note_kind?: string;
@@ -53,11 +55,13 @@ export function getNAEProjectRegulatoryStatus(rawStatus: string): NAEProjectRegu
 export function analyzeNAEProject(
   activities: readonly NAEProjectActivity[],
   description = "",
+  primaryCode: string | null = null,
 ): NAEProjectAnalysis {
   const unique = [...new Map(activities.map((item) => [item.code, item])).values()];
   const sectors = [...new Set(unique.map((item) => item.sector_code))].sort();
   const groups = new Set(unique.map((item) => item.group_code));
   const subgroups = new Set(unique.map((item) => item.subgroup_code));
+  const primaryActivity = unique.find((item) => item.code === primaryCode) ?? unique[0];
   const statusCounts: Record<NAEProjectRegulatoryStatus, number> = {
     free: 0, regulated: 0, prohibited: 0, unknown: 0,
   };
@@ -149,37 +153,63 @@ export function analyzeNAEProject(
     {
       id: "complementary-transport-delivery",
       terms: ["نقل", "توصيل", "تسليم", "transport", "livraison", "livrer"],
+      activityTerms: ["نقل", "توصيل", "تسليم", "transport", "livraison", "livrer"],
       title_ar: "النقل أو التسليم للزبائن",
       title_fr: "Transport ou livraison à la clientèle",
     },
     {
       id: "complementary-installation",
       terms: ["تركيب", "تنصيب", "montage", "installation"],
+      activityTerms: ["تركيب", "تنصيب", "montage", "installation", "installer"],
       title_ar: "تركيب وتنصيب المعدات",
       title_fr: "Montage et installation du matériel",
     },
     {
       id: "complementary-spare-parts",
       terms: ["قطع غيار", "pieces de rechange", "piece detachee"],
+      activityTerms: ["قطع غيار", "pieces de rechange", "piece detachee", "spare parts"],
       title_ar: "توفير قطع الغيار",
       title_fr: "Fourniture de pièces de rechange",
     },
     {
       id: "complementary-consulting-training",
       terms: ["استشارة", "تكوين", "تدريب", "conseil", "formation"],
+      activityTerms: ["استشارة", "تكوين", "تدريب", "conseil", "formation"],
       title_ar: "الاستشارة والتكوين",
       title_fr: "Conseil et formation",
     },
   ];
   for (const operation of complementaryOperations) {
     if (operation.terms.some((term) => normalizedDescription.includes(normalizeNAESearchText(term)))) {
+      const primaryContent = normalizeNAESearchText(primaryActivity?.contenue_fr ?? "");
+      const primaryAccessories = normalizeNAESearchText(primaryActivity?.accessoires_fr ?? "");
+      const mentionedInContent = operation.activityTerms.some((term) =>
+        primaryContent.includes(normalizeNAESearchText(term))
+      );
+      const mentionedInAccessories = operation.activityTerms.some((term) =>
+        primaryAccessories.includes(normalizeNAESearchText(term))
+      );
+      const coverageNote = !primaryActivity
+        ? "لم تحدد نشاطاً رئيسياً بعد؛ أضفه إلى القائمة لتتمكن الأداة من فحص نصه."
+        : mentionedInContent
+          ? "وجد فحص نصي عبارة مرتبطة بهذه العملية في محتوى النشاط الرئيسي. هذا تطابق لفظي لا يثبت أن كل صور العملية مغطاة قانونياً."
+          : mentionedInAccessories
+            ? "وجد فحص نصي عبارة مرتبطة بهذه العملية ضمن الأنشطة الملحقة بالنشاط الرئيسي. هذا تطابق لفظي لا يثبت أن كل صور العملية مغطاة قانونياً."
+            : "لم يعثر الفحص النصي على ذكر مباشر لهذه العملية في محتوى النشاط الرئيسي أو أنشطته الملحقة؛ راجع البطاقة والنصوص الخاصة قبل إضافة رمز آخر.";
+      const coverageNoteFr = !primaryActivity
+        ? "Aucune activité principale n’est encore définie ; ajoutez-en une pour examiner son contenu."
+        : mentionedInContent
+          ? "Une expression liée à cette opération apparaît dans le contenu de l’activité principale. Il s’agit d’une correspondance textuelle, pas d’une confirmation de couverture juridique."
+          : mentionedInAccessories
+            ? "Une expression liée à cette opération apparaît dans les activités accessoires de l’activité principale. Il s’agit d’une correspondance textuelle, pas d’une confirmation de couverture juridique."
+            : "Aucune mention directe n’a été trouvée dans le contenu ni les activités accessoires de l’activité principale ; vérifiez la fiche et les textes avant d’ajouter un autre code.";
       findings.push({
         id: operation.id,
         severity: "info",
         title_ar: operation.title_ar,
         title_fr: operation.title_fr,
-        message_ar: "ورد هذا النوع من العمليات ضمن العمليات التكميلية في المادة 2 من المرسوم 15-249، متى أُنجز تكميلياً للنشاط الرئيسي. لا تضف رمزاً مستقلاً آلياً؛ افحص محتوى النشاط وما إذا كانت العملية مستقلة بذاتها.",
-        message_fr: "Ce type d’opération figure parmi les opérations complémentaires de l’article 2 du décret 15-249 lorsqu’il est accessoire à l’activité principale. N’ajoutez pas automatiquement un code distinct ; vérifiez le contenu et le caractère autonome de l’opération.",
+        message_ar: "تُذكر هذه العملية ضمن العمليات التكميلية في المادة 2 من المرسوم 15-249 متى أُنجزت تكميلياً للنشاط الرئيسي. " + coverageNote + " لا تضف رمزاً مستقلاً آلياً.",
+        message_fr: "Cette opération figure parmi les opérations complémentaires de l’article 2 du décret 15-249 lorsqu’elle est accessoire à l’activité principale. " + coverageNoteFr + " N’ajoutez pas automatiquement un code distinct.",
         legal_reference: "decree-15-249-article-2",
       });
     }
