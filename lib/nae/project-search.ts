@@ -39,6 +39,23 @@ function projectTerms(value: string): string[] {
   ))];
 }
 
+function tokenVariants(term: string): string[] {
+  const variants = new Set([term]);
+  if (/^[\\u0600-\\u06FF]+$/u.test(term)) {
+    let current = term;
+    if (current.startsWith("و") && current.length > 3) current = current.slice(1);
+    variants.add(current);
+    if (current.startsWith("بال") && current.length > 4) variants.add(current.slice(2));
+    if (current.startsWith("لل") && current.length > 4) variants.add(current.slice(2));
+    if (current.startsWith("ال") && current.length > 4) variants.add(current.slice(2));
+    if ((current.startsWith("ب") || current.startsWith("ل")) && current.length > 4) variants.add(current.slice(1));
+  } else {
+    if (term.endsWith("s") && term.length > 4) variants.add(term.slice(0, -1));
+    if (term.endsWith("x") && term.length > 4) variants.add(term.slice(0, -1));
+  }
+  return [...variants].filter((variant) => variant.length > 2);
+}
+
 function usable(value: string | null | undefined): value is string {
   return Boolean(value?.trim()) && value?.trim() !== "#NOM?";
 }
@@ -88,7 +105,8 @@ export function searchNAEProject(
     const evidence = new Set<NAEProjectSearchEvidence>();
     let score = 0;
     for (const term of terms) {
-      const matches = fields.filter((field) => field.value.includes(term));
+      const variants = tokenVariants(term);
+      const matches = fields.filter((field) => variants.some((variant) => field.value.includes(variant)));
       if (!matches.length) continue;
       matchedTerms.push(term);
       const best = matches.reduce((current, item) => item.weight > current.weight ? item : current);

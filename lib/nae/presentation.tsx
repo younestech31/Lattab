@@ -6,7 +6,7 @@ import NAEPrintButton from "@/components/nae/NAEPrintButton";
 import NAEProjectAddButton from "@/components/nae/NAEProjectAddButton";
 import NAEProjectWorkspace from "@/components/nae/NAEProjectWorkspace";
 import UnifiedPageHeader from "@/components/ui/UnifiedPageHeader";
-import { getNAEActivities, getNAEActivityByCode, getNAESearchIndex } from "@/lib/nae/data";
+import { getNAEActivities, getNAEActivityByCode } from "@/lib/nae/data";
 import { buildNAETaxonomy, filterNAEByTaxonomy } from "@/lib/nae/search";
 import { searchNAEProject } from "@/lib/nae/project-search";
 import { getNAEProjectRegulatoryStatus } from "@/lib/nae/project-analysis";

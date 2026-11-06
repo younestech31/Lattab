@@ -44,6 +44,18 @@ test("project search can match different words across different activity fields"
   assert.ok(hits[0]?.matchedTerms.length);
 });
 
+test("project search tolerates common Arabic prefixes and French plurals", () => {
+  const rows = [
+    activity("611003", "6", "normal", {
+      label_ar: "تركيب الشبكات المعلوماتية",
+      label_fr: "Installation de réseau informatique",
+      contenue_fr: "Installation et configuration de réseau informatique",
+    }),
+  ];
+  assert.ok(searchNAEProject(rows, "التركيب بالشبكات", "ar").some((hit) => hit.activity.code === "611003"));
+  assert.ok(searchNAEProject(rows, "installations de réseaux informatiques", "fr").some((hit) => hit.activity.code === "611003"));
+});
+
 test("project search keeps match evidence for explainable results", () => {
   const rows = [activity("611001", "6", "normal", {
     label_ar: "صيانة أجهزة الإعلام الآلي",
