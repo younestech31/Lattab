@@ -389,7 +389,7 @@ export default function NAEProjectWorkspace({
                       {usableLabel(hit.label_ar) ? hit.label_ar : t.notAvailable}
                     </p>
                     <p dir="ltr" lang="fr" className="mt-0.5 text-sm leading-6 text-gray-700">
-                      {usableLabel(hit.label_fr) ? hit.label_fr : (ar ? t.notAvailable : t.notAvailable)}
+                      {usableLabel(hit.label_fr) ? hit.label_fr : t.notAvailable}
                     </p>
                     <p className="mt-2 text-xs text-gray-500">
                       {t.evidence}: {hit.matchedFields.map((field) => fieldName(field, ar)).join(ar ? "، " : ", ")}
