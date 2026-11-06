@@ -297,7 +297,7 @@ for (let i = 0; i < 18; i++) {
  */
 export function mapGN31ToFieldValues(
   data: GN31FormData,
-  lang: 'ar' | 'fr' = 'ar'
+  _lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
   const cleanWilaya = data.directionWilaya
     .replace(/^(مديرية الضرائب لولاية|DIW de)\s*/iu, '')

@@ -229,7 +229,7 @@ function splitTwoLines(text: string, maxLength: number): [string, string] {
  */
 export function mapGN8ToFieldValues(
   data: GN8FormData,
-  lang: 'ar' | 'fr' = 'ar'
+  _lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
   
   const cleanWilaya = data.directionWilaya

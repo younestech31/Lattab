@@ -37,6 +37,8 @@ export const KNOWN_STATIC_ROUTES = new Set([
   '/fr/formulaires/gn8',
   '/formulaires/gn51',
   '/fr/formulaires/gn51',
+  '/nae',
+  '/fr/nae',
 ]);
 
 // Keep middleware edge-compatible: do not import the filesystem-backed blog registry here.

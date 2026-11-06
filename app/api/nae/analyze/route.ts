@@ -37,6 +37,9 @@ export async function POST(request: NextRequest) {
       sector_code: activity.sector_code,
       group_code: activity.group_code,
       subgroup_code: activity.subgroup_code,
+      tutelle_fr: activity.tutelle_fr ?? null,
+      type_autorisation_fr: activity.type_autorisation_fr ?? null,
+      references_texte_fr: activity.references_texte_fr ?? null,
     })),
     analysis: { ...projectAnalysis, sectorLabels: projectAnalysis.sectors.map((code) => NAE_SECTORS[code as keyof typeof NAE_SECTORS]?.[language === "ar" ? "label_ar" : "label_fr"] ?? code) },
   }, { headers: { "Cache-Control": "no-store" } });

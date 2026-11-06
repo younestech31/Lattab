@@ -189,7 +189,7 @@ export const GN51_FIELD_COORDINATES_FR: FormFieldCoord[] = [
 export function mapGN51ToFieldValues(
   data: GN51FormData,
   calc: GN51ComputeResult,
-  lang: 'ar' | 'fr' = 'ar'
+  _lang: 'ar' | 'fr' = 'ar'
 ): Record<string, string | number | boolean> {
   const cleanWilaya = data.wilaya
     .replace(/^(مديرية الضرائب لولاية|DIW de)\s*/iu, '')

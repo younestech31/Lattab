@@ -81,6 +81,18 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
     codes:activities.filter((activity) => activity.sector_code === "7").map((activity) => activity.code)
   });
 
+  if (sectors.includes("4")) findings.push({
+    id: "sector-4-review",
+    severity: "info",
+    title_ar: "ملاحظة مراجعة نشاطات قطاع الاستيراد لإعادة البيع على الحالة",
+    title_fr: "Note d’examen pour les activités d’importation pour la revente en l’état",
+    detail_ar: "يخضع قطاع الاستيراد لإعادة البيع على الحالة (القطاع 4) لشروط تنظيمية خاصة وفق التشريع والتنظيم المعمول بهما (بما في ذلك دفتر الشروط وتجانس الأنشطة وتخصيص مستخرج السجل التجاري). هذه ملاحظة إعلامية للمراجعة مع الجهات المختصة، وليست حكماً بالمنع أو القبول التلقائي.",
+    detail_fr: "Le secteur de l’importation pour la revente en l’état (secteur 4) est soumis à des conditions réglementaires spécifiques selon la législation et la réglementation en vigueur (notamment cahier des charges, homogénéité des activités et spécialisation de l’extrait du registre du commerce). Il s’agit d’une note d’information préalable à vérifier auprès des autorités compétentes, et non d’une décision automatique d’autorisation ou de refus.",
+    article: "Décret exécutif 15-249 & réglementation du secteur 4",
+    sourceUrl: DECREE_15_249,
+    codes: activities.filter((activity) => activity.sector_code === "4").map((activity) => activity.code),
+  });
+
   const text = normalizeNAESearchText(description);
   const operations = COMPLEMENTARY.filter((operation) => operation.terms.some((term) => containsNormalizedPhrase(text, term)));
   if (operations.length) findings.push({
