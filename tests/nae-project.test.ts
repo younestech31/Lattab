@@ -5,7 +5,7 @@ import { analyzeNAEProject } from "../lib/nae/project-analysis";
 import { getNAEStatusCode, getNAEStatusInfo } from "../lib/nae/status";
 import { createNAESearchIndex } from "../lib/nae/search";
 import { searchNAEProject } from "../lib/nae/project-search";
-import { addNAEProjectCode, parseNAEProjectDraft } from "../lib/nae/project-draft";
+import { addNAEProjectCode, parseNAEProjectDraft, NAE_PROJECT_DESCRIPTION_MAX_LENGTH } from "../lib/nae/project-draft";
 
 function activity(overrides: Partial<NAEActivity> & Pick<NAEActivity, "code" | "sector_code" | "group_code" | "subgroup_code">): NAEActivity {
   return {
@@ -175,6 +175,57 @@ test("searches the original French designation without changing either source la
   assert.equal(result[0]?.activity.label_fr, frenchLabel);
   assert.equal(result[0]?.activity.label_ar, arabicLabel);
   assert.ok(result[0]?.matchedFields.includes("label_fr"));
+});
+
+test("allows a realistic project description up to the shared 600-character limit", () => {
+  const longDescription = "بيع بالجملة والتجزئة وصيانة وتركيب المعدات ونقلها واستيراد قطع الغيار. ".repeat(12);
+  const draft = parseNAEProjectDraft(JSON.stringify({
+    version: 1,
+    description: longDescription,
+    codes: [],
+    primaryCode: null,
+  }));
+  assert.equal(NAE_PROJECT_DESCRIPTION_MAX_LENGTH, 600);
+  assert.equal(draft.description.length, 600);
+});
+
+test("expands common office descriptions through reviewed deterministic synonyms", () => {
+  const records = [
+    activity({ code: "202407", sector_code: "2", group_code: "202", subgroup_code: "2024", label_fr: "Boulangerie pâtisserie artisanale" }),
+    activity({ code: "601201", sector_code: "6", group_code: "601", subgroup_code: "6012", label_fr: "Restauration complète (restaurant)" }),
+    activity({ code: "501201", sector_code: "5", group_code: "501", subgroup_code: "5012", label_fr: "Pharmacie d'officine" }),
+    activity({ code: "611004", sector_code: "6", group_code: "611", subgroup_code: "6110", label_fr: "Agence immobilière" }),
+    activity({ code: "604103", sector_code: "6", group_code: "604", subgroup_code: "6041", label_fr: "Entreprise de gestion de taxis", contenue_fr: "Transport de voyageurs par taxis" }),
+    activity({ code: "109206", sector_code: "1", group_code: "109", subgroup_code: "1092", label_fr: "Entreprise de travaux d'électricité" }),
+    activity({ code: "431103", sector_code: "4", group_code: "431", subgroup_code: "4311", label_fr: "Importation de moteurs et turbines industrielles" }),
+  ];
+  const index = createNAESearchIndex(records, "ar");
+  const cases: Array<[string, string]> = [
+    ["مخبزة", "202407"],
+    ["مطعم", "601201"],
+    ["صيدلية", "501201"],
+    ["عقار", "611004"],
+    ["نقل الأشخاص", "604103"],
+    ["مقاولة", "109206"],
+    ["استيراد", "431103"],
+  ];
+  for (const [query, expectedCode] of cases) {
+    const result = searchNAEProject(index, query);
+    assert.ok(result.some((item) => item.activity.code === expectedCode), `Expected ${query} to find ${expectedCode}`);
+    const match = result.find((item) => item.activity.code === expectedCode);
+    assert.equal(match?.usedSynonym, true);
+    assert.ok((match?.matchedTerms.length ?? 0) > 0);
+  }
+});
+
+test("adds a neutral sector-four information note without declaring activities allowed or prohibited", () => {
+  const result = analyzeNAEProject([
+    activity({ code: "431103", sector_code: "4", group_code: "431", subgroup_code: "4311" }),
+  ]);
+  const note = result.findings.find((finding) => finding.id === "sector-4-import-resale-context");
+  assert.ok(note);
+  assert.equal(note?.severity, "info");
+  assert.match(note?.detail_ar ?? "", /ليس حكماً بالجواز أو المنع/);
 });
 
 test("keeps group and subgroup signals internal without generating explanatory findings", () => {
