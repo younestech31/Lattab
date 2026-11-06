@@ -3,8 +3,11 @@ import NAECompareButton from "@/components/nae/NAECompareButton";
 import NAEActivityActions from "@/components/nae/NAEActivityActions";
 import NAECompareRestore from "@/components/nae/NAECompareRestore";
 import NAEPrintButton from "@/components/nae/NAEPrintButton";
+import NAEProjectWorkspace from "@/components/nae/NAEProjectWorkspace";
+import NAEAddToProjectButton from "@/components/nae/NAEAddToProjectButton";
+import { getNAEStatusInfo } from "@/lib/nae/status";
 import UnifiedPageHeader from "@/components/ui/UnifiedPageHeader";
-import { getNAEActivities, getNAEActivityByCode, getNAESearchIndex } from "@/lib/nae/data";
+import { getNAEActivities, getNAEActivityByCode, getNAESearchIndex, getNAEDatasetManifest } from "@/lib/nae/data";
 import { buildNAETaxonomy, filterNAEByTaxonomy, searchNAE, type NAESearchLanguage } from "@/lib/nae/search";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
@@ -86,7 +89,7 @@ export function NAEExplorerPage({
   };
 
   const t = ar ? {
-    title: "دليل النشاطات الاقتصادية", description: "ابحث برمز النشاط أو اسمه، أو تصفّح حسب القطاع.",
+    title: "إعداد ومراجعة نشاطات المشروع", description: "صف نشاطات مشروعك وابحث في التسمية والمحتوى، ثم اجمع الاختيارات لمراجعتها.",
     search: "ابحث عن نشاط أو رمز", placeholder: "مثال: 611001 أو تأجير العقارات", submit: "بحث",
     filters: "تصفية حسب التصنيف", sector: "القطاع", allSectors: "جميع القطاعات",
     group: "المجموعة", allGroups: "جميع المجموعات", subgroup: "المجموعة الفرعية",
@@ -97,12 +100,12 @@ export function NAEExplorerPage({
     compareHint: "اختر نشاطين أو ثلاثة لعرض الفروق بينها.", compareRows: "بيان المقارنة",
     content: "محتوى النشاط (بالفرنسية)", accessories: "الأنشطة الإضافية (بالفرنسية)", tutelle: "الجهة الوصية (بالفرنسية)",
     authorization: "نوع الترخيص (بالفرنسية)", references: "المراجع النصية (بالفرنسية)",
-    sourceNote: "مرجع استرشادي غير رسمي. تحقّق من المعلومات التنظيمية لدى المركز الوطني للسجل التجاري والجهة المختصة.",
-    sourceLink: "بوابة Sidjilcom", home: "الرئيسية", current: "دليل النشاطات",
+    sourceNote: "نسخة بيانات مؤرخة ومرجع استرشادي؛ تحقق من الحالة الحالية لدى CNRC والجهة المختصة قبل التسجيل.",
+    sourceLink: "بوابة Sidjilcom", home: "الرئيسية", current: "إعداد نشاطات المشروع",
     noValue: "غير متوفر في ملف البيانات",
     compareDisclaimer: "تعرض المقارنة الاختلافات بين البيانات المتاحة فقط. غياب قيمة في الملف لا يعني عدم وجود شرط قانوني.",
   } : {
-    title: "Nomenclature des activités économiques", description: "Recherchez par code ou libellé, ou parcourez les secteurs.",
+    title: "Préparation et examen des activités du projet", description: "Décrivez les opérations envisagées, recherchez dans les libellés et contenus, puis examinez votre sélection.",
     search: "Rechercher une activité ou un code", placeholder: "Ex. : 611001 ou location immobilière", submit: "Rechercher",
     filters: "Filtrer par classification", sector: "Secteur", allSectors: "Tous les secteurs",
     group: "Groupe", allGroups: "Tous les groupes", subgroup: "Sous-groupe",
@@ -113,8 +116,8 @@ export function NAEExplorerPage({
     compareHint: "Sélectionnez deux ou trois activités pour les comparer.", compareRows: "Élément comparé",
     content: "Contenu de l’activité", accessories: "Activités accessoires", tutelle: "Tutelle",
     authorization: "Type d’autorisation", references: "Références textuelles",
-    sourceNote: "Référence indicative non officielle. Vérifiez les informations réglementaires auprès du CNRC et de l’autorité compétente.",
-    sourceLink: "Portail Sidjilcom", home: "Accueil", current: "Nomenclature",
+    sourceNote: "Instantané daté et référence indicative ; vérifiez la situation actuelle auprès du CNRC et de l’autorité compétente avant l’immatriculation.",
+    sourceLink: "Portail Sidjilcom", home: "Accueil", current: "Préparation des activités",
     noValue: "Non renseigné dans le fichier",
     compareDisclaimer: "La comparaison porte uniquement sur les données disponibles. Une valeur absente ne signifie pas l’absence d’une exigence légale.",
   };
@@ -123,8 +126,6 @@ export function NAEExplorerPage({
     { key: "label_ar", label: ar ? "التسمية العربية" : "Libellé arabe", value: (a: NAEActivity) => usable(a.label_ar) ? a.label_ar : t.noValue, dir: "rtl" as const },
     { key: "label_fr", label: ar ? "التسمية الفرنسية" : "Libellé français", value: (a: NAEActivity) => usable(a.label_fr) ? a.label_fr : t.noValue, dir: "ltr" as const },
     { key: "sector", label: t.sector, value: (a: NAEActivity) => a.sector_code + " — " + (NAE_SECTORS[a.sector_code as NAESectorCode]?.[lang === "ar" ? "label_ar" : "label_fr"] ?? ""), dir: "auto" as const },
-    { key: "group", label: t.group, value: (a: NAEActivity) => a.group_code, dir: "ltr" as const },
-    { key: "subgroup", label: t.subgroup, value: (a: NAEActivity) => a.subgroup_code, dir: "ltr" as const },
     { key: "content", label: t.content, value: (a: NAEActivity) => a.contenue_fr || t.noValue, dir: "ltr" as const },
     { key: "accessories", label: t.accessories, value: (a: NAEActivity) => a.accessoires_fr || t.noValue, dir: "ltr" as const },
     { key: "tutelle", label: t.tutelle, value: (a: NAEActivity) => a.tutelle_fr || t.noValue, dir: "ltr" as const },
@@ -138,7 +139,10 @@ export function NAEExplorerPage({
         breadcrumbs={[{ name: t.home, href: ar ? "/" : "/fr" }, { name: t.current }]} />
       <main className="py-8 md:py-10">
         <div className="container mx-auto max-w-6xl px-4">
-          <section className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6" aria-label={t.search}>
+          <NAEProjectWorkspace lang={lang} sourceRevisionDate={getNAEDatasetManifest().source_revision_date ?? (ar ? "غير محدد" : "non précisée")} />
+          <details className="mt-5 rounded-xl border border-gray-200 bg-white p-4 sm:p-5">
+            <summary className="cursor-pointer text-sm font-semibold text-gray-700">{ar ? "بحث مرجعي مباشر بالرمز أو التسمية" : "Recherche directe par code ou libellé"}</summary>
+          <section className="mt-4 rounded-2xl border border-gray-100 bg-white p-1 sm:p-2" aria-label={t.search}>
             <form action={action} method="get" className="space-y-4">
               {compareParamPresent && compareCodes.length > 0 && <input type="hidden" name="compare" value={compareCodes.join(",")} />}
               <div className="flex flex-col gap-2 sm:flex-row">
@@ -147,25 +151,12 @@ export function NAEExplorerPage({
                   className="min-h-12 min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-4 text-base text-gray-900 placeholder:text-gray-400 focus-visible:border-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/20" />
                 <button type="submit" className="min-h-12 rounded-xl bg-emerald-800 px-8 font-bold text-white transition hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2">{t.submit}</button>
               </div>
-              <details className="border-t border-gray-100 pt-3" open={hasFilters}>
-                <summary className="cursor-pointer text-sm font-semibold text-gray-700 marker:text-emerald-800">
-                  {t.filters}
-                  {(sector || group || subgroup) && <span className="ms-2 rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-900">{[sector, group, subgroup].filter(Boolean).length}</span>}
-                </summary>
-                <div className="grid gap-3 pt-4 sm:grid-cols-3">
-                  <label className="block text-sm font-medium text-gray-700"><span className="mb-1.5 block">{t.sector}</span>
+              <details className="border-t border-gray-100 pt-3" open={Boolean(sector)}>
+                <summary className="cursor-pointer text-sm font-semibold text-gray-700 marker:text-emerald-800">{ar ? "تصفية حسب القطاع" : "Filtrer par secteur"}</summary>
+                <div className="pt-4">
+                  <label className="block max-w-sm text-sm font-medium text-gray-700"><span className="mb-1.5 block">{t.sector}</span>
                     <select name="sector" defaultValue={sector ?? ""} className="min-h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-gray-800">
                       <option value="">{t.allSectors}</option>{taxonomy.map((item) => <option key={item.code} value={item.code}>{item.code} — {lang === "ar" ? item.label_ar : item.label_fr}</option>)}
-                    </select>
-                  </label>
-                  <label className="block text-sm font-medium text-gray-700"><span className="mb-1.5 block">{t.group}</span>
-                    <select name="group" defaultValue={group ?? ""} className="min-h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-gray-800">
-                      <option value="">{t.allGroups}</option>{groups.map((item) => <option key={item.code} value={item.code}>{item.code}</option>)}
-                    </select>
-                  </label>
-                  <label className="block text-sm font-medium text-gray-700"><span className="mb-1.5 block">{t.subgroup}</span>
-                    <select name="subgroup" defaultValue={subgroup ?? ""} className="min-h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-gray-800">
-                      <option value="">{t.allSubgroups}</option>{subgroups.map((item) => <option key={item.code} value={item.code}>{item.code}</option>)}
                     </select>
                   </label>
                 </div>
@@ -188,13 +179,15 @@ export function NAEExplorerPage({
                   {shown.map(({ activity }) => {
                     const sector = NAE_SECTORS[activity.sector_code as NAESectorCode];
                     const sectorLabel = sector ? (lang === "ar" ? sector.label_ar : sector.label_fr) : "";
+                    const statusInfo = getNAEStatusInfo(activity.status, lang);
                     const otherLabel = lang === "ar" ? activity.label_fr : activity.label_ar;
                     return (
                       <article key={activity.code} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
                             <span className="font-mono text-sm font-bold text-emerald-800" dir="ltr">{activity.code}</span>
-                            <span className="text-xs text-gray-400">{activity.group_code} / {activity.subgroup_code}</span>
+                            <span className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${statusInfo.className}`}>{statusInfo.label}</span>
+                            
                           </div>
                           <h3 className="mt-1 text-base font-semibold leading-7 text-gray-900">{localLabel(activity, lang)}</h3>
                           {usable(otherLabel) && otherLabel !== localLabel(activity, lang) && <p className="mt-0.5 text-sm text-gray-500">{otherLabel}</p>}
@@ -239,6 +232,8 @@ export function NAEExplorerPage({
               </div>
             </section>
           )}
+
+          </details>
 
           <NAECompareRestore selectedCodes={compareCodes} compareParamPresent={compareParamPresent} />
 
@@ -294,6 +289,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
   const preferred = ar ? activity.label_ar : activity.label_fr;
   const hasPreferred = usable(preferred);
   const sector = NAE_SECTORS[activity.sector_code as NAESectorCode];
+  const statusInfo = getNAEStatusInfo(activity.status, lang);
   const related = getNAEActivities()
     .filter((item) => item.code !== activity.code && item.subgroup_code === activity.subgroup_code)
     .slice(0, 5);
@@ -307,7 +303,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     home: "الرئيسية", explorer: "دليل النشاطات", classification: "التصنيف",
     sector: "القطاع", group: "المجموعة", subgroup: "المجموعة الفرعية",
     content: "محتوى النشاط", accessories: "الأنشطة الإضافية", regulatory: "المعلومات التنظيمية المتاحة (بالفرنسية)",
-    related: "أنشطة ضمن المجموعة الفرعية نفسها", noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
+    related: "أنشطة أخرى قريبة في التصنيف", noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
     missingLabel: "التسمية العربية غير متاحة في المصدر؛ عُرضت التسمية الفرنسية.",
     disclaimer: "مرجع استرشادي غير رسمي؛ لا يثبت وحده شروط الترخيص أو إمكانية جمع الأنشطة. تحقّق لدى المركز الوطني للسجل التجاري والجهة المختصة.",
     openSource: "Sidjilcom",
@@ -315,7 +311,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     home: "Accueil", explorer: "Nomenclature", classification: "Classification",
     sector: "Secteur", group: "Groupe", subgroup: "Sous-groupe",
     content: "Contenu de l’activité", accessories: "Activités accessoires", regulatory: "Informations réglementaires",
-    related: "Activités du même sous-groupe", noContent: "Aucune description disponible dans le fichier.",
+    related: "Autres activités proches dans la classification", noContent: "Aucune description disponible dans le fichier.",
     missingLabel: "Le libellé français est absent de la source ; le libellé arabe est affiché.",
     disclaimer: "Référence indicative non officielle ; elle ne prouve pas les conditions d’autorisation ni la possibilité de cumul. Vérifiez auprès du CNRC et de l’autorité compétente.",
     openSource: "Sidjilcom",
@@ -334,7 +330,10 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
               <div>
                 <p className="text-xs font-semibold text-gray-500">{ar ? "رمز النشاط" : "Code activité"}</p>
                 <p className="mt-1 font-mono text-2xl font-bold tracking-wide text-emerald-900" dir="ltr">{activity.code}</p>
+                <span className={`mt-2 inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${statusInfo.className}`}>{statusInfo.label}</span>
+                <p className="mt-2 max-w-xl text-xs leading-6 text-gray-600">{statusInfo.explanation}</p>
                 <NAEActivityActions code={activity.code} lang={lang} />
+                <NAEAddToProjectButton code={activity.code} lang={lang} />
               </div>
               <Link href={action} className="print:hidden inline-flex min-h-10 items-center rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 hover:bg-gray-50">
                 {ar ? "العودة إلى الدليل" : "Retour à la nomenclature"}
@@ -342,10 +341,9 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
             </div>
             <div className="mt-6 border-t border-gray-100 pt-5">
               <h2 className="text-sm font-bold text-gray-700">{t.classification}</h2>
-              <dl className="mt-3 grid gap-3 sm:grid-cols-3">
+              <dl className="mt-3 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.sector}</dt><dd className="mt-1 font-semibold text-gray-900">{activity.sector_code} — {sector ? (ar ? sector.label_ar : sector.label_fr) : ""}</dd></div>
-                <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.group}</dt><dd className="mt-1 font-mono font-semibold text-gray-900" dir="ltr">{activity.group_code}</dd></div>
-                <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.subgroup}</dt><dd className="mt-1 font-mono font-semibold text-gray-900" dir="ltr">{activity.subgroup_code}</dd></div>
+                <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{ar ? "حالة النشاط في المصدر" : "Statut dans la source"}</dt><dd className="mt-1"><span className={`inline-flex rounded-full border px-2 py-1 text-xs font-semibold ${statusInfo.className}`}>{statusInfo.label}</span></dd></div>
               </dl>
             </div>
           </section>

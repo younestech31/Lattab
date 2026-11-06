@@ -7,9 +7,9 @@ export async function generateMetadata({searchParams}:{searchParams:Params}):Pro
  const p=await searchParams;
  const filtered=p.compare!==undefined || p.page!==undefined || [p.q,p.sector,p.group,p.subgroup].some(v=>Array.isArray(v)?v.some(Boolean):Boolean(v));
  const url=`${SITE_URL}/fr/nae`;
- return {title:{absolute:"Explorateur de la nomenclature des activités économiques (NAE) | Office notarial"},description:"Outil de référence pour rechercher les codes, libellés et contenus des activités économiques en Algérie et parcourir leur classification.",
+ return {title:{absolute:"Préparer et examiner les activités du projet (NAE) | Office notarial"},description:"Outil indicatif pour rechercher des activités NAE à partir d’une description ordinaire, réunir les choix et examiner les points à vérifier avant l’immatriculation.",
   alternates:{canonical:url,languages:{"ar-DZ":`${SITE_URL}/nae`,"fr-DZ":`${SITE_URL}/fr/nae`,"x-default":`${SITE_URL}/nae`}},
   robots:{index:!filtered,follow:true},
-  openGraph:{title:"Explorateur de la nomenclature des activités économiques (NAE) | Office notarial",description:"Outil de référence pour rechercher les codes, libellés et contenus des activités économiques en Algérie et parcourir leur classification.",url,type:"website",locale:"fr_DZ"}};
+  openGraph:{title:"Préparer et examiner les activités du projet (NAE) | Office notarial",description:"Outil indicatif pour rechercher des activités NAE à partir d’une description ordinaire, réunir les choix et examiner les points à vérifier avant l’immatriculation.",url,type:"website",locale:"fr_DZ"}};
 }
 export default async function Page({searchParams}:{searchParams:Params}){return <NAEExplorerPage lang="fr" params={await searchParams}/>;}

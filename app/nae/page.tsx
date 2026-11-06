@@ -7,9 +7,9 @@ export async function generateMetadata({searchParams}:{searchParams:Params}):Pro
  const p=await searchParams;
  const filtered=p.compare!==undefined || p.page!==undefined || [p.q,p.sector,p.group,p.subgroup].some(v=>Array.isArray(v)?v.some(Boolean):Boolean(v));
  const url=`${SITE_URL}/nae`;
- return {title:{absolute:"مستكشف النشاطات الاقتصادية الجزائرية (NAE) | الديوان العمومي للتوثيق"},description:"أداة مرجعية للبحث في رموز النشاطات الاقتصادية الجزائرية وتسمياتها ومحتواها، مع تصفح التصنيف حسب القطاعات والمجموعات.",
+ return {title:{absolute:"إعداد ومراجعة نشاطات المشروع (NAE) | الديوان العمومي للتوثيق"},description:"أداة معلوماتية لمساعدة أصحاب المشاريع على البحث عن نشاطات NAE بالوصف العادي وتجميع الاختيارات ومراجعتها قبل التسجيل التجاري.",
   alternates:{canonical:url,languages:{"ar-DZ":`${SITE_URL}/nae`,"fr-DZ":`${SITE_URL}/fr/nae`,"x-default":`${SITE_URL}/nae`}},
   robots:{index:!filtered,follow:true},
-  openGraph:{title:"مستكشف النشاطات الاقتصادية الجزائرية (NAE) | الديوان العمومي للتوثيق",description:"أداة مرجعية للبحث في رموز النشاطات الاقتصادية الجزائرية وتسمياتها ومحتواها، مع تصفح التصنيف حسب القطاعات والمجموعات.",url,type:"website",locale:"ar_DZ"}};
+  openGraph:{title:"إعداد ومراجعة نشاطات المشروع (NAE) | الديوان العمومي للتوثيق",description:"أداة معلوماتية لمساعدة أصحاب المشاريع على البحث عن نشاطات NAE بالوصف العادي وتجميع الاختيارات ومراجعتها قبل التسجيل التجاري.",url,type:"website",locale:"ar_DZ"}};
 }
 export default async function Page({searchParams}:{searchParams:Params}){return <NAEExplorerPage lang="ar" params={await searchParams}/>;}
