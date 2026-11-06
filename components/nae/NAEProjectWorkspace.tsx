@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 
 type Lang = "ar" | "fr";
 type Status = { label: string; className: string };
@@ -20,7 +20,7 @@ type Finding = {
 };
 type ResponseData = {
   activities: ProjectActivity[];
-  analysis: { selectedCount: number; sectors: string[]; sectorLabels?: string[]; primaryCode: string | null; findings: Finding[] };
+  analysis: { selectedCount: number; sectors: string[]; sectorLabels?: string[]; sameGroup?: boolean; sameSubgroup?: boolean; primaryCode: string | null; findings: Finding[] };
 };
 type Draft = { version: 1; description: string; codes: string[]; primaryCode: string | null };
 const KEY = "lattab.nae.project.v1";
@@ -45,6 +45,8 @@ function fieldName(field: string, ar: boolean) {
 export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: Lang; sourceRevisionDate: string}) {
   const ar = lang === "ar";
   const [description,setDescription] = useState("");
+  const descriptionRef = useRef(description);
+  const [reviewedDescription,setReviewedDescription] = useState<string|null>(null);
   const [results,setResults] = useState<Hit[]>([]);
   const [codes,setCodes] = useState<string[]>([]);
   const [primary,setPrimary] = useState<string|null>(null);
@@ -98,6 +100,8 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
     setReady(true);
   },[]);
 
+  useEffect(() => { descriptionRef.current = description; },[description]);
+
   useEffect(() => {
     if (!ready) return;
     try {
@@ -121,13 +125,17 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
     if (!codes.length) { setData(null); return; }
     setError(""); setBusyAnalysis(true);
     try {
-      const response = await fetch("/api/nae/analyze",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({codes,description,primaryCode:primary,lang})});
+      const response = await fetch("/api/nae/analyze",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({codes,description:descriptionRef.current,primaryCode:primary,lang})});
       if (!response.ok) throw new Error("analysis");
       setData(await response.json() as ResponseData);
+      setReviewedDescription(descriptionRef.current);
     } catch { setError(t.error); } finally { setBusyAnalysis(false); }
-  },[codes,description,t.error]);
+  },[codes,lang,primary,t.error]);
 
 
+  useEffect(() => { if (ready && codes.length) void analyze(); else if (ready) setData(null); },[ready,codes,primary,analyze]);
+
+  const reviewOutdated = Boolean(data && reviewedDescription !== description);
   const detailByCode = useMemo(()=>new Map((data?.activities??[]).map(item=>[item.code,item])),[data]);
   const add = (code:string) => { setCodes(current=>current.includes(code)?current:current.length<50?[...current,code]:current); setPrimary(current=>current??code); setData(null); };
   const remove = (code:string) => { setCodes(current=>current.filter(item=>item!==code)); setPrimary(current=>current===code?codes.find(item=>item!==code)??null:current); setData(null); };
@@ -174,7 +182,7 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
           <div className="flex items-center gap-3">{primary!==code&&<button type="button" onClick={()=>setPrimary(code)} className="text-xs font-semibold text-emerald-800 underline underline-offset-4">{t.makePrimary}</button>}<button type="button" onClick={()=>remove(code)} className="text-xs font-semibold text-gray-500 underline underline-offset-4">{t.remove}</button></div>
         </div>})}
       </div>}
-      {codes.length>0&&<div className="mt-4 flex flex-wrap items-center gap-2"><button type="button" onClick={()=>void analyze()} disabled={busyAnalysis} className="min-h-10 rounded-lg bg-emerald-800 px-4 text-sm font-semibold text-white hover:bg-emerald-900 disabled:opacity-50">{busyAnalysis?t.reviewing:t.review}</button><button type="button" onClick={()=>window.print()} disabled={!data} className="min-h-10 rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 print:hidden">{t.print}</button></div>}
+      {codes.length>0&&<div className="mt-4 flex flex-wrap items-center gap-2">{reviewOutdated&&<span className="text-xs text-amber-800">{ar?"تغير وصف المشروع؛ أعد المراجعة لتحديث النتائج.":"La description a changé ; relancez l’examen pour actualiser les résultats."}</span>}<button type="button" onClick={()=>void analyze()} disabled={busyAnalysis} className="min-h-10 rounded-lg bg-emerald-800 px-4 text-sm font-semibold text-white hover:bg-emerald-900 disabled:opacity-50">{busyAnalysis?t.reviewing:t.review}</button><button type="button" onClick={()=>window.print()} disabled={!data||reviewOutdated} className="min-h-10 rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 print:hidden">{t.print}</button></div>}
     </div>
     {data&&<section className="mt-6 border-t border-gray-200 pt-5" aria-live="polite">
       <h3 className="font-bold text-gray-900">{t.findings}</h3><p className="mt-1 text-xs text-gray-500">{t.sectors}: {(data.analysis.sectorLabels ?? data.analysis.sectors).join("، ")||"—"}</p>

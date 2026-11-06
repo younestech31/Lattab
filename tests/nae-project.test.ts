@@ -91,3 +91,14 @@ test("searches Arabic project wording through reviewed synonyms", () => {
   assert.equal(result[0]?.activity.code, "507202");
   assert.equal(result[0]?.usedSynonym, true);
 });
+
+
+test("uses group and subgroup only as internal classification proximity signals", () => {
+  const result = analyzeNAEProject([
+    activity({ code: "301101", sector_code: "3", group_code: "301", subgroup_code: "3011" }),
+    activity({ code: "301201", sector_code: "3", group_code: "301", subgroup_code: "3012" }),
+  ]);
+  assert.equal(result.sameGroup, true);
+  assert.ok(result.findings.some((finding) => finding.id === "group-proximity"));
+  assert.ok(result.findings.some((finding) => /لا يثبت وحده/.test(finding.detail_ar)));
+});

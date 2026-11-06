@@ -89,7 +89,7 @@ export function NAEExplorerPage({
   };
 
   const t = ar ? {
-    title: "إعداد ومراجعة نشاطات المشروع", description: "صف نشاطات مشروعك وابحث في التسمية والمحتوى، ثم اجمع الاختيارات لمراجعتها.",
+    title: "دليل النشاطات الاقتصادية الجزائرية", description: "مرجع معلوماتي لإعداد ومراجعة نشاطات المشروع قبل التسجيل التجاري.",
     search: "ابحث عن نشاط أو رمز", placeholder: "مثال: 611001 أو تأجير العقارات", submit: "بحث",
     filters: "تصفية حسب التصنيف", sector: "القطاع", allSectors: "جميع القطاعات",
     group: "المجموعة", allGroups: "جميع المجموعات", subgroup: "المجموعة الفرعية",
@@ -105,7 +105,7 @@ export function NAEExplorerPage({
     noValue: "غير متوفر في ملف البيانات",
     compareDisclaimer: "تعرض المقارنة الاختلافات بين البيانات المتاحة فقط. غياب قيمة في الملف لا يعني عدم وجود شرط قانوني.",
   } : {
-    title: "Préparation et examen des activités du projet", description: "Décrivez les opérations envisagées, recherchez dans les libellés et contenus, puis examinez votre sélection.",
+    title: "Nomenclature des activités économiques", description: "Référence informative pour préparer et examiner les activités d’un projet avant son immatriculation.",
     search: "Rechercher une activité ou un code", placeholder: "Ex. : 611001 ou location immobilière", submit: "Rechercher",
     filters: "Filtrer par classification", sector: "Secteur", allSectors: "Tous les secteurs",
     group: "Groupe", allGroups: "Tous les groupes", subgroup: "Sous-groupe",

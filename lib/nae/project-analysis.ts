@@ -8,7 +8,7 @@ export interface NAEProjectFinding {
   detail_ar: string; detail_fr: string; article?: string; sourceUrl?: string; codes?: string[];
 }
 export interface NAEProjectAnalysis {
-  selectedCount: number; sectors: string[]; sameSubgroup: boolean; primaryCode: string | null; findings: NAEProjectFinding[];
+  selectedCount: number; sectors: string[]; sameGroup: boolean; sameSubgroup: boolean; primaryCode: string | null; findings: NAEProjectFinding[];
 }
 const DECREE_15_249 = "https://www.joradp.dz/FTP/jo-arabe/2015/A2015052.pdf";
 const DECREE_20_355 = "https://www.joradp.dz/FTP/JO-francais/2020/F2020073.pdf";
@@ -23,9 +23,10 @@ const COMPLEMENTARY = [
 export function analyzeNAEProject(input: readonly NAEActivity[], description = "", requestedPrimaryCode: string | null = null): NAEProjectAnalysis {
   const activities = [...new Map(input.map((activity) => [activity.code, activity])).values()];
   const sectors = [...new Set(activities.map((activity) => activity.sector_code))].sort();
+  const groups = new Set(activities.map((activity) => activity.group_code));
   const subgroups = new Set(activities.map((activity) => activity.subgroup_code));
   const findings: NAEProjectFinding[] = [];
-  if (!activities.length) return { selectedCount: 0, sectors: [], sameSubgroup: false, primaryCode: null, findings };
+  if (!activities.length) return { selectedCount: 0, sectors: [], sameGroup: false, sameSubgroup: false, primaryCode: null, findings };
 
   const primaryCode = requestedPrimaryCode && activities.some((activity) => activity.code === requestedPrimaryCode) ? requestedPrimaryCode : activities[0].code;
   const blocked = activities.filter((activity) => getNAEStatusInfo(activity.status).code === "blocked").map((activity) => activity.code);
@@ -100,6 +101,14 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
     article:"Décret exécutif 15-249, article 2", sourceUrl:DECREE_15_249
   });
 
+  if (groups.size === 1 && subgroups.size > 1 && activities.length > 1) findings.push({
+    id:"group-proximity", severity:"info",
+    title_ar:"النشاطات متقاربة ضمن مجال تصنيفي واحد",
+    title_fr:"Les activités sont proches au sein d’un même domaine de classification",
+    detail_ar:"تُظهر رموز التصنيف أن النشاطات المختارة تتجمع ضمن مجال واحد، رغم اختلاف فروعها الفرعية. يساعد ذلك في فهم التخصص، لكنه لا يثبت وحده التجانس القانوني أو جواز الجمع في مستخرج واحد.",
+    detail_fr:"Les codes de classification regroupent les activités sélectionnées dans un même domaine malgré des sous-groupes différents. Cela aide à comprendre leur proximité, sans prouver l’homogénéité juridique ni l’autorisation de cumul."
+  });
+
   if (subgroups.size === 1 && activities.length > 1) findings.push({
     id:"classification-proximity", severity:"info",
     title_ar:"النشاطات ضمن المجموعة الفرعية نفسها",
@@ -108,5 +117,5 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
     detail_fr:"Le sous-groupe mesure uniquement la proximité de classification. L’appartenance au même sous-groupe n’autorise pas automatiquement le cumul."
   });
 
-  return { selectedCount:activities.length, sectors, sameSubgroup:subgroups.size===1 && activities.length>1, primaryCode, findings };
+  return { selectedCount:activities.length, sectors, sameGroup:groups.size===1 && activities.length>1, sameSubgroup:subgroups.size===1 && activities.length>1, primaryCode, findings };
 }
