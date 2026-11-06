@@ -489,7 +489,7 @@ export default function NAEProjectWorkspace({
         )}
 
         {analysisError && <p role="alert" className="mt-3 text-sm text-rose-800">{analysisError}</p>}
-        {data && (
+        {analysisIsCurrent && data && (
           <section className="mt-5 border-t border-gray-200 pt-4" aria-live="polite">
             <div className="mb-3 flex items-center gap-2">
               <h3 className="font-bold text-gray-900">{t.findings}</h3>
@@ -525,11 +525,13 @@ export default function NAEProjectWorkspace({
           >
             {t.print}
           </button>
-          {analyzing && <span className="text-xs text-gray-500">{t.updating}</span>}
+          {codes.length > 0 && !analysisIsCurrent && !analysisError && (
+            <span className="text-xs text-gray-500" role="status">{t.updating}</span>
+          )}
         </div>
       </div>
 
-      {analysisIsCurrent && data && (
+      {printReady && data && (
         <div data-nae-print-sheet className="hidden">
           <header className="mb-6 border-b-2 border-gray-800 pb-4 text-center">
             <h1 className="text-2xl font-bold">{t.printTitle}</h1>
