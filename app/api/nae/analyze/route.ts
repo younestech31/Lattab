@@ -3,6 +3,7 @@ import { getNAEActivities, getNAEActivityByCode } from "@/lib/nae/data";
 import { analyzeNAEProject } from "@/lib/nae/project-analysis";
 import { NAE_SECTORS } from "@/lib/nae/sectors";
 import { getNAEStatusInfo } from "@/lib/nae/status";
+import { NAE_PROJECT_DESCRIPTION_MAX_LENGTH } from "@/lib/nae/project-draft";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +22,7 @@ export async function POST(request: NextRequest) {
 
   const codes = [...new Set(input.codes as string[])];
   const primaryCode = typeof input.primaryCode === "string" && codes.includes(input.primaryCode) ? input.primaryCode : codes[0] ?? null;
-  const description = typeof input.description === "string" ? input.description.slice(0, 180) : "";
+  const description = typeof input.description === "string" ? input.description.slice(0, NAE_PROJECT_DESCRIPTION_MAX_LENGTH) : "";
   const activities = codes.map(getNAEActivityByCode).filter((activity) => activity !== undefined);
   if (activities.length !== codes.length) return NextResponse.json({ error: "One or more activity codes were not found" }, { status: 404 });
 
@@ -37,6 +38,9 @@ export async function POST(request: NextRequest) {
       sector_code: activity.sector_code,
       group_code: activity.group_code,
       subgroup_code: activity.subgroup_code,
+      tutelle_fr: activity.tutelle_fr,
+      type_autorisation_fr: activity.type_autorisation_fr,
+      references_texte_fr: activity.references_texte_fr,
     })),
     analysis: { ...projectAnalysis, sectorLabels: projectAnalysis.sectors.map((code) => NAE_SECTORS[code as keyof typeof NAE_SECTORS]?.[language === "ar" ? "label_ar" : "label_fr"] ?? code) },
   }, { headers: { "Cache-Control": "no-store" } });
