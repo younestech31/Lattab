@@ -1,27 +1,16 @@
 import Link from "next/link";
-import NAECompareButton from "@/components/nae/NAECompareButton";
 import NAEActivityActions from "@/components/nae/NAEActivityActions";
-import NAECompareRestore from "@/components/nae/NAECompareRestore";
-import NAEPrintButton from "@/components/nae/NAEPrintButton";
 import NAEProjectWorkspace from "@/components/nae/NAEProjectWorkspace";
 import NAEAddToProjectButton from "@/components/nae/NAEAddToProjectButton";
 import { getNAEStatusInfo } from "@/lib/nae/status";
 import UnifiedPageHeader from "@/components/ui/UnifiedPageHeader";
-import { getNAEActivities, getNAEActivityByCode, getNAESearchIndex, getNAEDatasetManifest } from "@/lib/nae/data";
-import { buildNAETaxonomy, filterNAEByTaxonomy, searchNAE, type NAESearchLanguage } from "@/lib/nae/search";
+import { getNAEActivities, getNAEActivityByCode, getNAEDatasetManifest } from "@/lib/nae/data";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
-import { normalizeNAECompareCodes } from "@/lib/nae/comparison";
 import { getNAEActivityTitle, type NAEPageLanguage } from "./seo";
 
 export type { NAEPageLanguage } from "./seo";
 
-function first(value: string | string[] | undefined): string {
-  return Array.isArray(value) ? value[0] ?? "" : value ?? "";
-}
-function isSectorCode(value: string): value is NAESectorCode {
-  return Object.prototype.hasOwnProperty.call(NAE_SECTORS, value);
-}
 function usable(value: string | null | undefined): value is string {
   return Boolean(value?.trim()) && value?.trim() !== "#NOM?";
 }
@@ -36,245 +25,57 @@ export function NAEExplorerPage({
   params,
 }: {
   lang: NAEPageLanguage;
-  params: { q?: string | string[]; sector?: string | string[]; group?: string | string[]; subgroup?: string | string[]; compare?: string | string[]; page?: string | string[] };
+  params: {
+    q?: string | string[];
+    sector?: string | string[];
+    group?: string | string[];
+    subgroup?: string | string[];
+    compare?: string | string[];
+    page?: string | string[];
+  };
 }) {
+  void params;
   const ar = lang === "ar";
-  const action = ar ? "/nae" : "/fr/nae";
-  const q = first(params.q).trim();
-  const compareParamPresent = params.compare !== undefined;
-  const compareCodes = normalizeNAECompareCodes(params.compare, (code) => Boolean(getNAEActivityByCode(code)));
-  const comparedActivities = compareCodes.map(getNAEActivityByCode).filter((a): a is NAEActivity => Boolean(a));
-
-  const taxonomy = buildNAETaxonomy(getNAEActivities());
-  const rawSector = first(params.sector);
-  const sector = isSectorCode(rawSector) ? rawSector : undefined;
-  const sectorNode = taxonomy.find((item) => item.code === sector);
-  const groups = sectorNode?.groups ?? [];
-  const rawGroup = first(params.group);
-  const group = groups.some((item) => item.code === rawGroup) ? rawGroup : undefined;
-  const subgroups = groups.find((item) => item.code === group)?.subgroups ?? [];
-  const rawSubgroup = first(params.subgroup);
-  const subgroup = subgroups.some((item) => item.code === rawSubgroup) ? rawSubgroup : undefined;
-
-  const filters = {
-    ...(sector ? { sectorCode: sector } : {}),
-    ...(group ? { groupCode: group } : {}),
-    ...(subgroup ? { subgroupCode: subgroup } : {}),
-  };
-  const hasFilters = Boolean(sector || group || subgroup);
-  const hasCriteria = Boolean(q || hasFilters);
-  const resultItems = q
-    ? searchNAE(getNAESearchIndex(lang as NAESearchLanguage), q, { ...filters, language: lang }).map(({ activity }) => ({ activity }))
-    : hasFilters
-      ? filterNAEByTaxonomy(getNAEActivities(), filters).map((activity) => ({ activity }))
-      : [];
-
-  const pageSize = 30;
-  const requestedPage = Number.parseInt(first(params.page), 10);
-  const totalPages = Math.max(1, Math.ceil(resultItems.length / pageSize));
-  const currentPage = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? Math.min(requestedPage, totalPages) : 1;
-  const shown = resultItems.slice((currentPage - 1) * pageSize, currentPage * pageSize);
-
-  const baseParams = new URLSearchParams();
-  if (q) baseParams.set("q", q);
-  if (sector) baseParams.set("sector", sector);
-  if (group) baseParams.set("group", group);
-  if (subgroup) baseParams.set("subgroup", subgroup);
-  const baseHref = baseParams.size ? action + "?" + baseParams.toString() : action;
-  const paginationHref = (page: number) => {
-    const next = new URLSearchParams(baseParams);
-    if (compareParamPresent && compareCodes.length) next.set("compare", compareCodes.join(","));
-    next.set("page", String(page));
-    return action + "?" + next.toString();
-  };
-
-  const t = ar ? {
-    title: "دليل النشاطات الاقتصادية الجزائرية", description: "مرجع معلوماتي لإعداد ومراجعة نشاطات المشروع قبل التسجيل التجاري.",
-    search: "ابحث عن نشاط أو رمز", placeholder: "مثال: 611001 أو تأجير العقارات", submit: "بحث",
-    filters: "تصفية حسب التصنيف", sector: "القطاع", allSectors: "جميع القطاعات",
-    group: "المجموعة", allGroups: "جميع المجموعات", subgroup: "المجموعة الفرعية",
-    allSubgroups: "جميع المجموعات الفرعية", apply: "تطبيق", reset: "مسح",
-    sectors: "تصفّح القطاعات", results: "نتائج البحث", result: "نتيجة",
-    open: "عرض البطاقة", empty: "لم نعثر على نتائج. جرّب كلمة أخرى أو تحقق من الرمز.",
-    previous: "السابق", next: "التالي", selected: "المقارنة", clearCompare: "مسح المقارنة",
-    compareHint: "اختر نشاطين أو ثلاثة لعرض الفروق بينها.", compareRows: "بيان المقارنة",
-    content: "محتوى النشاط (بالفرنسية)", accessories: "الأنشطة الإضافية (بالفرنسية)", tutelle: "الجهة الوصية (بالفرنسية)",
-    authorization: "نوع الترخيص (بالفرنسية)", references: "المراجع النصية (بالفرنسية)",
-    sourceNote: "نسخة بيانات مؤرخة ومرجع استرشادي؛ تحقق من الحالة الحالية لدى CNRC والجهة المختصة قبل التسجيل.",
-    sourceLink: "بوابة Sidjilcom", home: "الرئيسية", current: "إعداد نشاطات المشروع",
-    noValue: "غير متوفر في ملف البيانات",
-    compareDisclaimer: "تعرض المقارنة الاختلافات بين البيانات المتاحة فقط. غياب قيمة في الملف لا يعني عدم وجود شرط قانوني.",
-  } : {
-    title: "Nomenclature des activités économiques", description: "Référence informative pour préparer et examiner les activités d’un projet avant son immatriculation.",
-    search: "Rechercher une activité ou un code", placeholder: "Ex. : 611001 ou location immobilière", submit: "Rechercher",
-    filters: "Filtrer par classification", sector: "Secteur", allSectors: "Tous les secteurs",
-    group: "Groupe", allGroups: "Tous les groupes", subgroup: "Sous-groupe",
-    allSubgroups: "Tous les sous-groupes", apply: "Appliquer", reset: "Effacer",
-    sectors: "Parcourir les secteurs", results: "Résultats", result: "résultat(s)",
-    open: "Voir la fiche", empty: "Aucun résultat. Essayez un autre terme ou vérifiez le code.",
-    previous: "Précédent", next: "Suivant", selected: "Comparaison", clearCompare: "Effacer",
-    compareHint: "Sélectionnez deux ou trois activités pour les comparer.", compareRows: "Élément comparé",
-    content: "Contenu de l’activité", accessories: "Activités accessoires", tutelle: "Tutelle",
-    authorization: "Type d’autorisation", references: "Références textuelles",
-    sourceNote: "Instantané daté et référence indicative ; vérifiez la situation actuelle auprès du CNRC et de l’autorité compétente avant l’immatriculation.",
-    sourceLink: "Portail Sidjilcom", home: "Accueil", current: "Préparation des activités",
-    noValue: "Non renseigné dans le fichier",
-    compareDisclaimer: "La comparaison porte uniquement sur les données disponibles. Une valeur absente ne signifie pas l’absence d’une exigence légale.",
-  };
-
-  const comparisonRows = [
-    { key: "label_ar", label: ar ? "التسمية العربية" : "Libellé arabe", value: (a: NAEActivity) => usable(a.label_ar) ? a.label_ar : t.noValue, dir: "rtl" as const },
-    { key: "label_fr", label: ar ? "التسمية الفرنسية" : "Libellé français", value: (a: NAEActivity) => usable(a.label_fr) ? a.label_fr : t.noValue, dir: "ltr" as const },
-    { key: "sector", label: t.sector, value: (a: NAEActivity) => a.sector_code + " — " + (NAE_SECTORS[a.sector_code as NAESectorCode]?.[lang === "ar" ? "label_ar" : "label_fr"] ?? ""), dir: "auto" as const },
-    { key: "content", label: t.content, value: (a: NAEActivity) => a.contenue_fr || t.noValue, dir: "ltr" as const },
-    { key: "accessories", label: t.accessories, value: (a: NAEActivity) => a.accessoires_fr || t.noValue, dir: "ltr" as const },
-    { key: "tutelle", label: t.tutelle, value: (a: NAEActivity) => a.tutelle_fr || t.noValue, dir: "ltr" as const },
-    { key: "authorization", label: t.authorization, value: (a: NAEActivity) => a.type_autorisation_fr || t.noValue, dir: "ltr" as const },
-    { key: "references", label: t.references, value: (a: NAEActivity) => a.references_texte_fr || t.noValue, dir: "ltr" as const },
-  ] as const;
+  const sourceRevisionDate = getNAEDatasetManifest().source_revision_date ?? (ar ? "غير محدد" : "non précisée");
+  const copy = ar
+    ? {
+        title: "دليل النشاطات الاقتصادية الجزائرية",
+        description: "أداة معلوماتية للبحث عن النشاطات وتجميعها ومراجعتها عند إعداد مشروع مؤسسة.",
+        home: "الرئيسية",
+        current: "إعداد نشاطات المشروع",
+        sourceNote: "للاطلاع على المدونة الرسمية وتفاصيلها، راجع بوابة Sidjilcom.",
+        sourceLink: "بوابة Sidjilcom",
+      }
+    : {
+        title: "Nomenclature des activités économiques",
+        description: "Outil d’information pour rechercher, réunir et examiner les activités lors de la préparation d’un projet d’entreprise.",
+        home: "Accueil",
+        current: "Préparation des activités du projet",
+        sourceNote: "Consultez le portail Sidjilcom pour la nomenclature officielle et ses détails.",
+        sourceLink: "Portail Sidjilcom",
+      };
 
   return (
     <div className="min-h-screen bg-gray-50" dir={ar ? "rtl" : "ltr"} lang={lang}>
-      <UnifiedPageHeader lang={lang} title={t.title} description={t.description}
-        breadcrumbs={[{ name: t.home, href: ar ? "/" : "/fr" }, { name: t.current }]} />
+      <UnifiedPageHeader
+        lang={lang}
+        title={copy.title}
+        description={copy.description}
+        breadcrumbs={[{ name: copy.home, href: ar ? "/" : "/fr" }, { name: copy.current }]}
+      />
       <main className="py-8 md:py-10">
         <div className="container mx-auto max-w-6xl px-4">
-          <NAEProjectWorkspace lang={lang} sourceRevisionDate={getNAEDatasetManifest().source_revision_date ?? (ar ? "غير محدد" : "non précisée")} />
-          <details className="mt-5 rounded-xl border border-gray-200 bg-white p-4 sm:p-5">
-            <summary className="cursor-pointer text-sm font-semibold text-gray-700">{ar ? "بحث مرجعي مباشر بالرمز أو التسمية" : "Recherche directe par code ou libellé"}</summary>
-          <section className="mt-4 rounded-2xl border border-gray-100 bg-white p-1 sm:p-2" aria-label={t.search}>
-            <form action={action} method="get" className="space-y-4">
-              {compareParamPresent && compareCodes.length > 0 && <input type="hidden" name="compare" value={compareCodes.join(",")} />}
-              <div className="flex flex-col gap-2 sm:flex-row">
-                <label htmlFor="nae-query" className="sr-only">{t.search}</label>
-                <input id="nae-query" name="q" type="search" defaultValue={q} placeholder={t.placeholder} autoComplete="off"
-                  className="min-h-12 min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-4 text-base text-gray-900 placeholder:text-gray-400 focus-visible:border-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/20" />
-                <button type="submit" className="min-h-12 rounded-xl bg-emerald-800 px-8 font-bold text-white transition hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2">{t.submit}</button>
-              </div>
-              <details className="border-t border-gray-100 pt-3" open={Boolean(sector)}>
-                <summary className="cursor-pointer text-sm font-semibold text-gray-700 marker:text-emerald-800">{ar ? "تصفية حسب القطاع" : "Filtrer par secteur"}</summary>
-                <div className="pt-4">
-                  <label className="block max-w-sm text-sm font-medium text-gray-700"><span className="mb-1.5 block">{t.sector}</span>
-                    <select name="sector" defaultValue={sector ?? ""} className="min-h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-gray-800">
-                      <option value="">{t.allSectors}</option>{taxonomy.map((item) => <option key={item.code} value={item.code}>{item.code} — {lang === "ar" ? item.label_ar : item.label_fr}</option>)}
-                    </select>
-                  </label>
-                </div>
-                <div className="mt-3 flex flex-wrap items-center gap-2">
-                  <button type="submit" className="rounded-lg bg-emerald-800 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-900">{t.apply}</button>
-                  <Link href={action} className="rounded-lg px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-100">{t.reset}</Link>
-                </div>
-              </details>
-            </form>
-          </section>
-
-          {hasCriteria ? (
-            <section className="mt-8" aria-live="polite" aria-labelledby="nae-results-title">
-              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                <h2 id="nae-results-title" className="text-lg font-bold text-gray-900">{t.results}</h2>
-                <span className="text-sm text-gray-500">{resultItems.length} {t.result}</span>
-              </div>
-              {shown.length ? (
-                <div className="divide-y divide-gray-200 overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                  {shown.map(({ activity }) => {
-                    const sector = NAE_SECTORS[activity.sector_code as NAESectorCode];
-                    const sectorLabel = sector ? (lang === "ar" ? sector.label_ar : sector.label_fr) : "";
-                    const statusInfo = getNAEStatusInfo(activity.status, lang);
-                    const otherLabel = lang === "ar" ? activity.label_fr : activity.label_ar;
-                    return (
-                      <article key={activity.code} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <span className="font-mono text-sm font-bold text-emerald-800" dir="ltr">{activity.code}</span>
-                            <span className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${statusInfo.className}`}>{statusInfo.label}</span>
-                            
-                          </div>
-                          <h3 className="mt-1 text-base font-semibold leading-7 text-gray-900">{localLabel(activity, lang)}</h3>
-                          {usable(otherLabel) && otherLabel !== localLabel(activity, lang) && <p className="mt-0.5 text-sm text-gray-500">{otherLabel}</p>}
-                          <p className="mt-1 text-xs text-gray-500">{sectorLabel}</p>
-                        </div>
-                        <div className="flex shrink-0 flex-wrap items-center gap-2">
-                          <Link href={action + "/" + activity.code} className="inline-flex min-h-10 items-center rounded-lg bg-emerald-800 px-4 text-sm font-semibold text-white hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2">{t.open}</Link>
-                          <NAECompareButton code={activity.code} selectedCodes={compareCodes} baseHref={baseHref} lang={lang} />
-                        </div>
-                      </article>
-                    );
-                  })}
-                </div>
-              ) : (
-                <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-5 py-12 text-center text-sm text-gray-600">{t.empty}</div>
-              )}
-              {totalPages > 1 && (
-                <nav aria-label={ar ? "صفحات النتائج" : "Pagination"} className="mt-5 flex items-center justify-center gap-4">
-                  {currentPage > 1 && <Link href={paginationHref(currentPage - 1)} rel="prev" className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700">{t.previous}</Link>}
-                  <span className="text-sm text-gray-500">{currentPage} / {totalPages}</span>
-                  {currentPage < totalPages && <Link href={paginationHref(currentPage + 1)} rel="next" className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700">{t.next}</Link>}
-                </nav>
-              )}
-            </section>
-          ) : (
-            <section className="mt-8" aria-labelledby="nae-sectors-title">
-              <div className="mb-3 flex items-center justify-between">
-                <h2 id="nae-sectors-title" className="text-lg font-bold text-gray-900">{t.sectors}</h2>
-                <span className="text-xs text-gray-500">{getNAEActivities().length.toLocaleString(ar ? "ar-DZ" : "fr-FR")} {ar ? "نشاطاً" : "activités"}</span>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {taxonomy.map((item) => (
-                  <Link key={item.code} href={action + "?sector=" + item.code}
-                    className="group flex min-h-24 items-center justify-between gap-4 rounded-xl border border-gray-200 bg-white p-4 transition hover:border-emerald-300 hover:shadow-sm">
-                    <div className="flex min-w-0 items-center gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-50 font-mono text-base font-bold text-emerald-900">{item.code}</span>
-                      <span className="font-semibold leading-6 text-gray-800 group-hover:text-emerald-900">{lang === "ar" ? item.label_ar : item.label_fr}</span>
-                    </div>
-                    <span className="shrink-0 text-xs text-gray-500">{item.count.toLocaleString(ar ? "ar-DZ" : "fr-FR")}</span>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )}
-
-          </details>
-
-          <NAECompareRestore selectedCodes={compareCodes} compareParamPresent={compareParamPresent} />
-
-          {comparedActivities.length > 0 && (
-            <section data-nae-compare-print className="mt-10 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6" aria-labelledby="nae-compare-title">
-              <style>{"@media print { body:has([data-nae-compare-print]) * { visibility:hidden!important; } [data-nae-compare-print], [data-nae-compare-print] * { visibility:visible!important; } [data-nae-compare-print] { position:absolute!important; inset:0!important; width:100%!important; margin:0!important; border:0!important; box-shadow:none!important; } }"}</style>
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                <div><h2 id="nae-compare-title" className="text-lg font-bold text-gray-900">{t.selected}</h2><p className="mt-1 text-xs text-gray-500">{comparedActivities.length} / 3</p></div>
-                <div className="flex items-center gap-2 print:hidden">
-                  {comparedActivities.length >= 2 && <NAEPrintButton lang={lang} />}
-                  <Link href={`${baseHref}${baseHref.includes("?") ? "&" : "?"}compare=`} className="rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-700">{t.clearCompare}</Link>
-                </div>
-              </div>
-              {comparedActivities.length < 2 ? <p className="text-sm text-gray-600">{t.compareHint}</p> : (
-                <div className="overflow-x-auto">
-                  <table className="w-full min-w-[640px] border-collapse text-sm">
-                    <thead><tr>
-                      <th className="w-36 border-b border-gray-200 p-3 text-start text-xs font-semibold text-gray-500">{t.compareRows}</th>
-                      {comparedActivities.map((activity) => <th key={activity.code} className="border-b border-gray-200 p-3 text-start align-top">
-                        <span className="block font-mono text-xs font-bold text-emerald-800" dir="ltr">{activity.code}</span>
-                        <span className="mt-1 block font-semibold leading-6 text-gray-900">{getNAEActivityTitle(activity, lang)}</span>
-                        <span className="mt-2 block print:hidden"><NAECompareButton code={activity.code} selectedCodes={compareCodes} baseHref={baseHref} lang={lang} /></span>
-                      </th>)}
-                    </tr></thead>
-                    <tbody>
-                      {comparisonRows.filter((row) => new Set(comparedActivities.map(row.value)).size > 1).map((row) => <tr key={row.key} className="border-b border-gray-100 align-top">
-                        <th scope="row" className="bg-gray-50 p-3 text-start font-semibold text-gray-700">{row.label}</th>
-                        {comparedActivities.map((activity) => <td key={activity.code} dir={row.dir} className="whitespace-pre-line break-words p-3 leading-6 text-gray-800">{row.value(activity)}</td>)}
-                      </tr>)}
-                    </tbody>
-                  </table>
-                  <p className="mt-3 text-xs leading-5 text-gray-500">{t.compareDisclaimer}</p>
-                </div>
-              )}
-            </section>
-          )}
-
-          <footer className="mt-8 flex flex-col gap-2 border-t border-gray-200 pt-4 text-xs leading-5 text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-            <p>{t.sourceNote}</p>
-            <a href={ar ? "https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات" : "https://sidjilcom.cnrc.dz/fr/web/sidjilcom/nomenclature-de-vos-activites"}
-              target="_blank" rel="noopener noreferrer" className="shrink-0 font-semibold text-emerald-800 underline underline-offset-4">{t.sourceLink}</a>
+          <NAEProjectWorkspace lang={lang} sourceRevisionDate={sourceRevisionDate} />
+          <footer className="mt-6 flex flex-col gap-2 border-t border-gray-200 pt-4 text-xs leading-5 text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+            <p>{copy.sourceNote}</p>
+            <a
+              href={ar ? "https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات" : "https://sidjilcom.cnrc.dz/fr/web/sidjilcom/nomenclature-de-vos-activites"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 font-semibold text-emerald-800 underline underline-offset-4"
+            >
+              {copy.sourceLink}
+            </a>
           </footer>
         </div>
       </main>

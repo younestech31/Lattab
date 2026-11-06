@@ -1,5 +1,4 @@
 import type { NAEActivity } from "./schema";
-import { getNAEStatusInfo } from "./status";
 import { normalizeNAESearchText } from "./search";
 
 export type NAEProjectSeverity = "info" | "warning" | "critical";
@@ -53,31 +52,6 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
   if (!activities.length) return { selectedCount: 0, sectors: [], sameGroup: false, sameSubgroup: false, primaryCode: null, findings };
 
   const primaryCode = requestedPrimaryCode && activities.some((activity) => activity.code === requestedPrimaryCode) ? requestedPrimaryCode : activities[0].code;
-  const blocked = activities.filter((activity) => getNAEStatusInfo(activity.status).code === "blocked").map((activity) => activity.code);
-  const regulated = activities.filter((activity) => getNAEStatusInfo(activity.status).code === "regulated");
-
-  if (blocked.length) findings.push({
-    id:"catalog-blocked", severity:"critical",
-    title_ar:"توجد نشاطات حالتها محظورة في نسخة المصدر",
-    title_fr:"Des activités sont signalées comme bloquées dans la source",
-    detail_ar:"الرموز التالية تحمل حالة «محظور» في نسخة البيانات: "+blocked.join("، ")+". لا تعتمدها كنشاطات قابلة للتسجيل قبل مراجعة الحالة الحالية لدى CNRC والنصوص السارية. هذا تنبيه مبني على حالة المدونة، وليس قراراً إدارياً.",
-    detail_fr:"Les codes suivants portent le statut « bloquée » dans l’instantané : "+blocked.join(", ")+". Vérifiez leur situation actuelle auprès du CNRC avant de les considérer comme inscriptibles. Ce signalement ne constitue pas une décision administrative.",
-    codes:blocked
-  });
-
-  if (regulated.length) {
-    const codes = regulated.map((activity) => activity.code);
-    const missing = regulated.filter((activity) => !activity.tutelle_fr || !activity.type_autorisation_fr || !activity.references_texte_fr).map((activity) => activity.code);
-    findings.push({
-      id:"catalog-regulated", severity:"warning",
-      title_ar:"توجد نشاطات منظمة تحتاج إلى مراجعة شروطها",
-      title_fr:"Des activités réglementées nécessitent une vérification",
-      detail_ar:"الرموز المصنفة كنشاطات منظمة: "+codes.join("، ")+". راجع سلطة الوصاية والنص الخاص ونوع الإجراء. "+(missing.length?"البيانات التنظيمية ناقصة في النسخة لهذه الرموز: "+missing.join("، ")+".":"وجود هذه الحقول لا يحسم وحده توقيت الترخيص.")+" لا يُستنتج من الحالة وحدها أن الاعتماد يجب أن يسبق إيداع ملف السجل.",
-      detail_fr:"Codes classés réglementés : "+codes.join(", ")+". Vérifiez l’autorité, le texte spécial et la nature de l’autorisation. "+(missing.length?"Les informations sont incomplètes pour : "+missing.join(", ")+".":"La présence de ces champs ne suffit pas à déterminer le moment requis.")+" Le statut seul ne permet pas de conclure que l’agrément doit précéder le dépôt au registre.",
-      article:"Articles 4 et 4 bis du décret 15-234, modifiés / introduits par le décret 20-355", sourceUrl:DECREE_20_355, codes
-    });
-  }
-
   const nonExport = sectors.filter((sector) => sector !== "7");
   if (nonExport.length > 1) {
     if (nonExport.length === 2 && nonExport.includes("5") && nonExport.includes("6")) findings.push({
@@ -96,13 +70,7 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
       detail_fr:"L’article 9 pose comme règle générale qu’un même extrait ne comporte pas plus d’un secteur d’activité. Secteurs sélectionnés : "+nonExport.join(", ")+". Vérifiez les exceptions éventuelles ; il s’agit d’un examen préliminaire.",
       article:"Décret exécutif 15-249, article 9", sourceUrl:DECREE_15_249
     });
-  } else if (nonExport.length === 1 && sectors.length === 1) findings.push({
-    id:"single-sector", severity:"info",
-    title_ar:"النشاطات المختارة تنتمي إلى القطاع نفسه",
-    title_fr:"Les activités sélectionnées relèvent du même secteur",
-    detail_ar:"هذا تقارب على مستوى التصنيف فقط، ولا يثبت وحده أن النشاطات متجانسة قانونياً أو يمكن جمعها في مستخرج واحد.",
-    detail_fr:"Cette proximité de classification ne prouve pas l’homogénéité juridique ni la possibilité de cumul dans un même extrait."
-  });
+  }
 
   if (sectors.includes("7") && nonExport.length) findings.push({
     id:"export-sector", severity:"info",
@@ -125,21 +93,6 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
     article:"Décret exécutif 15-249, article 2", sourceUrl:DECREE_15_249
   });
 
-  if (groups.size === 1 && subgroups.size > 1 && activities.length > 1) findings.push({
-    id:"group-proximity", severity:"info",
-    title_ar:"النشاطات متقاربة ضمن مجال تصنيفي واحد",
-    title_fr:"Les activités sont proches au sein d’un même domaine de classification",
-    detail_ar:"تُظهر رموز التصنيف أن النشاطات المختارة تتجمع ضمن مجال واحد، رغم اختلاف فروعها الفرعية. يساعد ذلك في فهم التخصص، لكنه لا يثبت وحده التجانس القانوني أو جواز الجمع في مستخرج واحد.",
-    detail_fr:"Les codes de classification regroupent les activités sélectionnées dans un même domaine malgré des sous-groupes différents. Cela aide à comprendre leur proximité, sans prouver l’homogénéité juridique ni l’autorisation de cumul."
-  });
-
-  if (subgroups.size === 1 && activities.length > 1) findings.push({
-    id:"classification-proximity", severity:"info",
-    title_ar:"النشاطات ضمن المجموعة الفرعية نفسها",
-    title_fr:"Les activités relèvent du même sous-groupe",
-    detail_ar:"استُخدمت المجموعة الفرعية لتقدير التقارب التصنيفي فقط. لا تعني وحدة المجموعة الفرعية أن الجمع بين النشاطات مسموح قانوناً.",
-    detail_fr:"Le sous-groupe mesure uniquement la proximité de classification. L’appartenance au même sous-groupe n’autorise pas automatiquement le cumul."
-  });
 
   return { selectedCount:activities.length, sectors, sameGroup:groups.size===1 && activities.length>1, sameSubgroup:subgroups.size===1 && activities.length>1, primaryCode, findings };
 }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getNAEActivities, getNAEActivityByCode } from "@/lib/nae/data";
 import { analyzeNAEProject } from "@/lib/nae/project-analysis";
 import { NAE_SECTORS } from "@/lib/nae/sectors";
+import { getNAEStatusInfo } from "@/lib/nae/status";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,7 @@ export async function POST(request: NextRequest) {
       label_ar: activity.label_ar,
       label_fr: activity.label_fr,
       status: activity.status,
+      statusInfo: getNAEStatusInfo(activity.status, language),
       sector_code: activity.sector_code,
       group_code: activity.group_code,
       subgroup_code: activity.subgroup_code,

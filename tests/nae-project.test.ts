@@ -22,7 +22,9 @@ test("maps the published source status values", () => {
   assert.equal(getNAEStatusCode("green"), "regulated");
   assert.equal(getNAEStatusCode("red"), "blocked");
   assert.equal(getNAEStatusCode("unknown"), "unknown");
-  assert.equal(getNAEStatusInfo("green", "ar").label, "نشاط منظم");
+  assert.equal(getNAEStatusInfo("normal", "ar").label, "حر");
+  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم");
+  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée");
 });
 
 test("warns when selected activities cross sectors under article 9", () => {
@@ -41,13 +43,11 @@ test("treats sectors 5 and 6 as a conditional exception", () => {
   assert.ok(result.findings.some((finding) => finding.id === "sector-5-6-conditional"));
 });
 
-test("flags blocked and regulated statuses independently", () => {
-  const result = analyzeNAEProject([
-    activity({ code: "301205", sector_code: "3", group_code: "301", subgroup_code: "3012", status: "red" }),
-    activity({ code: "301112", sector_code: "3", group_code: "301", subgroup_code: "3011", status: "green" }),
-  ]);
-  assert.ok(result.findings.some((finding) => finding.id === "catalog-blocked" && finding.severity === "critical"));
-  assert.ok(result.findings.some((finding) => finding.id === "catalog-regulated" && finding.severity === "warning"));
+test("keeps the source status as a concise label instead of long analysis findings", () => {
+  assert.equal(getNAEStatusInfo("red", "ar").label, "محظور");
+  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم");
+  assert.equal(getNAEStatusInfo("green", "fr").label, "Réglementée");
+  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée");
 });
 
 test("recognizes complementary operations cautiously", () => {
@@ -76,14 +76,13 @@ test("recognizes Arabic definite-article forms of complementary operations", () 
   assert.ok(result.findings.some((item) => item.id === "complementary-operations"));
 });
 
-test("same subgroup is not a legal compatibility decision", () => {
+test("does not create user-facing notes from same-subgroup classification", () => {
   const result = analyzeNAEProject([
     activity({ code: "301101", sector_code: "3", group_code: "301", subgroup_code: "3011" }),
     activity({ code: "301102", sector_code: "3", group_code: "301", subgroup_code: "3011" }),
   ]);
-  assert.ok(result.findings.some((item) => item.id === "classification-proximity"));
   assert.equal(result.primaryCode, "301101");
-  assert.equal(result.findings.some((item) => /متوافقة قانونياً/.test(item.detail_ar)), false);
+  assert.equal(result.findings.some((finding) => finding.id.includes("proximity")), false);
 });
 
 test("recognizes the export-sector note", () => {
@@ -109,12 +108,12 @@ test("searches Arabic project wording through reviewed synonyms", () => {
 });
 
 
-test("uses group and subgroup only as internal classification proximity signals", () => {
+test("keeps group and subgroup signals internal without generating explanatory findings", () => {
   const result = analyzeNAEProject([
     activity({ code: "301101", sector_code: "3", group_code: "301", subgroup_code: "3011" }),
     activity({ code: "301201", sector_code: "3", group_code: "301", subgroup_code: "3012" }),
   ]);
   assert.equal(result.sameGroup, true);
-  assert.ok(result.findings.some((finding) => finding.id === "group-proximity"));
-  assert.ok(result.findings.some((finding) => /لا يثبت وحده/.test(finding.detail_ar)));
+  assert.equal(result.findings.some((finding) => finding.id.includes("proximity")), false);
+  assert.equal(result.findings.some((finding) => finding.id === "single-sector"), false);
 });
