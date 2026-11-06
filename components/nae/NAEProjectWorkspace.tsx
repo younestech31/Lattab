@@ -203,7 +203,7 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
       <p className="mt-2 text-xs">UpGrowth — NAE 2026 (CC BY 4.0). {sourceRevisionDate}. https://www.upgrowth.dz/ar/datasets/cnrc-2026</p>
     </div>}
     <footer className="mt-6 border-t border-gray-100 pt-4 text-xs leading-6 text-gray-500">
-      <p>{t.source}: <a href="https://www.upgrowth.dz/ar/datasets/cnrc-2026" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">UpGrowth — NAE 2026</a> (CC BY 4.0), نسخة المصدر المؤرخة {sourceRevisionDate}.</p>
+      <p>{t.source}: <a href="https://www.upgrowth.dz/ar/datasets/cnrc-2026" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">UpGrowth — NAE 2026</a> (CC BY 4.0), {ar ? "نسخة المصدر المؤرخة" : "instantané de données daté du"} {sourceRevisionDate}.</p>
       <p>{t.stale}</p><p>{t.privacy}</p>
     </footer>
   </section>;
