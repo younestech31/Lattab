@@ -127,7 +127,6 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
     } catch { setError(t.error); } finally { setBusyAnalysis(false); }
   },[codes,description,t.error]);
 
-  useEffect(() => { if (ready && codes.length) void analyze(); else if (ready) setData(null); },[ready,codes,analyze]);
 
   const detailByCode = useMemo(()=>new Map((data?.activities??[]).map(item=>[item.code,item])),[data]);
   const add = (code:string) => { setCodes(current=>current.includes(code)?current:current.length<50?[...current,code]:current); setPrimary(current=>current??code); setData(null); };
