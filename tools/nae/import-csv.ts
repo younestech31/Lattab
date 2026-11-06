@@ -15,6 +15,9 @@ const inputPath = path.resolve(ROOT, argValue("--input", "data-source/cnrc-2026.
 const outputDir = path.resolve(ROOT, argValue("--output", "data/nae"));
 const reportPath = path.join(outputDir, "quality-report.md");
 const manifestPath = path.join(outputDir, "manifest.json");
+const sourceRevisionDate = argValue("--source-revision-date", "") || null;
+const sourceAcquiredAt = argValue("--source-acquired-at", "") || null;
+const officialPortalUpdatedAt = argValue("--official-portal-updated-at", "") || null;
 
 type CsvRow = Record<string, string>;
 type Issue = { row: number; code?: string; field: string; message: string };
@@ -151,15 +154,28 @@ async function main(): Promise<void> {
     source_sha256: sourceHash,
     source_encoding: "UTF-8 with optional BOM",
     source_delimiter: ";",
-    source_revision_date: null,
-    source_acquired_at: null,
+    source_revision_date: sourceRevisionDate,
+    source_acquired_at: sourceAcquiredAt,
+    source_publisher: "UpGrowth",
+    source_reference_url: "https://www.upgrowth.dz/ar/datasets/cnrc-2026",
+    source_license: "CC BY 4.0",
+    source_attribution: "UpGrowth (2026), Nomenclature CNRC 2026, CC BY 4.0.",
+    official_portal_url: "https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات",
+    official_portal_observed_updated_at: officialPortalUpdatedAt,
+    status_mapping: {
+      normal: { meaning: "free", label_ar: "حر", label_fr: "Libre" },
+      green: { meaning: "regulated", label_ar: "نشاط منظم", label_fr: "Réglementée" },
+      red: { meaning: "blocked", label_ar: "محظور", label_fr: "Bloquée" },
+      basis: "UpGrowth dataset documentation describes the CNRC status field as free / regulated / blocked.",
+      limitation: "A catalogue status does not, by itself, prove that no separate sector-specific title or other legal requirement applies.",
+    },
     imported_at: new Date().toISOString(),
     record_count: activities.length,
     sector_counts: sectorCounts,
     field_coverage: fieldCoverage,
     invalid_source_labels: invalidLabels,
     raw_status_counts: Object.fromEntries([...rawStatusCounts.entries()].sort(([a], [b]) => a.localeCompare(b))),
-    status_semantics: "undocumented; retained as raw source data and must not be interpreted in the UI",
+    status_semantics: "Documented via UpGrowth dataset page: normal=free, green=regulated, red=blocked. This catalogue status is not a complete determination of all applicable legal permits.",
     taxonomy_names: {
       sectors: "official Arabic labels are maintained separately in lib/nae/sectors.ts",
       groups: "not supplied by this CSV; do not infer labels",
@@ -190,9 +206,15 @@ async function main(): Promise<void> {
     "|---|---:|",
     ...Object.entries(fieldCoverage).map(([field, count]) => `| ${field} | ${count} |`),
     "",
-    "## Raw status values (not interpreted)",
+    "## Status values and documented mapping",
     "",
-    ...Object.entries(manifest.raw_status_counts).map(([status, count]) => `- ${status}: ${count}`),
+    "| Raw CSV value | Meaning | Count |",
+    "|---|---|---:|",
+    `| normal | Free (حر) | ${rawStatusCounts.get("normal") ?? 0} |`,
+    `| green | Regulated (نشاط منظم) | ${rawStatusCounts.get("green") ?? 0} |`,
+    `| red | Blocked (محظور) | ${rawStatusCounts.get("red") ?? 0} |`,
+    "",
+    "Mapping is attributed to the UpGrowth dataset documentation. A catalogue status does not replace checking sector-specific rules.",
     "",
     "## Source-label warnings",
     "",
@@ -203,9 +225,11 @@ async function main(): Promise<void> {
     "## Interpretation safeguards",
     "",
     "- Empty regulatory fields mean only that this CSV export contains no value for that field.",
-    "- The raw status values have no verified semantic dictionary and must not be presented as legal states.",
+    "- The documented status mapping must retain the raw values and source attribution.",
+    "- A status such as “free” is not a blanket legal guarantee and does not replace checking sector-specific rules.",
+    "- Record the source revision date and official portal observation date when importing a new snapshot.",
     "- Group and subgroup names are not present in the CSV and are not generated from numeric codes.",
-    "- The source revision and acquisition dates are unknown unless separately documented.",
+    "- The source revision and acquisition dates remain unknown unless supplied to the importer.",
     "",
   ].join("\n");
 

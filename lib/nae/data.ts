@@ -20,6 +20,13 @@ export interface NAEDatasetManifest {
   source_delimiter: string;
   source_revision_date: string | null;
   source_acquired_at: string | null;
+  source_publisher?: string;
+  source_reference_url?: string;
+  source_license?: string;
+  source_attribution?: string;
+  official_portal_url?: string;
+  official_portal_observed_updated_at?: string | null;
+  status_mapping?: Record<string, unknown>;
   imported_at: string;
   record_count: number;
   sector_counts: Record<string, number>;

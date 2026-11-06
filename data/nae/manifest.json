@@ -4,7 +4,7 @@
   "source_sha256": "d443511fa8b798acf4240de4eca3868fd7cb67879afa4397fa985a0106001ed5",
   "source_encoding": "UTF-8 with optional BOM",
   "source_delimiter": ";",
-  "source_revision_date": null,
+  "source_revision_date": "2026-10-01",
   "source_acquired_at": null,
   "imported_at": "2026-11-05T17:41:03.015Z",
   "record_count": 2136,
@@ -67,10 +67,35 @@
     "normal": 1641,
     "red": 145
   },
-  "status_semantics": "undocumented; retained as raw source data and must not be interpreted in the UI",
+  "status_semantics": "Documented via UpGrowth dataset page: normal=free, green=regulated, red=blocked. This catalog status is not a complete determination of all applicable legal permits.",
   "taxonomy_names": {
     "sectors": "official Arabic labels are maintained separately in lib/nae/sectors.ts",
     "groups": "not supplied by this CSV; do not infer labels",
     "subgroups": "not supplied by this CSV; do not infer labels"
+  },
+  "source_publisher": "UpGrowth",
+  "source_reference_url": "https://www.upgrowth.dz/ar/datasets/cnrc-2026",
+  "source_license": "CC BY 4.0",
+  "source_attribution": "UpGrowth (2026), Nomenclature CNRC 2026 : 2 136 codes d'activité économique en Algérie [Dataset], CC BY 4.0.",
+  "official_portal_url": "https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات",
+  "official_portal_observed_updated_at": "2026-10-20",
+  "status_mapping": {
+    "normal": {
+      "meaning": "free",
+      "label_ar": "حر",
+      "label_fr": "Libre"
+    },
+    "green": {
+      "meaning": "regulated",
+      "label_ar": "نشاط منظم",
+      "label_fr": "Réglementée"
+    },
+    "red": {
+      "meaning": "blocked",
+      "label_ar": "محظور",
+      "label_fr": "Bloquée"
+    },
+    "basis": "UpGrowth dataset documentation, which describes the CNRC status field as free / regulated / blocked.",
+    "limitation": "The catalog status does not, by itself, prove that no separate sector-specific title or other legal requirement applies."
   }
 }

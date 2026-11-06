@@ -2,6 +2,11 @@
 
 - Source file: cnrc-2026.csv
 - SHA-256: d443511fa8b798acf4240de4eca3868fd7cb67879afa4397fa985a0106001ed5
+- Dataset revision published by UpGrowth: 2026-10-01
+- Official Sidjilcom page displayed a last-update date of 2026-10-20 when reviewed
+- Publisher: UpGrowth (derived from the CNRC/Sidjilcom nomenclature)
+- Reuse licence: CC BY 4.0
+- Attribution: UpGrowth (2026), Nomenclature CNRC 2026, CC BY 4.0
 - Encoding: UTF-8 (BOM accepted)
 - Delimiter: semicolon
 - Imported records: 2136
@@ -38,11 +43,17 @@
 | accessoires_fr | 905 |
 | references_texte_fr | 379 |
 
-## Raw status values (not interpreted)
+## Status values and documented mapping
 
-- green: 350
-- normal: 1641
-- red: 145
+The upstream dataset documentation describes these CNRC catalogue statuses as follows:
+
+| Raw CSV value | Meaning | Count |
+|---|---|---:|
+| normal | Free (حر) | 1,641 |
+| green | Regulated (نشاط منظم) | 350 |
+| red | Blocked (محظور) | 145 |
+
+This mapping is attributed to the UpGrowth dataset documentation. A catalogue status does not, by itself, prove that no other sector-specific permit or legal requirement applies.
 
 ## Source-label warnings
 
@@ -57,6 +68,8 @@
 ## Interpretation safeguards
 
 - Empty regulatory fields mean only that this CSV export contains no value for that field.
-- The raw status values have no verified semantic dictionary and must not be presented as legal states.
+- The status mapping is documented by the publisher of this dataset; preserve the original raw values and display the attribution.
+- A status such as “free” is not a blanket legal guarantee and does not replace checking sector-specific rules.
+- The dataset snapshot (2026-10-01) predates the official Sidjilcom page update date (2026-10-20) observed during this review; treat it as a dated snapshot, not a live registry.
 - Group and subgroup names are not present in the CSV and are not generated from numeric codes.
 - The source revision and acquisition dates are unknown; no official revision date is asserted.
