@@ -4,7 +4,7 @@ import NAEProjectWorkspace from "@/components/nae/NAEProjectWorkspace";
 import NAEAddToProjectButton from "@/components/nae/NAEAddToProjectButton";
 import { getNAEStatusInfo } from "@/lib/nae/status";
 import UnifiedPageHeader from "@/components/ui/UnifiedPageHeader";
-import { getNAEActivities, getNAEActivityByCode, getNAEDatasetManifest } from "@/lib/nae/data";
+import { getNAEActivities, getNAEDatasetManifest } from "@/lib/nae/data";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
 import { getNAEActivityTitle, type NAEPageLanguage } from "./seo";
