@@ -36,7 +36,7 @@ function severityClass(value: Finding["severity"]) {
 }
 function fieldName(field: string, ar: boolean) {
   const names: Record<string, [string,string]> = {
-    code:["الرمز","code"], label_ar:["التسمية","libellé"], label_fr:["التسمية","libellé"],
+    code:["الرمز","code"], label_ar:["التسمية العربية","libellé arabe"], label_fr:["التسمية الفرنسية","libellé français"],
     contenue_fr:["محتوى النشاط","contenu"], accessoires_fr:["الأنشطة الإضافية","activités accessoires"],
   };
   return names[field]?.[ar ? 0 : 1] ?? field;
@@ -48,6 +48,7 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
   const descriptionRef = useRef(description);
   const [reviewedDescription,setReviewedDescription] = useState<string|null>(null);
   const [results,setResults] = useState<Hit[]>([]);
+  const [searchedDescription,setSearchedDescription] = useState<string|null>(null);
   const [codes,setCodes] = useState<string[]>([]);
   const [primary,setPrimary] = useState<string|null>(null);
   const [data,setData] = useState<ResponseData|null>(null);
@@ -68,7 +69,6 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
     print:"طباعة ورقة التحضير", sectors:"القطاعات", noFindings:"لا توجد تنبيهات إضافية وفق القواعد الحالية. هذا لا يمثل موافقة قانونية.",
     source:"مصدر البيانات", stale:"البيانات نسخة مؤرخة وليست اتصالاً مباشراً بقاعدة CNRC. تحقق من الوضع الحالي قبل التسجيل.",
     privacy:"تُحفظ القائمة محلياً في هذا المتصفح ولا تحتاج إلى حساب. لا نستخدم خدمة ذكاء اصطناعي خارجية.",
-    limit:"يمكن إضافة عدة نشاطات؛ حد المقارنة القديمة (3) لا ينطبق على قائمة المشروع.",
     detail:"البطاقة", error:"تعذر إكمال الطلب. أعد المحاولة.",
   } : {
     title:"Préparer et examiner les activités du projet",
@@ -83,7 +83,6 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
     print:"Imprimer la fiche préparatoire", sectors:"Secteurs", noFindings:"Aucune alerte supplémentaire selon les règles actuelles. Cela ne constitue pas une validation juridique.",
     source:"Source des données", stale:"Instantané daté, sans connexion directe à la base du CNRC. Vérifiez la situation actuelle avant l’immatriculation.",
     privacy:"La liste est conservée dans ce navigateur et ne nécessite aucun compte. Aucun service d’IA externe n’est utilisé.",
-    limit:"Vous pouvez ajouter plusieurs activités ; la limite de comparaison (3) ne s’applique pas à la liste du projet.",
     detail:"Fiche", error:"La requête a échoué. Veuillez réessayer.",
   };
 
@@ -91,7 +90,7 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
     try {
       const saved = JSON.parse(window.localStorage.getItem(KEY) ?? "null") as Partial<Draft>|null;
       if (saved?.version === 1 && Array.isArray(saved.codes)) {
-        const next = [...new Set(saved.codes.filter((v): v is string => typeof v === "string" && /^\d{6}$/.test(v)))].slice(0,50);
+        const next = [...new Set(saved.codes.filter((v): v is string => typeof v === "string" && /^\d{6}$/.test(v)))];
         setCodes(next);
         setPrimary(typeof saved.primaryCode === "string" && next.includes(saved.primaryCode) ? saved.primaryCode : next[0] ?? null);
         setDescription(typeof saved.description === "string" ? saved.description.slice(0,180) : "");
@@ -111,14 +110,24 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
   },[ar,codes,description,primary,ready]);
 
   const search = useCallback(async (event:FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); setError(""); setBusySearch(true);
+    event.preventDefault();
+    const submittedDescription = description.trim();
+    if (submittedDescription.length < 2) return;
+    setError("");
+    setResults([]);
+    setSearchedDescription(null);
+    setBusySearch(true);
     try {
-      const params = new URLSearchParams({q:description,lang});
-      const response = await fetch("/api/nae/search",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({q:description,lang})});
+      const response = await fetch("/api/nae/search",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({q:submittedDescription,lang})});
       if (!response.ok) throw new Error("search");
       const payload = await response.json() as {results?:Hit[]};
       setResults(Array.isArray(payload.results)?payload.results:[]);
-    } catch { setError(t.error); } finally { setBusySearch(false); }
+      setSearchedDescription(description);
+    } catch {
+      setResults([]);
+      setSearchedDescription(null);
+      setError(t.error);
+    } finally { setBusySearch(false); }
   },[description,lang,t.error]);
 
   const analyze = useCallback(async () => {
@@ -137,7 +146,7 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
 
   const reviewOutdated = Boolean(data && reviewedDescription !== description);
   const detailByCode = useMemo(()=>new Map((data?.activities??[]).map(item=>[item.code,item])),[data]);
-  const add = (code:string) => { setCodes(current=>current.includes(code)?current:current.length<50?[...current,code]:current); setPrimary(current=>current??code); setData(null); };
+  const add = (code:string) => { setCodes(current=>current.includes(code)?current:[...current,code]); setPrimary(current=>current??code); setData(null); };
   const remove = (code:string) => { setCodes(current=>current.filter(item=>item!==code)); setPrimary(current=>current===code?codes.find(item=>item!==code)??null:current); setData(null); };
   const clear = () => { setCodes([]); setPrimary(null); setData(null); };
 
@@ -153,7 +162,7 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
       <button type="submit" disabled={busySearch||description.trim().length<2} className="min-h-12 rounded-xl bg-emerald-800 px-6 font-bold text-white hover:bg-emerald-900 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2">{busySearch?t.searching:t.search}</button>
     </form>
     {error&&<p role="alert" className="mt-3 text-sm text-rose-800">{error}</p>}
-    {results.length>0&&<div className="mt-6" aria-live="polite">
+    {searchedDescription===description&&results.length>0&&<div className="mt-6" aria-live="polite">
       <div className="mb-3 flex items-center justify-between gap-3"><h3 className="font-bold text-gray-900">{t.results}</h3><span className="text-xs text-gray-500">{results.length}</span></div>
       <div className="divide-y divide-gray-100 rounded-xl border border-gray-200">
         {results.map(hit=>{const exists=codes.includes(hit.code);return <article key={hit.code} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-start sm:justify-between">
@@ -165,15 +174,15 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
           </div>
           <div className="flex shrink-0 flex-wrap items-center gap-2">
             <Link href={`/${ar?"":"fr/"}nae/${hit.code}`} className="inline-flex min-h-9 items-center rounded-lg border border-gray-300 px-3 text-sm font-semibold text-gray-700 hover:bg-gray-50">{t.detail}</Link>
-            <button type="button" onClick={()=>add(hit.code)} disabled={exists||codes.length>=50} className="inline-flex min-h-9 items-center rounded-lg bg-emerald-800 px-3 text-sm font-semibold text-white hover:bg-emerald-900 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-700">{exists?t.added:t.add}</button>
+            <button type="button" onClick={()=>add(hit.code)} disabled={exists} className="inline-flex min-h-9 items-center rounded-lg bg-emerald-800 px-3 text-sm font-semibold text-white hover:bg-emerald-900 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-700">{exists?t.added:t.add}</button>
           </div>
         </article>})}
       </div>
     </div>}
-    {description.trim().length>=2&&!busySearch&&results.length===0&&<p className="mt-4 rounded-lg border border-dashed border-gray-300 px-4 py-5 text-center text-sm text-gray-600">{t.noResults}</p>}
+    {searchedDescription===description&&description.trim().length>=2&&!busySearch&&results.length===0&&<p className="mt-4 rounded-lg border border-dashed border-gray-300 px-4 py-5 text-center text-sm text-gray-600">{t.noResults}</p>}
     <div className="mt-8 border-t border-gray-200 pt-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div><h3 className="font-bold text-gray-900">{t.project} <span className="font-normal text-gray-500">({codes.length})</span></h3><p className="mt-1 text-xs text-gray-500">{t.limit}</p></div>
+        <div><h3 className="font-bold text-gray-900">{t.project} <span className="font-normal text-gray-500">({codes.length})</span></h3></div>
         {codes.length>0&&<button type="button" onClick={clear} className="text-sm font-semibold text-gray-600 underline underline-offset-4">{t.clear}</button>}
       </div>
       {codes.length===0?<p className="mt-4 rounded-lg bg-gray-50 px-4 py-5 text-sm leading-6 text-gray-600">{t.empty}</p>:<div className="mt-4 divide-y divide-gray-100 rounded-xl border border-gray-200">
@@ -195,7 +204,7 @@ export default function NAEProjectWorkspace({lang, sourceRevisionDate}: {lang: L
       <h2 className="mt-6 text-lg font-bold">{ar ? "النشاطات المختارة" : "Activités sélectionnées"}</h2>
       <table className="mt-3 w-full border-collapse text-sm">
         <thead><tr><th className="border p-2 text-start">{ar ? "الرمز" : "Code"}</th><th className="border p-2 text-start">{ar ? "التسمية" : "Libellé"}</th><th className="border p-2 text-start">{ar ? "القطاع" : "Secteur"}</th><th className="border p-2 text-start">{ar ? "الدور" : "Rôle"}</th></tr></thead>
-        <tbody>{data.activities.map(item=><tr key={item.code}><td className="border p-2 font-mono" dir="ltr">{item.code}</td><td className="border p-2">{displayLabel(item,lang)}</td><td className="border p-2">{item.sector_code}</td><td className="border p-2">{item.code===data.analysis.primaryCode?(ar?"رئيسي":"Principale"):(ar?"إضافي مقترح":"Complémentaire proposé")}</td></tr>)}</tbody>
+        <tbody>{data.activities.map(item=><tr key={item.code}><td className="border p-2 font-mono" dir="ltr">{item.code}</td><td className="border p-2">{displayLabel(item,lang)}</td><td className="border p-2">{item.sector_code}</td><td className="border p-2">{item.code===data.analysis.primaryCode?(ar?"رئيسي":"Principale"):(ar?"نشاط آخر مقترح":"Autre activité proposée")}</td></tr>)}</tbody>
       </table>
       <h2 className="mt-6 text-lg font-bold">{ar ? "ملاحظات المراجعة" : "Constats de l’examen"}</h2>
       {data.analysis.findings.length ? <ol className="mt-3 list-decimal space-y-3 ps-6">{data.analysis.findings.map(f=><li key={f.id}><strong>{ar?f.title_ar:f.title_fr}</strong><p className="mt-1">{ar?f.detail_ar:f.detail_fr}</p>{f.article&&<p className="mt-1 text-xs">{f.article}</p>}{f.sourceUrl&&<p className="text-xs">{f.sourceUrl}</p>}</li>)}</ol>:<p className="mt-2 text-sm">{t.noFindings}</p>}
