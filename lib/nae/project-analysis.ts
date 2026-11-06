@@ -10,7 +10,6 @@ export interface NAEProjectAnalysis {
   selectedCount: number; sectors: string[]; sameGroup: boolean; sameSubgroup: boolean; primaryCode: string | null; findings: NAEProjectFinding[];
 }
 const DECREE_15_249 = "https://www.joradp.dz/FTP/jo-arabe/2015/A2015052.pdf";
-const DECREE_20_355 = "https://www.joradp.dz/FTP/JO-francais/2020/F2020073.pdf";
 const COMPLEMENTARY = [
   { terms:["نقل","النقل","توصيل","التوصيل","تسليم","التسليم","transport","livraison"], ar:"النقل والتسليم للزبائن", fr:"transport et livraison à la clientèle" },
   { terms:["تركيب","التركيب","تنصيب","التنصيب","installation","montage"], ar:"تركيب وتنصيب المعدات", fr:"montage et installation du matériel" },
