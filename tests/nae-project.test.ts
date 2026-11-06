@@ -5,6 +5,7 @@ import { analyzeNAEProject } from "../lib/nae/project-analysis";
 import { getNAEStatusCode, getNAEStatusInfo } from "../lib/nae/status";
 import { createNAESearchIndex } from "../lib/nae/search";
 import { searchNAEProject } from "../lib/nae/project-search";
+import { addNAEProjectCode, parseNAEProjectDraft } from "../lib/nae/project-draft";
 
 function activity(overrides: Partial<NAEActivity> & Pick<NAEActivity, "code" | "sector_code" | "group_code" | "subgroup_code">): NAEActivity {
   return {
@@ -107,6 +108,74 @@ test("searches Arabic project wording through reviewed synonyms", () => {
   assert.equal(result[0]?.usedSynonym, true);
 });
 
+
+test("normalizes stored project drafts and removes invalid or duplicate activity codes", () => {
+  const draft = parseNAEProjectDraft(JSON.stringify({
+    version: 1,
+    description: "  مشروع تجاري  ",
+    codes: ["507202", "507202", "invalid", 123, "613201"],
+    primaryCode: "invalid",
+  }));
+  assert.deepEqual(draft.codes, ["507202", "613201"]);
+  assert.equal(draft.primaryCode, "507202");
+  assert.equal(draft.description, "  مشروع تجاري  ");
+});
+
+test("adding from an activity detail page preserves more than fifty project selections", () => {
+  const codes = Array.from({ length: 50 }, (_, index) => String(100001 + index));
+  const initial = parseNAEProjectDraft(JSON.stringify({
+    version: 1,
+    description: "مشروع متعدد النشاطات",
+    codes,
+    primaryCode: codes[0],
+  }));
+  const updated = addNAEProjectCode(initial, "200001");
+  assert.equal(updated.codes.length, 51);
+  assert.equal(updated.codes[50], "200001");
+  assert.equal(updated.primaryCode, codes[0]);
+  assert.equal(updated.description, initial.description);
+});
+
+test("adding the same activity twice does not duplicate it in the project draft", () => {
+  const initial = parseNAEProjectDraft(JSON.stringify({
+    version: 1,
+    description: "",
+    codes: ["507202"],
+    primaryCode: "507202",
+  }));
+  const updated = addNAEProjectCode(initial, "507202");
+  assert.deepEqual(updated.codes, ["507202"]);
+});
+
+test("finds an activity by its exact six-digit code in the unified project search", () => {
+  const records = [
+    activity({ code: "507202", sector_code: "5", group_code: "507", subgroup_code: "5072" }),
+    activity({ code: "613201", sector_code: "6", group_code: "613", subgroup_code: "6132" }),
+  ];
+  const result = searchNAEProject(createNAESearchIndex(records, "ar"), "507202");
+  assert.equal(result[0]?.activity.code, "507202");
+  assert.ok(result[0]?.matchedFields.includes("code"));
+});
+
+test("searches the original French designation without changing either source label", () => {
+  const frenchLabel = "Vente au détail de matériel informatique";
+  const arabicLabel = "بيع بالتجزئة لمعدات الإعلام الآلي";
+  const records = [
+    activity({
+      code: "507202",
+      sector_code: "5",
+      group_code: "507",
+      subgroup_code: "5072",
+      label_fr: frenchLabel,
+      label_ar: arabicLabel,
+    }),
+  ];
+  const result = searchNAEProject(createNAESearchIndex(records, "fr"), frenchLabel);
+  assert.equal(result[0]?.activity.code, "507202");
+  assert.equal(result[0]?.activity.label_fr, frenchLabel);
+  assert.equal(result[0]?.activity.label_ar, arabicLabel);
+  assert.ok(result[0]?.matchedFields.includes("label_fr"));
+});
 
 test("keeps group and subgroup signals internal without generating explanatory findings", () => {
   const result = analyzeNAEProject([

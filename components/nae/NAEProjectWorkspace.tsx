@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { NAE_PROJECT_DRAFT_STORAGE_KEY, parseNAEProjectDraft, type NAEProjectDraft } from "@/lib/nae/project-draft";
 
 type Lang = "ar" | "fr";
 type StatusInfo = { label: string; className: string };
@@ -41,10 +42,6 @@ type ResponseData = {
     findings: Finding[];
   };
 };
-type Draft = { version: 1; description: string; codes: string[]; primaryCode: string | null };
-
-const KEY = "lattab.nae.project.v1";
-
 function usableLabel(value: string | null | undefined): value is string {
   return typeof value === "string" && value.trim().length > 0 && value.trim() !== "#NOM?";
 }
@@ -167,19 +164,10 @@ export default function NAEProjectWorkspace({
 
   useEffect(() => {
     try {
-      const saved = JSON.parse(window.localStorage.getItem(KEY) ?? "null") as Partial<Draft> | null;
-      if (saved?.version === 1 && Array.isArray(saved.codes)) {
-        const next = [...new Set(saved.codes.filter((value): value is string =>
-          typeof value === "string" && /^\d{6}$/.test(value)
-        ))];
-        setCodes(next);
-        setPrimary(
-          typeof saved.primaryCode === "string" && next.includes(saved.primaryCode)
-            ? saved.primaryCode
-            : next[0] ?? null,
-        );
-        setDescription(typeof saved.description === "string" ? saved.description.slice(0, 180) : "");
-      }
+      const saved = parseNAEProjectDraft(window.localStorage.getItem(NAE_PROJECT_DRAFT_STORAGE_KEY));
+      setCodes(saved.codes);
+      setPrimary(saved.primaryCode);
+      setDescription(saved.description);
     } catch {
       // Ignore an invalid local draft.
     }
@@ -189,13 +177,13 @@ export default function NAEProjectWorkspace({
   useEffect(() => {
     if (!ready) return;
     try {
-      const draft: Draft = {
+      const draft: NAEProjectDraft = {
         version: 1,
         description,
         codes,
         primaryCode: primary && codes.includes(primary) ? primary : codes[0] ?? null,
       };
-      window.localStorage.setItem(KEY, JSON.stringify(draft));
+      window.localStorage.setItem(NAE_PROJECT_DRAFT_STORAGE_KEY, JSON.stringify(draft));
     } catch {
       setSearchError(ar ? "تعذر حفظ المسودة محلياً." : "Impossible d’enregistrer le brouillon localement.");
     }
@@ -489,7 +477,7 @@ export default function NAEProjectWorkspace({
         )}
 
         {analysisError && <p role="alert" className="mt-3 text-sm text-rose-800">{analysisError}</p>}
-        {data && (
+        {analysisIsCurrent && data && (
           <section className="mt-5 border-t border-gray-200 pt-4" aria-live="polite">
             <div className="mb-3 flex items-center gap-2">
               <h3 className="font-bold text-gray-900">{t.findings}</h3>
@@ -525,11 +513,13 @@ export default function NAEProjectWorkspace({
           >
             {t.print}
           </button>
-          {analyzing && <span className="text-xs text-gray-500">{t.updating}</span>}
+          {codes.length > 0 && !analysisIsCurrent && !analysisError && (
+            <span className="text-xs text-gray-500" role="status">{t.updating}</span>
+          )}
         </div>
       </div>
 
-      {analysisIsCurrent && data && (
+      {printReady && data && (
         <div data-nae-print-sheet className="hidden">
           <header className="mb-6 border-b-2 border-gray-800 pb-4 text-center">
             <h1 className="text-2xl font-bold">{t.printTitle}</h1>
