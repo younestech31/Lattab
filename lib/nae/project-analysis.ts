@@ -50,6 +50,47 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
   const findings: NAEProjectFinding[] = [];
   if (!activities.length) return { selectedCount: 0, sectors: [], sameGroup: false, sameSubgroup: false, primaryCode: null, findings };
 
+  // Surface the source-level status of every selected activity. Status is a
+  // catalogue signal from the dated dataset, not an independent CNRC decision.
+  const blockedCodes = activities
+    .filter((activity) => activity.status.trim().toLowerCase() === "red")
+    .map((activity) => activity.code);
+  if (blockedCodes.length) findings.push({
+    id: "selected-blocked-activities",
+    severity: "critical",
+    title_ar: "نشاط مختار مصنّف محظوراً في نسخة البيانات",
+    title_fr: "Une activité sélectionnée est signalée comme bloquée dans la source",
+    detail_ar: `تُصنّف نسخة البيانات المرجعية الرموز التالية على أنها محظورة: ${blockedCodes.join("، ")}. هذا تصنيف وارد في مصدر البيانات وليس قراراً قانونياً مستقلاً أو تحديثاً آنياً من CNRC؛ تحقّق من الوضع الحالي لدى Sidjilcom والجهة المختصة قبل اعتماد النشاط.`,
+    detail_fr: `La version de référence classe les codes suivants comme bloqués : ${blockedCodes.join(", ")}. Ce statut provient du jeu de données et ne constitue ni une décision juridique indépendante ni une mise à jour en temps réel du CNRC ; vérifiez la situation actuelle auprès de Sidjilcom et de l’autorité compétente.`,
+    codes: blockedCodes,
+  });
+
+  const regulatedCodes = activities
+    .filter((activity) => activity.status.trim().toLowerCase() === "green")
+    .map((activity) => activity.code);
+  if (regulatedCodes.length) findings.push({
+    id: "selected-regulated-activities",
+    severity: "warning",
+    title_ar: "نشاط مختار مصنّف منظّماً في نسخة البيانات",
+    title_fr: "Une activité sélectionnée est signalée comme réglementée dans la source",
+    detail_ar: `تُصنّف نسخة البيانات المرجعية الرموز التالية على أنها أنشطة منظّمة: ${regulatedCodes.join("، ")}. راجع الجهة الوصية ونوع الاعتماد أو الترخيص والنصوص السارية؛ وغياب التفاصيل في الملف لا يعني عدم وجود شرط.`,
+    detail_fr: `La version de référence classe les codes suivants comme activités réglementées : ${regulatedCodes.join(", ")}. Vérifiez l’autorité de tutelle, le titre ou l’autorisation requis et les textes en vigueur ; l’absence de détail dans le fichier ne signifie pas qu’aucune condition ne s’applique.`,
+    codes: regulatedCodes,
+  });
+
+  const unknownStatusCodes = activities
+    .filter((activity) => !["normal", "green", "red"].includes(activity.status.trim().toLowerCase()))
+    .map((activity) => activity.code);
+  if (unknownStatusCodes.length) findings.push({
+    id: "selected-unknown-status",
+    severity: "warning",
+    title_ar: "حالة مصدر غير معروفة لنشاط مختار",
+    title_fr: "Statut source non reconnu pour une activité sélectionnée",
+    detail_ar: `تعذّر تفسير حالة المصدر للرموز التالية: ${unknownStatusCodes.join("، ")}. لا تعتبرها أنشطة حرة؛ تحقّق من تصنيفها لدى CNRC.`,
+    detail_fr: `Le statut source des codes suivants n’est pas reconnu : ${unknownStatusCodes.join(", ")}. Ne les considérez pas comme des activités libres ; vérifiez leur classement auprès du CNRC.`,
+    codes: unknownStatusCodes,
+  });
+
   const primaryCode = requestedPrimaryCode && activities.some((activity) => activity.code === requestedPrimaryCode) ? requestedPrimaryCode : activities[0].code;
   const nonExport = sectors.filter((sector) => sector !== "7");
   if (nonExport.length > 1) {
