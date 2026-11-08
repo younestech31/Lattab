@@ -6,6 +6,7 @@ import NAEAddToProjectButton from "@/components/nae/NAEAddToProjectButton";
 import { getNAEStatusInfo } from "@/lib/nae/status";
 import UnifiedPageHeader from "@/components/ui/UnifiedPageHeader";
 import { getNAEActivities, getNAEDatasetManifest, getNAECatalogCounts } from "@/lib/nae/data";
+import { resolveActivityBilingual } from "@/lib/nae/gap-resolver";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
 import { getNAEActivityTitle, type NAEPageLanguage } from "./seo";
@@ -133,11 +134,46 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
   const related = getNAEActivities()
     .filter((item) => item.code !== activity.code && item.subgroup_code === activity.subgroup_code)
     .slice(0, 5);
-  const regulatoryFields = [
-    { key: "tutelle", label: ar ? "الجهة الوصية" : "Tutelle", value: activity.tutelle_fr },
-    { key: "authorization", label: ar ? "نوع الترخيص" : "Type d’autorisation", value: activity.type_autorisation_fr },
-    { key: "references", label: ar ? "المراجع النصية" : "Références textuelles", value: activity.references_texte_fr },
-  ].filter((field): field is { key: string; label: string; value: string } => Boolean(field.value?.trim()));
+  const resolved = resolveActivityBilingual(activity);
+
+  interface RegulatoryField {
+    key: string;
+    label: string;
+    primaryValue: string;
+    secondaryValue?: string | null;
+  }
+
+  const regulatoryFields: RegulatoryField[] = [];
+
+  const tutelleVal = ar ? (resolved.tutelle_ar || resolved.tutelle_fr) : resolved.tutelle_fr;
+  if (tutelleVal?.trim()) {
+    regulatoryFields.push({
+      key: "tutelle",
+      label: ar ? "الجهة الوصية" : "Tutelle",
+      primaryValue: tutelleVal,
+      secondaryValue: ar && resolved.tutelle_ar && resolved.tutelle_fr && resolved.tutelle_ar !== resolved.tutelle_fr ? resolved.tutelle_fr : null,
+    });
+  }
+
+  const authVal = ar ? (resolved.type_autorisation_ar || resolved.type_autorisation_fr) : resolved.type_autorisation_fr;
+  if (authVal?.trim()) {
+    regulatoryFields.push({
+      key: "authorization",
+      label: ar ? "نوع الترخيص / الاعتماد" : "Type d’autorisation",
+      primaryValue: authVal,
+      secondaryValue: ar && resolved.type_autorisation_ar && resolved.type_autorisation_fr && resolved.type_autorisation_ar !== resolved.type_autorisation_fr ? resolved.type_autorisation_fr : null,
+    });
+  }
+
+  const refVal = ar ? (resolved.references_texte_ar || resolved.references_texte_fr) : resolved.references_texte_fr;
+  if (refVal?.trim()) {
+    regulatoryFields.push({
+      key: "references",
+      label: ar ? "المراجع القانونية والنصية" : "Références textuelles",
+      primaryValue: refVal,
+      secondaryValue: ar && resolved.references_texte_ar && resolved.references_texte_fr && resolved.references_texte_ar !== resolved.references_texte_fr ? resolved.references_texte_fr : null,
+    });
+  }
 
   const t = ar ? {
     home: "الرئيسية",
@@ -148,7 +184,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     subgroup: "المجموعة الفرعية",
     content: "محتوى النشاط",
     accessories: "الأنشطة الإضافية",
-    regulatory: "المعلومات التنظيمية المتاحة (بالفرنسية)",
+    regulatory: "الضوابط والمعلومات التنظيمية",
     related: "أنشطة أخرى قريبة في التصنيف",
     noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
     missingLabel: "التسمية العربية غير متاحة في المصدر؛ عُرضت التسمية الفرنسية.",
@@ -186,8 +222,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
         breadcrumbs={[{ name: t.home, href: ar ? "/" : "/fr" }, { name: t.explorer, href: action }, { name: activity.code }]}
       />
       <main className="py-8 md:py-10">
-        <div data-nae-detail-print className="container mx-auto max-w-5xl space-y-5 px-4">
-          <style>{"@media print { body:has([data-nae-detail-print]) * { visibility:hidden!important; } [data-nae-detail-print], [data-nae-detail-print] * { visibility:visible!important; } [data-nae-detail-print] { position:absolute!important; inset:0!important; width:100%!important; margin:0!important; border:0!important; box-shadow:none!important; } }"}</style>
+        <div className="container mx-auto max-w-5xl space-y-5 px-4">
           <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-7">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
@@ -247,23 +282,133 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
 
           <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-7">
             <h2 className="text-base sm:text-lg font-bold text-gray-950">{t.content}</h2>
-            <p dir="ltr" lang="fr" className="mt-3 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">{activity.contenue_fr || t.noContent}</p>
-            {activity.accessoires_fr && <div className="mt-5 border-t border-gray-100 pt-4">
-              <h3 className="text-xs sm:text-sm font-bold text-gray-800">{t.accessories}</h3>
-              <p dir="ltr" lang="fr" className="mt-2 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">{activity.accessoires_fr}</p>
-            </div>}
+            {ar ? (
+              resolved.contenue_ar ? (
+                <div className="mt-3 space-y-3">
+                  <p dir="rtl" lang="ar" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-normal">
+                    {resolved.contenue_ar}
+                  </p>
+                  {resolved.contenue_fr && (
+                    <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-3">
+                      <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
+                        عرض النص الفرنسي الأصلي للمطابقة الإدارية
+                      </summary>
+                      <p dir="ltr" lang="fr" className="mt-2 whitespace-pre-line font-mono text-xs text-gray-700 leading-relaxed">
+                        {resolved.contenue_fr}
+                      </p>
+                    </details>
+                  )}
+                </div>
+              ) : (
+                <div className="mt-3">
+                  <p className="mb-1 text-xs text-gray-500 font-medium">
+                    (النص المصدر بالفرنسية وفق السجل التجاري)
+                  </p>
+                  <p dir="ltr" lang="fr" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">
+                    {resolved.contenue_fr || t.noContent}
+                  </p>
+                </div>
+              )
+            ) : (
+              <div className="mt-3 space-y-3">
+                <p dir="ltr" lang="fr" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">
+                  {resolved.contenue_fr || t.noContent}
+                </p>
+                {resolved.contenue_ar && (
+                  <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-3">
+                    <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
+                      Consulter la traduction indicative en arabe
+                    </summary>
+                    <p dir="rtl" lang="ar" className="mt-2 whitespace-pre-line text-xs text-gray-800 leading-relaxed font-sans">
+                      {resolved.contenue_ar}
+                    </p>
+                  </details>
+                )}
+              </div>
+            )}
+
+            {(resolved.accessoires_ar || resolved.accessoires_fr) && (
+              <div className="mt-5 border-t border-gray-100 pt-4">
+                <h3 className="text-xs sm:text-sm font-bold text-gray-800">{t.accessories}</h3>
+                {ar ? (
+                  resolved.accessoires_ar ? (
+                    <div className="mt-2 space-y-2">
+                      <p dir="rtl" lang="ar" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-medium">
+                        {resolved.accessoires_ar}
+                      </p>
+                      {resolved.accessoires_fr && (
+                        <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-2.5">
+                          <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
+                            عرض النص الأصلي بالفرنسية
+                          </summary>
+                          <p dir="ltr" lang="fr" className="mt-1.5 whitespace-pre-line font-mono text-xs text-gray-600 leading-relaxed">
+                            {resolved.accessoires_fr}
+                          </p>
+                        </details>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="mt-2">
+                      <p className="mb-1 text-xs text-gray-500 font-medium">
+                        (النص المصدر بالفرنسية وفق السجل التجاري)
+                      </p>
+                      <p dir="ltr" lang="fr" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">
+                        {resolved.accessoires_fr}
+                      </p>
+                    </div>
+                  )
+                ) : (
+                  <div className="mt-2 space-y-2">
+                    <p dir="ltr" lang="fr" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">
+                      {resolved.accessoires_fr}
+                    </p>
+                    {resolved.accessoires_ar && (
+                      <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-2.5">
+                        <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
+                          Consulter la traduction indicative en arabe
+                        </summary>
+                        <p dir="rtl" lang="ar" className="mt-1.5 whitespace-pre-line text-xs text-gray-800 leading-relaxed font-sans">
+                          {resolved.accessoires_ar}
+                        </p>
+                      </details>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
           </section>
 
-          {regulatoryFields.length > 0 && <details className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-6">
-            <summary className="cursor-pointer font-semibold text-xs sm:text-sm text-gray-900">{t.regulatory}<span className="ms-2 text-xs font-normal text-gray-600">({regulatoryFields.length})</span></summary>
-            <dl className="mt-4 space-y-4 border-t border-gray-100 pt-4">
-              {regulatoryFields.map((field) => <div key={field.key}>
-                <dt className="text-xs sm:text-sm font-semibold text-gray-800">{field.label}</dt>
-                <dd dir="ltr" lang="fr" className="mt-1 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">{field.value}</dd>
-              </div>)}
-            </dl>
-            <p className="mt-4 text-xs leading-5 text-gray-600">{ar ? "الحقول غير المتوفرة في نسخة البيانات لا تعني عدم وجود شرط تنظيمي." : "Un champ absent du fichier ne signifie pas l’absence d’une exigence réglementaire."}</p>
-          </details>}
+          {regulatoryFields.length > 0 && (
+            <details className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-6" open>
+              <summary className="cursor-pointer font-semibold text-xs sm:text-sm text-gray-900">
+                {t.regulatory}
+                <span className="ms-2 text-xs font-normal text-gray-600">({regulatoryFields.length})</span>
+              </summary>
+              <dl className="mt-4 space-y-4 border-t border-gray-100 pt-4">
+                {regulatoryFields.map((field) => (
+                  <div key={field.key}>
+                    <dt className="text-xs sm:text-sm font-semibold text-gray-800">{field.label}</dt>
+                    <dd
+                      dir={ar && !field.primaryValue.startsWith("MINISTERE") && !field.primaryValue.startsWith("DECRET") ? "rtl" : "ltr"}
+                      className="mt-1 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-medium"
+                    >
+                      {field.primaryValue}
+                    </dd>
+                    {field.secondaryValue && (
+                      <p dir="ltr" className="mt-0.5 text-xs text-gray-500 font-mono">
+                        {field.secondaryValue}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-4 text-xs leading-5 text-gray-600">
+                {ar
+                  ? "الحقول غير المتوفرة في نسخة البيانات لا تعني عدم وجود شرط تنظيمي."
+                  : "Un champ absent du fichier ne signifie pas l’absence d’une exigence réglementaire."}
+              </p>
+            </details>
+          )}
 
           {related.length > 0 && <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-6">
             <h2 className="text-sm sm:text-base font-bold text-gray-950">{t.related}</h2>

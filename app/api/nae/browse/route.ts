@@ -4,6 +4,7 @@ import { getNAEStatusInfo } from "@/lib/nae/status";
 import { BrowsePayloadSchema } from "@/lib/nae/api-schema";
 import { getComplementaryActivities } from "@/lib/nae/suggestions";
 import { normalizeNAESearchText } from "@/lib/nae/search";
+import { resolveActivityBilingual } from "@/lib/nae/gap-resolver";
 
 export const dynamic = "force-dynamic";
 
@@ -43,18 +44,25 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         targetCode: complementaryTo,
-        suggestions: suggestions.map((s) => ({
-          code: s.activity.code,
-          label_ar: s.activity.label_ar,
-          label_fr: s.activity.label_fr,
-          status: s.activity.status,
-          statusInfo: getNAEStatusInfo(s.activity.status, language),
-          sector_code: s.activity.sector_code,
-          group_code: s.activity.group_code,
-          subgroup_code: s.activity.subgroup_code,
-          reason: language === "ar" ? s.reason_ar : s.reason_fr,
-          matchType: s.matchType,
-        })),
+        suggestions: suggestions.map((s) => {
+          const resolved = resolveActivityBilingual(s.activity);
+          return {
+            code: resolved.code,
+            label_ar: resolved.label_ar,
+            label_fr: resolved.label_fr,
+            status: resolved.status,
+            statusInfo: getNAEStatusInfo(resolved.status, language),
+            sector_code: resolved.sector_code,
+            group_code: resolved.group_code,
+            subgroup_code: resolved.subgroup_code,
+            tutelle_fr: resolved.tutelle_fr,
+            tutelle_ar: resolved.tutelle_ar,
+            type_autorisation_fr: resolved.type_autorisation_fr,
+            type_autorisation_ar: resolved.type_autorisation_ar,
+            reason: language === "ar" ? s.reason_ar : s.reason_fr,
+            matchType: s.matchType,
+          };
+        }),
       },
       { headers: { "Cache-Control": "no-store" } },
     );
@@ -79,9 +87,13 @@ export async function POST(request: NextRequest) {
   if (q && q.trim().length > 0) {
     const norm = normalizeNAESearchText(q);
     filtered = filtered.filter((act) => {
+      const resolved = resolveActivityBilingual(act);
       if (act.code.includes(norm)) return true;
       if (normalizeNAESearchText(act.label_ar).includes(norm)) return true;
       if (normalizeNAESearchText(act.label_fr).includes(norm)) return true;
+      if (resolved.tutelle_ar && normalizeNAESearchText(resolved.tutelle_ar).includes(norm)) return true;
+      if (resolved.tutelle_fr && normalizeNAESearchText(resolved.tutelle_fr).includes(norm)) return true;
+      if (resolved.accessoires_ar && normalizeNAESearchText(resolved.accessoires_ar).includes(norm)) return true;
       return false;
     });
   }
@@ -98,20 +110,27 @@ export async function POST(request: NextRequest) {
       pageSize,
       total,
       totalPages,
-      activities: pageActivities.map((act) => ({
-        code: act.code,
-        label_ar: act.label_ar,
-        label_fr: act.label_fr,
-        status: act.status,
-        statusInfo: getNAEStatusInfo(act.status, language),
-        sector_code: act.sector_code,
-        group_code: act.group_code,
-        subgroup_code: act.subgroup_code,
-        tutelle_fr: act.tutelle_fr ?? null,
-        type_autorisation_fr: act.type_autorisation_fr ?? null,
-        contenue_fr: act.contenue_fr,
-        accessoires_fr: act.accessoires_fr ?? null,
-      })),
+      activities: pageActivities.map((act) => {
+        const resolved = resolveActivityBilingual(act);
+        return {
+          code: resolved.code,
+          label_ar: resolved.label_ar,
+          label_fr: resolved.label_fr,
+          status: resolved.status,
+          statusInfo: getNAEStatusInfo(resolved.status, language),
+          sector_code: resolved.sector_code,
+          group_code: resolved.group_code,
+          subgroup_code: resolved.subgroup_code,
+          tutelle_fr: resolved.tutelle_fr,
+          tutelle_ar: resolved.tutelle_ar,
+          type_autorisation_fr: resolved.type_autorisation_fr,
+          type_autorisation_ar: resolved.type_autorisation_ar,
+          contenue_fr: resolved.contenue_fr,
+          contenue_ar: resolved.contenue_ar,
+          accessoires_fr: resolved.accessoires_fr,
+          accessoires_ar: resolved.accessoires_ar,
+        };
+      }),
     },
     { headers: { "Cache-Control": "no-store" } },
   );

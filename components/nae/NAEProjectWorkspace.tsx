@@ -447,18 +447,7 @@ export default function NAEProjectWorkspace({
           </button>
         </div>
 
-        {/* Quick action: Print if activities exist */}
-        {codes.length > 0 && (
-          <button
-            type="button"
-            onClick={() => window.print()}
-            aria-label={t.printSheet}
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-xs font-bold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors shadow-2xs"
-          >
-            <Printer className="h-4 w-4 text-gray-600" aria-hidden="true" />
-            <span>{t.printSheet}</span>
-          </button>
-        )}
+
       </div>
 
       {/* VIEW MODE 1: DIRECTORY BROWSING & LIVE FILTERING (tabpanel) */}
@@ -527,15 +516,7 @@ export default function NAEProjectWorkspace({
                   <Briefcase className="h-4 w-4" aria-hidden="true" />
                   <span>{t.reviewProject}</span>
                 </button>
-                <button
-                  type="button"
-                  onClick={() => window.print()}
-                  aria-label={t.printSheet}
-                  className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-gray-300 bg-white px-3.5 py-2 text-xs font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
-                >
-                  <Printer className="h-4 w-4 text-gray-600" aria-hidden="true" />
-                  <span>{t.printSheet}</span>
-                </button>
+
                 <button
                   type="button"
                   onClick={clearBasket}

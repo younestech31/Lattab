@@ -4,6 +4,7 @@ import { analyzeNAEProject } from "@/lib/nae/project-analysis";
 import { NAE_SECTORS } from "@/lib/nae/sectors";
 import { getNAEStatusInfo } from "@/lib/nae/status";
 import { AnalyzePayloadSchema } from "@/lib/nae/api-schema";
+import { resolveActivityBilingual } from "@/lib/nae/gap-resolver";
 
 export const dynamic = "force-dynamic";
 
@@ -41,19 +42,34 @@ export async function POST(request: NextRequest) {
   const projectAnalysis = analyzeNAEProject(activities, input.description, primaryCode);
   const language = input.lang === "fr" ? "fr" : "ar";
   return NextResponse.json({
-    activities: activities.map((activity) => ({
-      code: activity.code,
-      label_ar: activity.label_ar,
-      label_fr: activity.label_fr,
-      status: activity.status,
-      statusInfo: getNAEStatusInfo(activity.status, language),
-      sector_code: activity.sector_code,
-      group_code: activity.group_code,
-      subgroup_code: activity.subgroup_code,
-      tutelle_fr: activity.tutelle_fr ?? null,
-      type_autorisation_fr: activity.type_autorisation_fr ?? null,
-      references_texte_fr: activity.references_texte_fr ?? null,
-    })),
-    analysis: { ...projectAnalysis, sectorLabels: projectAnalysis.sectors.map((code) => NAE_SECTORS[code as keyof typeof NAE_SECTORS]?.[language === "ar" ? "label_ar" : "label_fr"] ?? code) },
+    activities: activities.map((activity) => {
+      const resolved = resolveActivityBilingual(activity);
+      return {
+        code: resolved.code,
+        label_ar: resolved.label_ar,
+        label_fr: resolved.label_fr,
+        status: resolved.status,
+        statusInfo: getNAEStatusInfo(resolved.status, language),
+        sector_code: resolved.sector_code,
+        group_code: resolved.group_code,
+        subgroup_code: resolved.subgroup_code,
+        tutelle_fr: resolved.tutelle_fr,
+        tutelle_ar: resolved.tutelle_ar,
+        type_autorisation_fr: resolved.type_autorisation_fr,
+        type_autorisation_ar: resolved.type_autorisation_ar,
+        references_texte_fr: resolved.references_texte_fr,
+        references_texte_ar: resolved.references_texte_ar,
+        contenue_fr: resolved.contenue_fr,
+        contenue_ar: resolved.contenue_ar,
+        accessoires_fr: resolved.accessoires_fr,
+        accessoires_ar: resolved.accessoires_ar,
+      };
+    }),
+    analysis: {
+      ...projectAnalysis,
+      sectorLabels: projectAnalysis.sectors.map(
+        (code) => NAE_SECTORS[code as keyof typeof NAE_SECTORS]?.[language === "ar" ? "label_ar" : "label_fr"] ?? code,
+      ),
+    },
   }, { headers: { "Cache-Control": "no-store" } });
 }

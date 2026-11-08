@@ -13,9 +13,15 @@ export interface ActivityItem {
   group_code?: string;
   subgroup_code?: string;
   tutelle_fr?: string | null;
+  tutelle_ar?: string | null;
   type_autorisation_fr?: string | null;
+  type_autorisation_ar?: string | null;
   contenue_fr?: string;
+  contenue_ar?: string | null;
   accessoires_fr?: string | null;
+  accessoires_ar?: string | null;
+  references_texte_fr?: string | null;
+  references_texte_ar?: string | null;
 }
 
 export interface Finding {

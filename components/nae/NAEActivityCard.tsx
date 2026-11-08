@@ -15,9 +15,12 @@ export interface ActivityCardData {
   group_code?: string;
   subgroup_code?: string;
   tutelle_fr?: string | null;
+  tutelle_ar?: string | null;
   type_autorisation_fr?: string | null;
+  type_autorisation_ar?: string | null;
   contenue_fr?: string;
   accessoires_fr?: string | null;
+  accessoires_ar?: string | null;
 }
 
 interface NAEActivityCardProps {
@@ -172,19 +175,36 @@ export default function NAEActivityCard({
         </div>
 
         {/* Regulatory snippet for green activities */}
-        {isRegulated && (activity.tutelle_fr || activity.type_autorisation_fr) && (
+        {isRegulated &&
+          (activity.tutelle_fr ||
+            activity.tutelle_ar ||
+            activity.type_autorisation_fr ||
+            activity.type_autorisation_ar) && (
           <div className="mt-3 rounded-xl border border-emerald-100 bg-emerald-50/60 p-2.5 text-xs leading-relaxed text-emerald-950">
-            {activity.tutelle_fr && (
-              <p>
+            {(ar ? (activity.tutelle_ar || activity.tutelle_fr) : activity.tutelle_fr) && (
+              <div>
                 <strong className="font-semibold text-emerald-950">{t.regulatedBy}:</strong>{" "}
-                <span dir="ltr">{activity.tutelle_fr}</span>
-              </p>
+                <span>{ar ? (activity.tutelle_ar || activity.tutelle_fr) : activity.tutelle_fr}</span>
+                {ar && activity.tutelle_ar && activity.tutelle_fr && activity.tutelle_ar !== activity.tutelle_fr && (
+                  <span dir="ltr" className="block text-gray-500 font-mono text-xs mt-0.5">
+                    {activity.tutelle_fr}
+                  </span>
+                )}
+              </div>
             )}
-            {activity.type_autorisation_fr && (
-              <p className="mt-0.5">
+            {(ar ? (activity.type_autorisation_ar || activity.type_autorisation_fr) : activity.type_autorisation_fr) && (
+              <div className="mt-1">
                 <strong className="font-semibold text-emerald-950">{t.authType}:</strong>{" "}
-                <span dir="ltr">{activity.type_autorisation_fr}</span>
-              </p>
+                <span>{ar ? (activity.type_autorisation_ar || activity.type_autorisation_fr) : activity.type_autorisation_fr}</span>
+                {ar &&
+                  activity.type_autorisation_ar &&
+                  activity.type_autorisation_fr &&
+                  activity.type_autorisation_ar !== activity.type_autorisation_fr && (
+                    <span dir="ltr" className="block text-gray-500 font-mono text-xs mt-0.5">
+                      {activity.type_autorisation_fr}
+                    </span>
+                  )}
+              </div>
             )}
           </div>
         )}
