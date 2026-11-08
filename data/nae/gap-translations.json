@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "generated_at": "2026-11-08",
+  "policy": {
+    "description": "Second-language gap fills only. Official CNRC/UpGrowth source fields in sector-*.json are never modified or re-translated.",
+    "official_source_fields_untouched": true,
+    "origin": "informational-translation",
+    "note_ar": "ترجمات معلوماتية للحقول الناقصة باللغة الثانية. النص الرسمي الفرنسي يبقى المرجع.",
+    "note_fr": "Traductions informatives des champs manquants dans la seconde langue. Le texte français officiel demeure la référence.",
+    "exclusions": {
+      "label_nom_question": "Seven #NOM? cells preserved per data/nae/README.md; no replacement labels invented.",
+      "contenue_fr": "Arabic fills for activity content (2136 records) not included in this commit; bulk machine translation rejected for legal-scope risk.",
+      "accessoires_fr_remaining": "Only high-frequency exact French strings mapped; unique long accessory clauses remain open.",
+      "references_texte_fr_remaining": "Only the missing French fill for code 607004; other decree titles remain French-source until reviewed."
+    }
+  },
+  "coverage": {
+    "tutelle_fr_to_ar": 58,
+    "type_autorisation_fr_to_ar": 17,
+    "accessoires_fr_to_ar_exact": 25,
+    "references_by_code": 1,
+    "label_gap_fills": 0
+  },
+  "files": {
+    "tutelle_fr_to_ar": "data/nae/gap-translations/tutelle.json",
+    "type_autorisation_fr_to_ar": "data/nae/gap-translations/types.json",
+    "accessoires_fr_to_ar": "data/nae/gap-translations/accessoires.json",
+    "references_by_code": "data/nae/gap-translations/references.json"
+  },
+  "remaining_work": {
+    "contenue_ar": "Add reviewed Arabic for all 2136 contenue_fr texts without replacing French source.",
+    "accessoires_ar_unique_long": "Map remaining exact accessoires_fr strings not covered by accessoires_fr_to_ar.",
+    "references_ar": "Add reviewed Arabic for French-only legal references (approx. 172 unique texts).",
+    "ui_wiring": "Presentation layer should resolve second language via this overlay and never overwrite sector JSON."
+  }
+}

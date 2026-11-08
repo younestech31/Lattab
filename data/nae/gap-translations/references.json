@@ -1,0 +1,7 @@
+{
+  "607004": {
+    "references_texte_fr_fill": "Décret exécutif n° 72-39 du 10 février 1972 relatif à l'exercice de la profession de conseil juridique.",
+    "source_ar_preserved": "مرسوم تنفيذي 72-39 المؤرخ في 10 فيفري 1972 المتعلق بممارسة مهنة المستشاؤ القانوني",
+    "note": "Source Arabic cell retained as-is (including the written form المستشاؤ). French fill mirrors the intended legal profession (conseil juridique) without rewriting the Arabic source field."
+  }
+}
