@@ -68,14 +68,14 @@ export function NAEExplorerPage({
     ? {
         eyebrow: "الديوان العمومي للتوثيق — وهران",
         badgeText: "دليل معلوماتي — تصنيف النشاطات الاقتصادية",
-        title: "دليل النشاطات الاقتصادية",
+        title: "مدونة الأنشطة الاقتصادية",
         description: "استعراض معلوماتي لمدونة النشاطات الاقتصادية (NAE/CNRC)، مع فحص أولي للمؤشرات التنظيمية وتجهيز ورقة عمل تحضيرية لملف التأسيس.",
         home: "الرئيسية",
-        current: "دليل النشاطات الاقتصادية",
+        current: "مدونة الأنشطة الاقتصادية",
         noticeTitle: "تنبيه إعلامي واستشهادي",
-        noticeText: `هذه الأداة الاسترشادية مبنية على نسخة بيانات مدونة النشاطات الاقتصادية (CNRC) المؤرخة في ${sourceRevisionDate}. البيانات لا تغني عن تحرير العقد التأسيسي، وتظل بوابة المركز الوطني للسجل التجاري (Sidjilcom) المرجع الإداري الرسمي الحصري.`,
-        sourceNote: `المرجع الإداري الرسمي المعتمد: بوابة Sidjilcom والمركز الوطني للسجل التجاري (نسخة البيانات المؤرخة في ${sourceRevisionDate}).`,
-        sourceLicense: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
+        noticeText: `تعتمد هذه الأداة على نسخة مرجعية من مدونة الأنشطة الاقتصادية نشرها UpGrowth ضمن بيانات NAE 2026، بتاريخ ${sourceRevisionDate} وبرخصة CC BY 4.0. هذه لقطة بيانات مؤرخة وليست اتصالاً مباشراً بقاعدة CNRC ولا سجلاً حياً؛ بوابة Sidjilcom هي المرجع الإداري للتحقق من الرمز ووضع النشاط وشروط تسجيله.`,
+        sourceNote: `مصدر نسخة البيانات المعروضة: UpGrowth — Nomenclature CNRC 2026 (CC BY 4.0)، بتاريخ ${sourceRevisionDate}. المرجع الرسمي للتحقق الإداري: Sidjilcom / CNRC.`,
+        sourceLicense: "بيانات المرجع منشورة من UpGrowth برخصة CC BY 4.0.",
         sourceLink: "بوابة Sidjilcom الرسمية",
       }
     : {
@@ -86,9 +86,9 @@ export function NAEExplorerPage({
         home: "Accueil",
         current: "Nomenclature des activités économiques",
         noticeTitle: "Avertissement informatif",
-        noticeText: `Cet outil informatif repose sur la version des données de la nomenclature des activités économiques (CNRC) datée du ${sourceRevisionDate}. Les données ne remplacent pas la rédaction des statuts, et le portail officiel du CNRC (Sidjilcom) demeure la référence administrative exclusive.`,
-        sourceNote: `Référence administrative officielle : portail Sidjilcom et Centre National du Registre du Commerce (version datée du ${sourceRevisionDate}).`,
-        sourceLicense: "Données de référence sous licence CC BY 4.0 UpGrowth.",
+        noticeText: `Cet outil repose sur un instantané de la nomenclature NAE 2026 publié par UpGrowth, daté du ${sourceRevisionDate} et diffusé sous licence CC BY 4.0. Il ne s’agit ni d’une connexion directe à la base du CNRC ni d’un registre en temps réel ; Sidjilcom reste la référence administrative pour vérifier les codes, leur statut et les conditions d’inscription.`,
+        sourceNote: `Source de l’instantané présenté : UpGrowth — Nomenclature CNRC 2026 (CC BY 4.0), datée du ${sourceRevisionDate}. Référence de vérification officielle : Sidjilcom / CNRC.`,
+        sourceLicense: "Données de référence publiées par UpGrowth sous licence CC BY 4.0.",
         sourceLink: "Portail officiel Sidjilcom",
       };
 
@@ -202,7 +202,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
 
   const t = ar ? {
     home: "الرئيسية",
-    explorer: "دليل النشاطات الاقتصادية",
+    explorer: "مدونة الأنشطة الاقتصادية",
     classification: "التصنيف",
     sector: "القطاع",
     group: "المجموعة",
@@ -214,7 +214,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
     missingLabel: "التسمية العربية غير متاحة في المصدر؛ عُرضت التسمية الفرنسية.",
     disclaimer: "مرجع استرشادي غير رسمي؛ لا يثبت وحده شروط الترخيص أو إمكانية جمع الأنشطة. يرجى التحقق لدى المركز الوطني للسجل التجاري والجهة المختصة.",
-    sourceOfficial: "المصدر: المركز الوطني للسجل التجاري — بوابة Sidjilcom.",
+    sourceOfficial: "مصدر النسخة المرجعية: UpGrowth (CC BY 4.0)؛ للتحقق من الوضع الحالي راجع بوابة Sidjilcom / CNRC.",
     licenseLine: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
     openSource: "بوابة Sidjilcom الرسمية",
   } : {
@@ -231,7 +231,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     noContent: "Aucune description disponible dans le fichier.",
     missingLabel: "Le libellé français est absent de la source ; le libellé arabe est affiché.",
     disclaimer: "Référence indicative non officielle ; elle ne prouve pas les conditions d’autorisation ni la possibilité de cumul. Vérifiez auprès du CNRC et de l’autorité compétente.",
-    sourceOfficial: "Source : Centre National du Registre du Commerce — Portail Sidjilcom.",
+    sourceOfficial: "Source de l’instantané : UpGrowth (CC BY 4.0) ; vérifiez la situation actuelle sur Sidjilcom / CNRC.",
     licenseLine: "Données de référence sous licence CC BY 4.0 UpGrowth.",
     openSource: "Portail officiel Sidjilcom",
   };
@@ -241,7 +241,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
       <UnifiedPageHeader
         lang={lang}
         eyebrow={ar ? "الديوان العمومي للتوثيق — وهران" : "Office public de notariat — Maître Lattab Mohamed, Oran"}
-        badgeText={ar ? "بطاقة النشاط — دليل النشاطات الاقتصادية" : "Fiche activité — Nomenclature des activités économiques"}
+        badgeText={ar ? "بطاقة النشاط — مدونة الأنشطة الاقتصادية" : "Fiche activité — Nomenclature des activités économiques"}
         title={title}
         description={activity.code}
         breadcrumbs={[{ name: t.home, href: ar ? "/" : "/fr" }, { name: t.explorer, href: action }, { name: activity.code }]}
@@ -269,7 +269,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
               </div>
               <Link
                 href={action}
-                aria-label={ar ? "العودة إلى دليل النشاطات الاقتصادية" : "Retour à la nomenclature des activités économiques"}
+                aria-label={ar ? "العودة إلى مدونة الأنشطة الاقتصادية" : "Retour à la nomenclature des activités économiques"}
                 className="print:hidden inline-flex min-h-11 items-center rounded-xl border border-gray-300 px-4 text-xs sm:text-sm font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
               >
                 {ar ? "العودة إلى دليل النشاطات" : "Retour à la nomenclature"}
@@ -310,6 +310,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
             {ar ? (
               resolved.contenue_ar ? (
                 <div className="mt-3 space-y-3">
+                  <p className="text-xs leading-5 text-gray-600">ترجمة عربية استرشادية عن الوصف الفرنسي الوارد في نسخة البيانات؛ يُرجع إلى النص الفرنسي الأصلي عند المطابقة.</p>
                   <p dir="rtl" lang="ar" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-normal">
                     {resolved.contenue_ar}
                   </p>

@@ -43,7 +43,7 @@ function variants(token: string) {
 export function searchNAEProject(index: NAESearchIndex, rawQuery: string, limit = 20): NAEProjectSearchResult[] {
   const query = normalizeNAESearchText(rawQuery);
   if (!query) return [];
-  const tokens = [...new Set(query.split(" ").filter((token) => token.length > 1 && !STOP.has(token)))];
+  const tokens = [...new Set(query.split(" ").filter((token) => token.length > 1 && !STOP.has(token)))].slice(0, 24);
   const candidates = new Map<string, { activity: NAEActivity; score: number; terms: Set<string>; fields: Set<NAESearchMatchField>; usedSynonym: boolean }>();
 
   const add = (term: string, phrase: boolean, synonym: boolean) => {

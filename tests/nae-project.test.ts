@@ -41,9 +41,9 @@ test("maps the published source status values", () => {
   assert.equal(getNAEStatusCode("green"), "regulated");
   assert.equal(getNAEStatusCode("red"), "blocked");
   assert.equal(getNAEStatusCode("unknown"), "unknown");
-  assert.equal(getNAEStatusInfo("normal", "ar").label, "حر");
-  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم");
-  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée");
+  assert.equal(getNAEStatusInfo("normal", "ar").label, "حر وفق المصدر");
+  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم وفق المصدر");
+  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée (source)");
 });
 
 test("includes selected blocked, regulated and unknown source statuses in project review", () => {
@@ -82,10 +82,10 @@ test("treats sectors 5 and 6 as a conditional exception", () => {
 });
 
 test("keeps the source status as a concise label instead of long analysis findings", () => {
-  assert.equal(getNAEStatusInfo("red", "ar").label, "محظور");
-  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم");
-  assert.equal(getNAEStatusInfo("green", "fr").label, "Réglementée");
-  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée");
+  assert.equal(getNAEStatusInfo("red", "ar").label, "محظور وفق المصدر");
+  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم وفق المصدر");
+  assert.equal(getNAEStatusInfo("green", "fr").label, "Réglementée (source)");
+  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée (source)");
 });
 
 test("recognizes complementary operations cautiously", () => {

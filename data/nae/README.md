@@ -58,6 +58,6 @@ Index file plus maps under `data/nae/gap-translations/`. Holds **informational**
 | High-frequency `accessoires_fr` → Arabic | Partial (exact-string map; ~523/905 records) |
 | `references_texte_fr` missing French (code `607004`) | Filled as informational French; Arabic source cell preserved |
 | `#NOM?` labels | Preserved; no invented replacements |
-| `contenue_fr` → Arabic | Not in this commit (reviewed pass required) |
+| `contenue_fr` → Arabic | Partial: 105 code-specific informational translations; the French source text remains available |
 
 Policy: never re-translate an official cell that already has text; only add the missing language. UI consumers must treat overlay values as citizen-facing informational text and keep the French source as the catalogue reference.

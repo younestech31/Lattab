@@ -94,26 +94,26 @@ export default function NAEProjectWorkspace({
   // Localization strings
   const t = ar
     ? {
-        title: "دليل النشاطات الاقتصادية",
+        title: "مدونة الأنشطة الاقتصادية",
         intro: "استعراض مدونة النشاطات الاقتصادية (NAE)، وفحص أولي للمؤشرات التنظيمية وموانع الجمع، وإعداد ورقة عمل تحضيرية لملف التأسيس.",
-        tablistAria: "أقسام دليل النشاطات الاقتصادية",
-        tabDirectory: "استعراض الدليل",
+        tablistAria: "أقسام مدونة الأنشطة الاقتصادية",
+        tabDirectory: "استعراض المدونة",
         tabProject: "مسودة الأنشطة المقترحة",
         selectedBadge: "نشاط مختار",
         projectDescriptionLabel: "وصف موجز لمشروع المؤسسة",
         projectDescriptionPlaceholder: "مثال: بيع معدات الإعلام الآلي مع تركيبها وصيانتها وتكوين المستخدمين...",
         projectDescriptionHelp: "يُستخدم الوصف لاستخراج إشارات أولية إلى عمليات قد تكون تكميلية وفق المادة 2. لا يحدد وحده الرموز المناسبة ولا يثبت قانونية الجمع.",
         reviewProject: "مراجعة مسودة الأنشطة",
-        backToDirectory: "العودة لاستعراض الدليل",
+        backToDirectory: "العودة لاستعراض المدونة",
         clearAll: "تفريغ سلة الأنشطة والمسودة",
         printSheet: "طباعة ورقة عمل تحضيرية",
         primaryActivity: "النشاط الرئيسي",
         additionalActivity: "نشاط إضافي",
         setPrimary: "تعيين كرئيسي",
         remove: "حذف",
-        emptyProject: "لم تختر أي نشاط بعد. تصفح الدليل وأضف الأنشطة التي تريد دراستها إلى المسودة.",
+        emptyProject: "لم تختر أي نشاط بعد. استعرض المدونة وأضف الأنشطة التي تريد دراستها إلى المسودة.",
         legalStatus: "مؤشرات الوضع التنظيمي وموانع الجمع",
-        compatibleSuccess: "لا تظهر على هذه الرموز موانع ظاهرة في نسخة البيانات.",
+        compatibleSuccess: "لم تظهر مؤشرات تعارض ضمن الفحوص الأولية المحدودة؛ هذا لا يؤكد قانونياً جواز جمع الأنشطة.",
         checkingIndicators: "جارٍ مراجعة المؤشرات...",
         openSuggestions: "اقتراح أنشطة مكملة",
         prevPage: "الصفحة السابقة",
@@ -128,11 +128,11 @@ export default function NAEProjectWorkspace({
         printDate: "تاريخ إعداد المسودة",
         printAddress: "المقر الاجتماعي المقترح",
         printNotaryNotes: "ملاحظات ديوان التوثيق:",
-        sourceOfficialNotice: `المرجع الإداري الأساسي: المركز الوطني للسجل التجاري — بوابة Sidjilcom (نسخة البيانات المؤرخة في ${sourceRevisionDate}).`,
-        sourceDisclaimer: "البيانات نسخة معلوماتية مؤرخة وليست مدوّنة حيّة ولا رأياً للموثق.",
+        sourceOfficialNotice: `مصدر نسخة البيانات: UpGrowth — Nomenclature CNRC 2026 (CC BY 4.0)، بتاريخ ${sourceRevisionDate}. للتحقق من الوضع الحالي يُرجع إلى Sidjilcom / CNRC.`,
+        sourceDisclaimer: "البيانات لقطة مرجعية منشورة من UpGrowth وليست سجلاً حياً ولا قراراً من CNRC أو رأياً قانونياً من الموثق.",
         sourceLicenseLine: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
         legalNoticeFooter: "ورقة عمل معلوماتية استرشادية لا تغني عن تحرير العقد ولا عن المركز الوطني للسجل التجاري.",
-        loadingSr: "جارٍ تحميل دليل النشاطات الاقتصادية...",
+        loadingSr: "جارٍ تحميل مدونة الأنشطة الاقتصادية...",
       }
     : {
         title: "Nomenclature des activités économiques",
@@ -169,8 +169,8 @@ export default function NAEProjectWorkspace({
         printDate: "Date d'établissement",
         printAddress: "Siège social projeté",
         printNotaryNotes: "Observations de l'office notarial :",
-        sourceOfficialNotice: `Référence administrative : Centre National du Registre du Commerce — Portail Sidjilcom (version datée du ${sourceRevisionDate}).`,
-        sourceDisclaimer: "Données issues d'une version informative datée ; elles ne constituent ni un registre en temps réel ni un avis juridique du notaire.",
+        sourceOfficialNotice: `Source de l’instantané : UpGrowth — Nomenclature CNRC 2026 (CC BY 4.0), datée du ${sourceRevisionDate}. Vérification actuelle : Sidjilcom / CNRC.`,
+        sourceDisclaimer: "Instantané de référence publié par UpGrowth ; il ne constitue ni un registre en temps réel, ni une décision du CNRC, ni un avis juridique du notaire.",
         sourceLicenseLine: "Données de référence sous licence CC BY 4.0 UpGrowth.",
         legalNoticeFooter: "Document préparatoire informatif ne remplaçant ni les statuts ni les vérifications du CNRC.",
         loadingSr: "Chargement de la nomenclature des activités économiques...",
@@ -800,11 +800,11 @@ export default function NAEProjectWorkspace({
                           )}
                         </div>
 
-                        <p dir="rtl" lang="ar" className="mt-1.5 text-sm font-bold text-gray-950">
-                          {item ? item.label_ar : code}
+                        <p dir={ar ? "rtl" : "ltr"} lang={ar ? "ar" : "fr"} className="mt-1.5 text-sm font-bold text-gray-950">
+                          {item ? (ar ? item.label_ar : item.label_fr) : code}
                         </p>
-                        <p dir="ltr" lang="fr" className="text-xs text-gray-700">
-                          {item?.label_fr}
+                        <p dir={ar ? "ltr" : "rtl"} lang={ar ? "fr" : "ar"} className="text-xs text-gray-700">
+                          {item ? (ar ? item.label_fr : item.label_ar) : ""}
                         </p>
                       </div>
 

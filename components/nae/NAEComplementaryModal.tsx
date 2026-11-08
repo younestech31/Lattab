@@ -48,7 +48,7 @@ export default function NAEComplementaryModal({
         baseActivity: "النشاط المرجعي المختار",
         noSuggestions: "لا توجد اقتراحات ذات صلة مباشرة لهذا الرمز.",
         add: "إضافة للمشروع",
-        added: "مضاف للمشروع",
+        added: "إزالة من المشروع",
         close: "إغلاق النافذة",
         loading: "جارٍ تحميل الاقتراحات...",
       }
@@ -59,7 +59,7 @@ export default function NAEComplementaryModal({
         baseActivity: "Activité de référence",
         noSuggestions: "Aucune suggestion directement liée à ce code.",
         add: "Ajouter au projet",
-        added: "Ajoutée au projet",
+        added: "Retirer du projet",
         close: "Fermer la boîte de dialogue",
         loading: "Chargement des suggestions...",
       };
@@ -148,7 +148,7 @@ export default function NAEComplementaryModal({
     }
 
     function keepFocusInside(event: FocusEvent) {
-      if (event.target instanceof Node && !dialog.contains(event.target)) {
+      if (event.target instanceof Node && !dialog!.contains(event.target)) {
         getFocusable()[0]?.focus();
       }
     }

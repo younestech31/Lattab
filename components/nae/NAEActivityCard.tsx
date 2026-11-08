@@ -64,7 +64,7 @@ export default function NAEActivityCard({
         regulatedBy: "الجهة الوصية",
         authType: "الترخيص",
         notAvailable: "غير مدرج بالمصدر",
-        blockedNotice: "نشاط محظور أو معلق نظامياً",
+        blockedNotice: "مصنّف محظوراً في نسخة البيانات؛ تحقّق من وضعه الحالي لدى CNRC.",
         ariaAdd: `إضافة النشاط ${activity.code} إلى المسودة`,
         ariaRemove: `إلغاء اختيار النشاط ${activity.code}`,
         ariaPrimary: `تعيين النشاط ${activity.code} كنشاط رئيسي`,
@@ -82,7 +82,7 @@ export default function NAEActivityCard({
         regulatedBy: "Tutelle",
         authType: "Autorisation",
         notAvailable: "Non renseigné",
-        blockedNotice: "Activité bloquée ou suspendue réglementairement",
+        blockedNotice: "Classée comme bloquée dans la version de données ; vérifiez son statut actuel auprès du CNRC.",
         ariaAdd: `Ajouter l'activité ${activity.code} au projet`,
         ariaRemove: `Désélectionner l'activité ${activity.code}`,
         ariaPrimary: `Définir l'activité ${activity.code} comme activité principale`,
@@ -230,13 +230,12 @@ export default function NAEActivityCard({
           <button
             type="button"
             onClick={() => onToggleSelect(activity.code)}
-            disabled={isBlocked}
             aria-label={isSelected ? t.ariaRemove : t.ariaAdd}
             className={`inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl px-3.5 text-xs font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 ${
               isSelected
                 ? "bg-emerald-800 text-white shadow-xs hover:bg-emerald-900"
                 : isBlocked
-                  ? "cursor-not-allowed bg-gray-100 text-gray-500"
+                  ? "bg-rose-800 text-white hover:bg-rose-900 shadow-xs"
                   : "bg-emerald-800 text-white hover:bg-emerald-900 shadow-xs"
             }`}
           >
