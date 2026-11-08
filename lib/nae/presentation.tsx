@@ -9,6 +9,7 @@ import { getNAEActivities, getNAEDatasetManifest, getNAECatalogCounts } from "@/
 import { resolveActivityBilingual } from "@/lib/nae/gap-resolver";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
+import type { ActivityItem } from "@/components/nae/types";
 import { getNAEActivityTitle, type NAEPageLanguage } from "./seo";
 
 export type { NAEPageLanguage } from "./seo";
@@ -40,6 +41,28 @@ export function NAEExplorerPage({
   const ar = lang === "ar";
   const manifest = getNAEDatasetManifest();
   const catalogCounts = getNAECatalogCounts();
+  const initialActivities: ActivityItem[] = getNAEActivities().slice(0, 24).map((activity) => {
+    const resolved = resolveActivityBilingual(activity);
+    const status = getNAEStatusInfo(resolved.status, lang);
+    return {
+      code: resolved.code,
+      label_ar: resolved.label_ar,
+      label_fr: resolved.label_fr,
+      status: resolved.status,
+      statusInfo: { label: status.label, className: status.className },
+      sector_code: resolved.sector_code,
+      group_code: resolved.group_code,
+      subgroup_code: resolved.subgroup_code,
+      tutelle_fr: resolved.tutelle_fr,
+      tutelle_ar: resolved.tutelle_ar,
+      type_autorisation_fr: resolved.type_autorisation_fr,
+      type_autorisation_ar: resolved.type_autorisation_ar,
+      contenue_fr: resolved.contenue_fr,
+      contenue_ar: resolved.contenue_ar,
+      accessoires_fr: resolved.accessoires_fr,
+      accessoires_ar: resolved.accessoires_ar,
+    };
+  });
   const sourceRevisionDate = manifest.source_revision_date ?? (ar ? "غير محدد" : "non précisée");
   const copy = ar
     ? {
@@ -99,6 +122,7 @@ export function NAEExplorerPage({
           <NAEProjectWorkspace
             lang={lang}
             sourceRevisionDate={sourceRevisionDate}
+            initialActivities={initialActivities}
             catalogCounts={catalogCounts}
           />
 
