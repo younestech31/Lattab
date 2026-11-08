@@ -18,6 +18,24 @@ function activity(overrides: Partial<NAEActivity> & Pick<NAEActivity, "code" | "
   };
 }
 
+test("returns more than fifty matching activities for paginated search", () => {
+  const records = Array.from({ length: 150 }, (_, index) => {
+    const suffix = String(index).padStart(3, "0");
+    return activity({
+      code: `100${suffix}`,
+      sector_code: "1",
+      group_code: "100",
+      subgroup_code: "1000",
+      label_fr: "Services de proximité",
+      label_ar: "خدمات",
+      contenue_fr: "Services de proximité",
+    });
+  });
+
+  const results = searchNAEProject(createNAESearchIndex(records, "fr"), "services", 150);
+  assert.equal(results.length, 150);
+});
+
 test("maps the published source status values", () => {
   assert.equal(getNAEStatusCode("normal"), "free");
   assert.equal(getNAEStatusCode("green"), "regulated");
