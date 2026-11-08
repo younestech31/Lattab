@@ -6,7 +6,7 @@ import { JsonLdScript } from "@/components/schema";
 export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = "مدونة النشاطات الاقتصادية الجزائرية | الديوان العمومي للتوثيق وهران";
+  const title = "دليل النشاطات الاقتصادية الجزائرية | الديوان العمومي للتوثيق وهران";
   const description =
     "دليل معلوماتي لاستعراض الأنشطة الاقتصادية المعتمدة (NAE) وفحص موانع الجمع وإعداد ورقة عمل تحضيرية لملف التأسيس لدى ديوان التوثيق للأستاذ لعطب محمد بوهران.";
   const url = `${SITE_URL}/nae`;
@@ -59,7 +59,7 @@ export default function Page() {
         "@type": "WebPage",
         "@id": `${SITE_URL}/nae#webpage`,
         "url": `${SITE_URL}/nae`,
-        "name": "مدونة النشاطات الاقتصادية الجزائرية",
+        "name": "دليل النشاطات الاقتصادية الجزائرية",
         "description":
           "دليل معلوماتي لاستعراض الأنشطة الاقتصادية المعتمدة (NAE) وفحص موانع الجمع وإعداد ورقة عمل تحضيرية لملف التأسيس.",
         "inLanguage": "ar-DZ",
@@ -83,7 +83,7 @@ export default function Page() {
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "مدونة النشاطات الاقتصادية",
+            "name": "دليل النشاطات الاقتصادية",
             "item": `${SITE_URL}/nae`,
           },
         ],
