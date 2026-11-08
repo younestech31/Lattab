@@ -87,6 +87,32 @@ export function getNAEDatasetManifest(): NAEDatasetManifest {
   return manifest;
 }
 
+export interface NAECatalogCounts {
+  total: number;
+  sectors: Record<string, number>;
+  statusCounts: {
+    normal: number;
+    green: number;
+    red: number;
+  };
+}
+
+export function getNAECatalogCounts(): NAECatalogCounts {
+  let normal = 0;
+  let green = 0;
+  let red = 0;
+  for (const activity of activityList) {
+    if (activity.status === "normal") normal++;
+    else if (activity.status === "green") green++;
+    else if (activity.status === "red") red++;
+  }
+  return {
+    total: manifest.record_count,
+    sectors: manifest.sector_counts ?? {},
+    statusCounts: { normal, green, red },
+  };
+}
+
 const searchIndexes = new Map<NAESearchLanguage, NAESearchIndex>();
 
 /** Builds each language index lazily and reuses it for later server requests. */

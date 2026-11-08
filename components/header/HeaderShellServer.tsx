@@ -28,6 +28,9 @@ export default function HeaderShellServer({ lang, isHomePage }: { lang: Language
       if (href === '/formulaires') {
         return '/fr/formulaires';
       }
+      if (href === '/nae') {
+        return '/fr/nae';
+      }
     }
     return href;
   };
@@ -37,6 +40,7 @@ export default function HeaderShellServer({ lang, isHomePage }: { lang: Language
     { href: '/#services', label: text.services },
     { href: '/calculateur-prix-referentiel', label: text.calculator },
     { href: '/formulaires', label: text.forms },
+    { href: '/nae', label: text.nae },
     { href: '/useful-links', label: text.useful_links },
     { href: '/blog', label: text.blog },
     { href: '/#notary-role', label: text.notary_role },

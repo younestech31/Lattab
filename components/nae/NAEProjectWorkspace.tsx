@@ -2,6 +2,22 @@
 
 import { useEffect, useMemo, useState, useCallback } from "react";
 import {
+  BookOpen,
+  Briefcase,
+  Printer,
+  Trash2,
+  ChevronLeft,
+  ChevronRight,
+  AlertCircle,
+  CheckCircle2,
+  AlertTriangle,
+  Scale,
+  Lightbulb,
+  FileText,
+  RotateCcw,
+  Ban,
+} from "lucide-react";
+import {
   NAE_PROJECT_DRAFT_STORAGE_KEY,
   parseNAEProjectDraft,
   type NAEProjectDraft,
@@ -11,22 +27,32 @@ import NAEFilterBar from "./NAEFilterBar";
 import NAEComplementaryModal from "./NAEComplementaryModal";
 import type { ActivityItem, AnalysisResponseData, Finding } from "./types";
 
-interface NAEProjectWorkspaceProps {
+export interface NAEProjectWorkspaceProps {
   lang: "ar" | "fr";
   sourceRevisionDate: string;
+  catalogCounts?: {
+    total: number;
+    sectors: Record<string, number>;
+    statusCounts: {
+      normal: number;
+      green: number;
+      red: number;
+    };
+  };
 }
 
 function severityClass(value: Finding["severity"]) {
   return value === "critical"
-    ? "border-rose-200 bg-rose-50 text-rose-900"
+    ? "border-rose-200 bg-rose-50 text-rose-950"
     : value === "warning"
-      ? "border-amber-200 bg-amber-50 text-amber-900"
-      : "border-stone-200 bg-stone-50 text-stone-800";
+      ? "border-amber-200 bg-amber-50 text-amber-950"
+      : "border-gray-200 bg-gray-50 text-gray-800";
 }
 
 export default function NAEProjectWorkspace({
   lang,
   sourceRevisionDate,
+  catalogCounts,
 }: NAEProjectWorkspaceProps) {
   const ar = lang === "ar";
 
@@ -37,8 +63,12 @@ export default function NAEProjectWorkspace({
   const [page, setPage] = useState<number>(1);
   const pageSize = 24;
 
+  const totalCatalog = catalogCounts?.total ?? 2136;
+  const sectorCounts = catalogCounts?.sectors ?? {};
+  const statusCounts = catalogCounts?.statusCounts ?? { normal: 1641, green: 350, red: 145 };
+
   const [catalogActivities, setCatalogActivities] = useState<ActivityItem[]>([]);
-  const [totalFilteredCount, setTotalFilteredCount] = useState<number>(2136);
+  const [totalFilteredCount, setTotalFilteredCount] = useState<number>(totalCatalog);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [loadingCatalog, setLoadingCatalog] = useState<boolean>(true);
   const [catalogError, setCatalogError] = useState<string>("");
@@ -61,66 +91,80 @@ export default function NAEProjectWorkspace({
   // Localization strings
   const t = ar
     ? {
-        title: "دليل النشاطات الاقتصادية الجزائرية (NAE)",
-        intro: "استعرض كافة الأنشطة الاقتصادية المعتمدة رسمياً، تحقّق فورياً من التوافق القانوني للنشاطات، واستخرج ورقة العمل التأسيسية للموثق والسجل التجاري.",
-        tabDirectory: "دليل الأنشطة والاستعراض",
-        tabProject: "مشروع المؤسسة وسلة الأنشطة",
+        title: "مدونة النشاطات الاقتصادية",
+        intro: "استعراض الأنشطة الاقتصادية المعتمدة وفق مدونة النشاطات الاقتصادية (NAE)، والتحقق الاسترشادي الأولي من موانع الجمع، وإعداد ورقة عمل تحضيرية لملف التأسيس.",
+        tablistAria: "أقسام مدونة النشاطات الاقتصادية",
+        tabDirectory: "استعراض المدونة",
+        tabProject: "مسودة الأنشطة المقترحة",
         selectedBadge: "نشاط مختار",
-        reviewProject: "مراجعة توافق المشروع",
-        backToDirectory: "العودة لتصفح الأنشطة",
-        clearAll: "تفريغ المسودة",
-        printSheet: "طباعة ورقة التحضير الرسمية",
+        reviewProject: "مراجعة مسودة الأنشطة",
+        backToDirectory: "العودة لاستعراض المدونة",
+        clearAll: "تفريغ سلة الأنشطة والمسودة",
+        printSheet: "طباعة ورقة عمل تحضيرية",
         primaryActivity: "النشاط الرئيسي",
         additionalActivity: "نشاط إضافي",
         setPrimary: "تعيين كرئيسي",
         remove: "حذف",
-        emptyProject: "لم تختر أي نشاط بعد. تصفح الدليل وأضف الأنشطة التي ترغب في ممارستها.",
-        legalStatus: "نتيجة فحص التوافق القانوني",
-        compatibleSuccess: "الأنشطة المختارة متوافقة ومصرح بجمعها نظامياً.",
-        openSuggestions: "اقتراح أنشطة مكملة للمشروع",
-        prevPage: "السابق",
-        nextPage: "التالي",
+        emptyProject: "لم تختر أي نشاط بعد. تصفح المدونة وأضف الأنشطة المقترحة لمشروعك.",
+        legalStatus: "مؤشرات المواءمة النظامية وموانع الجمع",
+        compatibleSuccess: "لا تظهر على هذه الرموز موانع ظاهرة في نسخة البيانات.",
+        checkingIndicators: "جارٍ مراجعة المؤشرات...",
+        openSuggestions: "اقتراح أنشطة مكملة",
+        prevPage: "الصفحة السابقة",
+        nextPage: "الصفحة التالية",
         pageOf: "صفحة",
         of: "من",
         errorCatalog: "تعذر تحميل الأنشطة حالياً. يرجى إعادة المحاولة.",
-        printDocTitle: "ورقة تعيين نشاطات المؤسسة وتحضير القانون الأساسي",
-        printOffice: "الديوان العمومي للتوثيق — الأستاذ لعطب محمد (موثق معتمد)",
-        printCompany: "تسمية الشركة المقترحة",
-        printDate: "تاريخ الإعداد",
-        printAddress: "المقر الاجتماعي",
-        printNotaryNotes: "ملاحظات وتوجيهات الموثق",
-        sourceAttribution: "بيانات مستخرجة وفق مدونة النشاطات الاقتصادية (CNRC/NAE 2026)، ترخيص CC BY 4.0 UpGrowth.",
+        printDocTitle: "ورقة عمل لتعيين نشاطات مقترحة",
+        printDocSubtitle: "ورقة عمل معلوماتية استرشادية لا تغني عن تحرير العقد التأسيسي ولا عن مراجعة المركز الوطني للسجل التجاري.",
+        printOffice: "الديوان العمومي للتوثيق — الأستاذ لعطب محمد (موثق بوهران)",
+        printCompany: "التسمية المقترحة للشركة",
+        printDate: "تاريخ إعداد المسودة",
+        printAddress: "المقر الاجتماعي المقترح",
+        printNotaryNotes: "ملاحظات ديوان التوثيق:",
+        sourceOfficialNotice: `المرجع الإداري الأساسي: المركز الوطني للسجل التجاري — بوابة Sidjilcom (نسخة البيانات المؤرخة في ${sourceRevisionDate}).`,
+        sourceDisclaimer: "البيانات نسخة معلوماتية مؤرخة وليست مدوّنة حيّة ولا رأياً للموثق.",
+        sourceLicenseLine: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
+        legalNoticeFooter: "ورقة عمل معلوماتية استرشادية لا تغني عن تحرير العقد ولا عن المركز الوطني للسجل التجاري.",
+        loadingSr: "جارٍ تحميل مدونة النشاطات الاقتصادية...",
       }
     : {
-        title: "Nomenclature des Activités Économiques (NAE)",
-        intro: "Explorez l'ensemble des activités économiques officielles, vérifiez la compatibilité réglementaire de votre sélection et générez votre fiche préparatoire pour le notaire et le CNRC.",
+        title: "Nomenclature des activités économiques",
+        intro: "Consultation des activités économiques officielles (NAE), examen indicatif préliminaire des incompatibilités et établissement d'une fiche de travail préparatoire pour la constitution.",
+        tablistAria: "Modes d'affichage de la nomenclature",
         tabDirectory: "Exploration de la nomenclature",
-        tabProject: "Dossier de constitution et sélection",
+        tabProject: "Projet d'activités préparatoire",
         selectedBadge: "activité(s) sélectionnée(s)",
-        reviewProject: "Examiner la compatibilité",
-        backToDirectory: "Retour à l'exploration",
-        clearAll: "Vider la sélection",
-        printSheet: "Imprimer la fiche officielle",
+        reviewProject: "Examiner la sélection",
+        backToDirectory: "Retour à la nomenclature",
+        clearAll: "Vider la sélection de l'ensemble des activités",
+        printSheet: "Imprimer la fiche de travail préparatoire",
         primaryActivity: "Activité principale",
         additionalActivity: "Activité additionnelle",
         setPrimary: "Définir comme principale",
         remove: "Retirer",
-        emptyProject: "Aucune activité sélectionnée pour le moment. Explorez le catalogue pour composer votre projet.",
-        legalStatus: "Examen de conformité et compatibilité",
-        compatibleSuccess: "Les activités sélectionnées sont compatibles et conformes aux règles de cumul.",
+        emptyProject: "Aucune activité sélectionnée pour le moment. Explorez la nomenclature pour composer votre projet.",
+        legalStatus: "Indicateurs de cumul et observations",
+        compatibleSuccess: "Aucun empêchement apparent relevé dans cette version des données.",
+        checkingIndicators: "Examen des indicateurs en cours...",
         openSuggestions: "Suggérer des activités complémentaires",
-        prevPage: "Précédent",
-        nextPage: "Suivant",
+        prevPage: "Page précédente",
+        nextPage: "Page suivante",
         pageOf: "Page",
         of: "sur",
         errorCatalog: "Impossible de charger les activités. Veuillez réessayer.",
-        printDocTitle: "Fiche Préparatoire des Activités et Statuts de Société",
-        printOffice: "Office Notarial — Maître Lattab Mohamed (Notaire agréé)",
-        printCompany: "Dénomination sociale prévue",
+        printDocTitle: "Fiche de travail pour la désignation des activités proposées",
+        printDocSubtitle: "Document de travail informatif ne remplaçant ni la rédaction des statuts ni les vérifications auprès du Centre National du Registre du Commerce.",
+        printOffice: "Office public de notariat — Maître Lattab Mohamed (Notaire à Oran)",
+        printCompany: "Dénomination sociale projetée",
         printDate: "Date d'établissement",
-        printAddress: "Siège social",
-        printNotaryNotes: "Observations du notaire",
-        sourceAttribution: "Données issues de la Nomenclature des Activités Économiques (CNRC/NAE 2026), licence CC BY 4.0 UpGrowth.",
+        printAddress: "Siège social projeté",
+        printNotaryNotes: "Observations de l'office notarial :",
+        sourceOfficialNotice: `Référence administrative : Centre National du Registre du Commerce — Portail Sidjilcom (version datée du ${sourceRevisionDate}).`,
+        sourceDisclaimer: "Données issues d'une version informative datée ; elles ne constituent ni un registre en temps réel ni un avis juridique du notaire.",
+        sourceLicenseLine: "Données de référence sous licence CC BY 4.0 UpGrowth.",
+        legalNoticeFooter: "Document préparatoire informatif ne remplaçant ni les statuts ni les vérifications du CNRC.",
+        loadingSr: "Chargement de la nomenclature des activités économiques...",
       };
 
   // 1. Initial Local Storage Restoration
@@ -228,7 +272,7 @@ export default function NAEProjectWorkspace({
     setPage(1);
   };
 
-  // 4. Legal Compatibility Analysis on Selected Codes
+  // 4. Compatibility Analysis on Selected Codes
   useEffect(() => {
     if (!ready || codes.length === 0) {
       setAnalysisData(null);
@@ -256,7 +300,7 @@ export default function NAEProjectWorkspace({
       })
       .catch((err) => {
         if (!(err instanceof DOMException && err.name === "AbortError")) {
-          setAnalysisError(ar ? "تعذر إتمام فحص التوافق." : "Échec de l'analyse.");
+          setAnalysisError(ar ? "تعذر إتمام فحص المؤشرات." : "Échec de l'examen des indicateurs.");
         }
       })
       .finally(() => {
@@ -313,7 +357,13 @@ export default function NAEProjectWorkspace({
   }, [analysisData, codes.length]);
 
   return (
-    <div className="space-y-6" data-nae-workspace>
+    <div
+      className="space-y-6"
+      data-nae-workspace
+      aria-busy={!ready || (loadingCatalog && catalogActivities.length === 0)}
+    >
+      {!ready && <span className="sr-only">{t.loadingSr}</span>}
+
       {/* Print Stylesheet */}
       <style>{`
         @page { size: A4 portrait; margin: 12mm; }
@@ -340,31 +390,47 @@ export default function NAEProjectWorkspace({
         }
       `}</style>
 
-      {/* Main View Switcher Tabs */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-stone-200 pb-3">
-        <div className="flex items-center gap-2">
+      {/* Main View Switcher Tabs (role="tablist" pattern with full keyboard & screen reader accessibility) */}
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 pb-3">
+        <div
+          role="tablist"
+          aria-label={t.tablistAria}
+          className="flex items-center gap-2"
+        >
           <button
             type="button"
+            role="tab"
+            id="nae-tab-directory"
+            aria-selected={viewMode === "directory"}
+            aria-controls="nae-panel-directory"
+            tabIndex={viewMode === "directory" ? 0 : -1}
             onClick={() => setViewMode("directory")}
-            className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all ${
+            className={`inline-flex min-h-11 items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 ${
               viewMode === "directory"
-                ? "bg-emerald-900 text-white shadow-xs"
-                : "border border-stone-200 bg-white text-stone-700 hover:bg-stone-50"
+                ? "bg-emerald-800 text-white shadow-xs hover:bg-emerald-900"
+                : "border border-gray-200 bg-white text-gray-800 hover:bg-gray-50"
             }`}
           >
-            <span>📖 {t.tabDirectory}</span>
+            <BookOpen className="h-4 w-4" aria-hidden="true" />
+            <span>{t.tabDirectory}</span>
           </button>
 
           <button
             type="button"
+            role="tab"
+            id="nae-tab-project"
+            aria-selected={viewMode === "project_review"}
+            aria-controls="nae-panel-project"
+            tabIndex={viewMode === "project_review" ? 0 : -1}
             onClick={() => setViewMode("project_review")}
-            className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all ${
+            className={`inline-flex min-h-11 items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 ${
               viewMode === "project_review"
-                ? "bg-emerald-900 text-white shadow-xs"
-                : "border border-stone-200 bg-white text-stone-700 hover:bg-stone-50"
+                ? "bg-emerald-800 text-white shadow-xs hover:bg-emerald-900"
+                : "border border-gray-200 bg-white text-gray-800 hover:bg-gray-50"
             }`}
           >
-            <span>💼 {t.tabProject}</span>
+            <Briefcase className="h-4 w-4" aria-hidden="true" />
+            <span>{t.tabProject}</span>
             <span
               className={`rounded-full px-2 py-0.5 text-xs font-mono font-bold tabular-nums ${
                 codes.length > 0
@@ -372,8 +438,8 @@ export default function NAEProjectWorkspace({
                     ? "bg-rose-600 text-white"
                     : compatibilityStatus === "warning"
                       ? "bg-amber-500 text-white"
-                      : "bg-emerald-600 text-white"
-                  : "bg-stone-200 text-stone-700"
+                      : "bg-emerald-700 text-white"
+                  : "bg-gray-200 text-gray-800"
               }`}
             >
               {codes.length}
@@ -386,17 +452,25 @@ export default function NAEProjectWorkspace({
           <button
             type="button"
             onClick={() => window.print()}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-stone-300 bg-white px-3.5 py-2 text-xs font-bold text-stone-800 hover:bg-stone-50 transition-colors shadow-2xs"
+            aria-label={t.printSheet}
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-xs font-bold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors shadow-2xs"
           >
-            🖨️ {t.printSheet}
+            <Printer className="h-4 w-4 text-gray-600" aria-hidden="true" />
+            <span>{t.printSheet}</span>
           </button>
         )}
       </div>
 
-      {/* VIEW MODE 1: DIRECTORY BROWSING & LIVE FILTERING */}
+      {/* VIEW MODE 1: DIRECTORY BROWSING & LIVE FILTERING (tabpanel) */}
       {viewMode === "directory" && (
-        <div className="space-y-6">
-          {/* Filter Bar */}
+        <div
+          role="tabpanel"
+          id="nae-panel-directory"
+          aria-labelledby="nae-tab-directory"
+          tabIndex={0}
+          className="space-y-6 focus:outline-none"
+        >
+          {/* Filter Bar with server-provided manifest counts */}
           <NAEFilterBar
             lang={lang}
             selectedSector={selectedSector}
@@ -406,14 +480,78 @@ export default function NAEProjectWorkspace({
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}
             totalFilteredCount={totalFilteredCount}
-            totalCatalogCount={2136}
+            totalCatalogCount={totalCatalog}
+            sectorCounts={sectorCounts}
+            statusCounts={statusCounts}
             isLoading={loadingCatalog}
             onClearFilters={handleClearFilters}
           />
 
+          {/* IN-FLOW DRAFT BASKET CARD */}
+          {codes.length > 0 && (
+            <section
+              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-emerald-50/50 p-4 shadow-xs sm:p-5"
+              aria-label={t.tabProject}
+            >
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-800 font-mono text-xs sm:text-sm font-bold text-white tabular-nums">
+                  {codes.length}
+                </span>
+                <div>
+                  <p className="text-xs sm:text-sm font-bold text-gray-950">
+                    {codes.length} {t.selectedBadge}
+                  </p>
+                  <p className="text-xs text-gray-700 mt-0.5">
+                    {analyzing
+                      ? t.checkingIndicators
+                      : compatibilityStatus === "critical"
+                        ? ar
+                          ? "تنبيه: مؤشرات لموانع جمع محتملة تحتاج مراجعة"
+                          : "Attention : indicateurs d'incompatibilité à examiner"
+                        : compatibilityStatus === "warning"
+                          ? ar
+                            ? "ملاحظة: شروط تنظيمية أو تراخيص مسبقة مطلوبة"
+                            : "Note : conditions réglementaires ou autorisations requises"
+                          : t.compatibleSuccess}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setViewMode("project_review")}
+                  aria-label={t.reviewProject}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-emerald-800 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors shadow-xs"
+                >
+                  <Briefcase className="h-4 w-4" aria-hidden="true" />
+                  <span>{t.reviewProject}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  aria-label={t.printSheet}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-gray-300 bg-white px-3.5 py-2 text-xs font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
+                >
+                  <Printer className="h-4 w-4 text-gray-600" aria-hidden="true" />
+                  <span>{t.printSheet}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={clearBasket}
+                  aria-label={t.clearAll}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-800 hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 transition-colors"
+                  title={t.clearAll}
+                >
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+            </section>
+          )}
+
           {/* Catalog Activities Grid */}
           {catalogError ? (
-            <div className="rounded-xl border border-rose-200 bg-rose-50 p-6 text-center text-rose-800">
+            <div className="rounded-2xl border border-rose-200 bg-rose-50 p-6 text-center text-xs sm:text-sm text-rose-950 font-medium">
               {catalogError}
             </div>
           ) : loadingCatalog ? (
@@ -421,21 +559,23 @@ export default function NAEProjectWorkspace({
               {Array.from({ length: 6 }).map((_, i) => (
                 <div
                   key={i}
-                  className="h-44 animate-pulse rounded-xl border border-stone-200 bg-stone-100/60 p-5"
+                  className="h-44 animate-pulse rounded-2xl border border-gray-200 bg-gray-100/60 p-5"
                 />
               ))}
             </div>
           ) : catalogActivities.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-stone-300 bg-white p-12 text-center">
-              <p className="text-base font-semibold text-stone-700">
+            <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-12 text-center">
+              <p className="text-sm font-semibold text-gray-800">
                 {ar ? "لا توجد نشاطات مطابقة للبحث أو المرشحات المحددة." : "Aucune activité ne correspond à vos filtres."}
               </p>
               <button
                 type="button"
                 onClick={handleClearFilters}
-                className="mt-4 inline-flex items-center rounded-lg bg-emerald-800 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-900 transition-colors"
+                aria-label={ar ? "إعادة ضبط جميع المرشحات" : "Réinitialiser tous les filtres"}
+                className="mt-4 inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-emerald-800 px-5 py-2.5 text-xs font-bold text-white hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
               >
-                {ar ? "إعادة ضبط جميع المرشحات" : "Réinitialiser tous les filtres"}
+                <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                <span>{ar ? "إعادة ضبط جميع المرشحات" : "Réinitialiser tous les filtres"}</span>
               </button>
             </div>
           ) : (
@@ -457,11 +597,11 @@ export default function NAEProjectWorkspace({
 
           {/* Pagination Controls */}
           {totalPages > 1 && (
-            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-stone-200 pt-4">
-              <div className="text-xs text-stone-500 font-medium">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-gray-200 pt-4">
+              <div className="text-xs text-gray-600 font-medium">
                 {t.pageOf}{" "}
-                <strong className="font-mono tabular-nums text-stone-900">{page}</strong> {t.of}{" "}
-                <span className="font-mono tabular-nums">{totalPages}</span>
+                <strong className="font-mono tabular-nums text-gray-950 font-bold">{page}</strong> {t.of}{" "}
+                <span className="font-mono tabular-nums font-bold text-gray-900">{totalPages}</span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -469,18 +609,40 @@ export default function NAEProjectWorkspace({
                   type="button"
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={page <= 1 || loadingCatalog}
-                  className="inline-flex min-h-[36px] items-center rounded-lg border border-stone-300 bg-white px-3.5 text-xs font-semibold text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40"
+                  aria-label={t.prevPage}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-gray-300 bg-white px-4 text-xs font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40 transition-colors"
                 >
-                  {ar ? "← " + t.prevPage : "← " + t.prevPage}
+                  {ar ? (
+                    <>
+                      <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                      <span>{t.prevPage}</span>
+                    </>
+                  ) : (
+                    <>
+                      <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+                      <span>{t.prevPage}</span>
+                    </>
+                  )}
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                   disabled={page >= totalPages || loadingCatalog}
-                  className="inline-flex min-h-[36px] items-center rounded-lg border border-stone-300 bg-white px-3.5 text-xs font-semibold text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40"
+                  aria-label={t.nextPage}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-gray-300 bg-white px-4 text-xs font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40 transition-colors"
                 >
-                  {ar ? t.nextPage + " →" : t.nextPage + " →"}
+                  {ar ? (
+                    <>
+                      <span>{t.nextPage}</span>
+                      <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+                    </>
+                  ) : (
+                    <>
+                      <span>{t.nextPage}</span>
+                      <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                    </>
+                  )}
                 </button>
               </div>
             </div>
@@ -488,14 +650,20 @@ export default function NAEProjectWorkspace({
         </div>
       )}
 
-      {/* VIEW MODE 2: PROJECT WORKSPACE & LEGAL COMPATIBILITY CHECKER */}
+      {/* VIEW MODE 2: PROJECT WORKSPACE & INDICATOR REVIEW (tabpanel) */}
       {viewMode === "project_review" && (
-        <div className="space-y-6">
-          <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs sm:p-7">
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-stone-100 pb-4">
+        <div
+          role="tabpanel"
+          id="nae-panel-project"
+          aria-labelledby="nae-tab-project"
+          tabIndex={0}
+          className="space-y-6 focus:outline-none"
+        >
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-7">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 pb-4">
               <div>
-                <h2 className="text-lg font-bold text-stone-900 sm:text-xl">{t.tabProject}</h2>
-                <p className="mt-1 text-xs text-stone-500">
+                <h2 className="text-lg font-bold text-gray-950 sm:text-xl">{t.tabProject}</h2>
+                <p className="mt-1 text-xs text-gray-600">
                   {codes.length} {t.selectedBadge}
                 </p>
               </div>
@@ -504,7 +672,8 @@ export default function NAEProjectWorkspace({
                 <button
                   type="button"
                   onClick={() => setViewMode("directory")}
-                  className="inline-flex items-center rounded-lg border border-stone-300 bg-white px-3.5 py-2 text-xs font-semibold text-stone-700 hover:bg-stone-50"
+                  aria-label={t.backToDirectory}
+                  className="inline-flex min-h-11 items-center rounded-xl border border-gray-300 bg-white px-4 text-xs font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
                 >
                   {t.backToDirectory}
                 </button>
@@ -512,9 +681,11 @@ export default function NAEProjectWorkspace({
                   <button
                     type="button"
                     onClick={clearBasket}
-                    className="inline-flex items-center rounded-lg border border-rose-200 bg-rose-50 px-3.5 py-2 text-xs font-semibold text-rose-800 hover:bg-rose-100"
+                    aria-label={t.clearAll}
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3.5 text-xs font-semibold text-rose-800 hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 transition-colors"
                   >
-                    {t.clearAll}
+                    <Trash2 className="h-4 w-4" aria-hidden="true" />
+                    <span>{t.clearAll}</span>
                   </button>
                 )}
               </div>
@@ -523,11 +694,12 @@ export default function NAEProjectWorkspace({
             {/* Selected Activities List */}
             {codes.length === 0 ? (
               <div className="py-12 text-center">
-                <p className="text-sm font-semibold text-stone-600">{t.emptyProject}</p>
+                <p className="text-sm font-semibold text-gray-700">{t.emptyProject}</p>
                 <button
                   type="button"
                   onClick={() => setViewMode("directory")}
-                  className="mt-4 inline-flex items-center rounded-lg bg-emerald-800 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-900"
+                  aria-label={t.backToDirectory}
+                  className="mt-4 inline-flex min-h-11 items-center rounded-xl bg-emerald-800 px-5 text-xs font-bold text-white hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
                 >
                   {t.backToDirectory}
                 </button>
@@ -540,41 +712,52 @@ export default function NAEProjectWorkspace({
                     catalogActivities.find((a) => a.code === code);
                   const isItemPrimary = primary === code;
 
+                  const ariaPrimaryBtn = ar ? `تعيين النشاط ${code} كنشاط رئيسي` : `Définir l'activité ${code} comme principale`;
+                  const ariaSuggestionsBtn = ar ? `اقتراح أنشطة مكملة للنشاط ${code}` : `Suggérer des activités complémentaires pour l'activité ${code}`;
+                  const ariaRemoveBtn = ar ? `حذف النشاط ${code} من المسودة` : `Retirer l'activité ${code} du projet`;
+
                   return (
                     <div
                       key={code}
-                      className={`flex flex-col justify-between gap-3 rounded-xl border p-4 transition-colors sm:flex-row sm:items-center ${
+                      className={`flex flex-col justify-between gap-3 rounded-2xl border p-4 transition-colors sm:flex-row sm:items-center ${
                         isItemPrimary
-                          ? "border-amber-300 bg-amber-50/20"
-                          : "border-stone-200 bg-stone-50/50"
+                          ? "border-amber-300 bg-amber-50/30"
+                          : "border-gray-200 bg-gray-50/60"
                       }`}
                     >
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
                           <span
-                            className="inline-flex items-center rounded-md border border-emerald-900/15 bg-emerald-50 px-2 py-0.5 font-mono text-xs font-bold tabular-nums text-emerald-950"
+                            className="inline-flex items-center rounded-lg border border-emerald-900/15 bg-emerald-50 px-2 py-0.5 font-mono text-xs font-bold tabular-nums text-emerald-950"
                             dir="ltr"
                           >
                             {code}
                           </span>
                           {isItemPrimary && (
-                            <span className="rounded bg-amber-100 px-2 py-0.5 text-[11px] font-bold text-amber-900">
-                              ★ {t.primaryActivity}
+                            <span className="rounded-md bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-950 border border-amber-300">
+                              {t.primaryActivity}
                             </span>
                           )}
                           {item && (
                             <span
-                              className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${item.statusInfo.className}`}
+                              className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${item.statusInfo.className}`}
                             >
-                              {item.statusInfo.label}
+                              {item.status === "red" ? (
+                                <Ban className="h-3 w-3 text-rose-700" aria-hidden="true" />
+                              ) : item.status === "green" ? (
+                                <AlertTriangle className="h-3 w-3 text-amber-700" aria-hidden="true" />
+                              ) : (
+                                <CheckCircle2 className="h-3 w-3 text-emerald-700" aria-hidden="true" />
+                              )}
+                              <span>{ar ? item.statusInfo.label : (item.status === "red" ? "Bloquée" : item.statusInfo.label)}</span>
                             </span>
                           )}
                         </div>
 
-                        <p dir="rtl" lang="ar" className="mt-1.5 text-sm font-bold text-stone-900">
+                        <p dir="rtl" lang="ar" className="mt-1.5 text-sm font-bold text-gray-950">
                           {item ? item.label_ar : code}
                         </p>
-                        <p dir="ltr" lang="fr" className="text-xs text-stone-600">
+                        <p dir="ltr" lang="fr" className="text-xs text-gray-700">
                           {item?.label_fr}
                         </p>
                       </div>
@@ -584,7 +767,8 @@ export default function NAEProjectWorkspace({
                           <button
                             type="button"
                             onClick={() => handleSetPrimary(code)}
-                            className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-stone-700 hover:bg-stone-100"
+                            aria-label={ariaPrimaryBtn}
+                            className="inline-flex min-h-11 items-center rounded-xl border border-gray-200 bg-white px-3 text-xs font-semibold text-gray-800 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
                           >
                             {t.setPrimary}
                           </button>
@@ -592,14 +776,18 @@ export default function NAEProjectWorkspace({
                         <button
                           type="button"
                           onClick={() => setComplementaryTargetCode(code)}
-                          className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-medium text-stone-700 hover:text-emerald-900"
+                          aria-label={ariaSuggestionsBtn}
+                          className="inline-flex min-h-11 items-center gap-1 rounded-xl border border-gray-200 bg-white px-3 text-xs font-medium text-gray-800 hover:text-emerald-950 hover:border-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
+                          title={t.openSuggestions}
                         >
-                          💡
+                          <Lightbulb className="h-4 w-4 text-amber-600" aria-hidden="true" />
+                          <span className="hidden sm:inline">{t.openSuggestions}</span>
                         </button>
                         <button
                           type="button"
                           onClick={() => toggleSelect(code)}
-                          className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-rose-700 hover:bg-rose-50"
+                          aria-label={ariaRemoveBtn}
+                          className="inline-flex min-h-11 items-center rounded-xl border border-gray-200 bg-white px-3 text-xs font-semibold text-rose-800 hover:bg-rose-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-600 focus-visible:ring-offset-2 transition-colors"
                         >
                           {t.remove}
                         </button>
@@ -611,23 +799,30 @@ export default function NAEProjectWorkspace({
             )}
           </div>
 
-          {/* Legal Compatibility Analysis Section */}
+          {/* Indicators and Observations Section */}
           {codes.length > 0 && (
-            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs sm:p-7">
-              <div className="flex items-center justify-between border-b border-stone-100 pb-3">
-                <h3 className="text-base font-bold text-stone-900 sm:text-lg">
-                  ⚖️ {t.legalStatus}
-                </h3>
+            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-7">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <Scale className="h-5 w-5 text-gray-800" aria-hidden="true" />
+                  <h3 className="text-base font-bold text-gray-950 sm:text-lg">
+                    {t.legalStatus}
+                  </h3>
+                </div>
                 {analyzing && (
-                  <span className="text-xs font-medium text-emerald-800 animate-pulse">
-                    {ar ? "جارٍ التحقق القانوني..." : "Vérification en cours..."}
+                  <span className="text-xs font-semibold text-emerald-800 animate-pulse">
+                    {t.checkingIndicators}
                   </span>
                 )}
               </div>
 
               {analysisError ? (
-                <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs text-rose-900">
+                <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs text-rose-950 font-medium">
                   {analysisError}
+                </div>
+              ) : analyzing ? (
+                <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-4 text-xs font-medium text-gray-700">
+                  {t.checkingIndicators}
                 </div>
               ) : analysisData?.analysis.findings && analysisData.analysis.findings.length > 0 ? (
                 <div className="mt-4 space-y-3">
@@ -637,12 +832,19 @@ export default function NAEProjectWorkspace({
                       className={`rounded-xl border p-4 ${severityClass(finding.severity)}`}
                     >
                       <div className="flex items-center justify-between">
-                        <h4 className="font-bold text-sm">
-                          {ar ? finding.title_ar : finding.title_fr}
-                        </h4>
+                        <div className="flex items-center gap-2">
+                          {finding.severity === "critical" ? (
+                            <AlertCircle className="h-4 w-4 text-rose-700 shrink-0" aria-hidden="true" />
+                          ) : (
+                            <AlertTriangle className="h-4 w-4 text-amber-700 shrink-0" aria-hidden="true" />
+                          )}
+                          <h4 className="font-bold text-xs sm:text-sm">
+                            {ar ? finding.title_ar : finding.title_fr}
+                          </h4>
+                        </div>
                         {finding.severity === "critical" && (
-                          <span className="rounded bg-rose-200 px-2 py-0.5 text-[10px] font-bold text-rose-900 uppercase">
-                            {ar ? "تنبيه هام" : "Avertissement critique"}
+                          <span className="rounded-md bg-rose-200/90 px-2 py-0.5 text-xs font-bold text-rose-950">
+                            {ar ? "تنبيه" : "Attention"}
                           </span>
                         )}
                       </div>
@@ -650,7 +852,7 @@ export default function NAEProjectWorkspace({
                         {ar ? finding.detail_ar : finding.detail_fr}
                       </p>
                       {finding.article && (
-                        <p className="mt-2 font-mono text-[11px] opacity-80">
+                        <p className="mt-2 font-mono text-xs opacity-90">
                           § {finding.article}
                         </p>
                       )}
@@ -659,7 +861,7 @@ export default function NAEProjectWorkspace({
                           href={finding.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-1 inline-block text-xs font-semibold underline underline-offset-4"
+                          className="mt-1 inline-block text-xs font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 rounded"
                         >
                           {ar ? "المرجع في الجريدة الرسمية" : "Consulter le texte officiel"}
                         </a>
@@ -668,75 +870,30 @@ export default function NAEProjectWorkspace({
                   ))}
                 </div>
               ) : (
-                <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 text-xs font-medium text-emerald-900">
-                  ✓ {t.compatibleSuccess}
+                <div className="mt-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 text-xs font-medium text-emerald-950">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-700 shrink-0" aria-hidden="true" />
+                  <span>{t.compatibleSuccess}</span>
                 </div>
               )}
 
               {/* Action row */}
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-stone-100 pt-4">
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 pt-4">
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="inline-flex min-h-[40px] items-center rounded-lg bg-emerald-900 px-5 text-xs font-bold text-white hover:bg-emerald-800 transition-colors shadow-xs"
+                  aria-label={t.printSheet}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-800 px-5 text-xs font-bold text-white hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors shadow-xs"
                 >
-                  🖨️ {t.printSheet}
+                  <Printer className="h-4 w-4" aria-hidden="true" />
+                  <span>{t.printSheet}</span>
                 </button>
 
-                <p className="text-xs text-stone-500">
-                  {ar ? "مرجع تحضيري رسمي معتمد لدى ديوان التوثيق." : "Document préparatoire conforme aux exigences notariales."}
+                <p className="text-xs text-gray-600 max-w-md leading-relaxed">
+                  {t.printDocSubtitle}
                 </p>
               </div>
             </div>
           )}
-        </div>
-      )}
-
-      {/* Floating Bottom Basket Bar (When browsing directory and has items) */}
-      {viewMode === "directory" && codes.length > 0 && (
-        <div className="fixed bottom-4 inset-x-4 z-40 mx-auto max-w-4xl transition-all">
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-stone-800 bg-stone-900/95 p-3.5 text-white shadow-xl backdrop-blur-md sm:p-4">
-            <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 font-mono text-sm font-bold text-stone-950 tabular-nums">
-                {codes.length}
-              </span>
-              <div>
-                <p className="text-xs font-bold text-white sm:text-sm">
-                  {codes.length} {t.selectedBadge}
-                </p>
-                <p className="text-[11px] text-stone-400">
-                  {compatibilityStatus === "critical"
-                    ? ar
-                      ? "⚠️ تنبيه: تعارض قانوني يحتاج للمراجعة"
-                      : "⚠️ Avertissement de cumul"
-                    : compatibilityStatus === "warning"
-                      ? ar
-                        ? "ℹ️ استثناء مشروط / تراخيص مطلوبة"
-                        : "ℹ️ Cumul conditionnel"
-                      : ar
-                        ? "✓ الأنشطة متوافقة"
-                        : "✓ Sélection compatible"}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setViewMode("project_review")}
-                className="inline-flex min-h-[36px] items-center rounded-lg bg-emerald-600 px-4 text-xs font-bold text-white hover:bg-emerald-500 transition-colors shadow-xs"
-              >
-                {t.reviewProject}
-              </button>
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="hidden sm:inline-flex min-h-[36px] items-center rounded-lg border border-stone-700 bg-stone-800 px-3 text-xs font-medium text-stone-200 hover:bg-stone-700"
-              >
-                🖨️
-              </button>
-            </div>
-          </div>
         </div>
       )}
 
@@ -750,17 +907,20 @@ export default function NAEProjectWorkspace({
         onClose={() => setComplementaryTargetCode(null)}
       />
 
-      {/* PRINT-ONLY OFFICIAL PREPARATION SHEET */}
+      {/* PRINT-ONLY WORKING WORKSHEET */}
       <div data-nae-print-sheet className="hidden">
-        <header className="border-b-2 border-stone-800 pb-4 text-center">
-          <p className="text-sm font-bold tracking-wide text-stone-700">{t.printOffice}</p>
-          <h1 className="mt-1 text-2xl font-bold text-stone-950">{t.printDocTitle}</h1>
-          <p className="mt-1 text-xs text-stone-600">
-            {ar ? "وثيقة عمل أولية لإعداد العقد التأسيسي والقانون الأساسي للشركة" : "Document préparatoire préalable aux statuts et à l'immatriculation"}
+        <header className="border-b-2 border-gray-800 pb-4 text-center">
+          <p className="text-sm font-bold tracking-wide text-gray-800">{t.printOffice}</p>
+          <h1 className="mt-1 text-2xl font-bold text-gray-950">{t.printDocTitle}</h1>
+          <p className="mt-1 text-xs text-gray-700 max-w-2xl mx-auto">
+            {t.printDocSubtitle}
+          </p>
+          <p className="mt-1 text-xs text-gray-600">
+            {t.sourceOfficialNotice}
           </p>
         </header>
 
-        <div className="my-5 grid grid-cols-2 gap-4 text-xs border border-stone-300 p-3 rounded">
+        <div className="my-5 grid grid-cols-2 gap-4 text-xs border border-gray-300 p-3 rounded">
           <div>
             <p>
               <strong>{t.printCompany}:</strong> ___________________________________________
@@ -774,7 +934,10 @@ export default function NAEProjectWorkspace({
               <strong>{t.printDate}:</strong> ____ / ____ / ________
             </p>
             <p className="mt-2">
-              <strong>{ar ? "الشكل القانوني المقترح" : "Forme juridique"}:</strong> [ ] SARL [ ] EURL [ ] SPA [ ] Personne physique
+              <strong>{ar ? "الشكل القانوني المقترح" : "Forme juridique proposée"}:</strong>{" "}
+              {ar
+                ? "[ ] ش.ذ.م.م (SARL)   [ ] ش.ذ.ش.و (EURL)   [ ] ش.مساهمة (SPA)   [ ] شخص طبيعي (Personne physique)"
+                : "[ ] SARL   [ ] EURL   [ ] SPA   [ ] Personne physique"}
             </p>
           </div>
         </div>
@@ -783,8 +946,8 @@ export default function NAEProjectWorkspace({
           <thead>
             <tr>
               <th style={{ width: "15%" }}>{ar ? "رمز النشاط" : "Code"}</th>
-              <th style={{ width: "35%" }} dir="rtl">{ar ? "التسمية الرسمية (بالعربية)" : "Libellé officiel (Arabe)"}</th>
-              <th style={{ width: "35%" }} dir="ltr">{ar ? "التسمية الرسمية (بالفرنسية)" : "Libellé officiel (Français)"}</th>
+              <th style={{ width: "35%" }} dir="rtl">{ar ? "التسمية (بالعربية)" : "Libellé (Arabe)"}</th>
+              <th style={{ width: "35%" }} dir="ltr">{ar ? "التسمية (بالفرنسية)" : "Libellé (Français)"}</th>
               <th style={{ width: "15%" }}>{ar ? "الصفة" : "Statut"}</th>
             </tr>
           </thead>
@@ -804,8 +967,8 @@ export default function NAEProjectWorkspace({
                   <td>
                     {isMain
                       ? ar
-                        ? "النشاط الرئيسي ★"
-                        : "Principal ★"
+                        ? "النشاط الرئيسي"
+                        : "Principal"
                       : ar
                         ? "نشاط تابع"
                         : "Secondaire"}
@@ -816,10 +979,10 @@ export default function NAEProjectWorkspace({
           </tbody>
         </table>
 
-        {/* Legal findings in print */}
-        {analysisData?.analysis.findings && analysisData.analysis.findings.length > 0 && (
-          <div className="mt-5 border border-stone-300 p-3 text-xs">
-            <h3 className="font-bold">{t.printNotaryNotes}:</h3>
+        {/* Informative observations box in print */}
+        <div className="mt-5 border border-gray-300 p-3 text-xs">
+          <h3 className="font-bold">{t.printNotaryNotes}</h3>
+          {analysisData?.analysis.findings && analysisData.analysis.findings.length > 0 ? (
             <ul className="mt-1 list-disc list-inside space-y-1">
               {analysisData.analysis.findings.map((f) => (
                 <li key={f.id}>
@@ -828,15 +991,22 @@ export default function NAEProjectWorkspace({
                 </li>
               ))}
             </ul>
+          ) : (
+            <p className="mt-1 text-gray-700">{t.sourceDisclaimer}</p>
+          )}
+          <div className="mt-6 border-t border-dashed border-gray-300 pt-2 text-xs text-gray-600">
+            {t.sourceDisclaimer}
           </div>
-        )}
+        </div>
 
-        <footer className="mt-8 border-t border-stone-300 pt-3 text-[10px] text-stone-500 leading-normal">
-          <p>{t.sourceAttribution} — {sourceRevisionDate}.</p>
-          <div className="mt-6 flex justify-between items-center text-xs">
-            <p>{ar ? "توقيع وصاحب الطلب:" : "Signature du demandeur :"}</p>
-            <p>{ar ? "تأشيرة وختم الديوان العمومي للتوثيق:" : "Visa et cachet de l'office notarial :"}</p>
+        <footer className="mt-6 border-t border-gray-300 pt-3 text-xs text-gray-600 leading-normal">
+          <div className="flex justify-between items-center text-xs">
+            <p>{ar ? "توقيع صاحب المبادرة بالطلب:" : "Signature du demandeur :"}</p>
+            <p className="min-w-[200px] border-b border-gray-400 pb-1 text-transparent">.</p>
           </div>
+          <p className="mt-6 text-xs text-gray-400">
+            {t.sourceLicenseLine}
+          </p>
         </footer>
       </div>
     </div>

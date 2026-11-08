@@ -40,6 +40,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       type: "article",
       locale: "ar_DZ",
+      siteName: "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
+      images: [
+        {
+          url: `${SITE_URL}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${title} — ${code}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} — ${code}`,
+      description,
+      images: [`${SITE_URL}/og-image.jpg`],
     },
   };
 }

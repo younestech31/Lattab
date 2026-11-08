@@ -115,7 +115,7 @@ export default function HeaderClient() {
     { href: '/#services', label: text.services },
     { href: '/calculateur-prix-referentiel', label: text.calculator },
     { href: '/formulaires', label: text.forms },
-    { href: '/nae', label: lang === 'ar' ? 'دليل النشاطات' : 'Nomenclature des activités' },
+    { href: '/nae', label: text.nae },
     { href: '/useful-links', label: text.useful_links },
     { href: '/blog', label: text.blog },
     { href: '/#notary-role', label: text.notary_role },

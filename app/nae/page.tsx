@@ -1,15 +1,100 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/config";
 import { NAEExplorerPage } from "@/lib/nae/presentation";
+import { JsonLdScript } from "@/components/schema";
 
-type Params = Promise<{q?:string|string[];sector?:string|string[];group?:string|string[];subgroup?:string|string[];compare?:string|string[];page?:string|string[]}>;
-export async function generateMetadata({searchParams}:{searchParams:Params}):Promise<Metadata>{
- const p=await searchParams;
- const filtered=p.compare!==undefined || p.page!==undefined || [p.q,p.sector,p.group,p.subgroup].some(v=>Array.isArray(v)?v.some(Boolean):Boolean(v));
- const url=`${SITE_URL}/nae`;
- return {title:{absolute:"إعداد ومراجعة نشاطات المشروع (NAE) | الديوان العمومي للتوثيق"},description:"أداة معلوماتية لمساعدة أصحاب المشاريع على البحث عن نشاطات NAE بالوصف العادي وتجميع الاختيارات ومراجعتها قبل التسجيل التجاري.",
-  alternates:{canonical:url,languages:{"ar-DZ":`${SITE_URL}/nae`,"fr-DZ":`${SITE_URL}/fr/nae`,"x-default":`${SITE_URL}/nae`}},
-  robots:{index:!filtered,follow:true},
-  openGraph:{title:"إعداد ومراجعة نشاطات المشروع (NAE) | الديوان العمومي للتوثيق",description:"أداة معلوماتية لمساعدة أصحاب المشاريع على البحث عن نشاطات NAE بالوصف العادي وتجميع الاختيارات ومراجعتها قبل التسجيل التجاري.",url,type:"website",locale:"ar_DZ"}};
+export const revalidate = 86400;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const title = "مدونة النشاطات الاقتصادية الجزائرية | الديوان العمومي للتوثيق وهران";
+  const description =
+    "دليل معلوماتي لاستعراض الأنشطة الاقتصادية المعتمدة (NAE) وفحص موانع الجمع وإعداد ورقة عمل تحضيرية لملف التأسيس لدى ديوان التوثيق للأستاذ لعطب محمد بوهران.";
+  const url = `${SITE_URL}/nae`;
+
+  return {
+    title: { absolute: title },
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        "ar-DZ": `${SITE_URL}/nae`,
+        "fr-DZ": `${SITE_URL}/fr/nae`,
+        "x-default": `${SITE_URL}/nae`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
+      type: "website",
+      locale: "ar_DZ",
+      images: [
+        {
+          url: `${SITE_URL}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${SITE_URL}/og-image.jpg`],
+    },
+  };
 }
-export default async function Page({searchParams}:{searchParams:Params}){return <NAEExplorerPage lang="ar" params={await searchParams}/>;}
+
+export default function Page() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/nae#webpage`,
+        "url": `${SITE_URL}/nae`,
+        "name": "مدونة النشاطات الاقتصادية الجزائرية",
+        "description":
+          "دليل معلوماتي لاستعراض الأنشطة الاقتصادية المعتمدة (NAE) وفحص موانع الجمع وإعداد ورقة عمل تحضيرية لملف التأسيس.",
+        "inLanguage": "ar-DZ",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": `${SITE_URL}/#website`,
+          "url": SITE_URL,
+          "name": "الديوان العمومي للتوثيق — الأستاذ لعطب محمد",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/nae#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "الرئيسية",
+            "item": SITE_URL,
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "مدونة النشاطات الاقتصادية",
+            "item": `${SITE_URL}/nae`,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <>
+      <JsonLdScript schema={schema} />
+      <NAEExplorerPage lang="ar" params={{}} />
+    </>
+  );
+}

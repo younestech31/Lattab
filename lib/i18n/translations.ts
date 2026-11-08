@@ -16,7 +16,8 @@ export const translations = {
       notary: 'موثق',
       name: 'الأستاذ لعطب محمد',
       useful_links: 'روابط مفيدة',
-      forms: 'الاستمارات الرسمية'
+      forms: 'الاستمارات الرسمية',
+      nae: 'مدونة النشاطات الاقتصادية'
     },
     calculator: {
       "Individuels": "سكنات فردية",
@@ -261,7 +262,8 @@ export const translations = {
       notary: 'Notaire',
       name: 'Maître Lattab Mohamed',
       useful_links: 'Liens utiles',
-      forms: 'Formulaires officiels'
+      forms: 'Formulaires officiels',
+      nae: 'Nomenclature des activités économiques'
     },
     calculator: {
       "Individuels": "Logements Individuels",

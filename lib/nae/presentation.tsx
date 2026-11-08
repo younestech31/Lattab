@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { Info, CheckCircle2, AlertTriangle, Ban } from "lucide-react";
 import NAEActivityActions from "@/components/nae/NAEActivityActions";
 import NAEProjectWorkspace from "@/components/nae/NAEProjectWorkspace";
 import NAEAddToProjectButton from "@/components/nae/NAEAddToProjectButton";
 import { getNAEStatusInfo } from "@/lib/nae/status";
 import UnifiedPageHeader from "@/components/ui/UnifiedPageHeader";
-import { getNAEActivities, getNAEDatasetManifest } from "@/lib/nae/data";
+import { getNAEActivities, getNAEDatasetManifest, getNAECatalogCounts } from "@/lib/nae/data";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
 import { getNAEActivityTitle, type NAEPageLanguage } from "./seo";
@@ -36,43 +37,81 @@ export function NAEExplorerPage({
 }) {
   void params;
   const ar = lang === "ar";
-  const sourceRevisionDate = getNAEDatasetManifest().source_revision_date ?? (ar ? "غير محدد" : "non précisée");
+  const manifest = getNAEDatasetManifest();
+  const catalogCounts = getNAECatalogCounts();
+  const sourceRevisionDate = manifest.source_revision_date ?? (ar ? "غير محدد" : "non précisée");
   const copy = ar
     ? {
-        title: "دليل النشاطات الاقتصادية الجزائرية",
-        description: "أداة معلوماتية للبحث عن النشاطات وتجميعها ومراجعتها عند إعداد مشروع مؤسسة.",
+        eyebrow: "الديوان العمومي للتوثيق — وهران",
+        badgeText: "مرجع معلوماتي — مدونة النشاطات الاقتصادية",
+        title: "مدونة النشاطات الاقتصادية",
+        description: "دليل معلوماتي لاستعراض الأنشطة الاقتصادية المعتمدة (NAE) وفحص موانع الجمع وإعداد ورقة عمل تحضيرية لملف التأسيس.",
         home: "الرئيسية",
-        current: "إعداد نشاطات المشروع",
-        sourceNote: "للاطلاع على المدونة الرسمية وتفاصيلها، راجع بوابة Sidjilcom.",
-        sourceLink: "بوابة Sidjilcom",
+        current: "مدونة النشاطات الاقتصادية",
+        noticeTitle: "تنبيه إعلامي واستشهادي",
+        noticeText: `هذه الأداة الاسترشادية مبنية على نسخة بيانات مدونة النشاطات الاقتصادية (CNRC) المؤرخة في ${sourceRevisionDate}. البيانات لا تغني عن تحرير العقد التأسيسي، وتظل بوابة المركز الوطني للسجل التجاري (Sidjilcom) المرجع الإداري الرسمي الحصري.`,
+        sourceNote: `المرجع الإداري الرسمي المعتمد: بوابة Sidjilcom والمركز الوطني للسجل التجاري (نسخة البيانات المؤرخة في ${sourceRevisionDate}).`,
+        sourceLicense: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
+        sourceLink: "بوابة Sidjilcom الرسمية",
       }
     : {
+        eyebrow: "Office public de notariat — Maître Lattab Mohamed, Oran",
+        badgeText: "Référence informative — Nomenclature des activités économiques",
         title: "Nomenclature des activités économiques",
-        description: "Outil d’information pour rechercher, réunir et examiner les activités lors de la préparation d’un projet d’entreprise.",
+        description: "Répertoire informatif pour consulter la nomenclature des activités économiques (NAE), examiner les règles de cumul et préparer la fiche de constitution.",
         home: "Accueil",
-        current: "Préparation des activités du projet",
-        sourceNote: "Consultez le portail Sidjilcom pour la nomenclature officielle et ses détails.",
-        sourceLink: "Portail Sidjilcom",
+        current: "Nomenclature des activités économiques",
+        noticeTitle: "Avertissement informatif",
+        noticeText: `Cet outil informatif repose sur la version des données de la nomenclature des activités économiques (CNRC) datée du ${sourceRevisionDate}. Les données ne remplacent pas la rédaction des statuts, et le portail officiel du CNRC (Sidjilcom) demeure la référence administrative exclusive.`,
+        sourceNote: `Référence administrative officielle : portail Sidjilcom et Centre National du Registre du Commerce (version datée du ${sourceRevisionDate}).`,
+        sourceLicense: "Données de référence sous licence CC BY 4.0 UpGrowth.",
+        sourceLink: "Portail officiel Sidjilcom",
       };
 
   return (
     <div className="min-h-screen bg-gray-50" dir={ar ? "rtl" : "ltr"} lang={lang}>
       <UnifiedPageHeader
         lang={lang}
+        eyebrow={copy.eyebrow}
+        badgeText={copy.badgeText}
         title={copy.title}
         description={copy.description}
         breadcrumbs={[{ name: copy.home, href: ar ? "/" : "/fr" }, { name: copy.current }]}
       />
       <main className="py-8 md:py-10">
         <div className="container mx-auto max-w-6xl px-4">
-          <NAEProjectWorkspace lang={lang} sourceRevisionDate={sourceRevisionDate} />
-          <footer className="mt-6 flex flex-col gap-2 border-t border-gray-200 pt-4 text-xs leading-5 text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-            <p>{copy.sourceNote}</p>
+          {/* Amber Informational Notice citing CNRC/Sidjilcom and revision date */}
+          <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50/80 p-4 sm:p-5 text-amber-950 shadow-2xs">
+            <div className="flex items-start gap-3">
+              <Info className="h-5 w-5 text-amber-700 shrink-0 mt-0.5" aria-hidden="true" />
+              <div className="text-xs sm:text-sm leading-relaxed space-y-1">
+                <p className="font-bold text-amber-900">
+                  {copy.noticeTitle}
+                </p>
+                <p className="text-amber-800">
+                  {copy.noticeText}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <NAEProjectWorkspace
+            lang={lang}
+            sourceRevisionDate={sourceRevisionDate}
+            catalogCounts={catalogCounts}
+          />
+
+          <footer className="mt-8 flex flex-col gap-2 border-t border-gray-200 pt-4 text-xs leading-5 text-gray-600 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-medium text-gray-800">{copy.sourceNote}</p>
+              <p className="mt-0.5 text-gray-400">{copy.sourceLicense}</p>
+            </div>
             <a
               href={ar ? "https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات" : "https://sidjilcom.cnrc.dz/fr/web/sidjilcom/nomenclature-de-vos-activites"}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 font-semibold text-emerald-800 underline underline-offset-4"
+              aria-label={ar ? "فتح بوابة Sidjilcom الرسمية في نافذة جديدة" : "Ouvrir le portail officiel Sidjilcom dans une nouvelle fenêtre"}
+              className="shrink-0 font-semibold text-emerald-800 underline underline-offset-4 hover:text-emerald-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 rounded"
             >
               {copy.sourceLink}
             </a>
@@ -101,90 +140,166 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
   ].filter((field): field is { key: string; label: string; value: string } => Boolean(field.value?.trim()));
 
   const t = ar ? {
-    home: "الرئيسية", explorer: "دليل النشاطات", classification: "التصنيف",
-    sector: "القطاع", group: "المجموعة", subgroup: "المجموعة الفرعية",
-    content: "محتوى النشاط", accessories: "الأنشطة الإضافية", regulatory: "المعلومات التنظيمية المتاحة (بالفرنسية)",
-    related: "أنشطة أخرى قريبة في التصنيف", noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
+    home: "الرئيسية",
+    explorer: "مدونة النشاطات الاقتصادية",
+    classification: "التصنيف",
+    sector: "القطاع",
+    group: "المجموعة",
+    subgroup: "المجموعة الفرعية",
+    content: "محتوى النشاط",
+    accessories: "الأنشطة الإضافية",
+    regulatory: "المعلومات التنظيمية المتاحة (بالفرنسية)",
+    related: "أنشطة أخرى قريبة في التصنيف",
+    noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
     missingLabel: "التسمية العربية غير متاحة في المصدر؛ عُرضت التسمية الفرنسية.",
-    disclaimer: "مرجع استرشادي غير رسمي؛ لا يثبت وحده شروط الترخيص أو إمكانية جمع الأنشطة. تحقّق لدى المركز الوطني للسجل التجاري والجهة المختصة.",
-    openSource: "Sidjilcom",
+    disclaimer: "مرجع استرشادي غير رسمي؛ لا يثبت وحده شروط الترخيص أو إمكانية جمع الأنشطة. يرجى التحقق لدى المركز الوطني للسجل التجاري والجهة المختصة.",
+    sourceOfficial: "المصدر: المركز الوطني للسجل التجاري — بوابة Sidjilcom.",
+    licenseLine: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
+    openSource: "بوابة Sidjilcom الرسمية",
   } : {
-    home: "Accueil", explorer: "Nomenclature", classification: "Classification",
-    sector: "Secteur", group: "Groupe", subgroup: "Sous-groupe",
-    content: "Contenu de l’activité", accessories: "Activités accessoires", regulatory: "Informations réglementaires",
-    related: "Autres activités proches dans la classification", noContent: "Aucune description disponible dans le fichier.",
+    home: "Accueil",
+    explorer: "Nomenclature des activités économiques",
+    classification: "Classification",
+    sector: "Secteur",
+    group: "Groupe",
+    subgroup: "Sous-groupe",
+    content: "Contenu de l’activité",
+    accessories: "Activités accessoires",
+    regulatory: "Informations réglementaires",
+    related: "Autres activités proches dans la classification",
+    noContent: "Aucune description disponible dans le fichier.",
     missingLabel: "Le libellé français est absent de la source ; le libellé arabe est affiché.",
     disclaimer: "Référence indicative non officielle ; elle ne prouve pas les conditions d’autorisation ni la possibilité de cumul. Vérifiez auprès du CNRC et de l’autorité compétente.",
-    openSource: "Sidjilcom",
+    sourceOfficial: "Source : Centre National du Registre du Commerce — Portail Sidjilcom.",
+    licenseLine: "Données de référence sous licence CC BY 4.0 UpGrowth.",
+    openSource: "Portail officiel Sidjilcom",
   };
 
   return (
     <div className="min-h-screen bg-gray-50" dir={ar ? "rtl" : "ltr"} lang={lang}>
-      <UnifiedPageHeader lang={lang} badgeText={ar ? "بطاقة النشاط" : "Fiche activité"} title={title}
+      <UnifiedPageHeader
+        lang={lang}
+        eyebrow={ar ? "الديوان العمومي للتوثيق — وهران" : "Office public de notariat — Maître Lattab Mohamed, Oran"}
+        badgeText={ar ? "بطاقة النشاط — مدونة النشاطات الاقتصادية" : "Fiche activité — Nomenclature des activités économiques"}
+        title={title}
         description={activity.code}
-        breadcrumbs={[{ name: t.home, href: ar ? "/" : "/fr" }, { name: t.explorer, href: action }, { name: activity.code }]} />
+        breadcrumbs={[{ name: t.home, href: ar ? "/" : "/fr" }, { name: t.explorer, href: action }, { name: activity.code }]}
+      />
       <main className="py-8 md:py-10">
         <div data-nae-detail-print className="container mx-auto max-w-5xl space-y-5 px-4">
           <style>{"@media print { body:has([data-nae-detail-print]) * { visibility:hidden!important; } [data-nae-detail-print], [data-nae-detail-print] * { visibility:visible!important; } [data-nae-detail-print] { position:absolute!important; inset:0!important; width:100%!important; margin:0!important; border:0!important; box-shadow:none!important; } }"}</style>
-          <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7">
+          <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-7">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold text-gray-500">{ar ? "رمز النشاط" : "Code activité"}</p>
-                <p className="mt-1 font-mono text-2xl font-bold tracking-wide text-emerald-900" dir="ltr">{activity.code}</p>
-                <span className={`mt-2 inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${statusInfo.className}`}>{statusInfo.label}</span>
-                <p className="mt-2 max-w-xl text-xs leading-6 text-gray-600">{statusInfo.explanation}</p>
+                <p className="text-xs font-semibold text-gray-600">{ar ? "رمز النشاط" : "Code activité"}</p>
+                <p className="mt-1 font-mono text-2xl font-bold tracking-wide text-emerald-950" dir="ltr">{activity.code}</p>
+                <span className={`mt-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold ${statusInfo.className}`}>
+                  {activity.status === "red" ? (
+                    <Ban className="h-3.5 w-3.5 text-rose-700" aria-hidden="true" />
+                  ) : activity.status === "green" ? (
+                    <AlertTriangle className="h-3.5 w-3.5 text-amber-700" aria-hidden="true" />
+                  ) : (
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-700" aria-hidden="true" />
+                  )}
+                  <span>{statusInfo.label}</span>
+                </span>
+                <p className="mt-2 max-w-xl text-xs leading-6 text-gray-700">{statusInfo.explanation}</p>
                 <NAEActivityActions code={activity.code} lang={lang} />
                 <NAEAddToProjectButton code={activity.code} lang={lang} />
               </div>
-              <Link href={action} className="print:hidden inline-flex min-h-10 items-center rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 hover:bg-gray-50">
-                {ar ? "العودة إلى الدليل" : "Retour à la nomenclature"}
+              <Link
+                href={action}
+                aria-label={ar ? "العودة إلى مدونة النشاطات الاقتصادية" : "Retour à la nomenclature des activités économiques"}
+                className="print:hidden inline-flex min-h-11 items-center rounded-xl border border-gray-300 px-4 text-xs sm:text-sm font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
+              >
+                {ar ? "العودة إلى المدونة" : "Retour à la nomenclature"}
               </Link>
             </div>
             <div className="mt-6 border-t border-gray-100 pt-5">
-              <h2 className="text-sm font-bold text-gray-700">{t.classification}</h2>
+              <h2 className="text-xs sm:text-sm font-bold text-gray-800">{t.classification}</h2>
               <dl className="mt-3 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{t.sector}</dt><dd className="mt-1 font-semibold text-gray-900">{activity.sector_code} — {sector ? (ar ? sector.label_ar : sector.label_fr) : ""}</dd></div>
-                <div className="rounded-xl bg-gray-50 p-3"><dt className="text-xs text-gray-500">{ar ? "حالة النشاط في المصدر" : "Statut dans la source"}</dt><dd className="mt-1"><span className={`inline-flex rounded-full border px-2 py-1 text-xs font-semibold ${statusInfo.className}`}>{statusInfo.label}</span></dd></div>
+                <div className="rounded-xl bg-gray-50 p-3">
+                  <dt className="text-xs text-gray-600 font-medium">{t.sector}</dt>
+                  <dd className="mt-1 font-semibold text-xs sm:text-sm text-gray-950">
+                    {activity.sector_code} — {sector ? (ar ? sector.label_ar : sector.label_fr) : ""}
+                  </dd>
+                </div>
+                <div className="rounded-xl bg-gray-50 p-3">
+                  <dt className="text-xs text-gray-600 font-medium">{ar ? "حالة النشاط في المصدر" : "Statut dans la source"}</dt>
+                  <dd className="mt-1">
+                    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${statusInfo.className}`}>
+                      {activity.status === "red" ? (
+                        <Ban className="h-3 w-3 text-rose-700" aria-hidden="true" />
+                      ) : activity.status === "green" ? (
+                        <AlertTriangle className="h-3 w-3 text-amber-700" aria-hidden="true" />
+                      ) : (
+                        <CheckCircle2 className="h-3 w-3 text-emerald-700" aria-hidden="true" />
+                      )}
+                      <span>{statusInfo.label}</span>
+                    </span>
+                  </dd>
+                </div>
               </dl>
             </div>
           </section>
 
-          {!hasPreferred && <p className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">{t.missingLabel}</p>}
+          {!hasPreferred && <p className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs sm:text-sm text-amber-950">{t.missingLabel}</p>}
 
-          <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7">
-            <h2 className="text-lg font-bold text-gray-900">{t.content}</h2>
-            <p dir="ltr" lang="fr" className="mt-3 whitespace-pre-line text-sm leading-7 text-gray-800">{activity.contenue_fr || t.noContent}</p>
+          <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-7">
+            <h2 className="text-base sm:text-lg font-bold text-gray-950">{t.content}</h2>
+            <p dir="ltr" lang="fr" className="mt-3 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">{activity.contenue_fr || t.noContent}</p>
             {activity.accessoires_fr && <div className="mt-5 border-t border-gray-100 pt-4">
-              <h3 className="text-sm font-bold text-gray-700">{t.accessories}</h3>
-              <p dir="ltr" lang="fr" className="mt-2 whitespace-pre-line text-sm leading-7 text-gray-800">{activity.accessoires_fr}</p>
+              <h3 className="text-xs sm:text-sm font-bold text-gray-800">{t.accessories}</h3>
+              <p dir="ltr" lang="fr" className="mt-2 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">{activity.accessoires_fr}</p>
             </div>}
           </section>
 
-          {regulatoryFields.length > 0 && <details className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
-            <summary className="cursor-pointer font-semibold text-gray-900">{t.regulatory}<span className="ms-2 text-xs font-normal text-gray-500">{regulatoryFields.length}</span></summary>
+          {regulatoryFields.length > 0 && <details className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-6">
+            <summary className="cursor-pointer font-semibold text-xs sm:text-sm text-gray-900">{t.regulatory}<span className="ms-2 text-xs font-normal text-gray-600">({regulatoryFields.length})</span></summary>
             <dl className="mt-4 space-y-4 border-t border-gray-100 pt-4">
               {regulatoryFields.map((field) => <div key={field.key}>
-                <dt className="text-sm font-semibold text-gray-700">{field.label}</dt>
-                <dd dir="ltr" lang="fr" className="mt-1 whitespace-pre-line text-sm leading-7 text-gray-800">{field.value}</dd>
+                <dt className="text-xs sm:text-sm font-semibold text-gray-800">{field.label}</dt>
+                <dd dir="ltr" lang="fr" className="mt-1 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">{field.value}</dd>
               </div>)}
             </dl>
-            <p className="mt-4 text-xs leading-5 text-gray-500">{ar ? "الحقول غير المتوفرة في نسخة البيانات لا تعني عدم وجود شرط تنظيمي." : "Un champ absent du fichier ne signifie pas l’absence d’une exigence réglementaire."}</p>
+            <p className="mt-4 text-xs leading-5 text-gray-600">{ar ? "الحقول غير المتوفرة في نسخة البيانات لا تعني عدم وجود شرط تنظيمي." : "Un champ absent du fichier ne signifie pas l’absence d’une exigence réglementaire."}</p>
           </details>}
 
-          {related.length > 0 && <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
-            <h2 className="text-base font-bold text-gray-900">{t.related}</h2>
+          {related.length > 0 && <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-6">
+            <h2 className="text-sm sm:text-base font-bold text-gray-950">{t.related}</h2>
             <ul className="mt-3 divide-y divide-gray-100">
-              {related.map((item) => <li key={item.code} className="flex flex-wrap items-center justify-between gap-3 py-3">
-                <div className="min-w-0"><p className="font-mono text-xs font-bold text-emerald-800" dir="ltr">{item.code}</p><p className="mt-1 text-sm font-semibold text-gray-800">{localLabel(item, lang)}</p></div>
-                <Link href={action + "/" + item.code} className="text-sm font-semibold text-emerald-800 underline underline-offset-4">{ar ? "عرض البطاقة" : "Consulter"}</Link>
-              </li>)}
+              {related.map((item) => (
+                <li key={item.code} className="flex flex-wrap items-center justify-between gap-3 py-3">
+                  <div className="min-w-0">
+                    <p className="font-mono text-xs font-bold text-emerald-800" dir="ltr">{item.code}</p>
+                    <p className="mt-1 text-xs sm:text-sm font-semibold text-gray-900">{localLabel(item, lang)}</p>
+                  </div>
+                  <Link
+                    href={action + "/" + item.code}
+                    aria-label={ar ? `عرض بطاقة النشاط ${item.code}` : `Consulter la fiche de l'activité ${item.code}`}
+                    className="inline-flex min-h-11 items-center text-xs sm:text-sm font-semibold text-emerald-800 underline underline-offset-4 hover:text-emerald-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 rounded"
+                  >
+                    {ar ? "عرض البطاقة" : "Consulter"}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </section>}
 
-          <footer className="flex flex-col gap-2 rounded-xl border border-amber-100 bg-amber-50 px-4 py-3 text-xs leading-5 text-amber-950 sm:flex-row sm:items-center sm:justify-between print:hidden">
-            <p>{t.disclaimer}</p>
-            <a href={ar ? "https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات" : "https://sidjilcom.cnrc.dz/fr/web/sidjilcom/nomenclature-de-vos-activites"}
-              target="_blank" rel="noopener noreferrer" className="shrink-0 font-semibold underline underline-offset-4">{t.openSource}</a>
+          <footer className="flex flex-col gap-2 rounded-2xl border border-gray-200 bg-white p-4 text-xs leading-5 text-gray-600 sm:flex-row sm:items-center sm:justify-between print:hidden">
+            <div>
+              <p className="font-medium text-gray-800">{t.disclaimer}</p>
+              <p className="mt-0.5 text-gray-400">{t.licenseLine}</p>
+            </div>
+            <a
+              href={ar ? "https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات" : "https://sidjilcom.cnrc.dz/fr/web/sidjilcom/nomenclature-de-vos-activites"}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={ar ? "فتح بوابة Sidjilcom في نافذة جديدة" : "Ouvrir le portail Sidjilcom dans une nouvelle fenêtre"}
+              className="shrink-0 font-semibold text-emerald-800 underline underline-offset-4 hover:text-emerald-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 rounded"
+            >
+              {t.openSource}
+            </a>
           </footer>
         </div>
       </main>
