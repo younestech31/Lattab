@@ -30,6 +30,7 @@ import type { ActivityItem, AnalysisResponseData, Finding } from "./types";
 export interface NAEProjectWorkspaceProps {
   lang: "ar" | "fr";
   sourceRevisionDate: string;
+  initialActivities?: ActivityItem[];
   catalogCounts?: {
     total: number;
     sectors: Record<string, number>;
@@ -52,6 +53,7 @@ function severityClass(value: Finding["severity"]) {
 export default function NAEProjectWorkspace({
   lang,
   sourceRevisionDate,
+  initialActivities,
   catalogCounts,
 }: NAEProjectWorkspaceProps) {
   const ar = lang === "ar";
@@ -67,10 +69,10 @@ export default function NAEProjectWorkspace({
   const sectorCounts = catalogCounts?.sectors ?? {};
   const statusCounts = catalogCounts?.statusCounts ?? { normal: 1641, green: 350, red: 145 };
 
-  const [catalogActivities, setCatalogActivities] = useState<ActivityItem[]>([]);
+  const [catalogActivities, setCatalogActivities] = useState<ActivityItem[]>(initialActivities ?? []);
   const [totalFilteredCount, setTotalFilteredCount] = useState<number>(totalCatalog);
-  const [totalPages, setTotalPages] = useState<number>(1);
-  const [loadingCatalog, setLoadingCatalog] = useState<boolean>(true);
+  const [totalPages, setTotalPages] = useState<number>(Math.max(1, Math.ceil(totalCatalog / pageSize)));
+  const [loadingCatalog, setLoadingCatalog] = useState<boolean>(!initialActivities);
   const [catalogError, setCatalogError] = useState<string>("");
 
   // Project Selections & Draft State
@@ -87,16 +89,20 @@ export default function NAEProjectWorkspace({
   // UI Modals & Active Views
   const [viewMode, setViewMode] = useState<"directory" | "project_review">("directory");
   const [complementaryTargetCode, setComplementaryTargetCode] = useState<string | null>(null);
+  const closeComplementaryModal = useCallback(() => setComplementaryTargetCode(null), []);
 
   // Localization strings
   const t = ar
     ? {
-        title: "مدونة النشاطات الاقتصادية",
-        intro: "استعراض الأنشطة الاقتصادية المعتمدة وفق مدونة النشاطات الاقتصادية (NAE)، والتحقق الاسترشادي الأولي من موانع الجمع، وإعداد ورقة عمل تحضيرية لملف التأسيس.",
-        tablistAria: "أقسام مدونة النشاطات الاقتصادية",
+        title: "مدونة الأنشطة الاقتصادية",
+        intro: "استعراض مدونة النشاطات الاقتصادية (NAE)، وفحص أولي للمؤشرات التنظيمية وموانع الجمع، وإعداد ورقة عمل تحضيرية لملف التأسيس.",
+        tablistAria: "أقسام مدونة الأنشطة الاقتصادية",
         tabDirectory: "استعراض المدونة",
         tabProject: "مسودة الأنشطة المقترحة",
         selectedBadge: "نشاط مختار",
+        projectDescriptionLabel: "وصف موجز لمشروع المؤسسة",
+        projectDescriptionPlaceholder: "مثال: بيع معدات الإعلام الآلي مع تركيبها وصيانتها وتكوين المستخدمين...",
+        projectDescriptionHelp: "يُستخدم الوصف لاستخراج إشارات أولية إلى عمليات قد تكون تكميلية وفق المادة 2. لا يحدد وحده الرموز المناسبة ولا يثبت قانونية الجمع.",
         reviewProject: "مراجعة مسودة الأنشطة",
         backToDirectory: "العودة لاستعراض المدونة",
         clearAll: "تفريغ سلة الأنشطة والمسودة",
@@ -105,9 +111,9 @@ export default function NAEProjectWorkspace({
         additionalActivity: "نشاط إضافي",
         setPrimary: "تعيين كرئيسي",
         remove: "حذف",
-        emptyProject: "لم تختر أي نشاط بعد. تصفح المدونة وأضف الأنشطة المقترحة لمشروعك.",
-        legalStatus: "مؤشرات المواءمة النظامية وموانع الجمع",
-        compatibleSuccess: "لا تظهر على هذه الرموز موانع ظاهرة في نسخة البيانات.",
+        emptyProject: "لم تختر أي نشاط بعد. استعرض المدونة وأضف الأنشطة التي تريد دراستها إلى المسودة.",
+        legalStatus: "مؤشرات الوضع التنظيمي وموانع الجمع",
+        compatibleSuccess: "لم تظهر مؤشرات تعارض ضمن الفحوص الأولية المحدودة؛ هذا لا يؤكد قانونياً جواز جمع الأنشطة.",
         checkingIndicators: "جارٍ مراجعة المؤشرات...",
         openSuggestions: "اقتراح أنشطة مكملة",
         prevPage: "الصفحة السابقة",
@@ -122,11 +128,11 @@ export default function NAEProjectWorkspace({
         printDate: "تاريخ إعداد المسودة",
         printAddress: "المقر الاجتماعي المقترح",
         printNotaryNotes: "ملاحظات ديوان التوثيق:",
-        sourceOfficialNotice: `المرجع الإداري الأساسي: المركز الوطني للسجل التجاري — بوابة Sidjilcom (نسخة البيانات المؤرخة في ${sourceRevisionDate}).`,
-        sourceDisclaimer: "البيانات نسخة معلوماتية مؤرخة وليست مدوّنة حيّة ولا رأياً للموثق.",
+        sourceOfficialNotice: `مصدر نسخة البيانات: UpGrowth — Nomenclature CNRC 2026 (CC BY 4.0)، بتاريخ ${sourceRevisionDate}. للتحقق من الوضع الحالي يُرجع إلى Sidjilcom / CNRC.`,
+        sourceDisclaimer: "البيانات لقطة مرجعية منشورة من UpGrowth وليست سجلاً حياً ولا قراراً من CNRC أو رأياً قانونياً من الموثق.",
         sourceLicenseLine: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
         legalNoticeFooter: "ورقة عمل معلوماتية استرشادية لا تغني عن تحرير العقد ولا عن المركز الوطني للسجل التجاري.",
-        loadingSr: "جارٍ تحميل مدونة النشاطات الاقتصادية...",
+        loadingSr: "جارٍ تحميل مدونة الأنشطة الاقتصادية...",
       }
     : {
         title: "Nomenclature des activités économiques",
@@ -135,6 +141,9 @@ export default function NAEProjectWorkspace({
         tabDirectory: "Exploration de la nomenclature",
         tabProject: "Projet d'activités préparatoire",
         selectedBadge: "activité(s) sélectionnée(s)",
+        projectDescriptionLabel: "Brève description du projet",
+        projectDescriptionPlaceholder: "Ex. : vente de matériel informatique, installation, maintenance et formation...",
+        projectDescriptionHelp: "Cette description sert uniquement à relever des opérations potentiellement accessoires au sens de l’article 2. Elle ne détermine pas les codes à retenir et ne valide pas la compatibilité juridique.",
         reviewProject: "Examiner la sélection",
         backToDirectory: "Retour à la nomenclature",
         clearAll: "Vider la sélection de l'ensemble des activités",
@@ -143,7 +152,7 @@ export default function NAEProjectWorkspace({
         additionalActivity: "Activité additionnelle",
         setPrimary: "Définir comme principale",
         remove: "Retirer",
-        emptyProject: "Aucune activité sélectionnée pour le moment. Explorez la nomenclature pour composer votre projet.",
+        emptyProject: "Aucune activité sélectionnée pour le moment. Parcourez la nomenclature pour préparer votre sélection.",
         legalStatus: "Indicateurs de cumul et observations",
         compatibleSuccess: "Aucun empêchement apparent relevé dans cette version des données.",
         checkingIndicators: "Examen des indicateurs en cours...",
@@ -160,8 +169,8 @@ export default function NAEProjectWorkspace({
         printDate: "Date d'établissement",
         printAddress: "Siège social projeté",
         printNotaryNotes: "Observations de l'office notarial :",
-        sourceOfficialNotice: `Référence administrative : Centre National du Registre du Commerce — Portail Sidjilcom (version datée du ${sourceRevisionDate}).`,
-        sourceDisclaimer: "Données issues d'une version informative datée ; elles ne constituent ni un registre en temps réel ni un avis juridique du notaire.",
+        sourceOfficialNotice: `Source de l’instantané : UpGrowth — Nomenclature CNRC 2026 (CC BY 4.0), datée du ${sourceRevisionDate}. Vérification actuelle : Sidjilcom / CNRC.`,
+        sourceDisclaimer: "Instantané de référence publié par UpGrowth ; il ne constitue ni un registre en temps réel, ni une décision du CNRC, ni un avis juridique du notaire.",
         sourceLicenseLine: "Données de référence sous licence CC BY 4.0 UpGrowth.",
         legalNoticeFooter: "Document préparatoire informatif ne remplaçant ni les statuts ni les vérifications du CNRC.",
         loadingSr: "Chargement de la nomenclature des activités économiques...",
@@ -197,7 +206,7 @@ export default function NAEProjectWorkspace({
   }, [codes, description, primary, ready]);
 
   // 3. Catalog Fetching and Instant Search
-  const fetchCatalog = useCallback(async () => {
+  const fetchCatalog = useCallback(async (signal: AbortSignal) => {
     setLoadingCatalog(true);
     setCatalogError("");
 
@@ -209,14 +218,21 @@ export default function NAEProjectWorkspace({
         const response = await fetch("/api/nae/search", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ q: trimmedQuery, lang }),
+          body: JSON.stringify({ q: trimmedQuery, lang, page, pageSize }),
+          signal,
         });
         if (!response.ok) throw new Error("search failed");
-        const payload = await response.json();
-        const results: ActivityItem[] = Array.isArray(payload.results) ? payload.results : [];
+        const payload = await response.json() as {
+          results?: ActivityItem[];
+          total?: number;
+          totalPages?: number;
+        };
+        if (signal.aborted) return;
+        const results = Array.isArray(payload.results) ? payload.results : [];
+        const total = typeof payload.total === "number" ? payload.total : results.length;
         setCatalogActivities(results);
-        setTotalFilteredCount(results.length);
-        setTotalPages(1);
+        setTotalFilteredCount(total);
+        setTotalPages(typeof payload.totalPages === "number" ? payload.totalPages : Math.max(1, Math.ceil(total / pageSize)));
       } else {
         // Standard Directory Browsing with sector, status, keyword, and pagination
         const response = await fetch("/api/nae/browse", {
@@ -230,26 +246,36 @@ export default function NAEProjectWorkspace({
             page,
             pageSize,
           }),
+          signal,
         });
         if (!response.ok) throw new Error("browse failed");
-        const payload = await response.json();
+        const payload = await response.json() as {
+          activities?: ActivityItem[];
+          total?: number;
+          totalPages?: number;
+        };
+        if (signal.aborted) return;
         setCatalogActivities(Array.isArray(payload.activities) ? payload.activities : []);
-        setTotalFilteredCount(payload.total ?? 0);
-        setTotalPages(payload.totalPages ?? 1);
+        setTotalFilteredCount(typeof payload.total === "number" ? payload.total : 0);
+        setTotalPages(typeof payload.totalPages === "number" ? payload.totalPages : 1);
       }
     } catch {
-      setCatalogError(t.errorCatalog);
+      if (!signal.aborted) setCatalogError(t.errorCatalog);
     } finally {
-      setLoadingCatalog(false);
+      if (!signal.aborted) setLoadingCatalog(false);
     }
   }, [lang, page, pageSize, searchQuery, selectedSector, selectedStatus, t.errorCatalog]);
 
-  // Debounce catalog fetching on search or filter change
+  // Debounce and cancel stale catalog requests so slower responses cannot replace newer filters.
   useEffect(() => {
+    const controller = new AbortController();
     const timer = setTimeout(() => {
-      fetchCatalog();
+      void fetchCatalog(controller.signal);
     }, 180);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
   }, [fetchCatalog]);
 
   // Reset page to 1 when filters change
@@ -282,6 +308,7 @@ export default function NAEProjectWorkspace({
     }
 
     const controller = new AbortController();
+    let active = true;
     setAnalyzing(true);
     setAnalysisError("");
 
@@ -296,33 +323,34 @@ export default function NAEProjectWorkspace({
         return res.json();
       })
       .then((payload: AnalysisResponseData) => {
-        setAnalysisData(payload);
+        if (active) setAnalysisData(payload);
       })
       .catch((err) => {
-        if (!(err instanceof DOMException && err.name === "AbortError")) {
+        if (active && !(err instanceof DOMException && err.name === "AbortError")) {
           setAnalysisError(ar ? "تعذر إتمام فحص المؤشرات." : "Échec de l'examen des indicateurs.");
         }
       })
       .finally(() => {
-        setAnalyzing(false);
+        if (active) setAnalyzing(false);
       });
 
-    return () => controller.abort();
+    return () => {
+      active = false;
+      controller.abort();
+    };
   }, [ar, codes, description, lang, primary, ready]);
 
   // Basket Handlers
   const toggleSelect = (code: string) => {
-    setCodes((prev) => {
-      if (prev.includes(code)) {
-        const next = prev.filter((c) => c !== code);
-        if (primary === code) setPrimary(next[0] ?? null);
-        return next;
-      } else {
-        const next = [...prev, code];
-        if (!primary) setPrimary(code);
-        return next;
-      }
-    });
+    if (codes.includes(code)) {
+      const next = codes.filter((item) => item !== code);
+      setCodes(next);
+      if (primary === code) setPrimary(next[0] ?? null);
+      return;
+    }
+
+    setCodes([...codes, code]);
+    if (!primary) setPrimary(code);
   };
 
   const handleSetPrimary = (code: string) => {
@@ -395,7 +423,23 @@ export default function NAEProjectWorkspace({
         <div
           role="tablist"
           aria-label={t.tablistAria}
+          aria-orientation="horizontal"
           className="flex items-center gap-2"
+          onKeyDown={(event) => {
+            if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+            const tabs = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+            const currentIndex = tabs.indexOf(event.target as HTMLButtonElement);
+            if (currentIndex < 0 || tabs.length < 2) return;
+            event.preventDefault();
+            const nextIndex = event.key === "Home"
+              ? 0
+              : event.key === "End"
+                ? tabs.length - 1
+                : (currentIndex + (ar ? (event.key === "ArrowLeft" ? 1 : -1) : (event.key === "ArrowRight" ? 1 : -1)) + tabs.length) % tabs.length;
+            const nextTab = tabs[nextIndex];
+            nextTab?.focus();
+            setViewMode(nextTab?.id === "nae-tab-project" ? "project_review" : "directory");
+          }}
         >
           <button
             type="button"
@@ -672,6 +716,27 @@ export default function NAEProjectWorkspace({
               </div>
             </div>
 
+            <div className="mt-5">
+              <label htmlFor="nae-project-description" className="mb-2 block text-xs font-bold text-gray-800">
+                {t.projectDescriptionLabel}
+              </label>
+              <textarea
+                id="nae-project-description"
+                value={description}
+                onChange={(event) => setDescription(event.target.value.slice(0, 180))}
+                maxLength={180}
+                rows={3}
+                dir={ar ? "rtl" : "ltr"}
+                placeholder={t.projectDescriptionPlaceholder}
+                className="w-full rounded-xl border border-gray-300 bg-white p-3 text-sm leading-6 text-gray-950 placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+                aria-describedby="nae-project-description-help"
+              />
+              <div className="mt-1 flex flex-wrap items-start justify-between gap-2 text-xs text-gray-600">
+                <p id="nae-project-description-help" className="max-w-3xl leading-5">{t.projectDescriptionHelp}</p>
+                <span className="shrink-0 font-mono tabular-nums" dir="ltr">{description.length}/180</span>
+              </div>
+            </div>
+
             {/* Selected Activities List */}
             {codes.length === 0 ? (
               <div className="py-12 text-center">
@@ -735,11 +800,11 @@ export default function NAEProjectWorkspace({
                           )}
                         </div>
 
-                        <p dir="rtl" lang="ar" className="mt-1.5 text-sm font-bold text-gray-950">
-                          {item ? item.label_ar : code}
+                        <p dir={ar ? "rtl" : "ltr"} lang={ar ? "ar" : "fr"} className="mt-1.5 text-sm font-bold text-gray-950">
+                          {item ? (ar ? item.label_ar : item.label_fr) : code}
                         </p>
-                        <p dir="ltr" lang="fr" className="text-xs text-gray-700">
-                          {item?.label_fr}
+                        <p dir={ar ? "ltr" : "rtl"} lang={ar ? "fr" : "ar"} className="text-xs text-gray-700">
+                          {item ? (ar ? item.label_fr : item.label_ar) : ""}
                         </p>
                       </div>
 
@@ -885,7 +950,7 @@ export default function NAEProjectWorkspace({
         lang={lang}
         selectedCodes={codes}
         onToggleSelect={toggleSelect}
-        onClose={() => setComplementaryTargetCode(null)}
+        onClose={closeComplementaryModal}
       />
 
       {/* PRINT-ONLY WORKING WORKSHEET */}

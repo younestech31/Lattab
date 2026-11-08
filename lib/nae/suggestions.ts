@@ -62,15 +62,15 @@ export function getComplementaryActivities(
     (act) =>
       act.subgroup_code === primary.subgroup_code &&
       act.code !== primary.code &&
-      act.status !== "red" &&
+      ["normal", "green"].includes(act.status.trim().toLowerCase()) &&
       !existingSet.has(act.code),
   );
 
   for (const act of siblings.slice(0, 4)) {
     results.push({
       activity: act,
-      reason_ar: `نشاط مكمل من نفس الشعبة التجارية (${primary.subgroup_code})`,
-      reason_fr: `Activité complémentaire du même sous-groupe (${primary.subgroup_code})`,
+      reason_ar: `نشاط من نفس المجموعة الفرعية في التصنيف (${primary.subgroup_code})`,
+      reason_fr: `Activité du même sous-groupe de nomenclature (${primary.subgroup_code})`,
       matchType: "subgroup",
     });
     addedCodes.add(act.code);
@@ -82,7 +82,7 @@ export function getComplementaryActivities(
     const candidates = allActivities.filter(
       (act) =>
         act.subgroup_code === rule.targetSubgroup &&
-        act.status !== "red" &&
+        ["normal", "green"].includes(act.status.trim().toLowerCase()) &&
         !existingSet.has(act.code) &&
         !addedCodes.has(act.code),
     );
@@ -106,7 +106,7 @@ export function getComplementaryActivities(
       (act) =>
         act.group_code === primary.group_code &&
         act.subgroup_code !== primary.subgroup_code &&
-        act.status !== "red" &&
+        ["normal", "green"].includes(act.status.trim().toLowerCase()) &&
         !existingSet.has(act.code) &&
         !addedCodes.has(act.code),
     );

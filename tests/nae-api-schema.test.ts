@@ -3,11 +3,13 @@ import test from "node:test";
 import { SearchPayloadSchema, AnalyzePayloadSchema, BrowsePayloadSchema } from "../lib/nae/api-schema";
 
 test("SearchPayloadSchema validates and trims valid requests", () => {
-  const result = SearchPayloadSchema.safeParse({ q: "  حواسيب  ", lang: "fr" });
+  const result = SearchPayloadSchema.safeParse({ q: "  حواسيب  ", lang: "fr", page: 2, pageSize: 24 });
   assert.equal(result.success, true);
   if (result.success) {
     assert.equal(result.data.q, "حواسيب");
     assert.equal(result.data.lang, "fr");
+    assert.equal(result.data.page, 2);
+    assert.equal(result.data.pageSize, 24);
   }
 });
 

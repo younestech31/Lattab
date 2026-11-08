@@ -18,14 +18,51 @@ function activity(overrides: Partial<NAEActivity> & Pick<NAEActivity, "code" | "
   };
 }
 
+test("returns more than fifty matching activities for paginated search", () => {
+  const records = Array.from({ length: 150 }, (_, index) => {
+    const suffix = String(index).padStart(3, "0");
+    return activity({
+      code: `100${suffix}`,
+      sector_code: "1",
+      group_code: "100",
+      subgroup_code: "1000",
+      label_fr: "Services de proximité",
+      label_ar: "خدمات",
+      contenue_fr: "Services de proximité",
+    });
+  });
+
+  const results = searchNAEProject(createNAESearchIndex(records, "fr"), "services", 150);
+  assert.equal(results.length, 150);
+});
+
 test("maps the published source status values", () => {
   assert.equal(getNAEStatusCode("normal"), "free");
   assert.equal(getNAEStatusCode("green"), "regulated");
   assert.equal(getNAEStatusCode("red"), "blocked");
   assert.equal(getNAEStatusCode("unknown"), "unknown");
-  assert.equal(getNAEStatusInfo("normal", "ar").label, "حر");
-  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم");
-  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée");
+  assert.equal(getNAEStatusInfo("normal", "ar").label, "حر وفق المصدر");
+  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم وفق المصدر");
+  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée (source)");
+});
+
+test("includes selected blocked, regulated and unknown source statuses in project review", () => {
+  const result = analyzeNAEProject([
+    activity({ code: "301205", sector_code: "3", group_code: "301", subgroup_code: "3012", status: "red" }),
+    activity({ code: "601201", sector_code: "6", group_code: "601", subgroup_code: "6012", status: "green" }),
+    activity({ code: "601202", sector_code: "6", group_code: "601", subgroup_code: "6012", status: "future-status" }),
+  ]);
+
+  const blocked = result.findings.find((finding) => finding.id === "selected-blocked-activities");
+  const regulated = result.findings.find((finding) => finding.id === "selected-regulated-activities");
+  const unknown = result.findings.find((finding) => finding.id === "selected-unknown-status");
+
+  assert.equal(blocked?.severity, "critical");
+  assert.deepEqual(blocked?.codes, ["301205"]);
+  assert.equal(regulated?.severity, "warning");
+  assert.deepEqual(regulated?.codes, ["601201"]);
+  assert.equal(unknown?.severity, "warning");
+  assert.deepEqual(unknown?.codes, ["601202"]);
 });
 
 test("warns when selected activities cross sectors under article 9", () => {
@@ -45,10 +82,10 @@ test("treats sectors 5 and 6 as a conditional exception", () => {
 });
 
 test("keeps the source status as a concise label instead of long analysis findings", () => {
-  assert.equal(getNAEStatusInfo("red", "ar").label, "محظور");
-  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم");
-  assert.equal(getNAEStatusInfo("green", "fr").label, "Réglementée");
-  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée");
+  assert.equal(getNAEStatusInfo("red", "ar").label, "محظور وفق المصدر");
+  assert.equal(getNAEStatusInfo("green", "ar").label, "منظم وفق المصدر");
+  assert.equal(getNAEStatusInfo("green", "fr").label, "Réglementée (source)");
+  assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée (source)");
 });
 
 test("recognizes complementary operations cautiously", () => {

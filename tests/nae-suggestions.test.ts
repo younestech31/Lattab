@@ -43,6 +43,20 @@ test("does not recommend already existing codes in the project", () => {
   }
 });
 
+test("does not suggest activities whose source status is unknown", () => {
+  const target = activities.find((activity) => activity.code === "507202");
+  assert.ok(target);
+  const unknownSibling = {
+    ...target,
+    code: "507299",
+    label_fr: "Unknown status test activity",
+    label_ar: "نشاط اختبار حالة غير معروفة",
+    status: "pending",
+  };
+  const suggestions = getComplementaryActivities("507202", [target, unknownSibling], [], 6);
+  assert.equal(suggestions.some((item) => item.activity.code === "507299"), false);
+});
+
 test("returns empty array for non-existent activity code", () => {
   const suggestions = getComplementaryActivities("999999", activities, [], 4);
   assert.deepEqual(suggestions, []);

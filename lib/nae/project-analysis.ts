@@ -50,6 +50,47 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
   const findings: NAEProjectFinding[] = [];
   if (!activities.length) return { selectedCount: 0, sectors: [], sameGroup: false, sameSubgroup: false, primaryCode: null, findings };
 
+  // Surface the source-level status of every selected activity. Status is a
+  // catalogue signal from the dated dataset, not an independent CNRC decision.
+  const blockedCodes = activities
+    .filter((activity) => activity.status.trim().toLowerCase() === "red")
+    .map((activity) => activity.code);
+  if (blockedCodes.length) findings.push({
+    id: "selected-blocked-activities",
+    severity: "critical",
+    title_ar: "نشاط مختار مصنّف محظوراً في نسخة البيانات",
+    title_fr: "Une activité sélectionnée est signalée comme bloquée dans la source",
+    detail_ar: `تُصنّف نسخة البيانات المرجعية الرموز التالية على أنها محظورة: ${blockedCodes.join("، ")}. هذا تصنيف وارد في مصدر البيانات وليس قراراً قانونياً مستقلاً أو تحديثاً آنياً من CNRC؛ تحقّق من الوضع الحالي لدى Sidjilcom والجهة المختصة قبل اعتماد النشاط.`,
+    detail_fr: `La version de référence classe les codes suivants comme bloqués : ${blockedCodes.join(", ")}. Ce statut provient du jeu de données et ne constitue ni une décision juridique indépendante ni une mise à jour en temps réel du CNRC ; vérifiez la situation actuelle auprès de Sidjilcom et de l’autorité compétente.`,
+    codes: blockedCodes,
+  });
+
+  const regulatedCodes = activities
+    .filter((activity) => activity.status.trim().toLowerCase() === "green")
+    .map((activity) => activity.code);
+  if (regulatedCodes.length) findings.push({
+    id: "selected-regulated-activities",
+    severity: "warning",
+    title_ar: "نشاط مختار مصنّف منظّماً في نسخة البيانات",
+    title_fr: "Une activité sélectionnée est signalée comme réglementée dans la source",
+    detail_ar: `تُصنّف نسخة البيانات المرجعية الرموز التالية على أنها أنشطة منظّمة: ${regulatedCodes.join("، ")}. راجع الجهة الوصية ونوع الاعتماد أو الترخيص والنصوص السارية؛ وغياب التفاصيل في الملف لا يعني عدم وجود شرط.`,
+    detail_fr: `La version de référence classe les codes suivants comme activités réglementées : ${regulatedCodes.join(", ")}. Vérifiez l’autorité de tutelle, le titre ou l’autorisation requis et les textes en vigueur ; l’absence de détail dans le fichier ne signifie pas qu’aucune condition ne s’applique.`,
+    codes: regulatedCodes,
+  });
+
+  const unknownStatusCodes = activities
+    .filter((activity) => !["normal", "green", "red"].includes(activity.status.trim().toLowerCase()))
+    .map((activity) => activity.code);
+  if (unknownStatusCodes.length) findings.push({
+    id: "selected-unknown-status",
+    severity: "warning",
+    title_ar: "حالة مصدر غير معروفة لنشاط مختار",
+    title_fr: "Statut source non reconnu pour une activité sélectionnée",
+    detail_ar: `تعذّر تفسير حالة المصدر للرموز التالية: ${unknownStatusCodes.join("، ")}. لا تعتبرها أنشطة حرة؛ تحقّق من تصنيفها لدى CNRC.`,
+    detail_fr: `Le statut source des codes suivants n’est pas reconnu : ${unknownStatusCodes.join(", ")}. Ne les considérez pas comme des activités libres ; vérifiez leur classement auprès du CNRC.`,
+    codes: unknownStatusCodes,
+  });
+
   const primaryCode = requestedPrimaryCode && activities.some((activity) => activity.code === requestedPrimaryCode) ? requestedPrimaryCode : activities[0].code;
   const nonExport = sectors.filter((sector) => sector !== "7");
   if (nonExport.length > 1) {
@@ -84,12 +125,12 @@ export function analyzeNAEProject(input: readonly NAEActivity[], description = "
   if (sectors.includes("4")) findings.push({
     id: "sector-4-review",
     severity: "info",
-    title_ar: "ملاحظة مراجعة نشاطات قطاع الاستيراد لإعادة البيع على الحالة",
-    title_fr: "Note d’examen pour les activités d’importation pour la revente en l’état",
-    detail_ar: "يخضع قطاع الاستيراد لإعادة البيع على الحالة (القطاع 4) لشروط تنظيمية خاصة وفق التشريع والتنظيم المعمول بهما (بما في ذلك دفتر الشروط وتجانس الأنشطة وتخصيص مستخرج السجل التجاري). هذه ملاحظة إعلامية للمراجعة مع الجهات المختصة، وليست حكماً بالمنع أو القبول التلقائي.",
-    detail_fr: "Le secteur de l’importation pour la revente en l’état (secteur 4) est soumis à des conditions réglementaires spécifiques selon la législation et la réglementation en vigueur (notamment cahier des charges, homogénéité des activités et spécialisation de l’extrait du registre du commerce). Il s’agit d’une note d’information préalable à vérifier auprès des autorités compétentes, et non d’une décision automatique d’autorisation ou de refus.",
-    article: "Décret exécutif 15-249 & réglementation du secteur 4",
-    sourceUrl: DECREE_15_249,
+    title_ar: "راجع النصوص الخاصة بنشاطات الاستيراد لإعادة البيع على الحالة",
+    title_fr: "Vérifiez les textes propres à l’importation pour la revente en l’état",
+    detail_ar: "يصنّف المصدر القطاع 4 ضمن الاستيراد لإعادة البيع على الحالة. هذا التصنيف وحده لا يحدد شروط ممارسة كل نشاط ولا يثبت انطباق دفتر شروط أو إجراء موحد على جميع السلع والشركات. تحقّق من النصوص السارية بحسب طبيعة النشاط والسلع ووضع الشركة لدى وزارة التجارة والجهات المختصة قبل اعتماده.",
+    detail_fr: "La source classe le secteur 4 dans l’importation pour la revente en l’état. Cette classification ne détermine pas, à elle seule, les conditions d’exercice de chaque activité ni l’application d’un cahier des charges uniforme à toutes les marchandises et sociétés. Vérifiez les textes en vigueur selon l’activité, les produits et la situation de l’entreprise auprès du ministère du Commerce et des autorités compétentes.",
+    article: "Décret exécutif 05-458 modifié, notamment par le décret exécutif 21-94",
+    sourceUrl: "https://www.commerce.gov.dz/ar/reglementation/decret-executif-n-deg-21-94-du-9-mars-2021-jo-n-deg-20-du-17-mars-2021",
     codes: activities.filter((activity) => activity.sector_code === "4").map((activity) => activity.code),
   });
 

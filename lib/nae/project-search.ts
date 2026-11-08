@@ -43,12 +43,12 @@ function variants(token: string) {
 export function searchNAEProject(index: NAESearchIndex, rawQuery: string, limit = 20): NAEProjectSearchResult[] {
   const query = normalizeNAESearchText(rawQuery);
   if (!query) return [];
-  const tokens = [...new Set(query.split(" ").filter((token) => token.length > 1 && !STOP.has(token)))];
+  const tokens = [...new Set(query.split(" ").filter((token) => token.length > 1 && !STOP.has(token)))].slice(0, 24);
   const candidates = new Map<string, { activity: NAEActivity; score: number; terms: Set<string>; fields: Set<NAESearchMatchField>; usedSynonym: boolean }>();
 
   const add = (term: string, phrase: boolean, synonym: boolean) => {
     if (!term) return;
-    for (const match of searchNAE(index, term, { limit: phrase ? 80 : 120 })) {
+    for (const match of searchNAE(index, term)) {
       const current = candidates.get(match.activity.code) ?? {
         activity: match.activity, score: 0, terms: new Set<string>(),
         fields: new Set<NAESearchMatchField>(), usedSynonym: false
@@ -77,5 +77,5 @@ export function searchNAEProject(index: NAESearchIndex, rawQuery: string, limit 
   })).sort((a, b) =>
     b.score - a.score || b.matchedTerms.length - a.matchedTerms.length ||
     a.activity.code.localeCompare(b.activity.code, "en")
-  ).slice(0, Math.max(1, Math.min(50, limit)));
+  ).slice(0, Math.max(1, Math.min(2136, limit)));
 }
