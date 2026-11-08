@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Info, CheckCircle2, AlertTriangle, Ban } from "lucide-react";
+import { Info, CheckCircle2, AlertTriangle, Ban, BookOpen } from "lucide-react";
 import NAEActivityActions from "@/components/nae/NAEActivityActions";
 import NAEProjectWorkspace from "@/components/nae/NAEProjectWorkspace";
 import NAEAddToProjectButton from "@/components/nae/NAEAddToProjectButton";
@@ -67,11 +67,11 @@ export function NAEExplorerPage({
   const copy = ar
     ? {
         eyebrow: "الديوان العمومي للتوثيق — وهران",
-        badgeText: "مرجع معلوماتي — مدونة النشاطات الاقتصادية",
-        title: "مدونة النشاطات الاقتصادية",
-        description: "دليل معلوماتي لاستعراض الأنشطة الاقتصادية المعتمدة (NAE) وفحص موانع الجمع وإعداد ورقة عمل تحضيرية لملف التأسيس.",
+        badgeText: "دليل معلوماتي — تصنيف النشاطات الاقتصادية",
+        title: "دليل النشاطات الاقتصادية",
+        description: "استعراض معلوماتي لمدونة النشاطات الاقتصادية (NAE/CNRC)، مع فحص أولي للمؤشرات التنظيمية وتجهيز ورقة عمل تحضيرية لملف التأسيس.",
         home: "الرئيسية",
-        current: "مدونة النشاطات الاقتصادية",
+        current: "دليل النشاطات الاقتصادية",
         noticeTitle: "تنبيه إعلامي واستشهادي",
         noticeText: `هذه الأداة الاسترشادية مبنية على نسخة بيانات مدونة النشاطات الاقتصادية (CNRC) المؤرخة في ${sourceRevisionDate}. البيانات لا تغني عن تحرير العقد التأسيسي، وتظل بوابة المركز الوطني للسجل التجاري (Sidjilcom) المرجع الإداري الرسمي الحصري.`,
         sourceNote: `المرجع الإداري الرسمي المعتمد: بوابة Sidjilcom والمركز الوطني للسجل التجاري (نسخة البيانات المؤرخة في ${sourceRevisionDate}).`,
@@ -93,16 +93,17 @@ export function NAEExplorerPage({
       };
 
   return (
-    <div className="min-h-screen bg-gray-50" dir={ar ? "rtl" : "ltr"} lang={lang}>
+    <div className="min-h-screen flex flex-col bg-gray-50" dir={ar ? "rtl" : "ltr"} lang={lang}>
       <UnifiedPageHeader
         lang={lang}
         eyebrow={copy.eyebrow}
         badgeText={copy.badgeText}
+        badgeIcon={<BookOpen className="h-4 w-4" />}
         title={copy.title}
         description={copy.description}
         breadcrumbs={[{ name: copy.home, href: ar ? "/" : "/fr" }, { name: copy.current }]}
       />
-      <main className="py-8 md:py-10">
+      <main className="flex-grow py-8 md:py-10">
         <div className="container mx-auto max-w-6xl px-4">
           {/* Amber Informational Notice citing CNRC/Sidjilcom and revision date */}
           <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50/80 p-4 sm:p-5 text-amber-950 shadow-2xs">
@@ -201,7 +202,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
 
   const t = ar ? {
     home: "الرئيسية",
-    explorer: "مدونة النشاطات الاقتصادية",
+    explorer: "دليل النشاطات الاقتصادية",
     classification: "التصنيف",
     sector: "القطاع",
     group: "المجموعة",
@@ -236,16 +237,16 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
   };
 
   return (
-    <div className="min-h-screen bg-gray-50" dir={ar ? "rtl" : "ltr"} lang={lang}>
+    <div className="min-h-screen flex flex-col bg-gray-50" dir={ar ? "rtl" : "ltr"} lang={lang}>
       <UnifiedPageHeader
         lang={lang}
         eyebrow={ar ? "الديوان العمومي للتوثيق — وهران" : "Office public de notariat — Maître Lattab Mohamed, Oran"}
-        badgeText={ar ? "بطاقة النشاط — مدونة النشاطات الاقتصادية" : "Fiche activité — Nomenclature des activités économiques"}
+        badgeText={ar ? "بطاقة النشاط — دليل النشاطات الاقتصادية" : "Fiche activité — Nomenclature des activités économiques"}
         title={title}
         description={activity.code}
         breadcrumbs={[{ name: t.home, href: ar ? "/" : "/fr" }, { name: t.explorer, href: action }, { name: activity.code }]}
       />
-      <main className="py-8 md:py-10">
+      <main className="flex-grow py-8 md:py-10">
         <div className="container mx-auto max-w-5xl space-y-5 px-4">
           <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-7">
             <div className="flex flex-wrap items-start justify-between gap-4">
@@ -268,10 +269,10 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
               </div>
               <Link
                 href={action}
-                aria-label={ar ? "العودة إلى مدونة النشاطات الاقتصادية" : "Retour à la nomenclature des activités économiques"}
+                aria-label={ar ? "العودة إلى دليل النشاطات الاقتصادية" : "Retour à la nomenclature des activités économiques"}
                 className="print:hidden inline-flex min-h-11 items-center rounded-xl border border-gray-300 px-4 text-xs sm:text-sm font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
               >
-                {ar ? "العودة إلى المدونة" : "Retour à la nomenclature"}
+                {ar ? "العودة إلى دليل النشاطات" : "Retour à la nomenclature"}
               </Link>
             </div>
             <div className="mt-6 border-t border-gray-100 pt-5">
