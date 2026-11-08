@@ -28,6 +28,25 @@ test("maps the published source status values", () => {
   assert.equal(getNAEStatusInfo("red", "fr").label, "Bloquée");
 });
 
+test("includes selected blocked, regulated and unknown source statuses in project review", () => {
+  const result = analyzeNAEProject([
+    activity({ code: "301205", sector_code: "3", group_code: "301", subgroup_code: "3012", status: "red" }),
+    activity({ code: "601201", sector_code: "6", group_code: "601", subgroup_code: "6012", status: "green" }),
+    activity({ code: "601202", sector_code: "6", group_code: "601", subgroup_code: "6012", status: "future-status" }),
+  ]);
+
+  const blocked = result.findings.find((finding) => finding.id === "selected-blocked-activities");
+  const regulated = result.findings.find((finding) => finding.id === "selected-regulated-activities");
+  const unknown = result.findings.find((finding) => finding.id === "selected-unknown-status");
+
+  assert.equal(blocked?.severity, "critical");
+  assert.deepEqual(blocked?.codes, ["301205"]);
+  assert.equal(regulated?.severity, "warning");
+  assert.deepEqual(regulated?.codes, ["601201"]);
+  assert.equal(unknown?.severity, "warning");
+  assert.deepEqual(unknown?.codes, ["601202"]);
+});
+
 test("warns when selected activities cross sectors under article 9", () => {
   const result = analyzeNAEProject([
     activity({ code: "301101", sector_code: "3", group_code: "301", subgroup_code: "3011" }),
