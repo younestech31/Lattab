@@ -48,7 +48,7 @@ export function searchNAEProject(index: NAESearchIndex, rawQuery: string, limit 
 
   const add = (term: string, phrase: boolean, synonym: boolean) => {
     if (!term) return;
-    for (const match of searchNAE(index, term, { limit: phrase ? 80 : 120 })) {
+    for (const match of searchNAE(index, term)) {
       const current = candidates.get(match.activity.code) ?? {
         activity: match.activity, score: 0, terms: new Set<string>(),
         fields: new Set<NAESearchMatchField>(), usedSynonym: false
