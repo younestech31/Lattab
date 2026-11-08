@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getNAESearchIndex } from "@/lib/nae/data";
+import { getNAEActivities, getNAESearchIndex } from "@/lib/nae/data";
 import { searchNAEProject } from "@/lib/nae/project-search";
 import { getNAEStatusInfo } from "@/lib/nae/status";
 import { SearchPayloadSchema } from "@/lib/nae/api-schema";
@@ -25,15 +25,24 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid payload", details: parsed.error.flatten() }, { status: 400 });
   }
 
-  const { q: query, lang } = parsed.data;
+  const { q: query, lang, page = 1, pageSize = 24 } = parsed.data;
   const language = lang === "fr" ? "fr" : "ar";
   if (query.length < 2) {
     return NextResponse.json({ query, results: [] }, { headers: { "Cache-Control": "no-store" } });
   }
 
-  const results = searchNAEProject(getNAESearchIndex(language), query, 20);
+  const rankedResults = searchNAEProject(getNAESearchIndex(language), query, getNAEActivities().length);
+  const total = rankedResults.length;
+  const totalPages = Math.ceil(total / pageSize) || 1;
+  const validPage = Math.min(page, totalPages);
+  const results = rankedResults.slice((validPage - 1) * pageSize, validPage * pageSize);
+
   return NextResponse.json({
     query,
+    page: validPage,
+    pageSize,
+    total,
+    totalPages,
     results: results.map(({ activity, score, matchedTerms, matchedFields, usedSynonym }) => {
       const resolved = resolveActivityBilingual(activity);
       return {
