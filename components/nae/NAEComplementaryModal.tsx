@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Lightbulb, X, Check, Plus, AlertTriangle, CheckCircle2, Ban } from "lucide-react";
 import type { ActivityItem, StatusInfo } from "./types";
 
@@ -38,27 +38,30 @@ export default function NAEComplementaryModal({
   const [suggestions, setSuggestions] = useState<SuggestionItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const t = ar
     ? {
-        modalTitle: "الأنشطة الاقتصادية المكملة المقترحة",
-        modalDesc: "أنشطة متوافقة ومترابطة تجارياً أو مهنياً يُنصح بدمجها ضمن موضوع الشركة أو السجل التجاري.",
+        modalTitle: "اقتراحات لأنشطة ذات صلة",
+        modalDesc: "اقتراحات استكشافية بحسب التقارب في التصنيف أو الارتباط العملي المحتمل.",
+        disclaimer: "هذه الاقتراحات لا تثبت جواز جمع الأنشطة ولا تعني أن النشاط مغطى قانوناً بالنشاط الرئيسي. تحقّق من CNRC والجهة المختصة والنصوص السارية قبل اعتماد أي رمز.",
         baseActivity: "النشاط المرجعي المختار",
-        noSuggestions: "لا توجد أنشطة مكملة مباشرة مسجلة لهذا الرمز.",
+        noSuggestions: "لا توجد اقتراحات ذات صلة مباشرة لهذا الرمز.",
         add: "إضافة للمشروع",
         added: "مضاف للمشروع",
         close: "إغلاق النافذة",
-        loading: "جارٍ جلب التوصيات القانونية والتجارية...",
+        loading: "جارٍ تحميل الاقتراحات...",
       }
     : {
-        modalTitle: "Activités complémentaires recommandées",
-        modalDesc: "Activités compatibles et liées sur le plan commercial ou réglementaire, recommandées pour votre objet social.",
+        modalTitle: "Suggestions d’activités liées",
+        modalDesc: "Suggestions exploratoires fondées sur la proximité de nomenclature ou un lien opérationnel possible.",
+        disclaimer: "Ces suggestions ne démontrent ni la possibilité de cumul ni la couverture juridique par l’activité principale. Vérifiez auprès du CNRC, de l’autorité compétente et dans les textes en vigueur avant de retenir un code.",
         baseActivity: "Activité de référence",
-        noSuggestions: "Aucune activité complémentaire directe trouvée.",
+        noSuggestions: "Aucune suggestion directement liée à ce code.",
         add: "Ajouter au projet",
         added: "Ajoutée au projet",
         close: "Fermer la boîte de dialogue",
-        loading: "Chargement des recommandations...",
+        loading: "Chargement des suggestions...",
       };
 
   useEffect(() => {
@@ -95,12 +98,70 @@ export default function NAEComplementaryModal({
   }, [ar, lang, targetCode]);
 
   useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
+    if (!targetCode) return;
+
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    const previouslyFocused = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
+    const previousBodyOverflow = document.body.style.overflow;
+    const focusableSelector = [
+      "a[href]",
+      "button:not([disabled])",
+      "input:not([disabled])",
+      "textarea:not([disabled])",
+      "select:not([disabled])",
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(", ");
+
+    const getFocusable = () =>
+      Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector))
+        .filter((element) => element.getAttribute("aria-hidden") !== "true");
+
+    getFocusable()[0]?.focus();
+    document.body.style.overflow = "hidden";
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const focusable = getFocusable();
+      if (!focusable.length) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusable[0];
+      const lastElement = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement?.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement?.focus();
+      }
     }
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onClose]);
+
+    function keepFocusInside(event: FocusEvent) {
+      if (event.target instanceof Node && !dialog.contains(event.target)) {
+        getFocusable()[0]?.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("focusin", keepFocusInside);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("focusin", keepFocusInside);
+      document.body.style.overflow = previousBodyOverflow;
+      previouslyFocused?.focus();
+    };
+  }, [targetCode, onClose]);
 
   if (!targetCode) return null;
 
@@ -111,7 +172,10 @@ export default function NAEComplementaryModal({
       aria-modal="true"
       aria-labelledby="complementary-modal-title"
     >
-      <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-gray-200 bg-white p-5 shadow-xl sm:p-7">
+      <div
+        ref={dialogRef}
+        className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-gray-200 bg-white p-5 shadow-xl sm:p-7"
+      >
         {/* Header */}
         <div className="flex items-start justify-between gap-4 border-b border-gray-100 pb-4">
           <div className="flex items-start gap-3">
@@ -123,6 +187,7 @@ export default function NAEComplementaryModal({
                 {t.modalTitle}
               </h2>
               <p className="mt-1 text-xs leading-relaxed text-gray-600">{t.modalDesc}</p>
+              <p className="mt-2 text-xs leading-relaxed text-amber-900">{t.disclaimer}</p>
             </div>
           </div>
           <button
