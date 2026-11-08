@@ -97,5 +97,58 @@
     },
     "basis": "UpGrowth dataset documentation, which describes the CNRC status field as free / regulated / blocked.",
     "limitation": "The catalog status does not, by itself, prove that no separate sector-specific title or other legal requirement applies."
+  },
+  "reconciliation": {
+    "target": "UpGrowth online table snapshot (2026-11-02)",
+    "target_record_count": 2134,
+    "delta_count": 2,
+    "discrepancy_explanation": "Two codes with status 'red' (Blocked / Bloquée) representing pork/charcuterie commerce were omitted in UpGrowth's 2026-11-02 online table view but are retained as blocked historical/statutory records in the official CNRC nomenclature snapshot (2026-10-01). Per institutional retention rules, these records are preserved in the repository with raw status 'red'.",
+    "discrepant_codes": [
+      {
+        "code": "301205",
+        "sector": "3",
+        "status": "red",
+        "label_ar": "تجارة بالجملة للخنازيريات",
+        "label_fr": "Commerce de gros de la charcuterie",
+        "reason": "Statutory prohibition; omitted from UpGrowth online table view (Sector 3: 185 vs 184)"
+      },
+      {
+        "code": "501308",
+        "sector": "5",
+        "status": "red",
+        "label_ar": "تجارة بالتجزئة للحوم الخنازير",
+        "label_fr": "Commerce de détail de la charcuterie",
+        "reason": "Statutory prohibition noted in contenue_fr ('activité supprimée par la réglementation interdisant l'élevage et la commercialisation du porc'); omitted from UpGrowth online table view (Sector 5: 365 vs 364)"
+      }
+    ],
+    "sector_deltas": {
+      "3": {
+        "manifest": 185,
+        "online_table": 184,
+        "delta": 1
+      },
+      "5": {
+        "manifest": 365,
+        "online_table": 364,
+        "delta": 1
+      }
+    },
+    "status_deltas": {
+      "red": {
+        "manifest": 145,
+        "online_table": 143,
+        "delta": 2
+      },
+      "normal": {
+        "manifest": 1641,
+        "online_table": 1641,
+        "delta": 0
+      },
+      "green": {
+        "manifest": 350,
+        "online_table": 350,
+        "delta": 0
+      }
+    }
   }
 }

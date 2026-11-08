@@ -26,6 +26,16 @@ The raw `status` values are preserved verbatim. The UpGrowth dataset page docume
 
 This mapping is attributed to UpGrowth's dataset documentation under CC BY 4.0. It is **not** represented as an independent CNRC legal opinion. The status is a catalogue-level signal: it does not, by itself, determine every sector-specific condition or whether an authorization must be obtained before registration or before exercising the activity.
 
+## Reconciled snapshot discrepancy (2,136 vs 2,134 records)
+
+UpGrowth's online table view (snapshot 2026-11-02) lists 2,134 records, whereas the raw CSV dataset snapshot (2026-10-01) imported into this repository contains 2,136 records.
+
+Detailed row-by-row reconciliation confirms that the 2-record discrepancy comprises:
+1. `301205` (*Commerce de gros de la charcuterie* / *تجارة بالجملة للخنازيريات*): Sector 3 (185 in repo vs 184 online).
+2. `501308` (*Commerce de détail de la charcuterie* / *تجارة بالتجزئة للحوم الخنازير*): Sector 5 (365 in repo vs 364 online).
+
+Both codes have status `red` (Blocked / Bloquée / محظور) due to national statutory prohibitions on pork products. UpGrowth's web table filtered these blocked codes out, while the official CNRC nomenclature records them as blocked activities. In accordance with institutional data retention rules, both records are retained in this repository with their true source status (`red`) and documented in `manifest.json` and `docs/NAE-RECONCILIATION-REPORT.md`.
+
 ## Regeneration
 
 Regenerate these files from the original source with:

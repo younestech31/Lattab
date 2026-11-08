@@ -73,3 +73,41 @@ test("source warning values remain data and are not indexed as labels", () => {
   assert.equal(affected.length, 5);
   assert.equal(searchNAE(indexAr, "nom").some((item) => item.activity.label_ar === "#NOM?"), false);
 });
+
+test("reconciliation: accounts for the two blocked pork activities vs UpGrowth online table", () => {
+  // Reconciled codes
+  const code301205 = activities.find((item) => item.code === "301205");
+  const code501308 = activities.find((item) => item.code === "501308");
+
+  assert.ok(code301205, "Code 301205 must be retained in repository");
+  assert.equal(code301205?.sector_code, "3");
+  assert.equal(code301205?.status, "red");
+  assert.equal(code301205?.label_fr, "Commerce de gros de la charcuterie");
+  assert.equal(code301205?.label_ar, "تجارة بالجملة للخنازيريات");
+
+  assert.ok(code501308, "Code 501308 must be retained in repository");
+  assert.equal(code501308?.sector_code, "5");
+  assert.equal(code501308?.status, "red");
+  assert.equal(code501308?.label_fr, "Commerce de détail de la charcuterie");
+  assert.equal(code501308?.label_ar, "تجارة بالتجزئة للحوم الخنازير");
+
+  // Reconciled math
+  const redCount = activities.filter((item) => item.status === "red").length;
+  assert.equal(redCount, 145);
+  assert.equal(redCount - 2, 143, "Online table has 143 blocked codes");
+
+  assert.equal(sector3.length, 185);
+  assert.equal(sector3.length - 1, 184, "Online table Sector 3 count is 184");
+
+  assert.equal(sector5.length, 365);
+  assert.equal(sector5.length - 1, 364, "Online table Sector 5 count is 364");
+
+  assert.equal(activities.length, 2136);
+  assert.equal(activities.length - 2, 2134, "Online table total count is 2134");
+
+  // Manifest reconciliation structure
+  assert.ok(manifest.reconciliation, "Manifest must contain reconciliation block");
+  assert.equal(manifest.reconciliation.target_record_count, 2134);
+  assert.equal(manifest.reconciliation.delta_count, 2);
+});
+

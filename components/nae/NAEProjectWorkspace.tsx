@@ -1,167 +1,129 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { NAE_PROJECT_DRAFT_STORAGE_KEY, parseNAEProjectDraft, type NAEProjectDraft } from "@/lib/nae/project-draft";
+import { useEffect, useMemo, useState, useCallback } from "react";
+import {
+  NAE_PROJECT_DRAFT_STORAGE_KEY,
+  parseNAEProjectDraft,
+  type NAEProjectDraft,
+} from "@/lib/nae/project-draft";
+import NAEActivityCard from "./NAEActivityCard";
+import NAEFilterBar from "./NAEFilterBar";
+import NAEComplementaryModal from "./NAEComplementaryModal";
+import type { ActivityItem, AnalysisResponseData, Finding } from "./types";
 
-type Lang = "ar" | "fr";
-type StatusInfo = { label: string; className: string };
-type Hit = {
-  code: string;
-  label_ar: string;
-  label_fr: string;
-  status: string;
-  statusInfo: StatusInfo;
-  matchedFields: string[];
-  usedSynonym: boolean;
-};
-type ProjectActivity = {
-  code: string;
-  label_ar: string;
-  label_fr: string;
-  status: string;
-  statusInfo: StatusInfo;
-};
-type Finding = {
-  id: string;
-  severity: "info" | "warning" | "critical";
-  title_ar: string;
-  title_fr: string;
-  detail_ar: string;
-  detail_fr: string;
-  article?: string;
-  sourceUrl?: string;
-};
-type ResponseData = {
-  activities: ProjectActivity[];
-  analysis: {
-    selectedCount: number;
-    sectors: string[];
-    sectorLabels?: string[];
-    primaryCode: string | null;
-    findings: Finding[];
-  };
-};
-function usableLabel(value: string | null | undefined): value is string {
-  return typeof value === "string" && value.trim().length > 0 && value.trim() !== "#NOM?";
+interface NAEProjectWorkspaceProps {
+  lang: "ar" | "fr";
+  sourceRevisionDate: string;
 }
-function fieldName(field: string, ar: boolean) {
-  const names: Record<string, [string, string]> = {
-    code: ["الرمز", "code"],
-    label_ar: ["التسمية العربية", "libellé arabe"],
-    label_fr: ["التسمية الفرنسية", "libellé français"],
-    contenue_fr: ["محتوى النشاط", "contenu"],
-    accessoires_fr: ["الأنشطة الإضافية", "activités accessoires"],
-  };
-  return names[field]?.[ar ? 0 : 1] ?? field;
-}
+
 function severityClass(value: Finding["severity"]) {
   return value === "critical"
-    ? "border-rose-200 bg-rose-50"
+    ? "border-rose-200 bg-rose-50 text-rose-900"
     : value === "warning"
-      ? "border-amber-200 bg-amber-50"
-      : "border-gray-200 bg-gray-50";
+      ? "border-amber-200 bg-amber-50 text-amber-900"
+      : "border-stone-200 bg-stone-50 text-stone-800";
 }
 
 export default function NAEProjectWorkspace({
   lang,
   sourceRevisionDate,
-}: {
-  lang: Lang;
-  sourceRevisionDate: string;
-}) {
+}: NAEProjectWorkspaceProps) {
   const ar = lang === "ar";
-  const [description, setDescription] = useState("");
+
+  // Catalog Browsing & Filter State
+  const [selectedSector, setSelectedSector] = useState<string>("all");
+  const [selectedStatus, setSelectedStatus] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const pageSize = 24;
+
+  const [catalogActivities, setCatalogActivities] = useState<ActivityItem[]>([]);
+  const [totalFilteredCount, setTotalFilteredCount] = useState<number>(2136);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [loadingCatalog, setLoadingCatalog] = useState<boolean>(true);
+  const [catalogError, setCatalogError] = useState<string>("");
+
+  // Project Selections & Draft State
   const [codes, setCodes] = useState<string[]>([]);
   const [primary, setPrimary] = useState<string | null>(null);
-  const [results, setResults] = useState<Hit[]>([]);
-  const [searchedQuery, setSearchedQuery] = useState("");
-  const [searching, setSearching] = useState(false);
-  const [searchError, setSearchError] = useState("");
-  const [data, setData] = useState<ResponseData | null>(null);
-  const [analysisSignature, setAnalysisSignature] = useState("");
-  const [analyzing, setAnalyzing] = useState(false);
-  const [analysisError, setAnalysisError] = useState("");
-  const [ready, setReady] = useState(false);
+  const [description, setDescription] = useState<string>("");
+  const [ready, setReady] = useState<boolean>(false);
 
+  // Legal Compatibility Analysis State
+  const [analysisData, setAnalysisData] = useState<AnalysisResponseData | null>(null);
+  const [analyzing, setAnalyzing] = useState<boolean>(false);
+  const [analysisError, setAnalysisError] = useState<string>("");
+
+  // UI Modals & Active Views
+  const [viewMode, setViewMode] = useState<"directory" | "project_review">("directory");
+  const [complementaryTargetCode, setComplementaryTargetCode] = useState<string | null>(null);
+
+  // Localization strings
   const t = ar
     ? {
-        title: "إعداد نشاطات المشروع",
-        intro: "اكتب وصفاً بسيطاً لما ستقوم به المؤسسة. ابحث بالرمز أو التسمية أو محتوى النشاط، ثم أضف النشاطات المناسبة إلى قائمتك.",
-        placeholder: "مثال: بيع الحواسيب وملحقاتها وصيانة الأجهزة وتركيب الشبكات",
-        results: "نتائج البحث",
-        noResults: "لا توجد نتائج مطابقة. جرّب كلمة أخرى أو أدخل رمز النشاط.",
-        searching: "جارٍ البحث…",
-        updating: "يتم تحديث المراجعة تلقائياً…",
-        evidence: "سبب المطابقة",
-        synonym: "تطابق عبر مرادف",
-        add: "إضافة",
-        added: "مضاف",
-        project: "نشاطات المشروع",
-        empty: "ابدأ بالبحث عن النشاطات التي ستزاولها المؤسسة.",
-        primary: "النشاط الرئيسي",
-        additional: "نشاط إضافي",
-        makePrimary: "تعيينه رئيسياً",
-        remove: "إزالة",
-        clear: "مسح القائمة",
-        findings: "ملاحظات",
-        noFindings: "لا توجد ملاحظات إضافية وفق القواعد الحالية.",
-        print: "طباعة ورقة التحضير",
-        source: "مصدر البيانات",
-        sourceNote: "مسودة محلية محفوظة في هذا المتصفح.",
-        printTitle: "ورقة تحضير نشاطات المؤسسة",
-        company: "اسم الشركة أو المؤسسة",
-        date: "التاريخ",
-        code: "الرمز",
-        arabic: "التسمية الرسمية بالعربية",
-        french: "التسمية الرسمية بالفرنسية",
-        role: "الصفة",
-        mainRole: "رئيسي",
-        additionalRole: "إضافي",
-        notAvailable: "غير متاح في المصدر",
-        dataNote: "ورقة تحضيرية مرجعية؛ تُراجع التسميات والحالة لدى CNRC والجهات المختصة قبل اعتماد ملف التسجيل.",
-        sourceFootnote: "المصدر: UpGrowth — NAE 2026، رخصة CC BY 4.0.",
-        error: "تعذر إكمال الطلب. أعد المحاولة.",
+        title: "دليل النشاطات الاقتصادية الجزائرية (NAE)",
+        intro: "استعرض كافة الأنشطة الاقتصادية المعتمدة رسمياً، تحقّق فورياً من التوافق القانوني للنشاطات، واستخرج ورقة العمل التأسيسية للموثق والسجل التجاري.",
+        tabDirectory: "دليل الأنشطة والاستعراض",
+        tabProject: "مشروع المؤسسة وسلة الأنشطة",
+        selectedBadge: "نشاط مختار",
+        reviewProject: "مراجعة توافق المشروع",
+        backToDirectory: "العودة لتصفح الأنشطة",
+        clearAll: "تفريغ المسودة",
+        printSheet: "طباعة ورقة التحضير الرسمية",
+        primaryActivity: "النشاط الرئيسي",
+        additionalActivity: "نشاط إضافي",
+        setPrimary: "تعيين كرئيسي",
+        remove: "حذف",
+        emptyProject: "لم تختر أي نشاط بعد. تصفح الدليل وأضف الأنشطة التي ترغب في ممارستها.",
+        legalStatus: "نتيجة فحص التوافق القانوني",
+        compatibleSuccess: "الأنشطة المختارة متوافقة ومصرح بجمعها نظامياً.",
+        openSuggestions: "اقتراح أنشطة مكملة للمشروع",
+        prevPage: "السابق",
+        nextPage: "التالي",
+        pageOf: "صفحة",
+        of: "من",
+        errorCatalog: "تعذر تحميل الأنشطة حالياً. يرجى إعادة المحاولة.",
+        printDocTitle: "ورقة تعيين نشاطات المؤسسة وتحضير القانون الأساسي",
+        printOffice: "الديوان العمومي للتوثيق — الأستاذ لعطب محمد (موثق معتمد)",
+        printCompany: "تسمية الشركة المقترحة",
+        printDate: "تاريخ الإعداد",
+        printAddress: "المقر الاجتماعي",
+        printNotaryNotes: "ملاحظات وتوجيهات الموثق",
+        sourceAttribution: "بيانات مستخرجة وفق مدونة النشاطات الاقتصادية (CNRC/NAE 2026)، ترخيص CC BY 4.0 UpGrowth.",
       }
     : {
-        title: "Préparer les activités du projet",
-        intro: "Décrivez simplement les opérations prévues. Recherchez par code, libellé ou contenu, puis ajoutez les activités retenues à votre liste.",
-        placeholder: "Ex. : vente d’ordinateurs et accessoires, maintenance et installation de réseaux",
-        results: "Résultats",
-        noResults: "Aucun résultat correspondant. Essayez un autre terme ou saisissez le code.",
-        searching: "Recherche…",
-        updating: "Mise à jour automatique…",
-        evidence: "Correspondance",
-        synonym: "Correspondance par synonyme",
-        add: "Ajouter",
-        added: "Ajoutée",
-        project: "Activités du projet",
-        empty: "Commencez par rechercher les activités que l’entreprise exercera.",
-        primary: "Activité principale",
-        additional: "Activité additionnelle",
-        makePrimary: "Définir comme principale",
+        title: "Nomenclature des Activités Économiques (NAE)",
+        intro: "Explorez l'ensemble des activités économiques officielles, vérifiez la compatibilité réglementaire de votre sélection et générez votre fiche préparatoire pour le notaire et le CNRC.",
+        tabDirectory: "Exploration de la nomenclature",
+        tabProject: "Dossier de constitution et sélection",
+        selectedBadge: "activité(s) sélectionnée(s)",
+        reviewProject: "Examiner la compatibilité",
+        backToDirectory: "Retour à l'exploration",
+        clearAll: "Vider la sélection",
+        printSheet: "Imprimer la fiche officielle",
+        primaryActivity: "Activité principale",
+        additionalActivity: "Activité additionnelle",
+        setPrimary: "Définir comme principale",
         remove: "Retirer",
-        clear: "Vider la liste",
-        findings: "Points à vérifier",
-        noFindings: "Aucun point supplémentaire selon les règles actuelles.",
-        print: "Imprimer la fiche préparatoire",
-        source: "Source des données",
-        sourceNote: "Brouillon conservé localement dans ce navigateur.",
-        printTitle: "Fiche préparatoire des activités de l’entreprise",
-        company: "Dénomination de l’entreprise",
-        date: "Date",
-        code: "Code",
-        arabic: "Libellé officiel arabe",
-        french: "Libellé officiel français",
-        role: "Rôle",
-        mainRole: "Principale",
-        additionalRole: "Additionnelle",
-        notAvailable: "Non renseigné dans la source",
-        dataNote: "Fiche préparatoire indicative ; vérifiez les libellés et la situation auprès du CNRC et des autorités compétentes avant le dépôt.",
-        sourceFootnote: "Source : UpGrowth — NAE 2026, licence CC BY 4.0.",
-        error: "La requête a échoué. Veuillez réessayer.",
+        emptyProject: "Aucune activité sélectionnée pour le moment. Explorez le catalogue pour composer votre projet.",
+        legalStatus: "Examen de conformité et compatibilité",
+        compatibleSuccess: "Les activités sélectionnées sont compatibles et conformes aux règles de cumul.",
+        openSuggestions: "Suggérer des activités complémentaires",
+        prevPage: "Précédent",
+        nextPage: "Suivant",
+        pageOf: "Page",
+        of: "sur",
+        errorCatalog: "Impossible de charger les activités. Veuillez réessayer.",
+        printDocTitle: "Fiche Préparatoire des Activités et Statuts de Société",
+        printOffice: "Office Notarial — Maître Lattab Mohamed (Notaire agréé)",
+        printCompany: "Dénomination sociale prévue",
+        printDate: "Date d'établissement",
+        printAddress: "Siège social",
+        printNotaryNotes: "Observations du notaire",
+        sourceAttribution: "Données issues de la Nomenclature des Activités Économiques (CNRC/NAE 2026), licence CC BY 4.0 UpGrowth.",
       };
 
+  // 1. Initial Local Storage Restoration
   useEffect(() => {
     try {
       const saved = parseNAEProjectDraft(window.localStorage.getItem(NAE_PROJECT_DRAFT_STORAGE_KEY));
@@ -169,11 +131,12 @@ export default function NAEProjectWorkspace({
       setPrimary(saved.primaryCode);
       setDescription(saved.description);
     } catch {
-      // Ignore an invalid local draft.
+      // Ignore invalid localStorage draft
     }
     setReady(true);
   }, []);
 
+  // 2. Local Storage Sync
   useEffect(() => {
     if (!ready) return;
     try {
@@ -185,387 +148,697 @@ export default function NAEProjectWorkspace({
       };
       window.localStorage.setItem(NAE_PROJECT_DRAFT_STORAGE_KEY, JSON.stringify(draft));
     } catch {
-      setSearchError(ar ? "تعذر حفظ المسودة محلياً." : "Impossible d’enregistrer le brouillon localement.");
+      // Ignore persistence quota issues
     }
-  }, [ar, codes, description, primary, ready]);
+  }, [codes, description, primary, ready]);
 
-  // One integrated search: query updates immediately as the user types.
-  useEffect(() => {
-    if (!ready) return;
-    const query = description.trim();
-    if (query.length < 2) {
-      setResults([]);
-      setSearchedQuery(query);
-      setSearching(false);
-      setSearchError("");
-      return;
-    }
+  // 3. Catalog Fetching and Instant Search
+  const fetchCatalog = useCallback(async () => {
+    setLoadingCatalog(true);
+    setCatalogError("");
 
-    const controller = new AbortController();
-    let active = true;
-    const timer = window.setTimeout(async () => {
-      setSearching(true);
-      setSearchError("");
-      try {
+    try {
+      const trimmedQuery = searchQuery.trim();
+
+      // If user provided a specific search phrase, use /api/nae/search for semantic synonym ranking
+      if (trimmedQuery.length >= 2 && selectedSector === "all" && selectedStatus === "all") {
         const response = await fetch("/api/nae/search", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ q: query, lang }),
-          signal: controller.signal,
+          body: JSON.stringify({ q: trimmedQuery, lang }),
         });
-        if (!response.ok) throw new Error("search");
-        const payload = (await response.json()) as { results?: Hit[] };
-        if (active) {
-          setResults(Array.isArray(payload.results) ? payload.results : []);
-          setSearchedQuery(query);
-        }
-      } catch (error) {
-        if (active && !(error instanceof DOMException && error.name === "AbortError")) {
-          setResults([]);
-          setSearchedQuery(query);
-          setSearchError(t.error);
-        }
-      } finally {
-        if (active) setSearching(false);
+        if (!response.ok) throw new Error("search failed");
+        const payload = await response.json();
+        const results: ActivityItem[] = Array.isArray(payload.results) ? payload.results : [];
+        setCatalogActivities(results);
+        setTotalFilteredCount(results.length);
+        setTotalPages(1);
+      } else {
+        // Standard Directory Browsing with sector, status, keyword, and pagination
+        const response = await fetch("/api/nae/browse", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            lang,
+            sector: selectedSector,
+            status: selectedStatus,
+            q: trimmedQuery,
+            page,
+            pageSize,
+          }),
+        });
+        if (!response.ok) throw new Error("browse failed");
+        const payload = await response.json();
+        setCatalogActivities(Array.isArray(payload.activities) ? payload.activities : []);
+        setTotalFilteredCount(payload.total ?? 0);
+        setTotalPages(payload.totalPages ?? 1);
       }
-    }, 180);
+    } catch {
+      setCatalogError(t.errorCatalog);
+    } finally {
+      setLoadingCatalog(false);
+    }
+  }, [lang, page, pageSize, searchQuery, selectedSector, selectedStatus, t.errorCatalog]);
 
-    return () => {
-      active = false;
-      window.clearTimeout(timer);
-      controller.abort();
-    };
-  }, [description, lang, ready, t.error]);
-
-  // Re-run the preliminary checks automatically whenever the description or list changes.
-  const currentAnalysisSignature = JSON.stringify([description, codes, primary, lang]);
-  const analysisIsCurrent = Boolean(data && analysisSignature === currentAnalysisSignature);
-
+  // Debounce catalog fetching on search or filter change
   useEffect(() => {
-    if (!ready) return;
-    if (!codes.length) {
-      setData(null);
-      setAnalysisSignature("");
+    const timer = setTimeout(() => {
+      fetchCatalog();
+    }, 180);
+    return () => clearTimeout(timer);
+  }, [fetchCatalog]);
+
+  // Reset page to 1 when filters change
+  const handleSectorChange = (sector: string) => {
+    setSelectedSector(sector);
+    setPage(1);
+  };
+  const handleStatusChange = (status: string) => {
+    setSelectedStatus(status);
+    setPage(1);
+  };
+  const handleSearchChange = (q: string) => {
+    setSearchQuery(q);
+    setPage(1);
+  };
+  const handleClearFilters = () => {
+    setSelectedSector("all");
+    setSelectedStatus("all");
+    setSearchQuery("");
+    setPage(1);
+  };
+
+  // 4. Legal Compatibility Analysis on Selected Codes
+  useEffect(() => {
+    if (!ready || codes.length === 0) {
+      setAnalysisData(null);
       setAnalyzing(false);
       setAnalysisError("");
       return;
     }
 
     const controller = new AbortController();
-    let active = true;
-    const timer = window.setTimeout(async () => {
-      setAnalyzing(true);
-      setAnalysisError("");
-      try {
-        const response = await fetch("/api/nae/analyze", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ codes, description, primaryCode: primary, lang }),
-          signal: controller.signal,
-        });
-        if (!response.ok) throw new Error("analysis");
-        const payload = (await response.json()) as ResponseData;
-        if (active) {
-          setData(payload);
-          setAnalysisSignature(currentAnalysisSignature);
+    setAnalyzing(true);
+    setAnalysisError("");
+
+    fetch("/api/nae/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ codes, description, primaryCode: primary, lang }),
+      signal: controller.signal,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Analysis failed");
+        return res.json();
+      })
+      .then((payload: AnalysisResponseData) => {
+        setAnalysisData(payload);
+      })
+      .catch((err) => {
+        if (!(err instanceof DOMException && err.name === "AbortError")) {
+          setAnalysisError(ar ? "تعذر إتمام فحص التوافق." : "Échec de l'analyse.");
         }
-      } catch (error) {
-        if (active && !(error instanceof DOMException && error.name === "AbortError")) {
-          setAnalysisError(t.error);
-        }
-      } finally {
-        if (active) setAnalyzing(false);
+      })
+      .finally(() => {
+        setAnalyzing(false);
+      });
+
+    return () => controller.abort();
+  }, [ar, codes, description, lang, primary, ready]);
+
+  // Basket Handlers
+  const toggleSelect = (code: string) => {
+    setCodes((prev) => {
+      if (prev.includes(code)) {
+        const next = prev.filter((c) => c !== code);
+        if (primary === code) setPrimary(next[0] ?? null);
+        return next;
+      } else {
+        const next = [...prev, code];
+        if (!primary) setPrimary(code);
+        return next;
       }
-    }, 180);
+    });
+  };
 
-    return () => {
-      active = false;
-      window.clearTimeout(timer);
-      controller.abort();
-    };
-  }, [codes, currentAnalysisSignature, description, lang, primary, ready, t.error]);
+  const handleSetPrimary = (code: string) => {
+    if (codes.includes(code)) setPrimary(code);
+  };
 
-  const activityByCode = useMemo(
-    () => new Map((data?.activities ?? []).map((item) => [item.code, item])),
-    [data],
-  );
-  const query = description.trim();
-  const visibleResults = searchedQuery === query && query.length >= 2 ? results : [];
-
-  function add(code: string) {
-    setCodes((current) => current.includes(code) ? current : [...current, code]);
-    setPrimary((current) => current ?? code);
-  }
-  function remove(code: string) {
-    setCodes((current) => current.filter((item) => item !== code));
-    setPrimary((current) => current === code ? codes.find((item) => item !== code) ?? null : current);
-  }
-  function clear() {
+  const clearBasket = () => {
     setCodes([]);
     setPrimary(null);
-  }
+    setAnalysisData(null);
+  };
 
-  const printReady = Boolean(analysisIsCurrent && data && data.activities.length === codes.length && !analyzing);
+  // Complementary modal target
+  const targetActivityItem = useMemo(() => {
+    if (!complementaryTargetCode) return null;
+    return (
+      catalogActivities.find((a) => a.code === complementaryTargetCode) ??
+      analysisData?.activities.find((a) => a.code === complementaryTargetCode) ??
+      null
+    );
+  }, [catalogActivities, complementaryTargetCode, analysisData]);
+
+  // Compatibility Severity Summary
+  const compatibilityStatus = useMemo(() => {
+    if (!analysisData || codes.length === 0) return null;
+    const findings = analysisData.analysis.findings;
+    const hasCritical = findings.some((f) => f.severity === "critical");
+    const hasWarning = findings.some((f) => f.severity === "warning");
+    if (hasCritical) return "critical";
+    if (hasWarning) return "warning";
+    return "ok";
+  }, [analysisData, codes.length]);
 
   return (
-    <section
-      data-nae-project-workspace
-      className="mb-8 rounded-2xl border border-emerald-200 bg-white p-4 shadow-sm sm:p-6"
-      aria-labelledby="nae-project-title"
-    >
+    <div className="space-y-6" data-nae-workspace>
+      {/* Print Stylesheet */}
       <style>{`
-        @page { size: A4; margin: 14mm; }
+        @page { size: A4 portrait; margin: 12mm; }
         @media print {
-          body:has([data-nae-print-sheet]) * { visibility: hidden !important; }
+          body * { visibility: hidden !important; }
           [data-nae-print-sheet], [data-nae-print-sheet] * { visibility: visible !important; }
           [data-nae-print-sheet] {
             display: block !important;
             position: absolute !important;
             inset: 0 !important;
             width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
             background: #fff !important;
             color: #111 !important;
-            border: 0 !important;
-            box-shadow: none !important;
+            padding: 10px !important;
           }
-          [data-nae-print-sheet] table { width: 100%; border-collapse: collapse; }
+          [data-nae-print-sheet] table { width: 100%; border-collapse: collapse; margin-top: 15px; }
           [data-nae-print-sheet] th, [data-nae-print-sheet] td {
-            border: 1px solid #777 !important;
-            padding: 8px !important;
+            border: 1px solid #444 !important;
+            padding: 6px 10px !important;
+            font-size: 11pt !important;
             vertical-align: top;
           }
+          [data-nae-print-sheet] th { background-color: #f3f4f6 !important; }
         }
       `}</style>
 
-      <div className="max-w-3xl">
-        <h2 id="nae-project-title" className="text-xl font-bold text-gray-950">{t.title}</h2>
-        <p className="mt-2 text-sm leading-7 text-gray-600">{t.intro}</p>
-      </div>
+      {/* Main View Switcher Tabs */}
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-stone-200 pb-3">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setViewMode("directory")}
+            className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all ${
+              viewMode === "directory"
+                ? "bg-emerald-900 text-white shadow-xs"
+                : "border border-stone-200 bg-white text-stone-700 hover:bg-stone-50"
+            }`}
+          >
+            <span>📖 {t.tabDirectory}</span>
+          </button>
 
-      <div className="mt-5">
-        <label htmlFor="nae-project-description" className="sr-only">{t.placeholder}</label>
-        <input
-          id="nae-project-description"
-          type="search"
-          value={description}
-          onChange={(event) => setDescription(event.target.value.slice(0, 180))}
-          placeholder={t.placeholder}
-          maxLength={180}
-          autoComplete="off"
-          dir="auto"
-          aria-controls="nae-project-search-results"
-          className="min-h-12 w-full rounded-xl border border-gray-300 bg-white px-4 text-base text-gray-900 placeholder:text-gray-400 focus-visible:border-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/20"
-        />
-        <p className="mt-2 min-h-5 text-xs text-gray-500" aria-live="polite">
-          {searching ? t.searching : query.length < 2 ? "" : ""}
-        </p>
-      </div>
-
-      {searchError && <p role="alert" className="mt-2 text-sm text-rose-800">{searchError}</p>}
-
-      {visibleResults.length > 0 && (
-        <div id="nae-project-search-results" className="mt-4" aria-live="polite">
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <h3 className="font-bold text-gray-900">{t.results}</h3>
-            <span className="text-xs text-gray-500">{visibleResults.length}</span>
-          </div>
-          <div className="divide-y divide-gray-100 rounded-xl border border-gray-200">
-            {visibleResults.map((hit) => {
-              const exists = codes.includes(hit.code);
-              return (
-                <article key={hit.code} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-sm font-bold text-emerald-900" dir="ltr">{hit.code}</span>
-                      <span className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${hit.statusInfo.className}`}>
-                        {hit.statusInfo.label}
-                      </span>
-                    </div>
-                    <p dir="rtl" lang="ar" className="mt-2 text-sm font-semibold leading-7 text-gray-900">
-                      {usableLabel(hit.label_ar) ? hit.label_ar : t.notAvailable}
-                    </p>
-                    <p dir="ltr" lang="fr" className="mt-0.5 text-sm leading-6 text-gray-700">
-                      {usableLabel(hit.label_fr) ? hit.label_fr : t.notAvailable}
-                    </p>
-                    <p className="mt-2 text-xs text-gray-500">
-                      {t.evidence}: {hit.matchedFields.map((field) => fieldName(field, ar)).join(ar ? "، " : ", ")}
-                      {hit.usedSynonym ? ` · ${t.synonym}` : ""}
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 items-center gap-2">
-                    <Link
-                      href={`/${ar ? "" : "fr/"}nae/${hit.code}`}
-                      className="inline-flex min-h-9 items-center rounded-lg border border-gray-300 px-3 text-sm font-semibold text-gray-700 hover:bg-gray-50"
-                    >
-                      {ar ? "البطاقة" : "Fiche"}
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => add(hit.code)}
-                      disabled={exists}
-                      className="inline-flex min-h-9 items-center rounded-lg bg-emerald-800 px-3 text-sm font-semibold text-white hover:bg-emerald-900 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-700"
-                    >
-                      {exists ? t.added : t.add}
-                    </button>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {query.length >= 2 && searchedQuery === query && !searching && visibleResults.length === 0 && !searchError && (
-        <p className="mt-4 rounded-lg border border-dashed border-gray-300 px-4 py-5 text-center text-sm text-gray-600">
-          {t.noResults}
-        </p>
-      )}
-
-      <div className="mt-8 border-t border-gray-200 pt-5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h3 className="font-bold text-gray-900">
-            {t.project} <span className="font-normal text-gray-500">({codes.length})</span>
-          </h3>
-          {codes.length > 0 && (
-            <button type="button" onClick={clear} className="text-sm font-semibold text-gray-600 underline underline-offset-4">
-              {t.clear}
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={() => setViewMode("project_review")}
+            className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all ${
+              viewMode === "project_review"
+                ? "bg-emerald-900 text-white shadow-xs"
+                : "border border-stone-200 bg-white text-stone-700 hover:bg-stone-50"
+            }`}
+          >
+            <span>💼 {t.tabProject}</span>
+            <span
+              className={`rounded-full px-2 py-0.5 text-xs font-mono font-bold tabular-nums ${
+                codes.length > 0
+                  ? compatibilityStatus === "critical"
+                    ? "bg-rose-600 text-white"
+                    : compatibilityStatus === "warning"
+                      ? "bg-amber-500 text-white"
+                      : "bg-emerald-600 text-white"
+                  : "bg-stone-200 text-stone-700"
+              }`}
+            >
+              {codes.length}
+            </span>
+          </button>
         </div>
 
-        {codes.length === 0 ? (
-          <p className="mt-4 rounded-lg bg-gray-50 px-4 py-5 text-sm leading-6 text-gray-600">{t.empty}</p>
-        ) : (
-          <div className="mt-4 divide-y divide-gray-100 rounded-xl border border-gray-200">
-            {codes.map((code) => {
-              const item = activityByCode.get(code);
-              return (
-                <div key={code} className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-emerald-900" dir="ltr">{code}</span>
-                      {item && (
-                        <span className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${item.statusInfo.className}`}>
-                          {item.statusInfo.label}
-                        </span>
-                      )}
-                      {primary === code && <span className="text-xs font-semibold text-emerald-800">{t.primary}</span>}
-                    </div>
-                    <p dir="rtl" lang="ar" className="mt-1 text-sm font-semibold leading-6 text-gray-900">
-                      {item ? (usableLabel(item.label_ar) ? item.label_ar : t.notAvailable) : code}
-                    </p>
-                    <p dir="ltr" lang="fr" className="text-sm leading-6 text-gray-700">
-                      {item ? (usableLabel(item.label_fr) ? item.label_fr : t.notAvailable) : ""}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    {primary !== code && (
-                      <button type="button" onClick={() => setPrimary(code)} className="text-xs font-semibold text-emerald-800 underline underline-offset-4">
-                        {t.makePrimary}
-                      </button>
-                    )}
-                    <button type="button" onClick={() => remove(code)} className="text-xs font-semibold text-gray-500 underline underline-offset-4">
-                      {t.remove}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {analysisError && <p role="alert" className="mt-3 text-sm text-rose-800">{analysisError}</p>}
-        {analysisIsCurrent && data && (
-          <section className="mt-5 border-t border-gray-200 pt-4" aria-live="polite">
-            <div className="mb-3 flex items-center gap-2">
-              <h3 className="font-bold text-gray-900">{t.findings}</h3>
-              {analyzing && <span className="text-xs text-gray-500">{t.searching}</span>}
-            </div>
-            {data.analysis.findings.length > 0 ? (
-              <div className="space-y-3">
-                {data.analysis.findings.map((finding) => (
-                  <article key={finding.id} className={`rounded-xl border p-4 ${severityClass(finding.severity)}`}>
-                    <h4 className="font-semibold text-gray-900">{ar ? finding.title_ar : finding.title_fr}</h4>
-                    <p className="mt-1 text-sm leading-7 text-gray-800">{ar ? finding.detail_ar : finding.detail_fr}</p>
-                    {finding.article && <p className="mt-2 text-xs font-semibold text-gray-600">{finding.article}</p>}
-                    {finding.sourceUrl && (
-                      <a href={finding.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs font-semibold text-emerald-800 underline underline-offset-4">
-                        {ar ? "النص القانوني" : "Texte juridique"}
-                      </a>
-                    )}
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <p className="text-sm text-gray-600">{t.noFindings}</p>
-            )}
-          </section>
-        )}
-
-        <div className="mt-4 flex flex-wrap items-center gap-3 print:hidden">
+        {/* Quick action: Print if activities exist */}
+        {codes.length > 0 && (
           <button
             type="button"
             onClick={() => window.print()}
-            disabled={!printReady}
-            className="min-h-10 rounded-lg border border-gray-300 px-4 text-sm font-semibold text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-stone-300 bg-white px-3.5 py-2 text-xs font-bold text-stone-800 hover:bg-stone-50 transition-colors shadow-2xs"
           >
-            {t.print}
+            🖨️ {t.printSheet}
           </button>
-          {codes.length > 0 && !analysisIsCurrent && !analysisError && (
-            <span className="text-xs text-gray-500" role="status">{t.updating}</span>
-          )}
-        </div>
+        )}
       </div>
 
-      {printReady && data && (
-        <div data-nae-print-sheet className="hidden">
-          <header className="mb-6 border-b-2 border-gray-800 pb-4 text-center">
-            <h1 className="text-2xl font-bold">{t.printTitle}</h1>
-            <p className="mt-1 text-sm">{ar ? "ورقة عمل أولية لإعداد القانون الأساسي" : "Document de travail préalable à la rédaction des statuts"}</p>
-          </header>
-          <div className="mb-6 grid grid-cols-2 gap-6 text-sm">
-            <p>{t.company} : __________________________________________</p>
-            <p>{t.date} : ____ / ____ / ______</p>
-          </div>
-          <table className="w-full border-collapse text-sm">
-            <thead>
-              <tr>
-                <th>{t.code}</th>
-                <th dir="rtl">{t.arabic}</th>
-                <th dir="ltr">{t.french}</th>
-                <th>{t.role}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.activities.map((item) => (
-                <tr key={item.code}>
-                  <td dir="ltr" className="font-mono">{item.code}</td>
-                  <td dir="rtl" lang="ar">{usableLabel(item.label_ar) ? item.label_ar : t.notAvailable}</td>
-                  <td dir="ltr" lang="fr">{usableLabel(item.label_fr) ? item.label_fr : t.notAvailable}</td>
-                  <td>{item.code === data.analysis.primaryCode ? t.mainRole : t.additionalRole}</td>
-                </tr>
+      {/* VIEW MODE 1: DIRECTORY BROWSING & LIVE FILTERING */}
+      {viewMode === "directory" && (
+        <div className="space-y-6">
+          {/* Filter Bar */}
+          <NAEFilterBar
+            lang={lang}
+            selectedSector={selectedSector}
+            onSelectSector={handleSectorChange}
+            selectedStatus={selectedStatus}
+            onSelectStatus={handleStatusChange}
+            searchQuery={searchQuery}
+            onSearchChange={handleSearchChange}
+            totalFilteredCount={totalFilteredCount}
+            totalCatalogCount={2136}
+            isLoading={loadingCatalog}
+            onClearFilters={handleClearFilters}
+          />
+
+          {/* Catalog Activities Grid */}
+          {catalogError ? (
+            <div className="rounded-xl border border-rose-200 bg-rose-50 p-6 text-center text-rose-800">
+              {catalogError}
+            </div>
+          ) : loadingCatalog ? (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-44 animate-pulse rounded-xl border border-stone-200 bg-stone-100/60 p-5"
+                />
               ))}
-            </tbody>
-          </table>
-          <footer className="mt-6 border-t pt-3 text-xs leading-5">
-            <p>{t.dataNote}</p>
-            <p className="mt-1">{t.sourceFootnote} {sourceRevisionDate}. https://www.upgrowth.dz/ar/datasets/cnrc-2026</p>
-          </footer>
+            </div>
+          ) : catalogActivities.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-stone-300 bg-white p-12 text-center">
+              <p className="text-base font-semibold text-stone-700">
+                {ar ? "لا توجد نشاطات مطابقة للبحث أو المرشحات المحددة." : "Aucune activité ne correspond à vos filtres."}
+              </p>
+              <button
+                type="button"
+                onClick={handleClearFilters}
+                className="mt-4 inline-flex items-center rounded-lg bg-emerald-800 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-900 transition-colors"
+              >
+                {ar ? "إعادة ضبط جميع المرشحات" : "Réinitialiser tous les filtres"}
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {catalogActivities.map((activity) => (
+                <NAEActivityCard
+                  key={activity.code}
+                  activity={activity}
+                  lang={lang}
+                  isSelected={codes.includes(activity.code)}
+                  isPrimary={primary === activity.code}
+                  onToggleSelect={toggleSelect}
+                  onSetPrimary={handleSetPrimary}
+                  onRequestSuggestions={(code) => setComplementaryTargetCode(code)}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-stone-200 pt-4">
+              <div className="text-xs text-stone-500 font-medium">
+                {t.pageOf}{" "}
+                <strong className="font-mono tabular-nums text-stone-900">{page}</strong> {t.of}{" "}
+                <span className="font-mono tabular-nums">{totalPages}</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page <= 1 || loadingCatalog}
+                  className="inline-flex min-h-[36px] items-center rounded-lg border border-stone-300 bg-white px-3.5 text-xs font-semibold text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  {ar ? "← " + t.prevPage : "← " + t.prevPage}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page >= totalPages || loadingCatalog}
+                  className="inline-flex min-h-[36px] items-center rounded-lg border border-stone-300 bg-white px-3.5 text-xs font-semibold text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  {ar ? t.nextPage + " →" : t.nextPage + " →"}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
-      <footer className="mt-6 border-t border-gray-100 pt-4 text-xs leading-6 text-gray-500">
-        <p>
-          {t.source}:{" "}
-          <a href="https://www.upgrowth.dz/ar/datasets/cnrc-2026" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">
-            UpGrowth — NAE 2026
-          </a>{" "}
-          (CC BY 4.0), {sourceRevisionDate}.
-        </p>
-        <p>{t.sourceNote}</p>
-      </footer>
-    </section>
+      {/* VIEW MODE 2: PROJECT WORKSPACE & LEGAL COMPATIBILITY CHECKER */}
+      {viewMode === "project_review" && (
+        <div className="space-y-6">
+          <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs sm:p-7">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-stone-100 pb-4">
+              <div>
+                <h2 className="text-lg font-bold text-stone-900 sm:text-xl">{t.tabProject}</h2>
+                <p className="mt-1 text-xs text-stone-500">
+                  {codes.length} {t.selectedBadge}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setViewMode("directory")}
+                  className="inline-flex items-center rounded-lg border border-stone-300 bg-white px-3.5 py-2 text-xs font-semibold text-stone-700 hover:bg-stone-50"
+                >
+                  {t.backToDirectory}
+                </button>
+                {codes.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={clearBasket}
+                    className="inline-flex items-center rounded-lg border border-rose-200 bg-rose-50 px-3.5 py-2 text-xs font-semibold text-rose-800 hover:bg-rose-100"
+                  >
+                    {t.clearAll}
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Selected Activities List */}
+            {codes.length === 0 ? (
+              <div className="py-12 text-center">
+                <p className="text-sm font-semibold text-stone-600">{t.emptyProject}</p>
+                <button
+                  type="button"
+                  onClick={() => setViewMode("directory")}
+                  className="mt-4 inline-flex items-center rounded-lg bg-emerald-800 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-900"
+                >
+                  {t.backToDirectory}
+                </button>
+              </div>
+            ) : (
+              <div className="mt-5 space-y-3">
+                {codes.map((code) => {
+                  const item =
+                    analysisData?.activities.find((a) => a.code === code) ??
+                    catalogActivities.find((a) => a.code === code);
+                  const isItemPrimary = primary === code;
+
+                  return (
+                    <div
+                      key={code}
+                      className={`flex flex-col justify-between gap-3 rounded-xl border p-4 transition-colors sm:flex-row sm:items-center ${
+                        isItemPrimary
+                          ? "border-amber-300 bg-amber-50/20"
+                          : "border-stone-200 bg-stone-50/50"
+                      }`}
+                    >
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span
+                            className="inline-flex items-center rounded-md border border-emerald-900/15 bg-emerald-50 px-2 py-0.5 font-mono text-xs font-bold tabular-nums text-emerald-950"
+                            dir="ltr"
+                          >
+                            {code}
+                          </span>
+                          {isItemPrimary && (
+                            <span className="rounded bg-amber-100 px-2 py-0.5 text-[11px] font-bold text-amber-900">
+                              ★ {t.primaryActivity}
+                            </span>
+                          )}
+                          {item && (
+                            <span
+                              className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${item.statusInfo.className}`}
+                            >
+                              {item.statusInfo.label}
+                            </span>
+                          )}
+                        </div>
+
+                        <p dir="rtl" lang="ar" className="mt-1.5 text-sm font-bold text-stone-900">
+                          {item ? item.label_ar : code}
+                        </p>
+                        <p dir="ltr" lang="fr" className="text-xs text-stone-600">
+                          {item?.label_fr}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        {!isItemPrimary && (
+                          <button
+                            type="button"
+                            onClick={() => handleSetPrimary(code)}
+                            className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-stone-700 hover:bg-stone-100"
+                          >
+                            {t.setPrimary}
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => setComplementaryTargetCode(code)}
+                          className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-medium text-stone-700 hover:text-emerald-900"
+                        >
+                          💡
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => toggleSelect(code)}
+                          className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-rose-700 hover:bg-rose-50"
+                        >
+                          {t.remove}
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Legal Compatibility Analysis Section */}
+          {codes.length > 0 && (
+            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-xs sm:p-7">
+              <div className="flex items-center justify-between border-b border-stone-100 pb-3">
+                <h3 className="text-base font-bold text-stone-900 sm:text-lg">
+                  ⚖️ {t.legalStatus}
+                </h3>
+                {analyzing && (
+                  <span className="text-xs font-medium text-emerald-800 animate-pulse">
+                    {ar ? "جارٍ التحقق القانوني..." : "Vérification en cours..."}
+                  </span>
+                )}
+              </div>
+
+              {analysisError ? (
+                <div className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs text-rose-900">
+                  {analysisError}
+                </div>
+              ) : analysisData?.analysis.findings && analysisData.analysis.findings.length > 0 ? (
+                <div className="mt-4 space-y-3">
+                  {analysisData.analysis.findings.map((finding) => (
+                    <article
+                      key={finding.id}
+                      className={`rounded-xl border p-4 ${severityClass(finding.severity)}`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-bold text-sm">
+                          {ar ? finding.title_ar : finding.title_fr}
+                        </h4>
+                        {finding.severity === "critical" && (
+                          <span className="rounded bg-rose-200 px-2 py-0.5 text-[10px] font-bold text-rose-900 uppercase">
+                            {ar ? "تنبيه هام" : "Avertissement critique"}
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-1.5 text-xs leading-relaxed">
+                        {ar ? finding.detail_ar : finding.detail_fr}
+                      </p>
+                      {finding.article && (
+                        <p className="mt-2 font-mono text-[11px] opacity-80">
+                          § {finding.article}
+                        </p>
+                      )}
+                      {finding.sourceUrl && (
+                        <a
+                          href={finding.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-1 inline-block text-xs font-semibold underline underline-offset-4"
+                        >
+                          {ar ? "المرجع في الجريدة الرسمية" : "Consulter le texte officiel"}
+                        </a>
+                      )}
+                    </article>
+                  ))}
+                </div>
+              ) : (
+                <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 text-xs font-medium text-emerald-900">
+                  ✓ {t.compatibleSuccess}
+                </div>
+              )}
+
+              {/* Action row */}
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-stone-100 pt-4">
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="inline-flex min-h-[40px] items-center rounded-lg bg-emerald-900 px-5 text-xs font-bold text-white hover:bg-emerald-800 transition-colors shadow-xs"
+                >
+                  🖨️ {t.printSheet}
+                </button>
+
+                <p className="text-xs text-stone-500">
+                  {ar ? "مرجع تحضيري رسمي معتمد لدى ديوان التوثيق." : "Document préparatoire conforme aux exigences notariales."}
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Floating Bottom Basket Bar (When browsing directory and has items) */}
+      {viewMode === "directory" && codes.length > 0 && (
+        <div className="fixed bottom-4 inset-x-4 z-40 mx-auto max-w-4xl transition-all">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-stone-800 bg-stone-900/95 p-3.5 text-white shadow-xl backdrop-blur-md sm:p-4">
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 font-mono text-sm font-bold text-stone-950 tabular-nums">
+                {codes.length}
+              </span>
+              <div>
+                <p className="text-xs font-bold text-white sm:text-sm">
+                  {codes.length} {t.selectedBadge}
+                </p>
+                <p className="text-[11px] text-stone-400">
+                  {compatibilityStatus === "critical"
+                    ? ar
+                      ? "⚠️ تنبيه: تعارض قانوني يحتاج للمراجعة"
+                      : "⚠️ Avertissement de cumul"
+                    : compatibilityStatus === "warning"
+                      ? ar
+                        ? "ℹ️ استثناء مشروط / تراخيص مطلوبة"
+                        : "ℹ️ Cumul conditionnel"
+                      : ar
+                        ? "✓ الأنشطة متوافقة"
+                        : "✓ Sélection compatible"}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setViewMode("project_review")}
+                className="inline-flex min-h-[36px] items-center rounded-lg bg-emerald-600 px-4 text-xs font-bold text-white hover:bg-emerald-500 transition-colors shadow-xs"
+              >
+                {t.reviewProject}
+              </button>
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="hidden sm:inline-flex min-h-[36px] items-center rounded-lg border border-stone-700 bg-stone-800 px-3 text-xs font-medium text-stone-200 hover:bg-stone-700"
+              >
+                🖨️
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* COMPLEMENTARY ACTIVITIES MODAL */}
+      <NAEComplementaryModal
+        targetCode={complementaryTargetCode}
+        targetActivity={targetActivityItem}
+        lang={lang}
+        selectedCodes={codes}
+        onToggleSelect={toggleSelect}
+        onClose={() => setComplementaryTargetCode(null)}
+      />
+
+      {/* PRINT-ONLY OFFICIAL PREPARATION SHEET */}
+      <div data-nae-print-sheet className="hidden">
+        <header className="border-b-2 border-stone-800 pb-4 text-center">
+          <p className="text-sm font-bold tracking-wide text-stone-700">{t.printOffice}</p>
+          <h1 className="mt-1 text-2xl font-bold text-stone-950">{t.printDocTitle}</h1>
+          <p className="mt-1 text-xs text-stone-600">
+            {ar ? "وثيقة عمل أولية لإعداد العقد التأسيسي والقانون الأساسي للشركة" : "Document préparatoire préalable aux statuts et à l'immatriculation"}
+          </p>
+        </header>
+
+        <div className="my-5 grid grid-cols-2 gap-4 text-xs border border-stone-300 p-3 rounded">
+          <div>
+            <p>
+              <strong>{t.printCompany}:</strong> ___________________________________________
+            </p>
+            <p className="mt-2">
+              <strong>{t.printAddress}:</strong> ___________________________________________
+            </p>
+          </div>
+          <div>
+            <p>
+              <strong>{t.printDate}:</strong> ____ / ____ / ________
+            </p>
+            <p className="mt-2">
+              <strong>{ar ? "الشكل القانوني المقترح" : "Forme juridique"}:</strong> [ ] SARL [ ] EURL [ ] SPA [ ] Personne physique
+            </p>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th style={{ width: "15%" }}>{ar ? "رمز النشاط" : "Code"}</th>
+              <th style={{ width: "35%" }} dir="rtl">{ar ? "التسمية الرسمية (بالعربية)" : "Libellé officiel (Arabe)"}</th>
+              <th style={{ width: "35%" }} dir="ltr">{ar ? "التسمية الرسمية (بالفرنسية)" : "Libellé officiel (Français)"}</th>
+              <th style={{ width: "15%" }}>{ar ? "الصفة" : "Statut"}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {codes.map((code) => {
+              const item =
+                analysisData?.activities.find((a) => a.code === code) ??
+                catalogActivities.find((a) => a.code === code);
+              const isMain = primary === code;
+              return (
+                <tr key={code}>
+                  <td dir="ltr" className="font-mono font-bold">
+                    {code}
+                  </td>
+                  <td dir="rtl">{item ? item.label_ar : code}</td>
+                  <td dir="ltr">{item ? item.label_fr : "-"}</td>
+                  <td>
+                    {isMain
+                      ? ar
+                        ? "النشاط الرئيسي ★"
+                        : "Principal ★"
+                      : ar
+                        ? "نشاط تابع"
+                        : "Secondaire"}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+
+        {/* Legal findings in print */}
+        {analysisData?.analysis.findings && analysisData.analysis.findings.length > 0 && (
+          <div className="mt-5 border border-stone-300 p-3 text-xs">
+            <h3 className="font-bold">{t.printNotaryNotes}:</h3>
+            <ul className="mt-1 list-disc list-inside space-y-1">
+              {analysisData.analysis.findings.map((f) => (
+                <li key={f.id}>
+                  <strong>{ar ? f.title_ar : f.title_fr}:</strong>{" "}
+                  {ar ? f.detail_ar : f.detail_fr}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <footer className="mt-8 border-t border-stone-300 pt-3 text-[10px] text-stone-500 leading-normal">
+          <p>{t.sourceAttribution} — {sourceRevisionDate}.</p>
+          <div className="mt-6 flex justify-between items-center text-xs">
+            <p>{ar ? "توقيع وصاحب الطلب:" : "Signature du demandeur :"}</p>
+            <p>{ar ? "تأشيرة وختم الديوان العمومي للتوثيق:" : "Visa et cachet de l'office notarial :"}</p>
+          </div>
+        </footer>
+      </div>
+    </div>
   );
 }

@@ -3,29 +3,42 @@ import { getNAEActivities, getNAEActivityByCode } from "@/lib/nae/data";
 import { analyzeNAEProject } from "@/lib/nae/project-analysis";
 import { NAE_SECTORS } from "@/lib/nae/sectors";
 import { getNAEStatusInfo } from "@/lib/nae/status";
+import { AnalyzePayloadSchema } from "@/lib/nae/api-schema";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  let body: unknown;
-  try { body = await request.json(); }
-  catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
-  if (!body || typeof body !== "object") return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
-
-  const input = body as { codes?: unknown; description?: unknown; primaryCode?: unknown; lang?: unknown };
-  const catalogSize = getNAEActivities().length;
-  if (!Array.isArray(input.codes) || input.codes.length > catalogSize ||
-      input.codes.some((code) => typeof code !== "string" || !/^\d{6}$/.test(code))) {
-    return NextResponse.json({ error: `Expected up to ${catalogSize} six-digit activity codes` }, { status: 400 });
+  const contentLength = request.headers.get("content-length");
+  if (contentLength && parseInt(contentLength, 10) > 16384) {
+    return NextResponse.json({ error: "Request body too large" }, { status: 413 });
   }
 
-  const codes = [...new Set(input.codes as string[])];
-  const primaryCode = typeof input.primaryCode === "string" && codes.includes(input.primaryCode) ? input.primaryCode : codes[0] ?? null;
-  const description = typeof input.description === "string" ? input.description.slice(0, 180) : "";
-  const activities = codes.map(getNAEActivityByCode).filter((activity) => activity !== undefined);
-  if (activities.length !== codes.length) return NextResponse.json({ error: "One or more activity codes were not found" }, { status: 404 });
+  let rawBody: unknown;
+  try {
+    rawBody = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
 
-  const projectAnalysis = analyzeNAEProject(activities, description, primaryCode);
+  const parsed = AnalyzePayloadSchema.safeParse(rawBody);
+  if (!parsed.success) {
+    return NextResponse.json({ error: "Invalid payload", details: parsed.error.flatten() }, { status: 400 });
+  }
+
+  const input = parsed.data;
+  const codes = [...new Set(input.codes)];
+  const catalogSize = getNAEActivities().length;
+  if (codes.length > catalogSize) {
+    return NextResponse.json({ error: `Expected up to ${catalogSize} unique activity codes` }, { status: 400 });
+  }
+
+  const primaryCode = input.primaryCode && codes.includes(input.primaryCode) ? input.primaryCode : codes[0] ?? null;
+  const activities = codes.map(getNAEActivityByCode).filter((activity) => activity !== undefined);
+  if (activities.length !== codes.length) {
+    return NextResponse.json({ error: "One or more activity codes were not found" }, { status: 404 });
+  }
+
+  const projectAnalysis = analyzeNAEProject(activities, input.description, primaryCode);
   const language = input.lang === "fr" ? "fr" : "ar";
   return NextResponse.json({
     activities: activities.map((activity) => ({

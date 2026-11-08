@@ -23,7 +23,16 @@ test("indexability requires a valid localized label and substantive source conte
   assert.equal(isNAEActivityIndexable(activity, "ar"), true);
   assert.equal(isNAEActivityIndexable(activity, "fr"), true);
   assert.equal(isNAEActivityIndexable({ ...activity, label_ar: "#NOM?" }, "ar"), false);
+  assert.equal(isNAEActivityIndexable({ ...activity, label_ar: "#NOM?" }, "fr"), false);
   assert.equal(isNAEActivityIndexable({ ...activity, contenue_fr: "Texte bref" }, "fr"), false);
+
+  // Test the five affected codes identified in NAE-01
+  const affectedCodes = ["308006", "310012", "431103", "443102", "607042"];
+  for (const code of affectedCodes) {
+    const sample = { ...activity, code, label_ar: code === "443102" || code === "607042" ? "#NOM?" : activity.label_ar, label_fr: code !== "443102" && code !== "607042" ? "#NOM?" : activity.label_fr };
+    assert.equal(isNAEActivityIndexable(sample, "ar"), false);
+    assert.equal(isNAEActivityIndexable(sample, "fr"), false);
+  }
 });
 test("invalid localized label does not delete the activity and falls back transparently", () => {
   const invalid = { ...activity, label_ar: "#NOM?" };

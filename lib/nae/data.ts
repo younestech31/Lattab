@@ -34,6 +34,7 @@ export interface NAEDatasetManifest {
   invalid_source_labels: Array<{ code: string; field: string }>;
   raw_status_counts: Record<string, number>;
   status_semantics: string;
+  reconciliation?: Record<string, unknown>;
 }
 
 const rawActivities: unknown[] = [

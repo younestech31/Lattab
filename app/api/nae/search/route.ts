@@ -2,19 +2,33 @@ import { NextRequest, NextResponse } from "next/server";
 import { getNAESearchIndex } from "@/lib/nae/data";
 import { searchNAEProject } from "@/lib/nae/project-search";
 import { getNAEStatusInfo } from "@/lib/nae/status";
+import { SearchPayloadSchema } from "@/lib/nae/api-schema";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  let body: unknown;
-  try { body = await request.json(); }
-  catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
-  if (!body || typeof body !== "object") return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  const contentLength = request.headers.get("content-length");
+  if (contentLength && parseInt(contentLength, 10) > 16384) {
+    return NextResponse.json({ error: "Request body too large" }, { status: 413 });
+  }
 
-  const input = body as { q?: unknown; lang?: unknown };
-  const query = typeof input.q === "string" ? input.q.trim().slice(0, 180) : "";
-  const language = input.lang === "fr" ? "fr" : "ar";
-  if (query.length < 2) return NextResponse.json({ query, results: [] });
+  let rawBody: unknown;
+  try {
+    rawBody = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+
+  const parsed = SearchPayloadSchema.safeParse(rawBody);
+  if (!parsed.success) {
+    return NextResponse.json({ error: "Invalid payload", details: parsed.error.flatten() }, { status: 400 });
+  }
+
+  const { q: query, lang } = parsed.data;
+  const language = lang === "fr" ? "fr" : "ar";
+  if (query.length < 2) {
+    return NextResponse.json({ query, results: [] }, { headers: { "Cache-Control": "no-store" } });
+  }
 
   const results = searchNAEProject(getNAESearchIndex(language), query, 20);
   return NextResponse.json({

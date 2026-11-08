@@ -176,7 +176,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
             <ul className="mt-3 divide-y divide-gray-100">
               {related.map((item) => <li key={item.code} className="flex flex-wrap items-center justify-between gap-3 py-3">
                 <div className="min-w-0"><p className="font-mono text-xs font-bold text-emerald-800" dir="ltr">{item.code}</p><p className="mt-1 text-sm font-semibold text-gray-800">{localLabel(item, lang)}</p></div>
-                <Link href={action + "/" + item.code} className="text-sm font-semibold text-emerald-800 underline underline-offset-4">{ar ? "عرض" : "Voir"}</Link>
+                <Link href={action + "/" + item.code} className="text-sm font-semibold text-emerald-800 underline underline-offset-4">{ar ? "عرض البطاقة" : "Consulter"}</Link>
               </li>)}
             </ul>
           </section>}

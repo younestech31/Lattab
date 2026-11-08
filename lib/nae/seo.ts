@@ -9,7 +9,12 @@ export function hasValidNAELabel(activity: NAEActivity, lang: NAEPageLanguage): 
 
 /** Only pages with a usable localized title and substantive source content are indexable. */
 export function isNAEActivityIndexable(activity: NAEActivity, lang: NAEPageLanguage): boolean {
-  return hasValidNAELabel(activity, lang) && activity.contenue_fr.trim().length >= 60;
+  const arValid = hasValidNAELabel(activity, "ar");
+  const frValid = hasValidNAELabel(activity, "fr");
+  const contentValid = activity.contenue_fr.trim().length >= 60;
+  const bothLocalesValid = arValid && frValid && contentValid;
+  if (!bothLocalesValid) return false;
+  return lang === "ar" ? arValid : frValid;
 }
 
 export function getNAEActivityTitle(activity: NAEActivity, lang: NAEPageLanguage): string {
