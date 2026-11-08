@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Star, Check, Plus, Lightbulb, FileText, AlertTriangle, CheckCircle2, Ban } from "lucide-react";
+import { Star, Check, Plus, Lightbulb, AlertTriangle, CheckCircle2, Ban } from "lucide-react";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { StatusInfo } from "./types";
 
@@ -158,20 +158,26 @@ export default function NAEActivityCard({
 
         {/* Activity Titles: Language hierarchy respects current page lang */}
         <div className="mt-3">
-          <h3
-            dir={ar ? "rtl" : "ltr"}
-            lang={ar ? "ar" : "fr"}
-            className="text-base font-bold leading-snug text-gray-950 group-hover:text-emerald-950 transition-colors"
+          <Link
+            href={`/${ar ? "" : "fr/"}nae/${activity.code}`}
+            aria-label={t.ariaDetails}
+            className="group/title block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
           >
-            {primaryLabel}
-          </h3>
-          <p
-            dir={ar ? "ltr" : "rtl"}
-            lang={ar ? "fr" : "ar"}
-            className="mt-1 text-xs leading-relaxed text-gray-600 line-clamp-2"
-          >
-            {secondaryLabel}
-          </p>
+            <h3
+              dir={ar ? "rtl" : "ltr"}
+              lang={ar ? "ar" : "fr"}
+              className="text-base font-bold leading-snug text-gray-950 group-hover/title:text-emerald-800 hover:underline transition-colors"
+            >
+              {primaryLabel}
+            </h3>
+            <p
+              dir={ar ? "ltr" : "rtl"}
+              lang={ar ? "fr" : "ar"}
+              className="mt-1 text-xs leading-relaxed text-gray-600 line-clamp-2"
+            >
+              {secondaryLabel}
+            </p>
+          </Link>
         </div>
 
         {/* Regulatory snippet for green activities */}
@@ -273,15 +279,6 @@ export default function NAEActivityCard({
               <span>{t.suggestions}</span>
             </button>
           )}
-
-          <Link
-            href={`/${ar ? "" : "fr/"}nae/${activity.code}`}
-            aria-label={t.ariaDetails}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-3 text-xs font-medium text-gray-800 hover:border-gray-300 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors"
-          >
-            <FileText className="h-3.5 w-3.5 text-gray-600" aria-hidden="true" />
-            <span>{t.details}</span>
-          </Link>
         </div>
       </div>
     </article>
