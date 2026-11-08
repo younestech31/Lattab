@@ -46,3 +46,18 @@ bun run test:nae
 ```
 
 The application imports these JSON files from a `server-only` module. Do not pass the complete dataset or search index to a Client Component or expose them as a public static asset.
+
+## Second-language gap overlay (`gap-translations.json`)
+
+Index file plus maps under `data/nae/gap-translations/`. Holds **informational** second-language fills for fields that exist only in one language in the official snapshot. It does **not** rewrite `sector-*.json`.
+
+| Layer | Status |
+|---|---|
+| `tutelle_fr` → Arabic | Complete (58 exact source strings) |
+| `type_autorisation_fr` → Arabic | Complete (17 exact source strings) |
+| High-frequency `accessoires_fr` → Arabic | Partial (exact-string map; ~523/905 records) |
+| `references_texte_fr` missing French (code `607004`) | Filled as informational French; Arabic source cell preserved |
+| `#NOM?` labels | Preserved; no invented replacements |
+| `contenue_fr` → Arabic | Not in this commit (reviewed pass required) |
+
+Policy: never re-translate an official cell that already has text; only add the missing language. UI consumers must treat overlay values as citizen-facing informational text and keep the French source as the catalogue reference.
