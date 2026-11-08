@@ -89,29 +89,30 @@ export default function NAEProjectWorkspace({
   // UI Modals & Active Views
   const [viewMode, setViewMode] = useState<"directory" | "project_review">("directory");
   const [complementaryTargetCode, setComplementaryTargetCode] = useState<string | null>(null);
+  const closeComplementaryModal = useCallback(() => setComplementaryTargetCode(null), []);
 
   // Localization strings
   const t = ar
     ? {
-        title: "مدونة النشاطات الاقتصادية",
-        intro: "استعراض الأنشطة الاقتصادية المعتمدة وفق مدونة النشاطات الاقتصادية (NAE)، والتحقق الاسترشادي الأولي من موانع الجمع، وإعداد ورقة عمل تحضيرية لملف التأسيس.",
-        tablistAria: "أقسام مدونة النشاطات الاقتصادية",
-        tabDirectory: "استعراض المدونة",
+        title: "دليل النشاطات الاقتصادية",
+        intro: "استعراض مدونة النشاطات الاقتصادية (NAE)، وفحص أولي للمؤشرات التنظيمية وموانع الجمع، وإعداد ورقة عمل تحضيرية لملف التأسيس.",
+        tablistAria: "أقسام دليل النشاطات الاقتصادية",
+        tabDirectory: "استعراض الدليل",
         tabProject: "مسودة الأنشطة المقترحة",
         selectedBadge: "نشاط مختار",
         projectDescriptionLabel: "وصف موجز لمشروع المؤسسة",
         projectDescriptionPlaceholder: "مثال: بيع معدات الإعلام الآلي مع تركيبها وصيانتها وتكوين المستخدمين...",
         projectDescriptionHelp: "يُستخدم الوصف لاستخراج إشارات أولية إلى عمليات قد تكون تكميلية وفق المادة 2. لا يحدد وحده الرموز المناسبة ولا يثبت قانونية الجمع.",
         reviewProject: "مراجعة مسودة الأنشطة",
-        backToDirectory: "العودة لاستعراض المدونة",
+        backToDirectory: "العودة لاستعراض الدليل",
         clearAll: "تفريغ سلة الأنشطة والمسودة",
         printSheet: "طباعة ورقة عمل تحضيرية",
         primaryActivity: "النشاط الرئيسي",
         additionalActivity: "نشاط إضافي",
         setPrimary: "تعيين كرئيسي",
         remove: "حذف",
-        emptyProject: "لم تختر أي نشاط بعد. تصفح المدونة وأضف الأنشطة المقترحة لمشروعك.",
-        legalStatus: "مؤشرات المواءمة النظامية وموانع الجمع",
+        emptyProject: "لم تختر أي نشاط بعد. تصفح الدليل وأضف الأنشطة التي تريد دراستها إلى المسودة.",
+        legalStatus: "مؤشرات الوضع التنظيمي وموانع الجمع",
         compatibleSuccess: "لا تظهر على هذه الرموز موانع ظاهرة في نسخة البيانات.",
         checkingIndicators: "جارٍ مراجعة المؤشرات...",
         openSuggestions: "اقتراح أنشطة مكملة",
@@ -131,7 +132,7 @@ export default function NAEProjectWorkspace({
         sourceDisclaimer: "البيانات نسخة معلوماتية مؤرخة وليست مدوّنة حيّة ولا رأياً للموثق.",
         sourceLicenseLine: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
         legalNoticeFooter: "ورقة عمل معلوماتية استرشادية لا تغني عن تحرير العقد ولا عن المركز الوطني للسجل التجاري.",
-        loadingSr: "جارٍ تحميل مدونة النشاطات الاقتصادية...",
+        loadingSr: "جارٍ تحميل دليل النشاطات الاقتصادية...",
       }
     : {
         title: "Nomenclature des activités économiques",
@@ -151,7 +152,7 @@ export default function NAEProjectWorkspace({
         additionalActivity: "Activité additionnelle",
         setPrimary: "Définir comme principale",
         remove: "Retirer",
-        emptyProject: "Aucune activité sélectionnée pour le moment. Explorez la nomenclature pour composer votre projet.",
+        emptyProject: "Aucune activité sélectionnée pour le moment. Parcourez la nomenclature pour préparer votre sélection.",
         legalStatus: "Indicateurs de cumul et observations",
         compatibleSuccess: "Aucun empêchement apparent relevé dans cette version des données.",
         checkingIndicators: "Examen des indicateurs en cours...",
@@ -949,7 +950,7 @@ export default function NAEProjectWorkspace({
         lang={lang}
         selectedCodes={codes}
         onToggleSelect={toggleSelect}
-        onClose={() => setComplementaryTargetCode(null)}
+        onClose={closeComplementaryModal}
       />
 
       {/* PRINT-ONLY WORKING WORKSHEET */}
