@@ -77,5 +77,5 @@ export function searchNAEProject(index: NAESearchIndex, rawQuery: string, limit 
   })).sort((a, b) =>
     b.score - a.score || b.matchedTerms.length - a.matchedTerms.length ||
     a.activity.code.localeCompare(b.activity.code, "en")
-  ).slice(0, Math.max(1, Math.min(50, limit)));
+  ).slice(0, Math.max(1, Math.min(2136, limit)));
 }
