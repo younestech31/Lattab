@@ -124,7 +124,7 @@ test("resolveActivityBilingual produces enriched record without mutating source 
     subgroup_code: "6011",
     tutelle_fr: "MINISTERE CHARGE DU TOURISME",
     type_autorisation_fr: "agrement",
-    contenue_fr: "Etablissement qui offre en location des unités d’hébergement...",
+    contenue_fr: "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     accessoires_fr: "Aménager des lieux et des espaces réservés aux fumeurs en dehors de l'établissement et les équiper des matériels nécessaires conformément aux dispositions réglementaires en vigueur (il est strictement interdit d'exposer et de vendre des produits tabagiques).",
     references_texte_fr: "Décret n° 00-00",
   };
