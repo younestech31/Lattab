@@ -2032,6 +2032,206 @@
     "translation_ar": "تصنيع الأقراص والأشرطة والأشرطة الكاسيت الممغنطة المخصصة للاستعمال المعلوماتي؛ | تصنيع الأقراص والأشرطة والأشرطة الكاسيت المخصصة للتسجيل الصوتي.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "111205": {
+    "source_fr": "Fabrication de pipes, briquets et autres articles de fumeurs exceptés ceux en métaux précieux; | Fabrication de vaporisateurs et articles divers de bimbeloterie en métal : (souvenirs, petits articles décoratifs).",
+    "translation_ar": "تصنيع الغليون والقداحات وسائر لوازم التدخين، باستثناء المصنوعة من المعادن النفيسة؛ | تصنيع المرشّات ومختلف الأدوات المعدنية الصغيرة للزينة والتذكارات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111206": {
+    "source_fr": "Fabrication industrielle d'articles de décoration en toute matière à usage domestique ou professionnel.",
+    "translation_ar": "التصنيع الصناعي لمختلف مصنوعات الزينة والديكور، من جميع المواد، والمخصصة للاستعمال المنزلي أو المهني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111207": {
+    "source_fr": "Fabrication de tous objets publicitaires et de cadeaux d'entreprises tels que, agendas, bloc- notes, calendriers, canifs, fanions publicitaires, médailles, foulards, articles de bureau, porte documents, pin's , porte-clés, doming, macarrons, etc ; | Conception et fabrication d’articles publicitaires, cadeaux d’entreprises et particuliers.",
+    "translation_ar": "تصنيع جميع المواد الإشهارية والهدايا المخصصة للمؤسسات، مثل المفكرات ودفاتر الملاحظات والتقاويم والسكاكين الصغيرة والرايات الإشهارية والميداليات والأوشحة واللوازم المكتبية وحافظات الوثائق والشارات والدبابيس وميداليات المفاتيح والملصقات المجسمة وغيرها؛ | تصميم وتصنيع المواد الإشهارية وهدايا المؤسسات والأفراد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111208": {
+    "source_fr": "Fabrication de machines et article pour l'aménagement de parcs d'attraction et de loisirs ; | Fabrication d'articles de loisirs divers tels que : les jeux et jouets en toutes matières, électriques, manuels ou électroniques ; | Fabrication d'équipements et articles destinés à la pratique de tout sport et au camping y compris les article de voyage ; | Fabrication d'appareils de culture physique, appareils de massage, leurs pièces détachées ,leurs accessoires et leurs pièces de rechange ; | Fabrication d'engins flottants destinés aux jeux aquatiques ( barques, planches à voiles, pédalos, etc.",
+    "translation_ar": "تصنيع الآلات والمواد المخصصة لتهيئة مدن الملاهي والمنتزهات الترفيهية؛ | تصنيع مختلف منتجات الترفيه، مثل الألعاب واللعب المصنوعة من جميع المواد، سواء كانت كهربائية أو يدوية أو إلكترونية؛ | تصنيع التجهيزات والمواد المخصصة لممارسة مختلف الرياضات والتخييم، بما في ذلك لوازم السفر؛ | تصنيع أجهزة اللياقة البدنية وأجهزة التدليك وقطع غيارها ولوازمها وملحقاتها؛ | تصنيع المعدات العائمة المخصصة للألعاب المائية، مثل القوارب وألواح التزلج الشراعي وقوارب الدواسات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111209": {
+    "source_fr": "Fabrication d’équipements destinés aux | installations réservées à la pratique des exercices de tir, sportifs ou autres, notamment : | 1- les stands de tir et leurs accessoires ; | 2- les casques anti-bruit électroniques ; | 3- les simulateurs de tir, à l’exception de ceux destinés aux forces armées.",
+    "translation_ar": "تصنيع التجهيزات المخصصة للمنشآت التي تُجرى فيها تمارين الرماية، سواء كانت رياضية أو غيرها، ولا سيما: | 1- ميادين الرماية ولوازمها؛ | 2- الخوذ الإلكترونية المضادة للضوضاء؛ | 3- محاكيات الرماية، باستثناء المخصصة للقوات المسلحة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111301": {
+    "source_fr": "Fabrication de demi produits en amiante : fibres, fils, tresses, plaques, feutres etc... | Fabrication de garnitures de friction et d'embrayage en amiante; | Fabrication de vêtements de protection en amiante (gants...).",
+    "translation_ar": "تصنيع المنتجات نصف المصنعة من الأسبستوس، مثل الألياف والخيوط والضفائر والألواح واللباد وغيرها؛ | تصنيع بطانات الاحتكاك والقوابض المصنوعة من الأسبستوس؛ | تصنيع الملابس الواقية المصنوعة من الأسبستوس، مثل القفازات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111302": {
+    "source_fr": "Transformation de papier par couchage, impression et travail mécanique (papier carbone, stencils papier calque, papier gommé, etc); | Fabrication de carton ondulé; | Fabrication d'articles façonnés à base de papier d'impression et d'écriture (enveloppes, cahiers, registres, étiquettes, etc...); | Fabrication d'articles d'emballage en papier et carton (sacs, sachets en papier, boites et étuis en carton compact, caisses en carton ondulé); | Fabrication d'articles en papier à usage sanitaire et domestique (mouchoirs, papier hygiénique, serviettes jetables...); | Fabrication de classeurs et articles similaires en papier; | Fabrication d'articles en ouate de cellulose (couches bébés etc..); | Fabrication de filtres et papier à cigarettes; | Fabrication de cartes à perforer et autres articles en papier et carton. | fabrication de papier couché, de papiers peints et de revêtements muraux similaires, y compris le papier peint revêtu de vinyle et les revêtements à base de textiles.",
+    "translation_ar": "تحويل الورق عن طريق الطلاء والطباعة والتشغيل الميكانيكي، مثل ورق الكربون وورق الاستنسل والورق الشفاف وورق اللصق وغيرها؛ | تصنيع الكرتون المموج؛ | تصنيع المنتجات المشكلة من ورق الطباعة والكتابة، مثل الأظرفة والدفاتر والسجلات والملصقات وغيرها؛ | تصنيع عبوات التغليف من الورق والكرتون، مثل الأكياس والأظرفة الورقية والعلب والأغلفة من الكرتون المصمت والصناديق من الكرتون المموج؛ | تصنيع المنتجات الورقية الصحية والمنزلية، مثل المناديل وورق المراحيض والمناشف ذات الاستعمال الواحد؛ | تصنيع ملفات الحفظ والمنتجات الورقية المماثلة؛ | تصنيع منتجات قطن السليلوز، مثل حفاضات الأطفال وغيرها؛ | تصنيع المرشحات وورق السجائر؛ | تصنيع البطاقات المثقبة وسائر المنتجات الورقية والكرتونية؛ | تصنيع الورق المطلي وورق الجدران وأغطية الجدران المماثلة، بما في ذلك ورق الجدران المغطى بالفينيل والأغطية ذات القاعدة النسيجية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111303": {
+    "source_fr": "Fabrication de landaus, poussettes, sièges de voitures, berceaux, parcs, trotteurs et autres articles de puériculture (y compris parties et pièces détachées).",
+    "translation_ar": "تصنيع عربات الأطفال ومستلزمات رعاية الرضع، مثل عربات الأطفال ومقاعد السيارات والمهاد وأسرّة اللعب والمشايات وغيرها، بما في ذلك الأجزاء وقطع الغيار.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111304": {
+    "source_fr": "Fabrication d'articles de bureau, stylos à bille, porte-mine, stylographes, crayons, etc..., gommes, encres autres que d'imprimerie; | Fabrication de petits instruments et matériel de bureau (agrafeuses, perforateurs, taille-crayon, agrafes, trombones etc...); | Fabrication d'ardoises scolaires; | Fabrication d'autres articles de bureau (colle de bureau, cire à cacheter, tampon encreur, ruban de machines à écrire etc...). | Fabrication d'articles scolaires : cahiers, ciseaux, | compas, brosse et mouillette, régle à tableau, bûchette, equerre, jetons, pâte à modeler etc . | Fabrication d'adhésifs (ruban adhésif, autocollan et étiquettes).",
+    "translation_ar": "تصنيع اللوازم المكتبية، مثل أقلام الحبر الجاف وأقلام الرصاص الميكانيكية وأقلام الحبر والأقلام الرصاص وغيرها، والمحايات والأحبار غير المخصصة للطباعة؛ | تصنيع الأدوات والمعدات المكتبية الصغيرة، مثل الدباسات ومثاقب الورق ومبراة الأقلام والدبابيس ومشابك الورق وغيرها؛ | تصنيع الألواح المدرسية؛ | تصنيع لوازم مكتبية أخرى، مثل الغراء المكتبي وشمع الختم ووسادات الحبر وأشرطة آلات الكتابة وغيرها؛ | تصنيع اللوازم المدرسية، مثل الدفاتر والمقصات والفُرجارات والفرش والقطّارات والمسطرة الخاصة بالسبورة والطباشير والمثلثات الهندسية والرموز وعجينة التشكيل وغيرها؛ | تصنيع المواد اللاصقة، مثل الأشرطة اللاصقة والملصقات والبطاقات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111305": {
+    "source_fr": "Fabrication d'articles en plastique non désignés ailleurs tels que : barques, cordes et fils en Nylon, articles de menuiserie en plastique, fermetures à glissière, mousse phénolique, emballages en plastique etc... | Fabrication de plaques, bandes, feuilles, films de protection, jouets, vêtements, articles de mercerie, parapluies, articles de voyage ; | Fabrication d'articles en plastiques destinés à l'ameublement, aux ménages, à la décoration, la lustrerie, aux loisirs, à la pratique du sport, au camping (baches et toiles, tentes, etc .), et tous articles similaires . | Fabrication de tous types de cartes en plastique avec ou sans bandes magnétiques.",
+    "translation_ar": "تصنيع مصنوعات بلاستيكية غير مصنفة في موضع آخر، مثل القوارب والحبال والخيوط المصنوعة من النايلون ومصنوعات النجارة البلاستيكية والسحابات ورغوة الفينول وعبوات التغليف البلاستيكية وغيرها؛ | تصنيع الألواح والشرائط والصفائح والأغلفة الواقية والألعاب والملابس ولوازم الخياطة والمظلات ومستلزمات السفر؛ | تصنيع مصنوعات بلاستيكية مخصصة للأثاث والاستعمال المنزلي والزينة والإنارة والترفيه والرياضة والتخييم (مثل الأغطية المشمعة والقماشية والخيام وغيرها)، وسائر المنتجات المماثلة؛ | تصنيع جميع أنواع البطاقات البلاستيكية، سواء كانت مزودة بشريط مغناطيسي أم لا.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111307": {
+    "source_fr": "Tous travaux qui concourent à la fabrication d'ouvrages imprimés (composition, imposition, clichage, impression et tirage) ; | Tous travaux de reliure et assemblage d'ouvrages (livres, revues, etc...) ; | Impression par typographie, offset, héliogravure, sérigraphie de livres, brochures, cartes postales, etc .",
+    "translation_ar": "جميع الأشغال التي تساهم في إنتاج المطبوعات، بما في ذلك التنضيد والتجهيز للطباعة وصنع ألواح الطباعة والطباعة والاستنساخ؛ | جميع أشغال التجليد وتجميع المطبوعات، مثل الكتب والمجلات وغيرها؛ | الطباعة بتقنيات الطباعة بالحروف البارزة والأوفست والطباعة الغائرة والطباعة بالشاشة الحريرية للكتب والكتيبات والبطاقات البريدية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111308": {
+    "source_fr": "Construction de voiliers et de bateaux de plaisance à moteur, rigides ou gonflables; | Construction d'autres embarcation de plaisance ou de sport telle que canoês, kayaks, skiffs, pédalos, véhicules marins à moteurs etc ... | Construction de planches à voiles et matériels pour sport nautiques",
+    "translation_ar": "بناء المراكب الشراعية وقوارب النزهة المزودة بمحركات، سواء كانت صلبة أو قابلة للنفخ؛ | بناء مراكب أخرى للنزهة أو الرياضة، مثل الزوارق والكاياك وقوارب السباق الصغيرة وقوارب الدواسات والمركبات البحرية المزودة بمحركات وغيرها؛ | بناء ألواح التزلج الشراعي ومعدات الرياضات المائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111309": {
+    "source_fr": "Fabrication de tout corps creux en plastique, en résine armée de fibre de verre (stratifiée) et en tout type de résine . | Fabrication de toute canalisation et accessoires en toutes matières et pour tout usage.",
+    "translation_ar": "تصنيع جميع أنواع الأجسام المجوفة من البلاستيك أو الراتنجات، بما في ذلك الراتنجات المسلحة بألياف الزجاج (المصفّحة)؛ | تصنيع جميع أنواع الأنابيب وملحقاتها من مختلف المواد ولجميع الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111310": {
+    "source_fr": "Fabrication de bouteilles, flacons, boites, et tout autres contenants en matiére plastique ;",
+    "translation_ar": "تصنيع القوارير والعبوات والعلب وسائر الحاويات المصنوعة من المواد البلاستيكية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111311": {
+    "source_fr": "Fabrication de tous types d'emballages en papier | Fabrication d'emballages moulés et toutes applications d'emballage moulé en pulpe de papier",
+    "translation_ar": "تصنيع جميع أنواع عبوات التغليف الورقية؛ | تصنيع عبوات التغليف المشكلة من عجينة الورق وجميع تطبيقات التغليف المصبوب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111312": {
+    "source_fr": "Fabrication d'emballages en toutes matiéres .",
+    "translation_ar": "تصنيع عبوات التغليف من مختلف المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111313": {
+    "source_fr": "Travaux de sérigraphie sur toutes matières y compris lettres peintes de façades et enseigne; | Gravure laser sur toutes matières (bois, verre, métal, plexyglace, tampon et enseigne). | Impression hydrographique.",
+    "translation_ar": "أشغال الطباعة بالشاشة الحريرية على جميع المواد، بما في ذلك الحروف المرسومة على واجهات المباني واللافتات؛ | النقش بالليزر على جميع المواد، مثل الخشب والزجاج والمعادن والزجاج الأكريليكي والأختام واللافتات؛ | الطباعة بالغمر المائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111314": {
+    "source_fr": "Impression de tous types d’objets en trois dimensions à partir de diverses matières premières (le plastique, la cire, le métal etc… ) .",
+    "translation_ar": "طباعة مختلف أنواع الأجسام ثلاثية الأبعاد انطلاقاً من مواد أولية متنوعة، مثل البلاستيك والشمع والمعادن وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111315": {
+    "source_fr": "Activité qui consiste à sélectionner des livres à publier, à coordonner les tâches du ou des auteurs, du ou des traducteurs et du ou des illustrateurs jusqu’à la réalisation de la marquette finale du livre sur support papier ou tout autre support.",
+    "translation_ar": "نشاط يتمثل في اختيار الكتب المراد نشرها وتنسيق أعمال المؤلف أو المؤلفين والمترجم أو المترجمين والرسام أو الرسامين، إلى غاية إنجاز التصميم النهائي للكتاب على دعامة ورقية أو أي دعامة أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111316": {
+    "source_fr": "l’impression de magazines et d’autres périodiques, paraissant moins de quatre fois par semaine ; | -l’impression de livres et de brochures, de partitions musicales, d’atlas, d’affiches, de catalogues, de prospectus et d’autres imprimés publicitaires, d’albums, d’agendas, de calendriers et d’autres imprimés commerciaux, de papier à lettres à en-tête personnel et d’autres imprimés sur des presses typographiques, offset, d’héliogravure, flexographiques, sérigraphiques et d’autres presses graphiques, appareils de reproduction, imprimantes électroniques, appareils de gaufrage ; | l’impression directe sur textiles, matières plastiques, verre, métal, bois et céramique ; | Les motifs imprimés sont généralement protégés par les droits d’auteur .",
+    "translation_ar": "طباعة المجلات وغيرها من الدوريات التي تصدر أقل من أربع مرات أسبوعياً؛ | طباعة الكتب والكتيبات والنوتات الموسيقية والأطالس والملصقات والفهارس والمنشورات الإشهارية وغيرها من المطبوعات، والألبومات والمفكرات والتقاويم وغيرها من المطبوعات التجارية والأوراق الرسمية ذات الترويسة وغيرها من المطبوعات، باستعمال الطباعة بالحروف البارزة والأوفست والطباعة الغائرة والفليكسوغرافية والطباعة بالشاشة الحريرية وغيرها من المطابع وآلات الاستنساخ والطابعات الإلكترونية وأجهزة النقش البارز؛ | الطباعة المباشرة على المنسوجات والمواد البلاستيكية والزجاج والمعادن والخشب والخزف؛ | تكون التصاميم المطبوعة محمية بحقوق المؤلف بوجه عام.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "112001": {
+    "source_fr": "Récupération des métaux ferreux et non ferreux; | Découpage et compactage de ferrailles et des vieux véhicules usagées .",
+    "translation_ar": "استرجاع المعادن الحديدية وغير الحديدية؛ | تقطيع وضغط الخردة والمركبات القديمة المستعملة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "112002": {
+    "source_fr": "Récupération des matières plastiques et des caoutchoucs; | Récupération des vieux papiers (fabrication de pâtes de papier recyclé à partir de vieux papiers, désencrage des vieux papiers...); | Récupération de matières non métalliques à partir de déchets contenant des produits chimiques (surfaces sensibles, résidus de détartrage, etc...); | Récupération des huiles usagées; | Equarrissage; | Récupération de verre; | Récupération de déchets textiles.",
+    "translation_ar": "استرجاع المواد البلاستيكية والمطاط؛ | استرجاع الورق المستعمل (تصنيع عجينة الورق المعاد تدويره انطلاقاً من الورق المستعمل وإزالة الأحبار عنه وغيرها)؛ | استرجاع مواد غير معدنية من النفايات المحتوية على منتجات كيميائية، مثل الأسطح الحساسة ومخلفات إزالة الترسبات وغيرها؛ | استرجاع الزيوت المستعملة؛ | معالجة جثث الحيوانات ومخلفاتها؛ | استرجاع الزجاج؛ | استرجاع النفايات النسيجية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "112003": {
+    "source_fr": "Fabrication de produits de la chimie minérale destinés à la construction tels que : tous mortiers, enduits et bétons prêt à l'emploi ; | Tous produits de la chimie ou minérale rentrant dans tous les matériaux de construction en général les ciments, les plâtres, les chaux appelés sous les noms Adjuvants et additifs ou pour béton et mortiers ; | Toutes huiles minérale, végétale ou synthétique et démontage de protection et de travail des matériaux ; | Tous mastics d'étanchéité, de calfeutrages, de jointements et pour toutes applications, colles industrielles en matiéres synthétiques végétales ou minérales, pour toutes applications toutes résines de traitement de surfaces ; | Joints et bandes de remplissage ou d'étanchéité en | caoutchouc ou autres matiéres plastiques et métalliques entrant dans la construction en générale",
+    "translation_ar": "تصنيع منتجات الكيمياء المعدنية المخصصة للبناء، مثل جميع أنواع الملاط والطلاءات والخرسانة الجاهزة للاستعمال؛ | تصنيع جميع المنتجات الكيميائية أو المعدنية الداخلة عموماً في تركيب مواد البناء، ولا سيما الإسمنت والجبس والجير، المعروفة باسم المواد المساعدة والإضافات للخرسانة والملاط؛ | جميع الزيوت المعدنية أو النباتية أو الاصطناعية، ومواد فكّ وتجريد الحماية ومواد تشغيل ومعالجة الأسطح؛ | جميع معاجين العزل المائي والسدّ وملء الفواصل والوصلات، والمواد اللاصقة الصناعية المصنوعة من مواد اصطناعية أو نباتية أو معدنية لمختلف الاستعمالات، وجميع راتنجات معالجة الأسطح؛ | الحشيات وشرائط الملء أو العزل المصنوعة من المطاط أو غيره من المواد البلاستيكية والمعدنية والداخلة في البناء عموماً.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "112004": {
+    "source_fr": "Fabrication industrielle d'ouvrages gravés ou non en | marbre, granit et pierre pour batiment, pour les décorations, monuments, sépultures, etc...; | Taille façonnage, sculpture, gravure et polissage de | tous marbres destinés à tous usages .",
+    "translation_ar": "التصنيع الصناعي للمصنوعات المنقوشة أو غير المنقوشة من الرخام والغرانيت والحجر، والمخصصة للبناء والزينة والنصب التذكارية والقبور وغيرها؛ | قطع وتشكيل ونحت ونقش وصقل جميع أنواع الرخام المخصصة لمختلف الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "112005": {
+    "source_fr": "Fabrication de tous matériels et équipements industriels destinés à l'activité d'hotellerie et de restauration, leurs accessoires et piéces détachées. | Fabrication de matériels et équipements pour débits de boissons, équipements de magasins (présentoirs, | vitrines, etc.), leurs accessoires et piéces détachées .",
+    "translation_ar": "تصنيع جميع المعدات والتجهيزات الصناعية المخصصة لأنشطة الفندقة والإطعام، بما في ذلك لوازمها وقطع غيارها؛ | تصنيع المعدات والتجهيزات المخصصة لمحلات بيع المشروبات وتجهيزات المتاجر، مثل حوامل العرض والواجهات الزجاجية وغيرها، بما في ذلك لوازمها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "112006": {
+    "source_fr": "Montage d'unités d'incinération des déchets hospitaliers, ménagers et autres.",
+    "translation_ar": "تركيب وحدات حرق النفايات الاستشفائية والمنزلية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "112007": {
+    "source_fr": "Récupération et valorisation des déchets ménagers et assimilés et déchets inertes .",
+    "translation_ar": "استرجاع وتثمين النفايات المنزلية وما شابهها والنفايات الهامدة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "112008": {
+    "source_fr": "Récupération et valorisation des déchets spéciaux y compris les déchets spéciaux dangereux.",
+    "translation_ar": "استرجاع وتثمين النفايات الخاصة، بما في ذلك النفايات الخاصة الخطرة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "113101": {
+    "source_fr": "Fabrication de produits nettoyants et désinfectants de consommation présentant un caractère de toxicité ou un risque particulier : | agents de blanchiment sous forme de liquide ou poudre contenant du chlore, à l’exclusion de l’eau de Javel ; | agents nettoyants et/ou désinfectants, notamment les nettoyants pour les surfaces émaillées, les nettoyants pour les sols, les nettoyants pour les vitres, les fours et les toilettes, les shampoings pour moquettes et les produits de lavage (produits pour la lessive et pour la vaisselle) ; | solvants de nettoyage (produits détachants etc...) ; | encaustiques : préparations de cire et d’essence de térébenthine ou de white spirit pour faire briller les meubles et les parquets (les encaustiques contiennent notamment des cires naturelles ou synthétiques, des solvants tels que les hydrocarbures pétroliers, l’essence de térébenthine, les alcools, les glycols, les acétates et les colorants) ; | produits pesticides à usage domestique notamment les herbicides, les insecticides, les raticides, les fongicides et les antimites ; | produits aérosols (autres que les produits cosmétiques et d’hygiène corporelle) et produits contenant de l’alcool méthylique.",
+    "translation_ar": "تصنيع منتجات التنظيف والتطهير الاستهلاكية التي تتسم بطابع سام أو تشكل خطراً خاصاً، وتشمل: | مواد التبييض في شكل سائل أو مسحوق المحتوية على الكلور، باستثناء ماء جافيل؛ | مواد التنظيف و/أو التطهير، ولا سيما منظفات الأسطح المطلية بالمينا والأرضيات والزجاج والأفران والمراحيض، وشامبوهات السجاد ومنتجات الغسيل (للملابس والأواني)؛ | مذيبات التنظيف، مثل مزيلات البقع وغيرها؛ | مواد التلميع الشمعية: مستحضرات الشمع وزيت التربنتين أو الروح البيضاء لتلميع الأثاث والأرضيات الخشبية، وقد تحتوي على شموع طبيعية أو اصطناعية ومذيبات مثل الهيدروكربونات النفطية وزيت التربنتين والكحولات والغليكولات والأسيتات والأصباغ؛ | المبيدات المخصصة للاستعمال المنزلي، ولا سيما مبيدات الأعشاب والحشرات والقوارض والفطريات والعث؛ | منتجات الرذاذ، باستثناء منتجات التجميل والنظافة الجسدية، والمنتجات المحتوية على الكحول الميثيلي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "113102": {
+    "source_fr": "Fabrication de produits caustiques et antirouille de consommation présentant un caractère de toxicité ou un risque particulier : | produits caustiques : notamment les acides, les bases minérales (soude, potasse, ammoniac, ammoniaque..), les bases organiques, les oxydants (hyprochlorites, péroxydes, permanganates, perborates...), les aldéhydes (formaldéhyde, acétaldéhyde...), les époxydes et les phénols ; | antirouilles pour linge (notamment l’acide fluorhydrique et l’acide oxalique) .",
+    "translation_ar": "تصنيع المنتجات الكاوية ومزيلات الصدأ الاستهلاكية التي تتسم بطابع سام أو تشكل خطراً خاصاً، وتشمل: | المنتجات الكاوية، ولا سيما الأحماض والقواعد المعدنية (الصودا والبوتاس والأمونيا وغيرها) والقواعد العضوية والمؤكسدات (الهيبوكلوريت والبيروكسيدات والبرمنغنات والبيربورات وغيرها) والألدهيدات (الفورمالديهايد والأسيتالديهايد وغيرها) والإيبوكسيدات والفينولات؛ | مزيلات الصدأ المخصصة للمنسوجات، ولا سيما حمض الهيدروفلوريك وحمض الأكساليك.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "113103": {
+    "source_fr": "Fabrication de produits de revêtements protecteurs notamment les peintures, les vernis, les xyloprotecteurs, les cirages et les imperméabilisants.",
+    "translation_ar": "تصنيع منتجات الطلاء والكسوة الواقية الاستهلاكية التي تتسم بطابع سام أو تشكل خطراً خاصاً، ولا سيما الدهانات والورنيشات ومواد حماية الخشب وملمعات الأحذية ومواد العزل المائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "113104": {
+    "source_fr": "Fabrication de produits destinés à l’éducation et à la récréation des enfants tels que les jeux chimiques ou contenant des produits chimiques accessibles, les peintures pour enfants et les pâtes à modeler ; | Fabrication de produits destinés à l’éducation et à la récréation des enfants, notamment les jouets, les instruments graphiques pour enfants, les matériaux colorés dans la masse (matières plastiques), les papiers et cartons vendus en tant que jouets et les textiles teints.",
+    "translation_ar": "تصنيع المنتجات المخصصة لتعليم الأطفال وترفيههم، مثل الألعاب الكيميائية أو المحتوية على منتجات كيميائية يمكن الوصول إليها، ودهانات الأطفال وعجائن التشكيل؛ | تصنيع منتجات تعليم الأطفال وترفيههم، ولا سيما الألعاب وأدوات الرسم للأطفال والمواد الملونة في كامل كتلتها (المواد البلاستيكية) والورق والكرتون المباعين على أنهما ألعاب والمنسوجات المصبوغة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "113105": {
+    "source_fr": "Fabrication d’articles de puériculture, notamment les sucettes, landaus, poussettes, voitures transformables pour enfants, lits fixes ou pliants pour enfants, couffins (moïses et couchettes), tables à langer, chaises pour enfants, trotteurs, parcs pour enfants, biberons.... .",
+    "translation_ar": "تصنيع مستلزمات رعاية الرضع، ولا سيما اللهايات وعربات الأطفال ومقاعد السيارات والمهاد والأسرة الثابتة أو القابلة للطي وسلال المهد وطاولات تغيير الحفاضات والكراسي والمشايات وحواجز اللعب وقوارير الرضاعة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "113106": {
+    "source_fr": "Fabrication de vaisselles céramiques et autres ustensiles de cuisine en matière plastique.",
+    "translation_ar": "تصنيع الأواني الخزفية وسائر أدوات المطبخ المصنوعة من المواد البلاستيكية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "114101": {
+    "source_fr": "Toutes les opérations visant à réutiliser ou recycler ou composter les déchets ménagers et assimiles (DMA).",
+    "translation_ar": "جميع العمليات التي تهدف إلى إعادة استعمال النفايات المنزلية وما شابهها (DMA) أو تدويرها أو تحويلها إلى سماد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "114102": {
+    "source_fr": "Toutes les opérations visant à réutiliser ou recycler les déchets inertes (DI)",
+    "translation_ar": "جميع العمليات التي تهدف إلى إعادة استعمال النفايات الهامدة (DI) أو تدويرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "114103": {
+    "source_fr": "Toutes les opérations visant à réutiliser ou recycler ou composter les déchets spéciaux (DS)",
+    "translation_ar": "جميع العمليات التي تهدف إلى إعادة استعمال النفايات الخاصة (DS) أو تدويرها أو تحويلها إلى سماد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "114104": {
+    "source_fr": "Toutes les opérations visant à réutiliser ou recycler les déchets spéciaux dangereux (DSD)",
+    "translation_ar": "جميع العمليات التي تهدف إلى إعادة استعمال النفايات الخاصة الخطرة (DSD) أو تدويرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "115101": {
+    "source_fr": "la fabrication de verre plat, y compris le verre plat armé ou teinté ou imprimé.",
+    "translation_ar": "تصنيع الزجاج المسطح، بما في ذلك الزجاج المسطح المسلح أو الملوّن أو المطبوع.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "115102": {
+    "source_fr": "la fabrication de verre plat, trempés ou contrecollés ; | la fabrication de miroirs en verre ; | la fabrication de vitrages isolants à parois.",
+    "translation_ar": "تصنيع الزجاج المسطح المقسّى أو المصفّح؛ | تصنيع المرايا الزجاجية؛ | تصنيع الزجاج العازل ذي الجدران المتعددة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
