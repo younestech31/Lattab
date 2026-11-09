@@ -1,4 +1,5 @@
 import type { NAEActivity } from "./schema";
+import { resolveActivityBilingual } from "./gap-resolver";
 import { NAE_SECTORS, type NAESectorCode } from "./sectors";
 
 export type NAESearchLanguage = "ar" | "fr";
@@ -17,7 +18,9 @@ export type NAESearchMatchField =
   | "label_ar"
   | "label_fr"
   | "contenue_fr"
-  | "accessoires_fr";
+  | "contenue_ar"
+  | "accessoires_fr"
+  | "accessoires_ar";
 
 export interface NAESearchMatch {
   kind: NAESearchMatchKind;
@@ -39,7 +42,7 @@ export interface NAESearchOptions {
 }
 
 interface IndexedText {
-  field: "label_ar" | "label_fr" | "contenue_fr" | "accessoires_fr";
+  field: "label_ar" | "label_fr" | "contenue_fr" | "contenue_ar" | "accessoires_fr" | "accessoires_ar";
   language?: "ar" | "fr";
   normalized: string;
 }
@@ -47,8 +50,8 @@ interface IndexedText {
 interface IndexedActivity {
   activity: NAEActivity;
   labels: IndexedText[];
-  content: string;
-  accessories: string;
+  content: IndexedText[];
+  accessories: IndexedText[];
 }
 
 export interface NAESearchIndex {
@@ -79,6 +82,14 @@ function isUsableLabel(value: string): boolean {
   return value.trim().length > 0 && value.trim() !== "#NOM?";
 }
 
+function prioritizeLanguage(values: IndexedText[], language: NAESearchLanguage): IndexedText[] {
+  return values.sort((a, b) => {
+    const aPriority = a.language === language ? 0 : 1;
+    const bPriority = b.language === language ? 0 : 1;
+    return aPriority - bPriority;
+  });
+}
+
 function createTextIndex(
   activity: NAEActivity,
   language: NAESearchLanguage,
@@ -99,11 +110,32 @@ function createTextIndex(
     });
   }
 
-  return values.sort((a, b) => {
-    const aPriority = a.language === language ? 0 : 1;
-    const bPriority = b.language === language ? 0 : 1;
-    return aPriority - bPriority;
-  });
+  return prioritizeLanguage(values, language);
+}
+
+function createLocalizedFieldIndex(
+  sourceFrench: string | null | undefined,
+  translationArabic: string | null | undefined,
+  frenchField: "contenue_fr" | "accessoires_fr",
+  arabicField: "contenue_ar" | "accessoires_ar",
+  language: NAESearchLanguage,
+): IndexedText[] {
+  const values: IndexedText[] = [];
+  if (sourceFrench?.trim() && sourceFrench.trim() !== "#NOM?") {
+    values.push({
+      field: frenchField,
+      language: "fr",
+      normalized: normalizeNAESearchText(sourceFrench),
+    });
+  }
+  if (translationArabic?.trim() && translationArabic.trim() !== "#NOM?") {
+    values.push({
+      field: arabicField,
+      language: "ar",
+      normalized: normalizeNAESearchText(translationArabic),
+    });
+  }
+  return prioritizeLanguage(values, language);
 }
 
 export function createNAESearchIndex(
@@ -112,14 +144,27 @@ export function createNAESearchIndex(
 ): NAESearchIndex {
   return {
     language,
-    entries: activities.map((activity) => ({
-      activity,
-      labels: createTextIndex(activity, language),
-      content: normalizeNAESearchText(activity.contenue_fr),
-      accessories: activity.accessoires_fr
-        ? normalizeNAESearchText(activity.accessoires_fr)
-        : "",
-    })),
+    entries: activities.map((activity) => {
+      const resolved = resolveActivityBilingual(activity);
+      return {
+        activity,
+        labels: createTextIndex(activity, language),
+        content: createLocalizedFieldIndex(
+          activity.contenue_fr,
+          resolved.contenue_ar,
+          "contenue_fr",
+          "contenue_ar",
+          language,
+        ),
+        accessories: createLocalizedFieldIndex(
+          activity.accessoires_fr,
+          resolved.accessoires_ar,
+          "accessoires_fr",
+          "accessoires_ar",
+          language,
+        ),
+      };
+    }),
   };
 }
 
@@ -190,11 +235,15 @@ function findBestTextMatch(
     }
   }
 
-  if (matchText(entry.content, query)) {
-    matches.push({ kind: "content", field: "contenue_fr", language: "fr" });
+  for (const content of entry.content) {
+    if (matchText(content.normalized, query)) {
+      matches.push({ kind: "content", field: content.field, language: content.language });
+    }
   }
-  if (matchText(entry.accessories, query)) {
-    matches.push({ kind: "accessory", field: "accessoires_fr", language: "fr" });
+  for (const accessory of entry.accessories) {
+    if (matchText(accessory.normalized, query)) {
+      matches.push({ kind: "accessory", field: accessory.field, language: accessory.language });
+    }
   }
 
   matches.sort((a, b) => compareMatches(a, b, preferredLanguage));

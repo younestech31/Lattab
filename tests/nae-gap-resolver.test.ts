@@ -18,34 +18,15 @@ import sector7 from "../data/nae/sector-7.json";
 import type { NAEActivity } from "../lib/nae/schema";
 
 const allActivities = [
-  ...sector1,
-  ...sector2,
-  ...sector3,
-  ...sector4,
-  ...sector5,
-  ...sector6,
-  ...sector7,
+  ...sector1, ...sector2, ...sector3, ...sector4,
+  ...sector5, ...sector6, ...sector7,
 ] as NAEActivity[];
 
 test("resolveTutelleArabic resolves known French administrative authorities", () => {
-  assert.equal(
-    resolveTutelleArabic("DIRECTION DES IMPÔTS DE LA WILAYA"),
-    "مديرية الضرائب للولاية",
-  );
-  assert.equal(
-    resolveTutelleArabic("ADMINISTRATION DES DOUANES"),
-    "إدارة الجمارك",
-  );
-  assert.equal(
-    resolveTutelleArabic("GOUVERNEUR DE LA BANQUE CENTRALE"),
-    "محافظ البنك المركزي",
-  );
-  assert.equal(
-    resolveTutelleArabic("ASSEMBLÉE POPULAIRE COMMUNALE"),
-    "المجلس الشعبي البلدي",
-  );
-
-  // Fallback behavior
+  assert.equal(resolveTutelleArabic("DIRECTION DES IMPÔTS DE LA WILAYA"), "مديرية الضرائب للولاية");
+  assert.equal(resolveTutelleArabic("ADMINISTRATION DES DOUANES"), "إدارة الجمارك");
+  assert.equal(resolveTutelleArabic("GOUVERNEUR DE LA BANQUE CENTRALE"), "محافظ البنك المركزي");
+  assert.equal(resolveTutelleArabic("ASSEMBLÉE POPULAIRE COMMUNALE"), "المجلس الشعبي البلدي");
   assert.equal(resolveTutelleArabic(null), null);
   assert.equal(resolveTutelleArabic(undefined), null);
   assert.equal(resolveTutelleArabic(""), null);
@@ -60,120 +41,95 @@ test("resolveTypeAutorisationArabic resolves known authorization types", () => {
   assert.equal(resolveTypeAutorisationArabic("permis"), "رخصة");
   assert.equal(resolveTypeAutorisationArabic("concession"), "امتياز");
   assert.equal(resolveTypeAutorisationArabic("ATTESTATION"), "شهادة");
-
-  // Fallback behavior
   assert.equal(resolveTypeAutorisationArabic(null), null);
   assert.equal(resolveTypeAutorisationArabic(undefined), null);
   assert.equal(resolveTypeAutorisationArabic(""), null);
   assert.equal(resolveTypeAutorisationArabic("NON_EXISTENT_PERMIT"), null);
 });
 
-test("resolveAccessoiresArabic resolves high-frequency accessories clauses with normalization and segmentation", () => {
-  // Direct match
+test("resolveAccessoiresArabic resolves exact, normalized, and fully translated segmented clauses", () => {
   assert.ok(resolveAccessoiresArabic("Installation, maintenance et service après-vente.")?.includes("التركيب"));
-  // Normalization match (extra spaces, variant accents)
   assert.ok(resolveAccessoiresArabic("Maintenance et service aprés vente")?.includes("الصيانة"));
-  // Segmented match
   const segmented = resolveAccessoiresArabic("Vente de tabac et allumettes; | Articles de correspondance;");
   assert.ok(segmented?.includes("التبغ"));
   assert.ok(segmented?.includes("المراسلة"));
-
-  // Fallback behavior
   assert.equal(resolveAccessoiresArabic(null), null);
   assert.equal(resolveAccessoiresArabic(undefined), null);
   assert.equal(resolveAccessoiresArabic(""), null);
   assert.equal(resolveAccessoiresArabic("Clause complètement inconnue 99999"), null);
 });
 
-test("resolveContenueArabic resolves activity content descriptions bilingually", () => {
-  const content601101 = resolveContenueArabic("601101");
-  assert.ok(content601101?.includes("وحدات إيواء"));
-  assert.ok(content601101?.includes("نجوم"));
+test("resolveContenueArabic requires the exact reviewed French source text", () => {
+  const hotel = allActivities.find((item) => item.code === "601101");
+  const propertyRental = allActivities.find((item) => item.code === "611001");
+  const legalConsulting = allActivities.find((item) => item.code === "607004");
+  assert.ok(hotel?.contenue_fr);
+  assert.ok(propertyRental?.contenue_fr);
+  assert.ok(legalConsulting?.contenue_fr);
 
-  const content611001 = resolveContenueArabic("611001");
-  assert.ok(content611001?.includes("تأجير الشقق والمنازل"));
+  const hotelArabic = resolveContenueArabic("601101", hotel?.contenue_fr);
+  assert.ok(hotelArabic?.includes("وحدات إيواء"));
+  assert.ok(hotelArabic?.includes("نجوم"));
+  assert.ok(resolveContenueArabic("611001", propertyRental?.contenue_fr)?.includes("تأجير الشقق والمنازل"));
+  assert.ok(resolveContenueArabic("607004", legalConsulting?.contenue_fr)?.includes("الاستشارات القانونية والجبائية"));
 
-  const content607004 = resolveContenueArabic("607004");
-  assert.ok(content607004?.includes("الاستشارات والدراسات القانونية"));
-
-  // Fallback behavior for unmapped code
-  assert.equal(resolveContenueArabic("999999"), null);
+  assert.equal(resolveContenueArabic("601101"), null);
+  assert.equal(resolveContenueArabic("601101", "Unrelated French source"), null);
+  assert.equal(resolveContenueArabic("101201", "Engraissement industriel de bovins et ovins (en écuries aménagées) et autres animaux de boucherie en vue de l'abattage ."), null);
+  assert.equal(resolveContenueArabic("999999", "Unknown source"), null);
   assert.equal(resolveContenueArabic("999999", ""), null);
 });
 
-test("resolveReferencesBilingual handles code 607004 with preserved Arabic source and French fill", () => {
+test("resolveReferencesBilingual handles code 607004 and preserves a supplied French reference", () => {
   const ref607004 = resolveReferencesBilingual("607004", null);
   assert.ok(ref607004.fr?.includes("conseil juridique"));
   assert.ok(ref607004.ar?.includes("المستشاؤ القانوني"));
-
-  // Standard code with original French reference and no special override
   const standardRef = resolveReferencesBilingual("101101", "Décret standard 2020");
   assert.equal(standardRef.fr, "Décret standard 2020");
   assert.equal(standardRef.ar, null);
 });
 
-test("resolveActivityBilingual produces enriched record without mutating source record", () => {
+test("resolveActivityBilingual enriches without mutating the original record", () => {
+  const source = allActivities.find((item) => item.code === "601101");
+  assert.ok(source);
   const rawActivity: NAEActivity = {
-    code: "601101",
-    label_ar: "فندق سياحي مع مطعم",
-    label_fr: "Hôtel de tourisme avec restaurant",
-    label_en: "Tourism hotel with restaurant",
-    status: "green",
-    sector_code: "6",
-    group_code: "601",
-    subgroup_code: "6011",
+    ...source,
     tutelle_fr: "MINISTERE CHARGE DU TOURISME",
     type_autorisation_fr: "agrement",
-    contenue_fr: "Etablissement qui offre en location des unités d’hébergement...",
-    accessoires_fr: "Aménager des lieux et des espaces réservés aux fumeurs en dehors de l'établissement et les équiper des matériels nécessaires conformément aux dispositions réglementaires en vigueur (il est strictement interdit d'exposer et de vendre des produits tabagiques).",
-    references_texte_fr: "Décret n° 00-00",
   };
-
   const frozen = Object.freeze({ ...rawActivity });
   const resolved = resolveActivityBilingual(frozen);
-
   assert.equal(resolved.code, "601101");
-  assert.equal(resolved.label_ar, "فندق سياحي مع مطعم");
-  assert.equal(resolved.tutelle_fr, "MINISTERE CHARGE DU TOURISME");
+  assert.equal(resolved.label_ar, source.label_ar);
   assert.equal(resolved.tutelle_ar, "الوزارة المكلفة بالسياحة");
   assert.equal(resolved.type_autorisation_ar, "اعتماد");
   assert.ok(resolved.contenue_ar?.includes("وحدات إيواء"));
-  assert.ok(resolved.accessoires_ar?.includes("للمدخنين"));
-
-  // Original record retains its properties
   assert.equal(frozen.code, "601101");
 });
 
-test("all activities in catalog can be safely resolved bilingually without errors", () => {
+test("all catalogue activities resolve safely and all tutelle values are mapped", () => {
   assert.equal(allActivities.length, 2136);
-
-  let regulatedWithTutelleCount = 0;
-  let resolvedTutelleArCount = 0;
-
-  for (const act of allActivities) {
-    const resolved = resolveActivityBilingual(act);
-    assert.equal(resolved.code, act.code);
-    assert.equal(resolved.label_ar, act.label_ar);
-    assert.equal(resolved.label_fr, act.label_fr);
-
-    if (act.tutelle_fr?.trim()) {
-      regulatedWithTutelleCount++;
-      if (resolved.tutelle_ar) {
-        resolvedTutelleArCount++;
-      }
+  let regulatedWithTutelle = 0;
+  let resolvedTutelle = 0;
+  for (const activity of allActivities) {
+    const resolved = resolveActivityBilingual(activity);
+    assert.equal(resolved.code, activity.code);
+    assert.equal(resolved.label_ar, activity.label_ar);
+    assert.equal(resolved.label_fr, activity.label_fr);
+    if (activity.tutelle_fr?.trim()) {
+      regulatedWithTutelle++;
+      if (resolved.tutelle_ar) resolvedTutelle++;
     }
   }
-
-  // Ensure our gap dictionary covers the French tutelle strings in the dataset
-  assert.ok(regulatedWithTutelleCount > 0);
-  assert.ok(resolvedTutelleArCount > 0);
-  assert.equal(resolvedTutelleArCount, regulatedWithTutelleCount, "All valid tutelle_fr records must be mapped to Arabic");
+  assert.ok(regulatedWithTutelle > 0);
+  assert.equal(resolvedTutelle, regulatedWithTutelle);
 });
 
-test("activity 607004 has dual-language reference populated", () => {
-  const act607004 = allActivities.find((a) => a.code === "607004");
-  assert.ok(act607004, "Code 607004 must exist in data");
-  const resolved = resolveActivityBilingual(act607004);
-  assert.ok(resolved.references_texte_fr?.includes("conseil juridique"));
-  assert.ok(resolved.references_texte_ar?.includes("المستشاؤ"));
+test("every active Arabic content value has one existing exact French source record", () => {
+  const translated = allActivities.filter((activity) => resolveActivityBilingual(activity).contenue_ar);
+  assert.equal(translated.length, 18);
+  for (const activity of translated) {
+    assert.ok(activity.contenue_fr?.trim());
+    assert.ok(resolveContenueArabic(activity.code, activity.contenue_fr));
+  }
 });

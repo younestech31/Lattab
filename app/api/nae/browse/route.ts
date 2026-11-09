@@ -89,12 +89,23 @@ export async function POST(request: NextRequest) {
     filtered = filtered.filter((act) => {
       const resolved = resolveActivityBilingual(act);
       if (act.code.includes(norm)) return true;
-      if (normalizeNAESearchText(act.label_ar).includes(norm)) return true;
-      if (normalizeNAESearchText(act.label_fr).includes(norm)) return true;
-      if (resolved.tutelle_ar && normalizeNAESearchText(resolved.tutelle_ar).includes(norm)) return true;
-      if (resolved.tutelle_fr && normalizeNAESearchText(resolved.tutelle_fr).includes(norm)) return true;
-      if (resolved.accessoires_ar && normalizeNAESearchText(resolved.accessoires_ar).includes(norm)) return true;
-      return false;
+      const searchableFields = [
+        act.label_ar,
+        act.label_fr,
+        resolved.tutelle_ar,
+        resolved.tutelle_fr,
+        resolved.type_autorisation_ar,
+        resolved.type_autorisation_fr,
+        resolved.contenue_ar,
+        resolved.contenue_fr,
+        resolved.accessoires_ar,
+        resolved.accessoires_fr,
+        resolved.references_texte_ar,
+        resolved.references_texte_fr,
+      ];
+      return searchableFields.some(
+        (value) => Boolean(value) && normalizeNAESearchText(value!).includes(norm),
+      );
     });
   }
 

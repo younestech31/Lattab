@@ -30,7 +30,13 @@ const FR_SYNONYMS: Record<string, string[]> = {
 };
 const STOP = new Set(["في","من","على","الى","إلى","عن","مع","و","أو","او","اريد","أريد","مشروع","المشروع","نشاط","نشاطات","مؤسسة","شركة","de","du","des","la","le","les","un","une","et","ou","dans","pour","avec","activité","activités","entreprise","projet"]);
 function weight(field: NAESearchMatchField) {
-  return field === "code" ? 36 : field === "label_ar" || field === "label_fr" ? 22 : field === "contenue_fr" ? 14 : 11;
+  return field === "code"
+    ? 36
+    : field === "label_ar" || field === "label_fr"
+      ? 22
+      : field === "contenue_fr" || field === "contenue_ar"
+        ? 14
+        : 11;
 }
 function variants(token: string) {
   const found = new Set([token]);

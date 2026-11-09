@@ -1,23 +1,26 @@
 {
-  "version": 1,
-  "generated_at": "2026-11-08",
+  "version": 2,
+  "generated_at": "2026-11-09",
   "policy": {
-    "description": "Second-language gap fills only. Official CNRC/UpGrowth source fields in sector-*.json are never modified or re-translated.",
+    "description": "Second-language gap fills only. Official source fields remain untouched. Activity-content translations are shown only when the current French source exactly matches the reviewed source snapshot.",
     "official_source_fields_untouched": true,
     "origin": "informational-translation",
-    "note_ar": "ترجمات معلوماتية للحقول الناقصة باللغة الثانية. النص الرسمي الفرنسي يبقى المرجع.",
-    "note_fr": "Traductions informatives des champs manquants dans la seconde langue. Le texte français officiel demeure la référence.",
+    "note_ar": "ترجمات معلوماتية للحقول الناقصة فقط. لا تُستبدل الحقول الرسمية، ولا تُعرض ترجمة الوصف إلا عند مطابقة النص الفرنسي المصدر.",
+    "note_fr": "Traductions informatives des champs manquants uniquement. Les champs officiels ne sont jamais remplacés ; une traduction du contenu n'est affichée que si le texte français source correspond à la version vérifiée.",
     "exclusions": {
-      "label_nom_question": "Seven #NOM? cells preserved per data/nae/README.md; no replacement labels invented.",
-      "contenue_fr": "Arabic fills for activity content (2136 records) not included in this commit; bulk machine translation rejected for legal-scope risk.",
-      "accessoires_fr_remaining": "Only high-frequency exact French strings mapped; unique long accessory clauses remain open.",
-      "references_texte_fr_remaining": "Only the missing French fill for code 607004; other decree titles remain French-source until reviewed."
+      "label_nom_question": "Seven #NOM? source cells remain unchanged; no replacement labels are invented.",
+      "contenue_fr": "The former 105-entry code-keyed draft map is quarantined in contenue-unverified-drafts.json. Only 18 source-bound reviewed translations are active.",
+      "accessoires_fr_remaining": "Only mapped exact/normalized clauses are translated; unique long clauses remain open.",
+      "references_texte_fr_remaining": "Only the Arabic text preserved for code 607004 is available; other French legal references remain untranslated until reviewed.",
+      "unverified_drafts": "The legacy content map contained code/source mismatches and must never be imported by application code."
     }
   },
   "coverage": {
     "tutelle_fr_to_ar": 58,
     "type_autorisation_fr_to_ar": 17,
     "accessoires_fr_to_ar_exact": 25,
+    "accessoires_fr_to_ar_activity_records": 598,
+    "contenue_fr_to_ar_reviewed": 18,
     "references_by_code": 1,
     "label_gap_fills": 0
   },
@@ -25,12 +28,14 @@
     "tutelle_fr_to_ar": "data/nae/gap-translations/tutelle.json",
     "type_autorisation_fr_to_ar": "data/nae/gap-translations/types.json",
     "accessoires_fr_to_ar": "data/nae/gap-translations/accessoires.json",
+    "contenue_fr_to_ar": "data/nae/gap-translations/contenue-reviewed.json",
+    "contenue_unverified_drafts": "data/nae/gap-translations/contenue-unverified-drafts.json",
     "references_by_code": "data/nae/gap-translations/references.json"
   },
   "remaining_work": {
-    "contenue_ar": "Add reviewed Arabic for all 2136 contenue_fr texts without replacing French source.",
-    "accessoires_ar_unique_long": "Map remaining exact accessoires_fr strings not covered by accessoires_fr_to_ar.",
-    "references_ar": "Add reviewed Arabic for French-only legal references (approx. 172 unique texts).",
-    "ui_wiring": "Presentation layer should resolve second language via this overlay and never overwrite sector JSON."
+    "contenue_ar": "Translate and review the remaining 2,118 source descriptions. Every translation must be source-bound and must not infer permissions or legal scope.",
+    "accessoires_ar_unique_long": "Review the remaining 307 activity accessory records not covered by the current map.",
+    "references_ar": "Review Arabic translations for French-only legal references; 1 of 379 source entries currently has Arabic text preserved.",
+    "ui_wiring": "Implemented: displayed fields follow the selected interface language; the French source is separately inspectable in Arabic mode."
   }
 }
