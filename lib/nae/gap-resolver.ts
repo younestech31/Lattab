@@ -45,28 +45,40 @@ export function resolveTypeAutorisationArabic(type_fr: string | null | undefined
   return typesDict[type_fr.trim()] ?? null;
 }
 
-export function resolveAccessoiresArabic(
-  accessoires_fr: string | null | undefined,
-  code?: string,
-): string | null {
-  if (code && accessoiresDict[code]) return accessoiresDict[code];
+function resolveAccessoireSegments(parts: string[]): string | null {
+  const memo = new Map<number, string[][]>();
+  function solve(start: number): string[][] {
+    if (start === parts.length) return [[]];
+    const cached = memo.get(start);
+    if (cached) return cached;
+    const solutions: string[][] = [];
+    for (let end = parts.length; end > start; end--) {
+      const sourcePhrase = parts.slice(start, end).join(" ");
+      const translated = normAccessoiresMap[normalizeAccessoireKey(sourcePhrase)];
+      if (!translated) continue;
+      for (const suffix of solve(end)) {
+        solutions.push([translated, ...suffix]);
+        if (solutions.length >= 2) break;
+      }
+      if (solutions.length >= 2) break;
+    }
+    memo.set(start, solutions);
+    return solutions;
+  }
+  const solutions = solve(0);
+  return solutions.length === 1 ? solutions[0].join(" | ") : null;
+}
+
+/** Resolve Arabic only from the matching French accessory wording. */
+export function resolveAccessoiresArabic(accessoires_fr: string | null | undefined): string | null {
   if (!accessoires_fr?.trim()) return null;
   const trimmed = accessoires_fr.trim();
   if (accessoiresDict[trimmed]) return accessoiresDict[trimmed];
-  const normKey = normalizeAccessoireKey(trimmed);
-  if (normAccessoiresMap[normKey]) return normAccessoiresMap[normKey];
-
-  if (trimmed.includes("|")) {
-    const parts = trimmed.split("|").map((part) => part.trim()).filter(Boolean);
-    const translatedParts = parts.map((part) => {
-      if (accessoiresDict[part]) return accessoiresDict[part];
-      return normAccessoiresMap[normalizeAccessoireKey(part)] ?? null;
-    });
-    if (translatedParts.every((part): part is string => Boolean(part))) {
-      return translatedParts.join(" | ");
-    }
-  }
-  return null;
+  const normalized = normalizeAccessoireKey(trimmed);
+  if (normAccessoiresMap[normalized]) return normAccessoiresMap[normalized];
+  if (!trimmed.includes("|")) return null;
+  const parts = trimmed.split("|").map((part) => part.trim()).filter(Boolean);
+  return parts.length > 1 ? resolveAccessoireSegments(parts) : null;
 }
 
 function normalizeContentSource(value: string): string {
@@ -110,7 +122,7 @@ export function resolveActivityBilingual(activity: NAEActivity): BilinguallyReso
     ...activity,
     tutelle_ar: resolveTutelleArabic(activity.tutelle_fr),
     type_autorisation_ar: resolveTypeAutorisationArabic(activity.type_autorisation_fr),
-    accessoires_ar: resolveAccessoiresArabic(activity.accessoires_fr, activity.code),
+    accessoires_ar: resolveAccessoiresArabic(activity.accessoires_fr),
     references_texte_fr: ref.fr,
     references_texte_ar: ref.ar,
     contenue_ar: resolveContenueArabic(activity.code, activity.contenue_fr),
