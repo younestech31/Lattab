@@ -13,7 +13,7 @@ const activities: NAEActivity[] = sectors.flatMap((sector) => {
 const isUsable = (value: string | null | undefined): value is string =>
   typeof value === "string" && value.trim().length > 0 && value.trim() !== "#NOM?";
 
-const normalizeSource = (value: string) => value.trim().replace(/\\s+/gu, " ");
+const normalizeSource = (value: string) => value.trim().replace(/\s+/gu, " ");
 const byCode = new Map(activities.map((activity) => [activity.code, activity]));
 const translationMap = reviewedContent as Record<
   string,
