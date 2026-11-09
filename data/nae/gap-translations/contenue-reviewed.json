@@ -7,6 +7,206 @@
     "source_fr": "Aménagement de périmètres irrigués; | Drainage agricole : installation de canalisation en vue de l'écoulement des eaux et tous autres travaux d'assèchement des surfaces agricoles humides.",
     "translation_ar": "تهيئة المحيطات المسقية؛ | الصرف الفلاحي: تركيب القنوات لتصريف المياه، وسائر أشغال تجفيف الأراضي الزراعية الرطبة."
   },
+  "101103": {
+    "source_fr": "Travaux de reboisement; | Travaux de défense et restauration des sols ; | Travaux d'amélioration foncières; | Travaux d'équipement d'infrastructures forestières; | Travaux de protection contre l'incendie; | Abbatage e coupe du bois en forêt; | Ecorçage, façonnage, débardage de bois en forêts, schlittage et cablage; | Exploitation du liège; | Gemmage des pins ou autres à base de résine.",
+    "translation_ar": "أشغال إعادة التشجير؛ | أشغال حماية التربة واستصلاحها؛ | أشغال تحسين الأراضي؛ | تجهيز المنشآت القاعدية الغابية؛ | أشغال الوقاية من الحرائق؛ | قطع الأشجار وقطع الأخشاب في الغابات؛ | نزع لحاء الأشجار وتهيئة الأخشاب واستخراجها من الغابات ونقلها بالانزلاق وبواسطة الكابلات؛ | استغلال الفلين؛ | استخراج الراتنج من أشجار الصنوبر وغيرها من الأشجار الراتنجية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101104": {
+    "source_fr": "Stockage et traitement de toutes céréales.",
+    "translation_ar": "تخزين جميع أنواع الحبوب ومعالجتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101105": {
+    "source_fr": "Tous travaux de triage, de conditionnement et d'emballage de produits agricoles",
+    "translation_ar": "جميع أعمال فرز المنتجات الزراعية وتوضيبها وتغليفها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101106": {
+    "source_fr": "Production, détention, cession, utilisation, importation et exportation des espéces végétales non cultivées; y.compris leurs semences (champignons, lichens et mousses... ).",
+    "translation_ar": "إنتاج الأنواع النباتية غير المزروعة وحيازتها والتنازل عنها واستعمالها واستيرادها وتصديرها، بما في ذلك بذورها (الفطريات والأشنات والحزازيات...).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101107": {
+    "source_fr": "Tous travaux de labourage de préparation et fertilisation des sols, de plantation et culture industrielle, d'épandage d'engrais et produits phytosanitaires, ...; | Tous travaux de llutte anti acridienne et contre les parasites des végétaux, comportant l'utilisation de tous moyens et matériels techniques y compris moyens aériens .",
+    "translation_ar": "جميع أعمال حرث التربة وتحضيرها وتسميدها، وغرس المحاصيل وزراعتها صناعياً، ونثر الأسمدة ومنتجات الصحة النباتية، وغيرها؛ | جميع أعمال مكافحة الجراد والآفات التي تصيب النباتات، باستخدام مختلف الوسائل والمعدات التقنية، بما فيها الوسائل الجوية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101108": {
+    "source_fr": "Production de bulbes, oignons tubercules , racines tubéreuses griffes et rhizomes en végétation ou en | fleur ; | Production de plants , plantes et racines de | chicorée ; | Production de plantes vivantes (y compris leurs racines ), boutures et greffons : arbres , arbustes, | arbrisseaux et buissons , à fruits comestibles, greffés | ou nom ; | production de fleurs et boutons de fleurs , coupés, | pour bouquets frais, séchés, blanchis , teints, | imprégnés ou autrement préparés .",
+    "translation_ar": "إنتاج الأبصال والدرنات والجذور الدرنية والمخالب والجذامير في مرحلة النمو أو الإزهار؛ | إنتاج شتلات ونباتات وجذور الهندباء؛ | إنتاج النباتات الحية، بما في ذلك جذورها، والعُقل والطعوم: الأشجار والشجيرات والجنبات ذات الثمار الصالحة للأكل، المطعّمة أو غير المطعّمة؛ | إنتاج الأزهار وبراعم الأزهار المقطوفة المخصصة للباقات، سواء كانت طازجة أو مجففة أو مبيّضة أو مصبوغة أو مشربة أو محضّرة بطرق أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101109": {
+    "source_fr": "Production des semences et germes de céréales ; | Production de semences de plants et plantes maraichers (pomme de terre légumes secs, champignons , etc ...) ; | Production de semences de plantes aléagineuses et d'autres cultures industrielles ; | Production de graines fourragéres à ensemencer .",
+    "translation_ar": "إنتاج بذور الحبوب والبذور المنبتة؛ | إنتاج بذور شتلات ونباتات الخضر (البطاطا والبقول الجافة والفطريات وغيرها)؛ | إنتاج بذور النباتات الزيتية وغيرها من المحاصيل الصناعية؛ | إنتاج البذور العلفية المخصصة للزرع.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101110": {
+    "source_fr": "Toute activité de production et de conservation des champignons cultivés.",
+    "translation_ar": "جميع أنشطة إنتاج الفطر المزروع وحفظه.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101111": {
+    "source_fr": "l'apiculture et la production de miel et de cire d'abeille.",
+    "translation_ar": "تربية النحل وإنتاج العسل وشمع النحل.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101112": {
+    "source_fr": "Elevage de bovins , d'ovins, caprins équidés, oiseaux, chats, chiens, etc. | Elevage de volailles.",
+    "translation_ar": "تربية الأبقار والأغنام والماعز والخيليات والطيور والقطط والكلاب وغيرها؛ | تربية الدواجن.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101113": {
+    "source_fr": "Reproduction d'animaux d'espèces non domestiques destinées à des collections spécialisées liées à la réhabilitation des espèces menacées.",
+    "translation_ar": "إكثار الحيوانات من الأنواع غير المستأنسة، المخصصة لمجموعات متخصصة مرتبطة بإعادة تأهيل الأنواع المهددة بالانقراض.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101114": {
+    "source_fr": "Fabrication et transformation de produits phytosanitaires à usage agricole et domestique (pesticide, insecticide, fongicide, herbicide).",
+    "translation_ar": "تصنيع وتحويل منتجات الصحة النباتية المخصصة للاستعمال الزراعي والمنزلي (مبيدات الآفات والحشرات والفطريات والأعشاب الضارة).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101201": {
+    "source_fr": "Engraissement industriel de bovins et ovins (en écuries aménagées) et autres animaux de boucherie en vue de l'abattage .",
+    "translation_ar": "تسمين الأبقار والأغنام صناعياً في إسطبلات مهيأة، وكذلك تسمين الحيوانات الأخرى المخصصة لإنتاج اللحوم بغرض ذبحها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101202": {
+    "source_fr": "Engraissement de volailles et accouvages industriels; | Production d'oeufs.",
+    "translation_ar": "تسمين الدواجن والتفقيص الصناعي؛ | إنتاج البيض.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101203": {
+    "source_fr": "Pêche hauturière par navires spécialisés : Thons et autres poissons bleus et blancs, langoustes et homards; crevettes, crabes et autres crustacés; mollusques et coquillages (huitres, moules, etc...) et autres produits de la pêche; | Salage et congélation sur les navires.",
+    "translation_ar": "الصيد في أعالي البحار بواسطة سفن متخصصة: التونة وغيرها من الأسماك الزرقاء والبيضاء، والجراد البحري والكركند، والروبيان وسرطان البحر وغيرها من القشريات، والرخويات والمحاريات (المحار وبلح البحر وغيرها)، وسائر منتجات الصيد؛ | تمليح الأسماك وتجميدها على متن السفن.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101204": {
+    "source_fr": "Toute activité de transformation du corail brut destiné à tout usage.",
+    "translation_ar": "جميع أنشطة تحويل المرجان الخام الموجّه لأي استعمال.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101205": {
+    "source_fr": "Toutes les activités de pisciculture, de conchyliculture, de carcinoculture, d'échinoculture, d'algoculture, d'aquariophilie, de prélèvement de juvéniles et des viviers.",
+    "translation_ar": "جميع أنشطة تربية الأسماك والمحاريات والقشريات وشوكيات الجلد والطحالب، وتربية أسماك الزينة، وجمع صغار الكائنات المائية، واستغلال أحواض حفظها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "101206": {
+    "source_fr": "ELEVAGE D’ESCARGOT",
+    "translation_ar": "تربية الحلزون.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102101": {
+    "source_fr": "Forage de puits de pétrole; | Forage de puits de gaz naturel; | Autres travaux liés à la production de pétrole; | Autres travaux liés à la production de gaz naturel.",
+    "translation_ar": "حفر آبار النفط؛ | حفر آبار الغاز الطبيعي؛ | أشغال أخرى مرتبطة بإنتاج النفط؛ | أشغال أخرى مرتبطة بإنتاج الغاز الطبيعي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102102": {
+    "source_fr": "Tous travaux de géophysique.",
+    "translation_ar": "جميع أعمال الجيوفيزياء.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102103": {
+    "source_fr": "Toutes sortes d'analyses liées au secteur des hydrocarbures (analyse de boue etc...).",
+    "translation_ar": "جميع أنواع التحاليل المرتبطة بقطاع المحروقات (مثل تحليل الطين وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102104": {
+    "source_fr": "Tous travaux d'études et engineering liés au secteur des hydrocarbures.",
+    "translation_ar": "جميع أعمال الدراسات والهندسة المرتبطة بقطاع المحروقات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102105": {
+    "source_fr": "Elaboration et réalisation de tous projets d'investissement industriels (ingeniering, procurement, construction); | Création d'entreprises innovantes. | Toutes sortes d'études techniques , technologiques d'ingénierie dans le domaine industriel; | Réalisation de tous travaux relatifs à l'ingénierie industrielle",
+    "translation_ar": "إعداد وإنجاز جميع مشاريع الاستثمار الصناعي (الهندسة والتوريد والإنشاء)؛ | إنشاء مؤسسات مبتكرة؛ | جميع أنواع الدراسات التقنية والتكنولوجية والهندسية في المجال الصناعي؛ | إنجاز جميع الأعمال المتعلقة بالهندسة الصناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102201": {
+    "source_fr": "Construction d'ouvrages et installations destinés aux puits de pétrole et de gaz; - Construction de raffineries, d'unités de liquéfaction de gaz et d'unités de pétrochimie; - Construction et pose de pipe line, d'oléoducs et d'autres équipements pour le transport des hydrocarbures (stations de pompage etc...).",
+    "translation_ar": "بناء المنشآت والتجهيزات المخصصة لآبار النفط والغاز؛ | بناء المصافي ووحدات تمييع الغاز ووحدات البتروكيمياء؛ | إنشاء ومدّ خطوط الأنابيب النفطية وأنابيب المحروقات وغيرها من تجهيزات نقل المحروقات (مثل محطات الضخ).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102202": {
+    "source_fr": "Extraction de pétrole brut; | Extraction de condensât; | Extraction de gaz naturel; | Extraction d'autres hydrocarbures liquides et gazeux.",
+    "translation_ar": "استخراج النفط الخام؛ | استخراج المكثفات؛ | استخراج الغاز الطبيعي؛ | استخراج سائر المحروقات السائلة والغازية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102203": {
+    "source_fr": "production d’électricité",
+    "translation_ar": "إنتاج الكهرباء.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102204": {
+    "source_fr": "TRANSPORT DE GAZ NATUREL | (RESERVEE A LA SOCIETE SONELGAZ)",
+    "translation_ar": "نقل الغاز الطبيعي (نشاط محجوز لشركة سونلغاز).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102205": {
+    "source_fr": "Transport de pétrole brut; | Transport du gaz de pétrole liquéfié (G.P.L.) et du condensât; | Transport de produits raffinés par canalisation.",
+    "translation_ar": "نقل النفط الخام؛ | نقل غاز البترول المسال (GPL) والمكثفات؛ | نقل المنتجات المكررة عبر الأنابيب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102206": {
+    "source_fr": "Distribution de gaz aux ménages; | Distribution de gaz aux usagers industriels.",
+    "translation_ar": "توزيع الغاز على الأسر؛ | توزيع الغاز على المستعملين الصناعيين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102207": {
+    "source_fr": "Tous travaux de pipe lines et de réalisation de | testes préalables à la mise en service de pipe lines ; | Tous travaux d'entretien et de réparation de pipe line ;",
+    "translation_ar": "جميع أشغال إنشاء خطوط أنابيب المحروقات وإجراء الاختبارات الأولية قبل وضعها في الخدمة؛ | جميع أعمال صيانة خطوط الأنابيب وإصلاحها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102208": {
+    "source_fr": "distribution d'électricité et/ou du gaz.",
+    "translation_ar": "توزيع الكهرباء و/أو الغاز.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102209": {
+    "source_fr": "transport d'électricité (réservée à la société SONELGAZ).",
+    "translation_ar": "نقل الكهرباء (نشاط محجوز لشركة سونلغاز).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102301": {
+    "source_fr": "Raffinage du pétrole et production d'essences pour moteurs, de fuels, d'huiles et graisses lubrifiantes et d'autres dérives du pétrole brut tels que : vaseline, paraffine, bitume etc...",
+    "translation_ar": "تكرير النفط وإنتاج وقود المحركات والفيول والزيوت والشحوم المزلِّقة ومشتقات أخرى من النفط الخام، مثل الفازلين والبارافين والبيتومين وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102302": {
+    "source_fr": "Gaz naturel liquéfié (G.N.L); | Gaz de pétrole liquéfié (G.P.L.); | Autres...",
+    "translation_ar": "الغاز الطبيعي المسال (GNL)؛ | غاز البترول المسال (GPL)؛ | منتجات أخرى...",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102303": {
+    "source_fr": "Fabrication de coke métallurgique et de coke destiné à l'industrie et aux hauts fourneaux .",
+    "translation_ar": "تصنيع فحم الكوك المعدني وفحم الكوك المخصص للصناعة والأفران العالية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102304": {
+    "source_fr": "Fabrication d'agglomérés, boulets et briquettes de combustibles solides (houille, anthracite etc..)",
+    "translation_ar": "تصنيع الكتل والقوالب المتكتلة من أنواع الوقود الصلب (الفحم الحجري والأنثراسيت وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102305": {
+    "source_fr": "Fabrication de lubrifiants à partir de mélanges d'huiles de base minérale issues d'un pétrole brut ou d'huiles synthétiques ou des deux types d'huiles additionnés de produits chimiques appelés additifs.",
+    "translation_ar": "تصنيع مواد التشحيم انطلاقاً من خلط زيوت أساسية معدنية مستخرجة من النفط الخام أو زيوت اصطناعية، أو من النوعين معاً، مع إضافة منتجات كيميائية تُسمّى إضافات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102306": {
+    "source_fr": "Toute activité liée à la régénération des huiles usagées.",
+    "translation_ar": "جميع الأنشطة المرتبطة بتجديد الزيوت المستعملة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "102307": {
+    "source_fr": "Construction des stations services de distribution de carburants; | Fabrication de leurs équipements tels que : les appareils distributeurs, les réservoirs de stockage à carburants; | Fabrication des équipements de mesure des produits (carburants, lubrifiants et dérivés).",
+    "translation_ar": "إنشاء محطات توزيع الوقود؛ | تصنيع تجهيزات هذه المحطات، مثل أجهزة التوزيع وخزانات تخزين الوقود؛ | تصنيع معدات قياس المنتجات (الوقود ومواد التشحيم ومشتقاتها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103101": {
+    "source_fr": "Extraction de minerai de fer; | Pyrites de fer grillés; | Enrichissement et autres traitements du minerai de fer (lavage, criblage, concentration, etc...).",
+    "translation_ar": "استخراج خام الحديد؛ | البيريت الحديدي المحمّص؛ | إثراء خام الحديد وإخضاعه للمعالجات الأخرى (الغسل والغربلة والتركيز وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
