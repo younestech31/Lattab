@@ -807,6 +807,206 @@
     "translation_ar": "تصنيع الطائرات وصيانتها، وتركيب وتجميع مكوناتها، وتصنيع تجهيزات ومعدات وقطع غيار الصيانة الخاصة بها.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "105424": {
+    "source_fr": "Fabrication des robots à usage multiples.",
+    "translation_ar": "تصنيع الروبوتات متعددة الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105425": {
+    "source_fr": "Fabrication et / ou construction des véhicules spécialement conçus pour le déplacement des personnes sur la neige ou sur les terrains de golf et véhicules similaire.",
+    "translation_ar": "تصنيع و/أو بناء المركبات المصممة خصيصاً لتنقل الأشخاص على الثلوج أو في ملاعب الغولف، والمركبات المماثلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105426": {
+    "source_fr": "Construction de motocycles dotés de moteur électrique.",
+    "translation_ar": "تصنيع الدراجات النارية المزودة بمحرك كهربائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105427": {
+    "source_fr": "fabrication de systèmes d’aéronefs sans pilote à bord et les pièces détachées et les accessoires des systèmes d’aéronefs sans pilote à bord.",
+    "translation_ar": "تصنيع أنظمة الطائرات دون طيار، وقطع غيارها ولوازمها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105501": {
+    "source_fr": "Fabrication de fils et câbles électriques nus; | Fabrication de fils et câbles électriques isolés; | Fabrication de fils souples et cordons pour appareils électriques; | Fabrication de fils et câbles téléphoniques; | Fabrication d'accessoires pour fils et câbles électriques (boites d'extrémités, de jonction etc); | Fabrication des accessoires de raccordement.",
+    "translation_ar": "تصنيع الأسلاك والكابلات الكهربائية غير المعزولة؛ | تصنيع الأسلاك والكابلات الكهربائية المعزولة؛ | تصنيع الأسلاك المرنة والوصلات الخاصة بالأجهزة الكهربائية؛ | تصنيع أسلاك وكابلات الهاتف؛ | تصنيع لوازم الأسلاك والكابلات الكهربائية، مثل علب النهايات وعلب التوصيل وغيرها؛ | تصنيع ملحقات الربط والتوصيل.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105502": {
+    "source_fr": "Fabrication de machines électriques tournantes(puissance 500 cv): alternateurs, moteurs électriques (y.c industriels), génératrices et leurs parties et pièces détachées; Fabrication de machines électriques tournantes puissance inférieure à 500 cv : alternateurs, moteurs et génératrices, groupes électrogènes et leurs parties et pièces détachées; | Fabrication de transformateurs, redresseurs, convertisseurs statiques, condensateurs, relais de commandes et autres appareillages de haute tension, de moyenne tension et de basse tension, y compris leurs parties et pièces détachées;- Fabrication d'équipements pour traction électrique sur voie ferrée, y compris leurs parties et pièces détachées; | Fabrication de matériels de signalisation de chemin de fer, y compris leurs parties et pièces détachées; Fabrication de tableaux de commande et de distribution; | Fabrication d'ascenseurs, de monte charges électriques et d'escaliers mécaniques, y.c leurs parties et pièces détachées; - Fabrication d'accélérateurs de particules, de séparateurs d'isotopes, de réacteurs nucléaires, y compris leurs parties et pièces détachées.",
+    "translation_ar": "تصنيع الآلات الكهربائية الدوارة ذات القدرة التي تبلغ 500 حصان: المولدات والمحركات الكهربائية، بما فيها الصناعية، وآلات التوليد وأجزاؤها وقطع غيارها؛ | تصنيع الآلات الكهربائية الدوارة ذات القدرة الأقل من 500 حصان: المولدات والمحركات وآلات التوليد ومجموعات المولدات الكهربائية وأجزاؤها وقطع غيارها؛ | تصنيع المحولات والمقومات والمحولات الساكنة والمكثفات ومرحلات التحكم وغيرها من أجهزة الجهد العالي والمتوسط والمنخفض، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع معدات الجر الكهربائي للسكك الحديدية، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع معدات الإشارات للسكك الحديدية، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع لوحات التحكم والتوزيع؛ | تصنيع المصاعد ورافعات البضائع الكهربائية والسلالم المتحركة، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع مسرّعات الجسيمات وفواصل النظائر والمفاعلات النووية، بما في ذلك أجزاؤها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105503": {
+    "source_fr": "Fabrication de matériel électronique professionnel (récepteurs-émetteurs, émetteurs | récepteurs, faisceaux hertziens etc...); | Fabrication d'éléments (parties, pièces détachées et accessoires) pour appareils radioélectriques et électroniques (circuits intégrés, transistors, diodes, tubes cathodiques, tubes électroniques, composants électroniques actifs, condensateurs électroniques passifs etc...)",
+    "translation_ar": "تصنيع المعدات الإلكترونية المهنية (أجهزة الإرسال والاستقبال، وأجهزة الإرسال-الاستقبال، وأنظمة الإرسال بالموجات الميكروية وغيرها)؛ | تصنيع العناصر والمكونات والأجزاء وقطع الغيار واللوازم الخاصة بالأجهزة اللاسلكية والإلكترونية، مثل الدارات المتكاملة والترانزستورات والصمامات الثنائية وأنابيب الأشعة المهبطية والأنابيب الإلكترونية والمكونات الإلكترونية الفعالة والمكثفات الإلكترونية السلبية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105504": {
+    "source_fr": "Fabrication de matériel électrique de signalisation, tel que feux de signalisation routiers, matériel électrique automatique de régulation du trafic des ports et aéroports, tableaux indicateurs électroniques, etc...; | Fabrication d'appareillages d'éclairage électrique autres que domestiques, tels que: dispositif d'éclairage de rues, lanternes industrielles, etc...; | Fabrication d'appareillages électriques d'installation tels que disjoncteurs fiches, interrupteurs, etc...; | Fabrication d'isolateurs minéraux ou plastiques, tubes isolateurs et autres chemins de câbles.",
+    "translation_ar": "تصنيع المعدات الكهربائية للإشارات، مثل إشارات المرور وتجهيزات التنظيم الآلي لحركة الموانئ والمطارات ولوحات المؤشرات الإلكترونية وغيرها؛ | تصنيع تجهيزات الإضاءة الكهربائية غير المنزلية، مثل تجهيزات إنارة الشوارع والمصابيح الصناعية وغيرها؛ | تصنيع أجهزة وتجهيزات التركيبات الكهربائية، مثل قواطع التيار والمقابس والمفاتيح وغيرها؛ | تصنيع العوازل المعدنية أو البلاستيكية وأنابيب العزل وغيرها من قنوات الكابلات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105505": {
+    "source_fr": "Fabrication de compteurs d'électricité, de générateurs de contrôle et de transformateurs de mesure; | Fabrication d'appareils automatiques de contrôle et de régulation de marche pour les installations industrielles (n.c. générateurs hautes fréquences et basses fréquences) | Fabrication de microscopes électroniques | Fabrication d'autres appareils électriques et électroniques de mesure et de contrôle, machines et appareils d'essai mécanique, instruments et appareils de métrologie, d'hydrologie et de géophysique, machines d'équilibrage, bancs d'essai, régulateurs d'humidité etc... y compris parties et pièces détachées",
+    "translation_ar": "تصنيع عدادات الكهرباء ومولدات الاختبار ومحولات القياس؛ | تصنيع أجهزة المراقبة والتحكم الآلي في تشغيل المنشآت الصناعية، باستثناء مولدات الترددات العالية والمنخفضة؛ | تصنيع المجاهر الإلكترونية؛ | تصنيع سائر أجهزة القياس والمراقبة الكهربائية والإلكترونية، وآلات وأجهزة الاختبار الميكانيكي، وأدوات وأجهزة القياس الدقيق والهيدرولوجيا والجيوفيزياء، وآلات الموازنة ومنصات الاختبار ومنظمات الرطوبة وغيرها، بما في ذلك الأجزاء وقطع الغيار.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105506": {
+    "source_fr": "Fabrication de piles et accumulateurs y compris parties et pièces détachées; | Fabrication de lampes électriques portatives y compris parties et pièces détachées.",
+    "translation_ar": "تصنيع البطاريات والمراكم الكهربائية، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع المصابيح الكهربائية المحمولة، بما في ذلك أجزاؤها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105507": {
+    "source_fr": "Fabrication de lampes et tubes électriques (à incandescence, décharge etc...).",
+    "translation_ar": "تصنيع المصابيح والأنابيب الكهربائية، بما فيها المصابيح المتوهجة ومصابيح التفريغ وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105508": {
+    "source_fr": "Fabrication d'appareils radiorécepteurs et téléviseurs, d'appareils électroniques d'enregistrement et de reproduction du son et de l'image (tourne disques, magnétophones, magnétoscopes, amplificateurs, microphones; | Fabrication d'électro-aimants et dispositifs électromagnétiques; | Fabrication de chauffe-eau et chauffe-bain électrique ou à gaz, machines à laver le linge et la vaisselle à usage domestique, réfrigérateurs domestiques, matériel de conditionnement de l'air domestique (ventilateur, conditionneur etc...), rasoirs et tondeuses électriques, appareils électrothermiques ménagers (couvertures chauffantes, fers à repasser domestiques, sèches cheveux etc...); | Fabrication de cuisinières, réchauds, chauffe plats (électriques ou au gaz ) à usage domestique; | Fabrication de petits appareils électroménagers : cireuses, moulins, cafetières, robots, mixeurs batteurs etc...; | Fabrication de parties, pièces et accessoires pour ces appareils.",
+    "translation_ar": "تصنيع أجهزة استقبال الراديو والتلفزيون، والأجهزة الإلكترونية لتسجيل الصوت والصورة وإعادة إنتاجهما، مثل مشغلات الأسطوانات والمسجلات وأجهزة الفيديو ومضخمات الصوت والميكروفونات؛ | تصنيع المغناطيسات الكهربائية والأجهزة الكهرومغناطيسية؛ | تصنيع سخانات المياه والحمامات الكهربائية أو العاملة بالغاز، والغسالات المنزلية وغسالات الأواني المنزلية والثلاجات المنزلية وتجهيزات تكييف الهواء المنزلية (المراوح والمكيفات وغيرها)، وآلات الحلاقة وقص الشعر الكهربائية، والأجهزة الكهروحرارية المنزلية (الأغطية المدفأة والمكاوي المنزلية ومجففات الشعر وغيرها)؛ | تصنيع المواقد والطباخات وأجهزة التسخين المنزلية الكهربائية أو العاملة بالغاز؛ | تصنيع الأجهزة الكهرومنزلية الصغيرة، مثل آلات تلميع الأرضيات والمطاحن وآلات القهوة والروبوتات والخلاطات والعجانات وغيرها؛ | تصنيع الأجزاء وقطع الغيار واللوازم الخاصة بهذه الأجهزة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105509": {
+    "source_fr": "Fabrication de matériels, équipements liés aux domaines de l'énergie solaire , électrique et de l’énergie de différentes origines, leurs accessoires et pièces détachées ; | Fabrication et assemblage d’isolateurs en verre trempé pour lignes d’énergie électrique ; | Fabrication d’accessoires pour lignes d’énergie électrique ; | Fabrication de pylônes pour lignes d’énergie électrique ; | Fabrication des conducteurs aériens et câbles souterrains pour le réseau d’énergie électrique ; | Fabrication des câbles de garde et câbles souterrains et aériens à fibre optique ; | Réalisation de lignes d’énergie électrique.",
+    "translation_ar": "تصنيع المعدات والتجهيزات المرتبطة بمجالات الطاقة الشمسية والكهربائية والطاقة من مختلف المصادر، بما في ذلك لوازمها وقطع غيارها؛ | تصنيع وتجميع العوازل المصنوعة من الزجاج المقسّى لخطوط الطاقة الكهربائية؛ | تصنيع لوازم خطوط الطاقة الكهربائية؛ | تصنيع أبراج خطوط الطاقة الكهربائية؛ | تصنيع الموصلات الهوائية والكابلات الأرضية لشبكات الطاقة الكهربائية؛ | تصنيع كابلات الحماية والكابلات الأرضية والهوائية المزودة بألياف بصرية؛ | إنجاز خطوط الطاقة الكهربائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105510": {
+    "source_fr": "Réalisation et conception de tout type de composants électroniques destinés à la maintenance industrielle.",
+    "translation_ar": "إنجاز وتصميم جميع أنواع المكونات الإلكترونية المخصصة للصيانة الصناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105511": {
+    "source_fr": "Fabrication de panneaux de signalisation routière et auto-routière; | Fabrication des portiques et potences; | Travaux de pose de la glissière de sécurité; | Travaux de réalisation de la signalisation horizontale; | Fabrication de signalisation lumineuse.",
+    "translation_ar": "تصنيع لوحات إشارات الطرق والطرقات السريعة؛ | تصنيع الهياكل والحوامل المخصصة للإشارات؛ | أشغال تركيب حواجز السلامة؛ | أشغال إنجاز الإشارات الأفقية على الطرق؛ | تصنيع تجهيزات الإشارات الضوئية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105512": {
+    "source_fr": "Fabrication de matériels de lutte contre les intrusions, le feu et tous autres articles de protection et de sécurité ; | Fabrication de matériels de surveillance, d'alerte, de gardiennage et de tous équipements et matériels de télésurveillance, de détecteurs de métaux, portiques de détection, etc.; | Fabrication d’appareils et équipements de gestion de la monétique ; | Fabrication de parties, pièces détachées et accessoires.",
+    "translation_ar": "تصنيع معدات مكافحة التسلل والحرائق وسائر أدوات الحماية والأمن؛ | تصنيع معدات المراقبة والإنذار والحراسة وجميع تجهيزات ومعدات المراقبة عن بُعد وكواشف المعادن وبوابات الكشف وغيرها؛ | تصنيع أجهزة وتجهيزات إدارة وسائل الدفع الإلكتروني؛ | تصنيع الأجزاء وقطع الغيار واللوازم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105513": {
+    "source_fr": "Fabrication d'enseignes lumineuses, de panneaux publicitaires, d'autocollants….etc",
+    "translation_ar": "تصنيع اللافتات المضيئة واللوحات الإشهارية والملصقات اللاصقة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105514": {
+    "source_fr": "Fabrication de matériel téléphonique tel que centraux et postes téléphoniques et autres matériels et équipements téléphoniques ainsi que leurs parties et pièces détachées; | Fabrication de matériel pour la télégraphie tel que télex et autres, ainsi que leurs parties et pièces détachées.",
+    "translation_ar": "تصنيع المعدات الهاتفية، مثل المقاسم والمحطات الهاتفية وغيرها من المعدات والتجهيزات الهاتفية، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع معدات التلغراف، مثل أجهزة التلكس وغيرها، بما في ذلك أجزاؤها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105515": {
+    "source_fr": "Fabrication des dispositifs de signalisation | lumineuse spécifiques installés ou destinés à être installés sur des véhicules et diffusant une lumière de couleur, bleue, rouge ou orange, en plus des dispositifs normaux, notamment : | 1. les feux spéciaux tournants (gyrophares) ; | 2. les feux spéciaux à éclats ou scintillants ; | 3. les rampes spéciales de signalisation ; | Fabrication des dispositifs sonores spéciaux | (sirènes) installés ou destinés à être installés, en plus des avertisseurs normaux, sur les véhicules des services prévus par le décret exécutif n° 04-381 du 28 novembre 2004, fixant les règles de la circulation routière. | Fabrication des dispositifs de signalisation lumineuse d’obstacles routiers.",
+    "translation_ar": "تصنيع أجهزة الإشارات الضوئية الخاصة التي تُركّب أو تُعدّ للتركيب على المركبات، والتي تصدر ضوءاً بألوان زرقاء أو حمراء أو برتقالية، إضافة إلى أجهزة الإضاءة العادية، ولا سيما: | 1- الأضواء الخاصة الدوارة (المنارات التحذيرية الدوارة)؛ | 2- الأضواء الخاصة الومّاضة أو المتلألئة؛ | 3- القضبان الخاصة للإشارات الضوئية؛ | تصنيع أجهزة التنبيه الصوتي الخاصة (الصفارات)، المخصصة للتركيب على مركبات المصالح المنصوص عليها في المرسوم التنفيذي رقم 04-381 المؤرخ في 28 نوفمبر 2004، المحدد لقواعد حركة المرور، إضافة إلى المنبهات العادية؛ | تصنيع أجهزة الإشارات الضوئية للعوائق على الطرق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105516": {
+    "source_fr": "Fabrication des téléphones, des tablettes et des Smartphones",
+    "translation_ar": "تصنيع الهواتف والأجهزة اللوحية والهواتف الذكية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105517": {
+    "source_fr": "Fabrication d’équipements de radiocommunications toutes bandes et versions confondues, en particulier : | 1- les stations de radiocommunications (à usage terrestre, aéronautique et maritime) dans les bandes LF, MF leur unité collective ; | , HF, VHF, UHF, SHF et les éléments entrant dans | leur unité collective ; | 2- les stations de radiocommunications par satellite ; | 3- les stations de faisceaux hertziens de | télécommunications. | Fabrication de tout équipement pouvant rayonner de l’énergie électromagnétique dans l’espace libre des spectres des fréquences radioélectriques, y compris les appareils de faible puissance et de faible portée et notamment les prolongateurs de lignes téléphoniques dits« cordless ».",
+    "translation_ar": "تصنيع معدات الاتصالات اللاسلكية بجميع النطاقات والإصدارات، ولا سيما: | 1- محطات الاتصالات اللاسلكية للاستعمال الأرضي والجوي والبحري، ضمن نطاقات الترددات المنخفضة والمتوسطة والعالية والعالية جداً وفائقة العلو والميكروية (LF وMF وHF وVHF وUHF وSHF)، بما في ذلك الوحدات والعناصر المكونة لها؛ | 2- محطات الاتصالات اللاسلكية عبر الأقمار الصناعية؛ | 3- محطات وصلات الموجات الميكروية للاتصالات؛ | تصنيع جميع المعدات القادرة على بث طاقة كهرومغناطيسية في الفضاء الحر ضمن أطياف الترددات الراديوية، بما في ذلك الأجهزة ذات القدرة والمدى المنخفضين، ولا سيما موسعات الخطوط الهاتفية المعروفة باسم الهواتف اللاسلكية (cordless).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105518": {
+    "source_fr": "Fabrication d’équipements de réception des émissions radioélectriques à l’exclusion des équipements domestiques destinés à la réception des émissions publiques radio et télédiffusion ; | Fabrication d’équipements de radio | positionnement et/ou radiolocalisation par satellite ainsi que le système de géolocalisation par radio et les | dispositifs de positionnement par satellite fonctionnant à travers les réseaux de téléphonie mobile ; | Fabrication d’équipements de communication pouvant servir à la transmission de l’image, son, vidéo et données, par voie satellitaire (à l’exception les balises de détresse du système COSPAS-SARSAT émettant à 406 mégahertz).",
+    "translation_ar": "تصنيع معدات استقبال البث اللاسلكي، باستثناء المعدات المنزلية المخصصة لاستقبال البث الإذاعي والتلفزيوني العمومي؛ | تصنيع معدات تحديد المواقع و/أو تحديد المواقع الراديوية عبر الأقمار الصناعية، وكذلك أنظمة تحديد المواقع الجغرافية بواسطة الراديو وأجهزة تحديد المواقع عبر الأقمار الصناعية العاملة من خلال شبكات الهاتف النقال؛ | تصنيع معدات الاتصال التي يمكن استخدامها لنقل الصور والصوت والفيديو والبيانات عبر الأقمار الصناعية، باستثناء منارات الاستغاثة التابعة لنظام COSPAS-SARSAT التي تبث على تردد 406 ميغاهرتز.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105519": {
+    "source_fr": "Fabrication de cartes post-payées et prépayées (puces de téléphonie mobile) ; | Fabrication de cartes post-payées ; | Fabrication de cartes prépayées",
+    "translation_ar": "تصنيع بطاقات الدفع اللاحق والمسبق (شرائح الهاتف النقال)؛ | تصنيع بطاقات الدفع اللاحق؛ | تصنيع بطاقات الدفع المسبق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105520": {
+    "source_fr": "Fabrication d’équipements de vidéosurveillance fixes, à l’exception de ceux dotés pour la vision nocturne. | Fabrication d’équipements de vidéosurveillance transportables.",
+    "translation_ar": "تصنيع تجهيزات ثابتة للمراقبة بالفيديو، باستثناء التجهيزات المزودة بإمكانات الرؤية الليلية؛ | تصنيع تجهيزات قابلة للنقل للمراقبة بالفيديو.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105521": {
+    "source_fr": "Fabrication d’équipements de contrôles techniques destinés à l’inspection des colis et bagages, aux contrôles des personnes et autres, notamment : | 1- les scanners pour inspection des véhicules,conteneurs, colis et bagages ; | 2- les générateurs portables de rayon X pour inspection de colis suspects ; | 3- les portiques de détection de métaux et autres matières pour contrôle des accès ; | 4 - les détecteurs de métaux portables (à main) ; | 5 - les détecteurs d’explosifs et/ou de drogues ; | 6 - les détecteurs de gaz destinés à des applications propres à l’environnement. | Fabrication d’équipements anti-intrusion actifs, comprenant des dispositifs de dissuasion et/ou de neutralisation dangereux ou pouvant le devenir, à l’exclusion de ceux classés par le décret exécutif n° 98-96 du 18 mars1998, modifié et complété, fixant les modalités d’application de l’ordonnance n° 97-06 du 21 janvier 1997 relative aux matériels de guerre, armes et munitions.",
+    "translation_ar": "تصنيع معدات المراقبة التقنية المخصصة لتفتيش الطرود والأمتعة ومراقبة الأشخاص وغيرها، ولا سيما: | 1- أجهزة المسح الضوئي لتفتيش المركبات والحاويات والطرود والأمتعة؛ | 2- مولدات الأشعة السينية المحمولة لتفتيش الطرود المشبوهة؛ | 3- بوابات كشف المعادن والمواد الأخرى لمراقبة الدخول؛ | 4- أجهزة كشف المعادن المحمولة باليد؛ | 5- أجهزة كشف المتفجرات و/أو المخدرات؛ | 6- كواشف الغازات المخصصة للتطبيقات البيئية؛ | تصنيع معدات فعالة لمكافحة التسلل، تشمل أجهزة الردع و/أو التعطيل التي قد تكون خطرة أو قد تصبح كذلك، باستثناء المعدات المصنفة بموجب المرسوم التنفيذي رقم 98-96 المؤرخ في 18 مارس 1998، المعدل والمتمم، المحدد لكيفيات تطبيق الأمر رقم 97-06 المؤرخ في 21 يناير 1997 المتعلق بالعتاد الحربي والأسلحة والذخائر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105522": {
+    "source_fr": "Fabrication d’équipements de maintien de l’ordre (les menottes, les lampes tactiques, y compris celles adaptables sur les armes, à l’exception des lampes dotées de pointeur laser) ; | Fabrication des matériels de protection anti- coups, à l’exception des équipements de protection balistique (anti-balles et éclats), notamment : | 1- les écrans de protection anti-coups y compris les boucliers de maintien de l’ordre de forme concave ou convexe (de capture) ; | 2- les casques et visières de protection anti-coups ; | 3- les effets rigides de protection du corps (haut du corps, coudes et avant-bras, genoux et tibias, moufles, manchettes) ; | 4- les gilets, combinaisons et imperméables anti-coups et objets contendants ; | Fabrication des véhicules et engins, non blindés,anti-émeutes, notamment : | 1- les véhicules d’intervention durcis contre le feu et la projection de projectiles ; | 2- les engins dotés de lame-dozer et canon à eau.",
+    "translation_ar": "تصنيع معدات حفظ النظام، مثل الأصفاد والمصابيح التكتيكية، بما فيها القابلة للتثبيت على الأسلحة، باستثناء المصابيح المزودة بمؤشر ليزر؛ | تصنيع معدات الحماية من الصدمات، باستثناء معدات الحماية الباليستية (ضد الرصاص والشظايا)، ولا سيما: | 1- شاشات الحماية من الصدمات، بما في ذلك الدروع المقعرة أو المحدبة المخصصة لحفظ النظام والاحتواء؛ | 2- الخوذات والواقيات الوجهية المضادة للصدمات؛ | 3- واقيات الجسم الصلبة (للجزء العلوي من الجسم والمرفقين والساعدين والركبتين والساقين والقفازات والأكمام الواقية)؛ | 4- السترات والبدلات والمعاطف الواقية من الصدمات والأدوات الحادة؛ | تصنيع المركبات والآليات غير المدرعة المخصصة لمكافحة الشغب، ولا سيما: | 1- مركبات التدخل المعززة لمقاومة الحرائق ورشق المقذوفات؛ | 2- الآليات المزودة بشفرة جرافة ومدفع مائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105523": {
+    "source_fr": "Fabrication des accessoires des téléphones mobiles (chargeurs de batteries, écouteurs, kit main libre…) (autres que les équipements sensibles).",
+    "translation_ar": "تصنيع لوازم الهواتف النقالة، مثل شواحن البطاريات وسماعات الأذن ومجموعات التحدث دون استعمال اليدين وغيرها، باستثناء التجهيزات الحساسة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105524": {
+    "source_fr": "Production de compteuses de billes et de pièces, d'automates de banque, d'appareils de traitement de chèques et d'équipements d'agences bancaires. ; | Production d'appareils et d'équipements de la gestion de la monétique.",
+    "translation_ar": "إنتاج أجهزة عدّ الأوراق النقدية والقطع النقدية، وأجهزة الصراف الآلي، وأجهزة معالجة الشيكات، وتجهيزات الوكالات البنكية؛ | إنتاج الأجهزة والتجهيزات الخاصة بإدارة وسائل الدفع الإلكتروني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105601": {
+    "source_fr": "Fabrication de montres, chronomètres, horloges, pendules, réveils et autres; | Fabrication d'appareils de contrôle et compteurs à mouvement d'horlogerie; | Fabrication de fournitures d'horlogerie: mouvement et boite de montres, horloges, pendules, réveils et autres fournitures; | Fabrication d'outils spéciaux pour l'horlogerie.",
+    "translation_ar": "تصنيع الساعات اليدوية وساعات التوقيت والساعات الحائطية وساعات الوقوف والمنبهات وغيرها؛ | تصنيع أجهزة المراقبة والعدادات المزودة بآليات الساعة؛ | تصنيع لوازم صناعة الساعات، مثل الآليات وهياكل الساعات اليدوية والحائطية وساعات الوقوف والمنبهات وغيرها من اللوازم؛ | تصنيع الأدوات الخاصة بصناعة الساعات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105602": {
+    "source_fr": "Fabrication de compteurs et d'appareils comportant un dispositif mesureur (compteurs de liquide, de gaz, détenteurs et manomètres, compteurs de tours, de production, taximètres, podomètres, tachéomètres, indicateurs de vitesse, stroboscopes etc...), et leurs parties et pièces détachées; | Fabrication d'appareils de pesage autres que de précision tels que balances, bascules, pèse-personnes et leurs parties et pièces; | Fabrication d'instruments de métrologie tels que micromètres, palmers, jauges, calibres etc...; | Fabrication d'appareils automatiques de contrôle et de régulation de marche pour installations industrielles (non compris les générateurs de hautes et basses fréquences).",
+    "translation_ar": "تصنيع العدادات والأجهزة المزودة بآلية للقياس، مثل عدادات السوائل والغازات ومنظمات الضغط ومقاييس الضغط وعدادات الدورات والإنتاج وأجهزة حساب أجرة سيارات الأجرة ومقاييس الخطوات ومقاييس السرعة ومؤشرات السرعة وأجهزة قياس الوميض وغيرها، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع أجهزة الوزن غير الدقيقة، مثل الموازين والقِبّانات وموازين الأشخاص، وأجزائها؛ | تصنيع أدوات القياس الدقيق، مثل الميكرومترات وأجهزة القياس الدقيقة والقدّادات ومقاييس المعايرة وغيرها؛ | تصنيع أجهزة المراقبة والتحكم الآلي في تشغيل المنشآت الصناعية، باستثناء مولدات الترددات العالية والمنخفضة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105603": {
+    "source_fr": "Fabrication d'instruments d'optique (autres qu'électronique) : microscopes optiques, loupes, instruments optiques de mesure, de vérification et de contrôle, instruments optiques de laboratoire, et autres instruments et matériels optiques tels que les prismes, miroirs, lentilles, objectifs pour matériel photographique et cinématographique etc...; | Fabrication d'instruments de précision et leurs parties et pièces détachées (compas, tire-lignes, règles à calcul, instruments non optiques de laboratoire, etc...).",
+    "translation_ar": "تصنيع الأدوات البصرية غير الإلكترونية، مثل المجاهر البصرية والعدسات المكبرة وأدوات القياس والتحقق والمراقبة البصرية وأدوات المختبر البصرية وغيرها من الأدوات والمعدات البصرية، مثل المناشير والمرايا والعدسات وأهداف أجهزة التصوير الفوتوغرافي والسينمائي وغيرها؛ | تصنيع أدوات القياس الدقيق وأجزائها وقطع غيارها، مثل الفرجارات وأقلام الرسم الهندسي والمسطرة الحاسبة وأدوات المختبر غير البصرية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105604": {
+    "source_fr": "Fabrication de lunettes et verres pour la protection et la correction de la vue; | Fabrication de montures de lunettes pour tous usages. | Fabrication de lentilles de contact.",
+    "translation_ar": "تصنيع النظارات والعدسات المخصصة لحماية البصر وتصحيح النظر؛ | تصنيع إطارات النظارات لجميع الاستعمالات؛ | تصنيع العدسات اللاصقة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105605": {
+    "source_fr": "Fabrication d'appareils photographiques et leurs accessoires (nc lampes-flash et objectifs); | Fabrication de matériel cinématographique (appareils de prise de vue, appareils de projection); | Fabrication d'équipements de laboratoire photographique et cinématographique.",
+    "translation_ar": "تصنيع آلات التصوير الفوتوغرافي ولوازمها، باستثناء مصابيح الفلاش والعدسات؛ | تصنيع المعدات السينمائية، مثل آلات التصوير وأجهزة العرض؛ | تصنيع تجهيزات مختبرات التصوير الفوتوغرافي والسينمائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105606": {
+    "source_fr": "Fabrication de tous appareils et instruments de mesure et pesage pour l'utilisation scientifique, industrielle et commerciale; | Fabrication de matériels, instruments et appareils dstinés à équiper tous types de laboratoires et à effectuer toutes les analyses de toutes natures ( physiques, chimiques, microbiologiques, etc); | Fabrication d'équipements scientifiques, d'appareils de recherche et d'expérimentation et de tous articles, instruments et outils destinés à l'enseignement ou à la formation; | Fabrication d'équipements scientifiques, d'appareils et de tous instruments destinés au contrôle de la qualité et aux laboratoires, y compris leurs accessoires, pièces détachées, consommables et réactifs chimiques; | Fabrication de matériels didactiques d'illustration et de démonstration.",
+    "translation_ar": "تصنيع جميع أجهزة وأدوات القياس والوزن للاستعمالات العلمية والصناعية والتجارية؛ | تصنيع المعدات والأدوات والأجهزة المخصصة لتجهيز جميع أنواع المختبرات وإجراء مختلف التحاليل (الفيزيائية والكيميائية والميكروبيولوجية وغيرها)؛ | تصنيع التجهيزات العلمية وأجهزة البحث والتجريب وجميع الأدوات والأدوات الدقيقة والوسائل المخصصة للتعليم أو التكوين؛ | تصنيع التجهيزات العلمية والأجهزة والأدوات المخصصة لمراقبة الجودة والمختبرات، بما في ذلك لوازمها وقطع غيارها والمواد الاستهلاكية والكواشف الكيميائية؛ | تصنيع الوسائل التعليمية التوضيحية والعرضية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105607": {
+    "source_fr": "Fabrication d’équipements sensibles (non pourvus de capacités de vision nocturne),tels que : | 1. Les longues-vues, y compris les téléobjectifs, et les jumelles ordinaires non pourvues de réticules permettant la détermination de la distance ; | 2. Les lunettes panoramiques ; | 3. Les lunettes astronomiques et les télescopes, à | l’exception des équipements professionnels volumineux et non déplaçables, nécessitant une infrastructure appropriée ; | 4. Les accessoires susceptibles d’être utilisés comme moyen de visée, notamment, les stylos-lasers.",
+    "translation_ar": "تصنيع التجهيزات البصرية الحساسة غير المزودة بقدرات للرؤية الليلية، مثل: | 1- المناظير المقربة، بما في ذلك العدسات المقربة، والمناظير الثنائية العادية غير المزودة بشبكات تقدير المسافة؛ | 2- النظارات البانورامية؛ | 3- النظارات الفلكية والتلسكوبات، باستثناء التجهيزات المهنية الضخمة غير القابلة للنقل التي تتطلب بنية تحتية ملائمة؛ | 4- اللوازم التي يمكن استعمالها كوسائل للتسديد، ولا سيما أقلام الليزر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105701": {
+    "source_fr": "Fabrication de machines de bureau : machines à écrire, sténotypes, machines à calculer non programmables, machines de reprographie (duplicateurs, photocopieurs, caisses enregistreuses, machines pour le courrier, etc...), y compris leurs parties et pièces détachées; | Fabrication d'ordinateurs et d'autres équipements informatiques: imprimantes, scanners, traceurs, calculateurs programmables, etc...; | Fabrication de leurs parties et pièces détachées. | Reproduction de logiciels sur CD ROM . | Production de systèmes embarqués ; | Conception de contenus auditifs destinés aux usagers de la téléphonie mobile et fixe.",
+    "translation_ar": "تصنيع آلات المكاتب، مثل الآلات الكاتبة وآلات الاختزال وآلات الحساب غير القابلة للبرمجة وآلات استنساخ الوثائق (آلات النسخ وآلات التصوير وآلات تسجيل النقد وآلات معالجة البريد وغيرها)، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع الحواسيب وغيرها من معدات الإعلام الآلي، مثل الطابعات والماسحات الضوئية والراسمات والحواسيب القابلة للبرمجة وغيرها؛ | تصنيع أجزائها وقطع غيارها؛ | استنساخ البرمجيات على الأقراص المدمجة (CD-ROM)؛ | إنتاج الأنظمة المدمجة؛ | تصميم محتويات صوتية موجهة لمستخدمي الهاتف النقال والثابت.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105702": {
+    "source_fr": "Fabrication de tous produits parapharmaceutiques et tous autres produits destinés à l'emballage des produits parapharmaceutiques.",
+    "translation_ar": "تصنيع جميع المنتجات شبه الصيدلانية وسائر المنتجات المخصصة لتغليف المنتجات شبه الصيدلانية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105703": {
+    "source_fr": "Fabrication de tous matériels, équipements, appareils et articles destinés aux handicapés y compris les pièces détachées, parties, consommables et accessoires.",
+    "translation_ar": "تصنيع جميع المعدات والتجهيزات والأجهزة والمواد المخصصة للأشخاص ذوي الإعاقة، بما في ذلك قطع الغيار والأجزاء والمواد الاستهلاكية واللوازم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105704": {
+    "source_fr": "Fabrication d'équipements et de fournitures industriels tels que sangles, élévateurs, courroies, joints, roulements, filtres, etc.",
+    "translation_ar": "تصنيع المعدات واللوازم الصناعية، مثل الأحزمة والرافعات والسيور والحشيات والمحامل والمرشحات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105705": {
+    "source_fr": "Fabrication d’équipements et logiciels d’encryptions.",
+    "translation_ar": "تصنيع معدات وبرمجيات التشفير.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
