@@ -3242,6 +3242,226 @@
     "translation_ar": "البيع بالجملة لأنظمة الطائرات دون طيار؛ | البيع بالجملة لقطع غيار أنظمة الطائرات دون طيار ولوازمها؛ | البيع بالجملة بالمنتجات والتجهيزات والوسائل المرتبطة بأنظمة الطائرات دون طيار.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "306001": {
+    "source_fr": "Commerce de gros de pièces détachées et accessoires pour véhicules tous tonnages (légers ou lourds) et remorques.",
+    "translation_ar": "تجارة الجملة بقطع الغيار واللوازم الخاصة بجميع المركبات، مهما كانت حمولتها، خفيفة أو ثقيلة، وبالمقطورات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "306002": {
+    "source_fr": "Commerce de gros de matériels et pièces de rechange destinés à l'entretien et à la réparation de tous engins autotractés (engins industriels, grues, engins de manutention, engins de BTP...).",
+    "translation_ar": "تجارة الجملة بالمعدات وقطع الغيار المخصصة لصيانة وإصلاح جميع الآليات ذاتية الحركة، مثل الآليات الصناعية والرافعات وآلات المناولة ومعدات البناء والأشغال العمومية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "306003": {
+    "source_fr": "Commerce de gros de cycles et motocycles; | Commerce de gros de pièces détachées et accessoires pour cycles et motocycles.",
+    "translation_ar": "تجارة الجملة بالدراجات الهوائية والدراجات النارية؛ | تجارة الجملة بقطع الغيار واللوازم الخاصة بالدراجات الهوائية والدراجات النارية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "306004": {
+    "source_fr": "Commerce de gros de pneumatiques neufs et usagés pour tous types de véhicules.",
+    "translation_ar": "تجارة الجملة بالإطارات الجديدة والمستعملة لجميع أنواع المركبات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "306005": {
+    "source_fr": "Commerce de gros d'outils et outillages industriels (outils de fraisage, pandrinage et taillage de métaux communs), clés de serrage, outillage de pressage, de filetage et taraudage , tenailles, pinces et similaires ; emportes pièces, coupes tubes, boulons, serres joints et autres articles similaires; outils de tournage et autres outils pour machines et outillages divers utilisés dans la maintenance et les réparations mécaniques .",
+    "translation_ar": "تجارة الجملة بالأدوات والعدد الصناعية، مثل أدوات التفريز والثقب وقطع المعادن، ومفاتيح الشد وأدوات الكبس واللولبة والتنقير والكماشات والملقط وما يماثلها؛ | أدوات القص والقوالب القاطعة وقواطع الأنابيب والبراغي ومشابك التثبيت وسائر المنتجات المماثلة؛ | أدوات الخراطة وغيرها من أدوات الآلات والعدد المختلفة المستخدمة في الصيانة والإصلاحات الميكانيكية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "306006": {
+    "source_fr": "Commerce de gros de batteries pour tous véhicules; | Commerce de gros d'eau distillée et acidulée, de glacéole et articles similaires.",
+    "translation_ar": "تجارة الجملة بالبطاريات لجميع المركبات؛ | تجارة الجملة بالماء المقطر والماء المحمّض وسائل التبريد والمنتجات المماثلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "306007": {
+    "source_fr": "Distribution en gros de matériel de terrain et d’entrainement (pilotage au sol, simulateur de conduite terrestre et navale).",
+    "translation_ar": "التوزيع بالجملة لمعدات الميدان والتدريب، مثل التدريب على القيادة الأرضية ومحاكيات قيادة المركبات البرية والبحرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "306101": {
+    "source_fr": "Vente en gros de produits et articles déstinés à la fabrication de chaussures (cuir, toile plastique, feutre, colle, polish, cirage, rivet, oeillets, semelle, élastique, salpa, bâche, fils, grain P.V.C et T.R, semelle, etc...).",
+    "translation_ar": "البيع بالجملة بالمنتجات والمواد المخصصة لصناعة الأحذية، مثل الجلد والقماش والبلاستيك واللباد والغراء ومواد التلميع والشموع والمسامير والحلقات المعدنية والنعال والأشرطة المطاطية والمواد المساعدة والخيوط وحبيبات PVC وTR وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "306103": {
+    "source_fr": "Vente en gros d'articles et demi produits en caoutchouc destinés à tous usages (plaques, feuilles, bandes, tissus caoutchoutés, articles d'hygiéne et de pharmacie en caoutchouc); | Vente en gros d'ouvrages en caoutchouc à usage industriel (fils, courroies, tubes, tuyaux); | Vente en gros d'articles en caoutchouc (jouets, articles de sport et de loisirs,..); | Vente en gros d'articles en plastique destinés à tout | usage, plaques, feuilles, bandes, films plastique à usage agricole, films de protection et d'emballage, bouteilles, flacons, pots, boites, etc...; | vente en gros de tissus plastifiés, ouvrage en plastique à usage industriel (fils, courroies, tubes, tuyaux, etc...); | Vente en gros d'autres articles en plastique (jouets, articles de sport, vêtements, parapluies autres articles destinés à tou usages .",
+    "translation_ar": "البيع بالجملة بالمنتجات والمواد نصف المصنعة من المطاط المخصصة لجميع الاستعمالات، مثل الصفائح والشرائط والأقمشة المطاطية والمنتجات المطاطية الصحية والصيدلانية؛ | البيع بالجملة بمصنوعات المطاط للاستعمال الصناعي، مثل الخيوط والسيور والأنابيب والمواسير؛ | البيع بالجملة بالمصنوعات المطاطية، مثل الألعاب والمواد الرياضية والترفيهية؛ | البيع بالجملة بالمصنوعات البلاستيكية المخصصة لجميع الاستعمالات، مثل الصفائح والشرائط والأفلام البلاستيكية الزراعية وأفلام الحماية والتغليف والقوارير والعبوات والأواني والعلب وغيرها؛ | البيع بالجملة بالأقمشة المكسوة بالبلاستيك والمصنوعات البلاستيكية الصناعية، مثل الخيوط والسيور والأنابيب والمواسير وغيرها؛ | البيع بالجملة بمصنوعات بلاستيكية أخرى، مثل الألعاب والمواد الرياضية والملابس والمظلات وغيرها من المنتجات المخصصة لمختلف الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307101": {
+    "source_fr": "Commerce de gros de tous articles et vêtements destinés à la pratique de tout sport et au camping y compris les articles de voyage (sacs de couchage, malles, mallettes, portes habits, sacs de voyage, lits de camp, tentes, etc.)",
+    "translation_ar": "تجارة الجملة بجميع المواد والملابس المخصصة لممارسة مختلف الرياضات والتخييم، بما في ذلك لوازم السفر، مثل أكياس النوم والصناديق والحقائب وحافظات الملابس وحقائب السفر وأسرّة التخييم والخيام وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307102": {
+    "source_fr": "Commerce de gros de barques et autres embarcations avec ou sans moteurs, à voiles, destinés à la pêche, la plaisance ou au sport; | Commerce de gros d'équipements et d'accessoires: rames, voiles, cordages, feux de signalisation et sauvetage y compris vêtements spécialisés, articles de sauvetage, etc...",
+    "translation_ar": "تجارة الجملة بالقوارب وسائر المراكب المخصصة للصيد أو النزهة أو الرياضة، سواء كانت مزودة بمحركات أم لا، وشراعية أو غير شراعية؛ | تجارة الجملة بالتجهيزات واللوازم، مثل المجاديف والأشرعة والحبال وأضواء الإشارات والإنقاذ، بما في ذلك الملابس الخاصة ومستلزمات النجاة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307103": {
+    "source_fr": "Commerce de gros de tous jouets et articles d'amusement (à l'exclusion des articles de sport), jeux de société (cartes à jouer, dominos, jeux d'échecs etc...); | Commerce de gros d'appareils de musique et autres gadgets récréatifs.",
+    "translation_ar": "تجارة الجملة بجميع الألعاب والمواد الترفيهية، باستثناء المواد الرياضية، وألعاب الطاولة مثل أوراق اللعب والدومينو والشطرنج وغيرها؛ | تجارة الجملة بالأجهزة الموسيقية وسائر الأدوات الترفيهية الصغيرة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307104": {
+    "source_fr": "Commerce de gros d'armes et artifices de chasse et de divertissement (munitions, pièges, et tous articles et équipements destinés à la chasse et à la pratique du tir sportif); | Commerce de gros de pièces détachées et d'outillage pour l'entretien des fusils et la préparation des cartouches.",
+    "translation_ar": "تجارة الجملة بأسلحة ومستلزمات الصيد وأدوات الترفيه النارية، مثل الذخائر والفخاخ وجميع المواد والتجهيزات المخصصة للصيد وممارسة الرماية الرياضية؛ | تجارة الجملة بقطع الغيار والأدوات المخصصة لصيانة البنادق وتحضير الخراطيش.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307105": {
+    "source_fr": "Commerce de gros d’équipements destinés aux | installations réservées à la pratique des exercices de tir, sportifs ou autres, notamment : | 1- les stands de tir et leurs accessoires ; | 2- les casques anti-bruit électroniques ; | 3- les simulateurs de tir, à l’exception de ceux destinés aux forces armées.",
+    "translation_ar": "تجارة الجملة بالتجهيزات المخصصة للمنشآت التي تُجرى فيها تمارين الرماية، سواء كانت رياضية أو غيرها، ولا سيما: | 1- ميادين الرماية ولوازمها؛ | 2- الخوذ الإلكترونية المضادة للضوضاء؛ | 3- محاكيات الرماية، باستثناء المخصصة للقوات المسلحة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307201": {
+    "source_fr": "Commerce de gros de livres, de revues périodiques et fournitures scolaires,jeux éducatifs,papeterie; | Commerce de gros des fournitures pour dessin industriel, architecture, sculpture, peinture artistique et autres activités similaires spécialisées entrant dans la catégorie des beaux arts",
+    "translation_ar": "تجارة الجملة بالكتب والدوريات واللوازم المدرسية والألعاب التعليمية والقرطاسية؛ | تجارة الجملة باللوازم المخصصة للرسم الصناعي والهندسة المعمارية والنحت والرسم الفني وسائر الأنشطة المتخصصة المماثلة الداخلة ضمن الفنون الجميلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307202": {
+    "source_fr": "Commerce de gros de livres d'occasion",
+    "translation_ar": "تجارة الجملة بالكتب المستعملة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307203": {
+    "source_fr": "Commerce de gros de matériels et fournitures scientifiques (loupes, microscopes, bacs, éprouvettes, verrerie de laboratoire, ...).",
+    "translation_ar": "تجارة الجملة بالمعدات والمواد واللوازم المخصصة للتعليم والجماعات، مثل اللوازم العلمية (العدسات المكبرة والمجاهر والأحواض وأنابيب الاختبار والزجاجيات المخبرية وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307204": {
+    "source_fr": "Commerce de gros de tous tabacs à fumer, à chiquer et à mâcher; | Commerce de gros d'allumettes.",
+    "translation_ar": "تجارة الجملة بجميع أنواع التبغ المخصص للتدخين أو المضغ؛ | تجارة الجملة بأعواد الثقاب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307205": {
+    "source_fr": "Distribution en gros de briquets, pipes et autres articles pour fumeurs; | Distribution en gros d’allumettes.",
+    "translation_ar": "التوزيع بالجملة للقداحات والغليون وسائر لوازم التدخين؛ | التوزيع بالجملة بأعواد الثقاب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307206": {
+    "source_fr": "Distribution en gros de tabacs, articles pour fumeurs, de briquets, articles de bazar et journaux.",
+    "translation_ar": "التوزيع بالجملة بالتبغ ولوازم التدخين والقداحات وأدوات البازار والصحف.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307301": {
+    "source_fr": "Commerce de gros de tous instruments de musique (instruments à corde, à percussion, à vent, instruments électronique, etc ...); | Commerce de gros des articles et fournitures y compris publications musicales, papier à musique et fournitures pour musiciens; matériel d'éclairage spécialisé, cadres pour photo etc...",
+    "translation_ar": "تجارة الجملة بجميع الآلات الموسيقية، مثل الآلات الوترية والإيقاعية وآلات النفخ والآلات الإلكترونية وغيرها؛ | تجارة الجملة بالمواد واللوازم المرتبطة بالأنشطة الفنية، بما في ذلك المنشورات الموسيقية وورق النوتة ولوازم الموسيقيين ومعدات الإضاءة المتخصصة وإطارات الصور وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307302": {
+    "source_fr": "Commerce de gros des appareils photographiques et cinématographiques et leurs accessoires.",
+    "translation_ar": "تجارة الجملة بآلات التصوير الفوتوغرافي والسينمائي ولوازمها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "307303": {
+    "source_fr": "Vente en gros de logiciels numériques destinés à la numérisation, le traitement et le développement ; | Vente en gros d'équipements techniques destinés au traitement des films ; | Aménagement de laboratoires, d'ateliers et de traitement des films.",
+    "translation_ar": "البيع بالجملة بالبرمجيات الرقمية المخصصة لرقمنة الأفلام ومعالجتها وتحميضها؛ | البيع بالجملة بالتجهيزات التقنية المخصصة لمعالجة الأفلام؛ | تهيئة المختبرات والورشات ومرافق معالجة الأفلام.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308001": {
+    "source_fr": "Commerce de gros des produits pharmaceutiques et des produits vétérinaires.",
+    "translation_ar": "تجارة الجملة بالمنتجات الصيدلانية والمنتجات البيطرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308002": {
+    "source_fr": "Etablissement pharmaceutique de distribution en gros de produits autres que les médicaments expérimentaux ; | achat et stockage et transport de produits pharmaceutiques autres que les médicaments expérimentaux ; | assurer pour le compte des établissements pharmaceutiques et des pharmacies d’officines des services relevant de son activité, notamment le stockage, le transport, le recueil de données et le promotion commerciale.",
+    "translation_ar": "مؤسسة صيدلانية للتوزيع بالجملة للمنتجات الصيدلانية، باستثناء الأدوية التجريبية؛ | شراء المنتجات الصيدلانية غير التجريبية وتخزينها ونقلها؛ | تقديم خدمات لفائدة المؤسسات الصيدلانية والصيدليات، في إطار نشاطها، ولا سيما التخزين والنقل وجمع البيانات والترويج التجاري.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308003": {
+    "source_fr": "Vente en gros de médicaments vétérinaires.",
+    "translation_ar": "البيع بالجملة للأدوية البيطرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308004": {
+    "source_fr": "distribution en gros de tous produits parapharmaceutiques, et autres produits destinés à l'emballage des produits parapharmaceutiques.",
+    "translation_ar": "التوزيع بالجملة لجميع المنتجات شبه الصيدلانية وغيرها من المنتجات المخصصة لتغليف المنتجات شبه الصيدلانية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308005": {
+    "source_fr": "Vente en gros d'articles de lunetterie et d'optique | médicale, verres correcteurs travaillés ou non, de lentilles de contact, lunettes médicales et lunettes | solaires en toutes matiéres et leurs accessoires ; | Vente en gros de montures de lunettes en toutes | matiéres ; | Vente en gros de tous produits et articles d'optique médicale, y compris les appareils utilisés dans le travail du verre optique et de la lunetterie .",
+    "translation_ar": "البيع بالجملة بمنتجات النظارات والبصريات الطبية، بما في ذلك العدسات المصححة المشغولة أو غير المشغولة والعدسات اللاصقة والنظارات الطبية والنظارات الشمسية المصنوعة من مختلف المواد ولوازمها؛ | البيع بالجملة بهياكل النظارات المصنوعة من مختلف المواد؛ | البيع بالجملة بجميع المنتجات والمواد الخاصة بالبصريات الطبية، بما في ذلك الأجهزة المستخدمة في تشغيل الزجاج البصري وصناعة النظارات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308006": {
+    "source_fr": "Distribution en gros de tous produits phytosanitaires à usage agricole.",
+    "translation_ar": "التوزيع بالجملة لجميع منتجات الصحة النباتية المخصصة للاستعمال الزراعي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308007": {
+    "source_fr": "Commerce de gros d’équipements sensibles (non pourvus de capacités de vision nocturne),tels que : | 1- Les longues-vues, y compris les téléobjectifs, et les jumelles ordinaires non pourvues de réticules permettant la détermination de la distance ; | 2- Les lunettes panoramiques ; | 3- Les lunettes astronomiques et les télescopes, à | l’exception des équipements professionnels volumineux et non déplaçables, nécessitant une infrastructure appropriée ; | 4- Les accessoires susceptibles d’être utilisés comme moyen de visée, notamment, les stylos-lasers.",
+    "translation_ar": "تجارة الجملة بالتجهيزات البصرية الحساسة غير المزودة بقدرات للرؤية الليلية، مثل: | 1- المناظير المقربة، بما في ذلك العدسات المقربة، والمناظير الثنائية العادية غير المزودة بشبكات تقدير المسافة؛ | 2- النظارات البانورامية؛ | 3- النظارات الفلكية والتلسكوبات، باستثناء التجهيزات المهنية الضخمة غير القابلة للنقل التي تتطلب بنية تحتية ملائمة؛ | 4- اللوازم التي يمكن استعمالها كوسائل للتسديد، ولا سيما أقلام الليزر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308008": {
+    "source_fr": "Commerce de gros de produits diététique et appareils de cuisson diététique, nutritionnels, de régimes, biologiques et de phytothérapie.",
+    "translation_ar": "تجارة الجملة بالمنتجات الغذائية الخاصة بالحمية والتغذية والأنظمة الغذائية، وبأجهزة الطهي المخصصة للحمية والتغذية، والمنتجات العضوية ومنتجات العلاج بالنباتات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "308009": {
+    "source_fr": "Etablissement pharmaceutique de distribution en gros de dispositifs médicaux : | achat, stockage et transport de dispositifs médicaux en vue de leur distribution en gros et en l’état aux établissements pharmaceutiques de distribution en gros, aux officines pharmaceutiques et aux établissements de santé privés et publics ; | assurer, pour le compte des établissements pharmaceutiques et des pharmacies d’officine des services relevant de son activité, notamment le stockage, le transport, le recueil de données et la promotion commerciale.",
+    "translation_ar": "مؤسسة صيدلانية للتوزيع بالجملة للأجهزة الطبية؛ | شراء الأجهزة الطبية وتخزينها ونقلها بغرض توزيعها بالجملة، بحالتها الأصلية، على المؤسسات الصيدلانية للتوزيع بالجملة والصيدليات والمؤسسات الصحية الخاصة والعمومية؛ | تقديم خدمات لفائدة المؤسسات الصيدلانية والصيدليات، في إطار نشاطها، ولا سيما التخزين والنقل وجمع البيانات والترويج التجاري.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309001": {
+    "source_fr": "Commerce de gros de fleurs et plantes à l'exclusion des plantes sauvages menacées d’extinction.",
+    "translation_ar": "تجارة الجملة بالزهور والنباتات بمختلف أنواعها، باستثناء النباتات البرية المهددة بالانقراض.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309002": {
+    "source_fr": "Commerce de gros de semences, de graines, de plants et autres produits horticoles.",
+    "translation_ar": "تجارة الجملة بالبذور والحبوب والشتلات وسائر المنتجات البستانية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309003": {
+    "source_fr": "Commerce de gros des engrais et produits phytosanitaires.",
+    "translation_ar": "تجارة الجملة بالأسمدة ومنتجات الصحة النباتية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309004": {
+    "source_fr": "Commerce de gros de céréales, de leurs dérivés et de tous aliments destinés à l'alimentation du bétail",
+    "translation_ar": "تجارة الجملة بالحبوب ومشتقاتها وجميع الأعلاف المخصصة لتغذية الماشية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309005": {
+    "source_fr": "Commerce de gros des huiles et des graisses non combustibles.",
+    "translation_ar": "تجارة الجملة بالزيوت والدهون غير القابلة للاحتراق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309006": {
+    "source_fr": "Commerce de gros de tous animaux vivants destinés à la reproduction, à l'engraissage et à l'abattage | à l’ exclusion des animaux menacés d’extinction ; | Vente en gros d'animaux d'agréments à l’ exclusion des animaux menacés ; | Vente en gros de tous produits et articles liés aux animaux d'agréments.",
+    "translation_ar": "تجارة الجملة بجميع الحيوانات الحية المخصصة للتكاثر والتسمين والذبح، باستثناء الحيوانات المهددة بالانقراض؛ | البيع بالجملة بحيوانات الزينة، باستثناء الأنواع المهددة بالانقراض؛ | البيع بالجملة بجميع المنتجات والمواد المرتبطة بحيوانات الزينة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309007": {
+    "source_fr": "Commerce de gros de cuirs, de peaux, des rognures et déchets de cuirs et peaux préparées et de cuirs reconstitués.",
+    "translation_ar": "تجارة الجملة بالجلود والفراء وقصاصات ومخلفات الجلود والجلود المحضّرة والجلود المعاد تكوينها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309008": {
+    "source_fr": "Commerce de gros de machines, matériels et équipements agricoles (tracteurs, moissonneuses, batteuses, botteleuses, ...); | Commerce de gros des pièces détachées et pneumatiques afférents au matériel roulant agricole etc...",
+    "translation_ar": "تجارة الجملة بالآلات والمعدات والتجهيزات الزراعية، مثل الجرارات والحصادات وآلات درس الحبوب وآلات كبس التبن وغيرها؛ | تجارة الجملة بقطع الغيار والإطارات المتعلقة بالمعدات الزراعية المتحركة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309009": {
+    "source_fr": "Commerce de gros de pompes distributrices, crics et vérins hydrauliques, compresseurs d'air etc..",
+    "translation_ar": "تجارة الجملة بالمعدات الهيدروليكية المخصصة للزراعة، مثل مضخات التوزيع والرافعات والاسطوانات الهيدروليكية وضواغط الهواء وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309010": {
+    "source_fr": "Distribution en gros de divers engrais (engrais azotés et autres produits azotés, engrais phosphatés, engrais potassiques, engrais composés, (y.c organo-minéraux) etc….).",
+    "translation_ar": "التوزيع بالجملة لمختلف أنواع الأسمدة، بما في ذلك الأسمدة الآزوتية وسائر المنتجات الآزوتية والأسمدة الفوسفاتية والبوتاسية والمركبة، بما فيها الأسمدة العضوية المعدنية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309011": {
+    "source_fr": "Distribution en gros de matériels et équipements d’apiculture.",
+    "translation_ar": "التوزيع بالجملة بمعدات وتجهيزات تربية النحل.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "309012": {
+    "source_fr": "Distribution en gros d'équipements, fournitures et liés au secteur de la pêche maritime.",
+    "translation_ar": "التوزيع بالجملة بالمعدات واللوازم المرتبطة بقطاع الصيد البحري.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
