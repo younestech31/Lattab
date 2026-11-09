@@ -17,6 +17,10 @@ interface SuggestionItem {
   matchType: string;
 }
 
+function usableOfficialLabel(value: string | null | undefined): value is string {
+  return Boolean(value?.trim()) && value?.trim() !== "#NOM?";
+}
+
 interface NAEComplementaryModalProps {
   targetCode: string | null;
   targetActivity?: ActivityItem | null;
@@ -51,6 +55,8 @@ export default function NAEComplementaryModal({
         added: "إزالة من المشروع",
         close: "إغلاق النافذة",
         loading: "جارٍ تحميل الاقتراحات...",
+        unavailableArabicLabel: "التسمية العربية غير مدرجة في المصدر",
+        unavailableFrenchLabel: "التسمية الفرنسية غير مدرجة في المصدر",
       }
     : {
         modalTitle: "Suggestions d’activités liées",
@@ -62,6 +68,8 @@ export default function NAEComplementaryModal({
         added: "Retirer du projet",
         close: "Fermer la boîte de dialogue",
         loading: "Chargement des suggestions...",
+        unavailableArabicLabel: "Libellé arabe non renseigné",
+        unavailableFrenchLabel: "Libellé français non renseigné",
       };
 
   useEffect(() => {
@@ -205,13 +213,22 @@ export default function NAEComplementaryModal({
         {targetActivity && (
           <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/60 p-3 text-xs">
             <span className="font-semibold text-emerald-950">{t.baseActivity}:</span>
-            <div className="mt-1 flex items-center gap-2">
+            <div className="mt-1 flex items-start gap-2">
               <span className="font-mono font-bold text-emerald-900" dir="ltr">
                 {targetActivity.code}
               </span>
-              <span className="font-bold text-gray-950">
-                {ar ? targetActivity.label_ar : targetActivity.label_fr}
-              </span>
+              <div className="min-w-0 space-y-0.5">
+                <p dir="rtl" lang="ar" className="font-bold text-gray-950">
+                  {usableOfficialLabel(targetActivity.label_ar)
+                    ? targetActivity.label_ar
+                    : t.unavailableArabicLabel}
+                </p>
+                <p dir="ltr" lang="fr" className="text-xs text-gray-700">
+                  {usableOfficialLabel(targetActivity.label_fr)
+                    ? targetActivity.label_fr
+                    : t.unavailableFrenchLabel}
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -265,10 +282,10 @@ export default function NAEComplementaryModal({
                         </span>
                       </div>
                       <p dir="rtl" lang="ar" className="mt-1.5 text-sm font-bold text-gray-950">
-                        {item.label_ar}
+                        {usableOfficialLabel(item.label_ar) ? item.label_ar : t.unavailableArabicLabel}
                       </p>
                       <p dir="ltr" lang="fr" className="text-xs text-gray-700">
-                        {item.label_fr}
+                        {usableOfficialLabel(item.label_fr) ? item.label_fr : t.unavailableFrenchLabel}
                       </p>
                     </div>
 

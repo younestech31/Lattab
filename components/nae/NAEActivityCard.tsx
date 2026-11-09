@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Star, Check, Plus, Lightbulb, AlertTriangle, CheckCircle2, Ban } from "lucide-react";
 import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
+import { getNAELocalizedField } from "@/lib/nae/display";
 import type { StatusInfo } from "./types";
 
 export interface ActivityCardData {
@@ -51,6 +52,12 @@ export default function NAEActivityCard({
   const sectorLabel = sector ? (ar ? sector.label_ar : sector.label_fr) : `${activity.sector_code}`;
   const isBlocked = activity.status === "red";
   const isRegulated = activity.status === "green";
+  const tutelleDisplay = getNAELocalizedField(activity.tutelle_fr, activity.tutelle_ar, lang);
+  const authorizationDisplay = getNAELocalizedField(
+    activity.type_autorisation_fr,
+    activity.type_autorisation_ar,
+    lang,
+  );
 
   const t = ar
     ? {
@@ -64,6 +71,8 @@ export default function NAEActivityCard({
         regulatedBy: "الجهة الوصية",
         authType: "الترخيص",
         notAvailable: "غير مدرج بالمصدر",
+        translationUnavailable: "الترجمة العربية غير متاحة في نسخة البيانات الحالية.",
+        sourceFrench: "عرض النص الأصلي بالفرنسية",
         blockedNotice: "مصنّف محظوراً في نسخة البيانات؛ تحقّق من وضعه الحالي لدى CNRC.",
         ariaAdd: `إضافة النشاط ${activity.code} إلى المسودة`,
         ariaRemove: `إلغاء اختيار النشاط ${activity.code}`,
@@ -82,6 +91,8 @@ export default function NAEActivityCard({
         regulatedBy: "Tutelle",
         authType: "Autorisation",
         notAvailable: "Non renseigné",
+        translationUnavailable: "Traduction arabe non disponible dans cette version.",
+        sourceFrench: "Consulter le texte source en français",
         blockedNotice: "Classée comme bloquée dans la version de données ; vérifiez son statut actuel auprès du CNRC.",
         ariaAdd: `Ajouter l'activité ${activity.code} au projet`,
         ariaRemove: `Désélectionner l'activité ${activity.code}`,
@@ -182,34 +193,45 @@ export default function NAEActivityCard({
 
         {/* Regulatory snippet for green activities */}
         {isRegulated &&
-          (activity.tutelle_fr ||
-            activity.tutelle_ar ||
-            activity.type_autorisation_fr ||
-            activity.type_autorisation_ar) && (
+          (tutelleDisplay.value ||
+            tutelleDisplay.sourceFrench ||
+            authorizationDisplay.value ||
+            authorizationDisplay.sourceFrench) && (
           <div className="mt-3 rounded-xl border border-emerald-100 bg-emerald-50/60 p-2.5 text-xs leading-relaxed text-emerald-950">
-            {(ar ? (activity.tutelle_ar || activity.tutelle_fr) : activity.tutelle_fr) && (
+            {(tutelleDisplay.value || tutelleDisplay.sourceFrench) && (
               <div>
                 <strong className="font-semibold text-emerald-950">{t.regulatedBy}:</strong>{" "}
-                <span>{ar ? (activity.tutelle_ar || activity.tutelle_fr) : activity.tutelle_fr}</span>
-                {ar && activity.tutelle_ar && activity.tutelle_fr && activity.tutelle_ar !== activity.tutelle_fr && (
-                  <span dir="ltr" className="block text-gray-500 font-mono text-xs mt-0.5">
-                    {activity.tutelle_fr}
-                  </span>
+                {tutelleDisplay.value ? (
+                  <span dir={ar ? "rtl" : "ltr"} lang={lang}>{tutelleDisplay.value}</span>
+                ) : (
+                  <span>{t.translationUnavailable}</span>
+                )}
+                {ar && tutelleDisplay.sourceFrench && (
+                  <details className="mt-1">
+                    <summary className="cursor-pointer font-semibold text-emerald-800 underline underline-offset-2">
+                      {t.sourceFrench}
+                    </summary>
+                    <p dir="ltr" lang="fr" className="mt-1 text-gray-600">{tutelleDisplay.sourceFrench}</p>
+                  </details>
                 )}
               </div>
             )}
-            {(ar ? (activity.type_autorisation_ar || activity.type_autorisation_fr) : activity.type_autorisation_fr) && (
-              <div className="mt-1">
+            {(authorizationDisplay.value || authorizationDisplay.sourceFrench) && (
+              <div className="mt-2">
                 <strong className="font-semibold text-emerald-950">{t.authType}:</strong>{" "}
-                <span>{ar ? (activity.type_autorisation_ar || activity.type_autorisation_fr) : activity.type_autorisation_fr}</span>
-                {ar &&
-                  activity.type_autorisation_ar &&
-                  activity.type_autorisation_fr &&
-                  activity.type_autorisation_ar !== activity.type_autorisation_fr && (
-                    <span dir="ltr" className="block text-gray-500 font-mono text-xs mt-0.5">
-                      {activity.type_autorisation_fr}
-                    </span>
-                  )}
+                {authorizationDisplay.value ? (
+                  <span dir={ar ? "rtl" : "ltr"} lang={lang}>{authorizationDisplay.value}</span>
+                ) : (
+                  <span>{t.translationUnavailable}</span>
+                )}
+                {ar && authorizationDisplay.sourceFrench && (
+                  <details className="mt-1">
+                    <summary className="cursor-pointer font-semibold text-emerald-800 underline underline-offset-2">
+                      {t.sourceFrench}
+                    </summary>
+                    <p dir="ltr" lang="fr" className="mt-1 text-gray-600">{authorizationDisplay.sourceFrench}</p>
+                  </details>
+                )}
               </div>
             )}
           </div>

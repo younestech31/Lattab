@@ -11,16 +11,12 @@ import { NAE_SECTORS, type NAESectorCode } from "@/lib/nae/sectors";
 import type { NAEActivity } from "@/lib/nae/schema";
 import type { ActivityItem } from "@/components/nae/types";
 import { getNAEActivityTitle, type NAEPageLanguage } from "./seo";
+import { getNAELocalizedField } from "./display";
 
 export type { NAEPageLanguage } from "./seo";
 
 function usable(value: string | null | undefined): value is string {
   return Boolean(value?.trim()) && value?.trim() !== "#NOM?";
-}
-function localLabel(activity: NAEActivity, lang: NAEPageLanguage): string {
-  const primary = lang === "ar" ? activity.label_ar : activity.label_fr;
-  const alternate = lang === "ar" ? activity.label_fr : activity.label_ar;
-  return usable(primary) ? primary : usable(alternate) ? alternate : activity.code;
 }
 
 export function NAEExplorerPage({
@@ -160,43 +156,56 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     .filter((item) => item.code !== activity.code && item.subgroup_code === activity.subgroup_code)
     .slice(0, 5);
   const resolved = resolveActivityBilingual(activity);
+  const contentDisplay = getNAELocalizedField(resolved.contenue_fr, resolved.contenue_ar, lang);
+  const accessoriesDisplay = getNAELocalizedField(
+    resolved.accessoires_fr,
+    resolved.accessoires_ar,
+    lang,
+  );
 
   interface RegulatoryField {
     key: string;
     label: string;
-    primaryValue: string;
-    secondaryValue?: string | null;
+    primaryValue: string | null;
+    sourceFrench: string | null;
   }
 
   const regulatoryFields: RegulatoryField[] = [];
-
-  const tutelleVal = ar ? (resolved.tutelle_ar || resolved.tutelle_fr) : resolved.tutelle_fr;
-  if (tutelleVal?.trim()) {
+  const tutelleDisplay = getNAELocalizedField(resolved.tutelle_fr, resolved.tutelle_ar, lang);
+  if (tutelleDisplay.value || tutelleDisplay.sourceFrench) {
     regulatoryFields.push({
       key: "tutelle",
       label: ar ? "الجهة الوصية" : "Tutelle",
-      primaryValue: tutelleVal,
-      secondaryValue: ar && resolved.tutelle_ar && resolved.tutelle_fr && resolved.tutelle_ar !== resolved.tutelle_fr ? resolved.tutelle_fr : null,
+      primaryValue: tutelleDisplay.value,
+      sourceFrench: tutelleDisplay.sourceFrench,
     });
   }
 
-  const authVal = ar ? (resolved.type_autorisation_ar || resolved.type_autorisation_fr) : resolved.type_autorisation_fr;
-  if (authVal?.trim()) {
+  const authorizationDisplay = getNAELocalizedField(
+    resolved.type_autorisation_fr,
+    resolved.type_autorisation_ar,
+    lang,
+  );
+  if (authorizationDisplay.value || authorizationDisplay.sourceFrench) {
     regulatoryFields.push({
       key: "authorization",
       label: ar ? "نوع الترخيص / الاعتماد" : "Type d’autorisation",
-      primaryValue: authVal,
-      secondaryValue: ar && resolved.type_autorisation_ar && resolved.type_autorisation_fr && resolved.type_autorisation_ar !== resolved.type_autorisation_fr ? resolved.type_autorisation_fr : null,
+      primaryValue: authorizationDisplay.value,
+      sourceFrench: authorizationDisplay.sourceFrench,
     });
   }
 
-  const refVal = ar ? (resolved.references_texte_ar || resolved.references_texte_fr) : resolved.references_texte_fr;
-  if (refVal?.trim()) {
+  const referencesDisplay = getNAELocalizedField(
+    resolved.references_texte_fr,
+    resolved.references_texte_ar,
+    lang,
+  );
+  if (referencesDisplay.value || referencesDisplay.sourceFrench) {
     regulatoryFields.push({
       key: "references",
       label: ar ? "المراجع القانونية والنصية" : "Références textuelles",
-      primaryValue: refVal,
-      secondaryValue: ar && resolved.references_texte_ar && resolved.references_texte_fr && resolved.references_texte_ar !== resolved.references_texte_fr ? resolved.references_texte_fr : null,
+      primaryValue: referencesDisplay.value,
+      sourceFrench: referencesDisplay.sourceFrench,
     });
   }
 
@@ -211,6 +220,13 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     accessories: "الأنشطة الإضافية",
     regulatory: "الضوابط والمعلومات التنظيمية",
     related: "أنشطة أخرى قريبة في التصنيف",
+    officialTitle: "التسمية الرسمية للنشاط",
+    arabicLabelUnavailable: "التسمية العربية غير متاحة في المصدر",
+    frenchLabelUnavailable: "التسمية الفرنسية غير متاحة في المصدر",
+    contentTranslationUnavailable: "لا تتوفر ترجمة عربية لهذا الوصف في نسخة البيانات الحالية.",
+    accessoriesTranslationUnavailable: "لا تتوفر ترجمة عربية لهذا الحقل في نسخة البيانات الحالية.",
+    fieldTranslationUnavailable: "لا تتوفر ترجمة عربية لهذا الحقل في نسخة البيانات الحالية.",
+    showFrenchSource: "عرض النص الأصلي بالفرنسية للمطابقة",
     noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
     missingLabel: "التسمية العربية غير متاحة في المصدر؛ عُرضت التسمية الفرنسية.",
     disclaimer: "مرجع استرشادي غير رسمي؛ لا يثبت وحده شروط الترخيص أو إمكانية جمع الأنشطة. يرجى التحقق لدى المركز الوطني للسجل التجاري والجهة المختصة.",
@@ -228,6 +244,13 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     accessories: "Activités accessoires",
     regulatory: "Informations réglementaires",
     related: "Autres activités proches dans la classification",
+    officialTitle: "Désignation officielle de l’activité",
+    arabicLabelUnavailable: "Libellé arabe non disponible dans la source",
+    frenchLabelUnavailable: "Libellé français non disponible dans la source",
+    contentTranslationUnavailable: "La traduction arabe de cette description n’est pas disponible dans cette version.",
+    accessoriesTranslationUnavailable: "La traduction arabe de ce champ n’est pas disponible dans cette version.",
+    fieldTranslationUnavailable: "La traduction arabe de ce champ n’est pas disponible dans cette version.",
+    showFrenchSource: "Consulter le texte source en français",
     noContent: "Aucune description disponible dans le fichier.",
     missingLabel: "Le libellé français est absent de la source ; le libellé arabe est affiché.",
     disclaimer: "Référence indicative non officielle ; elle ne prouve pas les conditions d’autorisation ni la possibilité de cumul. Vérifiez auprès du CNRC et de l’autorité compétente.",
@@ -275,6 +298,23 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
                 {ar ? "العودة إلى دليل النشاطات" : "Retour à la nomenclature"}
               </Link>
             </div>
+            <div className="mt-5 border-t border-gray-100 pt-5">
+              <h2 className="text-xs sm:text-sm font-bold text-gray-800">{t.officialTitle}</h2>
+              <dl className="mt-3 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-xl bg-gray-50 p-3">
+                  <dt className="text-xs font-semibold text-gray-600">العربية</dt>
+                  <dd dir="rtl" lang="ar" className="mt-1 text-xs sm:text-sm font-semibold leading-6 text-gray-950">
+                    {usable(activity.label_ar) ? activity.label_ar : t.arabicLabelUnavailable}
+                  </dd>
+                </div>
+                <div className="rounded-xl bg-gray-50 p-3">
+                  <dt className="text-xs font-semibold text-gray-600">Français</dt>
+                  <dd dir="ltr" lang="fr" className="mt-1 text-xs sm:text-sm font-semibold leading-6 text-gray-950">
+                    {usable(activity.label_fr) ? activity.label_fr : t.frenchLabelUnavailable}
+                  </dd>
+                </div>
+              </dl>
+            </div>
             <div className="mt-6 border-t border-gray-100 pt-5">
               <h2 className="text-xs sm:text-sm font-bold text-gray-800">{t.classification}</h2>
               <dl className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -307,99 +347,63 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
 
           <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-xs sm:p-7">
             <h2 className="text-base sm:text-lg font-bold text-gray-950">{t.content}</h2>
-            {ar ? (
-              resolved.contenue_ar ? (
-                <div className="mt-3 space-y-3">
-                  <p className="text-xs leading-5 text-gray-600">ترجمة عربية استرشادية عن الوصف الفرنسي الوارد في نسخة البيانات؛ يُرجع إلى النص الفرنسي الأصلي عند المطابقة.</p>
-                  <p dir="rtl" lang="ar" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-normal">
-                    {resolved.contenue_ar}
+            <div className="mt-3 space-y-3">
+              {contentDisplay.value ? (
+                <>
+                  {ar && (
+                    <p className="text-xs leading-5 text-gray-600">
+                      ترجمة عربية استرشادية عن الوصف الفرنسي الوارد في نسخة البيانات؛ يُرجع إلى النص الفرنسي الأصلي عند المطابقة.
+                    </p>
+                  )}
+                  <p dir={ar ? "rtl" : "ltr"} lang={lang} className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900">
+                    {contentDisplay.value}
                   </p>
-                  {resolved.contenue_fr && (
-                    <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-3">
+                </>
+              ) : ar && contentDisplay.sourceFrench ? (
+                <p dir="rtl" lang="ar" role="note" className="text-xs sm:text-sm leading-6 text-amber-900">
+                  {t.contentTranslationUnavailable}
+                </p>
+              ) : (
+                <p dir={ar ? "rtl" : "ltr"} lang={lang} className="text-xs sm:text-sm leading-6 text-gray-700">
+                  {t.noContent}
+                </p>
+              )}
+              {ar && contentDisplay.sourceFrench && (
+                <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-3">
+                  <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
+                    {t.showFrenchSource}
+                  </summary>
+                  <p dir="ltr" lang="fr" className="mt-2 whitespace-pre-line font-mono text-xs text-gray-700 leading-relaxed">
+                    {contentDisplay.sourceFrench}
+                  </p>
+                </details>
+              )}
+            </div>
+
+            {(accessoriesDisplay.value || accessoriesDisplay.sourceFrench) && (
+              <div className="mt-5 border-t border-gray-100 pt-4">
+                <h3 className="text-xs sm:text-sm font-bold text-gray-800">{t.accessories}</h3>
+                <div className="mt-2 space-y-2">
+                  {accessoriesDisplay.value ? (
+                    <p dir={ar ? "rtl" : "ltr"} lang={lang} className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-medium">
+                      {accessoriesDisplay.value}
+                    </p>
+                  ) : ar && accessoriesDisplay.sourceFrench ? (
+                    <p dir="rtl" lang="ar" role="note" className="text-xs leading-6 text-amber-900">
+                      {t.accessoriesTranslationUnavailable}
+                    </p>
+                  ) : null}
+                  {ar && accessoriesDisplay.sourceFrench && (
+                    <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-2.5">
                       <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
-                        عرض النص الفرنسي الأصلي للمطابقة الإدارية
+                        {t.showFrenchSource}
                       </summary>
-                      <p dir="ltr" lang="fr" className="mt-2 whitespace-pre-line font-mono text-xs text-gray-700 leading-relaxed">
-                        {resolved.contenue_fr}
+                      <p dir="ltr" lang="fr" className="mt-1.5 whitespace-pre-line font-mono text-xs text-gray-600 leading-relaxed">
+                        {accessoriesDisplay.sourceFrench}
                       </p>
                     </details>
                   )}
                 </div>
-              ) : (
-                <div className="mt-3">
-                  <p className="mb-1 text-xs text-gray-500 font-medium">
-                    (النص المصدر بالفرنسية وفق السجل التجاري)
-                  </p>
-                  <p dir="ltr" lang="fr" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">
-                    {resolved.contenue_fr || t.noContent}
-                  </p>
-                </div>
-              )
-            ) : (
-              <div className="mt-3 space-y-3">
-                <p dir="ltr" lang="fr" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">
-                  {resolved.contenue_fr || t.noContent}
-                </p>
-                {resolved.contenue_ar && (
-                  <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-3">
-                    <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
-                      Consulter la traduction indicative en arabe
-                    </summary>
-                    <p dir="rtl" lang="ar" className="mt-2 whitespace-pre-line text-xs text-gray-800 leading-relaxed font-sans">
-                      {resolved.contenue_ar}
-                    </p>
-                  </details>
-                )}
-              </div>
-            )}
-
-            {(resolved.accessoires_ar || resolved.accessoires_fr) && (
-              <div className="mt-5 border-t border-gray-100 pt-4">
-                <h3 className="text-xs sm:text-sm font-bold text-gray-800">{t.accessories}</h3>
-                {ar ? (
-                  resolved.accessoires_ar ? (
-                    <div className="mt-2 space-y-2">
-                      <p dir="rtl" lang="ar" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-medium">
-                        {resolved.accessoires_ar}
-                      </p>
-                      {resolved.accessoires_fr && (
-                        <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-2.5">
-                          <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
-                            عرض النص الأصلي بالفرنسية
-                          </summary>
-                          <p dir="ltr" lang="fr" className="mt-1.5 whitespace-pre-line font-mono text-xs text-gray-600 leading-relaxed">
-                            {resolved.accessoires_fr}
-                          </p>
-                        </details>
-                      )}
-                    </div>
-                  ) : (
-                    <div className="mt-2">
-                      <p className="mb-1 text-xs text-gray-500 font-medium">
-                        (النص المصدر بالفرنسية وفق السجل التجاري)
-                      </p>
-                      <p dir="ltr" lang="fr" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">
-                        {resolved.accessoires_fr}
-                      </p>
-                    </div>
-                  )
-                ) : (
-                  <div className="mt-2 space-y-2">
-                    <p dir="ltr" lang="fr" className="whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-800">
-                      {resolved.accessoires_fr}
-                    </p>
-                    {resolved.accessoires_ar && (
-                      <details className="group rounded-xl border border-gray-100 bg-gray-50/70 p-2.5">
-                        <summary className="cursor-pointer text-xs font-semibold text-emerald-800 hover:text-emerald-950 select-none">
-                          Consulter la traduction indicative en arabe
-                        </summary>
-                        <p dir="rtl" lang="ar" className="mt-1.5 whitespace-pre-line text-xs text-gray-800 leading-relaxed font-sans">
-                          {resolved.accessoires_ar}
-                        </p>
-                      </details>
-                    )}
-                  </div>
-                )}
               </div>
             )}
           </section>
@@ -414,16 +418,24 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
                 {regulatoryFields.map((field) => (
                   <div key={field.key}>
                     <dt className="text-xs sm:text-sm font-semibold text-gray-800">{field.label}</dt>
-                    <dd
-                      dir={ar && !field.primaryValue.startsWith("MINISTERE") && !field.primaryValue.startsWith("DECRET") ? "rtl" : "ltr"}
-                      className="mt-1 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-medium"
-                    >
-                      {field.primaryValue}
-                    </dd>
-                    {field.secondaryValue && (
-                      <p dir="ltr" className="mt-0.5 text-xs text-gray-500 font-mono">
-                        {field.secondaryValue}
+                    {field.primaryValue ? (
+                      <dd dir={ar ? "rtl" : "ltr"} lang={lang} className="mt-1 whitespace-pre-line text-xs sm:text-sm leading-7 text-gray-900 font-medium">
+                        {field.primaryValue}
+                      </dd>
+                    ) : (
+                      <p dir="rtl" lang="ar" className="mt-1 text-xs leading-6 text-amber-900">
+                        {t.fieldTranslationUnavailable}
                       </p>
+                    )}
+                    {ar && field.sourceFrench && (
+                      <details className="mt-1 rounded-lg border border-gray-100 bg-gray-50/70 p-2">
+                        <summary className="cursor-pointer text-xs font-semibold text-emerald-800 underline underline-offset-2">
+                          {t.showFrenchSource}
+                        </summary>
+                        <p dir="ltr" lang="fr" className="mt-1 whitespace-pre-line text-xs leading-6 text-gray-700">
+                          {field.sourceFrench}
+                        </p>
+                      </details>
                     )}
                   </div>
                 ))}
@@ -443,7 +455,12 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
                 <li key={item.code} className="flex flex-wrap items-center justify-between gap-3 py-3">
                   <div className="min-w-0">
                     <p className="font-mono text-xs font-bold text-emerald-800" dir="ltr">{item.code}</p>
-                    <p className="mt-1 text-xs sm:text-sm font-semibold text-gray-900">{localLabel(item, lang)}</p>
+                    <p dir="rtl" lang="ar" className="mt-1 text-xs sm:text-sm font-semibold text-gray-900">
+                      {usable(item.label_ar) ? item.label_ar : t.arabicLabelUnavailable}
+                    </p>
+                    <p dir="ltr" lang="fr" className="text-xs text-gray-700">
+                      {usable(item.label_fr) ? item.label_fr : t.frenchLabelUnavailable}
+                    </p>
                   </div>
                   <Link
                     href={action + "/" + item.code}
