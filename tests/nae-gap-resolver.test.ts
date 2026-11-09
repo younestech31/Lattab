@@ -67,6 +67,12 @@ test("resolveContenueArabic requires the exact reviewed French source text", () 
   const hotel = allActivities.find((item) => item.code === "601101");
   const propertyRental = allActivities.find((item) => item.code === "611001");
   const legalConsulting = allActivities.find((item) => item.code === "607004");
+  const petTraining = allActivities.find((item) => item.code === "602201");
+  assert.ok(petTraining?.contenue_fr);
+  assert.equal(
+    resolveContenueArabic("602201", petTraining?.contenue_fr),
+    "تدريب الكلاب والحيوانات الأليفة؛ | تقديم الخدمات المرتبطة بهذا النشاط.",
+  );
   assert.ok(hotel?.contenue_fr);
   assert.ok(propertyRental?.contenue_fr);
   assert.ok(legalConsulting?.contenue_fr);
