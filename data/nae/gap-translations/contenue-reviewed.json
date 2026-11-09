@@ -2432,6 +2432,201 @@
     "translation_ar": "تصنيع أدوات المائدة والقطع الحادة ولوازمها، مثل السكاكين وشفرات الحلاقة والمقصات وغيرها.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "202401": {
+    "source_fr": "Extraction artisanale d'olives: . Résidus de l'extraction des huiles olives végétales ( grignons d'olives etc...); . Raffinage et traitement des huiles d'olives alimentaires.",
+    "translation_ar": "استخلاص الزيوت من الزيتون بطرق حرفية؛ | مخلفات استخلاص الزيوت النباتية من الزيتون، مثل ثفل الزيتون وغيره؛ | تكرير زيوت الزيتون الغذائية ومعالجتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202402": {
+    "source_fr": "Fabrication artisanale de semoules, gruaux et farines ; | Préparation de grains mondés de céréales destinés à l'alimentation (frik , dchicha, etc ...).",
+    "translation_ar": "التصنيع الحرفي للسميد والحبيبات الخشنة والدقيق؛ | تحضير الحبوب المقشّرة المخصصة للاستهلاك الغذائي، مثل الفريك والدشيشة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202403": {
+    "source_fr": "Fabrication de tous aliments pour bétail et volailles.",
+    "translation_ar": "تصنيع جميع أنواع أعلاف الماشية والدواجن.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202404": {
+    "source_fr": "Fabrication de tous produits de la confiserie, chocolaterie, biscuiterie; | Fabrication de crèmes glacées à emporter.",
+    "translation_ar": "تصنيع جميع منتجات الحلويات والشوكولاتة والبسكويت؛ | تصنيع المثلجات المخصصة للبيع.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202405": {
+    "source_fr": "Production artisanale d'essences et arômes naturels utilisés dans la fabrication de parfums , des produits cosmétiques, dans l'industrie pharmaceutique et alimentaire.",
+    "translation_ar": "الإنتاج الحرفي للخلاصات والنكهات الطبيعية المستخدمة في تصنيع العطور ومنتجات التجميل والصناعة الصيدلانية والغذائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202406": {
+    "source_fr": "Tous travaux de torréfaction et mouture intéressant le café, la chicorée, etc... | Tous travaux de conditionnement et d'emballage des produits torréfiés et moulus ; | Vente au détail de produits torréfiés et moulus.",
+    "translation_ar": "جميع أشغال تحميص وطحن القهوة والهندباء وغيرها؛ | جميع أشغال توضيب وتغليف المنتجات المحمصة والمطحونة؛ | البيع بالتجزئة للمنتجات المحمصة والمطحونة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202407": {
+    "source_fr": "Fabrication (par l’utilisation de farine, semoule et autres céréales comportant ou non des additifs alimentaires) et vente au détail de pain de consommation courante, pain courant amélioré, pains spéciaux (pains viennois dit scoubidou et mahonnais, pains viennois dit sanhoudj, pain de semoule, pain d’orge, pain de mie et pain brioché), croissants, brioches, pizzas, pâtisseries | et autres produits panifiés ; | Service de cuisson pour tiers; | Vente au détail de tous produits de la pâtisserie et de la biscuiterie.",
+    "translation_ar": "تصنيع وبيع الخبز للاستهلاك اليومي، والخبز اليومي المحسّن، وأنواع الخبز الخاصة (مثل الخبز الفيينّي المعروف باسم سكوبيدو وماهوني، والخبز الفيينّي المعروف باسم سنّوج، وخبز السميد وخبز الشعير وخبز التوست وخبز البريوش)، والكرواسان والبريوش والبيتزا والحلويات وغيرها من منتجات المخابز، وذلك باستعمال الدقيق والسميد والحبوب الأخرى، مع إضافات غذائية أو بدونها؛ | تقديم خدمة الخَبز لفائدة الغير؛ | البيع بالتجزئة لجميع منتجات الحلويات والبسكويت.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202408": {
+    "source_fr": "Fabrication (par l’utilisation de farine, semoule et autres céréales comportant ou non des additifs alimentaires) et vente au détail de toute sorte de pain ou de galettes traditionnels, pain de consommation courante, pain courant amélioré, pains spéciaux (pains viennois dit scoubidou et mahonnais, pains viennois dit sanhoudj , pain de semoule, pain d’orge, pain de mie et pain brioché ) ; | Service de cuisson pour tiers; | Vente au détail de tous produits alimentaires enrichis à base de céréales.",
+    "translation_ar": "تصنيع وبيع مختلف أنواع الخبز أو الأرغفة التقليدية، والخبز للاستهلاك اليومي والخبز اليومي المحسّن وأنواع الخبز الخاصة (مثل الخبز الفيينّي المعروف باسم سكوبيدو وماهوني، والخبز الفيينّي المعروف باسم سنّوج، وخبز السميد وخبز الشعير وخبز التوست وخبز البريوش)، وذلك باستعمال الدقيق والسميد والحبوب الأخرى، مع إضافات غذائية أو بدونها؛ | تقديم خدمة الخَبز لفائدة الغير؛ | البيع بالتجزئة لجميع المنتجات الغذائية المدعّمة القائمة على الحبوب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202409": {
+    "source_fr": "Tous travaux de distillerie relatifs aux produits agricoles; | Production de jus de fruits, sirops et arômes;",
+    "translation_ar": "جميع أشغال التقطير المتعلقة بالمنتجات الزراعية؛ | إنتاج عصائر الفواكه والشراب المركز والنكهات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202410": {
+    "source_fr": "Production et conditionnement de condiments, épices et sels;",
+    "translation_ar": "إنتاج وتوضيب مختلف التوابل والبهارات والأملاح.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202411": {
+    "source_fr": "Production de glaces , crèmes glacées , cornets, gaufrettes et gaufres.",
+    "translation_ar": "إنتاج المثلجات والآيس كريم وأقماع الآيس كريم والويفر والفطائر الرقيقة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202412": {
+    "source_fr": "Fabrication de pâtes alimentaires et couscous ; | Fabrication de pâtes à pizza ; | Fabrication de pâtes fraiches (feuilletée …etc) et cuites ; | Production de pains et de pâtes sans gluten.",
+    "translation_ar": "تصنيع العجائن الغذائية والكسكس؛ | تصنيع عجائن البيتزا؛ | تصنيع العجائن الطازجة، مثل العجائن المورقة وغيرها، والعجائن المطبوخة؛ | إنتاج الخبز والعجائن الخالية من الغلوتين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202501": {
+    "source_fr": "Fabrication de tous articles tricotés à usage vestimentaire (robes, manteaux, pull-over, gilets , bonnets, gants, layettes, etc...)",
+    "translation_ar": "تصنيع جميع المنتجات المحاكة المخصصة للملابس، مثل الفساتين والمعاطف والكنزات الصوفية والسترات والقبعات والقفازات وملابس الرضع وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202502": {
+    "source_fr": "Fabrication d'articles pour l'ornementation de l'habillement et l'ameublement (fleurs artificielles, boutonnières, boucles, tulles, dentelles, guipures, etc...) .",
+    "translation_ar": "تصنيع منتجات الزينة المخصصة للملابس والمفروشات، مثل الزهور الاصطناعية وعراوي الأزرار والأبازيم والتول والدانتيل والتطريز الشبكي وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202503": {
+    "source_fr": "Confection de filets noués en toutes matières destinés aux activités sportives et autres usages; | Confection de filets de pêche.",
+    "translation_ar": "صناعة الشباك المعقودة من مختلف المواد والمخصصة للأنشطة الرياضية وغيرها من الاستعمالات؛ | صناعة شباك الصيد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202504": {
+    "source_fr": "Confection de vêtements pour hommes, femmes et enfants en toutes matières; | Confection de vêtements sur demi-mesure",
+    "translation_ar": "خياطة الملابس للرجال والنساء والأطفال من جميع المواد؛ | خياطة الملابس حسب القياس النصفي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202505": {
+    "source_fr": "Tous travaux de tannerie et de préparation de cuirs et peaux; | Production de toutes peaux tannées et préparées à des utilisations spécifiques.",
+    "translation_ar": "جميع أشغال دباغة الجلود وتحضير الجلود والفراء؛ | إنتاج جميع أنواع الجلود المدبوغة والمحضّرة لاستعمالات محددة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202506": {
+    "source_fr": "Fabrication d'articles brodés et travaux de broderie sur étoffe et cuir.",
+    "translation_ar": "تصنيع المنتجات المطرزة وإنجاز أشغال التطريز على الأقمشة والجلود.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202507": {
+    "source_fr": "Fabrication d'articles en toile et bâche (tentes, bâches, stores, hamacs, voiles d'embarcation, parasols ...).",
+    "translation_ar": "تصنيع المنتجات القماشية والمشمعات، مثل الخيام والأغطية المشمعة والستائر والأراجيح وأشرعة المراكب والمظلات الشمسية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202508": {
+    "source_fr": "Préparation et traitement des peaux et confection d'articles en fourrure.",
+    "translation_ar": "تحضير ومعالجة الجلود والفراء وصناعة المنتجات المصنوعة منه.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202509": {
+    "source_fr": "Fabrication de cloches pour chapeaux, chapeaux de feutres et autres coiffures pour femmes.",
+    "translation_ar": "التصنيع الحرفي لقوالب القبعات والقبعات المصنوعة من اللباد وغيرها من أغطية الرأس النسائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202510": {
+    "source_fr": "Fabrication de chaussures sur commande et sur mesure; | Fabrication de composants de chaussures (tiges, empeignes semelles , talons, etc...) en toutes matières.",
+    "translation_ar": "تصنيع الأحذية حسب الطلب ووفق القياس؛ | تصنيع مكونات الأحذية من مختلف المواد، مثل الأجزاء العلوية والواجهات والنعال والكعوب وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202511": {
+    "source_fr": "Fabrication d'articles d'harnachement et de sellerie destinés à tous usages (selles, harnais, laisses pour animaux, muselières, fouets, lanières, etc).",
+    "translation_ar": "تصنيع لوازم التسريح والسروج المخصصة لمختلف الاستعمالات، مثل السروج واللجم ومقاود الحيوانات والكمامات والسياط والأشرطة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202512": {
+    "source_fr": "Fabrication artisanale de tous articles de cérémonies (mariages, circoncision, fiançailles, etc) tels que bougies, savon, sucre, vêtements, napperons, etc",
+    "translation_ar": "التصنيع الحرفي لجميع لوازم ومستلزمات الاحتفالات والمناسبات، مثل حفلات الزواج والختان والخطوبة وغيرها، بما في ذلك الشموع والصابون والسكر والملابس والمفارش وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202601": {
+    "source_fr": "Fabrication et réparation de toutes charpentes en bois; | Fabrication d'embarcations de pêche et de plaisance en bois, contre plaqué et plastique (felouques, planches à voile, Pédalos et autres petites embarcations ); | Fabrication d'accessoires en bois pour sports nautiques (avirons, pagaies, etc....).",
+    "translation_ar": "تصنيع وإصلاح جميع الهياكل الخشبية؛ | تصنيع قوارب الصيد والنزهة من الخشب والخشب الرقائقي والبلاستيك، مثل الفلوكات وألواح التزلج الشراعي وقوارب الدواسات وغيرها من القوارب الصغيرة؛ | تصنيع اللوازم الخشبية للرياضات المائية، مثل المجاديف وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202602": {
+    "source_fr": "Tous travaux de sciage et de déroulage du bois; | Rabotage et préparation du bois scié en vue de sa transformation en produits standards; | Production de placage et contre-plaqué, traverses et poutrelles en bois.",
+    "translation_ar": "جميع أشغال نشر الخشب وتقشيره دوّارياً؛ | تسوية الخشب المنشور وتحضيره لتحويله إلى منتجات قياسية؛ | إنتاج القشرة الخشبية والخشب الرقائقي وعتبات السكك والعوارض الخشبية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202603": {
+    "source_fr": "Fabrication d'articles de menuiserie générale pour bâtiment et construction (portes fenêtres, persiennes, rideaux en bois, panneaux éléments de charpente en bois etc...); | Fabrication d'échelles, d'établis, matériels et instruments en bois.",
+    "translation_ar": "تصنيع منتجات النجارة العامة المخصصة للمباني والبناء، مثل الأبواب والنوافذ والمصاريع والستائر الخشبية والألواح وعناصر الهياكل الخشبية وغيرها؛ | تصنيع السلالم ومناضد العمل والمعدات والأدوات الخشبية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202604": {
+    "source_fr": "Fabrication de tonneaux, barils, tonnelets, fûts, caissettes, caisses, en bois et autres récipients en bois utilisés pour la conservation des produits alimentaires solides (clives, anchois) ou liquides.",
+    "translation_ar": "تصنيع البراميل والأوعية الخشبية الكبيرة والصغيرة والبراميل والصناديق والأقفاص وسائر الحاويات الخشبية المستخدمة في حفظ المنتجات الغذائية الصلبة (مثل الأسماك المملحة) أو السائلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202605": {
+    "source_fr": "Fabrication d'articles de menuiserie générale pour bâtiment et construction (portes-fenêtres, panneaux, éléments de charpente en bois etc...); | Fabrication de meubles, d'ensembles mobiliers et accessoires en bois ( ou associés à d'autres matières ) à usage domestique ou collectif (équipements hôteliers, scolaires, etc...).",
+    "translation_ar": "تصنيع منتجات النجارة العامة المخصصة للمباني والبناء، مثل الأبواب والنوافذ والألواح وعناصر الهياكل الخشبية وغيرها؛ | تصنيع الأثاث ومجموعات الأثاث ولوازمها من الخشب أو من الخشب المدمج بمواد أخرى، والمخصصة للاستعمال المنزلي أو الجماعي، مثل تجهيزات الفنادق والمدارس وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202606": {
+    "source_fr": "Fabrication de sommiers, de matelas, oreillers, traversins rembourrés en laine et autres matières.",
+    "translation_ar": "تصنيع هياكل الأسرة والمراتب والوسائد والمساند المحشوة بالصوف ومواد أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202607": {
+    "source_fr": "Fabrication de brosses, plumeaux, pinceaux et autres articles de brosserie.",
+    "translation_ar": "تصنيع الفرش والريشات المنفّشة وفرش الطلاء وغيرها من منتجات صناعة الفرش.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202608": {
+    "source_fr": "Fabrication de produits, semi-produits et d'ouvrages en liège",
+    "translation_ar": "التصنيع الحرفي للمنتجات والمنتجات نصف المصنعة والمصنوعات من الفلين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202609": {
+    "source_fr": "Fabrication artisanale d'articles de décoration en toutes matiéres à usage domestique ou professionnel",
+    "translation_ar": "التصنيع الحرفي لمختلف مصنوعات الزينة والديكور من جميع المواد، والمخصصة للاستعمال المنزلي أو المهني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202701": {
+    "source_fr": "Fabrication de serrures, verrous et articles similaires; | Fabrication de garnitures, ferrures et autres articles de quincaillerie.",
+    "translation_ar": "تصنيع الأقفال والمزالج والمنتجات المماثلة؛ | تصنيع التجهيزات والتركيبات المعدنية وسائر منتجات اللوازم المعدنية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202702": {
+    "source_fr": "Fabrication de poutrelles et hourdis en béton; | Fabrication d'autres articles accessoires en béton destinés à la construction immobilière : siphons, buses, etc...",
+    "translation_ar": "تصنيع العوارض الخرسانية والعناصر المجوفة للأسقف؛ | تصنيع مصنوعات خرسانية أخرى ملحقة بالبناء العقاري، مثل السيفونات والأنابيب وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202703": {
+    "source_fr": "Réparation , reproduction et adaptation de clefs, de serrure, cadenas , verrous de sûreté et tous systèmes de fermeture de sécurité et accessoires de serrures.",
+    "translation_ar": "إصلاح المفاتيح والأقفال والأقفال المعلقة ومزالج الأمان وجميع أنظمة الإغلاق الأمني ولوازم الأقفال، ونسخها وتكييفها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202704": {
+    "source_fr": "Tous travaux de maçonnerie.",
+    "translation_ar": "جميع أشغال البناء بالطوب والحجر والملاط.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202705": {
+    "source_fr": "Tous travaux d'installation et de réparation de plomberie sanitaire; | Installation et travaux de réparation de chauffage central à usage domestique.",
+    "translation_ar": "جميع أشغال تركيب وإصلاح السباكة الصحية؛ | تركيب وإصلاح أنظمة التدفئة المركزية المخصصة للاستعمال المنزلي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202706": {
+    "source_fr": "Construction de toutres sortes de batiments à usage professionnel, social et de loisirs ; | Travaux de maçonnerie, de bétonnage, de terrassement et de fondation, plâtrage, revêtement de murs et de sol, pose de carrelage et de faillence et autres travaux liés à la construction de bâtiments ; | Travaux d'étanchéité, d'isolation, de plomberie sanitaire et de chauffage central ; | Travaux de peinture et de vitrerie, d'installation électrique d'installation de système de lutte et de protection contre l'incendie et le vol ; | Travaux de pose et de montage de charpente ; | Tous travaux de menuiserie générale ( métallique, en bois, en aluminium, etc) .",
+    "translation_ar": "بناء جميع أنواع المباني المخصصة للاستعمال المهني والاجتماعي والترفيهي؛ | أشغال البناء والخرسانة والحفر والأساسات والتجصيص وتكسية الجدران والأرضيات وتركيب البلاط والخزف وسائر الأشغال المرتبطة ببناء المباني؛ | أشغال العزل المائي والحراري والسباكة الصحية والتدفئة المركزية؛ | أشغال الطلاء والزجاج والتركيبات الكهربائية وتركيب أنظمة مكافحة الحرائق والسرقة والحماية منها؛ | أشغال تركيب وتجميع الهياكل؛ | جميع أشغال النجارة العامة (المعدنية والخشبية والألومنيوم وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
