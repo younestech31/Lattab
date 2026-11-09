@@ -20,7 +20,7 @@
     "type_autorisation_fr_to_ar": 17,
     "accessoires_fr_to_ar_exact": 25,
     "accessoires_fr_to_ar_activity_records": 598,
-    "contenue_fr_to_ar_reviewed": 18,
+    "contenue_fr_to_ar_reviewed": 41,
     "references_by_code": 1,
     "label_gap_fills": 0
   },
@@ -33,7 +33,7 @@
     "references_by_code": "data/nae/gap-translations/references.json"
   },
   "remaining_work": {
-    "contenue_ar": "Translate and review the remaining 2,118 source descriptions. Every translation must be source-bound and must not infer permissions or legal scope.",
+    "contenue_ar": "Translate and review the remaining 2095 source descriptions. Every translation must be source-bound and must not infer permissions or legal scope.",
     "accessoires_ar_unique_long": "Review the remaining 307 activity accessory records not covered by the current map.",
     "references_ar": "Review Arabic translations for French-only legal references; 1 of 379 source entries currently has Arabic text preserved.",
     "ui_wiring": "Implemented: displayed fields follow the selected interface language; the French source is separately inspectable in Arabic mode."

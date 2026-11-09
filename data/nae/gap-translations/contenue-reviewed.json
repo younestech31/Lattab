@@ -7,6 +7,34 @@
     "source_fr": "Aménagement de périmètres irrigués; | Drainage agricole : installation de canalisation en vue de l'écoulement des eaux et tous autres travaux d'assèchement des surfaces agricoles humides.",
     "translation_ar": "تهيئة المحيطات المسقية؛ | الصرف الفلاحي: تركيب القنوات لتصريف المياه، وسائر أشغال تجفيف الأراضي الزراعية الرطبة."
   },
+  "501101": {
+    "source_fr": "Vente au détail d'arômes, essences et colorants solides ou liquides pour l'alimentation; | Vente au détail des produits préparés pour potages et soupes ainsi que les épices.",
+    "translation_ar": "تجارة التجزئة للمواد العطرية والخلاصات والملونات الغذائية الصلبة أو السائلة؛ | تجارة التجزئة للمنتجات المحضرة لإعداد الحساء والشوربات، وكذلك التوابل."
+  },
+  "501102": {
+    "source_fr": "Vente au détail de lait et produits laitiers : yaourts, lait acidifié, crème fraîche, lait et crème de lait conservé, concentré, ou en poudre, lait aromatisé et autres préparations de lait, beurre, smen, fromage; | Vente de crèmes glacées à emporter; | Vente de miel et cire.",
+    "translation_ar": "تجارة التجزئة للحليب ومنتجات الألبان، ومنها الياغورت والحليب المخمّر والقشدة الطازجة والحليب والقشدة المحفوظان أو المركّزان أو المجففان، والحليب المنكّه وسائر مستحضرات الحليب والزبدة والسمن والجبن؛ | بيع المثلجات التي تؤخذ للاستهلاك خارج المحل؛ | بيع العسل والشمع."
+  },
+  "501103": {
+    "source_fr": "Vente au détail d'eaux minérales, limonades, jus de fruits, sirops et toutes autres boissons . | Non alcoolisées .",
+    "translation_ar": "تجارة التجزئة للمياه المعدنية والليمونادات وعصائر الفواكه والشراب المركز وجميع المشروبات الأخرى؛ | على أن تكون غير كحولية."
+  },
+  "501106": {
+    "source_fr": "Vente au détail de toutes plantes potagères (céleri, persil, menthe, etc...); | Vente au détail de légumes sous formes de bottes.",
+    "translation_ar": "تجارة التجزئة لجميع النباتات الخضرية (مثل الكرفس والبقدونس والنعناع وغيرها)؛ | تجارة التجزئة للخضر المباعة في حزم."
+  },
+  "502101": {
+    "source_fr": "Vente au détail de pelleteries même factices, oeuvrées ou confectionnées (vêtements et tous articles de fourrure).",
+    "translation_ar": "تجارة التجزئة للفراء، بما في ذلك الفراء الاصطناعي، سواء كان معالجًا أو مصنوعًا في شكل منتجات جاهزة (ملابس وجميع مصنوعات الفراء)."
+  },
+  "503201": {
+    "source_fr": "Vente au détail de toile cirée, plastique lisse, emballage domestique en plastique.",
+    "translation_ar": "تجارة التجزئة للأقمشة المشمّعة والبلاستيك الأملس ومواد التغليف المنزلية المصنوعة من البلاستيك."
+  },
+  "504201": {
+    "source_fr": "Vente au détail de fils et câbles électriques, rallonges, prises, fiches, boîtiers de lampes, baladeuses et autres fournitures pour l'électricité; | Vente au détail d'outillage professionnel pour travaux d'électricité et d'électronique; | Vente d'articles de lustrerie, lampes et minuteries.",
+    "translation_ar": "تجارة التجزئة للأسلاك والكابلات الكهربائية وأسلاك التمديد والمآخذ والقوابس وعلب المصابيح والمصابيح المحمولة وسائر لوازم الكهرباء؛ | تجارة التجزئة للأدوات المهنية المخصصة لأشغال الكهرباء والإلكترونيات؛ | تجارة التجزئة لمستلزمات الإنارة والمصابيح وأجهزة التوقيت."
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
@@ -39,6 +67,30 @@
     "source_fr": "Toutes activités de restauration et de vente de boissons, implantées le long des axes routiers; | Location de chambres (activités accessoires pour passagers).",
     "translation_ar": "جميع أنشطة الإطعام وبيع المشروبات المقامة على طول المحاور الطرقية؛ | تأجير الغرف (أنشطة إضافية لفائدة المسافرين)."
   },
+  "602101": {
+    "source_fr": "L'établissement affecté à la dispensation au détail des produits pharmaceutiques et dispositifs médicaux ainsi qu'à l'exécution des préparations magistrales et officinales. Elle peut accessoirement assurer la distribution au détail des produits parapharmaceutiques. | Il assure des services liés à la santé et participe à l’information, au conseil², au suivi et à l’éducation thérapeutique pour la santé des usagers, notamment, en décourageant l’automédication et en suscitant l’utilisation des médicaments génériques.",
+    "translation_ar": "المؤسسة المخصصة لصرف المنتجات الصيدلانية والأجهزة الطبية بالتجزئة، وكذلك لتحضير المستحضرات الصيدلانية الخاصة والمستحضرات المحضّرة داخل الصيدلية. ويمكنها بصفة تبعية توزيع منتجات شبه الصيدلة بالتجزئة. | كما تقدم خدمات مرتبطة بالصحة، وتساهم في إعلام المستفيدين وإسداء النصح لهم ومتابعتهم والتثقيف العلاجي، ولا سيما بتثبيط التداوي الذاتي وتشجيع استعمال الأدوية الجنيسة."
+  },
+  "602102": {
+    "source_fr": "Façonnage, moulage et adaptation des verres optiques; | Exécution des prescriptions ophtalmologiques et vérification des verres correcteurs; | Réparation diverses, vente de montures de lunettes.",
+    "translation_ar": "تشكيل وصقل وتكييف العدسات البصرية؛ | تنفيذ وصفات طب العيون والتحقق من العدسات المصححة؛ | القيام بمختلف الإصلاحات وبيع إطارات النظارات."
+  },
+  "602201": {
+    "source_fr": "Dressage de chiens et d'animaux de compagnie; | Fourniture de services liés à cette activité.",
+    "translation_ar": "ترويض الكلاب والحيوانات الأليفة والعناية بنظافتها؛ | تقديم الخدمات المرتبطة بهذا النشاط."
+  },
+  "602202": {
+    "source_fr": "Toute installation qui a pour but la reproduction d'animaux d'espèces non domestiques destinées à des collections spécialisées liées à la réhabilitation des espèces menacées.",
+    "translation_ar": "كل منشأة يكون هدفها تكاثر حيوانات من أنواع غير مستأنسة، مخصصة لمجموعات متخصصة مرتبطة بإعادة تأهيل الأنواع المهددة بالانقراض."
+  },
+  "604101": {
+    "source_fr": "Transport collectif de voyageurs en zones rurales par cars, bus et minibus.",
+    "translation_ar": "النقل الجماعي للمسافرين في المناطق الريفية بواسطة الحافلات والحافلات الصغيرة والمركبات المماثلة."
+  },
+  "604201": {
+    "source_fr": "Transport ferroviaire de voyageurs.",
+    "translation_ar": "النقل السككي للمسافرين."
+  },
   "605001": {
     "source_fr": "Acquisition et gestion des espaces publicitaires; | Conception et réalisation de campagnes publicitaires en utilisant les média; | Distribution de prospectus et d'échantillon, promotion des ventes et publicité sur lieu, par mailing, par téléphone , etc... | Acquisition et location d’espaces publicitaires ; | Gestion et entretien des espaces publicitaires.",
     "translation_ar": "اقتناء وإدارة المساحات الإشهارية؛ | تصميم وتنفيذ حملات إشهارية باستخدام وسائل الإعلام؛ | توزيع المطويات والعينات، وتنشيط المبيعات والإشهار في نقاط البيع أو عن طريق البريد أو الهاتف وغيرها؛ | اقتناء وتأجير المساحات الإشهارية؛ | إدارة المساحات الإشهارية وصيانتها."
@@ -51,9 +103,41 @@
     "source_fr": "Organisation de foires et quinzaines économiques et les braderies (produits alimentaires et industriels neufs).",
     "translation_ar": "تنظيم المعارض والأسابيع الاقتصادية وحملات البيع المخفّض (للمنتجات الغذائية والصناعية الجديدة)."
   },
+  "607001": {
+    "source_fr": "Activités d'études et de conseils en matières de systèmes informatiques (matériels et logiciels); | Activités de développement, production, fourniture et documentation de logiciels standards, (progiciels, utilitaires d'application, etc ...), ainsi que leur édition; | Conseil et suivi des applications | Assistance à l'installation ou à la mise en place d'équipements et matériels informatiques.",
+    "translation_ar": "أنشطة الدراسات والاستشارات في مجال الأنظمة المعلوماتية (الأجهزة والبرمجيات)؛ | أنشطة تطوير وإنتاج وتوفير وتوثيق البرمجيات القياسية، مثل الحزم البرمجية والبرامج الخدمية والتطبيقية، فضلًا عن نشرها؛ | الاستشارة ومتابعة التطبيقات؛ | المساعدة على تركيب أو وضع التجهيزات والمعدات المعلوماتية في الخدمة."
+  },
+  "607002": {
+    "source_fr": "Installation de réseaux informatiques; | Traitement de données pour les tiers, saisie de données, conversion de fichiers, etc...;",
+    "translation_ar": "تركيب شبكات الإعلام الآلي؛ | معالجة البيانات لفائدة الغير، بما يشمل إدخال البيانات وتحويل الملفات وغيرها."
+  },
+  "607003": {
+    "source_fr": "Travaux comptables, juridiques, fiscaux, d'organisation, d'expertise , etc... pour le compte des entreprises ou tous autres tiers.",
+    "translation_ar": "إنجاز الأعمال المحاسبية والقانونية والجبائية والتنظيمية وأعمال الخبرة وغيرها، لحساب المؤسسات أو أي أطراف أخرى."
+  },
   "607004": {
     "source_fr": "Conseils juridiques et fiscaux;",
     "translation_ar": "تقديم الاستشارات القانونية والجبائية."
+  },
+  "607005": {
+    "source_fr": "Administration d'entreprises comportant les actes d'orientation , de direction, de représentation et de contrôle, liés à la possession et/ou au contrôle du capital social des entreprises des sociétés de gestion des participations de l'Etat (SGP).",
+    "translation_ar": "تسيير المؤسسات، بما يشمل أعمال التوجيه والإدارة والتمثيل والرقابة المرتبطة بامتلاك و/أو مراقبة رأس المال الاجتماعي لمؤسسات شركات تسيير مساهمات الدولة."
+  },
+  "607006": {
+    "source_fr": "Conseils et assistance des entreprises en matière de gestion, de planification, de contrôle, de relations publiques et de communication, etc...; | Réalisation de toutes études sur le marché et le comportement de la clientèle. | Supervision et réalisation de centre de recherches et assurer sa mise en oeuvre et son fonctionnement. | Audit.",
+    "translation_ar": "تقديم الاستشارات والمساعدة للمؤسسات في مجالات التسيير والتخطيط والرقابة والعلاقات العامة والاتصال وغيرها؛ | إنجاز الدراسات المتعلقة بالسوق وسلوك الزبائن؛ | الإشراف على مراكز البحث وإنجازها وضمان وضعها حيز التشغيل وسير عملها؛ | التدقيق."
+  },
+  "608001": {
+    "source_fr": "Conditionnement et emballage de tous produits et denrées alimentaires.",
+    "translation_ar": "توضيب وتغليف جميع المنتجات والمواد الغذائية."
+  },
+  "608002": {
+    "source_fr": "Conditionnement et emballage de toutes matières textiles (filés, fils en laine, coton, Fibranne, fibres synthétiques etc...).",
+    "translation_ar": "توضيب وتغليف جميع المواد النسيجية، بما في ذلك الخيوط والصوف والقطن والفيبران والألياف الاصطناعية وغيرها."
+  },
+  "608003": {
+    "source_fr": "Conditionnement et emballage de tous produits chimiques et engrais, destinés à tous usages.",
+    "translation_ar": "توضيب وتغليف جميع المنتجات الكيميائية والأسمدة الموجهة لكافة الاستعمالات."
   },
   "611001": {
     "source_fr": "Location d'appartements et de maisons vides ou meublées, destinées à l'habitation.",
@@ -70,5 +154,13 @@
   "611004": {
     "source_fr": "Intermédiaire en achat, vente et location de biens immobiliers et commerciaux.",
     "translation_ar": "الوساطة في شراء وبيع وتأجير العقارات والأملاك التجارية."
+  },
+  "613101": {
+    "source_fr": "Installation, mise au point, maintenance, service après-vente et réparation des équipements utilisés dans l'industrie agro-alimentaire.",
+    "translation_ar": "تركيب وضبط وصيانة وخدمة ما بعد البيع وإصلاح التجهيزات المستعملة في الصناعات الغذائية."
+  },
+  "613201": {
+    "source_fr": "Réparation, installation, maintenance et service après-vente de : | Machines à écrire, à calculer, de reproduction et toutes autres machines de bureaux | Matériel de traitement de l'information, d'archivage et assimilés; | Micro-ordinateurs et de leurs accessoires.",
+    "translation_ar": "إصلاح وتركيب وصيانة وخدمة ما بعد البيع لما يلي: | آلات الكتابة والحساب والاستنساخ وسائر آلات المكاتب؛ | معدات معالجة المعلومات والأرشفة وما يماثلها؛ | الحواسيب الدقيقة ولواحقها."
   }
 }
