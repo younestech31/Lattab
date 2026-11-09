@@ -507,6 +507,106 @@
     "translation_ar": "تصنيع الأدوية البيطرية.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "104224": {
+    "source_fr": "Fabrication de compléments alimentaires.",
+    "translation_ar": "تصنيع المكمّلات الغذائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104225": {
+    "source_fr": "Fabrication d’articles d’hygiène corporelle (cure-dents ...).",
+    "translation_ar": "تصنيع لوازم النظافة الجسدية (مثل أعواد تنظيف الأسنان وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104226": {
+    "source_fr": "Etablissement pharmaceutique de fabrication de dispositifs médicaux. | Le dispositif médical est tout appareil, instrument, équipement, matière ou produit, à l’exception des produits d’origine humaine, ou autre article utilisé seul ou en association, y compris les accessoires et logiciels intervenant dans son fonctionnement, destiné à être utilisé chez l’homme à des fins médicales. | Sont également considérés comme dispositifs médicaux ceux utilisés dans le diagnostic invitro : les produits, réactifs, matériaux, instruments et systèmes, leurs composants et accessoires, ainsi que les récipients pour échantillons, destinés spécifiquement à être utilisés in vitro, seuls ou en combinaison, dans l'examen d'échantillon provenant du corps humain, afin de fournir une information concernant un état physiologique ou pathologique, avéré ou potentiel, ou une anomalie congénitale, pour contrôler des mesures thérapeutiques, ou pour déterminer la sécurité d'un prélèvement d'éléments du corps humain ou sa compatibilité avec des receveurs potentiels (conformément aux dispositions des articles 212et 213 de Loi n° 18-11 du 2 juillet 2018, relative à la santé) .",
+    "translation_ar": "مؤسسة صيدلانية لتصنيع الأجهزة الطبية؛ | يُقصد بالجهاز الطبي كل جهاز أو أداة أو تجهيز أو مادة أو منتج، باستثناء المنتجات ذات الأصل البشري، أو أي مادة أخرى تُستعمل منفردة أو بالاشتراك مع غيرها، بما في ذلك الملحقات والبرمجيات المتدخلة في تشغيله، ويكون مخصصاً للاستعمال لدى الإنسان لأغراض طبية؛ | وتُعدّ أيضاً من الأجهزة الطبية المنتجات المخصصة للتشخيص المخبري خارج الجسم، بما فيها المنتجات والكواشف والمواد والأدوات والأنظمة ومكوناتها وملحقاتها، وكذلك أوعية العينات، التي تُستخدم تحديداً، منفردة أو مجتمعة، لفحص عينات مأخوذة من جسم الإنسان خارج الجسم، بغرض تقديم معلومات بشأن حالة فسيولوجية أو مرضية مؤكدة أو محتملة، أو بشأن شذوذ خلقي، أو لمراقبة التدابير العلاجية، أو لتحديد سلامة أخذ عينة من عناصر جسم الإنسان أو مدى توافقها مع متلقين محتملين، وذلك وفقاً لأحكام المادتين 212 و213 من القانون رقم 18-11 المؤرخ في 2 يوليو 2018 والمتعلق بالصحة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104227": {
+    "source_fr": "Extraction de venin animal à usage industriel et pharmaceutique.",
+    "translation_ar": "استخراج السموم الحيوانية المخصصة للاستعمال الصناعي والصيدلاني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105101": {
+    "source_fr": "Fabrication de fours électriques et autres fours industriels ou de laboratoire, y compris les cendriers ; | Fabrication de poêles ; | Fabrication de réchauffeurs électriques fixes d'atelier et fabrication de réchauffeurs électriques de piscines ; | Fabrication d'équipements de chauffage domestique non électriques installés tels que des équipements de chauffage solaire, de chauffage à vapeur, de chauffage au mazout et des systèmes de chauffage similaires ; | Fabrication de fours électriques à usage domestique (fournaises électriques à air pulsé, thermopompes, etc.) et de fournaises non électriques à air pulsé ; | Fabrication d'allume-feux automatiques, de grilles de cheminée automatiques, d'évacuateurs de cendres automatiques, etc.",
+    "translation_ar": "تصنيع الأفران الكهربائية وغيرها من الأفران الصناعية أو المخبرية، بما في ذلك غرف جمع الرماد؛ | تصنيع المواقد؛ | تصنيع المدافئ الكهربائية الثابتة المخصصة للورشات والمدافئ الكهربائية الخاصة بأحواض السباحة؛ | تصنيع تجهيزات التدفئة المنزلية المركّبة وغير الكهربائية، مثل تجهيزات التدفئة بالطاقة الشمسية والتدفئة بالبخار والتدفئة بالمازوت وأنظمة التدفئة المماثلة؛ | تصنيع الأفران الكهربائية المنزلية، مثل أفران الهواء الساخن القسري والمضخات الحرارية وغيرها، والأفران غير الكهربائية التي تعمل بالهواء الساخن القسري؛ | تصنيع مشعّلات الإشعال الآلية وشبكات المواقد الآلية وأجهزة الإزالة الآلية للرماد وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105102": {
+    "source_fr": "Fabrication d´équipements frigorifiques à usage industriel et commercial : -compresseurs et moto compresseurs frigorifiques, machines, appareils et équipement pour la production du froid, meubles et appareils frigorifiques commerciaux: appareils frigorifiques de laboratoires y compris leurs pièces détachées. | Fabrication de tous types de chambres froides.",
+    "translation_ar": "تصنيع تجهيزات التبريد للاستعمال الصناعي والتجاري، بما فيها الضواغط والضواغط المحركة للتبريد والآلات والأجهزة والمعدات الخاصة بإنتاج البرودة والأثاث والأجهزة التجارية المبردة وأجهزة التبريد المخبرية، بما في ذلك قطع غيارها؛ | تصنيع جميع أنواع غرف التبريد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105103": {
+    "source_fr": "Fabrication de moteurs à combustion interne (à allumage par compression), de moteurs à explosion (à allumage par étincelle) et d'autres moteurs et machines motrices; (moteurs à ressort, à contre poids, à air, à vent) y compris leurs parties et pièces détachées; | Fabrication de compresseurs et de pompes à vide : moto compresseurs, turbocompresseurs, pompes à vide (toutes catégories et à tous usages) y compris leurs parties et pièces détachées.",
+    "translation_ar": "تصنيع محركات الاحتراق الداخلي ذات الإشعال بالضغط، ومحركات الانفجار ذات الإشعال بالشرارة، وغيرها من المحركات وآلات الدفع (المحركات الزنبركية ومحركات الثقل الموازن والهواء والرياح)، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع الضواغط ومضخات التفريغ، بما في ذلك الضواغط المحركة والضواغط التوربينية ومضخات التفريغ بمختلف أنواعها واستعمالاتها، وأجزاؤها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105104": {
+    "source_fr": "Fabrication de machines et turbines à vapeur (y compris leurs parties et pièces détachées); | Fabrication de turbines à gaz, leurs parties et pièces détachées.",
+    "translation_ar": "تصنيع الآلات والتوربينات البخارية، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع التوربينات الغازية وأجزائها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105105": {
+    "source_fr": "Fabrication de pompes à liquides, y compris leurs parties et pièces détachées (pompes à bras, à moteurs, d'arrosage, pour machines, outils, pompes foreuses); | Fabrication de turbines hydrauliques et d'équipements de barrages : conduites forcées (y compris leurs pièces détachées et accessoires ), etc ... ; | Fabrication de vannes et autres matériels et accessoires hydrauliques; | Fabrication de raccords et flexibles en toutes matières et destinés à tous usages.",
+    "translation_ar": "تصنيع مضخات السوائل، بما في ذلك أجزاؤها وقطع غيارها (المضخات اليدوية والمحركة ومضخات الري والمضخات المخصصة للآلات والأدوات ومضخات الحفر)؛ | تصنيع التوربينات الهيدروليكية وتجهيزات السدود، بما فيها أنابيب الضغط وأجزاؤها وملحقاتها؛ | تصنيع الصمامات وسائر المعدات والملحقات الهيدروليكية؛ | تصنيع الوصلات والخراطيم المرنة من مختلف المواد والمخصصة لجميع الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105106": {
+    "source_fr": "Fabrication d'extincteurs et pompes à incendie (y compris leurs accessoires et pièces détachées); | Fabrication d'équipement d'extinction et de détection du feu, matériel pour pompiers, équipement pour autopompes et motopompes à incendie, grenades extinctrices etc... (y compris parties, pièces détachées et accessoires).",
+    "translation_ar": "تصنيع مطافئ الحريق ومضخات مكافحة الحرائق، بما في ذلك ملحقاتها وقطع غيارها؛ | تصنيع تجهيزات إخماد الحرائق وكشفها، ومعدات رجال الإطفاء، وتجهيزات شاحنات الإطفاء والمضخات المحركة لمكافحة الحرائق، والقنابل المطفئة وغيرها، بما في ذلك الأجزاء وقطع الغيار والملحقات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105107": {
+    "source_fr": "Fabrication de matériel de travaux publics, de génie civil et de terrassement, matériel pour la construction et l'entretien des chaussées (compacteurs, niveleuses bulls, épandeuses, balayeuses); matériel de préparation et de transport du béton (bétonnières, malaxeurs, vibrateurs à béton, coffrage métallique, dumpers, bennes à béton) y compris leurs parties et pièces détachées; | Fabrication de matériel spécial de mines, de forage et de sondage : haveuses, machines perforatrices, foreuses, microraclettes, locotracteurs de mines, berlines, ascenseurs de mines etc... y compris leurs parties, pièces et accessoires; | Fabrication de matériel de levage et de manutention : grues, ponts roulants, palans, pelles mécaniques, clarcs, excavateurs, brouettes, transporteurs à bandes, chariots (y compris leurs parties et pièces détachées). | Fabrication et montage de centrales à béton, d’appareils de levage et manutention, de matériel pour industries lourdes et pour chemins de fer .",
+    "translation_ar": "تصنيع معدات الأشغال العمومية والهندسة المدنية وأشغال الحفر والردم، ومعدات بناء الطرق وصيانتها (المدحلات وآلات التسوية والجرافات وآلات نشر المواد وآلات الكنس)، ومعدات تحضير الخرسانة ونقلها (خلاطات الخرسانة وأجهزة المزج والهزازات وقوالب الصب المعدنية وشاحنات التفريغ وحاويات الخرسانة)، بما في ذلك الأجزاء وقطع الغيار؛ | تصنيع المعدات الخاصة بالمناجم والحفر والتنقيب، مثل آلات قطع الصخور وآلات الثقب والحفارات وآلات الكشط الصغيرة والقاطرات المنجمية وعربات المناجم ومصاعدها وغيرها، بما في ذلك الأجزاء وقطع الغيار والملحقات؛ | تصنيع معدات الرفع والمناولة، مثل الرافعات والجسور الرافعة والرافعات الصغيرة والمجارف الميكانيكية والرافعات الشوكية والحفارات وعربات اليد والناقلات ذات السيور والعربات، بما في ذلك الأجزاء وقطع الغيار؛ | تصنيع وتركيب محطات الخرسانة وأجهزة الرفع والمناولة والمعدات المخصصة للصناعات الثقيلة والسكك الحديدية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105108": {
+    "source_fr": "Fabrication de matériel de traction électrique et non électrique pour chemins de fer : motrices et automotrices, voitures pour voyageurs, wagons pour marchandises etc... (y compris leurs parties, pièces détachées et accessoires).",
+    "translation_ar": "تصنيع معدات الجر الكهربائية وغير الكهربائية الخاصة بالسكك الحديدية، مثل القاطرات والعربات ذاتية الدفع وعربات نقل المسافرين وعربات نقل البضائع وغيرها، بما في ذلك أجزاؤها وقطع غيارها وملحقاتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105109": {
+    "source_fr": "Fabrication d’équipements de filtrage des eaux.",
+    "translation_ar": "تصنيع تجهيزات ترشيح المياه.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105110": {
+    "source_fr": "Fabrication d’équipements et matériels autres que sensibles.",
+    "translation_ar": "تصنيع المعدات والعتاد غير المصنّف ضمن المعدات الحساسة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105111": {
+    "source_fr": "Fabrication de pompes destinées à tout usage.",
+    "translation_ar": "تصنيع المضخات المخصصة لجميع الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105112": {
+    "source_fr": "Montage ou fabrication des équipements et matériels liés au domaine des mines",
+    "translation_ar": "تركيب أو تصنيع التجهيزات والمعدات المرتبطة بقطاع المناجم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105113": {
+    "source_fr": "la fabrication d'équipements industriels pour la production du froid; | la fabrication de machines et d'appareils pour le conditionnement de l'air, y compris pour les véhicules automobiles; | la fabrication de ventilateurs à usage non domestique; | la fabrication d'échangeurs de chaleur; | la fabrication de machines à liquéfier l'air ou le gaz; | la fabrication de ventilateurs de grenier (ventilateurs sur pignon, ventilateurs sur toit, etc.) ; | Cette classe ne comprend pas : | la fabrication de matériel, de machines et d'appareils pour la production du froid de type ménager et la fabrication de ventilateurs de type ménager.",
+    "translation_ar": "تصنيع التجهيزات الصناعية الخاصة بالتهوية والتكييف والتبريد؛ | تصنيع الآلات والأجهزة المخصصة لإنتاج البرودة الصناعية؛ | تصنيع آلات وأجهزة تكييف الهواء، بما في ذلك المخصصة للمركبات؛ | تصنيع المراوح غير المنزلية؛ | تصنيع المبادلات الحرارية؛ | تصنيع آلات تسييل الهواء أو الغاز؛ | تصنيع مراوح السطوح العلوية للمباني (مراوح الجملونات ومراوح الأسطح وغيرها)؛ | لا يشمل هذا الصنف تصنيع المعدات والآلات والأجهزة المنزلية لإنتاج البرودة، ولا تصنيع المراوح المنزلية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105201": {
+    "source_fr": "Fabrication de tracteurs agricoles y compris motoculteurs; | Fabrication d'autres machines et matériel agricole pour la préparation des sols (drainage, semis, fertilisation, récolte, traitement), pour la laiterie agricole et la traite, matériel de manutention et transport etc...; | Fabrication de parties et pièces détachées pour matériel et machines agricoles; | Fabrication de serres agricoles;",
+    "translation_ar": "تصنيع الجرارات الزراعية، بما في ذلك الجرارات الصغيرة ذات العجلات أو المحاريث الآلية؛ | تصنيع سائر الآلات والمعدات الزراعية لتحضير التربة (الصرف والبذر والتسميد والحصاد والمعالجة)، وللألبان الزراعية والحلب، والمناولة والنقل وغيرها؛ | تصنيع الأجزاء وقطع الغيار الخاصة بالآلات والمعدات الزراعية؛ | تصنيع البيوت البلاستيكية الزراعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105202": {
+    "source_fr": "Fabrication de machines outils pour le travail des métaux; | Fabrication de machines outils pour le travail du bois, du liège, de l'ébonite, des matières plastiques et autres matières dures | Fabrication d'outillages électroportatifs: (meules, chignoles, tronçonneuses, etc...); | Fabrication de matériel de soudage (électrique et non électrique), d'électrodes et articles similaires pour soudure (N.C. les électrodes pour électrochimie et électrométallurgie); | Fabrication de parties, pièces détachées et accessoires pour machines outils (engrenages, organes de transmission).",
+    "translation_ar": "تصنيع آلات تشغيل المعادن؛ | تصنيع آلات تشغيل الخشب والفلين والإيبونيت والمواد البلاستيكية وغيرها من المواد الصلبة؛ | تصنيع الأدوات الكهربائية المحمولة، مثل أحجار الجلخ والمثاقب والمناشير القاطعة وغيرها؛ | تصنيع معدات اللحام الكهربائية وغير الكهربائية، والأقطاب الكهربائية والمواد المماثلة المستخدمة في اللحام، باستثناء الأقطاب المخصصة للكيمياء الكهربائية والتحليل الكهربائي للمعادن؛ | تصنيع أجزاء وقطع غيار وملحقات آلات التشغيل، مثل التروس وأعضاء نقل الحركة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105203": {
+    "source_fr": "Fabrication de machines et matériels pour les industries alimentaires: Appareils et récipients industriels de laiterie; .Séchoirs pour industries alimentaires etc.... y compris fours de boulangerie; | Fabrication de machines et appareils pour équipement de cuisine professionnelle; | Fabrication de machines et appareils pour l'industrie des tabacs et allumettes; | Fabrication de machines et matériels pour les industries chimiques et pharmaceutiques; | Fabrication de machines et matériels pour l'industrie du caoutchouc et des plastiques; | Fabrication de machines et matériels pour l'industrie du cuir (tannerie mégisserie); | Fabrication de matériels de conditionnement des liquides, des produits alimentaires et des produits chimiques | Fabrication de matériels pour le traitement des eaux (adoucisseurs d'eau); | Fabrication de parties et pièces détachées de ces machines et matériels.",
+    "translation_ar": "تصنيع الآلات والمعدات المخصصة للصناعات الغذائية، بما فيها أجهزة وأوعية صناعة الألبان الصناعية والمجففات المخصصة للصناعات الغذائية وأفران المخابز؛ | تصنيع الآلات والأجهزة المخصصة لتجهيز المطابخ المهنية؛ | تصنيع الآلات والأجهزة المخصصة لصناعة التبغ وأعواد الثقاب؛ | تصنيع الآلات والمعدات المخصصة للصناعات الكيميائية والصيدلانية؛ | تصنيع الآلات والمعدات المخصصة لصناعة المطاط والمواد البلاستيكية؛ | تصنيع الآلات والمعدات المخصصة لصناعة الجلود (الدباغة ومعالجة الجلود الدقيقة)؛ | تصنيع معدات توضيب السوائل والمنتجات الغذائية والمنتجات الكيميائية؛ | تصنيع معدات معالجة المياه (أجهزة تليين المياه)؛ | تصنيع الأجزاء وقطع الغيار الخاصة بهذه الآلات والمعدات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
