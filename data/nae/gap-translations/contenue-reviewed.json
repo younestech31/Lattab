@@ -2232,6 +2232,206 @@
     "translation_ar": "تصنيع الزجاج المسطح المقسّى أو المصفّح؛ | تصنيع المرايا الزجاجية؛ | تصنيع الزجاج العازل ذي الجدران المتعددة.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "115103": {
+    "source_fr": "la fabrication de bouteilles, de flacons, de pots, de bocaux et autres récipients en verre ou en cristal ; | la fabrication de plats en verre ou en vitrocérame et d'autres articles en verre ou en cristal à usage domestique.",
+    "translation_ar": "تصنيع القوارير والعبوات والأواني والمرطبانات وغيرها من الحاويات الزجاجية أو الكريستالية؛ | تصنيع الأطباق الزجاجية أو الزجاجية الخزفية وغيرها من المنتجات الزجاجية أو الكريستالية المخصصة للاستعمال المنزلي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "115104": {
+    "source_fr": "la fabrication de fibres de verre, y compris la laine de verre et de produits non tissés en ces matières. | Cette activité ne comprend pas : | la fabrication de tissus de fibres de verre ; | la fabrication de fibres optiques pour la transmission d'images et de câbles de fibres optiques.",
+    "translation_ar": "تصنيع الألياف الزجاجية، بما في ذلك الصوف الزجاجي والمنتجات غير المنسوجة المصنوعة من هذه المواد؛ | لا يشمل هذا النشاط تصنيع أقمشة الألياف الزجاجية، ولا تصنيع الألياف البصرية لنقل الصور وكابلات الألياف البصرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "115105": {
+    "source_fr": "la fabrication d'articles en verre, verrerie de laboratoire, d'hygiène et de pharmacie ; | la fabrication de verres d'horlogerie, verres d'optique et éléments optiques en verre, non travaillés optiquement ; | la fabrication de verrerie utilisée en bijouterie fantaisie ; | la fabrication d'isolateurs et de pièces isolantes en verre ; | la fabrication d’enveloppes pour lampes ; | la fabrication d'articles décoratifs en verre ; | la fabrication de tubes, barres et baguettes en verre ; | Cette activité ne comprend pas : | la fabrication d'éléments d'optique en verre travaillés optiquement ; | la fabrication de seringues en verre et d'autres matériels de laboratoire d'analyses médicales.",
+    "translation_ar": "تصنيع المنتجات الزجاجية، بما فيها زجاج المختبرات والنظافة والصيدلة؛ | تصنيع زجاج الساعات والزجاج البصري والعناصر البصرية الزجاجية غير المعالجة بصرياً؛ | تصنيع الأواني الزجاجية المستخدمة في الحلي الاصطناعية؛ | تصنيع العوازل والقطع العازلة من الزجاج؛ | تصنيع أغلفة المصابيح؛ | تصنيع المنتجات الزجاجية الزخرفية؛ | تصنيع الأنابيب والقضبان والعصي الزجاجية؛ | لا يشمل هذا النشاط تصنيع العناصر البصرية الزجاجية المعالجة بصرياً، ولا تصنيع المحاقن الزجاجية وغيرها من معدات مختبرات التحاليل الطبية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "115201": {
+    "source_fr": "fabrication de produits réfractaires.",
+    "translation_ar": "تصنيع المنتجات المقاومة للحرارة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "116101": {
+    "source_fr": "la fabrication de pneumatiques en caoutchouc pour véhicules, équipements, machines mobiles, industrie aéronautique, jouets, meubles et autres utilisations : | pneumatiques, bandages pleins ou creux. | la fabrication de chambres à air pour pneumatiques | la fabrication de bandes de roulement amovibles pour pneumatiques, de flaps, de profilés pour le rechapage des pneumatiques, etc. | le rechapage et le resculptage de pneumatiques.",
+    "translation_ar": "تصنيع الإطارات المطاطية للمركبات والتجهيزات والآلات المتحركة وصناعة الطيران والألعاب والأثاث وغيرها من الاستعمالات، بما يشمل الإطارات الهوائية والإطارات المصمتة أو المجوفة؛ | تصنيع الأنابيب الداخلية للإطارات؛ | تصنيع مداسات الإطارات القابلة للفك والطبقات الداخلية والقطاعات المخصصة لإعادة تجديد الإطارات وغيرها؛ | إعادة تجديد الإطارات وإعادة نقش مداسها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201101": {
+    "source_fr": "Fabrication de vaisselle et objets d'ornementation en terre cuite, faïence ou poterie fine.",
+    "translation_ar": "تصنيع أواني المائدة ومصنوعات الزينة من الطين المحروق أو الخزف المزجج أو الخزف الدقيق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201102": {
+    "source_fr": "Fabrication d'objets décoratifs ou de fantaisie en céramique; | Fabrication d'émaux non industriels.",
+    "translation_ar": "تصنيع المصنوعات الزخرفية أو التزيينية من الخزف؛ | تصنيع المينا غير الصناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201103": {
+    "source_fr": "Fabrication de tous produits ou articles en porcelaine destinés à l'usage domestique .",
+    "translation_ar": "تصنيع جميع المنتجات أو المصنوعات من البورسلان المخصصة للاستعمال المنزلي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201201": {
+    "source_fr": "Fabrication d'ouvrages en verre, de vitraux; | Fabrication d'objets d'ornementation en verre additionné à d'autres matières; | Décoration sur verre; | Façonnage et transformation du verre plat : verre poli ou durci, verre bombé, verre de sécurité, verre découpé, etc... ; | Fabrication de briques, dalles, pavés et autres ouvrages en verre pour le bâtiment; | Soufflage du verre pour fabrication de bouteilles, flacons, bocaux, pots, éprouvettes, tubes..",
+    "translation_ar": "تصنيع مصنوعات الزجاج والنوافذ الزجاجية الملونة؛ | تصنيع مصنوعات الزينة من الزجاج المضاف إليه مواد أخرى؛ | زخرفة الزجاج؛ | تشكيل وتحويل الزجاج المسطح، مثل الزجاج المصقول أو المقسّى والزجاج المنحني وزجاج السلامة والزجاج المقطوع وغيرها؛ | تصنيع الطوب والألواح والرصفيات وغيرها من مصنوعات الزجاج المخصصة للبناء؛ | نفخ الزجاج لتصنيع القوارير والعبوات والمرطبانات والأواني وأنابيب الاختبار والأنابيب وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201202": {
+    "source_fr": "Fabrication d'ouvrages gravés ou non en marbre, granit et pierre pour bâtiment, pour les décorations, monuments, sépultures, etc... ; | Taille, façonnage, sculpture, gravure et polissage de tous marbres destinés à tous usages.",
+    "translation_ar": "تصنيع مصنوعات الرخام المنقوشة أو غير المنقوشة من الرخام والغرانيت والحجر، والمخصصة للبناء والزينة والنصب التذكارية والقبور وغيرها؛ | قطع وتشكيل ونحت ونقش وصقل جميع أنواع الرخام المخصصة لمختلف الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201301": {
+    "source_fr": "Tous travaux de ferronnerie y compris ferronnerie d'art; | Fabrication de chandeliers, bougeoirs lustres, lampadaires etc; | Tous autres ouvrages ou articles en fer forgé : grilles, rampes, balustrades ...",
+    "translation_ar": "جميع أشغال الحدادة الفنية، بما في ذلك حدادة الزينة؛ | تصنيع الشمعدانات وحوامل الشموع والثريات وأعمدة الإنارة وغيرها؛ | تصنيع سائر المصنوعات والأعمال من الحديد المطاوع، مثل الشبكات والدرابزينات والحواجز وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201302": {
+    "source_fr": "Fabrication d'articles travaillés en cuivre battu, laiton ou cuivre jaune : vases, plateaux, théières, cafetières, coupes pour verres à thé etc ... ; | Fabrication d'articles en cuivre ciselés et sculptés pour la décoration et l'ameublement.",
+    "translation_ar": "تصنيع مصنوعات مشكلة من النحاس الأحمر أو النحاس الأصفر (اللاتون)، مثل المزهريات والصواني وأواني الشاي والقهوة وكؤوس الشاي وغيرها؛ | تصنيع مصنوعات من النحاس المحفور والمنحوت والمخصصة للزينة وتأثيث الأماكن.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201303": {
+    "source_fr": "Fabrication artisanale de bijoux ouvragés, sertis, | ciselés en or, en argent et en métaux communs (bracelets, chaines, bagues, pendulettes, broches, boucles d'oreilles, etc.) | Travail de l'ambre et du corail destinés à la bijouterie",
+    "translation_ar": "التصنيع الحرفي للمجوهرات المصاغة والمثبتة الأحجار والمنقوشة من الذهب والفضة والمعادن الأساسية، مثل الأساور والسلاسل والخواتم والساعات الصغيرة ودبابيس الزينة والأقراط وغيرها؛ | تشغيل الكهرمان والمرجان المخصصين لصناعة المجوهرات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201304": {
+    "source_fr": "Fabrication artisanale de pierres précieuses et fines",
+    "translation_ar": "التصنيع الحرفي للأحجار الكريمة وشبه الكريمة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201401": {
+    "source_fr": "Fabrication de meubles en bois; | Restauration d'articles ouvragés, incrustés et tous articles d'ébénisterie; | Fabrication de boiserie pour le revêtement intérieur des mûrs des immeubles à usage d'habitations et de bureaux .",
+    "translation_ar": "تصنيع الأثاث الخشبي؛ | ترميم المصنوعات المشغولة والمطعمة وسائر مصنوعات النجارة الفنية؛ | تصنيع الألواح والكسوات الخشبية لتغطية الجدران الداخلية للمباني السكنية والمكتبية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201402": {
+    "source_fr": "Fabrication de tous objets de vannerie et sparterie (nattes, tapis, paniers, corbeilles et autres contenants, cordes) destinés au garnissage des sièges et dossiers de sièges, éventails, chapeaux de paille, balais et autres articles d'usage domestique en alfa et raphia; | Fabrication de mobilier à usage domestique en osier et rotin.",
+    "translation_ar": "تصنيع جميع مصنوعات السلال والضفائر النباتية، مثل الحصائر والسجاد والسلال والقفف وسائر الحاويات والحبال، المخصصة لتنجيد المقاعد وظهورها والمراوح والقبعات المصنوعة من القش والمكانس وغيرها من المنتجات المنزلية المصنوعة من الحلفاء والرافيا؛ | تصنيع الأثاث المنزلي من الصفصاف والخيزران.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201501": {
+    "source_fr": "Fabrication de fils et filés en laine, peignées pour tissage et bonneterie (écrus ou teints); | Fabrication de fils et filés en laine, cardée pour tissage et bonneterie (écrus ou teints); | Production de fils et filés à base d'effilochés.",
+    "translation_ar": "تصنيع الخيوط والغزول الصوفية الممشطة المخصصة للنسيج والحياكة، سواء كانت خاماً أو مصبوغة؛ | تصنيع الخيوط والغزول الصوفية المسرّحة المخصصة للنسيج والحياكة، سواء كانت خاماً أو مصبوغة؛ | إنتاج الخيوط والغزول انطلاقاً من الألياف المسترجعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201502": {
+    "source_fr": "Fabrication de tissus en laine pure ou mélangée pour habillement et ameublement (écrus et finis); | Fabrication de couvertures, tapis, carpettes (en laine pure ou mélangée en coton et autres matières premières ); | Fabrication de tissus en soie; | Fabrication de vêtements tissés (burnous, kéchabia, haïk, fouta...) | Fabrication de rideaux tissés.",
+    "translation_ar": "تصنيع الأقمشة من الصوف الخالص أو المخلوط، المخصصة للملابس والمفروشات، سواء كانت خاماً أو نهائية التجهيز؛ | تصنيع الأغطية والسجاد والبسط من الصوف الخالص أو المخلوط أو القطن ومواد أولية أخرى؛ | تصنيع الأقمشة الحريرية؛ | تصنيع الملابس المنسوجة، مثل البرنوس والقشابية والحايك والفوطة وغيرها؛ | تصنيع الستائر المنسوجة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201503": {
+    "source_fr": "Fabrication de tapis, couvertures et carpettes en laine. | Rénovation de tapis et moquettes.",
+    "translation_ar": "تصنيع السجاد والأغطية والبسط من الصوف؛ | تجديد السجاد والموكيت.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "201601": {
+    "source_fr": "Fabrication de tous articles de maroquinerie traditionnelle, sacs, sacoches, porte feuille, étuis ouvragés , mules, poufs, coffrets, ceintures , articles de bureau, de voyage et accessoires de chasse en cuir (gibecières, cartouchières, etc...).",
+    "translation_ar": "تصنيع جميع مصنوعات الجلد التقليدية، مثل الحقائب والحقائب الصغيرة والمحافظ والحافظات المزخرفة والنعال والوسائد الأرضية والصناديق والأحزمة واللوازم المكتبية ولوازم السفر ومستلزمات الصيد الجلدية، مثل حقائب الصيد وحافظات الخراطيش وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202101": {
+    "source_fr": "Exploitation de carrières de pierre de taille pour la construction et l'industrie; | Concassage de pierres, fabrication de graviers etc...; | Extraction, broyage et autres traitements du gypse; | Extraction, broyage et autres traitements de la pierre à chaux.",
+    "translation_ar": "استغلال مقالع أحجار البناء والصناعة؛ | تكسير الأحجار وتصنيع الحصى وغيرها؛ | استخراج الجبس وطحنه وإخضاعه لمعالجات أخرى؛ | استخراج حجر الجير وطحنه وإخضاعه لمعالجات أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202102": {
+    "source_fr": "Extraction d'argile de terre à céramique (Kaolin), de terre réfractaire servant à la fabrication de produits en terre cuite .",
+    "translation_ar": "استخراج الطين المخصص لصناعة الخزف (الكاولين) والأتربة الحرارية المستخدمة في تصنيع المنتجات الطينية المحروقة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202103": {
+    "source_fr": "Extraction du sel gemme; | Extraction du sel par évaporation dans les marais salants; | Broyage, triage, raffinage et conditionnement du sel en vue de l'usage domestique et industriel.",
+    "translation_ar": "استخراج الملح الصخري؛ | استخراج الملح عن طريق التبخر في الملاحات؛ | طحن الملح وفرزه وتكريره وتوضيبه للاستعمال المنزلي والصناعي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202104": {
+    "source_fr": "l’exploitation minière artisanale consiste à la valorisation du minerai d’or, des paillettes d’or, de l’or natif extrait, enlevé ou récupéré et ne couvre que les opérations de transformation physique (concassage et broyage) pour réduire, au maximum, le volume de stériles et de gangues.",
+    "translation_ar": "يتمثل الاستغلال المنجمي الحرفي للذهب في تثمين خام الذهب وشذرات الذهب والذهب الطبيعي المستخرج أو المقتلع أو المسترجع، ولا يشمل إلا عمليات التحويل الفيزيائي (التكسير والطحن) بهدف تقليل حجم الشوائب والصخور الحاضنة إلى أقصى حد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202201": {
+    "source_fr": "Fabrication de moules et coquilles (pour verre, métaux, matières plastiques et caoutchouc) et modèles en toutes matières; | Reconstitution ou reproduction de petits matériels divers; | Fabrication de petit outillage spécialisé sur commande.",
+    "translation_ar": "تصنيع القوالب والنماذج (للزجاج والمعادن والمواد البلاستيكية والمطاط) من مختلف المواد؛ | إعادة تأهيل أو استنساخ المعدات الصغيرة والمتنوعة؛ | تصنيع العدد والأدوات المتخصصة الصغيرة حسب الطلب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202202": {
+    "source_fr": "Fabrication de pièces détachées et parties d'équipements pour automobiles et tracteurs; | Fabrication de tableaux de bord, phares, rétroviseurs; | Fabrication de ferrures, serrures, bouchons de réservoirs, essuie-glaces; | Fabrication de pare-chocs etc...",
+    "translation_ar": "تصنيع قطع الغيار وأجزاء تجهيزات السيارات والجرارات؛ | تصنيع لوحات القيادة والمصابيح ومرايا الرؤية الخلفية؛ | تصنيع التركيبات المعدنية والأقفال وأغطية خزانات الوقود وماسحات الزجاج؛ | تصنيع المصدّات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202203": {
+    "source_fr": "Fabrication de pièces détachées, petits équipements et accessoires pour cycles et motocycles.",
+    "translation_ar": "تصنيع قطع الغيار والتجهيزات الصغيرة واللوازم الخاصة بالدراجات الهوائية والدراجات النارية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202204": {
+    "source_fr": "Fabrication de roulements métalliques, de butées, leurs parties et pièces détachées (roulements à billes, à aiguilles et rouleaux etc...) et de roulements en toutes autres matières, pour tous usages.",
+    "translation_ar": "تصنيع المحامل المعدنية ومحامل الدفع وأجزائها وقطع غيارها (المحامل الكروية والإبرية والأسطوانية وغيرها)، وتصنيع المحامل من مختلف المواد الأخرى لجميع الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202206": {
+    "source_fr": "Garnissage , réparation, revêtement des sièges et intérieur des véhicules.",
+    "translation_ar": "تنجيد مقاعد المركبات والديكورات الداخلية لها وإصلاحها وتغطيتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202301": {
+    "source_fr": "Production de tous articles de petite fonderie; | Tous travaux de fonderie sur modèle; | Tous travaux de moulage métallique en particulier la reproduction de petits ouvrages sculptés par moulage, destinés à tous usages.",
+    "translation_ar": "إنتاج جميع منتجات السباكة الصغيرة؛ | جميع أعمال السباكة وفق النماذج؛ | جميع أشغال صب المعادن، ولا سيما إعادة إنتاج المصنوعات المنحوتة الصغيرة عن طريق الصب، والمخصصة لمختلف الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202302": {
+    "source_fr": "Fabrication de réservoirs, cuves; | Réparation d'articles et citernes métalliques; chaudronnerie | Fabrication d'appareils d'épuration des eaux domestiques; | Fabrication d'autres produits de chaudronnerie; | Fabrication de petits articles en chaudronnerie; | Fabrication de petits articles en tôle ou en cuivre, d'articles emboutis ou estampés (casseroles, poêles à frire, chaudrons, tuyaux d'aération, réchauds etc...).",
+    "translation_ar": "تصنيع الخزانات والأحواض؛ | إصلاح المصنوعات والصهاريج المعدنية وأعمال الصفائح المعدنية وصناعة الغلايات؛ | تصنيع أجهزة تنقية المياه المنزلية؛ | تصنيع منتجات أخرى لأشغال الصفائح المعدنية وصناعة الغلايات؛ | تصنيع المصنوعات الصغيرة في هذا المجال؛ | تصنيع المصنوعات الصغيرة من الصفائح أو النحاس، والمنتجات المكبوسة أو المختومة، مثل القدور والمقالي والمراجل وأنابيب التهوية والمواقد وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202303": {
+    "source_fr": "Fabrication d'éléments de charpentes métalliques (pylônes, échelles de secours et accessoires métalliques ).",
+    "translation_ar": "تصنيع عناصر الهياكل المعدنية، مثل الأبراج وسلالم الطوارئ واللوازم المعدنية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202304": {
+    "source_fr": "Fabrication de boulons et écrous, vis pour métaux, vis à bois, rivets pleins, clous et visserie décolletée et autres articles similaires.",
+    "translation_ar": "تصنيع البراغي والصواميل ومسامير المعادن ومسامير الخشب والبرشام المصمت والمسامير والمنتجات المخروطة الدقيقة وغيرها من المنتجات المماثلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202305": {
+    "source_fr": "Fabrication de ferrures et d'articles de ferronnerie et ouvrages de menuiserie métallique : portes, fenêtres, rideaux, panneaux et façades, fermetures métalliques etc...",
+    "translation_ar": "تصنيع التركيبات المعدنية ومصنوعات الحدادة والنجارة المعدنية، مثل الأبواب والنوافذ والستائر والألواح والواجهات وأنظمة الغلق المعدنية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202306": {
+    "source_fr": "Fabrication d'articles métalliques pour mercerie ( aiguilles métalliques, fermetures à glissières, etc....); | Fabrication d'éléments métalliques pour parapluies, articles chaussants et autres utilisés dans la maroquinerie.",
+    "translation_ar": "تصنيع المنتجات المعدنية الخاصة بلوازم الخياطة، مثل الإبر المعدنية والسحابات وغيرها؛ | تصنيع العناصر المعدنية الخاصة بالمظلات ومستلزمات الأحذية وغيرها من المنتجات المستخدمة في صناعة الجلود.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202307": {
+    "source_fr": "Production de tout mobilier métallique destiné à tous usages.",
+    "translation_ar": "إنتاج جميع أنواع الأثاث المعدني المخصص لمختلف الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202308": {
+    "source_fr": "Production d'ustensiles de cuisine et autres articles de ménage en tous métaux.",
+    "translation_ar": "الإنتاج الحرفي لأدوات المطبخ وسائر الأدوات المنزلية المصنوعة من مختلف المعادن.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202309": {
+    "source_fr": "Fabrication de médailles obtenues par la frappe et autres bijoux de fantaisie, boutons, épingles, etc...",
+    "translation_ar": "الإنتاج الحرفي للميداليات المصنوعة بالسكّ وغيرها من الحلي الاصطناعية والأزرار والدبابيس وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202310": {
+    "source_fr": "Fabrication d'articles en zinc, aluminium et tôle galvanisée (articles de cuisine, tuyauterie, accessoires de fumisterie, etc...).",
+    "translation_ar": "الإنتاج الحرفي لمصنوعات الصفائح المعدنية من الزنك والألومنيوم والصفائح المجلفنة، مثل أدوات المطبخ والأنابيب ولوازم المداخن وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202311": {
+    "source_fr": "Fabrication d'articles de coutellerie, objets tranchants et accessoires (couteaux, rasoirs , ciseaux ,...).",
+    "translation_ar": "تصنيع أدوات المائدة والقطع الحادة ولوازمها، مثل السكاكين وشفرات الحلاقة والمقصات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
