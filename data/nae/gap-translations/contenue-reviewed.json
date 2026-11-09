@@ -207,6 +207,306 @@
     "translation_ar": "استخراج خام الحديد؛ | البيريت الحديدي المحمّص؛ | إثراء خام الحديد وإخضاعه للمعالجات الأخرى (الغسل والغربلة والتركيز وغيرها).",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "103102": {
+    "source_fr": "Extraction de bauxite et autres minerais d'aluminium; | Enrichissement et autres traitements de ces minerais (lavage, criblage, concentration etc...).",
+    "translation_ar": "استخراج البوكسيت وخامات الألومنيوم الأخرى؛ | إثراء هذه الخامات وإخضاعها لمعالجات أخرى (الغسل والغربلة والتركيز وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103103": {
+    "source_fr": "Extraction de minerais de métaux communs non ferreux (plomb, zinc, cuivre, antimoine, étain, béryllium etc...); | Enrichissement et autres traitements de ces minerais (lavage, criblage, concentration, etc...).",
+    "translation_ar": "استخراج خامات المعادن الأساسية غير الحديدية (الرصاص والزنك والنحاس والأنتيمون والقصدير والبيريليوم وغيرها)؛ | إثراء هذه الخامات وإخضاعها لمعالجات أخرى (الغسل والغربلة والتركيز وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103104": {
+    "source_fr": "Extraction de minerais de métaux pour ferro-alliages (chrome, molybdene, tungstène, manganése, nickel, cobalt, vanadium...); | Enrichissement et autres traitements de ces minerais (lavage, criblage, etc...).",
+    "translation_ar": "استخراج خامات المعادن المستخدمة في السبائك الحديدية (الكروم والموليبدينوم والتنغستن والمنغنيز والنيكل والكوبالت والفاناديوم وغيرها)؛ | إثراء هذه الخامات وإخضاعها لمعالجات أخرى (الغسل والغربلة وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103105": {
+    "source_fr": "Extraction de minerais de métaux précieux et de minerais contenant des métaux précieux (or, argent, minerais du groupe du platine); | Enrichissement et autres traitements de ces métaux. (lavage, criblage, etc...).",
+    "translation_ar": "استخراج خامات المعادن النفيسة والخامات المحتوية على معادن نفيسة (الذهب والفضة وخامات مجموعة البلاتين)؛ | إثراء هذه المعادن ومعالجتها بطرق أخرى (الغسل والغربلة وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103106": {
+    "source_fr": "Extraction d'autres minerais métalliques tels que le titane, le mercure, le strontium etc...; | Préparation et enrichissement de ces minerais (lavage, criblage, concentration, etc...).",
+    "translation_ar": "استخراج الخامات المعدنية الأخرى، مثل التيتانيوم والزئبق والسترونتيوم وغيرها؛ | تحضير هذه الخامات وإثراؤها (الغسل والغربلة والتركيز وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103107": {
+    "source_fr": "Extraction de minerais d'uranium et autres minerais radioactifs, tels que le radium, le thorium; | Préparation et enrichissement de ces minerais (lavage, criblage, concentration, etc...).",
+    "translation_ar": "استخراج خامات اليورانيوم وغيرها من الخامات المشعة، مثل الراديوم والثوريوم؛ | تحضير هذه الخامات وإثراؤها (الغسل والغربلة والتركيز وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103108": {
+    "source_fr": "Extraction de soufre et pyrite de fer non grillé; | Traitement du soufre.",
+    "translation_ar": "استخراج الكبريت والبيريت الحديدي غير المحمّص؛ | معالجة الكبريت.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103109": {
+    "source_fr": "Extraction de minerais non métalliques divers tels que l'amiante, le graphite naturel, le talc, le mica, le pathfluor, le sulfate de baryum en roche, le carbonate de baryum, la cryolite, le kieselguhr et silice fossile etc...; | Extraction de pierres gemmes (diamants et autres); | Traitement de ces minerais.",
+    "translation_ar": "استخراج مختلف الخامات غير المعدنية، مثل الأسبستوس والغرافيت الطبيعي والتلك والميكا والفلوريت وكبريتات الباريوم الصخرية وكربونات الباريوم والكريوليت والتراب الدياتومي والسيليكا الأحفورية وغيرها؛ | استخراج الأحجار الكريمة (الألماس وغيرها)؛ | معالجة هذه الخامات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103110": {
+    "source_fr": "Broyage, concassage, lavage, criblage des minerais et matériaux non liés à l'extraction.",
+    "translation_ar": "الطحن والتكسير والغسل والغربلة حسب الطلب للخامات والمواد غير المرتبطة بعمليات الاستخراج.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103111": {
+    "source_fr": "Creusage des puits et percement de tunnels de mines; | Mise en valeur des mines; | Déblaiement des mines; | Services de sécurité dans les mines.",
+    "translation_ar": "حفر آبار المناجم وشق الأنفاق المنجمية؛ | تهيئة المناجم واستغلالها؛ | إزالة الأتربة والأنقاض من المناجم؛ | تقديم خدمات الأمن والسلامة في المناجم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103201": {
+    "source_fr": "Extraction d'anthracite, de charbon activé, de lignite et de tourbe.",
+    "translation_ar": "استخراج الأنثراسيت والفحم المنشّط والفحم البني والخُث.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103202": {
+    "source_fr": "Extraction et préparation de marbre et autres pierres de taille telles que l'onyx, le granit, le basalte, le grès, le porphyre, et autres pierres calcaires, pour la construction et l'industrie (taille le façonnage et polissage)",
+    "translation_ar": "استخراج وتحضير الرخام وغيره من أحجار البناء، مثل العقيق والجرانيت والبازلت والحجر الرملي والبورفيري وغيرها من الأحجار الكلسية، المخصصة للبناء والصناعة (القطع والتشكيل والتلميع).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103203": {
+    "source_fr": "Extraction de sable, cailloux, galets, graviers, moellons alluvionnaires utilisés principalement pour la construction; | Extraction de sable et silice utilisés pour la verrerie, la fabrication de moules de fonderie, la fabrication et la confection d'abrasifs et pour toute autre application industrielle.",
+    "translation_ar": "استخراج الرمل والحصى والحصباء والزلط والأحجار الصغيرة ذات الأصل الرسوبي، المستخدمة أساساً في البناء؛ | استخراج الرمال والسيليكا المستخدمة في صناعة الزجاج وصنع قوالب المسابك وتصنيع وتحضير المواد الكاشطة، ولسائر التطبيقات الصناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103204": {
+    "source_fr": "Extraction, broyage et autres traitements du gypse et d'anhydrite",
+    "translation_ar": "استخراج الجبس والأنهيدريت وطحنهما وإخضاعهما لمعالجات أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103205": {
+    "source_fr": "Extraction, broyage et autres traitements de la pierre à chaux.",
+    "translation_ar": "استخراج الحجر الجيري وطحنه وإخضاعه لمعالجات أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103206": {
+    "source_fr": "Extraction d'argile, de terres à céramique (kaolin), de terres réfractaires servant à la fabrication de produits en terre cuite, de produits calorifuges et réfractaires et autres produits minéraux non métalliques tels que le feldspath, la bentonite et terre décolorante.",
+    "translation_ar": "استخراج الطين والأتربة المخصصة لصناعة الخزف (الكاولين)، والأتربة الحرارية المستخدمة في صناعة المنتجات الفخارية والمنتجات العازلة للحرارة والمواد المقاومة للحرارة، وغيرها من المنتجات المعدنية غير المعدنية مثل الفلدسبار والبنتونيت والأتربة المبيِّضة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103207": {
+    "source_fr": "Extraction et préparation de calcaire, dolomies, craies, abrasifs naturels tels que la pierre ponce et le corindon etc... destinés à d'autres usages que la fabrication de matériaux de construction.",
+    "translation_ar": "استخراج وتحضير الحجر الجيري والدولوميت والطباشير والمواد الكاشطة الطبيعية، مثل حجر الخفاف والكوروندوم وغيرها، المخصصة لاستعمالات غير صناعة مواد البناء.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103208": {
+    "source_fr": "Extraction et enrichissement de sel de potassium.",
+    "translation_ar": "استخراج أملاح البوتاس وإثراؤها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103209": {
+    "source_fr": "Extraction du sel gemme; | Extraction du sel par évaporation dans les marais salants; | Broyage, triage et raffinage du sel en vue de l'usage domestique et industriel.",
+    "translation_ar": "استخراج الملح الصخري؛ | استخراج الملح عن طريق التبخير في الملاحات؛ | طحن الملح وفرزه وتكريره لاستعماله المنزلي والصناعي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103210": {
+    "source_fr": "Extraction de phosphates; | Calcination et dépoussiérage des phosphates.",
+    "translation_ar": "استخراج الفوسفات؛ | تكليس الفوسفات وإزالة الغبار عنه.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103211": {
+    "source_fr": "FORMULATION ET DISTRIBUTION DE BITUMES",
+    "translation_ar": "تحضير البيتومين وصياغة خلطاته وتوزيعه.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103212": {
+    "source_fr": "Traitement de sables industriels et de substances minérales et matériaux alluvionnaires.",
+    "translation_ar": "معالجة الرمال الصناعية والمواد المعدنية ومواد الرواسب النهرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "103213": {
+    "source_fr": "Transformation des produits provenant des travaux de terrassement et de démolitions et de protection de l’environnement.",
+    "translation_ar": "تحويل المواد الناتجة عن أشغال الحفر والردم والهدم، في إطار حماية البيئة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104101": {
+    "source_fr": "Production d'acide sulfurique et oléum (y compris soufres travaillés, raffinés ou non); | Production de produits sulfuriques (hydro sulfites, sulfites, hyposulfites, sulfates, aluns, persulfates, sulfures etc..)",
+    "translation_ar": "إنتاج حمض الكبريتيك والأوليوم (بما في ذلك الكبريت المعالَج أو المكرّر أو غير المكرّر)؛ | إنتاج مركبات الكبريت، مثل الهيدروسلفيتات والسلفيتات والهيبوسلفيتات والكبريتات والشبّات وفوق الكبريتات والكبريتيدات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104102": {
+    "source_fr": "Fabrication de produits chimiques par électrolyse ou électrothermie tels que: chlore et sodium, soude et potasse caustiques, chlore de calcium, chlorites et hypochlorites chlorates et perchlorates, abrasifs, siliciures et carbure de silicium (y compris acide chlorhydrique).",
+    "translation_ar": "تصنيع المنتجات الكيميائية بواسطة التحليل الكهربائي أو المعالجة الكهروحرارية، مثل الكلور والصوديوم والصودا الكاوية والبوتاس الكاوي وكلوريد الكالسيوم والكلوريتات وهيبوكلوريتات والكلورات والبيركلورات والمواد الكاشطة والسيليسيدات وكربيد السيليكون، بما في ذلك حمض الهيدروكلوريك.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104103": {
+    "source_fr": "Fabrication de gaz comprimé ou liquéfié: air liquide, oxygène, azote, gaz rares, hydrogènes, oxydes d'azote, anhydride carbonique (sous forme solide, liquide ou gazeux, y compris acétylène).",
+    "translation_ar": "تصنيع الغازات المضغوطة أو المسالة، باستثناء غاز البترول المسال والغاز الطبيعي المسال: الهواء السائل والأكسجين والآزوت والغازات النادرة والهيدروجين وأكاسيد الآزوت وثاني أكسيد الكربون في حالاته الصلبة أو السائلة أو الغازية، بما في ذلك الأسيتيلين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104104": {
+    "source_fr": "Fabrication de pigments minéraux: oxyde de titane, de zinc, de plomb, lithopone, minium, céruse, etc...; | Compositions et couleurs vitrifiables pour l'émaillerie, la céramique et la verrerie.",
+    "translation_ar": "تصنيع الأصباغ المعدنية المعتمة، مثل أكاسيد التيتانيوم والزنك والرصاص والليثوبون والمينيوم والسيروز وغيرها؛ | تصنيع الخلطات والألوان القابلة للتزجيج والمخصصة لصناعة الميناء والخزف والزجاج.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104105": {
+    "source_fr": "Fabrication de produits de la chimie minérale, phosphore, calcium, acide phosphorique, silicates et anhydrides siliciques, peroxyde d'hydrogène (eau oxygénée), autres peroxydes, persulfates, percarbonates et perborates, arsenic, cyanures, produits boraciques, phosphates bicalciques et autres produits de la chimie minérale. (y compris l'eau distillée et glaceol).",
+    "translation_ar": "تصنيع منتجات الكيمياء المعدنية المختلفة، مثل الفوسفور والكالسيوم وحمض الفوسفوريك والسيليكات وأكاسيد السيليكون وفوق أكسيد الهيدروجين (الماء الأكسجيني) وسائر البيروكسيدات وفوق الكبريتات وفوق الكربونات وفوق البورات والزرنيخ والسيانيدات والمركبات البوراسية وفوسفات الكالسيوم الثنائية وغيرها من منتجات الكيمياء المعدنية، بما في ذلك الماء المقطر ومواد التبريد الكيميائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104106": {
+    "source_fr": "Fabrication d'engrais azotés et autres produits azotés, ammoniac et dérivés, sulfates d'ammonium, nitrate d'ammonium, acide nitrique et sulfonitrique, engrais azotés simples, urée, cynamide calcique.",
+    "translation_ar": "تصنيع الأسمدة الآزوتية وغيرها من المنتجات الآزوتية، مثل الأمونيا ومشتقاتها وكبريتات الأمونيوم ونترات الأمونيوم وحمض النتريك والحمض النيتروكبريتي والأسمدة الآزوتية البسيطة واليوريا وسياناميد الكالسيوم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104107": {
+    "source_fr": "Fabrication d'engrais phosphatés : acide phosphorique, engrais phosphatés, superphosphates (non compris farine de poissons et d'os)",
+    "translation_ar": "تصنيع الأسمدة الفوسفاتية: حمض الفوسفوريك والأسمدة الفوسفاتية والسوبرفوسفات، باستثناء مسحوق السمك والعظام.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104108": {
+    "source_fr": "Fabrication de divers engrais (engrais azotés et autres produits azotés, engrais phosphatés, engrais potassiques, engrais composés, (y.c organo-minéraux) etc….).",
+    "translation_ar": "تصنيع مختلف أنواع الأسمدة، بما فيها الأسمدة الآزوتية والمنتجات الآزوتية الأخرى والأسمدة الفوسفاتية والبوتاسية والأسمدة المركبة، بما فيها الأسمدة العضوية المعدنية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104109": {
+    "source_fr": "Produits chimiques de base pour la pharmacie: sulfamides, vitamines, hormones, antibiotiques etc...",
+    "translation_ar": "تصنيع المواد الكيميائية الأساسية المخصصة للصناعة الصيدلانية، مثل السلفوناميدات والفيتامينات والهرمونات والمضادات الحيوية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104110": {
+    "source_fr": "Fabrication de produits chimiques à usage mécanique et métallurgique, produits de dégraissage, décapants, dérouillants, dégrippants, réactifs pour laboratoire etc...",
+    "translation_ar": "تصنيع المنتجات الكيميائية المخصصة للاستعمال الميكانيكي والمعدني والصناعي، مثل مواد إزالة الشحوم والقشط وإزالة الصدأ وفك الأجزاء العالقة وكواشف المختبرات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104111": {
+    "source_fr": "Fabrication de matière plastique en feuilles, plaques, granulés...",
+    "translation_ar": "التحويل الأولي للمواد البلاستيكية الأساسية؛ | تصنيع المواد البلاستيكية على شكل صفائح وألواح وحبيبات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104112": {
+    "source_fr": "Fabrication de réactifs de laboratoire; | Fabrication de produits chimiques et biochimiques de laboratoire",
+    "translation_ar": "تصنيع كواشف المختبرات؛ | تصنيع المنتجات الكيميائية والكيميائية الحيوية المخصصة للمختبرات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104113": {
+    "source_fr": "Fabrication de produits chimiques de base pour les différentes industries.",
+    "translation_ar": "تصنيع المنتجات الكيميائية الأساسية المخصصة لمختلف الصناعات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104114": {
+    "source_fr": "production de l’alcool éthylique.",
+    "translation_ar": "إنتاج الكحول الإيثيلي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104201": {
+    "source_fr": "Fabrication d'hydrocarbures acycliques, cycliques ou aromatiques : éthylène, propylène, naphtalène etc...; | Dérivés halogènes des hydrocarbures: chlorure de méthyle, dichloreethane, chlorure de vinyle etc...; | Dérivés sulfonés, nitrés et nitrosés des hydrocarbures: trinitro toluène etc...; | Alcools; | Acycliques, leurs dérivés halogènes, sulfonés, nitrés et nitrosés, alcool méthylique, alcool aromatique, éthylène glycol etc...; | Phénols et phénols | alcools, leurs dérivés halogènes, sulfonés, nitrés et nitrosés: phénols et leurs sels etc...; | Composés à fonction aldéhyde : éthanal, aldéhydes, alcools, leurs dérivés etc...; | Acides carboxyliques, leurs anhydrides, halogénures, peroxyde et peracides leurs dérivés halogènes, sulfonés, nitrés et nitrosés; Acétone, cétone aromatique, quinone, etc... dérivés allogènes, sulfonés, nitrés et nitrosés; | Composés à fonction azotée, composés à fonction aminée, composés à fonction nitritée, composés diazoiques, azoïques et azoxyques etc...; Composés organo minéraux et composés hétérocycliques: plomb, terathyle furfural, et autres composés; | Autres composés organiques : enzymes, graphite, cires artificielles, produits tannants organiques, synthétiques etc...",
+    "translation_ar": "تصنيع الهيدروكربونات اللاحلقية والحلقية والعطرية، مثل الإيثيلين والبروبيلين والنفثالين وغيرها؛ | تصنيع مشتقات الهيدروكربونات الهالوجينية، مثل كلوريد الميثيل وثنائي كلورو الإيثان وكلوريد الفينيل وغيرها؛ | تصنيع مشتقات الهيدروكربونات المسلفنة والمنترتة والنتروزية، مثل ثلاثي نيترو التولوين؛ | تصنيع الكحولات اللاحلقية ومشتقاتها الهالوجينية والمسلفنة والمنترتة والنتروزية، مثل الكحول الميثيلي والكحولات العطرية والإيثيلين غليكول وغيرها؛ | تصنيع الفينولات وكحولات الفينول ومشتقاتها الهالوجينية والمسلفنة والمنترتة والنتروزية، بما فيها الفينولات وأملاحها؛ | تصنيع المركبات ذات الوظيفة الألدهيدية، مثل الإيثانال والألدهيدات والكحولات ومشتقاتها؛ | تصنيع الأحماض الكربوكسيلية وأنهيدريداتها وهاليداتها وفوق أكاسيدها وأحماضها الفوقية ومشتقاتها الهالوجينية والمسلفنة والمنترتة والنتروزية؛ | تصنيع الأسيتون والكيتونات العطرية والكينونات ومشتقاتها الهالوجينية والمسلفنة والمنترتة والنتروزية؛ | تصنيع المركبات ذات الوظيفة الآزوتية والأمينية والنتريتية، والمركبات الديازوية والآزوية والآزوكسية وغيرها؛ | تصنيع المركبات العضوية المعدنية والمركبات الحلقية غير المتجانسة، مثل الرصاص رباعي الإيثيل والفورفورال وغيرها؛ | تصنيع مركبات عضوية أخرى، مثل الإنزيمات والغرافيت والشموع الاصطناعية ومواد الدباغة العضوية والاصطناعية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104202": {
+    "source_fr": "Colorants synthétiques; | Noirs de pétrole etc...",
+    "translation_ar": "تصنيع الأصباغ الاصطناعية؛ | تصنيع السخام البترولي وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104203": {
+    "source_fr": "Matières plastiques à l'état brut sous forme de liquide, poudre ou granulés tels que phénoplaste, polyamide, silicone, polyéthylène, P.V.C, nitrate et acétate de cellulose, autres matières plastiques artificielles.",
+    "translation_ar": "تصنيع المواد البلاستيكية الأساسية والراتنجات الاصطناعية؛ | إنتاج المواد البلاستيكية الخام في شكل سوائل أو مساحيق أو حبيبات، مثل الفينوبلاست والبولي أميد والسيليكون والبولي إيثيلين وكلوريد البوليفينيل ونترات السليلوز وأسيتات السليلوز وغيرها من المواد البلاستيكية الاصطناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104204": {
+    "source_fr": "Extraction et transformation de matières animales et végétales : . extraits tinctoriaux; . tanins naturels; . dérivés de produits résineux; . albumines et peptones; . levures artificielles; . huiles modifiées, colophanes y compris les colles et gélatines animales et végétales; . autres produits animaux ou végétaux transformés.",
+    "translation_ar": "استخراج وتحويل المواد ذات الأصل الحيواني والنباتي، بما في ذلك المستخلصات الملوِّنة والدباغات الطبيعية ومشتقات المنتجات الراتنجية والألبومينات والببتونات والخمائر الاصطناعية والزيوت المعدّلة والكولوفان، بما في ذلك المواد اللاصقة والجيلاتين ذات الأصل الحيواني أو النباتي، وغيرها من المنتجات الحيوانية أو النباتية المحوّلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104205": {
+    "source_fr": "Fabrication de goudrons minéraux, goudrons de houille, produits de la distillation du goudron (benzol, brai, mélanges bitumes, etc...). | Station d'enrobage de gravier et tous autres matériaux liés aux travaux publics | Fabrication de tous les produits d'étanchéité.",
+    "translation_ar": "تصنيع أنواع القطران المعدني وقطران الفحم الحجري ومنتجات تقطير القطران (البنزين والملعبات ومخاليط البيتومين وغيرها)؛ | تشغيل محطات تغليف الحصى وسائر المواد المستعملة في الأشغال العمومية؛ | تصنيع جميع منتجات العزل المائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104206": {
+    "source_fr": "Fabrication de poudre à tirer, explosifs de nitrates (dynamite, etc...), autres explosifs: accessoires de mise à feu (mèche, cordeaux, détonateurs); articles de pyrotechnie, poudres et explosifs en cartouche.",
+    "translation_ar": "تصنيع البارود والمتفجرات النتراتية (مثل الديناميت وغيرها) وسائر المتفجرات؛ | تصنيع ملحقات الإشعال، مثل الفتائل والحبال والصواعق؛ | تصنيع مواد وأصناف الألعاب النارية والبارود والمتفجرات المحشوة في خراطيش.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104207": {
+    "source_fr": "Etablissement pharmaceutique de fabrication de produits Pharmaceutiques qui comprennent : | les médicaments ; | les produits chimiques officinaux ; | les produits galéniques ; | les matières premières à usage pharmaceutique ; | les aliments diététiques destinés à des fins médicales spéciales ; | tous autres produits nécessaires à la médecine humaine (conformément aux dispositions des articles 207 et 208 de la loi n° 18-11 du 2 juillet 2018, relative à la santé).",
+    "translation_ar": "مؤسسة صيدلانية لتصنيع المنتجات الصيدلانية، وتشمل: | الأدوية؛ | المواد الكيميائية الصيدلانية؛ | المستحضرات الصيدلانية المركبة؛ | المواد الأولية المخصصة للاستعمال الصيدلاني؛ | الأغذية الحمية المخصصة لأغراض طبية خاصة؛ | جميع المنتجات الأخرى اللازمة للطب البشري، وفقاً لأحكام المادتين 207 و208 من القانون رقم 18-11 المؤرخ في 2 يوليو 2018 والمتعلق بالصحة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104208": {
+    "source_fr": "Fabrication de meules et pierres à aiguiser en abrasif naturel ou préparé, abrasif en poudre, en grains et appliqués.",
+    "translation_ar": "تصنيع أحجار الجلخ وأحجار الشحذ المصنوعة من مواد كاشطة طبيعية أو محضّرة؛ | تصنيع المواد الكاشطة في شكل مساحيق أو حبيبات أو مطبّقة على أسطح حاملة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104209": {
+    "source_fr": "Fabrication de charbon en toutes matières.",
+    "translation_ar": "تصنيع الفحم من جميع أنواع المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104210": {
+    "source_fr": "Fabrication de toutes sortes de peinture et vernis, colles, pigments broyés et couleurs fines; produits apparentés (mastics, siccatifs etc...); | Encres d'imprimerie.",
+    "translation_ar": "تصنيع جميع أنواع الدهانات والورنيشات والمواد اللاصقة والأصباغ المطحونة والألوان الدقيقة؛ | تصنيع المنتجات المرتبطة بها، مثل المعاجين والمواد المجففة وغيرها؛ | تصنيع أحبار الطباعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104211": {
+    "source_fr": "Fabrication de : produits désinfectants, insecticides et pesticides; produits oenologiques.",
+    "translation_ar": "تصنيع منتجات التطهير ومبيدات الحشرات والآفات؛ | تصنيع المنتجات المستعملة في صناعة النبيذ.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104212": {
+    "source_fr": "Fabrication de : plaques, pellicules et papiers photographiques; produits chimiques à usage photographique.",
+    "translation_ar": "تصنيع المنتجات الفوتوغرافية، بما في ذلك الألواح والأفلام والورق الفوتوغرافي؛ | تصنيع المواد الكيميائية المخصصة للاستعمال الفوتوغرافي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104213": {
+    "source_fr": "Fabrication des produits cosmétiques et d’hygiène corporelle ( liste figurant à l’annexe I du décret exécutif n°10-114 du 18/04/2010, modifiant et complétant le décret exécutif n°97-37 du 14/01/1997, définissant les conditions et les modalités de fabrication, de conditionnement , d’importation et de commercialisation, sur le marché national, les produits cosmétiques et d’hygiène corporelle).",
+    "translation_ar": "تصنيع منتجات التجميل والنظافة الجسدية، وفق القائمة الواردة في الملحق الأول للمرسوم التنفيذي رقم 10-114 المؤرخ في 18 أبريل 2010، المعدِّل والمتمِّم للمرسوم التنفيذي رقم 97-37 المؤرخ في 14 يناير 1997، المحدِّد لشروط وكيفيات تصنيع وتوضيب واستيراد وتسويق منتجات التجميل والنظافة الجسدية في السوق الوطنية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104214": {
+    "source_fr": "Fabrication de poudrette de caoutchouc et de caoutchouc régénéré.",
+    "translation_ar": "تصنيع مسحوق المطاط والمطاط المُجدَّد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104215": {
+    "source_fr": "fabrication de pneumatiques pour véhicules, équipements ; machines, mobiles, avions, jouets, meubles et autres usages : | Pneus à air, pneus pleins ou a coussin d’air ; | Fabrication de chambres à air ; | Fabrication de bandages amovibles, de roues de secours et de bandes de rechapage pour pneumatiques, etc ; | Reconstruction de pneus et rechapage des pneumatiques.",
+    "translation_ar": "تصنيع الإطارات المطاطية ومواد تجديدها، والمخصصة للمركبات والتجهيزات والآلات المتحركة والطائرات والألعاب والأثاث وغيرها من الاستعمالات؛ | تصنيع الإطارات الهوائية والإطارات المصمتة أو ذات الوسادة الهوائية؛ | تصنيع الأنابيب الداخلية للإطارات؛ | تصنيع الأغلفة المطاطية القابلة للفك وعجلات الاحتياط وشرائط تجديد الإطارات وغيرها؛ | إعادة بناء الإطارات وتجديد أسطحها الخارجية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104216": {
+    "source_fr": "Fabrication d'articles en caoutchouc N.D.A. : demi produits (plaques, feuilles, bandes etc...); tissus caoutchoutés, articles d'hygiène et de pharmacie en caoutchouc, ouvrages en caoutchouc à usage industriel (fils,courroies, tubes, tuyaux); | Fabrication d'autres ouvrages en caoutchouc (jouets, articles de sport etc...).",
+    "translation_ar": "تصنيع منتجات المطاط غير المصنفة في موضع آخر، باستثناء الأحذية؛ | تصنيع المنتجات نصف المصنّعة، مثل الصفائح والأشرطة وغيرها؛ | تصنيع الأقمشة المغطاة بالمطاط والمنتجات المطاطية المخصصة للنظافة والصيدلة؛ | تصنيع المصنوعات المطاطية للاستعمال الصناعي، مثل الخيوط والأحزمة والأنابيب والخراطيم؛ | تصنيع مصنوعات مطاطية أخرى، مثل الألعاب والمستلزمات الرياضية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104217": {
+    "source_fr": "Fabrication d'allumettes.",
+    "translation_ar": "تصنيع أعواد الثقاب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104218": {
+    "source_fr": "Fabrication de savons et savonnettes (y compris à barbe); | Fabrication d'acides gras industriels (autres qu'oléiques et stéariques).",
+    "translation_ar": "تصنيع الصابون وقطع الصابون، بما في ذلك صابون الحلاقة؛ | تصنيع الأحماض الدهنية الصناعية، باستثناء حمضي الأولييك والستياريك.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104219": {
+    "source_fr": "Fabrication de stéarine, oléine, acide stéarique, acide oléique, lanoline; | Fabrication de glycérine y compris l'eau et lessives glycérineuses; | Fabrication de bougies, chandelles cierges et similaires.",
+    "translation_ar": "تصنيع الستيـارين والأوليين وحمض الستياريك وحمض الأولييك واللانولين؛ | تصنيع الغليسيرين، بما في ذلك المياه والمحاليل الغليسيرينية؛ | تصنيع الشموع والشموع الكبيرة وشموع الطقوس والمنتجات المماثلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104220": {
+    "source_fr": "Fabrication de pâte à papier : d'alfa, de paille de bois etc... | Fabrication de papier d'impression et d'écriture (papier journal, papier pelure etc...), papier d'emballage (ordinaire, kraft...), papier à cigarettes, carton compact, tissus non tissés d'origine cellulosique, papier pour articles à usage sanitaire ou domestique, ouate de cellulose, autres papiers et cartons à usage industriel et divers (papier Cellophane, papier bitume...).",
+    "translation_ar": "تصنيع عجينة الورق انطلاقاً من الحلفاء والقش والخشب وغيرها؛ | تصنيع ورق الطباعة والكتابة (ورق الصحف وورق النسخ الرقيق وغيرها)، وورق التغليف العادي وورق كرافت وورق السجائر والكرتون المضغوط والأقمشة غير المنسوجة ذات الأصل السليلوزي والورق المخصص للمنتجات الصحية والمنزلية وقطن السليلوز، وغيرها من أنواع الورق والكرتون للاستعمال الصناعي والمتنوع، مثل ورق السيلوفان والورق المكسو بالبيتومين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104221": {
+    "source_fr": "Fabrication d'eau de Javel, crésil , esprit de sel, produits sodiques, récurants et similaires, cirages et encaustiques, cires animales et végétales préparées, teintures ménagères, combustible solide, détartrant, désodorisant; | Fabrication de détergents et lessives conditionnées.",
+    "translation_ar": "تصنيع ماء جافيل والكريزيل وروح الملح والمنتجات الصودية ومواد التنظيف الكاشطة وما شابهها؛ | تصنيع ملمّعات الأحذية ومواد تلميع الأثاث والشموع الحيوانية والنباتية المحضّرة والأصباغ المنزلية والوقود الصلب ومزيلات الترسبات الكلسية ومزيلات الروائح؛ | تصنيع المنظفات ومساحيق الغسيل المعبأة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104222": {
+    "source_fr": "Fabrication de tous produits et spécialités chimiques pour le traitement des eaux: détartrants, neutralisants, anticorrosion, réducteurs d'oxygène etc ... | Fabrication de tous produits chimiques pour le traitement des cuirs (préparation, tannage,teinture, etc ) et des textiles. | Fabrication de tous produits et spécialités chimiques destinés au traitement de tous matériaux.",
+    "translation_ar": "تصنيع جميع المنتجات والمستحضرات الكيميائية المخصصة لمعالجة المياه، مثل مزيلات الترسبات الكلسية والمعادِلات ومضادات التآكل ومزيلات الأكسجين وغيرها؛ | تصنيع جميع المنتجات الكيميائية المخصصة لمعالجة الجلود (التحضير والدباغة والصباغة وغيرها) والمنسوجات؛ | تصنيع جميع المنتجات والمستحضرات الكيميائية المخصصة لمعالجة مختلف المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "104223": {
+    "source_fr": "Fabrication de médicaments vétérinaires.",
+    "translation_ar": "تصنيع الأدوية البيطرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
