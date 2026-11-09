@@ -1007,6 +1007,231 @@
     "translation_ar": "تصنيع معدات وبرمجيات التشفير.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "105706": {
+    "source_fr": "fabrication d’appareils et machines d’impression de tous types y compris trois dimensions (3D)",
+    "translation_ar": "تصنيع أجهزة وآلات الطباعة بمختلف أنواعها، بما في ذلك الطباعة ثلاثية الأبعاد (3D).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106101": {
+    "source_fr": "Fabrication de lingots et autres demi-produits en aciers courants, Scories, laitiers, déchets d'acier.",
+    "translation_ar": "تصنيع السبائك والمنتجات نصف المصنعة الأخرى من الفولاذ العادي، وكذلك الخبث ونفايات الفولاذ.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106102": {
+    "source_fr": "Laminage à chaud de matériel de voie ferrée (y compris rails), autres qu'essieux et roues en aciers courants; | Laminage à chaud de barres et profilés en aciers courants; | Laminage à chaud de tôles, bandes et feuillards en aciers courants; | Laminage à chaud de fils machines (diamètre inférieur ou égale à 12 mm) et de fils pour béton armé en aciers courants.",
+    "translation_ar": "الدرفلة على الساخن لمواد السكك الحديدية، بما في ذلك القضبان، باستثناء المحاور والعجلات المصنوعة من الفولاذ العادي؛ | الدرفلة على الساخن للقضبان والمقاطع من الفولاذ العادي؛ | الدرفلة على الساخن للصفائح والشرائط واللفائف من الفولاذ العادي؛ | الدرفلة على الساخن لأسلاك الآلات (بقطر لا يتجاوز 12 ملم) وأسلاك الخرسانة المسلحة المصنوعة من الفولاذ العادي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106103": {
+    "source_fr": "Fabrication de produit plat en aciers fins et spéciaux; | Fabrication de demi-produits en aciers fins et spéciaux",
+    "translation_ar": "تصنيع المنتجات المسطحة من الفولاذ الدقيق والخاص؛ | تصنيع المنتجات نصف المصنعة من الفولاذ الدقيق والخاص.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106104": {
+    "source_fr": "Fabrication de produits plats A.F.S.; | Fabrication de produits longs A.F.S.; | Fabrication d'autres produits A.F.S. (y compris ébauches).",
+    "translation_ar": "تصنيع المنتجات المسطحة من الفولاذ الدقيق والخاص (A.F.S)؛ | تصنيع المنتجات الطويلة من الفولاذ الدقيق والخاص؛ | تصنيع منتجات أخرى من الفولاذ الدقيق والخاص، بما في ذلك المنتجات الأولية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106105": {
+    "source_fr": "Transformation des produits plats A.F.S.; | Transformation des produits longs A.F.S.",
+    "translation_ar": "تحويل المنتجات المسطحة من الفولاذ الدقيق والخاص؛ | تحويل المنتجات الطويلة من الفولاذ الدقيق والخاص.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106106": {
+    "source_fr": "Laminage et profilage à froid de l'acier courant; | Tréfilage ou étirage de l'acier courant; | Autre transformation de l'acier courant (galvanisation, étamage etc...) ; | Ferraillage industriel.",
+    "translation_ar": "الدرفلة والتشكيل على البارد للفولاذ العادي؛ | سحب الفولاذ العادي وتحويله إلى أسلاك أو قضبان مسحوبة؛ | تحويلات أخرى للفولاذ العادي، مثل الجلفنة والقصدرة وغيرها؛ | تجهيز وتسليح الحديد على النطاق الصناعي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106107": {
+    "source_fr": "Fabrication de tubes d'acier soudés; | Fabrication de tubes d'acier sans soudure; | Fabrication de récipients en acier pour gaz comprimé ou liquéfié.",
+    "translation_ar": "تصنيع الأنابيب الفولاذية الملحومة؛ | تصنيع الأنابيب الفولاذية غير الملحومة؛ | تصنيع أوعية فولاذية للغاز المضغوط أو المسال.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106108": {
+    "source_fr": "la production d'alumine; | la production d'aluminium (première ou deuxième fusion); | la production d'alliages d'aluminium; | la production de demi-produits en aluminium: tôles, feuilles, barres, fils, profilés, tuyaux, etc….; | la production de feuilles et bandes minces en aluminium; | la production de feuilles stratifiées d'aluminium sur support papier, carton, plastique, etc. | *Cette activité ne comprend pas le moulage des métaux non ferreux.",
+    "translation_ar": "إنتاج الألومينا؛ | إنتاج الألومنيوم بالدمج الأول أو إعادة الصهر؛ | إنتاج سبائك الألومنيوم؛ | إنتاج المنتجات نصف المصنعة من الألومنيوم، مثل الصفائح والرقائق والقضبان والأسلاك والمقاطع والأنابيب وغيرها؛ | إنتاج رقائق وشرائط الألومنيوم الرقيقة؛ | إنتاج صفائح الألومنيوم المركبة على دعامات من الورق أو الكرتون أو البلاستيك وغيرها؛ | لا يشمل هذا النشاط صب المعادن غير الحديدية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106109": {
+    "source_fr": "Première transformation de l'aluminium et fabrication de demi produits en aluminium (câbles, barres, feuilles, poudres, toiles etc...); | Première transformation du cuivre et de l'alliage en laiton et fabrication de demi produits en cuivre ou alliages en laiton (câbles, barres, tubes, poudres, toiles etc...); | Première transformation du plomb et fabrication de demi produits en plomb (tubes, barres, feuilles, poudres, etc...) | Première transformation du nickel et fabrication de demi produits en nickel (barres, tubes, poudres, anodes, toiles etc...); | Première transformation du zinc et fabrication de demi produits en zinc (barres, tubes, poudres, toiles etc...); | Première transformation de l'étain et fabrication de demi produits en étain (barres, tubes, poudres etc...).",
+    "translation_ar": "التحويل الأولي للألومنيوم وتصنيع المنتجات نصف المصنعة منه (الكابلات والقضبان والصفائح والمساحيق والأقمشة وغيرها)؛ | التحويل الأولي للنحاس وسبائك النحاس الأصفر (النحاس الأصفر/اللاتون)، وتصنيع المنتجات نصف المصنعة من النحاس أو سبائكه (الكابلات والقضبان والأنابيب والمساحيق والأقمشة وغيرها)؛ | التحويل الأولي للرصاص وتصنيع المنتجات نصف المصنعة منه (الأنابيب والقضبان والصفائح والمساحيق وغيرها)؛ | التحويل الأولي للنيكل وتصنيع المنتجات نصف المصنعة منه (القضبان والأنابيب والمساحيق والمصاعد الكهربائية الشبكية وغيرها)؛ | التحويل الأولي للزنك وتصنيع المنتجات نصف المصنعة منه (القضبان والأنابيب والمساحيق والأقمشة وغيرها)؛ | التحويل الأولي للقصدير وتصنيع المنتجات نصف المصنعة منه (القضبان والأنابيب والمساحيق وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106110": {
+    "source_fr": "Production de ferro-alliages et produits dérivés.",
+    "translation_ar": "إنتاج السبائك الحديدية والمنتجات المشتقة منها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106111": {
+    "source_fr": "Métallurgie du nickel, silicium, titane, cobalt, manganèse, tungstène (wolfram), molybdène, chrome; | Métallurgie des autres métaux entrant dans les ferro | alliages et métaux connexes (baryum, germanium etc...); | Scories et déchets.",
+    "translation_ar": "صناعة تعدين النيكل والسيليكون والتيتانيوم والكوبالت والمنغنيز والتنغستن (الولفرام) والموليبدينوم والكروم؛ | صناعة تعدين المعادن الأخرى الداخلة في تركيب السبائك الحديدية والمعادن المرتبطة بها، مثل الباريوم والجرمانيوم وغيرها؛ | الخبث والنفايات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106112": {
+    "source_fr": "Métallurgie et affinage du cuivre, plomb, zinc ,cadmium, étain, antimoine,bismuth, uranium, thorium, laiton, bronze, et leurs alliages; | Cendres et résidus des métaux communs.",
+    "translation_ar": "صناعة تعدين وتنقية النحاس والرصاص والزنك والكادميوم والقصدير والأنتيمون والبزموت واليورانيوم والثوريوم والنحاس الأصفر والبرونز وسبائكها؛ | رماد ومخلفات المعادن الأساسية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106113": {
+    "source_fr": "Affinage de l'argent industriel et bancaire; | Affinage de platine, de métaux de la mine du platine et de leurs alliages; | Affinage d'or industriel et bancaire; | Cendres d'orfèvre. | Affinage des cendres d'orfèvrerie et des bijoux cassés.",
+    "translation_ar": "تنقية الفضة الصناعية والمصرفية؛ | تنقية البلاتين ومعادن مجموعة البلاتين وسبائكها؛ | تنقية الذهب الصناعي والمصرفي؛ | رماد صاغة الذهب؛ | تنقية رماد مصنوعات الصياغة والمجوهرات المكسورة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106114": {
+    "source_fr": "Toute activité de laminage sur bois consistant à coller des photographies, diplomes, photos publicitaires sur bois, ...",
+    "translation_ar": "جميع أنشطة تغليف الصور أو الشهادات أو الصور الإشهارية على الخشب بطبقة واقية أو تغليفية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106201": {
+    "source_fr": "Fabrication de fonte : fonte de moulage, fonte alliée, fonte d'affinage, éponge de fer, scories, laitiers et déchets du fer.",
+    "translation_ar": "تصنيع الحديد الزهر، بما في ذلك الحديد الزهر المخصص للسباكة والحديد الزهر السبائكي وحديد الزهر المخصص للتنقية والإسفنج الحديدي والخبث والمخلفات الحديدية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106202": {
+    "source_fr": "Fabrication de produits divers de grosse forge (barres, profilés, tôles et feuillards façonnés y compris essieux de roues, bandages)",
+    "translation_ar": "تصنيع منتجات الحدادة الثقيلة المتنوعة، مثل القضبان والمقاطع والصفائح والشرائط المشكلة، بما في ذلك محاور العجلات وأطواقها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106203": {
+    "source_fr": "Fabrication de produits moulés en fonte (tubes, articles de ménage, radiateurs de chauffage central etc...); | Fabrication de produits moulés en métaux ferreux (pièces mécaniques, moules sur plans); | Fabrication de produits moulés en métaux non ferreux et leurs alliages.",
+    "translation_ar": "تصنيع المنتجات المصبوبة من الحديد الزهر، مثل الأنابيب والأدوات المنزلية ومشعات التدفئة المركزية وغيرها؛ | تصنيع المنتجات المصبوبة من المعادن الحديدية، مثل القطع الميكانيكية والقوالب المصممة حسب المخططات؛ | تصنيع المنتجات المصبوبة من المعادن غير الحديدية وسبائكها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106204": {
+    "source_fr": "Fabrication de chaudières et accessoires (y compris parties et pièces détachées); | Fabrication de réservoirs, cuves et citernes; | Fabrication d'appareils d'épuration des eaux domestiques; | Fabrication d'échangeurs de chaleur dont les deux fluides colporteurs sont autres que l'air; | Fabrication d'autres produits de chaudronnerie.",
+    "translation_ar": "تصنيع الغلايات ولوازمها، بما في ذلك الأجزاء وقطع الغيار؛ | تصنيع الخزانات والأحواض والصهاريج؛ | تصنيع أجهزة تنقية المياه المنزلية؛ | تصنيع المبادلات الحرارية التي تكون فيها سوائل نقل الحرارة، على جانبي المبادل، غير الهواء؛ | تصنيع منتجات أخرى لأشغال الصفائح المعدنية وصناعة الغلايات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106205": {
+    "source_fr": "Fabrication de produits de robinetterie autres qu'en fonte et autres que celles destinées aux pompes et au matériel hydraulique; | Fabrication d'accessoires de tuyauterie N.D.A.",
+    "translation_ar": "تصنيع منتجات الصمامات وتجهيزات التحكم في جريان السوائل، باستثناء المصنوعة من الحديد الزهر وتلك المخصصة للمضخات والمعدات الهيدروليكية؛ | تصنيع لوازم الأنابيب غير المصنفة في موضع آخر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106206": {
+    "source_fr": "Fabrication et pose associées, d'éléments de charpente métallique, pylônes et accessoires; | Fabrication (seule) d'éléments de charpente métallique, pylônes et accessoires.",
+    "translation_ar": "تصنيع وتركيب عناصر الهياكل المعدنية والأبراج ولوازمها بصورة مشتركة؛ | تصنيع عناصر الهياكل المعدنية والأبراج ولوازمها دون تركيب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106207": {
+    "source_fr": "Toutes productions et tous travaux sur plan d'usinage..",
+    "translation_ar": "جميع عمليات الإنتاج وأشغال التشغيل الميكانيكي وفق المخططات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106208": {
+    "source_fr": "Revêtement et traitement des métaux.",
+    "translation_ar": "طلاء المعادن ومعالجتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106209": {
+    "source_fr": "Mise en forme de feuillards ou de tôles (par découpage, emboutissage et sciage), et fabrication de tôles perforées, rondelles découpées, casques métalliques etc) | Fabrication d'articles sanitaires en métal (baignoires, éviers, urinoirs, lavabos etc...); | Fabrication de brides et raccords",
+    "translation_ar": "تشكيل الشرائط والصفائح المعدنية عن طريق القص والكبس والقطع بالمنشار، وتصنيع الصفائح المثقبة والغسالات المعدنية المقطوعة والخوذ المعدنية وغيرها؛ | تصنيع الأدوات الصحية المعدنية، مثل أحواض الاستحمام والمغاسل والمباول وأحواض الغسل وغيرها؛ | تصنيع الشفاه والوصلات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106210": {
+    "source_fr": "Fabrication de boulons et écrous, vis à bois, rivets pleins et de produits décolletés en toutes matières.",
+    "translation_ar": "تصنيع البراغي والصواميل ومسامير الخشب والبرشام المصمت والمنتجات المشغّلة بالخراطة الدقيقة من مختلف المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106211": {
+    "source_fr": "Fabrication de produits de boulonnerie forgés; | Fabrication de clous, pitons, crampons forgés, fers à cheval, ancres, grappins, hameçons et autres produits d'extrusion et de grosse forge; | Fabrication de ferrures pour lignes électriques.",
+    "translation_ar": "تصنيع منتجات البراغي والصواميل المطروقة؛ | تصنيع المسامير والكلّابات والنتوءات المعدنية المطروقة وحدوات الخيل والمراسي والخطاطيف وخطافات الصيد وغيرها من منتجات البثق والحدادة الثقيلة؛ | تصنيع التركيبات المعدنية الخاصة بخطوط الكهرباء.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106212": {
+    "source_fr": "Fabrication de ferrures et d'articles de ferronnerie (ouvrages architecturaux ou décoratifs en métal); | Menuiserie métallique : portes, fenêtres, murs, rideaux, panneaux de façade et fermetures métalliques ; | Soudure générale. | Installation de portes et de rideaux automatiques électriques commandés par télécommandes.",
+    "translation_ar": "تصنيع التركيبات المعدنية ومنتجات الحدادة المعدنية، بما فيها الأعمال المعمارية أو الزخرفية المصنوعة من المعدن؛ | النجارة المعدنية: الأبواب والنوافذ والجدران والواجهات الستارية والألواح الواجهية وأنظمة الغلق المعدنية؛ | أشغال اللحام العامة؛ | تركيب الأبواب والستائر المعدنية الآلية الكهربائية التي يتم التحكم فيها عن بعد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106213": {
+    "source_fr": "Fabrication d'emballages métalliques : fûts métalliques de contenance supérieure à 300 l et conteneurs autres que citernes et réservoirs, tubes, pots à lait, etc | Fabrication de bouteilles à gaz toutes contenances, | Fabrication de fûts normalisés pour tous contenants ; | Fabrication d'emballages et boites métalliques pour tout usage ; | Fabrication de tous articles en aluminium et autres matiéres (ferreux et non ferreux) destinés à tout usage y compris alimentaire.",
+    "translation_ar": "تصنيع العبوات والتغليفات المعدنية: البراميل المعدنية التي تزيد سعتها على 300 لتر والحاويات غير المخصصة لتكون صهاريج أو خزانات والأنابيب وأوعية الحليب وغيرها؛ | تصنيع قوارير الغاز بمختلف السعات؛ | تصنيع البراميل المعيارية لجميع أنواع المحتويات؛ | تصنيع العبوات والعلب المعدنية لجميع الاستعمالات؛ | تصنيع جميع المنتجات من الألومنيوم وغيرها من المواد الحديدية وغير الحديدية، لجميع الاستعمالات، بما فيها الاستعمالات الغذائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106214": {
+    "source_fr": "Fabrication de tuyaux métalliques flexibles.",
+    "translation_ar": "تصنيع الأنابيب المعدنية المرنة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106215": {
+    "source_fr": "Fabrication d'articles métalliques pour mercerie (aiguilles, éponges, fermetures à glissière, etc...); | Fabrication de fournitures métalliques pour parapluies et similaires, chaussures et maroquinerie; | Fabrication d'abrasifs et articles métalliques divers.",
+    "translation_ar": "تصنيع الأدوات المعدنية الصغيرة الخاصة بلوازم الخياطة، مثل الإبر والإسفنج والسحابات وغيرها؛ | تصنيع اللوازم المعدنية للمظلات وما يماثلها وللأحذية والمنتجات الجلدية؛ | تصنيع المواد الكاشطة ومختلف الأدوات المعدنية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106216": {
+    "source_fr": "Fabrication d'aimants permanents autres qu'électro-aimants.",
+    "translation_ar": "تصنيع المغناطيسات الدائمة، باستثناء المغناطيسات الكهربائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106217": {
+    "source_fr": "Fabrication d'éléctrodes pour électrométallurgie et électrochimie en graphite; | Fabrication d'éléctrodes pour électrométallurgie et électrochimie en carbone amorphe .",
+    "translation_ar": "تصنيع أقطاب الغرافيت أو الكربون غير المتبلور المخصصة للصناعات الكهرو-معدنية أو الكيمياء الكهربائية، باستثناء أقطاب اللحام؛ | تصنيع أقطاب الغرافيت المخصصة للصناعات الكهرو-معدنية والكيمياء الكهربائية؛ | تصنيع أقطاب الكربون غير المتبلور المخصصة للصناعات الكهرو-معدنية والكيمياء الكهربائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106218": {
+    "source_fr": "Fabrication et installation de tous ouvrages en aluminium à usage industriel , professionnel ou domestique .",
+    "translation_ar": "تصنيع وتركيب جميع الأعمال والمنشآت المصنوعة من الألومنيوم والمخصصة للاستعمال الصناعي أو المهني أو المنزلي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106219": {
+    "source_fr": "Fabrication et installation de stores vénitiens et californiens",
+    "translation_ar": "تصنيع وتركيب الستائر المعدنية الأفقية (الفينيسية) وستائر كاليفورنيا الرأسية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106220": {
+    "source_fr": "Fabrication et montage de tous ouvrages en bois, en aluminium ou toute autre matière à usage industriel, professionnel ou domestique; | Agencement et réalisation de solutions de rangement de salles d’archives, de magasins et de bibliothèques et installations.",
+    "translation_ar": "تصنيع وتركيب جميع الأعمال والمنشآت من الخشب أو الألومنيوم أو أي مادة أخرى، والمخصصة للاستعمال الصناعي أو المهني أو المنزلي؛ | تهيئة وإنجاز حلول التخزين لقاعات الأرشيف والمتاجر والمكتبات وتركيبها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106221": {
+    "source_fr": "Toute activité de traitement de surfaces metalliques , plastiques, etc .",
+    "translation_ar": "جميع أنشطة معالجة أسطح المعادن والمواد البلاستيكية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106222": {
+    "source_fr": "Usinage moulage de pièces de travaux public et de matériel industriel.",
+    "translation_ar": "تشغيل وصب القطع المخصصة لأشغال الأشغال العمومية والمعدات الصناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106301": {
+    "source_fr": "la fonderie de demi-produits en fonte malléable, à graphite sphéroïdal ou grise ordinaire ; | la fabrication de tubes, tuyaux, profilés creux et accessoires correspondant en fonte.",
+    "translation_ar": "صب المنتجات نصف المصنعة من الحديد الزهر القابل للطرق أو ذي الغرافيت الكروي أو الحديد الزهر الرمادي العادي؛ | تصنيع الأنابيب والمواسير والمقاطع المجوفة وملحقاتها المطابقة من الحديد الزهر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106302": {
+    "source_fr": "la fonderie de demi-produits en acier ; | la fabrication de pièces de fonte d'acier ; | la fabrication de tubes et tuyaux en acier sans soudure coulés par centrifugation ; | la fabrication d'accessoires de tuyauterie en fonte d'acier.",
+    "translation_ar": "صب المنتجات نصف المصنعة من الفولاذ؛ | تصنيع القطع المصبوبة من الفولاذ؛ | تصنيع الأنابيب والمواسير الفولاذية غير الملحومة المصبوبة بالطرد المركزي؛ | تصنيع ملحقات الأنابيب من الفولاذ المصبوب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106303": {
+    "source_fr": "la fonderie de demi-produits en aluminium, titane, magnésium, zinc, etc ; | la fabrication de pièces en fonte de métaux légers.",
+    "translation_ar": "صب المنتجات نصف المصنعة من الألومنيوم والتيتانيوم والمغنيسيوم والزنك وغيرها؛ | تصنيع القطع المصبوبة من المعادن الخفيفة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "106304": {
+    "source_fr": "la fonderie de demi-produits en métaux lourds; | la fonderie de demi-produits en métaux précieux et autres métaux ; | le moulage sous-pression de pièces en métaux non ferreux.",
+    "translation_ar": "صب المنتجات نصف المصنعة من المعادن الثقيلة؛ | صب المنتجات نصف المصنعة من المعادن النفيسة وغيرها من المعادن؛ | صب القطع المصنوعة من المعادن غير الحديدية تحت الضغط.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107101": {
+    "source_fr": "Fabrication de semoules, gruaux et farines de céréales; | Fabrication de farines de légumineuses; | Résidus de la mouture des grains de céréales et de légumineuses; | Grains mondés de céréales; | Grains perlés de céréales; | Grains concassés ou aplatis de céréales etc...",
+    "translation_ar": "تصنيع السميد والحبيبات الخشنة ودقيق الحبوب؛ | تصنيع دقيق البقوليات؛ | مخلفات طحن حبوب الحبوب والبقوليات؛ | تقشير حبوب الحبوب؛ | تلميع حبوب الحبوب؛ | تكسير حبوب الحبوب أو تسطيحها وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107102": {
+    "source_fr": "Fabrication de pâtes alimentaires et couscous ; | Fabrication de pâtes à pizza ; | Fabrication de pâtes fraiches (feuilletée …etc) et cuites ; | Production de pains et de pâtes sans gluten.",
+    "translation_ar": "تصنيع العجائن الغذائية والكسكس؛ | تصنيع عجائن البيتزا؛ | تصنيع العجائن الطازجة (مثل العجائن المورقة وغيرها) والعجائن المطبوخة؛ | إنتاج الخبز والعجائن الخالية من الغلوتين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107103": {
+    "source_fr": "Décorticage et triage de riz et d'autres grains et graines; | Décorticage et triage de légumes secs à cosse; | Résidus du décorticage (brisures de riz etc...).",
+    "translation_ar": "تقشير الأرز والحبوب والبذور الأخرى وفرزها؛ | تقشير البقول الجافة ذات القرون وفرزها؛ | مخلفات التقشير، مثل كسر الأرز وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107104": {
+    "source_fr": "Fabrication de glucose, gluten, inuline, dextrine, amidons et fécules (y compris amidons et fécules solubles ou torréfiés); | Fabrication de farines, semoules et flocons de racines et tubercules; | Résidus de la fabrication des fécules et amidons; | Autres produits amylacés (tapioca etc...). | Fabrication d'améliorant de panification.",
+    "translation_ar": "تصنيع الغلوكوز والغلوتين والإينولين والدكسترين والنشويات والمواد النشوية، بما في ذلك النشويات القابلة للذوبان أو المحمصة؛ | تصنيع الدقيق والسميد والرقائق من الجذور والدرنات؛ | مخلفات تصنيع المواد النشوية والنشويات؛ | منتجات نشوية أخرى، مثل التابيوكا وغيرها؛ | تصنيع محسنات صناعة الخبز.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
