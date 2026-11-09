@@ -38,4 +38,4 @@
     "references_ar": "Review Arabic translations for French-only legal references; 1 of 379 source entries currently has Arabic text preserved.",
     "ui_wiring": "Implemented: displayed fields follow the selected interface language; the French source is separately inspectable in Arabic mode."
   }
-}\n
+}
