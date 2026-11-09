@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { isKnownPublicRoute } from '@/lib/data/knownRoutes';
+import { getRobotsHeader } from '@/lib/seo/robots';
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
@@ -73,17 +73,19 @@ export function middleware(request: NextRequest) {
 
   response.headers.set('Content-Security-Policy', cspHeader);
 
-  const isKnownRoute = isKnownPublicRoute(url.pathname);
-  // Query-string variants (search, prefilled inquiry links, campaign parameters) are not separate indexable pages.
-  // Keep their links crawlable, but let the clean canonical route represent the content in search.
-  const isDynamic = request.method === 'POST' || url.searchParams.size > 0;
+  // Query-string variants (search, prefilled inquiry links, campaign parameters) are not
+  // separate indexable documents. Non-GET requests must never be advertised for indexing.
+  const hasSearchParams = url.searchParams.size > 0;
+  const isDynamic = request.method.toUpperCase() !== 'GET' || hasSearchParams;
 
-  // Dynamic/search requests or unknown routes (404 candidates)
-  if (isDynamic || !isKnownRoute) {
-    response.headers.set('X-Robots-Tag', 'noindex, follow');
-  } else {
-    response.headers.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
-  }
+  response.headers.set(
+    'X-Robots-Tag',
+    getRobotsHeader({
+      method: request.method,
+      pathname: url.pathname,
+      hasSearchParams,
+    }),
+  );
 
   const isRSC =
     request.headers.get('RSC') === '1' ||
