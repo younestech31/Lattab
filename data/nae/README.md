@@ -58,6 +58,23 @@ Index file plus maps under `data/nae/gap-translations/`. Holds **informational**
 | High-frequency `accessoires_fr` → Arabic | Partial (exact-string map; ~523/905 records) |
 | `references_texte_fr` missing French (code `607004`) | Filled as informational French; Arabic source cell preserved |
 | `#NOM?` labels | Preserved; no invented replacements |
-| `contenue_fr` → Arabic | Partial: 105 code-specific informational translations; the French source text remains available |
+| `contenue_fr` → Arabic | 18 source-bound reviewed translations; the previous 105 code-keyed entries are quarantined because some were attached to unrelated source descriptions |
 
 Policy: never re-translate an official cell that already has text; only add the missing language. UI consumers must treat overlay values as citizen-facing informational text and keep the French source as the catalogue reference.
+
+
+## Translation quality safeguard (2026-11-09)
+
+A source-to-translation audit found that the former 105-entry `contenue.json` contained mismatches between activity codes and French source descriptions, including 32 keys that do not exist in this 2,136-record catalogue. The file was moved to `gap-translations/contenue-unverified-drafts.json`; application code does not import it.
+
+The active `contenue-reviewed.json` contains 18 Arabic descriptions paired with the exact French source text reviewed for each code. The resolver refuses code-only lookups and refuses a translation if its source description changes. This deliberately prefers a clear “translation unavailable” state over showing a plausible but incorrect administrative description.
+
+Current measured coverage:
+- Arabic activity-content translations: 18 / 2,136.
+- Arabic accessory translations: 598 / 905 records.
+- Arabic tutelle translations: 379 / 379 populated source records.
+- Arabic authorization-type translations: 379 / 379 populated source records.
+- Arabic legal-reference source text preserved: 1 / 379 populated source records.
+- Valid source labels: 2,134 Arabic and 2,133 French; five language-label cells contain `#NOM?` and remain untouched.
+
+Run `bun run nae:audit-translations` to recalculate coverage and validate every active content translation against its paired source string.
