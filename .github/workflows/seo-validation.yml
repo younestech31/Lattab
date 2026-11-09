@@ -1,0 +1,54 @@
+name: SEO indexability validation
+
+on:
+  push:
+    branches:
+      - "fix/**"
+    paths:
+      - "middleware.ts"
+      - "lib/data/knownRoutes.ts"
+      - "lib/seo/robots.ts"
+      - "tests/seo-indexability.test.ts"
+      - "package.json"
+      - "bun.lock"
+      - ".github/workflows/seo-validation.yml"
+  pull_request:
+    paths:
+      - "middleware.ts"
+      - "lib/data/knownRoutes.ts"
+      - "lib/seo/robots.ts"
+      - "tests/seo-indexability.test.ts"
+      - "package.json"
+      - "bun.lock"
+      - ".github/workflows/seo-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo-indexability:
+    name: SEO indexability regression tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.4"
+
+      - name: Install locked dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Test robots header policy and published article routes
+        run: bun run test:seo
+
+      - name: Type-check application
+        run: bun run tsc --noEmit --pretty false
+
+      - name: Build production application
+        run: bun run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://lattab.vercel.app
