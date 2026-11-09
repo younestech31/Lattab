@@ -127,7 +127,7 @@ test("all catalogue activities resolve safely and all tutelle values are mapped"
 
 test("every active Arabic content value has one existing exact French source record", () => {
   const translated = allActivities.filter((activity) => resolveActivityBilingual(activity).contenue_ar);
-  assert.equal(translated.length, 18);
+  assert.equal(translated.length, 35);
   for (const activity of translated) {
     assert.ok(activity.contenue_fr?.trim());
     assert.ok(resolveContenueArabic(activity.code, activity.contenue_fr));
@@ -158,5 +158,15 @@ test("normalized accessory source variants do not carry conflicting Arabic meani
     const key = normalizeKey(sourceClause), existing = normalized.get(key);
     if (existing) assert.equal(normalizeMeaning(existing), normalizeMeaning(translation), `Conflicting source clause: ${sourceClause}`);
     else normalized.set(key, translation);
+  }
+});
+
+test("professional and regulated service content translations are source-bound", () => {
+  for (const code of ["602101", "602102", "607001", "607002", "607003", "607005", "607006", "608001", "612101", "612102", "612201"]) {
+    const activity = allActivities.find((item) => item.code === code);
+    assert.ok(activity?.contenue_fr, `Missing French source for ${code}`);
+    const resolved = resolveActivityBilingual(activity);
+    assert.ok(resolved.contenue_ar, `Missing reviewed Arabic content for ${code}`);
+    assert.equal(resolveContenueArabic(code, "unrelated French text"), null);
   }
 });
