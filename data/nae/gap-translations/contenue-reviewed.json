@@ -2627,6 +2627,226 @@
     "translation_ar": "بناء جميع أنواع المباني المخصصة للاستعمال المهني والاجتماعي والترفيهي؛ | أشغال البناء والخرسانة والحفر والأساسات والتجصيص وتكسية الجدران والأرضيات وتركيب البلاط والخزف وسائر الأشغال المرتبطة ببناء المباني؛ | أشغال العزل المائي والحراري والسباكة الصحية والتدفئة المركزية؛ | أشغال الطلاء والزجاج والتركيبات الكهربائية وتركيب أنظمة مكافحة الحرائق والسرقة والحماية منها؛ | أشغال تركيب وتجميع الهياكل؛ | جميع أشغال النجارة العامة (المعدنية والخشبية والألومنيوم وغيرها).",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "202801": {
+    "source_fr": "Fabrication d'eau de Javel, crésil, esprit de sel, eau distillée, eau acidulée , etc....; | Conditionnement de tous produits chimiques (eau de Javel, crésil, produits lessiviels, récurants, détergents etc...).",
+    "translation_ar": "تصنيع ماء جافيل والكريزيل وروح الملح والماء المقطر والماء المحمّض وغيرها؛ | توضيب جميع المنتجات الكيميائية، مثل ماء جافيل والكريزيل ومنتجات الغسيل والمساحيق الكاشطة والمنظفات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202802": {
+    "source_fr": "Fabrication de miroirs, glaces et vitrages simples ou ouvragés; | Installation et réparation de glaces; | Fabrication d'articles de décoration en verre; | Etamage de glaces.",
+    "translation_ar": "تصنيع المرايا والزجاج المسطح العادي أو المشغول؛ | تركيب المرايا وإصلاحها؛ | تصنيع مصنوعات الزينة من الزجاج؛ | طلاء المرايا بطبقة معدنية من القصدير أو الفضة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202803": {
+    "source_fr": "Fabrication d'articles façonnés à base de papier d'impression et d'écriture (enveloppes, cahiers, registres, étiquettes etc...); | Fabrication d'articles d'emballage en papier et carton (sacs, sachets en papier, boites et étuis en carton compact, caisses en carton ondulé); | Fabrication d'articles à usage sanitaire et domestique (mouchoirs, papier hygiénique, serviettes de table etc...). | Tous travaux d'imprimerie de labeur .",
+    "translation_ar": "تصنيع المنتجات المشكلة من ورق الطباعة والكتابة، مثل الأظرفة والدفاتر والسجلات والملصقات وغيرها؛ | تصنيع عبوات التغليف من الورق والكرتون، مثل الأكياس والأظرفة والعلب والصناديق الكرتونية؛ | تصنيع المنتجات الورقية الصحية والمنزلية، مثل المناديل وورق المراحيض والمناشف ذات الاستعمال الواحد وغيرها؛ | تصنيع ملفات الحفظ والمنتجات الورقية المماثلة؛ | تصنيع المنتجات المصنوعة من قطن السليلوز، مثل حفاضات الأطفال وغيرها؛ | تصنيع المرشحات وورق السجائر؛ | تصنيع البطاقات المثقبة وسائر المنتجات الورقية والكرتونية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202804": {
+    "source_fr": "Fabrication de jeux de société (échecs, dames, dominos); | Fabrication de jeux éducatifs en toutes matières( jeux de construction, puzzle ...); | Fabrication de jouets en toutes matières.",
+    "translation_ar": "تصنيع ألعاب الطاولة، مثل الشطرنج والداما والدومينو؛ | تصنيع الألعاب التعليمية من جميع المواد، مثل ألعاب التركيب والألغاز؛ | تصنيع الألعاب من مختلف المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202805": {
+    "source_fr": "Fabrication d'hameçons, émerillons, aiguilles, leurres, filets, épuisettes, cannes à pêche, fil de pêche, plombs de pêche, palangres, nasses et autres articles destinés à la pêche.",
+    "translation_ar": "تصنيع خطاطيف الصيد والحلقات الدوارة والإبر والطُعوم والشباك وشباك الرفع وقضبان الصيد وخيوط الصيد وأثقال الصيد وخيوط الصيد الطويلة ذات الخطاطيف المتعددة والأقفاص وسائر المواد المخصصة للصيد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202806": {
+    "source_fr": "Travaux de sérigraphie sur toutes matières y compris lettres peintes de façades et enseigne; | Gravure laser sur toutes matières ( bois, verre, métal, plexyglace, tampon et enseigne).",
+    "translation_ar": "أشغال الطباعة بالشاشة الحريرية على جميع المواد، بما في ذلك الحروف المرسومة على واجهات المباني واللافتات؛ | النقش بالليزر على جميع المواد، مثل الخشب والزجاج والمعادن والزجاج الأكريليكي والأختام واللافتات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "202807": {
+    "source_fr": "Tout excercice traditionnel de la pêche commerciale à proximité des côtes",
+    "translation_ar": "جميع أشكال ممارسة الصيد التجاري التقليدي بالقرب من السواحل.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301101": {
+    "source_fr": "Commerce de gros de toutes boissons et jus non alcoolisés.",
+    "translation_ar": "تجارة الجملة لجميع أنواع المشروبات والعصائر غير الكحولية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301102": {
+    "source_fr": "Commerce de gros de toutes boissons alcoolisées. | Commerce de gros de tablettes d’alcool solidifié.",
+    "translation_ar": "تجارة الجملة لجميع أنواع المشروبات الكحولية؛ | تجارة الجملة لأقراص الكحول الصلب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301104": {
+    "source_fr": "Commerce de gros de légumes et plantes potagères condimentés ou présentés dans l'eau salée, additionnés à d'autres substances servant à assurer provisoirement leur conservation ou se présentant préparés à la consommation (oignons, olives, câpres, concombres, tomates, cornichons, pommes de terre, carottes, navets et autres ...).",
+    "translation_ar": "تجارة الجملة للخضروات المتبّلة أو المقدمة في ماء مالح أو المضاف إليها مواد أخرى لضمان حفظها مؤقتاً، أو المحضّرة بطرق مماثلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301105": {
+    "source_fr": "Commerce de gros de laits, yaourts crème fraîche, laits concentrés ou en poudre, fromages,œufs ...etc.",
+    "translation_ar": "تجارة الجملة بالحليب واللبن الرائب والقشدة الطازجة والحليب المركز أو المجفف والأجبان والبيض وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301106": {
+    "source_fr": "Commerce de gros de la datte et des fruits confits.",
+    "translation_ar": "تجارة الجملة بالتمور والفواكه المسكّرة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301107": {
+    "source_fr": "Vente en gros de farine, semoule, matières grasses, levures, sucre, etc... ; | Vente en gros des colorants et additifs alimentaires, des emballages en toutes matières et de tous produits utilisés dans la boulangerie pâtisserie.",
+    "translation_ar": "البيع بالجملة للدقيق والسميد والمواد الدهنية والخمائر والسكر وغيرها؛ | البيع بالجملة للملونات والإضافات الغذائية وعبوات التغليف المصنوعة من مختلف المواد وجميع المنتجات المستخدمة في صناعة المخابز والحلويات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301108": {
+    "source_fr": "Commerce de gros de tous légumes secs: fèves, haricots, lentilles, pois chiches, pois secs, etc...; | Commerce de gros de semoule, couscous et autres produits de la minoterie.",
+    "translation_ar": "تجارة الجملة لجميع أنواع البقول الجافة، مثل الفول والفاصولياء والعدس والحمص والبازلاء الجافة وغيرها؛ | تجارة الجملة بالسميد والكسكس وسائر منتجات المطاحن.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301109": {
+    "source_fr": "Commerce de gros des produits de la conserverie alimentaire.",
+    "translation_ar": "تجارة الجملة بمنتجات التعليب الغذائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301110": {
+    "source_fr": "Commerce de gros des huiles animales, végétales et autres corps gras.",
+    "translation_ar": "تجارة الجملة بالزيوت ذات الأصل الحيواني والنباتي وسائر المواد الدهنية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301111": {
+    "source_fr": "Commerce de gros de la biscuiterie, chocolaterie et confiserie.",
+    "translation_ar": "تجارة الجملة بمنتجات البسكويت والشوكولاتة والحلويات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301112": {
+    "source_fr": "Vente ou achat en gros de fruits et légumes pour le compte du mandant et/ ou pour son propre compte.",
+    "translation_ar": "بيع أو شراء الفواكه والخضروات بالجملة لحساب الموكل و/أو لحسابه الخاص.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301113": {
+    "source_fr": "Vente en gros des produits alimentaires : céréales, fruits et légumes secs, produits de la minoterie, produits en conserve à base de viande, de poissons, et fruits de mer ; | Vente en gros de fruits et légumes réfrigérés, surgelés ou congelés ; | Vente en gros des produits de la mer (poissons, coquillages, crustacés, mollusques) frais, congelés, surgelés, séchés, salés ou en saumure ; | Vente en gros de légumes condimentés ou épluchés ; | Vente en gros de lait et poudre de lait, produits laitiers et oeufs ; | Vente en gros de sucre, thé, café, cacao et épices; | Vente en gros de la datte et des fruits secs ou confits; | Vente en gros des produits de la boulangerie ; | Vente en gros des produits de la conserverie alimentaire ; | Vente en gros des huiles animales, végétales et autres corps gras ; | Vente en gros de la biscuiterie, chocolaterie et confiserie ; | Vente en gros de viande de boucherie, volaille, lapins : fraiche, congelée ou surgelée ; | Vente en gros d'abats et de viande préparée : crus, congelés ou surgelés. | Vente en gros de graisses végétales et animales et autres corps gras, acide citrique cacao en poudre et en granulés, arômes alimentaires, amidon, bicarbonate de soude, extrait et colorant alimentaire etc …",
+    "translation_ar": "البيع بالجملة للمنتجات الغذائية، مثل الحبوب والفواكه والخضروات الجافة ومنتجات المطاحن والمعلبات القائمة على اللحوم والأسماك والمأكولات البحرية؛ | البيع بالجملة للفواكه والخضروات وغيرها من المنتجات الغذائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301114": {
+    "source_fr": "Vente en gros de lait et farines infantiles, produits diététiques et autres produits conditionnés destinés à l'alimentation des nourrissons et bébés ; | Vente en gros de divers articles et fournitures pour nourrisons et bébés (biberons, stérilisateurs, tétines, etc .) et articles divers de puériculture .",
+    "translation_ar": "البيع بالجملة لحليب الرضع ودقيق أغذية الأطفال والمنتجات الغذائية الخاصة بالحمية وغيرها من المنتجات المعبأة المخصصة لتغذية الرضع والأطفال؛ | البيع بالجملة لمختلف المواد واللوازم المخصصة للرضع والأطفال.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301115": {
+    "source_fr": "Commerce en gros de sel brut et de tous autres types de sel ( sel de déneigement, sel de bain, sel de conservation, sel anti-calcaire, sel pour lave vaisselle, sel de traitement des eaux, etc.)",
+    "translation_ar": "تجارة الجملة بالملح الخام وجميع الأنواع الأخرى من الملح، مثل ملح إزالة الجليد وملح الاستحمام وملح الحفظ والملح المضاد للترسبات وملح غسالات الأواني وملح معالجة المياه وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301116": {
+    "source_fr": "Vente en gros de plats préparés en conserve surgelés ou congelés",
+    "translation_ar": "البيع بالجملة للأطباق المحضّرة والمعلبة أو المجمدة أو المجمّدة تجميداً عميقاً.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301117": {
+    "source_fr": "Vente en gros des épices ( clous de girofle, gingembre, muscade, etc",
+    "translation_ar": "البيع بالجملة للتوابل، مثل القرنفل والزنجبيل وجوزة الطيب وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301119": {
+    "source_fr": "Commerce de gros et distribution des produits alimentaires et non alimentaires à l'exception des produits régis par une réglementation spécifique.",
+    "translation_ar": "تجارة الجملة وتوزيع المنتجات الغذائية وغير الغذائية، باستثناء المنتجات الخاضعة لتنظيم خاص.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301120": {
+    "source_fr": "Distribution de gros de fruits et légumes (dans les wilayas dépourvues de marchés de gros de fruits et légumes).",
+    "translation_ar": "توزيع الفواكه والخضروات بالجملة في الولايات التي لا تتوفر فيها أسواق جملة للفواكه والخضروات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301121": {
+    "source_fr": "Distribution en gros de crèmes glacées, esquimaux, sorbets et autres produits glacés",
+    "translation_ar": "التوزيع بالجملة للمثلجات والآيس كريم والمصاصات المثلجة والسوربيه وسائر المنتجات المجمّدة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301122": {
+    "source_fr": "Activité de collecte des produits agricoles ; | Commercialisation des produits agricoles au niveau des marchés de gros de fruits et légumes.",
+    "translation_ar": "نشاط جمع المنتجات الزراعية؛ | تسويق المنتجات الزراعية على مستوى أسواق الجملة للفواكه والخضروات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301123": {
+    "source_fr": "Commerce de troc de toutes les marchandises figurant sur la liste annexée à l’arrêté interministériel du 2 juillet 2020, fixant les conditions et les modalités d’exercice du commerce de troc frontalier et les listes des marchandises faisant l’objet d’échange avec la République du Mali et la République du Niger. | Dans les wilayas d’Adrar, d’Illizi, de Tamenghasset et de Tindouf conformément aux conditions citées dans l'arrêté précité .",
+    "translation_ar": "ممارسة تجارة المقايضة لجميع السلع المدرجة في القائمة الملحقة بالقرار الوزاري المشترك المؤرخ في 2 يوليو 2020، المحدد لشروط وكيفيات ممارسة تجارة المقايضة الحدودية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301124": {
+    "source_fr": "Distribution en gros de produits alimentaires subventionnés (activité réservée aux wilayas frontalières).",
+    "translation_ar": "التوزيع بالجملة للمواد الغذائية المدعمة، وهو نشاط مخصص للولايات الحدودية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301125": {
+    "source_fr": "Distribution en gros de produits alimentaires non subventionnés (activité réservée aux wilayas frontalières).",
+    "translation_ar": "التوزيع بالجملة للمواد الغذائية غير المدعمة، وهو نشاط مخصص للولايات الحدودية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301201": {
+    "source_fr": "Vente en gros de viande bovine, ovine, caprine et de camélidés ainsi que leurs abats : fraiche, surgelée ou congelée .",
+    "translation_ar": "البيع بالجملة للحوم الأبقار والأغنام والماعز والإبل وأحشائها، طازجة أو مجمدة أو مجمدة تجميداً عميقاً.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301202": {
+    "source_fr": "Vente en gros de volaille, oeufs, lapins, gibiers, escargots et autres : frais, surgelés ou congelés .",
+    "translation_ar": "البيع بالجملة للدواجن والبيض والأرانب وحيوانات الصيد والحلزون وغيرها، طازجة أو مجمدة أو مجمدة تجميداً عميقاً.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301203": {
+    "source_fr": "Vente en gros de viande chevaline fraiche, congelée, surgelée .",
+    "translation_ar": "البيع بالجملة للحوم الخيول الطازجة أو المجمدة أو المجمدة تجميداً عميقاً.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301204": {
+    "source_fr": "Commerce de gros d'abats (d'ovins, de bovins, de volailles,...) et de produits et préparations à base de viande crue.",
+    "translation_ar": "تجارة الجملة بالأحشاء (أحشاء الأغنام والأبقار والدواجن وغيرها) وبالمنتجات والمحضّرات القائمة على اللحوم النيئة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301205": {
+    "source_fr": "Commerce de gros de la charcuterie.",
+    "translation_ar": "تجارة الجملة بمنتجات اللحوم المصنّعة، مثل النقانق ومشتقاتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301206": {
+    "source_fr": "Commerce de gros de conserves à base de viande de boucherie, de volaille, toutes préparations et tous conditionnements de viandes, de poissons et autres produits de la mer.",
+    "translation_ar": "تجارة الجملة بالمعلبات القائمة على لحوم حيوانات الذبح والدواجن، وبمختلف أنواع تحضيرات اللحوم والأسماك وسائر منتجات البحر وتوضيباتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301301": {
+    "source_fr": "Commerce de gros de tous poissons, coquillages et mollusques congelés ou surgelés.",
+    "translation_ar": "تجارة الجملة بجميع أنواع الأسماك والمحاريات والرخويات المجمدة أو المجمدة تجميداً عميقاً.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301302": {
+    "source_fr": "Vente ou achat en gros de produits de la pêche pour le compte du mandant et/ou pour son propre compte.",
+    "translation_ar": "بيع أو شراء منتجات الصيد البحري بالجملة لحساب الموكل و/أو لحسابه الخاص.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "301401": {
+    "source_fr": "Commerce de gros de produits à base de farine et de pomme de terre, les plats conditionnés, les plats frais, les pâtes alimentaires, les confitures, le miel et autres produits de régime; | Commerce de gros des laits et farines infantiles et préparations pour nourriture de bébés et nourrissons.",
+    "translation_ar": "تجارة الجملة بالمنتجات الغذائية المتخصصة، مثل المنتجات القائمة على الدقيق والبطاطا والأطباق المعبأة والأطباق الطازجة والعجائن الغذائية والمربّى والعسل والمنتجات الغذائية الخاصة بالحمية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302101": {
+    "source_fr": "Commerce de gros de fils et filés, de tissus de confection vestimentaire et d'ameublement domestiques ou autres (y compris rideaux, linges de maison, draperie, couvertures, etc...).",
+    "translation_ar": "تجارة الجملة بالخيوط والغزول والأقمشة المخصصة لصناعة الملابس والمفروشات المنزلية وغيرها، بما في ذلك الستائر وأغطية المنزل والأقمشة المزخرفة والأغطية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302102": {
+    "source_fr": "Commerce de gros de bonneterie (sous-vêtements, chaussettes, etc), articles de mercerie (aiguilles à coudre, à tricoter, fournitures pour couturières, tricoteuses, brodeuses; laine à tricoter, fils à coudre, fermetures à glissières et bijoux de fantaisie etc...).",
+    "translation_ar": "تجارة الجملة بمنتجات الحياكة، مثل الملابس الداخلية والجوارب وغيرها، ولوازم الخياطة، مثل إبر الخياطة والحياكة ومستلزمات الخياطين والحائكين والمطرزين وصوف الحياكة وخيوطها وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302103": {
+    "source_fr": "Commerce de gros d'articles confectionnés destinés à l'habillement (hommes, femmes, enfants et bébés) et d'accessoires pour vêtements; | Commerce de gros de layettes et articles pour bébés.",
+    "translation_ar": "تجارة الجملة بالملابس الجاهزة للرجال والنساء والأطفال والرضع ولوازم الملابس؛ | تجارة الجملة بملابس وتجهيزات الرضع والأطفال.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302104": {
+    "source_fr": "Commerce de gros de la friperie. | Vente en gros de vêtements usagés et de friperies.",
+    "translation_ar": "تجارة الجملة بالملابس المستعملة والملابس القديمة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302105": {
+    "source_fr": "Commerce de gros de l’emblème national et de l’écusson porteur de l’emblème national et du fanion ; | Commerce en gros de portrait, banderoles bannières etc…",
+    "translation_ar": "تجارة الجملة بالعلم الوطني والشارة الحاملة للعلم الوطني والراية؛ | تجارة الجملة بالصور الشخصية واللافتات والرايات الإعلانية وما شابهها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
