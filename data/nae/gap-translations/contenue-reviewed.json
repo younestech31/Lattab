@@ -1232,6 +1232,206 @@
     "translation_ar": "تصنيع الغلوكوز والغلوتين والإينولين والدكسترين والنشويات والمواد النشوية، بما في ذلك النشويات القابلة للذوبان أو المحمصة؛ | تصنيع الدقيق والسميد والرقائق من الجذور والدرنات؛ | مخلفات تصنيع المواد النشوية والنشويات؛ | منتجات نشوية أخرى، مثل التابيوكا وغيرها؛ | تصنيع محسنات صناعة الخبز.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "107105": {
+    "source_fr": "Fabrication industrielle du pain sous toutes ses formes (pain ordinaire, amélioré, de régime, de longue durée de conservation, biscottes, etc...) et autres produits de la boulangerie biscuiterie ; | Production de pains et de pâtes sans gluten.",
+    "translation_ar": "التصنيع الصناعي للخبز بمختلف أنواعه (الخبز العادي والمحسّن والخاص بالحمية وطويل مدة الحفظ والخبز المحمّص وغيرها) وسائر منتجات المخابز والبسكويت؛ | إنتاج الخبز والعجائن الخالية من الغلوتين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107106": {
+    "source_fr": "Biscuiterie, gaufrettes, pâtisserie industrielle de longue conservation ; | Fabrication de produits diététiques, nutritionnels et de régime. | Fabrication de produits à base de céréales enrichies. | Fabrication de produits de la viennoiserie (croissants, petits pains, brioche, etc) ;",
+    "translation_ar": "تصنيع البسكويت والويفر والحلويات الصناعية طويلة الحفظ؛ | تصنيع المنتجات الغذائية الخاصة بالحمية والتغذية والأنظمة الغذائية؛ | تصنيع المنتجات القائمة على الحبوب المدعّمة؛ | تصنيع منتجات المخبوزات الطرية، مثل الكرواسان والخبز الصغير والبريوش وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107107": {
+    "source_fr": "Fabrication d'aliments pour nourrissons à base de céréales; | Fabrication d'aliments pour nourrissons à base de fruits ou de légumes; | Fabrication d'aliments pour nourrissons à base de viande; | Fabrication d'aliments composés pour nourrissons.",
+    "translation_ar": "تصنيع أغذية الرضع القائمة على الحبوب؛ | تصنيع أغذية الرضع القائمة على الفواكه أو الخضروات؛ | تصنيع أغذية الرضع القائمة على اللحوم؛ | تصنيع الأغذية المركبة المخصصة للرضع.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107108": {
+    "source_fr": "Fabrication de tous produits alimentaires.",
+    "translation_ar": "تصنيع جميع المنتجات الغذائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107109": {
+    "source_fr": "Production de produits diététique et appareils de cuisson diététique, nutritionnels, de régime, | biologiques et de phytothérapie.",
+    "translation_ar": "إنتاج المنتجات الغذائية الخاصة بالحمية والتغذية والأنظمة الغذائية، وأجهزة الطهي المخصصة للحمية والتغذية، والمنتجات العضوية ومنتجات العلاج بالنباتات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107201": {
+    "source_fr": "Production de lait cru ou traité (stérilisé, entier, etc...) conditionné ou non; | Production de produits laitiers frais; | Fabrication de laits secs et concentrés ; | Production de lait aromatisé ; | Production de boissons laitières acides.",
+    "translation_ar": "إنتاج الحليب الخام أو المعالج (المعقم والكامل وغيرها)، سواء كان معبأً أم غير معبأ؛ | إنتاج منتجات الألبان الطازجة؛ | تصنيع الحليب المجفف والمركز؛ | إنتاج الحليب المنكّه؛ | إنتاج مشروبات الحليب المخمّرة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107202": {
+    "source_fr": "Fabrication de beurre, smen et babeurre.",
+    "translation_ar": "تصنيع الزبدة والسمن واللبن المخيض.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107203": {
+    "source_fr": "Fabrication de fromages (y compris caséine).",
+    "translation_ar": "تصنيع الأجبان، بما في ذلك الكازيين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107204": {
+    "source_fr": "Fabrication de tous produits de la confiserie; | Préparation de poudres diverses (pudding, couvre pâtisserie, flan etc...) (N.C poudres à base de farine de fécules et extraits de malt). | Fabrication de levure chimique alimentaire .",
+    "translation_ar": "تصنيع جميع منتجات الحلويات؛ | تحضير مختلف المساحيق (مساحيق البودينغ وتغطية الحلويات والفلان وغيرها)، باستثناء المساحيق القائمة على الدقيق والنشويات ومستخلصات الشعير؛ | تصنيع الخميرة الكيميائية الغذائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107205": {
+    "source_fr": "Fabrication de chocolat et produits en chocolat et cacao; | Production de cacao en masse, beurre et poudre de cacao; | Coques, pelures et déchets de cacao.",
+    "translation_ar": "تصنيع الشوكولاتة ومنتجات الشوكولاتة والكاكاو؛ | إنتاج كتلة الكاكاو وزبدة الكاكاو ومسحوق الكاكاو؛ | قشور الكاكاو وأغلفته ومخلفاته.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107206": {
+    "source_fr": "Fabrication de glaces industrielles (hydriques, carboniques etc...).",
+    "translation_ar": "تصنيع الثلج صناعياً، بما في ذلك الثلج المائي وثاني أكسيد الكربون الصلب وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107207": {
+    "source_fr": "Fabrication d'essences et arômes alimentaires",
+    "translation_ar": "تصنيع خلاصات ونكهات الأغذية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107208": {
+    "source_fr": "Production industrielle de glaces, crèmes glacées, esquimaux, sorbets et autres produits glacés.",
+    "translation_ar": "الإنتاج الصناعي للثلج والمثلجات والآيس كريم والمصاصات المثلجة والسوربيه وغيرها من المنتجات المجمّدة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107209": {
+    "source_fr": "Production de yaourt (nature, aromatisé, fruité etc…) .",
+    "translation_ar": "إنتاج اللبن الرائب (الطبيعي والمنكّه والمضاف إليه الفواكه وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107210": {
+    "source_fr": "Production de lait en poudre destinés aux différentes industries agro-alimentaires.",
+    "translation_ar": "إنتاج مسحوق الحليب المخصص لمختلف الصناعات الغذائية الزراعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107211": {
+    "source_fr": "Production de lait infantile.",
+    "translation_ar": "إنتاج حليب الرضع.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107301": {
+    "source_fr": "Extraction d'huiles d'origine végétale; | Huiles végétales brutes; | Résidus de l'extraction des huiles végétales (tourteaux, grignons etc..); | Raffinage et traitement des huiles d'origine végétale; | Huiles végétales alimentaires épurées ou raffinées; | Huiles végétales à usage industriel épurées ou raffinées; | Huiles végétales modifiées (époxydes, hydrogénées etc...). | organiser des visites périodiques afin de présenter les nouvelles techniques d’extraction d’huile d’olive ; | Programmer des séances de dégustation d’huile d’olive ; | proposer de courtes formations et séminaire au profit des visiteurs.",
+    "translation_ar": "استخلاص الزيوت ذات الأصل النباتي؛ | الزيوت النباتية الخام؛ | مخلفات استخلاص الزيوت النباتية، مثل كسب البذور والثفل وغيرها؛ | تكرير ومعالجة الزيوت ذات الأصل النباتي؛ | الزيوت النباتية الغذائية المنقّاة أو المكررة؛ | الزيوت النباتية المنقّاة أو المكررة المخصصة للاستعمال الصناعي؛ | الزيوت النباتية المعدّلة (المؤكسدة بالإيبوكسيد أو المهدرجة وغيرها)؛ | تنظيم زيارات دورية لعرض التقنيات الجديدة لاستخلاص زيت الزيتون؛ | برمجة جلسات لتذوق زيت الزيتون؛ | اقتراح دورات تكوينية قصيرة وندوات لفائدة الزوار.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107302": {
+    "source_fr": "Fabrication de corps gras d'origine animales comestibles ; | Fabrication de corps gras d'origine animale non comestibles (suif, etc...).",
+    "translation_ar": "تصنيع الدهون ذات الأصل الحيواني الصالحة للاستهلاك؛ | تصنيع الدهون ذات الأصل الحيواني غير الصالحة للاستهلاك، مثل الشحم الحيواني وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107303": {
+    "source_fr": "Préparation de margarine; | Préparation de graisses végétales alimentaires aromatisées; | Autres graisses végétales alimentaires.",
+    "translation_ar": "تحضير المارغرين؛ | تحضير الدهون النباتية الغذائية المنكّهة؛ | تحضير دهون نباتية غذائية أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107401": {
+    "source_fr": "Extraction du sucre de canne et betterave (y compris résidus d'extraction); | Raffinage du sucre et production des succédanés du sucre (y compris sucre conditionné, sirops de sucre et sous-produits du raffinage).",
+    "translation_ar": "استخلاص السكر من قصب السكر والشمندر السكري، بما في ذلك مخلفات الاستخلاص؛ | تكرير السكر وإنتاج بدائل السكر، بما في ذلك السكر المعبأ وشراب السكر والمنتجات الثانوية للتكرير.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107402": {
+    "source_fr": "la torréfaction et la décaféination du café ; | la production de café en grain, moulu, soluble, concentré, etc ; | la fabrication de chicorée en grain, moulue, soluble et liquide et d'autres succédanés du café ; | la fabrication d'extraits et concentrés de café ; | le mélange et le conditionnement du thé et du maté, y compris en sachets ; | la fabrication d'extraits et de préparations à base de thé et de maté ; | la fabrication de tisanes à base de plantes (menthe, verveine, camomille, etc.) ; | Cette activité ne permet pas la préparation de produits botaniques à usage pharmaceutique.",
+    "translation_ar": "تحميص القهوة ونزع الكافيين منها؛ | إنتاج القهوة على شكل حبوب أو مطحونة أو سريعة الذوبان أو مركزة وغيرها؛ | تصنيع الهندباء على شكل حبوب أو مطحونة أو سريعة الذوبان أو سائلة، وغيرها من بدائل القهوة؛ | تصنيع مستخلصات القهوة ومركزاتها؛ | خلط الشاي والمتّة وتوضيبهما، بما في ذلك في أكياس؛ | تصنيع مستخلصات ومستحضرات قائمة على الشاي والمتّة؛ | تصنيع منقوعات الأعشاب، مثل النعناع واللويزة والبابونج وغيرها؛ | لا يسمح هذا النشاط بتحضير منتجات نباتية ذات استعمال صيدلاني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107403": {
+    "source_fr": "Fabrication de levures naturelles (fraîches et sèches).",
+    "translation_ar": "تصنيع الخمائر الطبيعية (الطازجة والمجففة).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107404": {
+    "source_fr": "Transformation et traitement de la datte par tri , | lavage , broyage etc ... en vue de la préparation | de la pâte de datte (ghers) et autres préparations | à base de dattes ; | Préparation de confiseries à base de dattes (dattes | fourrées ou autres ) .",
+    "translation_ar": "تحويل التمور ومعالجتها عن طريق الفرز والغسل والطحن وغيرها، بهدف تحضير عجينة التمر (الغرس) ومستحضرات أخرى قائمة على التمور؛ | تحضير الحلويات القائمة على التمور، مثل التمور المحشوة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107501": {
+    "source_fr": "Fabrication de vins courants et de vins à appellation d'origine contrôlée; | Sous-produits de la vinification (liés de vin, tartres brut etc...).",
+    "translation_ar": "تصنيع النبيذ العادي والنبيذ ذي تسمية المنشأ الخاضعة للرقابة؛ | المنتجات الثانوية لصناعة النبيذ، مثل رواسب النبيذ والترسبات الخام وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107502": {
+    "source_fr": "Préparation de vins mousseux et autres vins spéciaux.",
+    "translation_ar": "تحضير النبيذ الفوّار وأنواع النبيذ الخاصة الأخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107503": {
+    "source_fr": "Production de bière (à l'exception de la bière sans alcool) ; | Dérivés de la bière.",
+    "translation_ar": "إنتاج الجعة، باستثناء الجعة الخالية من الكحول؛ | مشتقات الجعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107504": {
+    "source_fr": "Fabrication de cidres, hydromel, poirés, etc...; | Déchets de cidrerie.",
+    "translation_ar": "تصنيع عصير التفاح المخمّر ونبيذ العسل وشراب الكمثرى المخمّر وغيرها؛ | مخلفات صناعة عصير التفاح المخمّر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107505": {
+    "source_fr": "Production d'eau minérale et d’eau de source.",
+    "translation_ar": "إنتاج المياه المعدنية ومياه الينابيع.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107506": {
+    "source_fr": "Distillerie d'eau de vie; | Déchets de distillerie.",
+    "translation_ar": "تقطير المشروبات الروحية؛ | مخلفات التقطير.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107507": {
+    "source_fr": "Distillerie de vermouth, liqueurs, spiritueux et apéritifs (y compris apéritifs à base de vin).",
+    "translation_ar": "تقطير الفيرموث والمشروبات الكحولية الروحية والمشروبات الكحولية التمهيدية للطعام، بما فيها المحضّرة على أساس النبيذ.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107508": {
+    "source_fr": "Distillerie d'alcool éthylique (dénaturé ou non); | Déchets de distillerie.",
+    "translation_ar": "تقطير الكحول الإيثيلي (المحوّل أو غير المحوّل) انطلاقاً من الشمندر السكري والخرشوف القدسي والحبوب والبطاطا وغيرها؛ | مخلفات التقطير.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107509": {
+    "source_fr": "Collecte, traitement et distribution de tabac en feuilles",
+    "translation_ar": "جمع أوراق التبغ ومعالجتها وتوزيعها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107510": {
+    "source_fr": "Fabrication des produits destinés à être fumés, prisés, chiqués, mâchés ou sucés, chicha, y compris la cigarette électronique, dès lors qu’ils sont, même partiellement, constitués de tabac.",
+    "translation_ar": "تصنيع المنتجات المعدّة للتدخين أو الاستنشاق الأنفي أو المضغ أو المص، والشيشة، بما في ذلك السجائر الإلكترونية، متى كانت مكوّنة كلياً أو جزئياً من التبغ.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107511": {
+    "source_fr": "Fabrication de boissons diverses non alcoolisées (Limonades, sirops, boissons gazeuses , boissons fruitées et jus) .",
+    "translation_ar": "تصنيع مختلف المشروبات غير الكحولية، مثل الليمونادات والشراب المركز والمشروبات الغازية والمشروبات المنكّهة بالفواكه والعصائر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107512": {
+    "source_fr": "Production de malt et de ses dérivés.",
+    "translation_ar": "إنتاج الشعير المستخدم في صناعة الجعة ومشتقاته.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107601": {
+    "source_fr": "Conserverie de fruits et confitures; | Conserverie de légumes.",
+    "translation_ar": "تعليب الفواكه وصناعة المربّى؛ | تعليب الخضروات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107602": {
+    "source_fr": "Fabrication de conserves à base de viande rouge et volaille; | Séchage, fumage et salaison de viande rouges et volailles; | Préparation de farines et poudres de viande rouges et de volailles.",
+    "translation_ar": "تصنيع المعلبات القائمة على اللحوم الحمراء والدواجن؛ | تجفيف اللحوم الحمراء والدواجن وتدخينها وتمليحها؛ | تحضير دقيق ومساحيق اللحوم الحمراء والدواجن.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107603": {
+    "source_fr": "Préparation de plats cuisinés à base de viande rouge et de volailles; | Préparation de plats cuisinés à base de poissons et crustacés; | Préparation de plats cuisinés à base de légumes et autres denrées alimentaires . | Préparation de plats réfrigérés, congelés et surgelés.",
+    "translation_ar": "تحضير الأطباق المطبوخة القائمة على اللحوم الحمراء والدواجن؛ | تحضير الأطباق المطبوخة القائمة على الأسماك والقشريات؛ | تحضير الأطباق المطبوخة القائمة على الخضروات وغيرها من المواد الغذائية؛ | تحضير الأطباق المبردة والمجمّدة والمجمّدة تجميداً عميقاً.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107604": {
+    "source_fr": "Conserverie de poissons et crustacés; | Préparation de poissons séchés, salés, fumés,congélés; | Production de farine de poissons et de déchets de poissons.",
+    "translation_ar": "تعليب الأسماك والقشريات؛ | تحضير الأسماك المجففة والمملحة والمدخنة والمجمّدة؛ | إنتاج دقيق السمك ومخلفات الأسماك.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107605": {
+    "source_fr": "Fabrication de condiments composés et sauces vinaigre, moutarde, etc; | Préparation de sel pour la vente.",
+    "translation_ar": "تصنيع التوابل المركبة والصلصات والخل والخردل وغيرها؛ | تحضير الملح بغرض بيعه.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
