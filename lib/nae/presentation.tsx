@@ -147,9 +147,9 @@ export function NAEExplorerPage({
 export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguage; activity: NAEActivity }) {
   const ar = lang === "ar";
   const action = ar ? "/nae" : "/fr/nae";
-  const title = getNAEActivityTitle(activity, lang);
   const preferred = ar ? activity.label_ar : activity.label_fr;
   const hasPreferred = usable(preferred);
+  const title = hasPreferred ? preferred.trim() : activity.code;
   const sector = NAE_SECTORS[activity.sector_code as NAESectorCode];
   const statusInfo = getNAEStatusInfo(activity.status, lang);
   const related = getNAEActivities()
@@ -228,7 +228,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     fieldTranslationUnavailable: "لا تتوفر ترجمة عربية لهذا الحقل في نسخة البيانات الحالية.",
     showFrenchSource: "عرض النص الأصلي بالفرنسية للمطابقة",
     noContent: "لا يتوفر وصف لهذا النشاط في ملف البيانات.",
-    missingLabel: "التسمية العربية غير متاحة في المصدر؛ عُرضت التسمية الفرنسية.",
+    missingLabel: "التسمية الرسمية غير متاحة بلغة الواجهة؛ راجع الخانتين الرسميتين أدناه.",
     disclaimer: "مرجع استرشادي غير رسمي؛ لا يثبت وحده شروط الترخيص أو إمكانية جمع الأنشطة. يرجى التحقق لدى المركز الوطني للسجل التجاري والجهة المختصة.",
     sourceOfficial: "مصدر النسخة المرجعية: UpGrowth (CC BY 4.0)؛ للتحقق من الوضع الحالي راجع بوابة Sidjilcom / CNRC.",
     licenseLine: "ترخيص البيانات المرجعية: CC BY 4.0 UpGrowth.",
@@ -252,7 +252,7 @@ export function NAEActivityDetailPage({ lang, activity }: { lang: NAEPageLanguag
     fieldTranslationUnavailable: "La traduction arabe de ce champ n’est pas disponible dans cette version.",
     showFrenchSource: "Consulter le texte source en français",
     noContent: "Aucune description disponible dans le fichier.",
-    missingLabel: "Le libellé français est absent de la source ; le libellé arabe est affiché.",
+    missingLabel: "La désignation officielle n’est pas disponible dans la langue de l’interface ; consultez les deux libellés ci-dessous.",
     disclaimer: "Référence indicative non officielle ; elle ne prouve pas les conditions d’autorisation ni la possibilité de cumul. Vérifiez auprès du CNRC et de l’autorité compétente.",
     sourceOfficial: "Source de l’instantané : UpGrowth (CC BY 4.0) ; vérifiez la situation actuelle sur Sidjilcom / CNRC.",
     licenseLine: "Données de référence sous licence CC BY 4.0 UpGrowth.",
