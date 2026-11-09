@@ -13,10 +13,27 @@ interface ReviewedContentTranslation {
   translation_ar: string;
 }
 const contenueDict = contenueMap as Record<string, ReviewedContentTranslation>;
-const referencesDict = referencesMap as Record<
-  string,
-  { references_texte_fr_fill?: string; source_ar_preserved?: string; note?: string }
->;
+interface ReferenceCodeEntry {
+  references_texte_fr_fill?: string;
+  source_ar_preserved?: string;
+  note?: string;
+}
+interface ReferenceSourceTranslation {
+  translation_ar: string;
+  review_status?: string;
+}
+const referencesConfig = referencesMap as {
+  [code: string]: ReferenceCodeEntry | Record<string, ReferenceSourceTranslation> | undefined;
+  by_source?: Record<string, ReferenceSourceTranslation>;
+};
+const referencesDict = referencesConfig as Record<string, ReferenceCodeEntry>;
+function normalizeReferenceSource(value: string): string {
+  return value.trim().replace(/\\s+/gu, " ");
+}
+const normReferencesMap: Record<string, string> = {};
+for (const [source, entry] of Object.entries(referencesConfig.by_source ?? {})) {
+  normReferencesMap[normalizeReferenceSource(source)] = entry.translation_ar;
+}
 
 function normalizeAccessoireKey(s: string): string {
   return s.trim().replace(/\s+/g, " ").replace(/\s*[.;]\s*$/, "").replace(/apr[eé]s/gi, "après").toLowerCase();
@@ -100,6 +117,11 @@ export function resolveReferencesBilingual(
       fr: codeRef.references_texte_fr_fill ?? references_fr ?? null,
       ar: codeRef.source_ar_preserved ?? null,
     };
+  }
+  if (references_fr?.trim()) {
+    const translated = referencesConfig.by_source?.[references_fr]
+      ?? normReferencesMap[normalizeReferenceSource(references_fr)];
+    return { fr: references_fr, ar: translated?.translation_ar ?? translated ?? null };
   }
   return { fr: references_fr ?? null, ar: null };
 }
