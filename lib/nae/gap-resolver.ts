@@ -19,7 +19,15 @@ const referencesDict = referencesMap as Record<
 >;
 
 function normalizeAccessoireKey(s: string): string {
-  return s.trim().replace(/\s+/g, " ").replace(/\s*[.;]\s*$/, "").replace(/apr[eé]s/gi, "après").toLowerCase();
+  return s
+    .normalize("NFC")
+    .replace(/[\u00a0\u202f\u2007]/gu, " ")
+    .replace(/[’‘`]/gu, "'")
+    .trim()
+    .replace(/\s+/gu, " ")
+    .replace(/\s*[.;]\s*$/u, "")
+    .replace(/apr[eé]s/giu, "après")
+    .toLowerCase();
 }
 
 const normAccessoiresMap: Record<string, string> = {};
