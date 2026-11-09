@@ -119,9 +119,9 @@ export function resolveReferencesBilingual(
     };
   }
   if (references_fr?.trim()) {
-    const translated = referencesConfig.by_source?.[references_fr]
+    const translated = referencesConfig.by_source?.[references_fr]?.translation_ar
       ?? normReferencesMap[normalizeReferenceSource(references_fr)];
-    return { fr: references_fr, ar: translated?.translation_ar ?? translated ?? null };
+    return { fr: references_fr, ar: translated ?? null };
   }
   return { fr: references_fr ?? null, ar: null };
 }
