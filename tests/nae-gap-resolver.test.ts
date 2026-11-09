@@ -56,6 +56,7 @@ test("resolveAccessoiresArabic resolves exact, normalized, and fully translated 
   assert.ok(resolveAccessoiresArabic("Installation, montage, maintenance et service après-vente pour les équipements et matériels | importés, fournis à la clientèle")?.includes("التركيب والتجميع"));
   assert.ok(resolveAccessoiresArabic("Distribution des produits définis | dans le contenu de l’activité, à destination des grossistes, des | détaillants et des collectivités.")?.includes("توزيع المنتوجات"));
   assert.ok(resolveAccessoiresArabic("Vente au détail de pièces détachées pour l'horlogerie.")?.includes("قطع الغيار"));
+  assert.ok(resolveAccessoiresArabic("Vente des épices; | Vente au détail Henné, k'houl; | Vente d'encens et produits similaires;")?.includes("البخور"));
   assert.equal(resolveAccessoiresArabic(null), null);
   assert.equal(resolveAccessoiresArabic(undefined), null);
   assert.equal(resolveAccessoiresArabic(""), null);

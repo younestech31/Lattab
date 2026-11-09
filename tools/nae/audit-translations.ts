@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { NAEActivity } from "../../lib/nae/schema";
 import { resolveActivityBilingual } from "../../lib/nae/gap-resolver";
+import accessoriesOverlay from "../../data/nae/gap-translations/accessoires.json";
 import reviewedContent from "../../data/nae/gap-translations/contenue-reviewed.json";
 
 const sectors = [1, 2, 3, 4, 5, 6, 7];
@@ -15,11 +16,13 @@ const isUsable = (value: string | null | undefined): value is string =>
 
 const normalizeSource = (value: string) => value.trim().replace(/\s+/gu, " ");
 const byCode = new Map(activities.map((activity) => [activity.code, activity]));
-const translationMap = reviewedContent as Record<
-  string,
-  { source_fr: string; translation_ar: string }
->;
+const translationMap = reviewedContent as Record<string, { source_fr: string; translation_ar: string }>;
+const accessoryMap = accessoriesOverlay as Record<string, string>;
 const errors: string[] = [];
+for (const [source, translation] of Object.entries(accessoryMap)) {
+  if (/^\\d{6}$/u.test(source)) errors.push(`Accessory key "${source}" must be a French source phrase, not an activity code.`);
+  if (!isUsable(source) || !isUsable(translation)) errors.push("Accessory map contains an empty source phrase or translation.");
+}
 if (Object.keys(translationMap).length !== 41) {
   errors.push(`Expected 41 reviewed content translations; found ${Object.keys(translationMap).length}.`);
 }
@@ -73,6 +76,8 @@ const report = {
   activeArabicTranslations: translatedCounts,
   quarantinedLegacyDrafts: Object.keys(legacyDrafts).length,
   quarantinedLegacyUnknownCodes: Object.keys(legacyDrafts).filter((code) => !byCode.has(code)).length,
+  accessoryCoveragePercent: Number(((translatedCounts.accessories / sourceCounts.accessories) * 100).toFixed(1)),
+  contentCoveragePercent: Number(((translatedCounts.content / sourceCounts.content) * 100).toFixed(1)),
   errors,
 };
 console.log(JSON.stringify(report, null, 2));

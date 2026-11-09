@@ -8,6 +8,7 @@ This overlay adds reviewed translations without rewriting the source snapshot un
 - All other displayed fields follow the selected interface language.
 - French source text is never used as the primary value on an Arabic page when its Arabic translation is missing. It remains available separately in a collapsed source-text disclosure.
 - Activity-content translations are keyed by code **and** paired with the exact French source text. The resolver returns Arabic only when both match.
+- Accessory translations are matched to reviewed French source phrases. Line-wrapped fragments are reassembled only when the joined wording matches a dictionary entry; ambiguous or incomplete matches are rejected.
 - Unreviewed drafts are not imported by application code.
 
 ## Current coverage
@@ -15,7 +16,7 @@ This overlay adds reviewed translations without rewriting the source snapshot un
 | Field | Source records | Active Arabic translations |
 |---|---:|---:|
 | Activity content | 2,136 | 41 |
-| Accessories | 905 | 598 |
+| Accessories | 905 | 643 |
 | Tutelle | 379 | 379 |
 | Authorization type | 379 | 379 |
 | References | 379 | 1 |

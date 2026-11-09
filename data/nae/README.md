@@ -55,7 +55,7 @@ Index file plus maps under `data/nae/gap-translations/`. Holds **informational**
 |---|---|
 | `tutelle_fr` → Arabic | Complete (58 exact source strings) |
 | `type_autorisation_fr` → Arabic | Complete (17 exact source strings) |
-| High-frequency `accessoires_fr` → Arabic | Partial (exact-string map; ~523/905 records) |
+| `accessoires_fr` → Arabic | Partial (643/905 records; exact, normalized, and line-wrap-safe source phrase matching) |
 | `references_texte_fr` missing French (code `607004`) | Filled as informational French; Arabic source cell preserved |
 | `#NOM?` labels | Preserved; no invented replacements |
 | `contenue_fr` → Arabic | 18 source-bound reviewed translations; the previous 105 code-keyed entries are quarantined because some were attached to unrelated source descriptions |
@@ -71,7 +71,7 @@ The active `contenue-reviewed.json` contains 18 Arabic descriptions paired with 
 
 Current measured coverage:
 - Arabic activity-content translations: 41 / 2,136.
-- Arabic accessory translations: 598 / 905 records.
+- Arabic accessory translations: 643 / 905 records.
 - Arabic tutelle translations: 379 / 379 populated source records.
 - Arabic authorization-type translations: 379 / 379 populated source records.
 - Arabic legal-reference source text preserved: 1 / 379 populated source records.

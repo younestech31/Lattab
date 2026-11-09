@@ -73,7 +73,7 @@ The 2,136-record source CSV has 2,134 usable Arabic labels and 2,133 usable Fren
 |---|---:|
 | `tutelle_fr` | 379 / 379 |
 | `type_autorisation_fr` | 379 / 379 |
-| `accessoires_fr` | 598 / 905 |
+| `accessoires_fr` | 643 / 905 |
 | `contenue_fr` | 41 / 2,136 |
 | French-only references with preserved Arabic source | 1 / 379 |
 
@@ -123,3 +123,8 @@ Per LATTAB institutional data retention guidelines:
 - No records were deleted merely to match an arbitrary online display filter.
 - Both codes remain appropriately flagged as `red` (محظور / Bloquée).
 - Provenance and CC BY 4.0 attribution to UpGrowth are preserved.
+
+
+## Updated accessory coverage (2026-11-09)
+
+The source-phrase dictionary now resolves 643 of 905 non-empty accessory records. Wrapped phrases are reassembled only when the complete French wording matches a reviewed dictionary phrase. The remaining 262 records remain untranslated rather than guessed.
