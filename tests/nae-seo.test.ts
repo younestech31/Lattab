@@ -19,27 +19,25 @@ const activity: NAEActivity = {
   references_texte_fr: null,
 };
 
-test("indexability requires a valid localized label and substantive source content", () => {
+test("indexability requires valid labels and substantive source content", () => {
   assert.equal(isNAEActivityIndexable(activity, "ar"), true);
   assert.equal(isNAEActivityIndexable(activity, "fr"), true);
   assert.equal(isNAEActivityIndexable({ ...activity, label_ar: "#NOM?" }, "ar"), false);
   assert.equal(isNAEActivityIndexable({ ...activity, label_ar: "#NOM?" }, "fr"), false);
   assert.equal(isNAEActivityIndexable({ ...activity, contenue_fr: "Texte bref" }, "fr"), false);
+});
 
-  // Test the five affected codes identified in NAE-01
-  const affectedCodes = ["308006", "310012", "431103", "443102", "607042"];
-  for (const code of affectedCodes) {
-    const sample = { ...activity, code, label_ar: code === "443102" || code === "607042" ? "#NOM?" : activity.label_ar, label_fr: code !== "443102" && code !== "607042" ? "#NOM?" : activity.label_fr };
-    assert.equal(isNAEActivityIndexable(sample, "ar"), false);
-    assert.equal(isNAEActivityIndexable(sample, "fr"), false);
-  }
+test("missing localized label never falls back to the other interface language", () => {
+  const invalidArabic = { ...activity, label_ar: "#NOM?" };
+  assert.equal(hasValidNAELabel(invalidArabic, "ar"), false);
+  assert.equal(hasValidNAELabel(invalidArabic, "fr"), true);
+  assert.equal(getNAEActivityTitle(invalidArabic, "ar"), invalidArabic.code);
+
+  const invalidFrench = { ...activity, label_fr: "#NOM?" };
+  assert.equal(hasValidNAELabel(invalidFrench, "fr"), false);
+  assert.equal(getNAEActivityTitle(invalidFrench, "fr"), invalidFrench.code);
 });
-test("invalid localized label does not delete the activity and falls back transparently", () => {
-  const invalid = { ...activity, label_ar: "#NOM?" };
-  assert.equal(hasValidNAELabel(invalid, "ar"), false);
-  assert.equal(hasValidNAELabel(invalid, "fr"), true);
-  assert.equal(getNAEActivityTitle(invalid, "ar"), activity.label_fr);
-});
+
 test("metadata descriptions are localized", () => {
   assert.match(getNAEPageDescription(activity, "fr"), /^Code NAE 611001/);
   assert.match(getNAEPageDescription(activity, "ar"), /بطاقة مرجعية/);

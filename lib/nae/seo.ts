@@ -12,17 +12,15 @@ export function isNAEActivityIndexable(activity: NAEActivity, lang: NAEPageLangu
   const arValid = hasValidNAELabel(activity, "ar");
   const frValid = hasValidNAELabel(activity, "fr");
   const contentValid = activity.contenue_fr.trim().length >= 60;
-  const bothLocalesValid = arValid && frValid && contentValid;
-  if (!bothLocalesValid) return false;
-  return lang === "ar" ? arValid : frValid;
+  return arValid && frValid && contentValid && hasValidNAELabel(activity, lang);
 }
 
+/** Never substitute a title in the other interface language. */
 export function getNAEActivityTitle(activity: NAEActivity, lang: NAEPageLanguage): string {
   const preferred = lang === "ar" ? activity.label_ar : activity.label_fr;
-  const fallback = lang === "ar" ? activity.label_fr : activity.label_ar;
-  if (preferred.trim() && preferred.trim() !== "#NOM?") return preferred.trim();
-  if (fallback.trim() && fallback.trim() !== "#NOM?") return fallback.trim();
-  return activity.code;
+  return preferred.trim() && preferred.trim() !== "#NOM?"
+    ? preferred.trim()
+    : activity.code;
 }
 
 export function getNAEPageDescription(activity: NAEActivity, lang: NAEPageLanguage): string {
