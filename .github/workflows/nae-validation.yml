@@ -65,6 +65,9 @@ jobs:
       - name: Run NAE tests
         run: bun run test:nae
 
+      - name: Audit translation overlays
+        run: bun run nae:audit-translations
+
       - name: Type-check application and NAE routes
         run: bun run tsc --noEmit --pretty false
 
