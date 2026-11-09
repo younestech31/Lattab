@@ -2847,6 +2847,201 @@
     "translation_ar": "تجارة الجملة بالعلم الوطني والشارة الحاملة للعلم الوطني والراية؛ | تجارة الجملة بالصور الشخصية واللافتات والرايات الإعلانية وما شابهها.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "302201": {
+    "source_fr": "Commerce de gros de pelleterie et des fourrures oeuvrées ou confectionnées.",
+    "translation_ar": "تجارة الجملة بالفراء والجلود المدبوغة أو المصنّعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302202": {
+    "source_fr": "Commerce de gros de fournitures de bourrellerie.",
+    "translation_ar": "تجارة الجملة بمستلزمات السراجية ومعدات الأحصنة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302203": {
+    "source_fr": "Commerce de gros de chaussures pour femmes, hommes et enfants, en toutes matières; | Commerce de gros de chaussures professionnelles, etc...",
+    "translation_ar": "تجارة الجملة بالأحذية النسائية والرجالية وأحذية الأطفال المصنوعة من مختلف المواد؛ | تجارة الجملة بالأحذية المهنية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302204": {
+    "source_fr": "Commerce de gros des produits de la maroquinerie, sacs à main, articles de voyage, valises, trousses, serviettes, cabas, ceintures, portefeuilles, coffrets sous mains et articles pour dessus de bureau, etc...",
+    "translation_ar": "تجارة الجملة بالمنتجات الجلدية، مثل حقائب اليد ولوازم السفر والحقائب وحافظات الأدوات والمناشف الجلدية وحقائب التسوق والأحزمة والمحافظ والصناديق الجلدية وحافظات المكتب وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302301": {
+    "source_fr": "Commerce de gros de bijoux en or, argent et platine, de pierres précieuses; bracelets | montres, chronomètres, pendules, réveils, boussoles, etc...; | Commerce de gros des pièces détachées pour l'horlogerie.",
+    "translation_ar": "تجارة الجملة بالمجوهرات المصنوعة من الذهب والفضة والبلاتين والأحجار الكريمة والأساور والساعات والكرونومترات والساعات الحائطية والمنبهات والبوصِلات وغيرها؛ | تجارة الجملة بقطع غيار الساعات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302302": {
+    "source_fr": "Commerce de gros des apprêts de bijouterie en métaux précieux, des brasures d'argent, du nitrate d'argent, des anodes d'argent, de l'auro cyanure de potassium, du cyanure d'argent de potassium ainsi que de l'or, de l'argent et du platine sous toutes leurs formes ( bijoux, poudre, liquide, sels, battu, grenaille, masse, lingots, etc.) et autres produits finis ou semi-finis contenant des metaux précieux.",
+    "translation_ar": "تجارة الجملة بمستلزمات صناعة المجوهرات من المعادن النفيسة، ولحام الفضة ونترات الفضة وأنودات الفضة وسيانيد الذهب والبوتاسيوم وسيانيد الفضة والبوتاسيوم، وكذلك الذهب والفضة والبلاتين بمختلف أشكالها (المجوهرات والمساحيق والسوائل والأملاح والصفائح والحبيبات والكتل والسبائك وغيرها)، وسائر المنتجات النهائية أو نصف المصنعة المحتوية على معادن نفيسة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302303": {
+    "source_fr": "Vente en gros de matériels produits et matières premières destinés à la bijouterie industrielle et artisanale.",
+    "translation_ar": "البيع بالجملة للمعدات والمنتجات والمواد الأولية المخصصة لصناعة المجوهرات الصناعية والحرفية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "302401": {
+    "source_fr": "Commerce de gros des produits cosmétiques et d’hygiène corporelle ( liste figurant à l’annexe I du décret exécutif n°10-114 du 18/04/2010, modifiant et complétant le décret exécutif n°97-37 du 14/01/1997, définissant les conditions et les modalités de fabrication, de conditionnement , d’importation et de commercialisation, sur le marché national, les produits cosmétiques et d’hygiène corporelle).",
+    "translation_ar": "تجارة الجملة بمنتجات التجميل والنظافة الجسدية (القائمة الواردة في الملحق الأول للمرسوم التنفيذي رقم 10-114 المؤرخ في 18 أبريل 2010، المعدل والمتمم للمرسوم التنفيذي رقم 97-37 المؤرخ في 14 يناير 1997، المحدد لشروط وكيفيات تصنيع وتوضيب واستيراد وتسويق منتجات التجميل والنظافة الجسدية في السوق الوطنية).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303101": {
+    "source_fr": "Commerce de gros d'appareils domestiques et équipements ménagers (capsules pour machines à café, lave linge, lave vaisselle …) ; | Commerce de gros, d'appareils électroniques domestiques (radio, télévision, magnétoscopes, et autres articles ...). | Vente en gros de tous appareils de téléphone et système téléphonique, télécopieur, télex, téléscripteur et autres appareils similaires, accessoires et pièces détachées .",
+    "translation_ar": "تجارة الجملة بالأجهزة المنزلية والتجهيزات الكهرومنزلية، مثل كبسولات آلات القهوة والغسالات وغسالات الأواني وغيرها؛ | تجارة الجملة بالأجهزة الإلكترونية المنزلية، مثل أجهزة الراديو والتلفزيون والفيديو وغيرها؛ | البيع بالجملة لجميع أجهزة الهاتف والأنظمة الهاتفية وأجهزة الفاكس والتلكس والطابعات عن بُعد والأجهزة المماثلة ولوازمها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303102": {
+    "source_fr": "Commerce de gros de tous appareils de chauffage et équipements sanitaires, tuyauterie, tubes de canalisation, chaudières à usage domestique, appareils d'épuration d'eau domestiques, chauffes bains, chasses d'eau et accessoires, articles de revêtement sanitaire, etc...",
+    "translation_ar": "تجارة الجملة بجميع أجهزة التدفئة والتجهيزات الصحية والأنابيب والمواسير والغلايات المنزلية وأجهزة تنقية المياه المنزلية وسخانات الحمامات وصناديق الطرد ولوازمها ومواد التكسية الصحية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303103": {
+    "source_fr": "Commerce de gros de tapis et moquettes, couvertures et autres articles similaires.",
+    "translation_ar": "تجارة الجملة بالسجاد والموكيت والأغطية والمنتجات المماثلة الأخرى المصنوعة من المواد النسيجية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303104": {
+    "source_fr": "Commerce de gros d'articles de vannerie et de sparterie destinés à la décoration, l'ameublement et à tous autres usages (produits de l'osier, du rotin, etc...).",
+    "translation_ar": "تجارة الجملة بمصنوعات السلال والضفائر النباتية المخصصة للزينة وتأثيث الأماكن وسائر الاستعمالات، مثل المنتجات المصنوعة من الصفصاف والخيزران وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303105": {
+    "source_fr": "Commerce de gros de tous articles de l'artisanat destinés à l'utilisation des ménages ou à la décoration.",
+    "translation_ar": "تجارة الجملة بجميع مصنوعات الحرف التقليدية المخصصة للاستعمال المنزلي أو الزينة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303106": {
+    "source_fr": "Commerce de gros de meubles neufs et articles d'ameublement, de literie, mobiliers en toutes matières, sièges, sommiers, matelas, coussins, oreillers, traversins, poufs, etc...; | Commerce de gros de tous mobiliers de bureaux. | Vente en gros de mobilier urbain.",
+    "translation_ar": "تجارة الجملة بالأثاث الجديد ومستلزمات التأثيث وأثاث غرف النوم والأثاث المصنوع من مختلف المواد والمقاعد وهياكل الأسرة والمراتب والوسائد والمساند وغيرها؛ | تجارة الجملة بجميع أنواع أثاث المكاتب؛ | البيع بالجملة للأثاث الحضري.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303107": {
+    "source_fr": "Commerce de gros de tous articles en cuivre et en laiton travaillé (vases, plateaux, théières, cafetières, coupes pour verres à thé, etc ... ).",
+    "translation_ar": "تجارة الجملة بجميع مصنوعات النحاس والنحاس الأصفر المشغولة، مثل المزهريات والصواني وأواني الشاي والقهوة وكؤوس الشاي وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303108": {
+    "source_fr": "Commerce de gros de toutes sortes de lustres, lampadaires, bibelots luminaires, articles de décoration , tableaux , miroirs, pendules, baromètres décoratifs etc ...",
+    "translation_ar": "تجارة الجملة بجميع أنواع الثريات وأعمدة الإنارة والتحف وأجهزة الإنارة ومصنوعات الزينة واللوحات والمرايا والساعات الحائطية والبارومترات الزخرفية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303109": {
+    "source_fr": "Vente en gros de matériels, d'équipelments et de produits électroniques tels que : moteurs, tranformateurs, groupes éléctrogénes, génératrices, convertisseurs, etc...; | vente en gros de fournitures électriques, matériels de distribution et de commande électrique, appareil d'éclairage, câbles et fils électriques isolés ou nom, ect . | Vente en gros de tous matériels destinés à la fabrication et à la réparation des équipements et appareils électriques .",
+    "translation_ar": "البيع بالجملة للمعدات والتجهيزات والمنتجات الإلكترونية، مثل المحركات والمحولات ومجموعات المولدات الكهربائية وآلات التوليد والمحولات الإلكترونية وغيرها؛ | البيع بالجملة للوازم الكهربائية ومعدات توزيع الكهرباء والتحكم فيها وأجهزة الإنارة والكابلات والأسلاك الكهربائية المعزولة أو غير المعزولة وغيرها؛ | البيع بالجملة لجميع المعدات المخصصة لتصنيع وإصلاح التجهيزات والأجهزة الكهربائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303110": {
+    "source_fr": "Vente en gros de tous appareils et machines professionnels ou domestiques d'occasion aprés rénovation et réparation .",
+    "translation_ar": "البيع بالجملة لجميع الأجهزة والآلات المهنية أو المنزلية المستعملة، بعد تجديدها وإصلاحها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303111": {
+    "source_fr": "Vente en gros d'appareils éléctrothermiques, rasoires, tondeuses, fauteuils d'esthétiques, séche cheveux et autres appareils et articles destinés à l'esthétique et à la coiffure .",
+    "translation_ar": "البيع بالجملة للأجهزة الكهروحرارية وأجهزة الحلاقة وآلات قص الشعر وكراسي التجميل ومجففات الشعر وغيرها من الأجهزة والمواد المخصصة للتجميل وتصفيف الشعر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303112": {
+    "source_fr": "Vente en gros de tout support servant à la reproduction et à l'enregistrement de l'image et du son tel que les cassettes, les disques, les bandes et les CD.",
+    "translation_ar": "البيع بالجملة لجميع الدعامات والوسائط المستخدمة في إعادة إنتاج الصور والصوت وتسجيلهما، مثل أشرطة الكاسيت والأقراص والأشرطة والأقراص المدمجة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303113": {
+    "source_fr": "Vente en gros d'appareils d'enregistrement et de reproduction du son et de l'image(TV, radio, chaine stéréo, lecteurs de cassettes, magnétophone, bandes et disques magnétiques, disques lasers, baladeurs, etc); | Vente en gros de caméras, caméscopes, appareils photos, appareils de projection, amplificateurs, vidéos, projecteurs, rétroprojecteurs, baffles, tables de mixage et tous articles similaires; | Vente en gros de pièces détachées et consommables tels que : pellicules, films et produits de développement de films et photos, papiers, etc.",
+    "translation_ar": "البيع بالجملة لأجهزة تسجيل الصوت والصورة وإعادة إنتاجهما، مثل التلفزيون والراديو وأجهزة الصوت المجسم وقارئات الأشرطة والمسجلات والأشرطة والأقراص الممغنطة والأقراص الليزرية وأجهزة الموسيقى المحمولة وغيرها؛ | البيع بالجملة بالكاميرات وأجهزة التصوير بالفيديو وآلات التصوير الفوتوغرافي وأجهزة العرض ومضخمات الصوت وأجهزة الفيديو وأجهزة العرض العلوية ومكبرات الصوت وطاولات مزج الصوت وسائر المنتجات المماثلة؛ | البيع بالجملة بقطع الغيار والمواد الاستهلاكية، مثل أفلام التصوير والمواد الخاصة بتحميض الأفلام والصور والورق وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303114": {
+    "source_fr": "Distribution en gros d'appareils et d'équipements de la gestion de la monétique; | Distribution en gros de compteuses de billes et de pièces, d’automates de banque, d'appareils de traitement de chèques et d'équipements d'agences bancaires.",
+    "translation_ar": "التوزيع بالجملة للأجهزة والتجهيزات الخاصة بإدارة وسائل الدفع الإلكتروني؛ | التوزيع بالجملة لأجهزة عدّ الأوراق النقدية والقطع النقدية وأجهزة الصراف الآلي وأجهزة معالجة الشيكات وتجهيزات الوكالات البنكية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303201": {
+    "source_fr": "Commerce de gros de vaisselle en toutes matières (céramique, porcelaine, plastique, etc...), articles de cuisine en acier, aluminium, verrerie de ménage et articles de décoration de cuisine; | Commerce de gros de petits mobiliers de cuisine (tabourets, tablettes); | Commerce de gros de toiles cirées, éponges et serviettes de cuisine.",
+    "translation_ar": "تجارة الجملة بأواني المائدة من جميع المواد (الخزف والبورسلان والبلاستيك وغيرها) وأدوات المطبخ المصنوعة من الفولاذ والألومنيوم والأواني الزجاجية المنزلية ومستلزمات زينة المطبخ؛ | تجارة الجملة بالأثاث الصغير للمطابخ، مثل المقاعد والأرفف؛ | تجارة الجملة بالأقمشة المشمعة والإسفنج ومناشف المطبخ.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303202": {
+    "source_fr": "Commerce de gros de produits chimiques et d'entretien à usage domestique : produits lessiviels, raticides, insecticides; | Commerce de gros d'articles d'entretien ménager : balais, serpillières, paillasses, paillassons, poubelles, bassines, seaux , bidons, produits d'entretien vestimentaires; produits de lustrage pour meubles; | Commerce de gros de papiers peints, papiers à emballage et autres papiers à usage domestique, toiles cirées, articles pour étendage de linge, cintres, fournitures pour cordonnerie (colles, marteaux, semelles,...) etc... | Vente en gros de produits d'hygiéne et autres produits similaires .",
+    "translation_ar": "تجارة الجملة بالمنتجات الكيميائية ومنتجات التنظيف المنزلية، مثل مواد الغسيل ومبيدات القوارض والحشرات؛ | تجارة الجملة بلوازم التنظيف المنزلي، مثل المكانس والمماسح والفرش والحصائر وسلال المهملات والأحواض والدلاء والعبوات ومنتجات العناية بالملابس ومواد تلميع الأثاث؛ | تجارة الجملة بورق الجدران وأوراق التغليف وغيرها من الأوراق المنزلية والأقمشة المشمعة ولوازم نشر الغسيل وعلاقات الملابس ولوازم إصلاح الأحذية، مثل المواد اللاصقة والمطارق والنعال وغيرها؛ | البيع بالجملة بمنتجات النظافة والمنتجات المماثلة الأخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303203": {
+    "source_fr": "Commerce de gros de matériels et produits liés à l’hygiène hospitalière.",
+    "translation_ar": "تجارة الجملة بالمعدات والمنتجات المرتبطة بالنظافة الاستشفائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "303204": {
+    "source_fr": "distribution en gros de matériels, d’outils et des équipements de nettoyage.",
+    "translation_ar": "التوزيع بالجملة لمعدات وأدوات وتجهيزات التنظيف.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304101": {
+    "source_fr": "Commerce de gros de matériaux de construction (sable, gravier, ciment, plâtre et produits en plâtre, carreaux etc..); | Commerce de gros de verre plat; | Commerce de gros d'appareils sanitaires (baignoires, éviers, lavabos...), en céramique ou autres matières; | Commerce de gros d'articles de menuiserie du bâtiment autres qu'en bois (métallique et plastique) ; | Vente en gros de portes et fenêtres en toutes matières.",
+    "translation_ar": "تجارة الجملة بمواد البناء، مثل الرمل والحصى والإسمنت والجبس ومنتجاته والبلاط وغيرها؛ | تجارة الجملة بالزجاج المسطح؛ | تجارة الجملة بالأجهزة الصحية، مثل أحواض الاستحمام وأحواض الغسل والمغاسل وغيرها، المصنوعة من الخزف أو مواد أخرى؛ | تجارة الجملة بمصنوعات نجارة المباني غير الخشبية (المعدنية والبلاستيكية)؛ | البيع بالجملة بالأبواب والنوافذ المصنوعة من مختلف المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304102": {
+    "source_fr": "Commerce de gros de grillages, de boulonnerie, visserie, clouterie, serrurerie, ferronnerie; | Commerce de gros d'outillages et appareils manuels de mesure, robinetterie, matériels de soudage, articles de plomberie et articles sanitaires.",
+    "translation_ar": "تجارة الجملة بالشبكات المعدنية والبراغي والصواميل والمسامير والأقفال والحدادة المعدنية؛ | تجارة الجملة بالأدوات وأجهزة القياس اليدوية والصمامات ومعدات اللحام ولوازم السباكة والمواد الصحية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304103": {
+    "source_fr": "Commerce de gros du verre, miroirs, et articles de verrerie, miroiterie ( bibelots, articles de décoration, etc...).",
+    "translation_ar": "تجارة الجملة بالزجاج والمرايا ومصنوعات الزجاج والمرايا، مثل التحف والمنتجات الزخرفية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304104": {
+    "source_fr": "Commerce de gros du bois, des placages et panneaux; | Commerce de gros du liège et produits et articles en liège; | Commerce de gros des articles de, menuiserie, menuiserie de bâtiment en bois etc...",
+    "translation_ar": "تجارة الجملة بالخشب والقشرة الخشبية والألواح؛ | تجارة الجملة بالفلين والمنتجات والمصنوعات المصنوعة منه؛ | تجارة الجملة بمصنوعات النجارة ونجارة المباني الخشبية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304105": {
+    "source_fr": "Commerce de gros de peintures et vernis pour le bâtiment et autres usages domestiques. | Commerce de gros de diluants pour les peintures, colles et adhésifs pour papiers peints.",
+    "translation_ar": "تجارة الجملة بالدهانات والورنيشات المخصصة للبناء وسائر الاستعمالات المنزلية؛ | تجارة الجملة بمذيبات الدهانات والمواد اللاصقة ومواد لصق ورق الجدران.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304106": {
+    "source_fr": "Vente en gros de produits d'étanchéité",
+    "translation_ar": "البيع بالجملة بمنتجات العزل المائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304107": {
+    "source_fr": "Distribution en gros de cabines sahariennes dites cabines de campements destinées au sud et les chantiers pétroliers, équipées ou non. | Distribution en gros de maisons et chalets en bois et toutes autres matières.",
+    "translation_ar": "التوزيع بالجملة للكبائن الصحراوية المعروفة بكبائن المخيمات والمخصصة للجنوب والورشات النفطية، مجهزة أو غير مجهزة؛ | التوزيع بالجملة للمنازل والشاليهات المصنوعة من الخشب أو من أي مواد أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304108": {
+    "source_fr": "distribution en gros de toitures, chapiteaux, tentes et garages automobiles.",
+    "translation_ar": "التوزيع بالجملة للأسقف والمظلات الكبيرة والخيام ومرائب السيارات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304201": {
+    "source_fr": "Commerce de gros de fournitures pour l'électricité et outillages professionnel pour travaux électriques; | Commerce de gros de fils, câbles électriques, rallonges, prises, boîtiers de lampes baladeuses.",
+    "translation_ar": "تجارة الجملة باللوازم الكهربائية والأدوات المهنية المخصصة للأشغال الكهربائية؛ | تجارة الجملة بالأسلاك والكابلات الكهربائية والوصلات والمقابس وعلب المصابيح المحمولة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "304202": {
+    "source_fr": "Commerce de gros de moquettes, faux plafonds et tous produits destinés au revêtement des murs, des sols et des faux planchers.",
+    "translation_ar": "تجارة الجملة بالموكيت والأسقف المستعارة وجميع المنتجات المخصصة لتكسية الجدران والأرضيات والأرضيات المرتفعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305001": {
+    "source_fr": "Commerce de gros d'ordinateurs et périphériques, logiciels et mobiliers de Bureautique; | Commerce de gros de machines de bureau, machines à écrire, photocopieuses... | Vente en gros de leurs fournitures et accessoires .",
+    "translation_ar": "تجارة الجملة بالحواسيب والأجهزة الطرفية والبرمجيات وأثاث المكاتب وتجهيزاتها؛ | تجارة الجملة بآلات المكاتب، مثل الآلات الكاتبة وآلات التصوير وغيرها؛ | البيع بالجملة بلوازم هذه المعدات وملحقاتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305002": {
+    "source_fr": "Commerce de gros des appareils thermiques destinés à l'équipement des installations professionnelles et domestiques : chaudières, y compris leurs accessoires et pièces détachées; | Commerce de gros de réservoirs, cuves, citernes pour l'emmagasinage des matières liquides et gazeuses; d'appareils de réfrigération et de conditionnement d'air.",
+    "translation_ar": "تجارة الجملة بالأجهزة الحرارية المخصصة لتجهيز المنشآت المهنية والمنزلية، مثل الغلايات ولوازمها وقطع غيارها؛ | تجارة الجملة بالخزانات والأحواض والصهاريج المخصصة لتخزين المواد السائلة والغازية، وبأجهزة التبريد وتكييف الهواء.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305003": {
+    "source_fr": "Vente en gros de matériels de lutte contre les intrusions, le feu et tous autres articles de protection et de sécurité ; | Vente en gros de matériels de surveillance, d'alerte, de gardiennage et de tout équipement et matériels de télésurveillance de détecteurs de métaux , portiques de détection , etc. ; | Vente en gros de fournitures de sécurité (vêtements, chaussures, etc.).",
+    "translation_ar": "البيع بالجملة بمعدات مكافحة التسلل والحرائق وسائر مواد الحماية والأمن؛ | البيع بالجملة بمعدات المراقبة والإنذار والحراسة وجميع تجهيزات ومعدات المراقبة عن بُعد وكواشف المعادن وبوابات الكشف وغيرها؛ | البيع بالجملة بمستلزمات الأمن والسلامة، مثل الملابس والأحذية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
