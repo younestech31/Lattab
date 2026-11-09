@@ -73,7 +73,7 @@ The 2,136-record source CSV has 2,134 usable Arabic labels and 2,133 usable Fren
 |---|---:|
 | `tutelle_fr` | 379 / 379 |
 | `type_autorisation_fr` | 379 / 379 |
-| `accessoires_fr` | 598 / 905 |
+| `accessoires_fr` | 659 / 905 |
 | `contenue_fr` | 18 / 2,136 |
 | French-only references with preserved Arabic source | 1 / 379 |
 

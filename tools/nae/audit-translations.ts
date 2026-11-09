@@ -3,6 +3,7 @@ import path from "node:path";
 import type { NAEActivity } from "../../lib/nae/schema";
 import { resolveActivityBilingual } from "../../lib/nae/gap-resolver";
 import reviewedContent from "../../data/nae/gap-translations/contenue-reviewed.json";
+import accessoiresDictionary from "../../data/nae/gap-translations/accessoires.json";
 
 const sectors = [1, 2, 3, 4, 5, 6, 7];
 const activities: NAEActivity[] = sectors.flatMap((sector) => {
@@ -20,6 +21,21 @@ const translationMap = reviewedContent as Record<
   { source_fr: string; translation_ar: string }
 >;
 const errors: string[] = [];
+const accessoriesMap = accessoiresDictionary as Record<string, string>;
+const normalizeAccessoryKey = (value: string) =>
+  value.trim().replace(/\s+/gu, " ").replace(/\s*[.;]\s*$/u, "").replace(/apr[eé]s/giu, "après").toLowerCase();
+const normalizeArabicMeaning = (value: string) =>
+  value.trim().replace(/\s+/gu, " ").replace(/[؛،,.!?]+$/u, "");
+const normalizedAccessoryEntries = new Map<string, string>();
+for (const [key, value] of Object.entries(accessoriesMap)) {
+  if (/^\d{6}$/u.test(key)) errors.push("Accessory map must not be keyed by activity code: " + key);
+  if (!isUsable(value) || !/[\u0600-\u06FF]/u.test(value)) errors.push("Accessory translation is missing Arabic text for source clause: " + key);
+  const normalizedKey = normalizeAccessoryKey(key);
+  const existing = normalizedAccessoryEntries.get(normalizedKey);
+  if (existing && normalizeArabicMeaning(existing) !== normalizeArabicMeaning(value)) {
+    errors.push("Conflicting normalized accessory translations for source clause: " + key);
+  } else if (!existing) normalizedAccessoryEntries.set(normalizedKey, value);
+}
 
 if (activities.length !== 2136 || byCode.size !== activities.length) {
   errors.push(`Expected 2,136 unique activities; found ${activities.length} rows and ${byCode.size} unique codes.`);
@@ -60,6 +76,8 @@ const labelCoverage = {
   french: count((activity) => isUsable(activity.label_fr)),
   both: count((activity) => isUsable(activity.label_ar) && isUsable(activity.label_fr)),
 };
+const accessoryCoverage = translatedCounts.accessories;
+const accessoryUntranslated = sourceCounts.accessories - accessoryCoverage;
 const draftsPath = path.join(process.cwd(), "data/nae/gap-translations/contenue-unverified-drafts.json");
 const legacyDrafts = JSON.parse(fs.readFileSync(draftsPath, "utf8")) as Record<string, string>;
 
@@ -68,6 +86,7 @@ const report = {
   labels: labelCoverage,
   sourceFields: sourceCounts,
   activeArabicTranslations: translatedCounts,
+  accessories: { dictionaryEntries: Object.keys(accessoriesMap).length, translatedRecords: accessoryCoverage, untranslatedRecords: accessoryUntranslated },
   quarantinedLegacyDrafts: Object.keys(legacyDrafts).length,
   quarantinedLegacyUnknownCodes: Object.keys(legacyDrafts).filter((code) => !byCode.has(code)).length,
   errors,

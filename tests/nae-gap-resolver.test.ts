@@ -133,3 +133,30 @@ test("every active Arabic content value has one existing exact French source rec
     assert.ok(resolveContenueArabic(activity.code, activity.contenue_fr));
   }
 });
+
+import accessoiresDictionary from "../data/nae/gap-translations/accessoires.json";
+
+test("accessory translations are source-clause keyed and resolve the audited coverage baseline", () => {
+  const dictionary = accessoiresDictionary as Record<string, string>;
+  assert.equal(Object.keys(dictionary).filter((key) => /^\d{6}$/u.test(key)).length, 0);
+  for (const [sourceClause, translation] of Object.entries(dictionary)) {
+    assert.ok(sourceClause.trim().length > 0);
+    assert.ok(/[\u0600-\u06FF]/u.test(translation), `Missing Arabic translation for ${sourceClause}`);
+  }
+  const sourceRecords = allActivities.filter((activity) => activity.accessoires_fr?.trim());
+  const translatedRecords = sourceRecords.filter((activity) => resolveAccessoiresArabic(activity.accessoires_fr, activity.code));
+  assert.equal(sourceRecords.length, 905);
+  assert.equal(translatedRecords.length, 659);
+});
+
+test("normalized accessory source variants do not carry conflicting Arabic meanings", () => {
+  const dictionary = accessoiresDictionary as Record<string, string>;
+  const normalizeKey = (value: string) => value.trim().replace(/\s+/gu, " ").replace(/\s*[.;]\s*$/u, "").replace(/apr[eé]s/giu, "après").toLowerCase();
+  const normalizeMeaning = (value: string) => value.trim().replace(/\s+/gu, " ").replace(/[؛،,.!?]+$/u, "");
+  const normalized = new Map<string, string>();
+  for (const [sourceClause, translation] of Object.entries(dictionary)) {
+    const key = normalizeKey(sourceClause), existing = normalized.get(key);
+    if (existing) assert.equal(normalizeMeaning(existing), normalizeMeaning(translation), `Conflicting source clause: ${sourceClause}`);
+    else normalized.set(key, translation);
+  }
+});

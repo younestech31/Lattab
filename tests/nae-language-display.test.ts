@@ -48,3 +48,12 @@ test("French search continues to match original French activity content", () => 
   assert.equal(results[0].match.field, "contenue_fr");
   assert.equal(results[0].match.language, "fr");
 });
+
+test("Arabic accessory translations participate in Arabic search", () => {
+  const activity = { ...sector1[0], code: "999991", accessoires_fr: "Vente de sacs, sachets et tamis;", contenue_fr: "" } as NAEActivity;
+  const results = searchNAE(createNAESearchIndex([activity], "ar"), "الأكياس");
+  assert.equal(results.length, 1);
+  assert.equal(results[0].activity.code, "999991");
+  assert.equal(results[0].match.field, "accessoires_ar");
+  assert.equal(results[0].match.language, "ar");
+});

@@ -24,7 +24,17 @@ function normalizeAccessoireKey(s: string): string {
 
 const normAccessoiresMap: Record<string, string> = {};
 for (const [k, v] of Object.entries(accessoiresDict)) {
-  normAccessoiresMap[normalizeAccessoireKey(k)] = v;
+  const normalizedKey = normalizeAccessoireKey(k);
+  const existing = normAccessoiresMap[normalizedKey];
+  if (!existing) {
+    normAccessoiresMap[normalizedKey] = v;
+  } else {
+    const normalizeMeaning = (value: string) =>
+      value.trim().replace(/\s+/gu, " ").replace(/[؛،,.!?]+$/u, "");
+    if (normalizeMeaning(existing) !== normalizeMeaning(v)) {
+      throw new Error(`Ambiguous normalized accessory translation for: ${k}`);
+    }
+  }
 }
 
 export interface BilinguallyResolvedActivity extends NAEActivity {
