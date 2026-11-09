@@ -75,18 +75,42 @@ test("resolveContenueArabic requires the exact reviewed French source text", () 
 
   assert.equal(resolveContenueArabic("601101"), null);
   assert.equal(resolveContenueArabic("601101", "Unrelated French source"), null);
-  assert.equal(resolveContenueArabic("101201", "Engraissement industriel de bovins et ovins (en écuries aménagées) et autres animaux de boucherie en vue de l'abattage ."), null);
+  assert.equal(resolveContenueArabic("101201", "Engraissement industriel de bovins et ovins (en écuries aménagées) et autres animaux de boucherie en vue de l'abattage . source modifiée"), null);
   assert.equal(resolveContenueArabic("999999", "Unknown source"), null);
   assert.equal(resolveContenueArabic("999999", ""), null);
 });
 
-test("resolveReferencesBilingual handles code 607004 and preserves a supplied French reference", () => {
+test("resolveReferencesBilingual preserves source text and resolves source-bound Arabic references", () => {
   const ref607004 = resolveReferencesBilingual("607004", null);
   assert.ok(ref607004.fr?.includes("conseil juridique"));
   assert.ok(ref607004.ar?.includes("المستشاؤ القانوني"));
+
+  const source = "Décret exécutif n° 95-429 du 16/12/1995";
+  const translated = resolveReferencesBilingual("101106", source);
+  assert.equal(translated.fr, source);
+  assert.ok(translated.ar?.includes("المرسوم التنفيذي رقم 95-429"));
+
+  const changedSource = resolveReferencesBilingual("101106", "Décret exécutif n° 95-429 du 17/12/1995");
+  assert.equal(changedSource.ar, null);
+
   const standardRef = resolveReferencesBilingual("101101", "Décret standard 2020");
   assert.equal(standardRef.fr, "Décret standard 2020");
   assert.equal(standardRef.ar, null);
+});
+
+test("all populated legal reference sources resolve without rewriting French", () => {
+  const populated = allActivities.filter((activity) => activity.references_texte_fr?.trim() && activity.references_texte_fr.trim() !== "#NOM?");
+  assert.equal(populated.length, 379);
+  for (const activity of populated) {
+    const resolved = resolveReferencesBilingual(activity.code, activity.references_texte_fr);
+    if (activity.code === "607004") {
+      assert.ok(resolved.fr?.includes("conseil juridique"));
+      assert.ok(resolved.ar?.includes("المستشاؤ القانوني"));
+    } else {
+      assert.equal(resolved.fr, activity.references_texte_fr, activity.code);
+      assert.ok(resolved.ar?.trim(), "Missing Arabic legal reference for " + activity.code);
+    }
+  }
 });
 
 test("resolveActivityBilingual enriches without mutating the original record", () => {
@@ -127,9 +151,20 @@ test("all catalogue activities resolve safely and all tutelle values are mapped"
 
 test("every active Arabic content value has one existing exact French source record", () => {
   const translated = allActivities.filter((activity) => resolveActivityBilingual(activity).contenue_ar);
-  assert.equal(translated.length, 18);
+  assert.ok(translated.length > 18);
+  const forest = allActivities.find((activity) => activity.code === "101103");
+  assert.ok(forest?.contenue_fr);
+  assert.ok(resolveContenueArabic("101103", forest.contenue_fr)?.includes("أشغال إعادة التشجير"));
+  assert.equal(resolveContenueArabic("101103", "Unrelated source text"), null);
   for (const activity of translated) {
     assert.ok(activity.contenue_fr?.trim());
     assert.ok(resolveContenueArabic(activity.code, activity.contenue_fr));
   }
+});
+
+test("all accessory descriptions with a populated French source resolve in Arabic", () => {
+  const withSource = allActivities.filter((activity) => activity.accessoires_fr?.trim() && activity.accessoires_fr.trim() !== "#NOM?");
+  const translated = withSource.filter((activity) => resolveActivityBilingual(activity).accessoires_ar);
+  assert.equal(translated.length, withSource.length);
+  assert.equal(withSource.length, 905);
 });

@@ -3,5 +3,703 @@
     "references_texte_fr_fill": "Décret exécutif n° 72-39 du 10 février 1972 relatif à l'exercice de la profession de conseil juridique.",
     "source_ar_preserved": "مرسوم تنفيذي 72-39 المؤرخ في 10 فيفري 1972 المتعلق بممارسة مهنة المستشاؤ القانوني",
     "note": "Source Arabic cell retained as-is (including the written form المستشاؤ). French fill mirrors the intended legal profession (conseil juridique) without rewriting the Arabic source field."
+  },
+  "by_source": {
+    "Décret exécutif n° 95-429 du 16/12/1995": {
+      "translation_ar": "المرسوم التنفيذي رقم 95-429 المؤرخ في 16 ديسمبر 1995.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 07-100 du 29/03/2007, Fixant les conditions d'agrément pour l'exercice des activités de production, de multiplication ou de vente en gros et demi-gros des semences et plants ainsi que les modalités de son octroi.": {
+      "translation_ar": "المرسوم التنفيذي رقم 07-100 المؤرخ في 29 مارس 2007، المحدد لشروط اعتماد ممارسة أنشطة إنتاج البذور والشتلات وإكثارها وبيعها بالجملة ونصف الجملة، وكيفيات منح هذا الاعتماد.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret 08-201 du 06/07/2008 Fixant les conditions et les modalités de délivrance d'autorisation pour l'ouverture d'établissements d'élevage d'animaux d'espèces non domestiques et la présentation au public de ces spécimens.": {
+      "translation_ar": "المرسوم رقم 08-201 المؤرخ في 6 يوليو 2008، المحدد لشروط وكيفيات منح الترخيص لفتح مؤسسات تربية الحيوانات من الأنواع غير المستأنسة وعرض هذه العينات على الجمهور.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 01-11 du 03/07/2001, Relative à la pêche et à l'aquaculture, modifiée et complétée.": {
+      "translation_ar": "القانون رقم 01-11 المؤرخ في 3 يوليو 2001، المتعلق بالصيد البحري وتربية المائيات، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 07-208 du 30/06/2007, Fixant les conditions d'exercice de l'activité d'élevage et de culture aquacoles, les différents types d'établissements, les conditions de leur création et les règles de leur exploitation.": {
+      "translation_ar": "المرسوم التنفيذي رقم 07-208 المؤرخ في 30 يونيو 2007، المحدد لشروط ممارسة نشاط تربية المائيات واستزراعها، ومختلف أنواع المؤسسات وشروط إنشائها وقواعد استغلالها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Décret exécutif n° 06-428 du 26 novembre 2006 fixant la procédure d’octroi des autorisations d’exploiter des installations de production d’électricité, modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 06-428 المؤرخ في 26 نوفمبر 2006، المحدد لإجراءات منح تراخيص استغلال منشآت إنتاج الكهرباء، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 08-114 du 9 avril 2008 fixant les modalités d’attribution et de retrait des concessions de distribution de l’électricité et du gaz et le cahier des charges relatif aux droits et obligations du concessionnaire.": {
+      "translation_ar": "المرسوم التنفيذي رقم 08-114 المؤرخ في 9 أبريل 2008، المحدد لكيفيات منح وسحب امتيازات توزيع الكهرباء والغاز ودفتر الشروط المتعلق بحقوق صاحب الامتياز والتزاماته.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 13-176 du 30/04/2013, fixant les conditions d'exercice des activités de fabrication, de stockage et de distribution de gros de lubrifiants et de régénération des huiles usagées": {
+      "translation_ar": "المرسوم التنفيذي رقم 13-176 المؤرخ في 30 أبريل 2013، المحدد لشروط ممارسة أنشطة تصنيع مواد التشحيم وتخزينها وتوزيعها بالجملة وتجديد الزيوت المستعملة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 13-176 du 30/04/2013, fixant les conditions d'exercice des activités de fabrication, de stockage et de distribution de gros de lubrifiants et de régénération des huiles usagées.": {
+      "translation_ar": "المرسوم التنفيذي رقم 13-176 المؤرخ في 30 أبريل 2013، المحدد لشروط ممارسة أنشطة تصنيع مواد التشحيم وتخزينها وتوزيعها بالجملة وتجديد الزيوت المستعملة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 97-435 du 17/11/1997, portant règlementation du stockage et de la distribution des produits pétroliers.": {
+      "translation_ar": "المرسوم التنفيذي رقم 97-435 المؤرخ في 17 نوفمبر 1997، المتضمن تنظيم تخزين المنتجات البترولية وتوزيعها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "l’article 73 du code des impôts indirecte et les dispositions de l’arrêté du 15/05/2021, décret exécutif n° 03-451 du 01/12/2003": {
+      "translation_ar": "المادة 73 من قانون الضرائب غير المباشرة وأحكام القرار المؤرخ في 15 مايو 2021، والمرسوم التنفيذي رقم 03-451 المؤرخ في 1 ديسمبر 2003.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 21-82 du 23 Février 2021, Relatif aux établissements pharmaceutiques et les conditions de leur agrément.": {
+      "translation_ar": "المرسوم التنفيذي رقم 21-82 المؤرخ في 23 فبراير 2021، المتعلق بالمؤسسات الصيدلانية وشروط اعتمادها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "*Décret exécutif n° 90-240 du 04 Août 1990, Fixant les conditions de fabrication, de mise en vente et de contrôle des médicaments vétérinaires.": {
+      "translation_ar": "المرسوم التنفيذي رقم 90-240 المؤرخ في 4 أغسطس 1990، المحدد لشروط تصنيع الأدوية البيطرية وعرضها للبيع ومراقبتها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n 22-384 du 17 novembre 2022, fixant les conditions et les modalités d’exercice de l’activité de construction de véhicules.": {
+      "translation_ar": "المرسوم التنفيذي رقم 22-384 المؤرخ في 17 نوفمبر 2022، المحدد لشروط وكيفيات ممارسة نشاط بناء المركبات.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "À VÉRIFIER : le décret exécutif n° 20-226 du 19 août 2020 que cite la nomenclature est abrogé par l'article 36 du décret exécutif n° 22-384 du 17 novembre 2022 fixant les conditions et les modalités d'exercice de l'activité de construction de véhicules (JO n° 76 de 2022, p. 31), modifié par le décret exécutif n° 24-159 du 12 mai 2024 (JO n° 33 de 2024). Le titre applicable à la construction de carrosseries, de remorques et de bennes n'a pas été relu dans le décret 22-384.": {
+      "translation_ar": "للمراجعة: المرسوم التنفيذي رقم 20-226 المؤرخ في 19 أغسطس 2020، الذي تشير إليه التسمية، أُلغي بموجب المادة 36 من المرسوم التنفيذي رقم 22-384 المؤرخ في 17 نوفمبر 2022، المحدد لشروط وكيفيات ممارسة نشاط بناء المركبات (الجريدة الرسمية رقم 76 لسنة 2022، ص. 31)، المعدل بالمرسوم التنفيذي رقم 24-159 المؤرخ في 12 مايو 2024 (الجريدة الرسمية رقم 33 لسنة 2024). لم تتم إعادة قراءة عنوان النص المنطبق على بناء الهياكل والمقطورات وصناديق الشاحنات في المرسوم 22-384. (هذه ملاحظة تحقق واردة في المصدر وليست حكماً قانونياً جديداً).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°09-410 du 10/12/2009. fixant les règles de sécurité applicables aux activités portant sur les équipements sensibles modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-410 المؤرخ في 10 ديسمبر 2009، المحدد لقواعد الأمن المطبقة على الأنشطة المتعلقة بالتجهيزات الحساسة، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 98-96 du 18/03/1998 relative aux matériels de guerre, armes et munitions. Modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 98-96 المؤرخ في 18 مارس 1998، المتعلق بالعتاد الحربي والأسلحة والذخائر، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 21-48 du 19 Janvier 2021, fixant les conditions et modalités d'exercice des activités de fabrication et d'installation des plaques d'immatriculation des véhicules et leurs caractéristiques.": {
+      "translation_ar": "المرسوم التنفيذي رقم 21-48 المؤرخ في 19 يناير 2021، المحدد لشروط وكيفيات ممارسة أنشطة تصنيع لوحات ترقيم المركبات وتركيبها وخصائصها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "L’obligation d’obtention des agréments nécessaires pour l’exercice de l’activité : -Tests, expérimentations et essais liés aux systèmes d’aéronefs sans pilote à bord ; -Maintenance des systèmes d’aéronefs sans pilote à bord.": {
+      "translation_ar": "وجوب الحصول على الاعتمادات اللازمة لممارسة النشاط: الاختبارات والتجارب والفحوص المرتبطة بأنظمة الطائرات دون طيار؛ وصيانة أنظمة الطائرات دون طيار.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 22-24 du 25 Décembre 2022, Portant loi de finances pour 2023 (autorisation délivrée par l’administration fiscale) (article 26).": {
+      "translation_ar": "القانون رقم 22-24 المؤرخ في 25 ديسمبر 2022، المتضمن قانون المالية لسنة 2023 (الترخيص تسلمه الإدارة الجبائية) (المادة 26).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°04-331 du 18/10/2004": {
+      "translation_ar": "المرسوم التنفيذي رقم 04-331 المؤرخ في 18 أكتوبر 2004.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Décret exécutif n° 22-249 du 30 Juin 2022, Fixant les conditions d'exercice de l'activité de confection de l'emblème national et les modalités de contrôle sur les confectionneurs et les utilisateurs.": {
+      "translation_ar": "المرسوم التنفيذي رقم 22-249 المؤرخ في 30 يونيو 2022، المحدد لشروط ممارسة نشاط صنع العلم الوطني وكيفيات مراقبة صانعيه ومستعمليه.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Décret exécutif n° 15-169 du 23 juin 2015, fixant les modalités d'agrément pour l'exercice de l'activité d'importation d'or, d'argent et de platine bruts, mi-ouvrés ou ouvrés et l'activité de récupération et de recyclage des métaux précieux (agrément délivré par le directeur des impôts de wilaya).": {
+      "translation_ar": "المرسوم التنفيذي رقم 15-169 المؤرخ في 23 يونيو 2015، المحدد لكيفيات الاعتماد لممارسة نشاط استيراد الذهب والفضة والبلاتين الخام أو نصف المصنع أو المصنع، ونشاط استرجاع المعادن النفيسة وإعادة تدويرها (الاعتماد يسلمه مدير الضرائب للولاية).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 11-04 du 14 du 17 février 2011 fixant les réglés régissant l’activité de promotion immobilière.": {
+      "translation_ar": "القانون رقم 11-04 المؤرخ في 17 فبراير 2011، المحدد للقواعد التي تنظم نشاط الترقية العقارية. (أُبقي التاريخ كما ورد في المصدر رغم تكرار «du 14 du»).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "article 42 de la loi n° 01-19 du 27 ramadhan 1422 correspondant au 12 décembre et à l’élimination des déchets et l’article 19 de la loi n° 03-10 du Loi n° 03-10 du 19 Joumada El Oula 1424 correspondant au 19 juillet 2003 relative à la protection de l'environnement dans le cadre du développement durable.": {
+      "translation_ar": "المادة 42 من القانون رقم 01-19 المؤرخ في 27 رمضان 1422 الموافق لـ12 ديسمبر، والمتعلق بتسيير النفايات ومراقبتها وإزالتها، والمادة 19 من القانون رقم 03-10 المؤرخ في 19 جمادى الأولى 1424 الموافق لـ19 يوليو 2003، المتعلق بحماية البيئة في إطار التنمية المستدامة. (صياغة المصدر تتضمن تكراراً ونقصاً في التاريخ، ولم يُصحّح النص الأصلي).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-article 42 de la loi n° 01-19 du 27 ramadhan 1422 correspondant au 12 décembre et à l’élimination des déchets et l’article 19 de la loi n° 03-10 du Loi n° 03-10 du 19 Joumada El Oula 1424 correspondant au 19 juillet 2003 relative à la protection de l'environnement dans le cadre du développement durable.": {
+      "translation_ar": "المادة 42 من القانون رقم 01-19 المؤرخ في 27 رمضان 1422 الموافق لـ12 ديسمبر، والمتعلق بتسيير النفايات ومراقبتها وإزالتها، والمادة 19 من القانون رقم 03-10 المؤرخ في 19 جمادى الأولى 1424 الموافق لـ19 يوليو 2003، المتعلق بحماية البيئة في إطار التنمية المستدامة. (صياغة المصدر تتضمن تكراراً ونقصاً في التاريخ، ولم يُصحّح النص الأصلي).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 01-11 du juillet 2011 relative à la pèche et à l’aquaculture, modifiée et complétée.": {
+      "translation_ar": "القانون رقم 01-11 المؤرخ في يوليو 2011، المتعلق بالصيد البحري وتربية المائيات، المعدل والمتمم. (تاريخ يوليو 2011 نُقل كما ورد في المصدر دون تصحيح).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 12-111 du 6 mars 2012 fixant les conditions et les modalités d’implantation et d’organisation des espaces commerciaux et d’exercice de certaines activités commerciales.": {
+      "translation_ar": "المرسوم التنفيذي رقم 12-111 المؤرخ في 6 مارس 2012، المحدد لشروط وكيفيات إنشاء الفضاءات التجارية وتنظيمها وممارسة بعض الأنشطة التجارية.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "certifier l'inexistante du marché de gros de fruits et légumes.": {
+      "translation_ar": "شهادة تثبت عدم وجود سوق جملة للفواكه والخضروات. (هذه العبارة واردة في المصدر وليست مرجعاً تشريعياً).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "écret exécutif n° 14-165 du 26 mai 2014 fixant les conditions d'exercice de l'activité de mandataire-grossiste en produits de la pêche et de l'aquaculture.": {
+      "translation_ar": "المرسوم التنفيذي رقم 14-165 المؤرخ في 26 مايو 2014، المحدد لشروط ممارسة نشاط الوكيل تاجر الجملة في منتجات الصيد البحري وتربية المائيات. (الكلمة الأولى في المصدر ناقصة الحرف D؛ نُقل مضمون العبارة دون تغيير الأصل).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°09-410 du 10/12/2009 fixant les règles de sécurité applicables aux activités portant sur les équipements sensibles modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-410 المؤرخ في 10 ديسمبر 2009، المحدد لقواعد الأمن المطبقة على الأنشطة المتعلقة بالتجهيزات الحساسة، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "decret executif n° 09-410 du 10/12/2009": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-410 المؤرخ في 10 ديسمبر 2009.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Arrêté interministériel du 08 Septembre 2025, Fixant les conditions et les modalités de fabrication, d'acquisition, d'importation, d'exportation, de vente, de maintenance, de location, de prestation de service, de cession et de réforme des systèmes d'aéronefs sans pilote à bord.": {
+      "translation_ar": "القرار الوزاري المشترك المؤرخ في 8 سبتمبر 2025، المحدد لشروط وكيفيات تصنيع أنظمة الطائرات دون طيار واقتنائها واستيرادها وتصديرها وبيعها وصيانتها وتأجيرها وتقديم الخدمات بشأنها والتنازل عنها وإخراجها من الخدمة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 98-96 du 18/03/1998, Fixant les modalités d'application de l'ordonnance n° 97-06 du 12 Ramadhan 1417 correspondant au 21 janvier 1997 relative aux matériels de guerre, armes et munitions. Modifié et complété Décret exécutif n° 26-92 du 31 janvier 2026 fixant les conditions et les modalités d'exercice de la profession d'armurier (JO n° 12 de 2026, p. 3), art. 2, 3, 4 et 11 : la vente, l'acquisition et l'importation des armes des catégories 5 à 8 forment une activité réglementée soumise à l'inscription au registre du commerce et à une autorisation préalable délivrée par le wali du lieu d'exercice.": {
+      "translation_ar": "المرسوم التنفيذي رقم 98-96 المؤرخ في 18 مارس 1998، المحدد لكيفيات تطبيق الأمر رقم 97-06 المؤرخ في 12 رمضان 1417 الموافق لـ21 يناير 1997، المتعلق بالعتاد الحربي والأسلحة والذخائر، المعدل والمتمم؛ والمرسوم التنفيذي رقم 26-92 المؤرخ في 31 يناير 2026، المحدد لشروط وكيفيات ممارسة مهنة صانع الأسلحة (الجريدة الرسمية رقم 12 لسنة 2026، ص. 3)، المواد 2 و3 و4 و11: يشكل بيع الأسلحة من الأصناف 5 إلى 8 واقتناؤها واستيرادها نشاطاً منظماً يخضع للقيد في السجل التجاري ولترخيص مسبق يسلمه الوالي المختص إقليمياً بمكان ممارسة النشاط. (النص ترجمة للملاحظة الواردة في المصدر، ولا يحل محل الرجوع إلى النص الرسمي).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 93-114 du 12/05/93 - Décret exécutif n° 90-240 du 04/08/1990": {
+      "translation_ar": "المرسوم التنفيذي رقم 93-114 المؤرخ في 12 مايو 1993؛ والمرسوم التنفيذي رقم 90-240 المؤرخ في 4 أغسطس 1990.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Décret exécutif n° 90-240 du 04 Août 1990, Fixant les conditions de fabrication, de mise en vente et de contrôle des médicaments vétérinaires.": {
+      "translation_ar": "المرسوم التنفيذي رقم 90-240 المؤرخ في 4 أغسطس 1990، المحدد لشروط تصنيع الأدوية البيطرية وعرضها للبيع ومراقبتها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 07-100 du 29 Mars 2007, Fixant les conditions d'agrément pour l'exercice des activités de production, de multiplication ou de vente en gros et demi-gros des semences et plants ainsi que les modalités de son octroi.": {
+      "translation_ar": "المرسوم التنفيذي رقم 07-100 المؤرخ في 29 مارس 2007، المحدد لشروط اعتماد ممارسة أنشطة إنتاج البذور والشتلات وإكثارها وبيعها بالجملة ونصف الجملة، وكيفيات منح هذا الاعتماد.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Le décret exécutif n° 13-176 du 30/04/2013, fixant les conditions d'exercice des activités de fabrication, de stockage et de distribution de gros de lubrifiants et de régénération des huiles usagées.": {
+      "translation_ar": "المرسوم التنفيذي رقم 13-176 المؤرخ في 30 أبريل 2013، المحدد لشروط ممارسة أنشطة تصنيع مواد التشحيم وتخزينها وتوزيعها بالجملة وتجديد الزيوت المستعملة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Le décret exécutif n° 15-57 du 08/02/2015, fixant les conditions et les modalités d’exercice des activités de stockage et/ou de distribution des produits pétroliers. Décret exécutif n° 15-57, art. 4 et 7 : accord préalable du ministre chargé des hydrocarbures avant l'inscription au registre du commerce, puis agrément définitif pour l'exercice effectif.": {
+      "translation_ar": "المرسوم التنفيذي رقم 15-57 المؤرخ في 8 فبراير 2015، المحدد لشروط وكيفيات ممارسة أنشطة تخزين المنتجات البترولية و/أو توزيعها. المرسوم التنفيذي رقم 15-57، المادتان 4 و7: موافقة مسبقة من الوزير المكلف بالمحروقات قبل القيد في السجل التجاري، ثم اعتماد نهائي للممارسة الفعلية للنشاط. (ترجمة للملاحظة التفسيرية الواردة في المصدر).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Le décret exécutif n° 15-57 du 08/02/2015, fixant les conditions et les modalités d’exercice des activités de stockage et/ou de distribution des produits pétroliers.": {
+      "translation_ar": "المرسوم التنفيذي رقم 15-57 المؤرخ في 8 فبراير 2015، المحدد لشروط وكيفيات ممارسة أنشطة تخزين المنتجات البترولية و/أو توزيعها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "conformément aux dispositions de l’article 73 du code des impôts indirecte et les dispositions de l’arrêté du 15/05/2021, conformément aux dispositions du décret exécutif n° 03-451 du 01/12/2003,": {
+      "translation_ar": "طبقاً لأحكام المادة 73 من قانون الضرائب غير المباشرة وأحكام القرار المؤرخ في 15 مايو 2021، وطبقاً لأحكام المرسوم التنفيذي رقم 03-451 المؤرخ في 1 ديسمبر 2003.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "*Arrêté du 06 Mars 2011, Fixant les modalités d'agrément des importateurs de médicaments à usage vétérinaire.": {
+      "translation_ar": "القرار المؤرخ في 6 مارس 2011، المحدد لكيفيات اعتماد مستوردي الأدوية المخصصة للاستعمال البيطري.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 22-383 du 17 novembre 2022 fixant les conditions et les modalités d'exercice de l'activité de concessionnaire de véhicules neufs (JO n° 76 de 2022, p. 4), modifié par le décret exécutif n° 24-132 du 9 avril 2024 (JO n° 26 de 2024). Son article 34 abroge le décret exécutif n° 20-227 du 19 août 2020, modifié et complété, que le décret exécutif n° 21-175 du 3 mai 2021 (JO n° 34 de 2021) avait modifié. À VÉRIFIER : la couverture par le décret 22-383 des engins roulants de cette activité (agriculture et forêts, hydraulique, travaux publics, levage et manutention) n'a pas été relue.": {
+      "translation_ar": "المرسوم التنفيذي رقم 22-383 المؤرخ في 17 نوفمبر 2022، المحدد لشروط وكيفيات ممارسة نشاط وكيل المركبات الجديدة (الجريدة الرسمية رقم 76 لسنة 2022، ص. 4)، المعدل بالمرسوم التنفيذي رقم 24-132 المؤرخ في 9 أبريل 2024 (الجريدة الرسمية رقم 26 لسنة 2024). تلغي مادته 34 المرسوم التنفيذي رقم 20-227 المؤرخ في 19 أغسطس 2020، المعدل والمتمم، والذي سبق أن عدّله المرسوم التنفيذي رقم 21-175 المؤرخ في 3 مايو 2021 (الجريدة الرسمية رقم 34 لسنة 2021). للمراجعة: لم تتم إعادة قراءة مدى شمول المرسوم 22-383 للآليات المتحركة المعنية بهذا النشاط (الفلاحة والغابات والري والأشغال العمومية والرفع والمناولة).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 03-451 du 1er décembre 2003 et Décret exécutif n° 10-69 du 31 janvier 2010": {
+      "translation_ar": "المرسوم التنفيذي رقم 03-451 المؤرخ في 1 ديسمبر 2003، والمرسوم التنفيذي رقم 10-69 المؤرخ في 31 يناير 2010.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Article 298 du code de l’impôt indirect -Décret exécutif n° 04-331 du 18/10/2004": {
+      "translation_ar": "المادة 298 من قانون الضرائب غير المباشرة؛ والمرسوم التنفيذي رقم 04-331 المؤرخ في 18 أكتوبر 2004.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "À VÉRIFIER : Le décret exécutif n° 97-435 du 17 novembre 1997 que cite la nomenclature est abrogé par l'article 12 du décret exécutif n° 15-57 du 8 février 2015 (JO n° 8 de 2015, p. 7), sauf pour la transformation et la distribution des bitumes. Le texte qui régit l'importation de combustibles solides, liquides et gazeux n'a pas été identifié ; le stockage et la distribution de produits pétroliers relèvent du décret 15-57 (accord préalable puis agrément définitif du ministre chargé des hydrocarbures, art. 4 et 7).": {
+      "translation_ar": "للمراجعة: المرسوم التنفيذي رقم 97-435 المؤرخ في 17 نوفمبر 1997، الذي تشير إليه التسمية، أُلغي بموجب المادة 12 من المرسوم التنفيذي رقم 15-57 المؤرخ في 8 فبراير 2015 (الجريدة الرسمية رقم 8 لسنة 2015، ص. 7)، باستثناء تحويل البيتومين وتوزيعه. لم يُحدّد النص الذي ينظم استيراد الوقود الصلب والسائل والغازي؛ أما تخزين المنتجات البترولية وتوزيعها فيخضعان للمرسوم 15-57 (موافقة مسبقة ثم اعتماد نهائي من الوزير المكلف بالمحروقات، المادتان 4 و7). (ملاحظة تحقق منقولة عن المصدر).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Article 359 du code de l’impôt indirect -Décret exécutif n° 15-169 du 23 juin 2015": {
+      "translation_ar": "المادة 359 من قانون الضرائب غير المباشرة؛ والمرسوم التنفيذي رقم 15-169 المؤرخ في 23 يونيو 2015.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Décret exécutif n° 03-451 du 1/12/2003": {
+      "translation_ar": "المرسوم التنفيذي رقم 03-451 المؤرخ في 1 ديسمبر 2003.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 21-82 du 23 février 2021 relatif aux établissements pharmaceutiques et les conditions de leur agrément (JO n° 14 de 2021) ; arrêté du 1er octobre 2025 fixant les éléments du dossier de demande d'agrément d'un établissement pharmaceutique d'importation des produits pharmaceutiques et des dispositifs médicaux (JO n° 19 de 2026, ministère de l'industrie pharmaceutique). La nomenclature citait « decret N°18-11 du 02/07/20218 » : il s'agit de la loi n° 18-11 du 2 juillet 2018 relative à la santé (JO n° 46 de 2018).": {
+      "translation_ar": "المرسوم التنفيذي رقم 21-82 المؤرخ في 23 فبراير 2021، المتعلق بالمؤسسات الصيدلانية وشروط اعتمادها (الجريدة الرسمية رقم 14 لسنة 2021)؛ والقرار المؤرخ في 1 أكتوبر 2025، المحدد لعناصر ملف طلب اعتماد مؤسسة صيدلانية لاستيراد المنتجات الصيدلانية والأجهزة الطبية (الجريدة الرسمية رقم 19 لسنة 2026، وزارة الصناعة الصيدلانية). أشارت التسمية إلى «decret N°18-11 du 02/07/20218»؛ والمقصود هو القانون رقم 18-11 المؤرخ في 2 يوليو 2018، المتعلق بالصحة (الجريدة الرسمية رقم 46 لسنة 2018).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Article 207 de la loi n°18-11 du 02/07/2018, modifiée et complétée, relative à la santé.": {
+      "translation_ar": "المادة 207 من القانون رقم 18-11 المؤرخ في 2 يوليو 2018، المتعلق بالصحة، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Décret exécutif n° 90-240 du 04/08/1990": {
+      "translation_ar": "المرسوم التنفيذي رقم 90-240 المؤرخ في 4 أغسطس 1990.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "- Décret exécutif n° 09-410 du 10/12/2009": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-410 المؤرخ في 10 ديسمبر 2009.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°09-410 du 10/12/2009, fixant les règles de sécurité applicables aux activités portant sur les équipements sensibles modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-410 المؤرخ في 10 ديسمبر 2009، المحدد لقواعد الأمن المطبقة على الأنشطة المتعلقة بالتجهيزات الحساسة، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 98-96 du 18/03/1998": {
+      "translation_ar": "المرسوم التنفيذي رقم 98-96 المؤرخ في 18 مارس 1998.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 09-410 du 10/12/2009": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-410 المؤرخ في 10 ديسمبر 2009.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Arrêté interministériel du 08 Septembre 2025, Fixant les conditions et les modalités de fabrication, d'acquisition, d'importation, d'exportation, de vente, de maintenance, de location, de prestation de service, de cession et de réforme des systèmes d'aéronefs sans pilote à bord.": {
+      "translation_ar": "القرار الوزاري المشترك المؤرخ في 8 سبتمبر 2025، المحدد لشروط وكيفيات تصنيع أنظمة الطائرات دون طيار واقتنائها واستيرادها وتصديرها وبيعها وصيانتها وتأجيرها وتقديم الخدمات بشأنها والتنازل عنها وإخراجها من الخدمة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 22-383 du 17 novembre 2022 fixant les conditions et les modalités d'exercice de l'activité de concessionnaire de véhicules neufs (JO n° 76 de 2022, p. 4), modifié par le décret exécutif n° 24-132 du 9 avril 2024 (JO n° 26 de 2024).": {
+      "translation_ar": "المرسوم التنفيذي رقم 22-383 المؤرخ في 17 نوفمبر 2022، المحدد لشروط وكيفيات ممارسة نشاط وكيل المركبات الجديدة (الجريدة الرسمية رقم 76 لسنة 2022، ص. 4)، المعدل بالمرسوم التنفيذي رقم 24-132 المؤرخ في 9 أبريل 2024 (الجريدة الرسمية رقم 26 لسنة 2024).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 22-383 du 17 /11/2022, fixant les conditions et les modalités d’exercice de l’activité de concessionnaire de véhicules neufs.": {
+      "translation_ar": "المرسوم التنفيذي رقم 22-383 المؤرخ في 17 نوفمبر 2022، المحدد لشروط وكيفيات ممارسة نشاط وكيل المركبات الجديدة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret n° 75-59 du 29 Avril 1975, Relatif à la réglementation administrative des débits de boissons.": {
+      "translation_ar": "المرسوم رقم 75-59 المؤرخ في 29 أبريل 1975، المتعلق بالتنظيم الإداري لمحلات بيع المشروبات.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 18-11 du 2 juillet 2018 relative à la santé (JO n° 46 de 2018, p. 3). Son article 449 abroge la loi n° 85-05 du 16 février 1985 que cite la nomenclature (les textes d'application de la loi 85-05 restent en vigueur jusqu'à leur remplacement). À VÉRIFIER : l'article de la loi 18-11 qui s'applique à cette activité.": {
+      "translation_ar": "القانون رقم 18-11 المؤرخ في 2 يوليو 2018، المتعلق بالصحة (الجريدة الرسمية رقم 46 لسنة 2018، ص. 3). تلغي مادته 449 القانون رقم 85-05 المؤرخ في 16 فبراير 1985 الذي تشير إليه التسمية (وتظل النصوص التطبيقية للقانون 85-05 سارية إلى غاية استبدالها). للمراجعة: تحديد مادة القانون 18-11 المنطبقة على هذا النشاط.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°09-410 du 10/12/2009. fixant les règles de sécurité applicables aux activités portant sur les équipements sensibles modifié et complété": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-410 المؤرخ في 10 ديسمبر 2009، المحدد لقواعد الأمن المطبقة على الأنشطة المتعلقة بالتجهيزات الحساسة، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 98-96 du 18/03/1998, Fixant les modalités d'application de l'ordonnance n° 97-06 du 12 Ramadhan 1417 correspondant au 21 janvier 1997 relative aux matériels de guerre, armes et munitions, modifié et complété. Décret exécutif n° 26-92 du 31 janvier 2026 fixant les conditions et les modalités d'exercice de la profession d'armurier (JO n° 12 de 2026, p. 3), art. 2, 3, 4 et 11 : la vente, l'acquisition et l'importation des armes des catégories 5 à 8 forment une activité réglementée soumise à l'inscription au registre du commerce et à une autorisation préalable délivrée par le wali du lieu d'exercice.": {
+      "translation_ar": "المرسوم التنفيذي رقم 98-96 المؤرخ في 18 مارس 1998، المحدد لكيفيات تطبيق الأمر رقم 97-06 المؤرخ في 12 رمضان 1417 الموافق لـ21 يناير 1997، المتعلق بالعتاد الحربي والأسلحة والذخائر، المعدل والمتمم. والمرسوم التنفيذي رقم 26-92 المؤرخ في 31 يناير 2026، المحدد لشروط وكيفيات ممارسة مهنة صانع الأسلحة (الجريدة الرسمية رقم 12 لسنة 2026، ص. 3)، المواد 2 و3 و4 و11: يشكل بيع الأسلحة من الأصناف 5 إلى 8 واقتناؤها واستيرادها نشاطاً منظماً يخضع للقيد في السجل التجاري ولترخيص مسبق يسلمه الوالي المختص إقليمياً بمكان ممارسة النشاط. (ترجمة الملاحظة الواردة بالمصدر، وليست تصديقاً قانونياً مستقلاً).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 12-111 du 6 mars 2012, fixant les conditions et les modalités d’implantation et d’organisation des espaces commerciaux et d’exercice de certaines activités commerciales.": {
+      "translation_ar": "المرسوم التنفيذي رقم 12-111 المؤرخ في 6 مارس 2012، المحدد لشروط وكيفيات إنشاء الفضاءات التجارية وتنظيمها وممارسة بعض الأنشطة التجارية.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret n° 75-59 du 29/04/1975, Relatif à la réglementation administrative des débits de boissons": {
+      "translation_ar": "المرسوم رقم 75-59 المؤرخ في 29 أبريل 1975، المتعلق بالتنظيم الإداري لمحلات بيع المشروبات.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°08-195 du 06/07/2008": {
+      "translation_ar": "المرسوم التنفيذي رقم 08-195 المؤرخ في 6 يوليو 2008.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 19-158 du 30 avril 2019, définissant les établissements hôteliers et fixant les conditions et les modalités de leur exploitation, de leur classement et d’agrément de leur gérant.": {
+      "translation_ar": "المرسوم التنفيذي رقم 19-158 المؤرخ في 30 أبريل 2019، المحدد للمؤسسات الفندقية ولشروط وكيفيات استغلالها وتصنيفها واعتماد مسيريها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 19-158 du 30 avril 2019 définissant les établissements hôteliers et fixant les conditions et les modalités de leur exploitation, de leur classement et d'agrément de leur gérant (JO n° 33 de 2019, p. 4), modifié par le décret exécutif n° 25-90 du 24 février 2025 (JO n° 14 de 2025, p. 11). Son article 36 abroge le décret exécutif n° 2000-46 du 1er mars 2000 que cite la nomenclature pour ce code. Son article 3 liste cinq types d'établissements hôteliers : les hôtels, les complexes touristiques ou villages de vacances, les appart-hôtels ou résidences hôtelières, les motels ou relais routiers et les campings touristiques ; l'autorisation d'exploitation est délivrée par le wali (art. 9 et 12).": {
+      "translation_ar": "المرسوم التنفيذي رقم 19-158 المؤرخ في 30 أبريل 2019، المحدد للمؤسسات الفندقية ولشروط وكيفيات استغلالها وتصنيفها واعتماد مسيريها (الجريدة الرسمية رقم 33 لسنة 2019، ص. 4)، المعدل بالمرسوم التنفيذي رقم 25-90 المؤرخ في 24 فبراير 2025 (الجريدة الرسمية رقم 14 لسنة 2025، ص. 11). تلغي مادته 36 المرسوم التنفيذي رقم 2000-46 المؤرخ في 1 مارس 2000 الذي تشير إليه التسمية لهذا الرمز. وتعدد مادته 3 خمسة أنواع من المؤسسات الفندقية: الفنادق، والمركبات السياحية أو قرى العطل، والشقق الفندقية أو الإقامات الفندقية، والموتيلات أو استراحات الطرق، ومخيمات التخييم السياحية؛ ويسلم الوالي رخصة الاستغلال (المادتان 9 و12). (ترجمة للملاحظة المصدرية).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°12-117 du 11/03/2012, modifiant et complétant le décret n°86-341 du 23/12/1986": {
+      "translation_ar": "المرسوم التنفيذي رقم 12-117 المؤرخ في 11 مارس 2012، المعدل والمتمم للمرسوم رقم 86-341 المؤرخ في 23 ديسمبر 1986.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret n° 75-59 du 29/04/1975, Relatif à la réglementation administrative des débits de boissons.": {
+      "translation_ar": "المرسوم رقم 75-59 المؤرخ في 29 أبريل 1975، المتعلق بالتنظيم الإداري لمحلات بيع المشروبات.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret n° 75-59 du 29/04/1975, Relatif à la réglementation administrative des de boissons.": {
+      "translation_ar": "المرسوم رقم 75-59 المؤرخ في 29 أبريل 1975، المتعلق بالتنظيم الإداري لمحلات بيع المشروبات. (عبارة «des de boissons» منقولة في المصدر كما وردت).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Articles 179 et 249 de la Loi n° 18-11 du 2 juillet 2018 relative à la santé, modifiée et complétée.": {
+      "translation_ar": "المادتان 179 و249 من القانون رقم 18-11 المؤرخ في 2 يوليو 2018، المتعلق بالصحة، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 21-136 du 7 avril 2021 fixant les conditions et les modalités d'exploitation, le fonctionnement et l’organisation des activités de santé des établissements privés de santé.": {
+      "translation_ar": "المرسوم التنفيذي رقم 21-136 المؤرخ في 7 أبريل 2021، المحدد لشروط وكيفيات استغلال المؤسسات الصحية الخاصة وسيرها وتنظيم الأنشطة الصحية بها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 18-11 du 2 juillet 2018 relative à la santé, modifiée et complétée.": {
+      "translation_ar": "القانون رقم 18-11 المؤرخ في 2 يوليو 2018، المتعلق بالصحة، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutuf n° 76-141 du 23/10/76": {
+      "translation_ar": "المرسوم التنفيذي رقم 76-141 المؤرخ في 23 أكتوبر 1976. (وردت كلمة exécutuf بهذه الصيغة في المصدر).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 08-103 du 30 mars 2008 fixant les missions, l’organisation et le fonctionnement des structures de séjour en appui aux structures sanitaires.": {
+      "translation_ar": "المرسوم التنفيذي رقم 08-103 المؤرخ في 30 مارس 2008، المحدد لمهام وتنظيم وسير هياكل الإقامة الداعمة للهياكل الصحية.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°93-120 du 15/05/1993, relatif à l’organisation de la médecine du travail.": {
+      "translation_ar": "المرسوم التنفيذي رقم 93-120 المؤرخ في 15 مايو 1993، المتعلق بتنظيم طب العمل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Ordonnance n°20-02 du 30/08/2020 complétant la loi n°18-11 du 02/07/2018, relative à la santé.": {
+      "translation_ar": "الأمر رقم 20-02 المؤرخ في 30 أغسطس 2020، المتمم للقانون رقم 18-11 المؤرخ في 2 يوليو 2018، المتعلق بالصحة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 21-82 du 23 Février 2021, Relatif aux établissements pharmaceutiques et les conditions de leur agrément": {
+      "translation_ar": "المرسوم التنفيذي رقم 21-82 المؤرخ في 23 فبراير 2021، المتعلق بالمؤسسات الصيدلانية وشروط اعتمادها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°08-201 du 06 /07/ 2008, fixant les conditions et les modalités de délivrance d'autorisation pour l'ouverture d'établissements d'élevage d'animaux d'espèces non domestiques et la présentation au public de ces spécimens.": {
+      "translation_ar": "المرسوم التنفيذي رقم 08-201 المؤرخ في 6 يوليو 2008، المحدد لشروط وكيفيات منح الترخيص لفتح مؤسسات تربية الحيوانات من الأنواع غير المستأنسة وعرض هذه العينات على الجمهور.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Autorisation délivrée par le ministère chargé de l’environnement et le ministre chargé de l’agriculture /Décret exécutif n°08-201 du 06 /07/ 2008, fixant les conditions et les modalités de délivrance d'autorisation pour l'ouverture d'établissements d'élevage d'animaux d'espèces non domestiques et la présentation au public de ces spécimens": {
+      "translation_ar": "ترخيص يسلمه الوزير المكلف بالبيئة والوزير المكلف بالفلاحة؛ المرسوم التنفيذي رقم 08-201 المؤرخ في 6 يوليو 2008، المحدد لشروط وكيفيات منح الترخيص لفتح مؤسسات تربية الحيوانات من الأنواع غير المستأنسة وعرض هذه العينات على الجمهور.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 05-207 du 4 juin 2005, fixant les conditions et modalités d'ouverture et d'exploitation des établissements de divertissements et de spectacles.": {
+      "translation_ar": "المرسوم التنفيذي رقم 05-207 المؤرخ في 4 يونيو 2005، المحدد لشروط وكيفيات فتح مؤسسات الترفيه والعروض واستغلالها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n°01-14 du 19/08/2001, relative à l’organisation, la sécurité et la police de la circulation routière, modifiée et complétée.": {
+      "translation_ar": "القانون رقم 01-14 المؤرخ في 19 أغسطس 2001، المتعلق بتنظيم حركة المرور عبر الطرق وأمنها وشرطتها، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 04-415 du 20/12/2004": {
+      "translation_ar": "المرسوم التنفيذي رقم 04-415 المؤرخ في 20 ديسمبر 2004.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 04-415 du 20 décembre 2004 fixant les conditions de délivrance des autorisations d’exercice des activités de transport routier de personnes et de marchandises, modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 04-415 المؤرخ في 20 ديسمبر 2004، المحدد لشروط منح تراخيص ممارسة أنشطة النقل البري للأشخاص والبضائع، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 12-230 du 24 mai 2012 portant règlementation du transport par taxi, modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 12-230 المؤرخ في 24 مايو 2012، المتضمن تنظيم النقل بواسطة سيارات الأجرة، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 01-13 du 7 août 2001 portant orientation et organisation des transports terrestres, modifiée et complétée.": {
+      "translation_ar": "القانون رقم 01-13 المؤرخ في 7 أغسطس 2001، المتضمن توجيه النقل البري وتنظيمه، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 05-473 du 13 décembre 2005 fixant les conditions d’organisation et les modalités d’exercice des activités des auxiliaires de transport routier de marchandises.": {
+      "translation_ar": "المرسوم التنفيذي رقم 05-473 المؤرخ في 13 ديسمبر 2005، المحدد لشروط تنظيم وكيفيات ممارسة أنشطة مساعدي النقل البري للبضائع.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 03-452 du 1er décembre 2003 fixant les conditions particulières relatives au transport routier de matières dangereuses.": {
+      "translation_ar": "المرسوم التنفيذي رقم 03-452 المؤرخ في 1 ديسمبر 2003، المحدد للشروط الخاصة المتعلقة بالنقل البري للمواد الخطرة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 98-06 du 27 juin 1998 fixant les règles générales relatives à l'aviation civile, modifiée et complétée.": {
+      "translation_ar": "القانون رقم 98-06 المؤرخ في 27 يونيو 1998، المحدد للقواعد العامة المتعلقة بالطيران المدني، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°16-203 du 25 juillet 2016, fixant les conditions et les modalités d’exercice des activités de transport maritime urbain et de plaisance maritime.": {
+      "translation_ar": "المرسوم التنفيذي رقم 16-203 المؤرخ في 25 يوليو 2016، المحدد لشروط وكيفيات ممارسة أنشطة النقل البحري الحضري والنزهة البحرية.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Ordonnance n° 95-27 de la 30/12/1995 portante loi des finances pour 1996, modifié.": {
+      "translation_ar": "الأمر رقم 95-27 المؤرخ في 30 ديسمبر 1995، المتضمن قانون المالية لسنة 1996، المعدل. (الصياغة الأصلية للتاريخ منقولة كما وردت).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 20-348 du 23 novembre 2020 fixant les conditions d'exercice des activités auxiliaires au transport maritime, modifié.": {
+      "translation_ar": "المرسوم التنفيذي رقم 20-348 المؤرخ في 23 نوفمبر 2020، المحدد لشروط ممارسة الأنشطة المساعدة للنقل البحري، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 05-473 du 13/12/2005": {
+      "translation_ar": "المرسوم التنفيذي رقم 05-473 المؤرخ في 13 ديسمبر 2005.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 01-286 du 24 septembre 2001 fixant les conditions d'exercice des activités de consignataire de navire, de consignataire de la cargaison et de courtier maritime (JO n° 56 de 2001, p. 5) ; la nomenclature l'écrit « Loi n° 01-286 ». À VÉRIFIER : si le décret exécutif n° 20-348 du 23 novembre 2020 (activités auxiliaires au transport maritime, codes 604633 à 604635) l'a remplacé.": {
+      "translation_ar": "المرسوم التنفيذي رقم 01-286 المؤرخ في 24 سبتمبر 2001، المحدد لشروط ممارسة أنشطة وكيل السفينة ووكيل الحمولة والسمسار البحري (الجريدة الرسمية رقم 56 لسنة 2001، ص. 5)؛ وتكتبه التسمية بصيغة «القانون رقم 01-286». للمراجعة: التحقق مما إذا كان المرسوم التنفيذي رقم 20-348 المؤرخ في 23 نوفمبر 2020 (الأنشطة المساعدة للنقل البحري، الرموز 604633 إلى 604635) قد حل محله. (ملاحظة المصدر).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 10-288 du 14 novembre 2010 relatif aux personnes habilitées à déclarer les marchandises en détail.": {
+      "translation_ar": "المرسوم التنفيذي رقم 10-288 المؤرخ في 14 نوفمبر 2010، المتعلق بالأشخاص المؤهلين للتصريح المفصل بالبضائع.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Le décret exécutif n° 97-435 du 17 novembre 1997 que cite la nomenclature est abrogé par l'article 12 du décret exécutif n° 15-57 du 8 février 2015 (JO n° 8 de 2015, p. 7), sauf pour la transformation et la distribution des bitumes. Les centres emplisseurs de gaz de pétrole liquéfié relèvent du décret 15-57 (art. 3, 4 et 7) ; voir le code 310010.": {
+      "translation_ar": "المرسوم التنفيذي رقم 97-435 المؤرخ في 17 نوفمبر 1997، الذي تشير إليه التسمية، أُلغي بموجب المادة 12 من المرسوم التنفيذي رقم 15-57 المؤرخ في 8 فبراير 2015 (الجريدة الرسمية رقم 8 لسنة 2015، ص. 7)، باستثناء تحويل البيتومين وتوزيعه. وتخضع مراكز تعبئة غاز البترول المسال للمرسوم 15-57 (المواد 3 و4 و7)؛ يُرجى مراجعة الرمز 310010. (ملاحظة تفسيرية من المصدر).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 2000-43 du 26 février 2000 fixant les conditions et les modalités d'exploitation des services aériens, modifié.": {
+      "translation_ar": "المرسوم التنفيذي رقم 2000-43 المؤرخ في 26 فبراير 2000، المحدد لشروط وكيفيات استغلال الخدمات الجوية، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 15-57 du 08/02/2015, fixant les conditions et les modalités d’exercice des activités de stockage et/ou de distribution des produits pétroliers.": {
+      "translation_ar": "المرسوم التنفيذي رقم 15-57 المؤرخ في 8 فبراير 2015، المحدد لشروط وكيفيات ممارسة أنشطة تخزين المنتجات البترولية و/أو توزيعها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Ordonnance n°76-80 du 23/10/1976 portant code maritime, modifiée et complétée.": {
+      "translation_ar": "الأمر رقم 76-80 المؤرخ في 23 أكتوبر 1976، المتضمن القانون البحري، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "*Décret exécutif n° 03-473 du 2 décembre 2003, fixant les conditions d'exercice des activités de distribution du gaz naturel comprimé (GNC) comme carburant automobiles et d'installation des kits de conversion sur les véhicules": {
+      "translation_ar": "المرسوم التنفيذي رقم 03-473 المؤرخ في 2 ديسمبر 2003، المحدد لشروط ممارسة أنشطة توزيع الغاز الطبيعي المضغوط (GNC) كوقود للسيارات وتركيب أطقم التحويل على المركبات.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 26-108 du 01 Mars 2026 Fixant les conditions et les modalités d'octroi des autorisations et du dépôt des déclarations d'exercice des activités relatives à l'industrie cinématographique": {
+      "translation_ar": "المرسوم التنفيذي رقم 26-108 المؤرخ في 1 مارس 2026، المحدد لشروط وكيفيات منح التراخيص وإيداع التصريحات لممارسة الأنشطة المتعلقة بالصناعة السينمائية.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 24-07 du 29 Avril 2024 relative à l'industrie cinématographique( articles 2, 8 et 19).": {
+      "translation_ar": "القانون رقم 24-07 المؤرخ في 29 أبريل 2024، المتعلق بالصناعة السينمائية (المواد 2 و8 و19).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "À VÉRIFIER : le décret exécutif n° 13-276 du 29 juillet 2013 (art. 33) que cite la nomenclature est abrogé par l'article 49 du décret exécutif n° 26-108 du 1er mars 2026 (JO n° 18 de 2026, p. 4). Le texte qui régit aujourd'hui l'édition et la distribution de produits audiovisuels n'a pas été identifié : à chercher dans la loi n° 24-07 du 29 avril 2024 relative à l'industrie cinématographique (JO n° 31 de 2024) et dans le décret 26-108.": {
+      "translation_ar": "للمراجعة: المرسوم التنفيذي رقم 13-276 المؤرخ في 29 يوليو 2013 (المادة 33) الذي تشير إليه التسمية أُلغي بموجب المادة 49 من المرسوم التنفيذي رقم 26-108 المؤرخ في 1 مارس 2026 (الجريدة الرسمية رقم 18 لسنة 2026، ص. 4). لم يُحدّد النص الذي ينظم حالياً نشر المنتجات السمعية البصرية وتوزيعها؛ وينبغي البحث عنه في القانون رقم 24-07 المؤرخ في 29 أبريل 2024 المتعلق بالصناعة السينمائية (الجريدة الرسمية رقم 31 لسنة 2024) والمرسوم 26-108. (ملاحظة تحقق من المصدر، وليست مصادقة مستقلة).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "loi n° 14-04 du 24/02/2014": {
+      "translation_ar": "القانون رقم 14-04 المؤرخ في 24 فبراير 2014.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 05-207 du 4 juin 2005 fixant les conditions et modalités d’ouverture et d’exploitation des établissements de divertissements et de spectacles, modifié.": {
+      "translation_ar": "المرسوم التنفيذي رقم 05-207 المؤرخ في 4 يونيو 2005، المحدد لشروط وكيفيات فتح مؤسسات الترفيه والعروض واستغلالها، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Article 02 du décret exécutif n° 05-207 du 04 Juin 2005, Fixant les conditions et modalités d'ouverture et d'exploitation des établissements de divertissements et de spectacles, modifié; -Envoi du Secrétaire Général du Ministère de l’Intérieur n° 10506 du 22 septembre 2022.": {
+      "translation_ar": "المادة 02 من المرسوم التنفيذي رقم 05-207 المؤرخ في 4 يونيو 2005، المحدد لشروط وكيفيات فتح مؤسسات الترفيه والعروض واستغلالها، المعدل؛ وإرسالية الأمين العام لوزارة الداخلية رقم 10506 المؤرخة في 22 سبتمبر 2022.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 99-06 du 04/04/1999 Fixant les règles régissant l'activité de l'agence de tourisme et de voyages. Décret exécutif n° 17-161 du 15 mai 2017 fixant les conditions de création et les modalités d'exploitation des agences de tourisme et de voyages (JO n° 30 de 2017, p. 5), art. 2 : l'exploitation est subordonnée à une licence d'exploitation délivrée par le ministre chargé du tourisme, après avis de la commission nationale d'agrément.": {
+      "translation_ar": "القانون رقم 99-06 المؤرخ في 4 أبريل 1999، المحدد للقواعد التي تحكم نشاط وكالة السياحة والأسفار. والمرسوم التنفيذي رقم 17-161 المؤرخ في 15 مايو 2017، المحدد لشروط إنشاء وكالات السياحة والأسفار وكيفيات استغلالها (الجريدة الرسمية رقم 30 لسنة 2017، ص. 5)، المادة 2: يخضع الاستغلال لرخصة استغلال يسلمها الوزير المكلف بالسياحة بعد أخذ رأي اللجنة الوطنية للاعتماد.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 20-332 du 22 Novembre 2020, Fixant les modalités d'exercice de l'activité d'information en ligne et la diffusion de mise au point ou rectification sur le site électronique.": {
+      "translation_ar": "المرسوم التنفيذي رقم 20-332 المؤرخ في 22 نوفمبر 2020، المحدد لكيفيات ممارسة نشاط الإعلام عبر الإنترنت ونشر بيان توضيحي أو تصحيح على الموقع الإلكتروني.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 91-416 du 02/11/1991 Fixant les conditions de création et d'exploitation des installations sportives.": {
+      "translation_ar": "المرسوم التنفيذي رقم 91-416 المؤرخ في 2 نوفمبر 1991، المحدد لشروط إنشاء المنشآت الرياضية واستغلالها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 19-253 du 16 septembre 2019 fixant les conditions de création, l’organisation, le fonctionnement et le contrôle des établissements d’accueil de la petite enfance, modifié.": {
+      "translation_ar": "المرسوم التنفيذي رقم 19-253 المؤرخ في 16 سبتمبر 2019، المحدد لشروط إنشاء مؤسسات استقبال الطفولة الصغيرة وتنظيمها وسيرها ومراقبتها، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 05-207 du 04/06/2005 du 4 juin 2005 fixant les conditions et modalités d'ouverture et d'exploitation des établissements de divertissements et de spectacles.": {
+      "translation_ar": "المرسوم التنفيذي رقم 05-207 المؤرخ في 4 يونيو 2005، المحدد لشروط وكيفيات فتح مؤسسات الترفيه والعروض واستغلالها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 06-224 du 21/06/2006 Fixant les conditions et les modalités d'exercice de l'activité de guide de tourisme.": {
+      "translation_ar": "المرسوم التنفيذي رقم 06-224 المؤرخ في 21 يونيو 2006، المحدد لشروط وكيفيات ممارسة نشاط المرشد السياحي.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 08-287 du 17/09/2008, fixant les conditions de création, l’organisation, le fonctionnement et le contrôle des établissements et centre d’accueil de la petite enfance.": {
+      "translation_ar": "المرسوم التنفيذي رقم 08-287 المؤرخ في 17 سبتمبر 2008، المحدد لشروط إنشاء مؤسسات ومراكز استقبال الطفولة الصغيرة وتنظيمها وسيرها ومراقبتها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 06-368 du 19 octobre 2006 fixant le régime juridique de l'autorisation d'usage pour les forêts récréatives ainsi que les conditions et les modalités de son octroi.": {
+      "translation_ar": "المرسوم التنفيذي رقم 06-368 المؤرخ في 19 أكتوبر 2006، المحدد للنظام القانوني لترخيص استعمال الغابات الترفيهية، وكذا شروط وكيفيات منحه.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 24-07 du 29 Avril 2024 relative à l'industrie cinématographique ( articles 2 et 8). Décret exécutif n° 26-108 du 1er mars 2026 (JO n° 18 de 2026, p. 4), art. 4 et 45 à 48 : les activités relatives aux services cinématographiques sont soumises à l'inscription au registre du commerce et à la déclaration auprès du centre national du cinéma, valable trois ans et renouvelable.": {
+      "translation_ar": "القانون رقم 24-07 المؤرخ في 29 أبريل 2024، المتعلق بالصناعة السينمائية (المادتان 2 و8). المرسوم التنفيذي رقم 26-108 المؤرخ في 1 مارس 2026 (الجريدة الرسمية رقم 18 لسنة 2026، ص. 4)، المواد 4 و45 إلى 48: تخضع الأنشطة المتعلقة بالخدمات السينمائية للقيد في السجل التجاري وللتصريح لدى المركز الوطني للسينما، ويكون التصريح صالحاً لمدة ثلاث سنوات قابلة للتجديد. (ترجمة الملاحظة الواردة في المصدر).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 24-07 du 29 Avril 2024 relative à l'industrie cinématographique( articles 8 et 30).": {
+      "translation_ar": "القانون رقم 24-07 المؤرخ في 29 أبريل 2024، المتعلق بالصناعة السينمائية (المادتان 8 و30).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 03-223 du 10/06/2003 Relatif à l'organisation du contrôle technique des véhicules automobiles et les modalités de son exercice, modifié.": {
+      "translation_ar": "المرسوم التنفيذي رقم 03-223 المؤرخ في 10 يونيو 2003، المتعلق بتنظيم المراقبة التقنية للمركبات وكيفيات ممارستها، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 14-153 du 30/04/2014, fixant les conditions d’ouverture et d’exploitation des laboratoires d’essais et d’analyse de la qualité.": {
+      "translation_ar": "المرسوم التنفيذي رقم 14-153 المؤرخ في 30 أبريل 2014، المحدد لشروط فتح مخابر الاختبارات وتحليل الجودة واستغلالها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "La loi n°15-04 du 01/02/2015, fixant les règles générales relatives à la signature et à la certification électroniques.": {
+      "translation_ar": "القانون رقم 15-04 المؤرخ في 1 فبراير 2015، المحدد للقواعد العامة المتعلقة بالتوقيع والتصديق الإلكترونيين.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 09-19 de la 20/01/2009 Portante réglementation de l'activité de collecte des déchets spéciaux.": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-19 المؤرخ في 20 يناير 2009، المتضمن تنظيم نشاط جمع النفايات الخاصة. (صيغة التاريخ والعبارة الأصلية نُقلت دون تعديل).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 10-01 du 29 juin 2010 relative aux professions d'expert-comptable, de commissaire aux comptes et de comptable agréé, modifié.": {
+      "translation_ar": "القانون رقم 10-01 المؤرخ في 29 يونيو 2010، المتعلق بمهن الخبير المحاسب ومحافظ الحسابات والمحاسب المعتمد، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 10-01 du 29 /06/ 2010 relative aux professions d’expert-comptable, de commissaire aux comptes et de comptable agréé(G.O n° 42 du 11/07/2010) et le Décret exécutif n° 11-30 du 27 /01/ 2011, Fixant les conditions et modalités d'agrément pour l'exercice de la profession d'expert-comptable, de commissaire aux comptes et de comptable agréé (G.O n° 07 du 02/02/2011).": {
+      "translation_ar": "القانون رقم 10-01 المؤرخ في 29 يونيو 2010، المتعلق بمهن الخبير المحاسب ومحافظ الحسابات والمحاسب المعتمد (الجريدة الرسمية رقم 42 المؤرخة في 11 يوليو 2010)، والمرسوم التنفيذي رقم 11-30 المؤرخ في 27 يناير 2011، المحدد لشروط وكيفيات الاعتماد لممارسة مهنة الخبير المحاسب ومحافظ الحسابات والمحاسب المعتمد (الجريدة الرسمية رقم 07 المؤرخة في 2 فبراير 2011).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret législatif n° 94-07 du 18 mai 1994 Relatif aux conditions de la production architecturale et à l'exercice de la profession d'architecte.": {
+      "translation_ar": "المرسوم التشريعي رقم 94-07 المؤرخ في 18 مايو 1994، المتعلق بشروط الإنتاج المعماري وممارسة مهنة المهندس المعماري.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 18-193 du 22 juillet 2018 modifiant et complétant le décret exécutif n° 07-123 du 24 avril 2007 déterminant les conditions et les modalités d'octroi et de retrait d'agrément aux organismes privés de placement des travailleurs et fixant le cahier des charges-type relatif à l'exercice du service public de placement des travailleurs, modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 18-193 المؤرخ في 22 يوليو 2018، المعدل والمتمم للمرسوم التنفيذي رقم 07-123 المؤرخ في 24 أبريل 2007، المحدد لشروط وكيفيات منح وسحب الاعتماد للهيئات الخاصة لتنصيب العمال، والمحدد لدفتر الشروط النموذجي المتعلق بممارسة الخدمة العمومية لتنصيب العمال، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 94-65 du 19 mars 1994 (JO n° 16 de 1994) déterminant les modalités de délivrance de l'autorisation d'exercice et de dotation en armes des sociétés de gardiennage et de transport de fonds et produits sensibles et précisant certaines conditions techniques d'exercice, complété par le décret exécutif n° 95-395 du 30 novembre 1995 (JO n° 74 de 1995). Les conditions d'exercice de ces activités sont fixées par le décret législatif n° 93-16 du 4 décembre 1993 (JO n° 80 de 1993). La nomenclature écrit « Décret Législatif n° 94-65 ».": {
+      "translation_ar": "المرسوم التنفيذي رقم 94-65 المؤرخ في 19 مارس 1994 (الجريدة الرسمية رقم 16 لسنة 1994)، المحدد لكيفيات تسليم ترخيص ممارسة النشاط وتزويد شركات الحراسة ونقل الأموال والمنتجات الحساسة بالأسلحة، والمحدد لبعض الشروط التقنية للممارسة، المتمم بالمرسوم التنفيذي رقم 95-395 المؤرخ في 30 نوفمبر 1995 (الجريدة الرسمية رقم 74 لسنة 1995). وتحدد شروط ممارسة هذه الأنشطة بموجب المرسوم التشريعي رقم 93-16 المؤرخ في 4 ديسمبر 1993 (الجريدة الرسمية رقم 80 لسنة 1993). وتكتب التسمية «المرسوم التشريعي رقم 94-65». (النص العربي ترجمة للملاحظة المصدرية).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-article 238 du Décret exécutif n°21-82 du 23/02/2021, relatif aux établissements pharmaceutiques et les conditions de leur agrément.": {
+      "translation_ar": "المادة 238 من المرسوم التنفيذي رقم 21-82 المؤرخ في 23 فبراير 2021، المتعلق بالمؤسسات الصيدلانية وشروط اعتمادها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 98-257 du 25/08/1998 définissant les conditions et les modalités de mise en place et d’exploitation des services internet, modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 98-257 المؤرخ في 25 أغسطس 1998، المحدد لشروط وكيفيات إنشاء واستغلال خدمات الإنترنت، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 98-371 du 23/11/1998": {
+      "translation_ar": "المرسوم التنفيذي رقم 98-371 المؤرخ في 23 نوفمبر 1998.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 18-162 du 14 juin 2018 fixant les conditions de création, d’ouverture et de contrôle de l’établissement privé de formation ou d’enseignement professionnels, modifié.": {
+      "translation_ar": "المرسوم التنفيذي رقم 18-162 المؤرخ في 14 يونيو 2018، المحدد لشروط إنشاء وفتح ومراقبة مؤسسة خاصة للتكوين أو التعليم المهنيين، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 26-310 du 22 septembre 2026 fixant les conditions et les procédures d'agrément, de fonctionnement et de contrôle des établissements privés d'éducation et d'enseignement (JO n° 71 de 2026, p. 6) : l'activité relève des activités réglementées et exige l'inscription au registre du commerce (art. 16), l'exercice est subordonné à l'arrêté d'agrément du ministre chargé de l'éducation nationale (art. 16 et 32), et l'article 71 abroge le décret exécutif n° 05-432 du 8 novembre 2005 que cite la nomenclature.": {
+      "translation_ar": "المرسوم التنفيذي رقم 26-310 المؤرخ في 22 سبتمبر 2026، المحدد لشروط وإجراءات اعتماد مؤسسات التربية والتعليم الخاصة وسيرها ومراقبتها (الجريدة الرسمية رقم 71 لسنة 2026، ص. 6): يندرج النشاط ضمن الأنشطة المنظمة ويتطلب القيد في السجل التجاري (المادة 16)، وتخضع ممارسته لقرار اعتماد من الوزير المكلف بالتربية الوطنية (المادتان 16 و32)، وتلغي المادة 71 المرسوم التنفيذي رقم 05-432 المؤرخ في 8 نوفمبر 2005 الذي تشير إليه التسمية. (ترجمة للملاحظة الواردة في المصدر وليست تحققاً قانونياً مستقلاً).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 25-53 du 09 Janvier 2025, Fixant les conditions et les modalités d'exercice de l'activité de consultation sécuritaire.": {
+      "translation_ar": "المرسوم التنفيذي رقم 25-53 المؤرخ في 9 يناير 2025، المحدد لشروط وكيفيات ممارسة نشاط الاستشارة الأمنية.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 06-218 du 18/06/2006Fixant les conditions et modalités d'exercice de l'activité de promoteur de spectacles culturels.": {
+      "translation_ar": "المرسوم التنفيذي رقم 06-218 المؤرخ في 18 يونيو 2006، المحدد لشروط وكيفيات ممارسة نشاط منتج العروض الثقافية. (غياب المسافة في الأصل نُقل دون تعديل).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 10-01 du 29 /06/ 2010 relative aux professions d’expert-comptable, de commissaire aux comptes et de comptable agréé (G.O n° 42 du 11/07/2010) et le Décret exécutif n° 11-30 du 27 /01/ 2011, Fixant les conditions et modalités d'agrément pour l'exercice de la profession d'expert-comptable, de commissaire aux comptes et de comptable agréé (G.O n° 07 du 02/02/2011).": {
+      "translation_ar": "القانون رقم 10-01 المؤرخ في 29 يونيو 2010، المتعلق بمهن الخبير المحاسب ومحافظ الحسابات والمحاسب المعتمد (الجريدة الرسمية رقم 42 المؤرخة في 11 يوليو 2010)، والمرسوم التنفيذي رقم 11-30 المؤرخ في 27 يناير 2011، المحدد لشروط وكيفيات الاعتماد لممارسة مهن الخبير المحاسب ومحافظ الحسابات والمحاسب المعتمد (الجريدة الرسمية رقم 07 المؤرخة في 2 فبراير 2011).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°11-30 du 27/01/2011": {
+      "translation_ar": "المرسوم التنفيذي رقم 11-30 المؤرخ في 27 يناير 2011.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°15-341 du 28/12/2015Fixant les conditions de création, d'organisation, de fonctionnement et d'agrément des centres de formation des jeunes talents sportifs.": {
+      "translation_ar": "المرسوم التنفيذي رقم 15-341 المؤرخ في 28 ديسمبر 2015، المحدد لشروط إنشاء مراكز تكوين المواهب الرياضية الشابة وتنظيمها وسيرها واعتمادها. (غياب المسافة في الأصل نُقل دون تعديل).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n°99-05 de la 04/04/1999 portante loi d'orientation sur l'enseignement supérieur, modifiée et complétée": {
+      "translation_ar": "القانون رقم 99-05 المؤرخ في 4 أبريل 1999، المتضمن القانون التوجيهي للتعليم العالي، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Arrêté du 19/05/2016, fixant les conditions et les modalités de formation pour l’obtention du brevet professionnel des conducteurs de véhicules de transport de personnes et de marchandises.": {
+      "translation_ar": "القرار المؤرخ في 19 مايو 2016، المحدد لشروط وكيفيات التكوين للحصول على الشهادة المهنية لسائقي مركبات نقل الأشخاص والبضائع.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 21-44 du 17 janvier 2021 fixant le régime d’exploitation applicable à chaque type de réseaux ouverts au public et aux différents services de communications électroniques.": {
+      "translation_ar": "المرسوم التنفيذي رقم 21-44 المؤرخ في 17 يناير 2021، المحدد لنظام الاستغلال المطبق على كل نوع من الشبكات المفتوحة للجمهور ومختلف خدمات الاتصالات الإلكترونية.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 18-221 du 6 septembre 2018 fixant les Conditions de création, d’organisation, de fonctionnement et de contrôle des établissements privés d’éducation et d'enseignement spécialisés pour enfants handicapés mentaux, modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 18-221 المؤرخ في 6 سبتمبر 2018، المحدد لشروط إنشاء مؤسسات التربية والتعليم الخاصة المتخصصة للأطفال ذوي الإعاقة الذهنية وتنظيمها وسيرها ومراقبتها، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "écret exécutif n° 19-155 du 30 avril 2019, fixant les conditions de création, d'organisation, de fonctionnement et de contrôle des établissements privés d'accueil pour personnes âgées).": {
+      "translation_ar": "المرسوم التنفيذي رقم 19-155 المؤرخ في 30 أبريل 2019، المحدد لشروط إنشاء مؤسسات الاستقبال الخاصة بالأشخاص المسنين وتنظيمها وسيرها ومراقبتها. (الكلمة الأولى في المصدر ناقصة الحرف D، والقوس الختامي ورد كما هو).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret présidentiel n° 94-96 du 23/04/1994, portant création et missions du service géographique et de télédétection de l’armée nationale populaire.": {
+      "translation_ar": "المرسوم الرئاسي رقم 94-96 المؤرخ في 23 أبريل 1994، المتضمن إنشاء مصلحة الجغرافيا والكشف عن بُعد للجيش الوطني الشعبي وتحديد مهامها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 21-93 du 09 Mars 2021 Fixant les conditions et modalités d'exercice de l'activité des bureaux d'études en aménagement du territoire.": {
+      "translation_ar": "المرسوم التنفيذي رقم 21-93 المؤرخ في 9 مارس 2021، المحدد لشروط وكيفيات ممارسة نشاط مكاتب الدراسات في تهيئة الإقليم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Agrément, délivré par arrêté du ministre chargé de l’environnement conformément aux disposition du décret n° 23-324 du 06/09/2023, fixant les conditions et les modalités d’exercice de l’activité des bureaux d’études dans le domaine de l’environnement.": {
+      "translation_ar": "اعتماد يسلم بموجب قرار من الوزير المكلف بالبيئة، طبقاً لأحكام المرسوم رقم 23-324 المؤرخ في 6 سبتمبر 2023، المحدد لشروط وكيفيات ممارسة نشاط مكاتب الدراسات في مجال البيئة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Le décret législatif n° 93-16 du 04 Décembre 1993, Fixant les conditions d'exercice, d'activités de gardiennage et de transport de fonds et produits sensibles. -Lorsque l'activité de l'entreprise est limitée au territoire d’une seule wilaya, l’autorisation est délivrée par le wali compétent": {
+      "translation_ar": "المرسوم التشريعي رقم 93-16 المؤرخ في 4 ديسمبر 1993، المحدد لشروط ممارسة أنشطة الحراسة ونقل الأموال والمنتجات الحساسة. وعندما يقتصر نشاط المؤسسة على إقليم ولاية واحدة، يسلم الترخيص الوالي المختص.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Le décret législatif n° 93-16 du 04 Décembre 1993, Fixant les conditions d'exercice, d'activités de gardiennage et de transport de fonds et produits sensibles. -Lorsque l'activité de l'entreprise est limitée au territoire d’une seule wilaya, l’autorisation est délivrée par le wali compétent.": {
+      "translation_ar": "المرسوم التشريعي رقم 93-16 المؤرخ في 4 ديسمبر 1993، المحدد لشروط ممارسة أنشطة الحراسة ونقل الأموال والمنتجات الحساسة. وعندما يقتصر نشاط المؤسسة على إقليم ولاية واحدة، يسلم الترخيص الوالي المختص.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "*Décret exécutif n° 96-427 du 30 Novembre 1996, Fixant les conditions d'exercice de l'activité de confection de cachets et de griffes de signature, modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 96-427 المؤرخ في 30 نوفمبر 1996، المحدد لشروط ممارسة نشاط صنع الأختام وأختام التوقيع، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°09-410 du 10/12/2009": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-410 المؤرخ في 10 ديسمبر 2009.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 12-111 du 6 mars 2012 fixant les conditions et les modalités d'implantation et d'organisation des espaces commerciaux et d'exercice de certaines activités commerciales.": {
+      "translation_ar": "المرسوم التنفيذي رقم 12-111 المؤرخ في 6 مارس 2012، المحدد لشروط وكيفيات إنشاء الفضاءات التجارية وتنظيمها وممارسة بعض الأنشطة التجارية.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 09-18 du 20 janvier 2009 fixant la réglementation relative à l’exercice de la profession d’agent immobilier, modifié et complété. .": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-18 المؤرخ في 20 يناير 2009، المحدد للتنظيم المتعلق بممارسة مهنة الوكيل العقاري، المعدل والمتمم. (النقطة المزدوجة في المصدر محفوظة من حيث الدلالة).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 09-18 du 20 janvier 2009 fixant la réglementation relative à l’exercice de la profession d’agent immobilier, modifié et complété.": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-18 المؤرخ في 20 يناير 2009، المحدد للتنظيم المتعلق بممارسة مهنة الوكيل العقاري، المعدل والمتمم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Ordonnance n° 96-09 du 10/01/1996 Relative au crédit-bail.": {
+      "translation_ar": "الأمر رقم 96-09 المؤرخ في 10 يناير 1996، المتعلق بالاعتماد الإيجاري.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 23-09 du 21 juin 2023 portant loi monétaire et bancaire (JO n° 43 de 2023, p. 4). Son article 166 abroge l'ordonnance n° 03-11 du 26 août 2003 que cite la nomenclature (les textes d'application de l'ordonnance restent en vigueur jusqu'à leur remplacement). À VÉRIFIER : l'article de la loi 23-09 qui désigne l'autorité d'agrément (la nomenclature indique le gouverneur de la Banque d'Algérie).": {
+      "translation_ar": "القانون رقم 23-09 المؤرخ في 21 يونيو 2023، المتضمن القانون النقدي والمصرفي (الجريدة الرسمية رقم 43 لسنة 2023، ص. 4). تلغي مادته 166 الأمر رقم 03-11 المؤرخ في 26 أغسطس 2003 الذي تشير إليه التسمية (وتظل النصوص التطبيقية للأمر سارية إلى غاية استبدالها). للمراجعة: تحديد مادة القانون 23-09 التي تعيّن سلطة الاعتماد (تشير التسمية إلى محافظ بنك الجزائر). (ترجمة الملاحظة المصدرية).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Ordonnance n° 95-07 du 25/01/1995 Relative aux assurances, modifiée.": {
+      "translation_ar": "الأمر رقم 95-07 المؤرخ في 25 يناير 1995، المتعلق بالتأمينات، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret législatif n° 93-10 du 23/05/1993 Relatif à la bourse des valeurs mobilières, modifié.": {
+      "translation_ar": "المرسوم التشريعي رقم 93-10 المؤرخ في 23 مايو 1993، المتعلق ببورصة القيم المنقولة، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Règlement n° 25-02 du 14 Avril 2025, Fixant les conditions d'autorisation de constitution, d'agrément et d'exercice d'activités des prestataires de services de paiement.": {
+      "translation_ar": "النظام رقم 25-02 المؤرخ في 14 أبريل 2025، المحدد لشروط الترخيص بالتأسيس والاعتماد وممارسة أنشطة مقدمي خدمات الدفع.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Agrément délivré par le gouverneur de la banque d’Algérie (Règlement n° 23-01 du 21 Septembre 2023, relatif aux conditions d’autorisation de constitution, d’agrément et d’exercice des bureaux de changes).": {
+      "translation_ar": "اعتماد يسلمه محافظ بنك الجزائر (النظام رقم 23-01 المؤرخ في 21 سبتمبر 2023، المتعلق بشروط الترخيص بالتأسيس والاعتماد وممارسة نشاط مكاتب الصرف).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Loi n° 06-11 du24/06/2006, relative à la société de capital investissement, modifiée. décret exécutif n° 08-56 du 11 février 2008, relatif aux conditions d'exercice de l'activité de la société de capital investissement.": {
+      "translation_ar": "القانون رقم 06-11 المؤرخ في 24 يونيو 2006، المتعلق بشركة الرأسمال الاستثماري، المعدل؛ والمرسوم التنفيذي رقم 08-56 المؤرخ في 11 فبراير 2008، المتعلق بشروط ممارسة نشاط شركة الرأسمال الاستثماري.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 16-205 du 25 juillet 2016 relatif aux modalités de constitution, de gestion et d’exercice de l’activité de la société de gestion de fonds d’investissement.": {
+      "translation_ar": "المرسوم التنفيذي رقم 16-205 المؤرخ في 25 يوليو 2016، المتعلق بكيفيات تأسيس شركة تسيير صناديق الاستثمار وإدارتها وممارسة نشاطها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 14-165 du 26 mai 2014, fixant les conditions d’exercice de l’activité de mandataire-Grossiste en produits de la pêche et de l’aquaculture.": {
+      "translation_ar": "المرسوم التنفيذي رقم 14-165 المؤرخ في 26 مايو 2014، المحدد لشروط ممارسة نشاط الوكيل تاجر الجملة في منتجات الصيد البحري وتربية المائيات.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "-Arrêté du 04/09/2023, portant approbation du règlement de la commission d’organisation et de surveillance des opérations de bourse n° 23-01du 12/04/2023, fixant les conditions d’agrément, d’exercice et de contrôle des conseillers en investissement participatif": {
+      "translation_ar": "القرار المؤرخ في 4 سبتمبر 2023، المتضمن الموافقة على نظام لجنة تنظيم عمليات البورصة ومراقبتها رقم 23-01 المؤرخ في 12 أبريل 2023، المحدد لشروط اعتماد مستشاري الاستثمار التشاركي وممارستهم للنشاط ومراقبتهم.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Règlement de la commission d’organisation et de surveillance des opérations de bourse (COSO B) n° 24-02 du 20 Rabie Ethani 1446 correspondant au 23 octobre 2024 relatif aux organismes de placement collectif à capital risque.": {
+      "translation_ar": "نظام لجنة تنظيم عمليات البورصة ومراقبتها (COSOB) رقم 24-02 المؤرخ في 20 ربيع الثاني 1446 الموافق لـ23 أكتوبر 2024، المتعلق بهيئات التوظيف الجماعي ذات رأس المال المخاطر.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 03-473 du 2 décembre 2003, fixant les conditions d'exercice des activités de distribution du gaz naturel comprimé (GNC) comme carburant automobiles et d'installation des kits de conversion sur les véhicules": {
+      "translation_ar": "المرسوم التنفيذي رقم 03-473 المؤرخ في 2 ديسمبر 2003، المحدد لشروط ممارسة أنشطة توزيع الغاز الطبيعي المضغوط (GNC) كوقود للسيارات وتركيب أطقم التحويل على المركبات.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Arrêté interministériel du 5 avril 2025, fixant les conditions et les modalités de la formation et de la qualification des télépilotes pour exploiter les systèmes d’aéronefs sans pilote à bord.": {
+      "translation_ar": "القرار الوزاري المشترك المؤرخ في 5 أبريل 2025، المحدد لشروط وكيفيات تكوين وتأهيل مشغلي أنظمة الطائرات دون طيار.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Arrêté interministériel du 11 juin 2025 fixant les conditions et les modalités d’assujettissement des activités nécessitant des tests, des expérimentations ou des essais des systèmes d'aéronefs sans pilote à bord, conçus et réalisés par des personnes physiques ou morales aux conditions d'essais proportionnelles aux risques inhérents à ces activités.": {
+      "translation_ar": "القرار الوزاري المشترك المؤرخ في 11 يونيو 2025، المحدد لشروط وكيفيات إخضاع الأنشطة التي تتطلب اختبارات أو تجارب أو فحوصاً لأنظمة الطائرات دون طيار المصممة والمنجزة من أشخاص طبيعيين أو معنويين، لشروط اختبار تتناسب مع المخاطر الملازمة لهذه الأنشطة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n°08-195 du 06/07/2008 fixant les conditions d’approvisionnement en eau destinée à la consommation humaine par citernes mobiles.": {
+      "translation_ar": "المرسوم التنفيذي رقم 08-195 المؤرخ في 6 يوليو 2008، المحدد لشروط التزويد بالمياه المخصصة للاستهلاك البشري بواسطة الصهاريج المتنقلة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 09-19 du 20 janvier 2009 portant règlementation de l’activité de collecte des déchets spéciaux": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-19 المؤرخ في 20 يناير 2009، المتضمن تنظيم نشاط جمع النفايات الخاصة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 09-19 du 20 janvier 2009 portant règlementation de l’activité de collecte des déchets spéciaux.": {
+      "translation_ar": "المرسوم التنفيذي رقم 09-19 المؤرخ في 20 يناير 2009، المتضمن تنظيم نشاط جمع النفايات الخاصة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret présidentiel n° 11-383 du 23 novembre 2011, fixant les règles et procédures régissant l'exportation des matériels, équipements et produits sensibles.": {
+      "translation_ar": "المرسوم الرئاسي رقم 11-383 المؤرخ في 23 نوفمبر 2011، المحدد للقواعد والإجراءات التي تحكم تصدير العتاد والتجهيزات والمنتجات الحساسة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 19-10 du 23 janvier 2019, réglementant l'exportation des déchets spéciaux dangereux": {
+      "translation_ar": "المرسوم التنفيذي رقم 19-10 المؤرخ في 23 يناير 2019، المنظم لتصدير النفايات الخاصة الخطرة.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 22-383 du 17 novembre 2022 fixant les conditions et les modalités d'exercice de l'activité de concessionnaire de véhicules neufs (JO n° 76 de 2022, p. 4), modifié par le décret exécutif n° 24-132 du 9 avril 2024 (JO n° 26 de 2024). Son article 34 abroge le décret exécutif n° 20-227 du 19 août 2020, modifié et complété, que le décret exécutif n° 21-175 du 3 mai 2021 (JO n° 34 de 2021) avait modifié.": {
+      "translation_ar": "المرسوم التنفيذي رقم 22-383 المؤرخ في 17 نوفمبر 2022، المحدد لشروط وكيفيات ممارسة نشاط وكيل المركبات الجديدة (الجريدة الرسمية رقم 76 لسنة 2022، ص. 4)، المعدل بالمرسوم التنفيذي رقم 24-132 المؤرخ في 9 أبريل 2024 (الجريدة الرسمية رقم 26 لسنة 2024). تلغي مادته 34 المرسوم التنفيذي رقم 20-227 المؤرخ في 19 أغسطس 2020، المعدل والمتمم، والذي سبق أن عدّله المرسوم التنفيذي رقم 21-175 المؤرخ في 3 مايو 2021 (الجريدة الرسمية رقم 34 لسنة 2021).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 22-383 du 17 novembre 2022 fixant les conditions et les modalités d'exercice de l'activité de concessionnaire de véhicules neufs (JO n° 76 de 2022, p. 4), modifié par le décret exécutif n° 24-132 du 9 avril 2024 (JO n° 26 de 2024). Son article 34 abroge le décret exécutif n° 20-227 du 19 août 2020, modifié et complété, que le décret exécutif n° 21-175 du 3 mai 2021 (JO n° 34 de 2021) avait modifié. ": {
+      "translation_ar": "المرسوم التنفيذي رقم 22-383 المؤرخ في 17 نوفمبر 2022، المحدد لشروط وكيفيات ممارسة نشاط وكيل المركبات الجديدة (الجريدة الرسمية رقم 76 لسنة 2022، ص. 4)، المعدل بالمرسوم التنفيذي رقم 24-132 المؤرخ في 9 أبريل 2024 (الجريدة الرسمية رقم 26 لسنة 2024). تلغي مادته 34 المرسوم التنفيذي رقم 20-227 المؤرخ في 19 أغسطس 2020، المعدل والمتمم، والذي سبق أن عدّله المرسوم التنفيذي رقم 21-175 المؤرخ في 3 مايو 2021 (الجريدة الرسمية رقم 34 لسنة 2021).",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "décret exécutif n° 15-57 du 08/02/2015, fixant les conditions et les modalités d’exercice des activités de stockage et/ou de distribution des produits pétroliers.": {
+      "translation_ar": "المرسوم التنفيذي رقم 15-57 المؤرخ في 8 فبراير 2015، المحدد لشروط وكيفيات ممارسة أنشطة تخزين المنتجات البترولية و/أو توزيعها.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Décret exécutif n° 12-110 du 06 /03/ 2012, fixant les conditions d'organisation et de contrôle des établissements d'enseignement de la conduite automobile, modifié.": {
+      "translation_ar": "المرسوم التنفيذي رقم 12-110 المؤرخ في 6 مارس 2012، المحدد لشروط تنظيم مؤسسات تعليم سياقة السيارات ومراقبتها، المعدل.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    },
+    "Arrêt interministériel du 15/09/1979": {
+      "translation_ar": "القرار الوزاري المشترك المؤرخ في 15 سبتمبر 1979.",
+      "review_status": "assistant-linguistic-review; legal human verification pending"
+    }
   }
 }
