@@ -42,6 +42,10 @@ export interface NAEProjectWorkspaceProps {
   };
 }
 
+function usableOfficialLabel(value: string | null | undefined): value is string {
+  return typeof value === "string" && value.trim().length > 0 && value.trim() !== "#NOM?";
+}
+
 function severityClass(value: Finding["severity"]) {
   return value === "critical"
     ? "border-rose-200 bg-rose-50 text-rose-950"
@@ -100,6 +104,8 @@ export default function NAEProjectWorkspace({
         tabDirectory: "استعراض المدونة",
         tabProject: "مسودة الأنشطة المقترحة",
         selectedBadge: "نشاط مختار",
+        unavailableArabicLabel: "التسمية العربية غير مدرجة في المصدر",
+        unavailableFrenchLabel: "التسمية الفرنسية غير مدرجة في المصدر",
         projectDescriptionLabel: "وصف موجز لمشروع المؤسسة",
         projectDescriptionPlaceholder: "مثال: بيع معدات الإعلام الآلي مع تركيبها وصيانتها وتكوين المستخدمين...",
         projectDescriptionHelp: "يُستخدم الوصف لاستخراج إشارات أولية إلى عمليات قد تكون تكميلية وفق المادة 2. لا يحدد وحده الرموز المناسبة ولا يثبت قانونية الجمع.",
@@ -141,6 +147,8 @@ export default function NAEProjectWorkspace({
         tabDirectory: "Exploration de la nomenclature",
         tabProject: "Projet d'activités préparatoire",
         selectedBadge: "activité(s) sélectionnée(s)",
+        unavailableArabicLabel: "Libellé arabe non renseigné dans la source",
+        unavailableFrenchLabel: "Libellé français non renseigné dans la source",
         projectDescriptionLabel: "Brève description du projet",
         projectDescriptionPlaceholder: "Ex. : vente de matériel informatique, installation, maintenance et formation...",
         projectDescriptionHelp: "Cette description sert uniquement à relever des opérations potentiellement accessoires au sens de l’article 2. Elle ne détermine pas les codes à retenir et ne valide pas la compatibilité juridique.",
@@ -801,10 +809,18 @@ export default function NAEProjectWorkspace({
                         </div>
 
                         <p dir={ar ? "rtl" : "ltr"} lang={ar ? "ar" : "fr"} className="mt-1.5 text-sm font-bold text-gray-950">
-                          {item ? (ar ? item.label_ar : item.label_fr) : code}
+                          {item
+                            ? (ar
+                              ? (usableOfficialLabel(item.label_ar) ? item.label_ar : t.unavailableArabicLabel)
+                              : (usableOfficialLabel(item.label_fr) ? item.label_fr : t.unavailableFrenchLabel))
+                            : code}
                         </p>
                         <p dir={ar ? "ltr" : "rtl"} lang={ar ? "fr" : "ar"} className="text-xs text-gray-700">
-                          {item ? (ar ? item.label_fr : item.label_ar) : ""}
+                          {item
+                            ? (ar
+                              ? (usableOfficialLabel(item.label_fr) ? item.label_fr : t.unavailableFrenchLabel)
+                              : (usableOfficialLabel(item.label_ar) ? item.label_ar : t.unavailableArabicLabel))
+                            : ""}
                         </p>
                       </div>
 
@@ -1008,8 +1024,8 @@ export default function NAEProjectWorkspace({
                   <td dir="ltr" className="font-mono font-bold">
                     {code}
                   </td>
-                  <td dir="rtl">{item ? item.label_ar : code}</td>
-                  <td dir="ltr">{item ? item.label_fr : "-"}</td>
+                  <td dir="rtl">{item ? (usableOfficialLabel(item.label_ar) ? item.label_ar : t.unavailableArabicLabel) : "-"}</td>
+                  <td dir="ltr">{item ? (usableOfficialLabel(item.label_fr) ? item.label_fr : t.unavailableFrenchLabel) : "-"}</td>
                   <td>
                     {isMain
                       ? ar
