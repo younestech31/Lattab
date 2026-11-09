@@ -1632,6 +1632,206 @@
     "translation_ar": "تصنيع الجلد المعاد تكوينه أو الجلد المركب (Synderme) الخام؛ | تشطيب الجلد المركب، مثل تصبيغه وإكسابه حبيبات أو تلميعه بالورنيش وغيرها.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "108207": {
+    "source_fr": "Fabrication de gants de protection et de travail en cuir (gants en croûte...); | Fabrication de gants en succédanés de cuir (nc en textiles) | Confection de gants de ville en peau (ovin, caprin).",
+    "translation_ar": "تصنيع قفازات الحماية والعمل المصنوعة من الجلد، بما في ذلك قفازات الجلد المشقوق؛ | تصنيع القفازات من بدائل الجلد، باستثناء القفازات النسيجية؛ | تصنيع قفازات المدينة من جلود الأغنام والماعز.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108208": {
+    "source_fr": "Fabrication d'articles de maroquinerie en toute matière (sacs à main, trousses, serviettes, portefeuilles, bracelets pour montres, etc...); | Fabrication d'articles de maroquinerie à usage militaire, d'articles de chasse et d'autres articles de protection (ceintures de sécurité, ceinturons, gibecières, cartouchières, sangles, tabliers de protection etc...); | Fabrication d'articles de voyage (valises, sacs, cabas...); | Fabrication d'articles de gainerie (contenant d'appareils photographiques, contenant de jumelles, étuis à couteau, etc...).",
+    "translation_ar": "تصنيع المنتجات الجلدية بمختلف المواد، مثل حقائب اليد والحقائب الصغيرة والمحافظ وأساور الساعات وغيرها؛ | تصنيع المنتجات الجلدية المخصصة للاستعمال العسكري ومستلزمات الصيد وغيرها من أدوات الحماية، مثل أحزمة السلامة والأحزمة الجلدية وحقائب الصيد وحافظات الخراطيش والأشرطة والمآزر الواقية وغيرها؛ | تصنيع لوازم السفر، مثل الحقائب وحقائب اليد وأكياس التسوق وغيرها؛ | تصنيع الأغلفة والحافظات، مثل حافظات أجهزة التصوير والمناظير وأغماد السكاكين وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108209": {
+    "source_fr": "Fabrication d'articles de bourrellerie.",
+    "translation_ar": "تصنيع منتجات السراجية ومستلزمات الأحصنة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108210": {
+    "source_fr": "Fabrication de courroies en toutes matières.",
+    "translation_ar": "تصنيع السيور من مختلف المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108211": {
+    "source_fr": "Fabrication de chaussures soudés (empeigne cuir, synthétique, textile); | Fabrication de chaussures cousues (empeigne cuir); | Fabrication de chaussures entièrement injectées ou moulées; | Fabrication de chaussures à semelle directement injectée sur tiges façonnées; | Fabrication de chaussures en caoutchouc vulcanisé (bottes, claquettes); | Fabrication de chaussures de protection et de sécurité; | Fabrication de chaussures de sport (de football à crampon, d'athlétisme à pointes, de ski, de boxe, etc...); | Fabrication de chaussures N.D.A. (chaussures orthopédiques, etc...); | Fabrication de chaussures en bois (sabots...); | Fabrication de parties de chaussures (tiges, semelles, bouts durs et contreforts, n.c quincaillerie pour chaussures); | Injection : talons, semelles, formes, etc... en matières plastiques.",
+    "translation_ar": "التصنيع الصناعي للأحذية: | تصنيع الأحذية الملحومة (بأجزاء علوية من الجلد أو المواد الاصطناعية أو النسيج)؛ | تصنيع الأحذية المخيطة (بأجزاء علوية من الجلد)؛ | تصنيع الأحذية المحقونة أو المصبوبة بالكامل؛ | تصنيع الأحذية ذات النعال المحقونة مباشرة على الأجزاء العلوية المشكلة؛ | تصنيع الأحذية من المطاط المفلكن (الأحذية الطويلة والنعال المفتوحة)؛ | تصنيع أحذية الحماية والسلامة؛ | تصنيع الأحذية الرياضية (أحذية كرة القدم ذات المسامير وأحذية ألعاب القوى ذات النتوءات وأحذية التزلج والملاكمة وغيرها)؛ | تصنيع أنواع أخرى من الأحذية غير المصنفة في موضع آخر، مثل الأحذية التقويمية؛ | تصنيع الأحذية الخشبية، مثل القباقيب؛ | تصنيع أجزاء الأحذية (الأجزاء العلوية والنعال ومقويات المقدمة والكعب)، باستثناء اللوازم المعدنية للأحذية؛ | حقن الكعوب والنعال والقوالب وغيرها من المواد البلاستيكية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108212": {
+    "source_fr": "Fabrication industrielle de tous vêtements en cuir pour hommes femmes et enfants (fabrication de serie).",
+    "translation_ar": "التصنيع الصناعي لجميع أنواع الملابس الجلدية للرجال والنساء والأطفال، في شكل إنتاج متسلسل.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108301": {
+    "source_fr": "Production d'articles de bijouterie (bagues, bracelets colliers boutons de manchettes médailles | ou insignes religieux ou autres, pendentifs, épingles de cravates, etc ... ) ; | Production d'articles de joaillerie : articles de bijouterie en métaux précieux ou en plaqués ou doublés de métaux précieux (argent or, platine, perles fines, de culture ou fausses, des pierres de | gemmes ou fausses des pierres synthétiques ou | reconstituées ou bien des parties en écaille, nacre | ivoire, ambre naturel ou reconstitué jade ou corail )",
+    "translation_ar": "إنتاج مصنوعات الحلي والمجوهرات، مثل الخواتم والأساور والقلائد وأزرار الأكمام والميداليات والشارات الدينية أو غيرها والقلادات والدبابيس الخاصة بربطات العنق وغيرها؛ | إنتاج مصنوعات الجواهر والمجوهرات من المعادن النفيسة أو المطلية أو المغطاة بطبقة من المعادن النفيسة (الفضة والذهب والبلاتين)، واللآلئ الطبيعية أو المستزرعة أو الاصطناعية، والأحجار الكريمة أو الاصطناعية أو المعاد تكوينها، أو الأجزاء المصنوعة من صدفة السلحفاة أو عرق اللؤلؤ أو العاج أو الكهرمان الطبيعي أو المعاد تكوينه أو اليشم أو المرجان.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108302": {
+    "source_fr": "Transformation et fabrication des apprêts de bijouterie en métaux précieux, des brasures d'argent, du nitrate d'argent, des anodes d'argent, de l'auro cyanure de potassium, du cyanure d'argent de potassium ainsi que de l'or, de l'argent et du platine sous toutes leurs formes ( bijoux, poudre, liquide, sels, battu, grenaille, masse, lingots, etc.) et autres produits finis ou semi-finis contenant des metaux précieux.",
+    "translation_ar": "تحويل وتصنيع مستلزمات صناعة المجوهرات من المعادن النفيسة، ولحام الفضة ونترات الفضة وأنودات الفضة وسيانيد الذهب والبوتاسيوم وسيانيد الفضة والبوتاسيوم، وكذلك الذهب والفضة والبلاتين بمختلف أشكالها (المجوهرات والمساحيق والسوائل والأملاح والصفائح والحبيبات والكتل والسبائك وغيرها)، وسائر المنتجات النهائية أو نصف المصنعة المحتوية على معادن نفيسة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108303": {
+    "source_fr": "Fabrication d'appareils et équipements destinés à la production d'articles de bijouterie et accessoires.",
+    "translation_ar": "تصنيع الأجهزة والمعدات المخصصة لإنتاج مصنوعات الحلي والمجوهرات ولوازمها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108304": {
+    "source_fr": "Toute activité liée à la récupération et au recyclage de métaux précieux.",
+    "translation_ar": "جميع الأنشطة المرتبطة باسترجاع المعادن النفيسة وإعادة تدويرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109101": {
+    "source_fr": "Fabrication de ciments ordinaires, pétroliers, blancs, et autres ciments, pour la construction et autres usages. | Co-incinération.",
+    "translation_ar": "تصنيع الإسمنت العادي والإسمنت النفطي والإسمنت الأبيض وسائر أنواع الإسمنت المخصصة للبناء وغيرها من الاستعمالات؛ | الحرق المشترك للنفايات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109102": {
+    "source_fr": "Fabrication de plâtres normaux et spéciaux; | Fabrication de plâtres pour moulage.",
+    "translation_ar": "تصنيع الجبس العادي والجبس الخاص؛ | تصنيع جبس القوالب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109103": {
+    "source_fr": "Fabrication de tuyaux et raccords en béton ordinaire; | Fabrication de poteaux, carreaux, pièces spéciales en béton ordinaire.",
+    "translation_ar": "تصنيع الأنابيب والوصلات من الخرسانة العادية؛ | تصنيع الأعمدة والبلاط والقطع الخاصة من الخرسانة العادية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109104": {
+    "source_fr": "Fabrication de carreaux, poutrelles hourdis, éléments de plafond, plaques isophoniques en plâtres; | Fabrication de carreaux, poutrelles hourdis, etc..., en béton dit aggloméré.",
+    "translation_ar": "تصنيع البلاط والعوارض والعناصر المجوفة للأسقف والعناصر السقفية والألواح العازلة للصوت من الجبس؛ | تصنيع البلاط والعوارض والعناصر المجوفة وغيرها من الخرسانة المتكتلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109105": {
+    "source_fr": "Fabrication de carreaux, dalles et pavés en ciment; | Fabrication de carreaux, dalles et pavés en granito.",
+    "translation_ar": "التصنيع الصناعي للبلاط والألواح والرصفيات الإسمنتية؛ | تصنيع البلاط والألواح والرصفيات من الغرانيتو.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109106": {
+    "source_fr": "Production d'éléments préfabriqués pour bâtiments en béton ordinaire prêts au montage. | Fabrication du béton prêt à l'emploi (centrale à béton).",
+    "translation_ar": "إنتاج عناصر خرسانية مسبقة الصنع للمباني، جاهزة للتركيب؛ | تصنيع الخرسانة الجاهزة للاستعمال في محطات الخرسانة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109107": {
+    "source_fr": "Fabrication de \"produits rouges\" en terre cuite (briques,tuiles, tuiles faîtières non réfractaires); | Fabrication d'autres matériaux de construction non réfractaires en terre cuite (hourdis, parpaings, dalles, carreaux, et autres produits de bâtiments).",
+    "translation_ar": "تصنيع المنتجات الحمراء من الطين المحروق، مثل الطوب والقرميد وقطع القرميد العلوية غير المقاومة للحرارة؛ | تصنيع مواد بناء أخرى من الطين المحروق وغير المقاومة للحرارة، مثل العناصر المجوفة والكتل والألواح والبلاط وغيرها من منتجات البناء.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109108": {
+    "source_fr": "Fabrication de produits réfractaires tels que : les briques blocs, dalles et carreaux et produits calorifuges.",
+    "translation_ar": "التصنيع الصناعي للمنتجات المقاومة للحرارة والعازلة حرارياً، مثل الطوب والكتل والألواح والبلاط والمنتجات العازلة للحرارة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109109": {
+    "source_fr": "Fabrication d'articles en céramique pour usage chimique et technique; | Fabrication de carreaux et dalles en céramique; | Fabrication de produits en céramique pour le bâtiment.",
+    "translation_ar": "تصنيع منتجات الخزف المخصصة للاستعمال الكيميائي والتقني؛ | تصنيع البلاط والألواح الخزفية؛ | تصنيع المنتجات الخزفية المخصصة للبناء.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109110": {
+    "source_fr": "Fabrication de baignoires, receveurs de douche en céramique, lavabos, sabots en céramique, sièges, cuvettes, bidets, urinoirs, éviers et accessoires.",
+    "translation_ar": "تصنيع أحواض الاستحمام وأحواض الاستحمام بالدش المصنوعة من الخزف والمغاسل والقباقيب الخزفية والمقاعد والمراحيض والمراحيض القرفصائية والمباول وأحواض الغسل واللوازم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109111": {
+    "source_fr": "Fabrication de tuiles, faîtières, briques, carreaux, pavés, dalles, hourdis etc..., en matière plastique.",
+    "translation_ar": "تصنيع مواد البناء البلاستيكية، مثل القرميد وقطع القرميد العلوية والطوب والبلاط والرصفيات والألواح والعناصر المجوفة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109112": {
+    "source_fr": "Fabrication de baignoires, éviers, lavabos, urinoirs, receveurs de douche etc…en toutes matières.",
+    "translation_ar": "تصنيع الأدوات الصحية من جميع المواد، مثل أحواض الاستحمام وأحواض الغسل والمغاسل والمباول وأحواض الاستحمام بالدش وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109113": {
+    "source_fr": "Fabrication de verre plat; | Façonnage et transformation du verre plat : verre poli ou douci, verre bombé, verre de sécurité, verre de coupe, etc...; | Fabrication de miroirs en verre; | Fabrication de fibres et laines de verre et articles en ces matières; | Fabrication de briques, dalles, pavés et autres ouvrages en verre pour le bâtiment; | Fabrication de verre en masse, barres, tubes, etc...",
+    "translation_ar": "التصنيع الصناعي وتشكيل وتحويل الزجاج المسطح وصناعة المرايا: | تصنيع الزجاج المسطح؛ | تشكيل وتحويل الزجاج المسطح، مثل الزجاج المصقول أو المصنفر والزجاج المنحني وزجاج السلامة والزجاج المقطوع وغيرها؛ | تصنيع المرايا الزجاجية؛ | تصنيع الألياف الزجاجية والصوف الزجاجي والمنتجات المصنوعة منهما؛ | تصنيع الطوب والألواح والرصفيات وغيرها من المنتجات الزجاجية المخصصة للبناء؛ | تصنيع الزجاج على شكل كتل وقضبان وأنابيب وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109114": {
+    "source_fr": "Fabrication d'articles d'emballage en verre tels que : bouteilles, flacons, bocaux, pots, etc...; | Fabrication d'articles ménagers en verre et autres articles en verre creux mécanique; | Fabrication de verre technique brut pour lunetterie et optique et pour ampoules et tubes électriques; | Fabrication d'articles d'hygiène et de laboratoire en verre technique (éprouvettes, seringues, biberons, etc...); | Autres articles en verre creux; | Fabrication de lustres et similaires.",
+    "translation_ar": "التصنيع الصناعي وتشكيل وتحويل الزجاج المجوف آلياً والزجاج التقني: | تصنيع عبوات التغليف الزجاجية، مثل القوارير والعبوات والمرطبانات والأواني وغيرها؛ | تصنيع الأدوات المنزلية الزجاجية وغيرها من مصنوعات الزجاج المجوف المصنّع آلياً؛ | تصنيع الزجاج التقني الخام المخصص للنظارات والبصريات والمصابيح والأنابيب الكهربائية؛ | تصنيع أدوات النظافة والمختبرات من الزجاج التقني، مثل أنابيب الاختبار والمحاقن وقوارير الرضاعة وغيرها؛ | تصنيع مصنوعات أخرى من الزجاج المجوف؛ | تصنيع الثريات وما يماثلها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109115": {
+    "source_fr": "Fabrication et montage de cabines sahariennes pour tous usages; | Fabrication et montage de cabines de chantier et de gardiennage en toutes matières.",
+    "translation_ar": "تصنيع وتجميع الكبائن الصحراوية لجميع الاستعمالات؛ | تصنيع وتجميع كبائن الورشات والحراسة من مختلف المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109116": {
+    "source_fr": "Construction de maisons, hangars garages et chalets, etc..., préfabriqués ou démontables.",
+    "translation_ar": "بناء المنازل والمستودعات والمرائب والشاليهات وغيرها، مسبقة الصنع أو القابلة للفك والتركيب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109117": {
+    "source_fr": "Production de la fibre de basalte.",
+    "translation_ar": "إنتاج ألياف البازلت.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109118": {
+    "source_fr": "Fabrication de toitures, chapiteaux, tentes et garages automobiles.",
+    "translation_ar": "تصنيع الأسقف والمظلات الكبيرة والخيام ومرائب السيارات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109201": {
+    "source_fr": "Construction de toutes sortes de bâtiments à usage professionnel, social et de loisir . | Travaux de maçonnerie, de bétonnage, de terrassement et de fondation, plâtrage, revêtement de mur et de sol, pose de carrelage et de faience et autres travaux liés à la construction de bâtiments ; | Travaux d'étanchéité, d'isolation, de plomberie sanitaire et de chauffage central ; | Travaux de peinture et de vitrerie, d'installation électrique, d'installation de système de lutte et de protection contre l'incendie et le vol ; | Travaux de pose et de montage de charpente. | Tous travaux de menuiserie générale (métallique, en bois, en aluminium, ...etc).",
+    "translation_ar": "بناء جميع أنواع المباني المخصصة للاستعمال المهني والاجتماعي والترفيهي؛ | أشغال البناء والخرسانة والحفر والأساسات والتجصيص وتكسية الجدران والأرضيات وتركيب البلاط والخزف وسائر الأشغال المرتبطة ببناء المباني؛ | أشغال العزل المائي والحراري وعزل الصوت والسباكة الصحية والتدفئة المركزية؛ | أشغال الطلاء والزجاج والتركيبات الكهربائية وتركيب أنظمة مكافحة الحرائق والسرقة والحماية منها؛ | أشغال تركيب وتجميع الهياكل؛ | جميع أشغال النجارة العامة (المعدنية والخشبية والألومنيوم وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109202": {
+    "source_fr": "Production et pose de charpente en bois; | Production d'articles de menuiserie du bâtiment (portes, fenêtres, etc...); | Montage d'éléments préfabriqués en bois; | Fabrication de produits façonnés en bois tels que : fenêtres, portes, cadres de portes et fenêtres, boiseries, moulures, éléments de charpente en bois, échelles, etc...",
+    "translation_ar": "إنتاج وتركيب الهياكل الخشبية؛ | إنتاج مصنوعات نجارة المباني، مثل الأبواب والنوافذ وغيرها؛ | تركيب العناصر الخشبية مسبقة الصنع؛ | تصنيع المنتجات الخشبية المشكلة، مثل النوافذ والأبواب وإطاراتها والكسوات الخشبية والقوالب وعناصر الهياكل الخشبية والسلالم وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109203": {
+    "source_fr": "Travaux d'isolation, d'étanchéité et d'insonorisation du bâtiment | Travaux de plomberie sanitaire et chauffage central | Travaux de couverture des bâtiments.",
+    "translation_ar": "أشغال العزل والعزل المائي والعزل الصوتي للمباني؛ | أشغال السباكة الصحية والتدفئة المركزية؛ | أشغال تغطية أسطح المباني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109204": {
+    "source_fr": "Travaux de peinture industrielle et de bâtiment.",
+    "translation_ar": "أشغال الطلاء الصناعي وطلاء المباني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109205": {
+    "source_fr": "Production d'éléments et ensembles de constructions métalliques (charpente); | Pose et montage de charpente métalliques. | Fabrication, installation de silos de stockage.",
+    "translation_ar": "إنتاج عناصر ومجموعات المنشآت المعدنية (الهياكل المعدنية)؛ | تركيب وتجميع الهياكل المعدنية؛ | تصنيع وتركيب صوامع التخزين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109206": {
+    "source_fr": "Installation d'électricité du bâtiment et industrielle; | Installation d'ascenseurs et monte-charge. | Installation de matériel informatique et audiovisuel.",
+    "translation_ar": "تركيب الشبكات والتجهيزات الكهربائية للمباني والمنشآت الصناعية؛ | تركيب المصاعد ورافعات البضائع؛ | تركيب معدات الإعلام الآلي والتجهيزات السمعية البصرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109207": {
+    "source_fr": "Installation de systèmes (équipements et matériels) de traitement d'air, de climatisation et réfrigération.",
+    "translation_ar": "تركيب أنظمة معالجة الهواء والتكييف والتبريد، بما في ذلك تجهيزاتها ومعداتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109208": {
+    "source_fr": "Installation de systèmes de lutte et de protection contre le vol, les intrusions et tous autres systèmes de détection et d'alarme.",
+    "translation_ar": "تركيب أنظمة مكافحة السرقة والحماية من التسلل، وسائر أنظمة الكشف والإنذار.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109209": {
+    "source_fr": "Réalisation d'ouvrages d'art : barrages, ports, aérodromes, routes, puits, viaducs, digues, creusement de tunnel, etc ... | Réalisation de grands travaux d'aménagements urbains; | Dragage, installation portuaires et constructions similaires; | Réalisation de tous travaux relatifs au domaine hydraulique ;",
+    "translation_ar": "إنجاز المنشآت الفنية الكبرى، مثل السدود والموانئ والمطارات والطرق والآبار والجسور المرتفعة والسدود الترابية وحفر الأنفاق وغيرها؛ | إنجاز أشغال التهيئة الحضرية الكبرى؛ | تجريف الموانئ وإنجاز المنشآت المينائية والمنشآت المماثلة؛ | إنجاز جميع الأشغال المتعلقة بمجال الموارد المائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109210": {
+    "source_fr": "Terrassement ruraux; | Forage de puits d'eau; | Canaux d'irrigation; | Autres travaux ruraux.",
+    "translation_ar": "أشغال الحفر والردم في المناطق الريفية؛ | حفر آبار المياه؛ | إنجاز قنوات الري؛ | أشغال ريفية أخرى.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109211": {
+    "source_fr": "Construction de routes, rues et voies similaires, pistes d'aérodromes ponts et ouvrages similaires.",
+    "translation_ar": "إنشاء الطرق والشوارع والمسالك المماثلة ومدارج المطارات والجسور والمنشآت المماثلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109212": {
+    "source_fr": "Terrassement de plates formes de voie ferrée; | Pose de lignes de chemin de fer; | Installation de matériel électrique de voie ferrée. | Autres travaux de voie ferrée (caniveaux, quais, etc...).",
+    "translation_ar": "أشغال الحفر والردم لمنصات السكك الحديدية؛ | وضع خطوط السكك الحديدية؛ | تركيب التجهيزات الكهربائية الخاصة بالسكك الحديدية؛ | أشغال أخرى متعلقة بالسكك الحديدية، مثل قنوات تصريف المياه والأرصفة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
