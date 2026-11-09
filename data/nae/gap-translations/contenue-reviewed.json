@@ -1432,6 +1432,206 @@
     "translation_ar": "تصنيع التوابل المركبة والصلصات والخل والخردل وغيرها؛ | تحضير الملح بغرض بيعه.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "107606": {
+    "source_fr": "Préparation liquides ou déshydratées de potages et soupes à base de viande de volaille et légumes et de poissons; | Préparation d'arômes solides ou liquides.",
+    "translation_ar": "تحضير المستحضرات السائلة أو المجففة من المرق والحساء القائمة على لحوم الدواجن والخضروات والأسماك؛ | تحضير المنكهات الصلبة أو السائلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107607": {
+    "source_fr": "Abattage et découpage industriels d'animaux de boucherie et volailles; | Abattage et découpage de volailles; | Autres abattages et découpages de lapins et gibiers, etc; | Sous produits et déchets de l'abattage , abats , peaux, etc.",
+    "translation_ar": "الذبح والتقطيع الصناعي لحيوانات اللحوم والدواجن؛ | ذبح الدواجن وتقطيعها؛ | ذبح وتقطيع الأرانب وحيوانات الصيد وغيرها؛ | المنتجات الثانوية ومخلفات الذبح، مثل الأحشاء والجلود وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107608": {
+    "source_fr": "Fabrication d'aliments simples (caroube concassé ou composés) pour animaux ; | Fabrication de levures fourragères et condiments pour animaux ; | Fabrication de complexes minéraux vitaminés concentrés (CMV) utilisés pour équilibrer la composition des aliments pour volailles, bétail et aquaculture ; | Fabrication de farine de poissons ; | fabrication de tout genre d’aliments de bétail ; | Fabrication d'aliments pour animaux de compagnie ; | Fabrication d'aliments pour l'aquaculture.",
+    "translation_ar": "تصنيع الأعلاف البسيطة (مثل الخروب المجروش) أو المركبة للحيوانات؛ | تصنيع الخمائر العلفية والتوابل المخصصة للحيوانات؛ | تصنيع المركبات المعدنية والفيتامينية المركزة (CMV) المستخدمة لموازنة تركيبة أعلاف الدواجن والماشية وتربية الأحياء المائية؛ | تصنيع مسحوق السمك؛ | تصنيع جميع أنواع أعلاف الماشية؛ | تصنيع أغذية الحيوانات الأليفة؛ | تصنيع أعلاف تربية الأحياء المائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107609": {
+    "source_fr": "Production de conserves de légumes par congélation ou surgélation, déshydratation, appertisation, lyophilisation etc. ... | Production de conserves de pommes de terre (crues, précuites, cuites) par congélation ou surgélation, déshydratation, appertisation etc ... | Production de conserves de fruits par congélation, surgélation, déshydratation, appertisation etc ...",
+    "translation_ar": "إنتاج معلبات الخضروات عن طريق التجميد أو التجميد العميق أو التجفيف أو التعليب الحراري أو التجفيف بالتجميد وغيرها؛ | إنتاج معلبات البطاطا (النيئة أو نصف المطبوخة أو المطبوخة) عن طريق التجميد أو التجميد العميق أو التجفيف أو التعليب الحراري وغيرها؛ | إنتاج معلبات الفواكه عن طريق التجميد أو التجميد العميق أو التجفيف أو التعليب الحراري وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107610": {
+    "source_fr": "Production de viandes et d'abats de boucherie (carcasse , découpées en quartiers , piéces ou morceaux) fraiches , congelées , surgelées ou appertisées ; | Production de viandes et d'abats de volaille et de lapins en portions individuelles fraiches , congelées, | surgelées ou appertisées .",
+    "translation_ar": "إنتاج لحوم وأحشاء حيوانات الذبح (الذبائح والأرباع والقطع والأجزاء) طازجة أو مجمدة أو مجمدة تجميداً عميقاً أو محفوظة بالتعليب؛ | إنتاج لحوم وأحشاء الدواجن والأرانب في حصص فردية، طازجة أو مجمدة أو مجمدة تجميداً عميقاً أو محفوظة بالتعليب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107611": {
+    "source_fr": "Toutes les activités liées à la transformation des fruits et des légumes secs ( amandes, noisettes, arachides, haricots, etc) par le grillage, l'étuvage, la friture, ...",
+    "translation_ar": "جميع الأنشطة المرتبطة بتحويل الفواكه الجافة والبقول الجافة (اللوز والبندق والفول السوداني والفاصولياء وغيرها) عن طريق التحميص أو التبخير أو القلي وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107612": {
+    "source_fr": "Transformation de produits alimentaires par conservation, congélation, surgélatoin , déshydratation , appertisation, lyofilisation, pasteurisation, etc ; | Produits du terroir frais, transformés ou manufacturés.",
+    "translation_ar": "تحويل المنتجات الغذائية عن طريق الحفظ أو التجميد أو التجميد العميق أو التجفيف أو التعليب الحراري أو التجفيف بالتجميد أو البسترة وغيرها؛ | منتجات محلية طازجة أو محوّلة أو مصنّعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "107613": {
+    "source_fr": "Extraction de la pulpe de fruits.",
+    "translation_ar": "استخلاص لبّ الفواكه.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108101": {
+    "source_fr": "Production de laine préparée (laine lavée, laine dégraissée, laine dessuintée, laine traitée par carbonisage); | Production de laine peignée et cardée.",
+    "translation_ar": "إنتاج الصوف المحضّر (الصوف المغسول والمنزوع الشحوم والمنزوع اللانولين والمعالج بالكربنة)؛ | إنتاج الصوف الممشّط والمسرّح.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108102": {
+    "source_fr": "Fabrication industrielle de filés type laine, peignés pour tissage et bonneterie (écrus ou teints); | Production de filés à base d'effilochés.",
+    "translation_ar": "التصنيع الصناعي للخيوط الصوفية الممشطة المخصصة للنسيج والحياكة، سواء كانت خاماً أو مصبوغة؛ | إنتاج خيوط مصنوعة من الألياف الصوفية المسترجعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108103": {
+    "source_fr": "Fabrication de tissus : en laine pure ou mélangée à d'autres matières textiles pour habillement et ameublement (écrus et finis); | Fabrication de couvertures (en laine pure ou mélangée, en coton, en fibres artificielles mélangées, en fibres synthétiques pures ou mélangées).",
+    "translation_ar": "تصنيع الأقمشة من الصوف الخالص أو المخلوط بمواد نسيجية أخرى، والمخصصة للملابس والمفروشات، سواء كانت خاماً أو نهائية التجهيز؛ | تصنيع الأغطية من الصوف الخالص أو المخلوط أو القطن أو الألياف الاصطناعية أو التركيبية، منفردة أو مخلوطة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108104": {
+    "source_fr": "Fabrication industrielle de tapis et carpettes.",
+    "translation_ar": "التصنيع الصناعي للسجاد والبسط.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108105": {
+    "source_fr": "Fabrication de feutres et autres tissus non tissés; | Fabrication d'ouate et articles en ouate conditionnés. | Transformation de tissus non tissés.",
+    "translation_ar": "تصنيع اللباد وغيرها من الأقمشة غير المنسوجة؛ | تصنيع القطن الطبي ومنتجاته المعبأة؛ | تحويل الأقمشة غير المنسوجة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108106": {
+    "source_fr": "Préparation de coton peigné ou cardé (pur ou mélangé à des fibres synthétiques ou artificielles).",
+    "translation_ar": "تحضير القطن الممشط أو المسرّح، خالصاً أو مخلوطاً بألياف اصطناعية أو تركيبية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108107": {
+    "source_fr": "Fabrication de fils (écrus ou finis) de coton, de fibres artificielles, de fibres synthétiques pour tissage et bonneterie.",
+    "translation_ar": "تصنيع خيوط القطن والألياف الاصطناعية والألياف التركيبية، خاماً أو نهائية التجهيز، والمخصصة للنسيج والحياكة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108108": {
+    "source_fr": "Fabrication de tissus (écrus ou finis) de coton pur ou mélangé à des fibres artificielles ou synthétiques, pour habillement et ameublement. (y compris velours, éponge, et peluche).",
+    "translation_ar": "تصنيع أقمشة من القطن الخالص أو المخلوط بألياف اصطناعية أو تركيبية، خامة أو نهائية التجهيز، ومخصصة للملابس والمفروشات، بما في ذلك المخمل وأقمشة المناشف والوبر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108109": {
+    "source_fr": "Fabrication de fils à coudre, à repriser et à broder, conditionnés ou non.",
+    "translation_ar": "تصنيع خيوط الخياطة والترقيع والتطريز، سواء كانت معبأة أم غير معبأة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108110": {
+    "source_fr": "Production de fils de jute, de sisal, de ramie, de chanvre, etc...; | Fabrication de tissus de jute, de sisal, de chanvre, de lin, de ramie et d'autres fibres végétales; | Fabrication de tissus de polypropylène et polyéthylène; | Fabrication de ficelles, cordes, câbles, en toutes matières (jute, sisal, lin, coton, nylon); | Confection de sacs, sachets d'emballage et scrutins, (en jute, en polypropylène, etc...).",
+    "translation_ar": "إنتاج خيوط الجوت والسيزال والرامي والقنب وغيرها؛ | تصنيع أقمشة الجوت والسيزال والقنب والكتان والرامي وغيرها من الألياف النباتية؛ | تصنيع أقمشة البولي بروبيلين والبولي إيثيلين؛ | تصنيع الخيوط والحبال والكابلات من مختلف المواد (الجوت والسيزال والكتان والقطن والنايلون)؛ | تصنيع الأكياس وأكياس التغليف والعبوات من الجوت والبولي بروبيلين وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108111": {
+    "source_fr": "Production de soie grège, de chape, bourre et bourrette de soie; | Fabrication de fils de soie grège, de chape, de bourre ou bourrette de soie pure ou mélangée; | Fabrication de fils métallisés et métalloplastiques; | Fabrication de fils et filés de fibres artificielles (cellulosiques) et de fibres synthétiques (polyester, polyamide etc...).",
+    "translation_ar": "إنتاج الحرير الخام والحرير الممشط ومخلّفات الحرير وألياف الحرير القصيرة؛ | تصنيع خيوط الحرير الخام أو الممشط أو القصير، الخالص أو المخلوط؛ | تصنيع الخيوط المعدنية والخيوط المعدنية-البلاستيكية؛ | تصنيع خيوط وألياف اصطناعية (سليلوزية) وتركيبية (بوليستر وبولي أميد وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108112": {
+    "source_fr": "Fabrication de fibres synthétiques en fils continus texturés ou non, rétractables, en câbles, et en bourre (fibres coupées).",
+    "translation_ar": "تصنيع الألياف التركيبية غير السليلوزية، على شكل خيوط مستمرة محبّبة أو غير محبّبة، قابلة أو غير قابلة للانكماش، وفي شكل كابلات أو ألياف قصيرة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108113": {
+    "source_fr": "Fabrication de tissus : de soie, de bourre de soie, de fils synthétiques et artificiels continus et discontinus, tissus de fils métalloplastiques.",
+    "translation_ar": "تصنيع أقمشة من الحرير وألياف الحرير القصيرة والخيوط التركيبية والاصطناعية المستمرة والمتقطعة، وكذلك الأقمشة المصنوعة من خيوط معدنية-بلاستيكية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108114": {
+    "source_fr": "Fabrication d'étoffes de bonneterie; | Fabrication d'articles chaussants (bas, chaussettes, collants, mi-bas); | Confection de vêtements et sous vêtements y compris vêtements pour bébés (layettes et accessoires), vêtements de sport et accessoires de l'habillement en bonneterie (gants, cravates, bérets, écharpes etc...).",
+    "translation_ar": "تصنيع أقمشة الحياكة؛ | تصنيع الجوارب ومنتجات تغطية القدمين والساقين (الجوارب الطويلة والقصيرة والكولونات)؛ | تصنيع الملابس والملابس الداخلية، بما في ذلك ملابس الرضع وتجهيزاتها ولوازمها، والملابس الرياضية ولوازم الملابس المحاكة، مثل القفازات وربطات العنق والقبعات الصوفية والأوشحة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108115": {
+    "source_fr": "Fabrication de tissus et étoffes élastiques (tricots); | Fabrication de fils guipés et dentelles, d'élastiques.",
+    "translation_ar": "تصنيع الأقمشة والمنسوجات المرنة (المحاكة)؛ | تصنيع الخيوط المغطاة وخيوط الدانتيل والمواد المطاطية المرنة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108116": {
+    "source_fr": "Fabrication de tulles, de dentelles (à la main et mécanique), de guipures, de filets à cheveux et autres articles similaires.",
+    "translation_ar": "التصنيع الصناعي للتول والدانتيل والتطريز الشبكي والشبكات المطرزة وشبكات الشعر والمنتجات المماثلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108117": {
+    "source_fr": "Fabrication de rubans, bolducs, étiquettes, lacets tresses et autres articles de passementerie non brodés; | Fabrication de tuyaux et courroies en textiles.",
+    "translation_ar": "تصنيع الأشرطة وأشرطة التزيين والملصقات وأربطة الأحذية والضفائر وغيرها من منتجات الزخرفة النسيجية غير المطرزة؛ | تصنيع الأنابيب والسيور المصنوعة من المنسوجات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108118": {
+    "source_fr": "Fabrication de filets pour la pêche et autres usages.",
+    "translation_ar": "التصنيع الصناعي للشباك المعقودة وشباك الصيد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108119": {
+    "source_fr": "Apprêtages de produits textiles : blanchiment, teinture et impression (de fibres, fils et tissus).",
+    "translation_ar": "تشطيب المنتجات النسيجية، ويشمل التبييض والصباغة والطباعة وتجهيز الألياف والخيوط والأقمشة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108120": {
+    "source_fr": "Fabrication de tissus enduits ou imprégnés de matières plastiques, de matières cireuses ou de matières amylacées.",
+    "translation_ar": "تصنيع اللينوليوم والأقمشة المشمعة والمنتجات المماثلة، عن طريق تصنيع أقمشة مطلية أو مشربة بمواد بلاستيكية أو شمعية أو نشوية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108121": {
+    "source_fr": "Confection de vêtements de dessus pour hommes, femmes et enfants; | Confection de vêtements de travail; | Confection de vêtements de dessous pour hommes, femmes et enfants (chemises, chemisiers, pyjamas, linge de corps, etc...); | Fabrication de linge de maison et d'ameublement; | Réalisation d’études en matière de confection (réalisation de gabarits et patronages).",
+    "translation_ar": "تصنيع الملابس الخارجية للرجال والنساء والأطفال؛ | تصنيع ملابس العمل؛ | تصنيع الملابس الداخلية للرجال والنساء والأطفال (القمصان والبلوزات والبيجامات والملابس الداخلية وغيرها)؛ | تصنيع أغطية المنزل ومفروشات الأثاث؛ | إعداد الدراسات في مجال صناعة الملابس، بما في ذلك إعداد القوالب والباترونات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108122": {
+    "source_fr": "Fabrication d'accessoires et articles divers de l'habillement (haïks, châles, cravates, gants, voiles, parapluies, boutons en tous genres autres qu'en verre.",
+    "translation_ar": "تصنيع مختلف لوازم ومواد الملابس، مثل الحايك والشالات وربطات العنق والقفازات والأوشحة والمظلات والأزرار بمختلف أنواعها، باستثناء الأزرار الزجاجية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108123": {
+    "source_fr": "Fabrication de toiles industrielles, bâches et autres articles à usage technique; | Confection de tentes, stores, hamacs, housses, lits de camps, tuyaux, bâches pour véhicules, sacs en tissus, articles en toile pour décoration (toile peinture etc...), et autres articles de camping en toile; | Fabrication de moustiquaires. | Fabrication de gilet de sauvetage. | Production de voile pour voiliers.",
+    "translation_ar": "تصنيع الأقمشة الصناعية والأغطية المشمعة وغيرها من المنتجات ذات الاستعمال التقني؛ | تصنيع الخيام والستائر والأراجيح والأغطية وأسرّة التخييم والأنابيب وأغطية المركبات والأكياس النسيجية والمنتجات القماشية للزينة (مثل قماش الرسم) وغيرها من منتجات التخييم المصنوعة من القماش؛ | تصنيع الناموسيات؛ | تصنيع سترات النجاة؛ | إنتاج أشرعة المراكب الشراعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108124": {
+    "source_fr": "Production de tissus et vêtements en tricot ;",
+    "translation_ar": "إنتاج الأقمشة والملابس المحاكة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108125": {
+    "source_fr": "confection de l'emblème national et de l'écusson porteur de l'emblème national et du fanion.",
+    "translation_ar": "خياطة العلم الوطني والشارة الحاملة للعلم الوطني والراية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108126": {
+    "source_fr": "Confection de vêtements et divers équipements de sécurité et de protection ; | fabrication de casques de protection en plastiques et d’autres équipements de protection individuelle en plastiques; | fabrication de ceintures de sécurité et d’autres ceintures à usage professionnel ;",
+    "translation_ar": "تصنيع الملابس ومختلف معدات الأمن والحماية؛ | تصنيع الخوذ الواقية البلاستيكية وغيرها من معدات الوقاية الفردية المصنوعة من البلاستيك؛ | تصنيع أحزمة السلامة وغيرها من الأحزمة المخصصة للاستعمال المهني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108201": {
+    "source_fr": "Tannage et corroyage de cuirs bovins (cuirs semi-finis, peaux en croûte); | Récupération et vente de sous produits (déchets, poils, etc...); | Finissage de cuirs bovins à dessus (veau, vachette).",
+    "translation_ar": "دباغة وتجهيز جلود الأبقار (الجلود نصف المصنعة والجلود في طور التهيئة)؛ | استرجاع وبيع المنتجات الثانوية، مثل المخلفات والشعر وغيرها؛ | تشطيب جلود الأبقار ذات الطبقة الخارجية، مثل جلود العجول والأبقار الصغيرة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108202": {
+    "source_fr": "Tannage de cuir de bovins; | Tannage de cuir d'équidés et de camélidés; | Finissage de ces cuirs.",
+    "translation_ar": "دباغة جلود الأبقار؛ | دباغة جلود الخيليات والإبليات؛ | تشطيب هذه الجلود.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108203": {
+    "source_fr": "Tannage et corroyage de cuirs d'ovins et de caprins (wet-blue, doublure, croûte); | Finissage de cuirs d'ovins et de caprins (pour vêtements, ganterie, maroquinerie, dessus de chaussures); | Préparations, teinture et apprêtage de fourrures (pelleterie d'ovins et de lapins); | Chamoisage de peaux; | Délainage (planage et enchaussenage) et nettoyage de la laine; | Récupération des déchets (dérayures, chutes d'échantillonnage).",
+    "translation_ar": "دباغة وتجهيز جلود الأغنام والماعز (الجلود المعالجة بالكروم الرطب والبطانة والجلود ذات الطبقة الداخلية)؛ | تشطيب جلود الأغنام والماعز المخصصة للملابس والقفازات والمنتجات الجلدية وواجهات الأحذية؛ | تحضير الفراء وصباغته وتجهيزه (فراء الأغنام والأرانب)؛ | تحويل الجلود إلى جلد الشمواه؛ | نزع الصوف عن الجلود (الكشط والمعالجة بالجير) وتنظيف الصوف؛ | استرجاع المخلفات، مثل بقايا الكشط وقصاصات العينات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108204": {
+    "source_fr": "Fabrication de pelleterie factices : poils, laine collés ou cousus sur un support (cuir, ou autre).",
+    "translation_ar": "تصنيع الفراء الاصطناعي، عن طريق لصق أو خياطة الشعر أو الصوف على حامل من الجلد أو غيره.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108205": {
+    "source_fr": "Enduction de matières plastiques (PVC, PU), avec ou sans support; | Calandrage de matières plastiques (feuilles, plaques etc...).",
+    "translation_ar": "طلاء المواد البلاستيكية (PVC وPU)، مع حامل أو بدونه؛ | تقويم المواد البلاستيكية بالأسطوانات (الصفائح والألواح وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "108206": {
+    "source_fr": "Fabrication de cuir reconstitué ou synderme (synderme brut); | Finissage (synderme pigmenté, grainé, verni, etc...).",
+    "translation_ar": "تصنيع الجلد المعاد تكوينه أو الجلد المركب (Synderme) الخام؛ | تشطيب الجلد المركب، مثل تصبيغه وإكسابه حبيبات أو تلميعه بالورنيش وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
