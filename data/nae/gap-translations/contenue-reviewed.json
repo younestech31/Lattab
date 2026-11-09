@@ -1832,6 +1832,206 @@
     "translation_ar": "أشغال الحفر والردم لمنصات السكك الحديدية؛ | وضع خطوط السكك الحديدية؛ | تركيب التجهيزات الكهربائية الخاصة بالسكك الحديدية؛ | أشغال أخرى متعلقة بالسكك الحديدية، مثل قنوات تصريف المياه والأرصفة وغيرها.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "109213": {
+    "source_fr": "Installation de : | canalisation de gaz de ville; | système de distribution d'eau; | lignes téléphoniques locales; | réseaux d'égouts; | éclairage des rues; | dispositif de régulation de la circulation; | autres équipements d'infrastructure urbaine; | traitement et épuration des eaux.",
+    "translation_ar": "تركيب شبكات الغاز الحضري؛ | أنظمة توزيع المياه؛ | الخطوط الهاتفية المحلية؛ | شبكات الصرف الصحي؛ | إنارة الشوارع؛ | أجهزة تنظيم حركة المرور؛ | سائر تجهيزات البنية التحتية الحضرية؛ | معالجة المياه وتنقيتها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109214": {
+    "source_fr": "Installation de: . centrales électriques; . lignes de transport d'énergie électrique;. postes de transformation de haute, moyenne et basse tension; . centraux téléphoniques; . lignes et autres infrastructures.",
+    "translation_ar": "تركيب محطات توليد الكهرباء؛ | خطوط نقل الطاقة الكهربائية؛ | محطات تحويل الكهرباء ذات الجهد العالي والمتوسط والمنخفض؛ | المقاسم الهاتفية؛ | الخطوط وسائر البنى التحتية المرتبطة بها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109215": {
+    "source_fr": "Pose d'oléoducs, de gazoducs et de conduites d'eau.",
+    "translation_ar": "مدّ خطوط أنابيب النفط والغاز وقنوات المياه لمسافات طويلة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109216": {
+    "source_fr": "Installation de générateurs d'air chaud, de générateurs de vapeur, de brûleurs; | Installation de chauffages, d'appareils de production d'eau chaude, etc... destinés à l'industrie. | Installation de matériel de conditionnement d'air et de matériel de ventilation.",
+    "translation_ar": "تركيب مولدات الهواء الساخن ومولدات البخار والحراقات؛ | تركيب أنظمة التدفئة وأجهزة إنتاج الماء الساخن وغيرها من التجهيزات المخصصة للصناعة؛ | تركيب معدات تكييف الهواء والتهوية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109217": {
+    "source_fr": "Consolidation , restauration et maintenance des ouvrages d'art ; | Réalisation de diagnostics relatif à l'état des ouvrages d'art ; | Entretien des équipements d'ouvrages d'art (appareils d'appuis , joints de chaussées etc ...).",
+    "translation_ar": "تدعيم المنشآت الفنية وترميمها وصيانتها؛ | إعداد تشخيصات تتعلق بحالة المنشآت الفنية؛ | صيانة تجهيزات المنشآت الفنية، مثل أجهزة الارتكاز وفواصل تمدد الطرق وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109218": {
+    "source_fr": "Ensemble des actions concourant à la réalisation ou à la rénovation de bien immobiliers destinés à la vente , la location ou la satisfaction de besoins propres ; | Toutes activités d'acquisition et d'aménagement d'assiettes foncières en vu de leur vente ou de leur location ; | Toutes activités d'intermédiation dans le domaine de l'immobilier et notamment la vente ou la location de biens immobiliers.",
+    "translation_ar": "مجموعة الأعمال التي تساهم في إنجاز أو تجديد العقارات المخصصة للبيع أو الإيجار أو لتلبية الاحتياجات الخاصة؛ | جميع أنشطة اقتناء القطع الأرضية وتهيئتها بغرض بيعها أو تأجيرها؛ | جميع أنشطة الوساطة في المجال العقاري، ولا سيما بيع العقارات أو تأجيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109219": {
+    "source_fr": "Entreprise d'études et réalisation de tous travaux de | génie civil",
+    "translation_ar": "دراسات وإنجاز جميع أشغال الهندسة المدنية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109220": {
+    "source_fr": "Restauration de toute sorte d'ouvrages historiques | entiers ou à l'état fragmentaire : existant sous la forme d'un batiment ou de simple vestiges en ruines ; | Tous travaux de consolidation des matériaux et des structures , reprises en sous oeuvres des fondations, | travaux de réfection selon les régles d'art traditionnelle des revêtements des sols et muraux , de maçonnerie et de charpentes .",
+    "translation_ar": "ترميم مختلف المنشآت التاريخية، كاملة أو في شكل بقايا مجزأة، سواء كانت قائمة في شكل مبنى أو مجرد أطلال؛ | جميع أشغال تدعيم المواد والهياكل، وتقوية الأساسات من أسفلها؛ | أشغال إعادة تهيئة كسوات الأرضيات والجدران وأعمال البناء والهياكل وفق قواعد وتقنيات الفن التقليدي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109221": {
+    "source_fr": "Entreprise d'études et de réalisation d'ouvrages éléctriques et gaz; | Entreprise d’études de fonctionnement et de développement du système production et transport d’électricité.",
+    "translation_ar": "دراسات وإنجاز المنشآت الكهربائية ومنشآت الغاز؛ | دراسات تشغيل وتطوير نظام إنتاج الكهرباء ونقلها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109222": {
+    "source_fr": "Etudes et réalisations de tous travaux relatifs au B.T.P.H ;",
+    "translation_ar": "دراسات وإنجاز جميع الأشغال المتعلقة بمختلف فروع البناء والأشغال العمومية والري (BTPH).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109223": {
+    "source_fr": "Entreprise de construction et d'aménagement de locaux et centres commerciaux, hoteliers, artisanaux et industriels | de zones d'activités | de lotissements fonciers | et équipements locaux : (aménagements de bassins fluviaux, de ports de plaisance, d'autoroutes, de stations, d'infrastructures sportives ou balnéaires, etc ) l'aménagement ou la rénovation de zones urbaines par voie de promotion | l'aménagement de zone rurale",
+    "translation_ar": "بناء وتهيئة المحلات والمراكز التجارية والفندقية والحرفية والصناعية؛ | تهيئة مناطق النشاطات؛ | تهيئة التجزئات العقارية؛ | إنجاز التجهيزات المحلية، مثل تهيئة الأحواض النهرية وموانئ النزهة والطرق السيارة والمحطات والمنشآت الرياضية أو الساحلية وغيرها؛ | تهيئة المناطق الحضرية أو تجديدها عن طريق الترقية؛ | تهيئة المناطق الريفية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109224": {
+    "source_fr": "Gestion des réseaux hydrauliques",
+    "translation_ar": "تسيير شبكات المياه.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109225": {
+    "source_fr": "Toutes activités de construction, de montage et d'installation de piscines (plastiques, métalliques, préfabriquées,...etc) ;",
+    "translation_ar": "جميع أنشطة بناء المسابح وتجميعها وتركيبها، سواء كانت بلاستيكية أو معدنية أو مسبقة الصنع وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109226": {
+    "source_fr": "Toutes activités de construction, de montage et d'installation de saunas et de hammams en toutes matières.",
+    "translation_ar": "جميع أنشطة بناء الساونا والحمامات وتجميعها وتركيبها باستعمال مختلف المواد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "109227": {
+    "source_fr": "Démolition des ouvrages d’art et des installations industrielles désaffectées. | Pour les cas de la démolition des ouvrages cités ci-après, | l’octroi du permis de démolition est conditionné à l’avis des services de la culture territorialement habilités : | ouvrage situé dans la servitude d’un monument classé ou inscrit sur l’inventaire supplémentaire ; | ouvrage situé dans la servitude d’un site archéologique ; | ouvrage situé dans un site érigé en secteur sauvegardé ; | ouvrage situé dans un parc culturel ; | ouvrage d’art qui présente un intérêt du point de vue de l’histoire, de l’archéologie, des sciences, de l’ethnographie, de l’anthropologie, de l’art ou de la culture appelant une préservation .",
+    "translation_ar": "هدم المنشآت الفنية والمنشآت الصناعية المتوقفة عن الاستغلال؛ | في حالات هدم المنشآت المذكورة أدناه، يشترط لمنح رخصة الهدم أخذ رأي مصالح الثقافة المختصة إقليمياً: | المنشأة الواقعة ضمن نطاق الارتفاق الخاص بمعلم مصنف أو مدرج في الجرد الإضافي؛ | المنشأة الواقعة ضمن نطاق الارتفاق الخاص بموقع أثري؛ | المنشأة الواقعة داخل موقع مصنف ضمن قطاع محفوظ؛ | المنشأة الواقعة داخل حظيرة ثقافية؛ | المنشأة الفنية التي تكتسي أهمية من الناحية التاريخية أو الأثرية أو العلمية أو الإثنوغرافية أو الأنثروبولوجية أو الفنية أو الثقافية بما يستوجب الحفاظ عليها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110101": {
+    "source_fr": "Fabrication de serrures, verrous et articles similaires; | Fabrication de garnitures, ferrures et autres articles similaires; | Fabrication d'autres articles de quincaillerie tels que paumelles, charnières, targettes, loquets et loqueteaux, poignées, équerres etc. | Fabrication de tringles et leurs accessoires.",
+    "translation_ar": "تصنيع الأقفال والمزالج والمنتجات المماثلة؛ | تصنيع التجهيزات والتركيبات المعدنية والمنتجات المماثلة الأخرى؛ | تصنيع منتجات أخرى من اللوازم المعدنية، مثل المفصلات والمرابط والأقفال المنزلقة والمقابض والزوايا المعدنية وغيرها؛ | تصنيع القضبان ولوازمها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110102": {
+    "source_fr": "Fabrication d'articles de ferblanterie et tôlerie sur plan, de réchauds et percolateurs en fer blanc, d'appareils d'éclairage en métaux communs, non électrique et leurs pièces détachées.",
+    "translation_ar": "تصنيع منتجات الصفائح المعدنية وأعمال الصفيح وفق المخططات، ومواقد الطهي وأجهزة تحضير القهوة المصنوعة من الصفائح المعدنية، وأجهزة الإضاءة من المعادن الأساسية غير الكهربائية، بما في ذلك قطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110103": {
+    "source_fr": "Fabrication d'articles de ménage et de cuisine en métaux communs, même émaillés ou galvanisés; | Fabrication d'articles de ménage et de cuisine en aluminium; | Fabrication de parties et pièces d'articles de ménage et de cuisine.",
+    "translation_ar": "تصنيع الأدوات المنزلية وأدوات المطبخ من المعادن الأساسية، بما فيها المطلية بالمينا أو المجلفنة؛ | تصنيع الأدوات المنزلية وأدوات المطبخ من الألومنيوم؛ | تصنيع أجزاء وقطع غيار الأدوات المنزلية وأدوات المطبخ.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110104": {
+    "source_fr": "Fabrication de couteaux, de rasoirs et leurs lames, de ciseaux, de couverts et accessoires pour la table, d'armes blanches et d'autres articles tels que sécateurs, tondeuses à main, couperets, hachoirs, coupe-papier, etc...",
+    "translation_ar": "تصنيع السكاكين وشفرات الحلاقة والمقصات وأدوات المائدة ولوازمها والأسلحة البيضاء ومنتجات أخرى، مثل مقصات التقليم وآلات القص اليدوية والسواطير وأدوات الفرم وقواطع الورق وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110105": {
+    "source_fr": "Fabrication de meubles, d'ensembles mobiliers et d'accessoires en métal (sièges, tables, meubles de bureau et d'ateliers, lits métalliques, ensembles mobiliers en métal...), destinés à l'usage des ménages et des collectivités.",
+    "translation_ar": "تصنيع الأثاث والمجموعات والأكسسوارات المعدنية، مثل المقاعد والطاولات وأثاث المكاتب والورشات والأسرة المعدنية ومجموعات الأثاث المعدنية وغيرها، والمخصصة للاستعمال المنزلي أو الجماعي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110106": {
+    "source_fr": "Fabrication de vaisselle en céramique et autres matières à l'exclusion du verre et du métal; | Fabrication d'autres ouvrages en poterie fine; | Fabrication de vaisselle et articles de ménage en porcelaine; | Fabrication d'autres ouvrages en porcelaine (porcelaine électrotechnique).",
+    "translation_ar": "تصنيع أواني المائدة من الخزف والمواد الأخرى، باستثناء الزجاج والمعادن؛ | تصنيع مصنوعات أخرى من الخزف الدقيق؛ | تصنيع أواني المائدة والأدوات المنزلية من البورسلان؛ | تصنيع مصنوعات أخرى من البورسلان، مثل البورسلان الكهروتقني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110107": {
+    "source_fr": "Fabrication industrielle de brosses en toutes matiéres à usage domestique et professionnel (brosses , balais balayettes , pinceaux , brosses à | linge , etc ...); | Fabrication de brosses à usage corporel (brosses à | cheveux brosses de manucure et de pédicure , etc) | Fabrication de rouleaux à peindre , raclettes en métal en caoutchouc ou en toutes autres matiéres ; | Fabrication de tous autres articles de nettoyage et d'entretien, | Fabrication de tous équipements de nettoyage (etc…) .",
+    "translation_ar": "التصنيع الصناعي للفرش بمختلف المواد والمخصصة للاستعمال المنزلي والمهني، مثل الفرش والمكانس والفرش الصغيرة وفُرش الطلاء وفرش الملابس وغيرها؛ | تصنيع فرش العناية بالجسم، مثل فرش الشعر وفرش العناية بالأظافر والقدمين وغيرها؛ | تصنيع بكرات الطلاء والممسحات المعدنية أو المطاطية أو المصنوعة من مواد أخرى؛ | تصنيع جميع منتجات التنظيف والصيانة الأخرى؛ | تصنيع جميع معدات التنظيف وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110108": {
+    "source_fr": "Le tri, le conditionnement et la transformation de tous effets vestimentaires, du linge de maison et des articles chaussants usages.",
+    "translation_ar": "فرز وتوضيب وتحويل جميع الملابس والأغطية المنزلية ومستلزمات الأحذية المستعملة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110109": {
+    "source_fr": "Transformation industrielle des toutes matiéres destinées au nettoyage et à l'entretien",
+    "translation_ar": "التحويل الصناعي لجميع المواد المخصصة للتنظيف والصيانة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110201": {
+    "source_fr": "Production de bois scié, de bois déroulé ou tranché.",
+    "translation_ar": "إنتاج الأخشاب المنشورة والأخشاب المقشرة دوّارياً أو المقطّعة إلى شرائح.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110202": {
+    "source_fr": "Rabotage et préparation du bois scié en vue de sa transformation en produits standards; | Production de placage et contre plaqués, panneaux de bois lattés, panneaux de fibres et de particules, panneaux cellulaires; | Production de parquets, lattis, pavés et traversés; | Production de bois amélioré ou imprégné; | Production de bois filé, de farine et paille de bois.",
+    "translation_ar": "تسوية الأخشاب المنشورة وتحضيرها لتحويلها إلى منتجات قياسية؛ | إنتاج القشرة الخشبية والخشب الرقائقي والألواح الخشبية المصفّحة والألواح الليفية وألواح الجسيمات والألواح الخلوية؛ | إنتاج أرضيات الباركيه والشرائح الخشبية والرصفيات والعتبات؛ | إنتاج الأخشاب المحسّنة أو المشربة؛ | إنتاج الأخشاب المستطيلة والمفرومة ودقيق الخشب ونشارة الخشب.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110203": {
+    "source_fr": "Fabrication de meubles, d'ensembles de mobiliers et d'accessoires en bois ou associés à d'autres matières, à usage domestique ou hôtelier : chambres à coucher, salles à manger, salons, sièges, armoires, tables etc...",
+    "translation_ar": "تصنيع الأثاث ومجموعات الأثاث ولوازمها من الخشب أو من الخشب المدمج بمواد أخرى، والمخصصة للاستعمال المنزلي أو الفندقي، مثل غرف النوم وغرف الطعام وصالونات الجلوس والمقاعد والخزائن والطاولات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110204": {
+    "source_fr": "Fabrication de meubles, d'ensembles de mobiliers et d'accessoires en bois ou associés à d'autres matières pour collectivités, restaurants, magasins, bureaux etc....",
+    "translation_ar": "تصنيع الأثاث ومجموعات الأثاث ولوازمها من الخشب أو من الخشب المدمج بمواد أخرى، والمخصصة للجماعات والمطاعم والمتاجر والمكاتب وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110205": {
+    "source_fr": "Fabrication de sommiers non métalliques; | Fabrication de matelas et coussins à carcasse métallique, rembourrés avec la mousse de caoutchouc, de la laine ou des fibres végétales; | Fabrication de matelas, de coussins à ressorts rembourrés.",
+    "translation_ar": "تصنيع هياكل الأسرة غير المعدنية؛ | تصنيع المراتب والوسائد ذات الهيكل المعدني والمحشوة برغوة المطاط أو الصوف أو الألياف النباتية؛ | تصنيع المراتب والوسائد ذات النوابض والمحشوة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110206": {
+    "source_fr": "Fabrication d'articles d'ameublement en plastique : (salons, armoires, tables, sièges etc...).",
+    "translation_ar": "تصنيع منتجات تأثيث من البلاستيك، مثل صالونات الجلوس والخزائن والطاولات والمقاعد وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110207": {
+    "source_fr": "Concassage et pulvérisation du liège; | Fabrication de semi-produits en liège naturel sous forme de plaques , feuilles, bandes obtenues par débitage de planches de liège brut; | Fabrication d'ouvrages en liège naturel tels que bouchons de toutes sortes, disques, joints, rondelles, lamelles etc... | Fabrication de liège aggloméré; | Fabrication d'ouvrages en liège aggloméré (carreaux, dalles, feuilles, panneaux, plaques etc...)",
+    "translation_ar": "تكسير وطحن الفلين؛ | تصنيع المنتجات نصف المصنعة من الفلين الطبيعي على شكل ألواح وصفائح وشرائط ناتجة عن تقطيع ألواح الفلين الخام؛ | تصنيع مصنوعات من الفلين الطبيعي، مثل السدادات بمختلف أنواعها والأقراص والحشيات والحلقات والشرائح وغيرها؛ | تصنيع الفلين المتكتل؛ | تصنيع مصنوعات الفلين المتكتل، مثل البلاط والألواح والصفائح واللوحات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110208": {
+    "source_fr": "Fabrication de lampadaire, lustreries appliques, lampes de chevet, etc .",
+    "translation_ar": "تصنيع أجهزة الإنارة، مثل أعمدة الإنارة والثريات والمصابيح الجدارية ومصابيح الطاولات وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110209": {
+    "source_fr": "Fabrication des systèmes d'exposition pliable, systèmes d'exposition en aluminium ou autres; | Fabrication des équipements des stands (mobilier, revêtement du sol, éclairage, etc) ; | Fabrication de portes affiches, panneaux publicitaires éclairés, panneaux d'affichage électronique, enseignes lumineuses, mobilier, mobilier urbain; | Fabrication de systèmes de signalétique (profilés en aluminium plastique) et accessoires ; | Fabrication de matière première pour la construction de stands (panneaux MDF ou autre matière, aluminium, drop paper, systèmes de guidage, présentoirs PLV, etc) ; | Fabrication de parties, pièces détachées et accessoires.",
+    "translation_ar": "تصنيع أنظمة العرض القابلة للطي وأنظمة العرض المصنوعة من الألومنيوم أو غيره؛ | تصنيع تجهيزات أجنحة العرض، مثل الأثاث وكسوة الأرضيات والإضاءة وغيرها؛ | تصنيع حوامل الملصقات واللوحات الإشهارية المضيئة ولوحات العرض الإلكترونية واللافتات المضيئة والأثاث والأثاث الحضري؛ | تصنيع أنظمة التوجيه واللافتات التعريفية من مقاطع الألومنيوم أو البلاستيك ولوازمها؛ | تصنيع المواد الأولية لبناء أجنحة العرض، مثل ألواح MDF أو مواد أخرى والألومنيوم وورق العرض وأنظمة التوجيه وحوامل عرض المنتجات في نقاط البيع وغيرها؛ | تصنيع الأجزاء وقطع الغيار واللوازم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110210": {
+    "source_fr": "Production d'ustensiles de cuisine et autres articles de ménage en tous métaux.",
+    "translation_ar": "الإنتاج الصناعي لأدوات المطبخ وغيرها من الأدوات المنزلية المصنوعة من جميع أنواع المعادن.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "110301": {
+    "source_fr": "Fabrication de mobiliers domestique et de bureaux en toutes matiéres bois, plastique et métal | Fabrication de mobilier urbain.",
+    "translation_ar": "تصنيع الأثاث المنزلي وأثاث المكاتب من مختلف المواد، مثل الخشب والبلاستيك والمعادن؛ | تصنيع الأثاث الحضري.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111101": {
+    "source_fr": "Production et distribution publique d'eau potable pour les ménages, d'eau d'irrigation et d'eau pour usage industriel.",
+    "translation_ar": "إنتاج وتوزيع المياه الصالحة للشرب الموجهة للجمهور وللاستعمال المنزلي، ومياه الري والمياه المخصصة للاستعمال الصناعي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111201": {
+    "source_fr": "Fabrication de jeux de société : cartes, échecs, dames, dominos, etc... | Fabrication de jeux éducatifs en toutes matières : jeux de construction, puzzles, etc... | Fabrication de jouets en toutes matières (y compris les jeux électriques, mécaniques etc...).",
+    "translation_ar": "تصنيع ألعاب التسلية الجماعية، مثل أوراق اللعب والشطرنج والداما والدومينو وغيرها؛ | تصنيع الألعاب التعليمية من مختلف المواد، مثل ألعاب التركيب والألغاز وغيرها؛ | تصنيع الألعاب من مختلف المواد، بما في ذلك الألعاب الكهربائية والميكانيكية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111202": {
+    "source_fr": "Fabrication d'articles sportifs : ballons, raquettes, tables de tennis, cheval d'arçon, anneaux, etc... | Fabrication d'articles de sport sauf les chaussures, sacs et articles de chasse; | Fabrication de tous articles de pêche. | Fabrication d'articles de camping tels que sacs de couchage, etc...",
+    "translation_ar": "تصنيع المعدات والمواد الرياضية، مثل الكرات ومضارب اللعب وطاولات التنس وحصان القفز والحلقات وغيرها؛ | تصنيع جميع الأدوات الرياضية، باستثناء الأحذية والحقائب ومستلزمات الصيد؛ | تصنيع جميع معدات الصيد؛ | تصنيع لوازم التخييم، مثل أكياس النوم وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111203": {
+    "source_fr": "Fabrication d'instruments modernes de musique: orgues, pianos électriques etc... (y compris parties, pièces détachées et accessoires).",
+    "translation_ar": "التصنيع الصناعي للآلات الموسيقية الحديثة، مثل الأرغن والبيانو الكهربائي وغيرها، بما في ذلك الأجزاء وقطع الغيار واللوازم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "111204": {
+    "source_fr": "Fabrication de disques, cassettes et bandes à usage informatique. | Fabrication de disques, cassettes et bandes pour l'enregistrement audio.",
+    "translation_ar": "تصنيع الأقراص والأشرطة والأشرطة الكاسيت الممغنطة المخصصة للاستعمال المعلوماتي؛ | تصنيع الأقراص والأشرطة والأشرطة الكاسيت المخصصة للتسجيل الصوتي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
