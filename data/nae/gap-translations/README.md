@@ -14,7 +14,7 @@ This overlay adds reviewed translations without rewriting the source snapshot un
 
 | Field | Source records | Active Arabic translations |
 |---|---:|---:|
-| Activity content | 2,136 | 18 |
+| Activity content | 2,136 | 41 |
 | Accessories | 905 | 598 |
 | Tutelle | 379 | 379 |
 | Authorization type | 379 | 379 |

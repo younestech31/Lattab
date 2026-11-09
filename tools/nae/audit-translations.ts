@@ -20,6 +20,9 @@ const translationMap = reviewedContent as Record<
   { source_fr: string; translation_ar: string }
 >;
 const errors: string[] = [];
+if (Object.keys(translationMap).length !== 45) {
+  errors.push(`Expected 45 reviewed content translations; found ${Object.keys(translationMap).length}.`);
+}
 
 if (activities.length !== 2136 || byCode.size !== activities.length) {
   errors.push(`Expected 2,136 unique activities; found ${activities.length} rows and ${byCode.size} unique codes.`);

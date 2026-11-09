@@ -127,7 +127,7 @@ test("all catalogue activities resolve safely and all tutelle values are mapped"
 
 test("every active Arabic content value has one existing exact French source record", () => {
   const translated = allActivities.filter((activity) => resolveActivityBilingual(activity).contenue_ar);
-  assert.equal(translated.length, 18);
+  assert.equal(translated.length, 45);
   for (const activity of translated) {
     assert.ok(activity.contenue_fr?.trim());
     assert.ok(resolveContenueArabic(activity.code, activity.contenue_fr));

@@ -70,7 +70,7 @@ A source-to-translation audit found that the former 105-entry `contenue.json` co
 The active `contenue-reviewed.json` contains 18 Arabic descriptions paired with the exact French source text reviewed for each code. The resolver refuses code-only lookups and refuses a translation if its source description changes. This deliberately prefers a clear “translation unavailable” state over showing a plausible but incorrect administrative description.
 
 Current measured coverage:
-- Arabic activity-content translations: 18 / 2,136.
+- Arabic activity-content translations: 45 / 2,136.
 - Arabic accessory translations: 598 / 905 records.
 - Arabic tutelle translations: 379 / 379 populated source records.
 - Arabic authorization-type translations: 379 / 379 populated source records.

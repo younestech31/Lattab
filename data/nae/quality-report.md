@@ -74,10 +74,10 @@ The 2,136-record source CSV has 2,134 usable Arabic labels and 2,133 usable Fren
 | `tutelle_fr` | 379 / 379 |
 | `type_autorisation_fr` | 379 / 379 |
 | `accessoires_fr` | 598 / 905 |
-| `contenue_fr` | 18 / 2,136 |
+| `contenue_fr` | 45 / 2,136 |
 | French-only references with preserved Arabic source | 1 / 379 |
 
-**Important correction:** an audit of the former 105-entry content translation map found source-code mismatches. It has been quarantined as `contenue-unverified-drafts.json` and is no longer loaded. Only 18 content translations tied to exact French source strings are active. Untranslated source descriptions remain available in French in the collapsed source disclosure on Arabic pages; they are not presented as Arabic translations.
+**Important correction:** an audit of the former 105-entry content translation map found source-code mismatches. It has been quarantined as `contenue-unverified-drafts.json` and is no longer loaded. Only 45 content translations tied to exact French source strings are active. Untranslated source descriptions remain available in French in the collapsed source disclosure on Arabic pages; they are not presented as Arabic translations.
 
 The audit command is `bun run nae:audit-translations`. It fails if a reviewed translation has no matching activity or if its stored French source differs from the current catalogue source.
 
