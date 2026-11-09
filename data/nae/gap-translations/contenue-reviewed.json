@@ -3042,6 +3042,206 @@
     "translation_ar": "البيع بالجملة بمعدات مكافحة التسلل والحرائق وسائر مواد الحماية والأمن؛ | البيع بالجملة بمعدات المراقبة والإنذار والحراسة وجميع تجهيزات ومعدات المراقبة عن بُعد وكواشف المعادن وبوابات الكشف وغيرها؛ | البيع بالجملة بمستلزمات الأمن والسلامة، مثل الملابس والأحذية وغيرها.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "305004": {
+    "source_fr": "Commerce de gros de matériel et fournitures pour les cantines et grandes cuisines de collectivités; | Commerce de gros de matériels, équipements et outillages pour la boulangerie pâtisserie et confiserie; | Commerce de gros de matériels et équipements pour débits de boisson; équipements de magasin (présentoirs, vitrines, mannequins)",
+    "translation_ar": "تجارة الجملة بالمعدات واللوازم الخاصة بالمطاعم الجماعية والمطابخ الكبرى؛ | تجارة الجملة بالمعدات والتجهيزات والأدوات الخاصة بالمخابز وصناعة الحلويات والسكاكر؛ | تجارة الجملة بالمعدات والتجهيزات الخاصة بمحلات تقديم المشروبات وتجهيزات المتاجر، مثل حوامل العرض والواجهات الزجاجية والدمى الخاصة بعرض الملابس.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305005": {
+    "source_fr": "Commerce de gros de matériels de transport, d'appareils de manutention et de levage; | Commerce de gros de robots industriels, machines et équipements utilisés dans l'industrie.",
+    "translation_ar": "تجارة الجملة بمعدات النقل وأجهزة المناولة والرفع؛ | تجارة الجملة بالروبوتات الصناعية والآلات والتجهيزات المستخدمة في الصناعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305006": {
+    "source_fr": "Commerce de gros de tous équipements industriels destinés à l'activité de blanchisserie; | Commerce de gros de tous équipements et matériels pour hôtels, restau rants et débits de boissons (capsules pour machines à café, etc…).",
+    "translation_ar": "تجارة الجملة بجميع التجهيزات الصناعية المخصصة لنشاط المغاسل؛ | تجارة الجملة بجميع التجهيزات والمعدات الخاصة بالفنادق والمطاعم ومحلات تقديم المشروبات، مثل كبسولات آلات القهوة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305007": {
+    "source_fr": "Commerce de gros de papiers, cartons et autres articles d'emballage, en toutes matières , y compris leurs accessoires (colles, ficelles, etc...).",
+    "translation_ar": "تجارة الجملة بالورق والكرتون وسائر مواد التغليف المصنوعة من مختلف المواد، بما في ذلك لوازمها مثل المواد اللاصقة والخيوط وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305008": {
+    "source_fr": "Commerce de gros de tous instruments et appareils de mesure et de pesage destines à l'utilisation scientifique, industrielle ou commerciale, y compris leurs accessoires.",
+    "translation_ar": "تجارة الجملة بجميع أدوات وأجهزة القياس والوزن المخصصة للاستعمال العلمي أو الصناعي أو التجاري، بما في ذلك لوازمها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305009": {
+    "source_fr": "Vente en gros de tous appareils et machines pour le filage, l'étirage, la texturation, l'impression des matières textiles synthétiques ou artificielles ; | Vente en gros des machines pour la préparation des matières textiles (cardes, peigneuses, bancs à broches,...); | Vente en gros des machines pour la filature, le doublage, le retordage, de bobinage, etc...., des matières textiles; | Vente en gros de métiers à tisser, de machines et métiers à bonneterie, de machines à tricoter et à coudre de types domestiques ou autres; | Vente en gros de tous accessoires, parties et pièces détachées (huiles...).",
+    "translation_ar": "البيع بالجملة لجميع الأجهزة والآلات وقطع الغيار واللوازم المخصصة لصناعة النسيج؛ | البيع بالجملة بجميع الأجهزة والآلات الخاصة بغزل الألياف وسحبها وإكسابها الملمس والطباعة على المواد النسيجية الاصطناعية أو الصناعية؛ | البيع بالجملة بآلات تحضير المواد النسيجية، مثل آلات التسريح والتمشيط وآلات تجهيز خيوط الغزل وغيرها؛ | البيع بالجملة بآلات الغزل ومضاعفة الخيوط وفتلها ولفها وغيرها من آلات معالجة المواد النسيجية؛ | البيع بالجملة بأنوال النسيج وآلات الحياكة وآلات الحياكة والخياطة المنزلية وغيرها؛ | البيع بالجملة بجميع اللوازم والأجزاء وقطع الغيار، مثل الزيوت وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305010": {
+    "source_fr": "Vente en gros d'équipements de radiocommunications toutes bandes et versions confondues, en particulier : | 1- les stations de radiocommunications (à usage terrestre, aéronautique et maritime) dans les bandes LF,MF, HF, VHF, UHF, SHF et les éléments entrant dans leur unité collective ; | 2- les stations de radiocommunications par satellite | 3- les stations de faisceaux hertziens de télécommunications. | Vente en gros de tout équipement pouvant rayonner de l'énergie électromagnétique dans l'espace libre des spectres des fréquences radioélectriques, y compris les appareils de faible puissance et de faible portée et notamment les prolongateurs de lignes téléphoniques dits \" cordless \". | Vente en gros des équipements de réception des émissions radioélectriques. | Vente en gros des équipements de radio positionnement et/ou radiolocalisation par satellite ainsi que le système de géolocalisation par radio et les dispositifs de positionnement par satellite fonctionnant à travers les réseaux de téléphonie mobile. | Vente en gros des équipements de communication | pouvant servir à la transmission de l'image, son, vidéo et données, par voie satellitaire.",
+    "translation_ar": "البيع بالجملة بمعدات الاتصالات اللاسلكية بجميع النطاقات والإصدارات، ولا سيما: | 1- محطات الاتصالات اللاسلكية للاستعمال الأرضي والجوي والبحري ضمن نطاقات الترددات المنخفضة والمتوسطة والعالية والعالية جداً وفائقة العلو والميكروية (LF وMF وHF وVHF وUHF وSHF)، والعناصر المكونة لوحداتها؛ | 2- محطات الاتصالات اللاسلكية عبر الأقمار الصناعية؛ | 3- محطات وصلات الموجات الميكروية للاتصالات؛ | البيع بالجملة لجميع المعدات القادرة على بث طاقة كهرومغناطيسية في الفضاء الحر ضمن أطياف الترددات الراديوية، بما في ذلك الأجهزة ذات القدرة والمدى المنخفضين، ولا سيما موسعات الخطوط الهاتفية المعروفة باسم الهواتف اللاسلكية (cordless)؛ | البيع بالجملة بمعدات استقبال البث اللاسلكي؛ | البيع بالجملة بمعدات تحديد المواقع و/أو تحديد المواقع الراديوية عبر الأقمار الصناعية، وكذلك أنظمة تحديد المواقع الجغرافية بواسطة الراديو وأجهزة تحديد المواقع عبر الأقمار الصناعية العاملة من خلال شبكات الهاتف النقال؛ | البيع بالجملة بمعدات الاتصال التي يمكن استخدامها لنقل الصور والصوت والفيديو والبيانات عبر الأقمار الصناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305011": {
+    "source_fr": "Commerce de gros de matériels de chantier, grues, engins de génie civil, d'outillage mécanique pour la construction , etc...",
+    "translation_ar": "تجارة الجملة بمعدات الورشات والرافعات وآليات الهندسة المدنية والأدوات الميكانيكية المخصصة للبناء وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305012": {
+    "source_fr": "Commerce de gros d'appareils et instruments médicaux-chirurgicaux : petits outillages et mobiliers médicaux-chirurgicaux, appareils pour fractures, appareils orthopédiques, y compris chaussures orthopédiques, pièces détachées, vêtements spéciaux pour le personnel médical et paramédical.",
+    "translation_ar": "تجارة الجملة بالأجهزة والأدوات الطبية والجراحية، مثل الأدوات والأثاث الطبي والجراحي الصغير وأجهزة معالجة الكسور والأجهزة التقويمية، بما فيها الأحذية التقويمية وقطع الغيار والملابس الخاصة بالمستخدمين الطبيين وشبه الطبيين.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305013": {
+    "source_fr": "Commerce de gros de divers appareils et machines manuels ou mécaniques destinés à tous usages N.D.A. (matériels pour cordonnerie, etc..).",
+    "translation_ar": "تجارة الجملة بمختلف الأجهزة والآلات اليدوية أو الميكانيكية المخصصة لجميع الاستعمالات وغير المصنفة في موضع آخر، مثل معدات إصلاح الأحذية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305014": {
+    "source_fr": "Commerce de gros et de distribution de véhicules de poids léger ou lourd destinés à tout usages à l'exception des véhicules tout terrain à quatre (04) roues motrices de tourisme et utilitaires (y compris vente au détail des vehicules et pièces de rechange).",
+    "translation_ar": "تجارة الجملة وتوزيع المركبات الخفيفة أو الثقيلة المخصصة لجميع الاستعمالات، باستثناء المركبات السياحية والنفعية الخفيفة المخصصة لجميع التضاريس ذات الدفع الرباعي (بما في ذلك البيع بالتجزئة للمركبات وقطع الغيار).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305015": {
+    "source_fr": "Commerce de gros des produits chimiques industriels (minéraux et organiques) , engrais et produits phytosanitaires; | Commerce de gros de matières plastiques sous formes primaires, caoutchouc brut etc... | Commerce de gros de diluants pour les peintures, colles et adhésifs pour papiers peints.",
+    "translation_ar": "تجارة الجملة بالمنتجات الكيميائية الصناعية المعدنية والعضوية والأسمدة ومنتجات الصحة النباتية؛ | تجارة الجملة بالمواد البلاستيكية في أشكالها الأولية والمطاط الخام وغيرها؛ | تجارة الجملة بمذيبات الدهانات والمواد اللاصقة ومواد لصق ورق الجدران.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305016": {
+    "source_fr": "Vente en gros d'appareils, articles et produits, de filtration et d'épuration : des eaux et autres boissons des huiles alimentaires ou minérales ; | des gaz dont filtres pour moteurs . | Vente en gros de tous filtres et articles filtrants pour | tous usages .",
+    "translation_ar": "البيع بالجملة بأجهزة ومصنوعات ومنتجات الترشيح والتنقية للمياه والمشروبات الأخرى والزيوت الغذائية أو المعدنية؛ | البيع بالجملة بأجهزة ترشيح الغازات، بما في ذلك مرشحات المحركات؛ | البيع بالجملة بجميع أنواع المرشحات والمواد المرشحة لمختلف الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305017": {
+    "source_fr": "Vente en gros de tous appareils, équipements, instruments, réactifs et tous autres produits utilisés dans les activités de laboratoire y compris laboratoires de contrôle (analyse physique, chimique et microbiologie); | Vente en gros de toutes verreries de laboratoire .",
+    "translation_ar": "البيع بالجملة بجميع الأجهزة والتجهيزات والأدوات والكواشف وسائر المنتجات المستخدمة في أنشطة المختبرات، بما فيها مختبرات المراقبة (التحاليل الفيزيائية والكيميائية والميكروبيولوجية)؛ | البيع بالجملة بجميع أنواع الزجاجيات المخبرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305018": {
+    "source_fr": "vente en gros de tous matériels, équipements, appareils et articles destinés aux handicapés y compris les pièces détachées, parties, consommables et accessoires.",
+    "translation_ar": "البيع بالجملة بجميع المعدات والتجهيزات والأجهزة والمواد المخصصة للأشخاص ذوي الإعاقة، بما في ذلك قطع الغيار والأجزاء والمواد الاستهلاكية واللوازم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305019": {
+    "source_fr": "Vente en gros d'unités d'incinérations et de toutes les installations annexes.",
+    "translation_ar": "البيع بالجملة بوحدات حرق النفايات وجميع المنشآت والتجهيزات الملحقة بها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305020": {
+    "source_fr": "Vente en gros des systèmes d'exposition pliable, systèmes d'exposition en aluminium ou autres ; | Vente en gros des équipements des stands (mobilier, revêtement du sol, éclairage, etc) ; | Vente en gros de portes affiches, panneaux publicitaires éclairés, panneaux d'affichage électronique, enseignes lumineuses, mobilier, mobilier urbain ; | Vente en gros de systèmes de signalétique (profilés en aluminium plastique) et accessoires ; | Vente en gros de matière première pour la construction de stands (panneaux MDF ou autre matière, aluminium, drop paper, systèmes de guidage, présentoirs PLV, etc) ; | Vente en gros de parties, pièces détachées et accessoires.",
+    "translation_ar": "البيع بالجملة لأنظمة العرض القابلة للطي وأنظمة العرض المصنوعة من الألومنيوم أو غيره؛ | البيع بالجملة بتجهيزات أجنحة العرض، مثل الأثاث وكسوة الأرضيات والإضاءة وغيرها؛ | البيع بالجملة بحوامل الملصقات واللوحات الإشهارية المضيئة ولوحات العرض الإلكترونية واللافتات المضيئة والأثاث والأثاث الحضري؛ | البيع بالجملة بأنظمة التوجيه واللافتات التعريفية المصنوعة من مقاطع الألومنيوم أو البلاستيك ولوازمها؛ | البيع بالجملة بالمواد الأولية لبناء أجنحة العرض، مثل ألواح MDF أو مواد أخرى والألومنيوم وورق العرض وأنظمة التوجيه وحوامل عرض المنتجات في نقاط البيع وغيرها؛ | البيع بالجملة بالأجزاء وقطع الغيار واللوازم.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305021": {
+    "source_fr": "Commerce de gros de cartes post-payées et prépayées (puces de téléphonie mobile) , par les opérateurs titulaires de licences d’établissement et d’exploitation de réseaux de télécommunications ouvert au public : | Commerce de gros de cartes post-payées ; | Commerce de gros de cartes prépayées.",
+    "translation_ar": "تجارة الجملة ببطاقات الدفع اللاحق والمسبق (شرائح الهاتف النقال) من طرف المتعاملين الحاصلين على تراخيص إنشاء واستغلال شبكات الاتصالات المفتوحة للجمهور؛ | تجارة الجملة ببطاقات الدفع اللاحق؛ | تجارة الجملة ببطاقات الدفع المسبق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305022": {
+    "source_fr": "Vente en gros de véhicules légers tout terrain (à 4 roues motrices et débattement des roues supérieur à une hauteur ne pouvant être inférieure à 20 centimètres), dont : | 1- les véhicules en version de tourisme d'un poids total en charge de plus de 1800 Kg; | 2- les véhicules légers tout terrain utilitaires.",
+    "translation_ar": "البيع بالجملة بالمركبات الخفيفة المخصصة لجميع التضاريس (ذات دفع رباعي، وبمسافة حركة للعجلات لا يقل ارتفاعها عن 20 سنتيمتراً)، وتشمل: | 1- المركبات السياحية التي يزيد وزنها الإجمالي وهي محمّلة على 1,800 كلغ؛ | 2- المركبات الخفيفة النفعية المخصصة لجميع التضاريس.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305023": {
+    "source_fr": "Vente en gros de tous matériels et produits liés au domaine de la téléphonie, leurs accessoires et pièces détachées.",
+    "translation_ar": "البيع بالجملة بجميع المعدات والمنتجات المرتبطة بمجال الهاتف، بما في ذلك لوازمها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305024": {
+    "source_fr": "Commerce de gros de cartes magnétiques telles que : les cartes de télévision par satellite, les cartes de crédit bancaire, les cartes d'assurance (chifa) etc.….à l'exception des cartes à puce post-payées et prépayées de téléphonie mobile",
+    "translation_ar": "تجارة الجملة بالبطاقات المغناطيسية، مثل بطاقات التلفزيون عبر الأقمار الصناعية والبطاقات المصرفية وبطاقات التأمين الصحي (شفاء) وغيرها، باستثناء بطاقات شرائح الهاتف النقال للدفع اللاحق والمسبق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305025": {
+    "source_fr": "Vente en gros de matériels de lutte contre l'incendie, tels que les extincteurs, les pompes à incendie (y compris leurs accessoires et pièces détachées); | Vente en gros d'équipements d'extinction et de détection du feu, matériels pour pompiers, équipements pour autopompes et motopompes à incendie, grenades extinctrices etc... (y compris parties, pièces détachées et accessoires); | Vente en gros de tous produits et articles de protection des travailleurs (habillements spécialisés, chaussures, etc…).",
+    "translation_ar": "البيع بالجملة بمعدات مكافحة الحرائق، مثل مطافئ الحريق ومضخات مكافحة الحرائق، بما في ذلك لوازمها وقطع غيارها؛ | البيع بالجملة بتجهيزات إخماد الحرائق وكشفها ومعدات رجال الإطفاء وتجهيزات شاحنات ومضخات مكافحة الحرائق والقنابل المطفئة وغيرها، بما في ذلك الأجزاء وقطع الغيار واللوازم؛ | البيع بالجملة بجميع منتجات ومستلزمات حماية العمال، مثل الملابس المهنية والأحذية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305026": {
+    "source_fr": "Vente en gros de cabines sécurisées à usage bancaire, armoires blindées, coffres forts, conteneurs divers, etc…;",
+    "translation_ar": "البيع بالجملة بالكبائن المؤمنة المخصصة للاستعمال البنكي والخزائن المدرعة والصناديق الحديدية والحاويات المختلفة وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305027": {
+    "source_fr": "Vente en gros de machines pour le traçage routier ; | Vente en gros de matériels de signalisation électronique et accessoires de signalisation (plots directionnels, balises, cônes, panneaux de communication de chantier, plaques et panneaux de rue, clous pour passage piétons, gilets et baudriers de chantier, etc...); | Vente en gros de peinture routière et bille de verre; | Vente en gros d'adhésifs pour la confection des plaques de signalisation, de plaques de signalisation de police, de mobilier urbain, etc",
+    "translation_ar": "البيع بالجملة بآلات تخطيط الطرق؛ | البيع بالجملة بمعدات الإشارات الإلكترونية ولوازم الإشارات، مثل العلامات الاتجاهية والمنارات والأقماع واللوحات الخاصة بالورشات وصفائح وألواح تسمية الشوارع ومسامير ممرات المشاة والسترات والأحزمة العاكسة الخاصة بالورشات وغيرها؛ | البيع بالجملة بدهانات الطرق والكرات الزجاجية العاكسة؛ | البيع بالجملة بالمواد اللاصقة المخصصة لصناعة لوحات الإشارات واللوحات الشرطية والأثاث الحضري وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305028": {
+    "source_fr": "Vente en gros de tous équipements et matériels d'imprimerie y compris leurs accessoires, pièces détachées et consommables ; | Vente en gros de papier destiné à tous usages et autres produits utilisés dans l’imprimerie ; | Vente en gros de tous équipements et matériels de sérigraphie y compris leurs accessoires, pièces détachées et consommables; | Vente en gros de leurs pièces détachées et accessoires ; | Vente en gros de matériels à affranchir y compris leurs fournitures, accessoires et pièces détachées.",
+    "translation_ar": "البيع بالجملة بجميع معدات وتجهيزات الطباعة، بما في ذلك لوازمها وقطع غيارها وموادها الاستهلاكية؛ | البيع بالجملة بالورق المخصص لجميع الاستعمالات وسائر المنتجات المستخدمة في الطباعة؛ | البيع بالجملة بجميع معدات وتجهيزات الطباعة بالشاشة الحريرية، بما في ذلك لوازمها وقطع غيارها وموادها الاستهلاكية؛ | البيع بالجملة بقطع غيارها ولوازمها؛ | البيع بالجملة بمعدات ختم البريد، بما في ذلك لوازمها وملحقاتها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305029": {
+    "source_fr": "Commerce de gros d’équipements de radiocommunications toutes bandes et versions confondues, en particulier : | 1- les stations de radiocommunications (à usage terrestre, aéronautique et maritime) dans les bandes LF, MF, HF, VHF, UHF, SHF et les éléments entrant dans leur unité collective ; | 2- les stations de radiocommunications par satellite ; | 3- les stations de faisceaux hertziens de télécommunications ; | Commerce de gros de tout équipement pouvant rayonner de l’énergie électromagnétique dans l’espace libre des spectres des fréquences radioélectriques, y compris les appareils de faible puissance et de faible portée et notamment les prolongateurs de lignes téléphoniques dits« cordless ».",
+    "translation_ar": "تجارة الجملة بمعدات الاتصالات اللاسلكية بجميع النطاقات والإصدارات، ولا سيما: | 1- محطات الاتصالات اللاسلكية للاستعمال الأرضي والجوي والبحري ضمن نطاقات الترددات المنخفضة والمتوسطة والعالية والعالية جداً وفائقة العلو والميكروية (LF وMF وHF وVHF وUHF وSHF)، والعناصر المكونة لوحداتها؛ | 2- محطات الاتصالات اللاسلكية عبر الأقمار الصناعية؛ | 3- محطات وصلات الموجات الميكروية للاتصالات؛ | تجارة الجملة بجميع المعدات القادرة على بث طاقة كهرومغناطيسية في الفضاء الحر ضمن أطياف الترددات الراديوية، بما في ذلك الأجهزة ذات القدرة والمدى المنخفضين، ولا سيما موسعات الخطوط الهاتفية المعروفة باسم الهواتف اللاسلكية (cordless).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305030": {
+    "source_fr": "Commerce de gros d’équipements de réception des émissions radioélectriques à l’exclusion des équipements domestiques destinés à la réception des émissions publiques radio et télédiffusion ; | Commerce de gros d’équipements de radio positionnement et/ou radiolocalisation par satellite ainsi que le système de géolocalisation par radio et les dispositifs de positionnement par satellite fonctionnant à travers les réseaux de téléphonie mobile ; | Commerce de gros d’équipements de communication pouvant servir à la transmission de l’image, son, vidéo et données, par voie satellitaire (à l’exception les balises de détresse du système COSPAS-SARSAT émettant à 406 mégahertz).",
+    "translation_ar": "تجارة الجملة بمعدات استقبال البث اللاسلكي، باستثناء المعدات المنزلية المخصصة لاستقبال البث الإذاعي والتلفزيوني العمومي؛ | تجارة الجملة بمعدات تحديد المواقع و/أو تحديد المواقع الراديوية عبر الأقمار الصناعية، وكذلك أنظمة تحديد المواقع الجغرافية بواسطة الراديو وأجهزة تحديد المواقع عبر الأقمار الصناعية العاملة من خلال شبكات الهاتف النقال؛ | تجارة الجملة بمعدات الاتصال التي يمكن استخدامها لنقل الصور والصوت والفيديو والبيانات عبر الأقمار الصناعية، باستثناء منارات الاستغاثة التابعة لنظام COSPAS-SARSAT التي تبث على تردد 406 ميغاهرتز.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305031": {
+    "source_fr": "Commerce de gros d’équipements et logiciels d’encryptions.",
+    "translation_ar": "تجارة الجملة بمعدات وبرمجيات التشفير.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305032": {
+    "source_fr": "Commerce de gros de cartes post-payées et prépayées (puces de téléphonie mobile) ; | Commerce de gros de cartes post-payées ; | Commerce de gros de cartes prépayées;",
+    "translation_ar": "تجارة الجملة ببطاقات الدفع اللاحق والمسبق (شرائح الهاتف النقال)؛ | تجارة الجملة ببطاقات الدفع اللاحق؛ | تجارة الجملة ببطاقات الدفع المسبق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305033": {
+    "source_fr": "1) les aéronefs monomoteurs de moins de cinq places | de masse maximale au décollage inférieure ou égale à | 1400 Kg, ou sous forme de kits ; | 2) l’aéronef ultra léger motorisé (U.L.M.) montés | ou sous forme de kits ; | 3) les aérostats libres (montgolfières) ou équipés d’un | système de direction et de propulsion (dirigeables) ; | 4) les deltaplanes ; | 5) les parapentes ainsi que les moteurs portables pour parapente.",
+    "translation_ar": "تجارة الجملة بالتجهيزات الجوية الحساسة، وتشمل: | 1- الطائرات ذات المحرك الواحد التي تقل عن خمسة مقاعد، والتي لا تتجاوز كتلتها القصوى عند الإقلاع 1,400 كلغ، أو التي تُقدَّم في شكل أطقم تركيب؛ | 2- الطائرات فائقة الخفة ذات المحرك (ULM)، المركبة أو المقدمة في شكل أطقم؛ | 3- المناطيد الحرة (مناطيد الهواء الساخن) أو المجهزة بنظام توجيه ودفع (المناطيد الموجهة)؛ | 4- الطائرات الشراعية المثلثة؛ | 5- المظلات الهوائية، وكذلك المحركات المحمولة الخاصة بها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305034": {
+    "source_fr": "Commerce de gros des dispositifs de signalisation lumineuse spécifiques installés ou destinés à être installés sur des véhicules et diffusant une lumière de couleur, bleue, rouge ou orange, en plus des dispositifs normaux, notamment : | 1- les feux spéciaux tournants (gyrophares) ; | 2- les feux spéciaux à éclats ou scintillants ; | 3- les rampes spéciales de signalisation. | Commerce de gros des dispositifs sonores spéciaux (sirènes) installés ou destinés à être installés, en plus des avertisseurs normaux, sur les véhicules des services prévus par le décret exécutif n° 04-381 du 28 novembre 2004, fixant les règles de la circulation routières. | Commerce de gros des dispositifs de signalisation lumineuse d’obstacles routiers.",
+    "translation_ar": "تجارة الجملة بأجهزة الإشارات الضوئية الخاصة التي تُركّب أو تُعدّ للتركيب على المركبات، والتي تصدر ضوءاً بألوان زرقاء أو حمراء أو برتقالية، إضافة إلى أجهزة الإضاءة العادية، ولا سيما: | 1- الأضواء الخاصة الدوارة (المنارات التحذيرية الدوارة)؛ | 2- الأضواء الخاصة الومّاضة أو المتلألئة؛ | 3- القضبان الخاصة للإشارات الضوئية؛ | تجارة الجملة بأجهزة التنبيه الصوتي الخاصة (الصفارات) المخصصة للتركيب على مركبات المصالح المنصوص عليها في المرسوم التنفيذي رقم 04-381 المؤرخ في 28 نوفمبر 2004، المحدد لقواعد حركة المرور، إضافة إلى المنبهات العادية؛ | تجارة الجملة بأجهزة الإشارات الضوئية للعوائق على الطرق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305035": {
+    "source_fr": "Commerce de gros d’équipements de vidéosurveillance fixes, à l’exception de ceux dotés pour la vision nocturne. | Commerce de gros d’équipements de vidéosurveillance transportables.",
+    "translation_ar": "تجارة الجملة بتجهيزات ثابتة للمراقبة بالفيديو، باستثناء التجهيزات المزودة بإمكانات الرؤية الليلية؛ | تجارة الجملة بتجهيزات قابلة للنقل للمراقبة بالفيديو.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305036": {
+    "source_fr": "Commerce de gros d’équipements de contrôles techniques destinés à l’inspection des colis et bagages, aux contrôles des personnes et autres, notamment : | 1- les scanners pour inspection des véhicules, conteneurs, colis et bagages ; | 2- les générateurs portables de rayon X pour inspection de colis suspects ; | 3- les portiques de détection de métaux et autres matières pour contrôle des accès ; | 4 - les détecteurs de métaux portables (à main) ; | 5 - les détecteurs d’explosifs et/ou de drogues ; | 6 - les détecteurs de gaz destinés à des applications propres à l’environnement. | Commerce de gros d’équipements anti-intrusion actifs, comprenant des dispositifs de dissuasion et/ou de neutralisation dangereux ou pouvant le devenir, à l’exclusion de ceux classés par le décret exécutif n° 98-96 du 18 mars1998, modifié et complété, fixant les modalités d’application de l’ordonnance n° 97-06 du | 21 janvier 1997 relative aux matériels de guerre, armes et munitions.",
+    "translation_ar": "تجارة الجملة بمعدات المراقبة التقنية المخصصة لتفتيش الطرود والأمتعة ومراقبة الأشخاص وغيرها، ولا سيما: | 1- أجهزة المسح الضوئي لتفتيش المركبات والحاويات والطرود والأمتعة؛ | 2- مولدات الأشعة السينية المحمولة لتفتيش الطرود المشبوهة؛ | 3- بوابات كشف المعادن والمواد الأخرى لمراقبة الدخول؛ | 4- أجهزة كشف المعادن المحمولة باليد؛ | 5- أجهزة كشف المتفجرات و/أو المخدرات؛ | 6- كواشف الغازات المخصصة للتطبيقات البيئية؛ | تجارة الجملة بمعدات فعالة لمكافحة التسلل، تشمل أجهزة الردع و/أو التعطيل التي قد تكون خطرة أو قد تصبح كذلك، باستثناء المعدات المصنفة بموجب المرسوم التنفيذي رقم 98-96 المؤرخ في 18 مارس 1998، المعدل والمتمم، المحدد لكيفيات تطبيق الأمر رقم 97-06 المؤرخ في 21 يناير 1997 المتعلق بالعتاد الحربي والأسلحة والذخائر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305037": {
+    "source_fr": "Commerce de gros d’équipements de maintien de l’ordre(les menottes, les lampes tactiques, y compris celles adaptables sur les armes, à l’exception des lampes dotées de pointeur laser) ; | Commerce de gros des matériels de protection anti- coups, à l’exception des équipements de protection balistique (anti-balles et éclats), notamment : | 1- les écrans de protection anti-coups y compris les boucliers de maintien de l’ordre de forme concave ou convexe (de capture) ; | 2- les casques et visières de protection anti-coups ; | 3- les effets rigides de protection du corps (haut du corps, coudes et avant-bras, genoux et tibias, moufles, manchettes) ; | 4- les gilets, combinaisons et imperméables anti-coups et objets contendants ; | Commerce de gros des véhicules et engins, non blindés, anti-émeutes, notamment : | 1- les véhicules d’intervention durcis contre le feu et la projection de projectiles ; | 2- les engins dotés de lame-dozer et canon à eau.",
+    "translation_ar": "تجارة الجملة بمعدات حفظ النظام، مثل الأصفاد والمصابيح التكتيكية، بما فيها القابلة للتثبيت على الأسلحة، باستثناء المصابيح المزودة بمؤشر ليزر؛ | تجارة الجملة بمعدات الحماية من الصدمات، باستثناء معدات الحماية الباليستية (ضد الرصاص والشظايا)، ولا سيما: | 1- شاشات الحماية من الصدمات، بما في ذلك الدروع المقعرة أو المحدبة المخصصة لحفظ النظام والاحتواء؛ | 2- الخوذات والواقيات الوجهية المضادة للصدمات؛ | 3- واقيات الجسم الصلبة (للجزء العلوي من الجسم والمرفقين والساعدين والركبتين والساقين والقفازات والأكمام الواقية)؛ | 4- السترات والبدلات والمعاطف الواقية من الصدمات والأدوات الحادة؛ | تجارة الجملة بالمركبات والآليات غير المدرعة المخصصة لمكافحة الشغب، ولا سيما: | 1- مركبات التدخل المعززة لمقاومة الحرائق ورشق المقذوفات؛ | 2- الآليات المزودة بشفرة جرافة ومدفع مائي.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305038": {
+    "source_fr": "Commerce de gros de calèches.",
+    "translation_ar": "تجارة الجملة بالعربات التي تجرها الخيول.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305039": {
+    "source_fr": "Commerce de gros d’équipements et matériels autres que les équipements sensibles.",
+    "translation_ar": "تجارة الجملة بالتجهيزات والمعدات غير المصنفة ضمن التجهيزات الحساسة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305040": {
+    "source_fr": "Distribution en gros de puces post-payées et prépayées (puces de téléphonie mobile) : | Distribution en gros de puces post-payées ; | Distribution en gros de puces prépayées.",
+    "translation_ar": "التوزيع بالجملة لشرائح الهاتف النقال للدفع اللاحق والمسبق؛ | التوزيع بالجملة لشرائح الدفع اللاحق؛ | التوزيع بالجملة لشرائح الدفع المسبق.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305041": {
+    "source_fr": "Commerce de gros de matériels, équipements liés au domaine de l’énergie solaire, électrique et l’énergie de différentes origines.",
+    "translation_ar": "تجارة الجملة بالمعدات والتجهيزات المرتبطة بمجالات الطاقة الشمسية والكهربائية والطاقة من مختلف المصادر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305042": {
+    "source_fr": "Commerce de gros de pompes destinées à tout usage.",
+    "translation_ar": "تجارة الجملة بالمضخات المخصصة لجميع الاستعمالات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "305043": {
+    "source_fr": "vente en gros de systèmes d’aéronefs sans pilote à bord ; | vente en gros les pièces détachées et les accessoires des systèmes d’aéronefs sans pilote à bord ; | vente en gros de produits, des équipements et des moyens liés aux systèmes d’aéronefs sans pilote à bord.",
+    "translation_ar": "البيع بالجملة لأنظمة الطائرات دون طيار؛ | البيع بالجملة لقطع غيار أنظمة الطائرات دون طيار ولوازمها؛ | البيع بالجملة بالمنتجات والتجهيزات والوسائل المرتبطة بأنظمة الطائرات دون طيار.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
