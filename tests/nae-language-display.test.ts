@@ -42,7 +42,7 @@ test("Arabic search matches translated activity content", () => {
 test("French search continues to match original French activity content", () => {
   const activity = sector1.find((item) => item.code === "101101") as NAEActivity | undefined;
   assert.ok(activity);
-  const results = searchNAE(createNAESearchIndex([activity], "fr"), "restauration des sols");
+  const results = searchNAE(createNAESearchIndex([activity], "fr"), "construction des banquettes");
   assert.equal(results.length, 1);
   assert.equal(results[0].activity.code, "101101");
   assert.equal(results[0].match.field, "contenue_fr");
