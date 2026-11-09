@@ -28,7 +28,7 @@ const referencesConfig = referencesMap as {
 };
 const referencesDict = referencesConfig as Record<string, ReferenceCodeEntry>;
 function normalizeReferenceSource(value: string): string {
-  return value.trim().replace(/\\s+/gu, " ");
+  return value.trim().replace(/\s+/gu, " ");
 }
 const normReferencesMap: Record<string, string> = {};
 for (const [source, entry] of Object.entries(referencesConfig.by_source ?? {})) {
