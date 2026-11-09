@@ -55,7 +55,7 @@ Index file plus maps under `data/nae/gap-translations/`. Holds **informational**
 |---|---|
 | `tutelle_fr` → Arabic | Complete (58 exact source strings) |
 | `type_autorisation_fr` → Arabic | Complete (17 exact source strings) |
-| `accessoires_fr` → Arabic | Partial (643/905 records; exact, normalized, and line-wrap-safe source phrase matching) |
+| `accessoires_fr` → Arabic | Partial (723/905 records; exact, normalized, and line-wrap-safe source phrase matching) |
 | `references_texte_fr` missing French (code `607004`) | Filled as informational French; Arabic source cell preserved |
 | `#NOM?` labels | Preserved; no invented replacements |
 | `contenue_fr` → Arabic | 18 source-bound reviewed translations; the previous 105 code-keyed entries are quarantined because some were attached to unrelated source descriptions |
@@ -71,10 +71,13 @@ The active `contenue-reviewed.json` contains 18 Arabic descriptions paired with 
 
 Current measured coverage:
 - Arabic activity-content translations: 41 / 2,136.
-- Arabic accessory translations: 643 / 905 records.
+- Arabic accessory translations: 723 / 905 records.
 - Arabic tutelle translations: 379 / 379 populated source records.
 - Arabic authorization-type translations: 379 / 379 populated source records.
 - Arabic legal-reference source text preserved: 1 / 379 populated source records.
 - Valid source labels: 2,134 Arabic and 2,133 French; five language-label cells contain `#NOM?` and remain untouched.
 
 Run `bun run nae:audit-translations` to recalculate coverage and validate every active content translation against its paired source string.
+
+
+Updated overlay audit (2026-11-09): the accessory phrase dictionary contains 244 source phrases and resolves 723 of 905 populated accessory records (79.9%). The remaining 182 records are kept untranslated until their full source wording is reviewed.

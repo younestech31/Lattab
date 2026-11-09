@@ -73,7 +73,7 @@ The 2,136-record source CSV has 2,134 usable Arabic labels and 2,133 usable Fren
 |---|---:|
 | `tutelle_fr` | 379 / 379 |
 | `type_autorisation_fr` | 379 / 379 |
-| `accessoires_fr` | 643 / 905 |
+| `accessoires_fr` | 723 / 905 |
 | `contenue_fr` | 41 / 2,136 |
 | French-only references with preserved Arabic source | 1 / 379 |
 
@@ -127,4 +127,7 @@ Per LATTAB institutional data retention guidelines:
 
 ## Updated accessory coverage (2026-11-09)
 
-The source-phrase dictionary now resolves 643 of 905 non-empty accessory records. Wrapped phrases are reassembled only when the complete French wording matches a reviewed dictionary phrase. The remaining 262 records remain untranslated rather than guessed.
+The source-phrase dictionary now resolves 643 of 905 non-empty accessory records. Wrapped phrases are reassembled only when the complete French wording matches a reviewed dictionary phrase. The remaining 182 records remain untranslated rather than guessed.
+
+
+The current source-matched accessory overlay contains 244 French source phrases and resolves 723 / 905 records (79.9%). The remaining 182 records are not represented as translated.

@@ -16,7 +16,7 @@ This overlay adds reviewed translations without rewriting the source snapshot un
 | Field | Source records | Active Arabic translations |
 |---|---:|---:|
 | Activity content | 2,136 | 41 |
-| Accessories | 905 | 643 |
+| Accessories | 905 | 723 |
 | Tutelle | 379 | 379 |
 | Authorization type | 379 | 379 |
 | References | 379 | 1 |
@@ -28,3 +28,6 @@ The five invalid official-language label cells containing `#NOM?` remain unchang
 The former 105-entry code-keyed content dictionary contained code/source mismatches and was moved to `contenue-unverified-drafts.json`. The active map is `contenue-reviewed.json`, which stores both `source_fr` and `translation_ar` for each reviewed activity. A stale or mismatched French source causes the Arabic overlay to return `null`.
 
 Run `bun run nae:audit-translations` to verify coverage and source binding.
+
+
+Current source-matched accessory coverage: 244 French source phrases resolve 723 of 905 populated records (79.9%). The remaining 182 are left untranslated rather than guessed.
