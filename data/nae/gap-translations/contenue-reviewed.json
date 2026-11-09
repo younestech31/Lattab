@@ -607,6 +607,206 @@
     "translation_ar": "تصنيع الآلات والمعدات المخصصة للصناعات الغذائية، بما فيها أجهزة وأوعية صناعة الألبان الصناعية والمجففات المخصصة للصناعات الغذائية وأفران المخابز؛ | تصنيع الآلات والأجهزة المخصصة لتجهيز المطابخ المهنية؛ | تصنيع الآلات والأجهزة المخصصة لصناعة التبغ وأعواد الثقاب؛ | تصنيع الآلات والمعدات المخصصة للصناعات الكيميائية والصيدلانية؛ | تصنيع الآلات والمعدات المخصصة لصناعة المطاط والمواد البلاستيكية؛ | تصنيع الآلات والمعدات المخصصة لصناعة الجلود (الدباغة ومعالجة الجلود الدقيقة)؛ | تصنيع معدات توضيب السوائل والمنتجات الغذائية والمنتجات الكيميائية؛ | تصنيع معدات معالجة المياه (أجهزة تليين المياه)؛ | تصنيع الأجزاء وقطع الغيار الخاصة بهذه الآلات والمعدات.",
     "review_status": "assistant-linguistic-review; independent human verification pending"
   },
+  "105204": {
+    "source_fr": "Fabrication de machines à coudre industrielle et domestiques (y.c parties et pièces détachées); | Fabrication d'accessoires pour machines à coudre (aiguilles, cannettes, etc ...); | Fabrication de machines et matériels pour l'industrie de la chaussure (y.c emporte-pièce),leurs parties et pièces détachées.",
+    "translation_ar": "تصنيع آلات الخياطة الصناعية والمنزلية، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع لوازم آلات الخياطة (الإبر والمكوكات وغيرها)؛ | تصنيع الآلات والمعدات المخصصة لصناعة الأحذية، بما في ذلك قوالب القص وأجزاؤها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105205": {
+    "source_fr": "Fabrication de machines pour l'industrie textile : matériels pour la préparation des fibres, matériel de filature, métiers à tisser et de bonneterie, y compris machines à tricoter domestiques, y compris les parties et pièces détachées de ces matériels; | Fabrication de matériels pour l'industrie de finition des textiles, (matériel déblanchissement, de teinture, impression et apprêts), y compris parties et pièces détachées; | Fabrication de matériel de blanchisserie industrielle et de nettoyage à sec (non compris machines à laver domestiques), leurs parties et pièces détachées.",
+    "translation_ar": "تصنيع آلات صناعة النسيج، بما فيها معدات تحضير الألياف والغزل وآلات النسيج والحياكة، بما في ذلك آلات الحياكة المنزلية وأجزاؤها وقطع غيارها؛ | تصنيع معدات تشطيب المنسوجات (معدات التبييض والصباغة والطباعة والتجهيز)، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع معدات المغاسل الصناعية والتنظيف الجاف (باستثناء الغسالات المنزلية)، بما في ذلك أجزاؤها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105206": {
+    "source_fr": "Fabrication de machines pour la production de pâte à papier et carton (y compris séchoirs); | Fabrication de machines pour l'imprimerie: machines pour le façonnage, la transformation et la reliure, machines pour impression, composition, clicherie et reproduction de plans; | Fabrication de parties, pièces détachées et accessoires pour l'industrie du papier et l'imprimerie (caractères, clichets)",
+    "translation_ar": "تصنيع آلات إنتاج عجينة الورق والكرتون، بما في ذلك المجففات؛ | تصنيع آلات الطباعة: آلات تشكيل الورق وتحويله وتجليده، وآلات الطباعة والتنضيد وصناعة ألواح الطباعة واستنساخ المخططات؛ | تصنيع الأجزاء وقطع الغيار واللوازم المخصصة لصناعة الورق والطباعة، مثل الحروف وألواح الطباعة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105207": {
+    "source_fr": "Fabrication et montage d'instruments et d'appareils mécaniques de précision (de métrologie, d'optique, de prothèses, médicaux etc...); | Rectification, ajustage de ces instruments (y compris réparation).",
+    "translation_ar": "تصنيع وتجميع الأجهزة والأدوات الميكانيكية الدقيقة (أجهزة القياس والبصريات والأطراف الاصطناعية والأجهزة الطبية وغيرها)؛ | تجليخ هذه الأجهزة وضبطها ومواءمتها، بما في ذلك إصلاحها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105208": {
+    "source_fr": "Usinage de pièces mécaniques par enlèvement du métal (sauf décolletage); | Fabrication d'outillage spécialisé divers sur plan en petite série; | Reconstitution de matériel divers et de machines outils d'usine (y compris entretien, réparation); | Reconstitution de machines spéciales sur idée ou sur plan; | Fabrication de moules et coquilles (pour verre, métaux, matières plastiques, caoutchouc) et de modèles en toutes matières (sauf en fonte).",
+    "translation_ar": "تشغيل القطع الميكانيكية بإزالة المعدن، باستثناء الخراطة الدقيقة؛ | تصنيع أدوات وتجهيزات متخصصة متنوعة حسب المخططات وبكميات محدودة؛ | إعادة تأهيل معدات متنوعة وآلات أدوات المصانع، بما في ذلك صيانتها وإصلاحها؛ | إعادة تصنيع آلات خاصة بناءً على فكرة أو مخطط؛ | تصنيع القوالب والنماذج (للزجاج والمعادن والمواد البلاستيكية والمطاط) وصنع النماذج من مختلف المواد، باستثناء الحديد الزهر.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105209": {
+    "source_fr": "Fabrication de roulements et buttés et leurs parties et pièces détachées (roulements à billes, à aiguilles et rouleaux, etc...).",
+    "translation_ar": "تصنيع المحامل ومحامل الدفع وأجزائها وقطع غيارها (المحامل الكروية والإبرية والأسطوانية وغيرها).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105210": {
+    "source_fr": "Fabrication de ressorts (à boudin, à lames etc...).",
+    "translation_ar": "تصنيع النوابض، مثل النوابض الحلزونية والصفائحية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105211": {
+    "source_fr": "Fabrication de chaînes mécaniques (chaînes de transmission etc...); | Fabrication de chaînes et chaînettes à maillons soudes.",
+    "translation_ar": "تصنيع السلاسل الميكانيكية، مثل سلاسل نقل الحركة وغيرها؛ | تصنيع السلاسل والسلاسل الصغيرة ذات الحلقات الملحومة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105212": {
+    "source_fr": "Fabrication d'outils et d'outillage à main: (perceuses, meules, pinces, marteaux, ciseaux, cisailles etc...).",
+    "translation_ar": "تصنيع الأدوات والعدد اليدوية المعدنية، مثل المثاقب وأحجار الجلخ والكماشات والمطارق والمقصات والأزاميل وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105213": {
+    "source_fr": "Fabrication de matériels et équipements destinés à l'aviculture et l’apiculture et préparation d’aliments et alimentation pour les animaux. | Fabrication de matériels pour le nettoyage, tri ou classement des œufs et fruits.",
+    "translation_ar": "تصنيع المعدات والتجهيزات المخصصة لتربية الدواجن والنحل، وتحضير أغذية الحيوانات وأعلافها؛ | تصنيع معدات تنظيف البيض والفواكه وفرزها وتصنيفها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105214": {
+    "source_fr": "Fabrication de tous matériels, équipements et objets servant à l'élevage et à l'entretien des animaux domestiques ; | Fabrication de produits d’hygiène pour animaux.",
+    "translation_ar": "تصنيع جميع المعدات والتجهيزات والأدوات المستخدمة في تربية الحيوانات المنزلية والعناية بها؛ | تصنيع منتجات النظافة المخصصة للحيوانات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105215": {
+    "source_fr": "Fabrication d’équipements destinés à la pêche maritime et à l'aquaculture.",
+    "translation_ar": "تصنيع المعدات المخصصة للصيد البحري وتربية الأحياء المائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105216": {
+    "source_fr": "la fabrication de machines automatiques de vente de produits.",
+    "translation_ar": "تصنيع آلات البيع الآلية للمنتجات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105301": {
+    "source_fr": "Fabrication de navires pour le transport des passagers et des marchandises (y compris bateaux spéciaux et remorqueurs); | Installation de moteurs, chaudières et turbines de propulsion pour bateaux (y compris pièces détachées et maintenance); | Fabrication d'appareils de bord non électriques pour bateaux; | Fabrication de bâtiments de guerre; | Fabrication de bateaux de plaisance et de sport; | Fabrication de chalutiers et autres bateaux de pêche; | Fabrication d'engins flottants divers.",
+    "translation_ar": "تصنيع السفن المخصصة لنقل المسافرين والبضائع، بما في ذلك السفن الخاصة والقاطرات البحرية؛ | تركيب محركات السفن وغلاياتها وتوربينات دفعها، بما في ذلك قطع الغيار والصيانة؛ | تصنيع أجهزة السفن غير الكهربائية؛ | تصنيع السفن الحربية؛ | تصنيع سفن النزهة والرياضة؛ | تصنيع سفن الجر وغيرها من سفن الصيد؛ | تصنيع مختلف المعدات والمنشآت العائمة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105302": {
+    "source_fr": "Toutes activités d'entretien et réparation de navires sur chantiers navals ou à quai; | Tous travaux de renflouement, de démolition de navires (N.C réparations de barques et de bateaux de plaisance); | Brossage de coques et tous travaux subaquatiques.",
+    "translation_ar": "جميع أنشطة صيانة السفن وإصلاحها في أحواض بناء السفن أو على الأرصفة؛ | جميع أشغال تعويم السفن الغارقة وتفكيكها، باستثناء إصلاح القوارب وسفن النزهة؛ | تنظيف هياكل السفن بالفرشاة وجميع الأعمال تحت الماء.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105303": {
+    "source_fr": "Construction et réparations à bord de navires: peinture, électricité, menuiserie, plomberie etc... (travaux de sous traitance)",
+    "translation_ar": "إنجاز أعمال البناء والإصلاح على متن السفن، مثل الطلاء والكهرباء والنجارة والسباكة وغيرها، في إطار المناولة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105304": {
+    "source_fr": "Tous travaux sous marins dont pose, installation, réparation de conduites ou pipe line sous marins destinés à l'acheminement de tous produits liquides et gazeux; | Pose et maintenance de câbles sous marins; | Tous travaux sur les installations pétrolières offshore; | Tous travaux d'aménagement des ports. | Tous travaux sous marins, marins et fluviaux | Réalisation d'infrastructures portuaires et constructions similaires ; | Dragage des ports, repéchage des carcasses et d'embarcations immergées ,",
+    "translation_ar": "جميع الأشغال تحت الماء، بما فيها وضع وتركيب وإصلاح الأنابيب وخطوط الأنابيب البحرية المخصصة لنقل مختلف المنتجات السائلة والغازية؛ | وضع الكابلات البحرية وصيانتها؛ | جميع الأشغال المتعلقة بالمنشآت النفطية البحرية؛ | جميع أشغال تهيئة الموانئ؛ | جميع الأشغال تحت الماء والبحرية والنهرية؛ | إنجاز البنى التحتية المينائية والمنشآت المماثلة؛ | تجريف الموانئ وانتشال الهياكل وحطام السفن والقوارب الغارقة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105401": {
+    "source_fr": "Construction de Véhicule de tourisme, Véhicules utilitaires légers, véhicules industriels et motocycles.",
+    "translation_ar": "تصنيع مركبات السياحة والمركبات النفعية الخفيفة والمركبات الصناعية والدراجات النارية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105402": {
+    "source_fr": "Construction de châssis, remorques et semi remorques ( y compris roulottes habitables, caravanes, remorques de camping); | Fabrication de carrosserie de voitures, autobus et carrosserie de véhicules utilitaires, spéciaux et pour tracteurs non agricoles; | Construction de bennes et plateaux. | Construction et aménagement des moyens de transport sans moteurs (charettes, bicyclettes, ect).",
+    "translation_ar": "تصنيع هياكل الشاحنات والمقطورات ونصف المقطورات، بما في ذلك المقطورات السكنية والقوافل ومقطورات التخييم؛ | تصنيع هياكل السيارات والحافلات وهياكل المركبات النفعية والخاصة والمخصصة للجرارات غير الزراعية؛ | تصنيع صناديق الشاحنات والمنصات؛ | تصنيع وتهيئة وسائل النقل غير المزودة بمحركات، مثل العربات والدراجات الهوائية وغيرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105403": {
+    "source_fr": "Fabrication et montage des composants d'équipements et pièces détachées de moteurs d'autos et tracteurs (démarreurs, organes de transmission, carburateurs, pompes, etc...); | Fabrication et montage des composants de radiateurs pour autos et tracteurs; | Fabrication et montage des composants de parties, pièces détachées et équipements pour autos et tracteurs : .équipement électrique (tableaux de bord, phares etc...); .équipement de carrosserie (ferrures, serrures, bouchons de réservoirs, carcasse et sièges, essuie-glace etc...); .équipement de châssis(organes de direction, ressorts, amortisseurs, essieux, organes de freinage etc...); .outillage spécialisé de bord; .siègerie de véhicules.",
+    "translation_ar": "تصنيع وتجميع مكونات تجهيزات وقطع غيار محركات السيارات والجرارات، مثل بادئات التشغيل وأجهزة نقل الحركة والمكربنات والمضخات وغيرها؛ | تصنيع وتجميع مكونات مشعات السيارات والجرارات؛ | تصنيع وتجميع مكونات الأجزاء وقطع الغيار والتجهيزات الخاصة بالسيارات والجرارات، وتشمل: التجهيزات الكهربائية (لوحات القيادة والمصابيح وغيرها)؛ وتجهيزات الهيكل (التركيبات المعدنية والأقفال وأغطية الخزانات والهياكل والمقاعد وماسحات الزجاج وغيرها)؛ وتجهيزات الشاسيه (أجهزة التوجيه والنوابض وممتصات الصدمات والمحاور وأجهزة الكبح وغيرها)؛ والعدد المتخصصة المحمولة على متن المركبة؛ ومقاعد المركبات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105404": {
+    "source_fr": "Rechapage non industriel de pneus.",
+    "translation_ar": "إعادة تجديد الإطارات بطريقة غير صناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105405": {
+    "source_fr": "Fabrication de cycles.",
+    "translation_ar": "تصنيع الدراجات الهوائية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105406": {
+    "source_fr": "Fabrication de pièces détachées pour cycles et motocycles; | Fabrication de moteurs pour cycles et motocycles.",
+    "translation_ar": "تصنيع قطع الغيار واللوازم الخاصة بالدراجات الهوائية والدراجات النارية؛ | تصنيع محركات الدراجات الهوائية والدراجات النارية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105407": {
+    "source_fr": "Construction d'aérostats (ballons, dirigeables etc...); | Construction d'hélicoptères; | Construction d'aérodynes de combat; | Construction d'autres aérodynes; | Construction d'équipements et d'accessoires pour aérodynes (y compris les sièges).",
+    "translation_ar": "تصنيع المناطيد (البالونات والمناطيد الموجهة وغيرها)؛ | تصنيع المروحيات؛ | تصنيع الطائرات القتالية؛ | تصنيع الطائرات الأخرى؛ | تصنيع تجهيزات ولوازم الطائرات، بما في ذلك المقاعد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105408": {
+    "source_fr": "Construction de moteurs d'avions, y compris leurs parties et pièces détachées; | Construction de turbopropulseurs, y compris leurs parties et pièces détachées; | Construction de réacteurs, y compris leurs parties et pièces détachées.",
+    "translation_ar": "تصنيع محركات الطائرات، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع المحركات التوربينية المروحية، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع المحركات النفاثة، بما في ذلك أجزاؤها وقطع غيارها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105409": {
+    "source_fr": "Construction de matériel de pilotage et de navigation aériens , de contrôle et de régularisation de groupes moto propulseurs; | Construction de matériel de servitude de bord etc..; | Construction et installation d'armement de bord; | Fabrication de parachutes et autres éléments de protection.",
+    "translation_ar": "تصنيع معدات قيادة الطائرات وملاحتها، ومعدات مراقبة مجموعات المحركات وأجهزة تنظيمها؛ | تصنيع معدات الخدمة والمساندة على متن الطائرات وغيرها؛ | تصنيع وتركيب تجهيزات التسليح على متن الطائرات؛ | تصنيع المظلات وغيرها من عناصر الحماية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105410": {
+    "source_fr": "Construction et installation de matériels électriques et radioélectriques spéciaux de bord des avions.",
+    "translation_ar": "تصنيع وتركيب المعدات الكهربائية والإلكترونية/الراديوية الخاصة بالطائرات.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105411": {
+    "source_fr": "Construction et installation de matériel de terrain : catapulte et engins de lancement similaires; | Construction et installation d'appareils d'entraînement (pilotage au sol , simulateur de conduite terrestre et navale ) .",
+    "translation_ar": "تصنيع وتركيب معدات الميدان، مثل المقاليع وأجهزة الإطلاق المماثلة؛ | تصنيع وتركيب أجهزة التدريب، مثل أجهزة التدريب على القيادة الأرضية ومحاكيات قيادة المركبات البرية والبحرية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105412": {
+    "source_fr": "Construction de matériels divers d'essais aéronautiques.",
+    "translation_ar": "تصنيع مختلف معدات الاختبارات الخاصة بالطيران.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105413": {
+    "source_fr": "Construction d'engins spéciaux destinés à tous travaux et usages industriels.",
+    "translation_ar": "تصنيع الآليات الخاصة المخصصة لمختلف الأشغال والاستعمالات الصناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105414": {
+    "source_fr": "Fabrication d'armes de guerre, y compris leurs parties et pièces détachées; | Fabrication de munitions de guerre; | Fabrication d'armes blanches et leurs parties.",
+    "translation_ar": "تصنيع الأسلحة الحربية، بما في ذلك أجزاؤها وقطع غيارها؛ | تصنيع الذخائر الحربية؛ | تصنيع الأسلحة البيضاء وأجزائها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105415": {
+    "source_fr": "Fabrication d'armes de chasse et de défense, leurs parties et pièces détachées; | Fabrication de munitions de chasse.",
+    "translation_ar": "تصنيع أسلحة الصيد والدفاع وأجزائها وقطع غيارها؛ | تصنيع ذخائر الصيد.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105416": {
+    "source_fr": "Rechapage industriel de pneus",
+    "translation_ar": "إعادة تجديد الإطارات بطريقة صناعية.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105417": {
+    "source_fr": "Production de la plaque d'immatriculation avant son installation (à l’exception des plaques d'immatriculation des véhicules relevant du ministère de la défense nationale et de la direction générale de la sûreté nationale).",
+    "translation_ar": "تصنيع لوحات ترقيم المركبات قبل تركيبها، باستثناء لوحات ترقيم المركبات التابعة لوزارة الدفاع الوطني والمديرية العامة للأمن الوطني.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105418": {
+    "source_fr": "Fabrication d’équipements sensibles aéronautiques, notamment : | 1-les aéronefs monomoteurs de moins de cinq places de masse maximale au décollage inférieure ou égale à 1400 Kg, ou sous forme de kits ; | 2- les aéronefs ultra légers motorisés (U.L.M.) montés ou sous forme de kits ; 3- les aérostats libres (montgolfières) ou équipés d’un système de direction et de propulsion (dirigeables) ; | 4-les deltaplanes ; | 5-les parapentes ainsi que les moteurs portables pour parapente ;",
+    "translation_ar": "تصنيع التجهيزات الجوية الحساسة، ولا سيما: | 1- الطائرات ذات المحرك الواحد التي تقل عن خمسة مقاعد، والتي لا تتجاوز كتلتها القصوى عند الإقلاع 1,400 كلغ، أو التي تُقدَّم في شكل أطقم تركيب؛ | 2- الطائرات فائقة الخفة ذات المحرك (ULM)، المركبة أو المقدمة في شكل أطقم؛ | 3- المناطيد الحرة (مناطيد الهواء الساخن) أو المجهزة بنظام توجيه ودفع (المناطيد الموجهة)؛ | 4- الطائرات الشراعية المثلثة (Deltaplanes)؛ | 5- المظلات الهوائية (Parapentes)، وكذلك المحركات المحمولة الخاصة بها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105419": {
+    "source_fr": "Fabrication de véhicules légers tout terrain (à 4 roues motrices et débattement des roues supérieur à une hauteur ne pouvant être inférieure à 20 centimètres), dont : | 1- les véhicules en version de tourisme d’un poids total en charge de plus de 1800 Kg ; | 2- les véhicules légers tout terrain utilitaires.",
+    "translation_ar": "تصنيع المركبات الخفيفة المخصصة لجميع التضاريس (ذات دفع رباعي، وبمسافة حركة للعجلات لا يقل ارتفاعها عن 20 سنتيمتراً)، وتشمل: | 1- المركبات السياحية التي يزيد وزنها الإجمالي وهي محمّلة على 1,800 كلغ؛ | 2- المركبات الخفيفة النفعية المخصصة لجميع التضاريس.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105420": {
+    "source_fr": "Fabrication de bennes tasseuses.",
+    "translation_ar": "تصنيع شاحنات جمع النفايات الضاغطة.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105421": {
+    "source_fr": "Production, maintenance et réparation d’hélicoptères et leurs éléments.",
+    "translation_ar": "إنتاج المروحيات وصيانتها وإصلاحها وإنتاج عناصرها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105422": {
+    "source_fr": "Fabrication de composants et accessoires de kit GPL.",
+    "translation_ar": "تصنيع مكونات ولوازم أطقم غاز البترول المسال (GPL).",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
+  "105423": {
+    "source_fr": "Fabrication et maintenance d’avions, montage et assemblage de ses composants , et d’équipements et de matériels et pièces détachées de maintenance..",
+    "translation_ar": "تصنيع الطائرات وصيانتها، وتركيب وتجميع مكوناتها، وتصنيع تجهيزات ومعدات وقطع غيار الصيانة الخاصة بها.",
+    "review_status": "assistant-linguistic-review; independent human verification pending"
+  },
   "601101": {
     "source_fr": "Etablissement qui offre en location des unités d’hébergement, sous forme de chambres et éventuellement de suites, situées dans un immeuble et/ou dans des structures pavillonnaires. | Il peut également assurer des services de restauration et d’animation. | Les hôtels sont classés en cinq (5) catégories : | 1ère catégorie : 5 Etoiles ; | 2ème catégorie : 4 Etoiles ; | 3ème catégorie : 3 Etoiles ; | 4ème catégorie : 2 Etoiles ; | 5ème catégorie : 1 Etoile.",
     "translation_ar": "مؤسسة توفر وحدات إيواء للإيجار على شكل غرف وأجنحة عند الاقتضاء، تقع في مبنى و/أو في هياكل على شكل أجنحة. | ويمكنها أيضًا تقديم خدمات الإطعام والتنشيط. | تصنف الفنادق إلى خمس (5) فئات: | الفئة الأولى: 5 نجوم؛ | الفئة الثانية: 4 نجوم؛ | الفئة الثالثة: 3 نجوم؛ | الفئة الرابعة: نجمتان؛ | الفئة الخامسة: نجمة واحدة."
