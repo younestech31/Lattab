@@ -90,7 +90,7 @@ test("all invalid source labels are explicitly preserved and recorded", () => {
 
 test("the current public-source reconciliation matches the bundled snapshot", () => {
   const reconciliation = manifest.source_reconciliation;
-  assert.equal(Object.hasOwn(manifest, "reconciliation"), false);
+  assert.equal("reconciliation" in manifest, false);
   assert.equal(reconciliation.comparison_status, "matched");
   assert.equal(reconciliation.checked_at, "2026-11-11");
   assert.equal(reconciliation.upstream_record_count, 2136);

@@ -75,10 +75,10 @@ if (activities.some((activity) =>
 }
 
 const sectorCounts = sortedRecord(
-  sectors.map((sector) => [String(sector), activities.filter((activity) => activity.sector_code === String(sector)).length]),
+  sectors.map((sector): [string, number] => [String(sector), activities.filter((activity) => activity.sector_code === String(sector)).length]),
 );
 const rawStatusCounts = sortedRecord(
-  [...new Set(activities.map((activity) => activity.status))].map((status) => [
+  [...new Set(activities.map((activity) => activity.status))].map((status): [string, number] => [
     status,
     activities.filter((activity) => activity.status === status).length,
   ]),
