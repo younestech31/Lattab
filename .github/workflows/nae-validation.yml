@@ -87,6 +87,6 @@ jobs:
             assert.equal(manifest.record_count, 2);
             assert.equal(manifest.sector_counts["1"], 2);
             assert.equal(sector.length, 2);
-            assert.equal(manifest.field_coverage.contenue_fr, 2);
+            assert.equal(manifest.field_coverage.contenue_fr, 2);\n            assert.equal(manifest.field_coverage.label_en, 1);\n            assert.equal(manifest.invalid_source_labels.length, 1);\n            assert.equal(manifest.invalid_source_labels[0].field, "label_en");
             assert.equal(manifest.field_coverage.accessoires_fr, 1);
           '

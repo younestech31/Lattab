@@ -1,3 +1,3 @@
 code;label_fr;label_en;label_ar;status;sector_code;group_code;subgroup_code;tutelle_fr;type_autorisation_fr;contenue_fr;accessoires_fr;references_texte_fr
-123456;Activité de test A;Test activity A;نشاط تجريبي أ;raw-test;1;123;1234;;;"Description avec ; séparateur";;
+123456;Activité de test A;#NOM?;نشاط تجريبي أ;raw-test;1;123;1234;;;"Description avec ; séparateur";;
 123457;Activité de test B;Test activity B;نشاط تجريبي ب;raw-test;1;123;1234;Autorité exemple;Autorisation exemple;Deuxième description;Annexe A;Référence de test
