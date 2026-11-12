@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { PDFDocument } from 'pdf-lib';
 import Link from 'next/link';
 import { useLang } from '@/lib/i18n';
 import { FormLocale, FormFieldCoord } from '@/lib/forms/types';
@@ -125,18 +126,69 @@ export default function PrecisionCoordinateAuditor() {
     return selectedLang === 'ar' ? currentForm.templateAr : currentForm.templateFr;
   }, [currentForm, selectedLang]);
 
-  // Standard A4 dimensions (595.28 x 841.89 pt = 210.0 x 297.0 mm)
-  const pageDim = useMemo(() => ({ widthPt: 595.28, heightPt: 841.89 }), []);
+  // Read the dimensions from the selected PDF itself. Never assume that every
+  // official template is an identical A4 page.
+  const [templatePageDimensions, setTemplatePageDimensions] = useState<
+    Array<{ widthPt: number; heightPt: number }>
+  >([]);
+  const [templateLoadState, setTemplateLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
 
-  // Audited fields
+  useEffect(() => {
+    let cancelled = false;
+    setTemplateLoadState('loading');
+    setTemplatePageDimensions([]);
+
+    const loadTemplateDimensions = async () => {
+      try {
+        const response = await fetch(activeTemplateUrl);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const pdfBytes = await response.arrayBuffer();
+        const pdf = await PDFDocument.load(pdfBytes);
+        const dimensions = pdf.getPages().map((page) => ({
+          widthPt: page.getWidth(),
+          heightPt: page.getHeight(),
+        }));
+
+        if (!cancelled) {
+          setTemplatePageDimensions(dimensions);
+          setTemplateLoadState('ready');
+        }
+      } catch {
+        if (!cancelled) {
+          setTemplateLoadState('error');
+        }
+      }
+    };
+
+    void loadTemplateDimensions();
+    return () => {
+      cancelled = true;
+    };
+  }, [activeTemplateUrl]);
+
+  // Bounds are checked against the actual dimensions of the selected PDF page.
   const auditedFields = useMemo(() => {
-    return activeFields.map((f) => auditFormField(f, pageDim));
-  }, [activeFields, pageDim]);
+    if (templateLoadState !== 'ready') return [];
+    return activeFields.map((field) => {
+      const pageDimensions = templatePageDimensions[field.page - 1] ?? {
+        widthPt: 0,
+        heightPt: 0,
+      };
+      return auditFormField(field, pageDimensions);
+    });
+  }, [activeFields, templatePageDimensions, templateLoadState]);
 
   // Digit grids on active form
   const digitGrids: DigitGridAudit[] = useMemo(() => {
     return auditDigitGrids(activeFields);
   }, [activeFields]);
+
+  // This value measures consistency among the stored coordinates only. It is
+  // not the physical offset between those coordinates and the printed boxes.
+  const maxGridRegularityDeviationMm = useMemo(
+    () => digitGrids.reduce((max, grid) => Math.max(max, grid.maxCenterDeviationMm), 0),
+    [digitGrids]
+  );
 
   // Filtered fields
   const filteredFields = useMemo(() => {
@@ -207,19 +259,30 @@ export default function PrecisionCoordinateAuditor() {
 
   // Handler: Instant Client-side Verification Check
   const handleRunInstantAudit = () => {
-    const invalidFields = auditedFields.filter((f) => !f.withinPageBounds);
-    const misalignedGrids = digitGrids.filter((g) => !g.isAligned);
-    if (invalidFields.length === 0 && misalignedGrids.length === 0) {
+    if (templateLoadState !== 'ready') {
       setAuditVerdict(
         isAr
-          ? `✓ تم التحقق بنجاح: جميع الحقول البالغ عددها ${activeFields.length} حقلاً مضبوطة بدقة 0.00 مم وخالية من أي تجاوز لحدود الصفحة.`
-          : `✓ Validation réussie : l'ensemble des ${activeFields.length} champs sont calibrés au millimètre avec un écart nul (0.00 mm).`
+          ? 'تعذر إتمام الفحص: لم يتم تحميل ملف PDF الأصلي وقراءة أبعاد صفحاته.'
+          : 'Audit impossible : le PDF source n’a pas été chargé et ses dimensions ne sont pas disponibles.'
+      );
+      return;
+    }
+
+    const invalidFields = auditedFields.filter((field) => !field.withinPageBounds);
+    const misalignedGrids = digitGrids.filter((grid) => !grid.isAligned);
+    const pageCountMismatch = templatePageDimensions.length !== currentForm.pages;
+
+    if (invalidFields.length === 0 && misalignedGrids.length === 0 && !pageCountMismatch) {
+      setAuditVerdict(
+        isAr
+          ? `اجتاز ${activeFields.length} حقلاً فحص حدود صفحات PDF، واجتازت شبكات الأرقام فحص الانتظام الحسابي. هذا الفحص لا يقيس الإزاحة عن الخانات المطبوعة؛ لا تُعتمد الإحداثيات للطباعة النهائية قبل المقارنة البصرية واختبار الطباعة بالحجم الفعلي 100%.`
+          : `${activeFields.length} champs respectent les limites du PDF et les grilles passent le contrôle mathématique de régularité. Ce résultat ne mesure pas l’écart avec les cases imprimées ; une comparaison visuelle et un essai à 100 % restent nécessaires avant validation.`
       );
     } else {
       setAuditVerdict(
         isAr
-          ? `⚠️ تنبيه: تم رصد ${invalidFields.length} حقل خارج الحدود أو انحراف في الخانات.`
-          : `⚠️ Attention : ${invalidFields.length} anomalies détectées.`
+          ? `توجد نقاط تحتاج مراجعة: ${invalidFields.length} حقول خارج حدود صفحات PDF، ${misalignedGrids.length} شبكات غير منتظمة، ${pageCountMismatch ? 'وعدد صفحات القالب لا يطابق التعريف البرمجي' : 'وعدد الصفحات مطابق'}.`
+          : `Points à corriger : ${invalidFields.length} champs hors page, ${misalignedGrids.length} grilles irrégulières, ${pageCountMismatch ? 'et le nombre de pages ne correspond pas à la définition' : 'nombre de pages conforme'}.`
       );
     }
   };
@@ -243,7 +306,7 @@ export default function PrecisionCoordinateAuditor() {
 
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-900 rounded-lg text-xs font-semibold">
           <CheckCircle2 className="w-4 h-4 text-emerald-700" />
-          <span>{isAr ? 'معاير بدقة الميلمتر الدقيق (0.00 مم)' : 'Calibré au millimètre exact (0.00 mm)'}</span>
+          <span>{isAr ? 'فحص هندسي أولي — المعايرة المرجعية قيد التحقق' : 'Contrôle géométrique — alignement de référence à vérifier'}</span>
         </div>
       </div>
 
@@ -263,8 +326,8 @@ export default function PrecisionCoordinateAuditor() {
 
           <p className="text-emerald-100 text-sm sm:text-base leading-relaxed mb-6">
             {isAr
-              ? 'فحص شامل وتحقق فوري من إحداثيات تعبئة الاستمارات الضريبية الرسمية (ج17، ج31، ج08، ج51) في نسختيها العربية والفرنسية. يضمن محاذاة الخانات المقطعة (NIF، NIN، NAI)، أبعاد المسطرة بالمليمتر، وتفادي أي تجاوز للحدود المطبوعة.'
-              : 'Audit rigoureux et calibration au millimètre des gabarits officiels de la Direction Générale des Impôts (G17, G31, G08, G51) en arabe et français. Vérification sub-millimétrique des grilles de chiffres (NIF, NIN, NAI).'}
+              ? 'فحص هندسي لإحداثيات تعبئة الاستمارات الرسمية وقراءة أبعاد ملف PDF الفعلي. يختبر هذا الفحص حدود الصفحة وانتظام الشبكات المسجلة؛ أما إثبات التطابق مع الخانات المطبوعة فيتطلب مقارنة مرجعية واختبار طباعة بالحجم الفعلي.'
+              : 'Contrôle géométrique des coordonnées et lecture des dimensions réelles du PDF. Le contrôle vérifie les limites de page et la régularité interne des grilles ; l’alignement sur les cases imprimées doit encore être confirmé par comparaison visuelle et impression à taille réelle.'}
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -471,9 +534,11 @@ export default function PrecisionCoordinateAuditor() {
             <span className="text-xs font-medium">{isAr ? 'أقصى انحراف' : 'Écart max'}</span>
             <Ruler className="w-4 h-4 text-emerald-600" />
           </div>
-          <div className="text-2xl font-bold text-emerald-700">0.00 مم</div>
-          <div className="text-[11px] text-emerald-700 font-medium mt-1">
-            {isAr ? '✓ مطابقة تامة 100%' : '✓ Précision parfaite'}
+          <div className="text-2xl font-bold text-emerald-700">
+            {digitGrids.length > 0 ? `${maxGridRegularityDeviationMm.toFixed(2)} مم` : '—'}
+          </div>
+          <div className="text-[11px] text-gray-600 font-medium mt-1">
+            {isAr ? 'انتظام داخلي للإحداثيات المسجلة فقط' : 'Régularité interne des coordonnées uniquement'}
           </div>
         </div>
 
@@ -482,8 +547,18 @@ export default function PrecisionCoordinateAuditor() {
             <span className="text-xs font-medium">{isAr ? 'أبعاد الصفحة' : 'Dimensions A4'}</span>
             <ShieldCheck className="w-4 h-4 text-teal-600" />
           </div>
-          <div className="text-2xl font-bold text-gray-900">210 × 297</div>
-          <div className="text-[11px] text-gray-500 mt-1">{isAr ? 'ميلمتر (ISO 216)' : 'mm (Standard)'}</div>
+          <div className="text-2xl font-bold text-gray-900">
+            {templatePageDimensions[0]
+              ? `${ptToMm(templatePageDimensions[0].widthPt).toFixed(2)} × ${ptToMm(templatePageDimensions[0].heightPt).toFixed(2)}`
+              : '—'}
+          </div>
+          <div className="text-[11px] text-gray-500 mt-1">
+            {templateLoadState === 'ready'
+              ? isAr ? 'مم — مستخرجة من ملف PDF المختار' : 'mm — lues depuis le PDF sélectionné'
+              : templateLoadState === 'loading'
+              ? isAr ? 'جارٍ قراءة القالب...' : 'Lecture du PDF...'
+              : isAr ? 'تعذر تحميل القالب' : 'PDF indisponible'}
+          </div>
         </div>
       </div>
 
@@ -509,9 +584,13 @@ export default function PrecisionCoordinateAuditor() {
                   <span className="font-extrabold text-sm text-purple-900 uppercase">
                     {grid.prefix} ({grid.count} خانات)
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                    <Check className="w-3 h-3" />
-                    <span>0.00 مم</span>
+                  <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded border ${
+                    grid.isAligned
+                      ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
+                      : 'text-amber-800 bg-amber-50 border-amber-200'
+                  }`}>
+                    {grid.isAligned ? <Check className="w-3 h-3" /> : <AlertTriangle className="w-3 h-3" />}
+                    <span>{grid.isAligned ? (isAr ? 'منتظمة حسابياً' : 'Régulière') : (isAr ? 'تحتاج مراجعة' : 'À vérifier')}</span>
                   </span>
                 </div>
                 <div className="text-xs text-gray-600 space-y-1">
@@ -519,10 +598,10 @@ export default function PrecisionCoordinateAuditor() {
                     {isAr ? 'عرض الخانة المربعة:' : 'Largeur case :'} <span className="font-bold">{grid.cellWidthMm} مم</span>
                   </div>
                   <div>
-                    {isAr ? 'خطوة التباعد بين الخانات:' : 'Pas de grille :'} <span className="font-bold">{grid.stepPitchMm} مم</span>
+                    {isAr ? 'خطوة التباعد المسجلة:' : 'Pas enregistré :'} <span className="font-bold">{grid.stepPitchMm} مم</span>
                   </div>
                   <div>
-                    {isAr ? 'موضع البداية من اليسار:' : 'Départ gauche :'} <span className="font-bold">{grid.startMm} مم</span>
+                    {isAr ? 'موضع البداية المسجل من اليسار:' : 'Départ enregistré :'} <span className="font-bold">{grid.startMm} مم</span>
                   </div>
                 </div>
               </div>
@@ -652,9 +731,13 @@ export default function PrecisionCoordinateAuditor() {
                       </span>
                     </td>
                     <td className="p-3 text-center">
-                      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                        <Check className="w-3 h-3" />
-                        <span>0.00 مم</span>
+                      <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-full border ${
+                        field.withinPageBounds
+                          ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
+                          : 'text-red-700 bg-red-50 border-red-200'
+                      }`}>
+                        {field.withinPageBounds ? <Check className="w-3 h-3" /> : <AlertTriangle className="w-3 h-3" />}
+                        <span>{field.withinPageBounds ? (isAr ? 'داخل حدود PDF' : 'Dans le PDF') : (isAr ? 'خارج حدود PDF' : 'Hors PDF')}</span>
                       </span>
                     </td>
                   </tr>
@@ -666,7 +749,11 @@ export default function PrecisionCoordinateAuditor() {
 
         {filteredFields.length === 0 && (
           <div className="p-8 text-center text-gray-500 text-sm">
-            {isAr ? 'لا توجد حقول مطابقة لخيارات البحث.' : 'Aucun champ ne correspond aux critères.'}
+            {templateLoadState === 'loading'
+              ? isAr ? 'جارٍ تحميل القالب وقراءة أبعاد صفحاته...' : 'Chargement du PDF et lecture des dimensions...'
+              : templateLoadState === 'error'
+              ? isAr ? 'تعذر تحميل ملف PDF المحدد؛ لا يمكن إجراء فحص الحدود.' : 'Impossible de charger le PDF sélectionné.'
+              : isAr ? 'لا توجد حقول مطابقة لخيارات البحث.' : 'Aucun champ ne correspond aux critères.'}
           </div>
         )}
       </div>
@@ -683,8 +770,8 @@ export default function PrecisionCoordinateAuditor() {
         </div>
         <p className="leading-relaxed">
           {isAr
-            ? 'تعتمد هذه المنظومة على التحويل الدقيق بين النقاط الطباعية (DTP Points) والميلمتر الفعلي بمعدل 1 pt = 0.352778 mm. تم ضبط مراكز خانات الأرقام التسلسلية (NIF، NIN، NAI) والمسافات البينية (Step Pitch) بدقة متناهية لتطابق الخانات المستطيلة في النماذج الأصلية للمديرية العامة للضرائب تماماً وبدون أي إزاحة.'
-            : 'Le système assure une conversion métrique stricte (1 pt = 0.352778 mm). Les grilles de chiffres (NIF, NIN, NAI) et les espacements de pas sont calibrés pour s\'aligner de manière exacte sur les cases des imprimés officiels de l\'administration fiscale algérienne.'}
+            ? 'يعتمد التحويل الحسابي على 1 pt = 0.352778 mm، وتُقرأ أبعاد كل صفحة من ملف PDF المختار. قيم X وY وعرض الحقل هي إحداثيات مسجلة في الشيفرة؛ وانتظام شبكة الأرقام يقارن الإحداثيات بعضها ببعض فقط. لا تمثل نتيجة 0.00 مم قياساً للإزاحة عن حدود الخانات المطبوعة. يجب اعتماد مرجع بصري من النموذج الأصلي ثم اختبار الطباعة بخيار الحجم الفعلي (100%) قبل المصادقة على أي حقل.'
+            : 'La conversion est de 1 pt = 0,352778 mm et les dimensions de chaque page sont lues depuis le PDF sélectionné. Les valeurs X, Y et les largeurs sont des coordonnées enregistrées ; la régularité de grille compare uniquement ces coordonnées entre elles. Un résultat de 0,00 mm ne mesure pas l’écart avec les cases imprimées. Une référence visuelle tirée du formulaire source et un essai d’impression à 100 % sont obligatoires avant validation.'}
         </p>
       </div>
     </div>
