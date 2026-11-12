@@ -1,0 +1,272 @@
+[
+  {
+    "target": "G N° 17 (تصريح فائض القيمة العقارية)",
+    "lang": "ar",
+    "totalFields": 57,
+    "pages": 2,
+    "boundaryOk": true,
+    "digitGrids": [
+      {
+        "prefix": "nif",
+        "count": 15,
+        "page": 1,
+        "startMm": 101.88,
+        "stepPitchMm": 4.22,
+        "cellWidthMm": 3.53,
+        "expectedStepPitchMm": 4.22,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      }
+    ],
+    "collisions": 0,
+    "fillSuccess": true,
+    "calibrationPdf": "gn17-ar-calibration.pdf",
+    "filledPdf": "gn17-ar-filled.pdf"
+  },
+  {
+    "target": "Série G N° 17 (Plus-value Immobilière)",
+    "lang": "fr",
+    "totalFields": 59,
+    "pages": 2,
+    "boundaryOk": true,
+    "digitGrids": [
+      {
+        "prefix": "nif",
+        "count": 15,
+        "page": 1,
+        "startMm": 85.09,
+        "stepPitchMm": 4.37,
+        "cellWidthMm": 3.53,
+        "expectedStepPitchMm": 4.37,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      }
+    ],
+    "collisions": 0,
+    "fillSuccess": true,
+    "calibrationPdf": "gn17-fr-calibration.pdf",
+    "filledPdf": "gn17-fr-filled.pdf"
+  },
+  {
+    "target": "G N° 31 (تصريح الرسم العقاري)",
+    "lang": "ar",
+    "totalFields": 112,
+    "pages": 4,
+    "boundaryOk": true,
+    "digitGrids": [
+      {
+        "prefix": "nif",
+        "count": 20,
+        "page": 1,
+        "startMm": 69.74,
+        "stepPitchMm": 4.36,
+        "cellWidthMm": 3.53,
+        "expectedStepPitchMm": 4.36,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      },
+      {
+        "prefix": "nai",
+        "count": 11,
+        "page": 1,
+        "startMm": 116.9,
+        "stepPitchMm": 3.29,
+        "cellWidthMm": 2.82,
+        "expectedStepPitchMm": 3.29,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      },
+      {
+        "prefix": "nin",
+        "count": 18,
+        "page": 1,
+        "startMm": 96.34,
+        "stepPitchMm": 3.45,
+        "cellWidthMm": 2.82,
+        "expectedStepPitchMm": 3.45,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      }
+    ],
+    "collisions": 0,
+    "fillSuccess": true,
+    "calibrationPdf": "gn31-ar-calibration.pdf",
+    "filledPdf": "gn31-ar-filled.pdf"
+  },
+  {
+    "target": "Série G N° 31 (Taxe Foncière)",
+    "lang": "fr",
+    "totalFields": 112,
+    "pages": 4,
+    "boundaryOk": true,
+    "digitGrids": [
+      {
+        "prefix": "nif",
+        "count": 20,
+        "page": 1,
+        "startMm": 87.29,
+        "stepPitchMm": 3.47,
+        "cellWidthMm": 3.17,
+        "expectedStepPitchMm": 3.47,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      },
+      {
+        "prefix": "nai",
+        "count": 11,
+        "page": 1,
+        "startMm": 87.08,
+        "stepPitchMm": 3.42,
+        "cellWidthMm": 2.82,
+        "expectedStepPitchMm": 3.42,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      },
+      {
+        "prefix": "nin",
+        "count": 18,
+        "page": 1,
+        "startMm": 91.32,
+        "stepPitchMm": 3.42,
+        "cellWidthMm": 2.82,
+        "expectedStepPitchMm": 3.42,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      }
+    ],
+    "collisions": 0,
+    "fillSuccess": true,
+    "calibrationPdf": "gn31-fr-calibration.pdf",
+    "filledPdf": "gn31-fr-filled.pdf"
+  },
+  {
+    "target": "G N° 08 (تصريح بالوجود)",
+    "lang": "ar",
+    "totalFields": 80,
+    "pages": 2,
+    "boundaryOk": true,
+    "digitGrids": [
+      {
+        "prefix": "nif",
+        "count": 20,
+        "page": 1,
+        "startMm": 16.56,
+        "stepPitchMm": 4.2,
+        "cellWidthMm": 3.53,
+        "expectedStepPitchMm": 4.2,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      },
+      {
+        "prefix": "nai",
+        "count": 11,
+        "page": 1,
+        "startMm": 56.33,
+        "stepPitchMm": 4.01,
+        "cellWidthMm": 3.53,
+        "expectedStepPitchMm": 4.01,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      },
+      {
+        "prefix": "nin",
+        "count": 18,
+        "page": 1,
+        "startMm": 100.82,
+        "stepPitchMm": 3.88,
+        "cellWidthMm": 3.53,
+        "expectedStepPitchMm": 3.88,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      }
+    ],
+    "collisions": 0,
+    "fillSuccess": true,
+    "calibrationPdf": "gn8-ar-calibration.pdf",
+    "filledPdf": "gn8-ar-filled.pdf"
+  },
+  {
+    "target": "Série G N° 08 (Déclaration d'existence)",
+    "lang": "fr",
+    "totalFields": 80,
+    "pages": 2,
+    "boundaryOk": true,
+    "digitGrids": [
+      {
+        "prefix": "nif",
+        "count": 20,
+        "page": 1,
+        "startMm": 125.77,
+        "stepPitchMm": 3.53,
+        "cellWidthMm": 3.17,
+        "expectedStepPitchMm": 3.53,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      },
+      {
+        "prefix": "nai",
+        "count": 11,
+        "page": 1,
+        "startMm": 125.32,
+        "stepPitchMm": 3.35,
+        "cellWidthMm": 3.17,
+        "expectedStepPitchMm": 3.35,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      },
+      {
+        "prefix": "nin",
+        "count": 18,
+        "page": 1,
+        "startMm": 77.96,
+        "stepPitchMm": 4.59,
+        "cellWidthMm": 3.88,
+        "expectedStepPitchMm": 4.59,
+        "maxCenterDeviationMm": 0,
+        "isAligned": true,
+        "notes": "شبكة خانات منتظمة بدقة 0.00 مم"
+      }
+    ],
+    "collisions": 0,
+    "fillSuccess": true,
+    "calibrationPdf": "gn8-fr-calibration.pdf",
+    "filledPdf": "gn8-fr-filled.pdf"
+  },
+  {
+    "target": "G N° 51 (تصريح مداخيل إيجار العقارات)",
+    "lang": "ar",
+    "totalFields": 47,
+    "pages": 2,
+    "boundaryOk": true,
+    "digitGrids": [],
+    "collisions": 3,
+    "fillSuccess": true,
+    "calibrationPdf": "gn51-ar-calibration.pdf",
+    "filledPdf": "gn51-ar-filled.pdf"
+  },
+  {
+    "target": "Série G N° 51 (Revenus de location)",
+    "lang": "fr",
+    "totalFields": 47,
+    "pages": 2,
+    "boundaryOk": true,
+    "digitGrids": [],
+    "collisions": 3,
+    "fillSuccess": true,
+    "calibrationPdf": "gn51-fr-calibration.pdf",
+    "filledPdf": "gn51-fr-filled.pdf"
+  }
+]

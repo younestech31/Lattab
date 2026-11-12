@@ -44,7 +44,7 @@ export const GN51_FIELD_COORDINATES: FormFieldCoord[] = [
   { id: 'communeBien', page: 1, x: 370, y: 324, size: 8.5, align: 'right', maxWidth: 120 },
   { id: 'wilayaBien', page: 1, x: 220, y: 324, size: 8.5, align: 'right', maxWidth: 100 },
   { id: 'codePostalBien', page: 1, x: 95, y: 324, size: 8.5, align: 'center', maxWidth: 50 },
-  { id: 'articleImposition', page: 1, x: 45, y: 307, size: 9, align: 'right', maxWidth: 420 },
+  { id: 'articleImposition', page: 1, x: 45, y: 307, size: 9, align: 'right', maxWidth: 200 },
 
   // استعمال العقار (خانات اختيار)
   { id: 'dest_habitation', page: 1, x: 378, y: 298, size: 10, align: 'center', maxWidth: 14 },
@@ -134,7 +134,7 @@ export const GN51_FIELD_COORDINATES_FR: FormFieldCoord[] = [
   { id: 'communeBien', page: 1, x: 95, y: 329, size: 9, align: 'left', maxWidth: 110 },
   { id: 'wilayaBien', page: 1, x: 265, y: 329, size: 9, align: 'left', maxWidth: 100 },
   { id: 'codePostalBien', page: 1, x: 496, y: 329, size: 9, align: 'left', maxWidth: 60 },
-  { id: 'articleImposition', page: 1, x: 230, y: 317, size: 9, align: 'left', maxWidth: 320 },
+  { id: 'articleImposition', page: 1, x: 230, y: 317, size: 9, align: 'left', maxWidth: 200 },
 
   // Destination (cases à cocher)
   { id: 'dest_habitation', page: 1, x: 233, y: 308, size: 10, align: 'center', maxWidth: 14 },

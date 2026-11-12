@@ -67,11 +67,11 @@ export const GN17_FIELD_COORDINATES: FormFieldCoord[] = [
 
 // 15 individual NIF digit boxes for Arabic GN17 (Page 1: x=287.8 to 467.0, y=473, width=11.95pt)
 for (let i = 0; i < 15; i++) {
-  const boxCenter = 287.8 + i * 11.95 + 5.97;
+  const boxCenter = 287.8 + i * 11.95 + 5.975;
   GN17_FIELD_COORDINATES.push({
     id: `nif_${i}`,
     page: 1,
-    x: Math.round(boxCenter - 5),
+    x: Number((boxCenter - 5).toFixed(2)),
     y: 473,
     size: 8.5,
     align: 'center',
@@ -149,7 +149,7 @@ for (let i = 0; i < 15; i++) {
   GN17_FIELD_COORDINATES_FR.push({
     id: `nif_${i}`,
     page: 1,
-    x: Math.round(boxCenter - 5),
+    x: Number((boxCenter - 5).toFixed(2)),
     y: 453,
     size: 8.5,
     align: 'center',

@@ -112,11 +112,11 @@ export const GN31_FIELD_COORDINATES: FormFieldCoord[] = [
 
 // NIF in AR template: 20 individual boxes at y=684, from x=196.5 to 443.5 (box width ~12.35 pt)
 for (let i = 0; i < 20; i++) {
-  const boxCenter = 196.5 + i * 12.35 + 6.17;
+  const boxCenter = 196.5 + i * 12.35 + 6.175;
   GN31_FIELD_COORDINATES.push({
     id: `nif_${i}`,
     page: 1,
-    x: Math.round(boxCenter - 5),
+    x: Number((boxCenter - 5).toFixed(2)),
     y: 684,
     size: 8.5,
     align: 'center',
@@ -126,11 +126,11 @@ for (let i = 0; i < 20; i++) {
 
 // NAI in AR template: 11 individual boxes at y=668, from x=330.7 to 433.3 (box width ~9.33 pt)
 for (let i = 0; i < 11; i++) {
-  const boxCenter = 330.7 + i * 9.33 + 4.66;
+  const boxCenter = 330.7 + i * 9.33 + 4.665;
   GN31_FIELD_COORDINATES.push({
     id: `nai_${i}`,
     page: 1,
-    x: Math.round(boxCenter - 4),
+    x: Number((boxCenter - 4).toFixed(2)),
     y: 668,
     size: 8,
     align: 'center',
@@ -140,11 +140,11 @@ for (let i = 0; i < 11; i++) {
 
 // NIN in AR template: 18 individual boxes at y=651, from x=272.2 to 448.2 (box width ~9.77 pt)
 for (let i = 0; i < 18; i++) {
-  const boxCenter = 272.2 + i * 9.77 + 4.88;
+  const boxCenter = 272.2 + i * 9.77 + 4.885;
   GN31_FIELD_COORDINATES.push({
     id: `nin_${i}`,
     page: 1,
-    x: Math.round(boxCenter - 4),
+    x: Number((boxCenter - 4).toFixed(2)),
     y: 651,
     size: 8.5,
     align: 'center',
@@ -252,11 +252,11 @@ export const GN31_FIELD_COORDINATES_FR: FormFieldCoord[] = [
 
 // NIF in FR template: 20 boxes at y=692 (from x=247 to 444, width ~9.85pt)
 for (let i = 0; i < 20; i++) {
-  const boxCenter = 247 + i * 9.85 + 4.9;
+  const boxCenter = 247 + i * 9.85 + 4.925;
   GN31_FIELD_COORDINATES_FR.push({
     id: `nif_${i}`,
     page: 1,
-    x: Math.round(boxCenter - 4.5),
+    x: Number((boxCenter - 4.5).toFixed(2)),
     y: 692,
     size: 9,
     align: 'center',
@@ -270,7 +270,7 @@ for (let i = 0; i < 11; i++) {
   GN31_FIELD_COORDINATES_FR.push({
     id: `nai_${i}`,
     page: 1,
-    x: Math.round(boxCenter - 4),
+    x: Number((boxCenter - 4).toFixed(2)),
     y: 672,
     size: 8.5,
     align: 'center',
@@ -284,7 +284,7 @@ for (let i = 0; i < 18; i++) {
   GN31_FIELD_COORDINATES_FR.push({
     id: `nin_${i}`,
     page: 1,
-    x: Math.round(boxCenter - 4),
+    x: Number((boxCenter - 4).toFixed(2)),
     y: 653,
     size: 8.5,
     align: 'center',
