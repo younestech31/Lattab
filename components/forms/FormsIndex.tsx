@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useLang } from '@/lib/i18n';
 import { getEnabledForms } from '@/lib/forms/registry';
-import { FileText, ArrowLeft, ArrowRight, ShieldCheck, Scale, AlertCircle, Ruler } from 'lucide-react';
+import { FileText, ArrowLeft, ArrowRight, ShieldCheck, Scale, AlertCircle } from 'lucide-react';
 
 export default function FormsIndex() {
   const { lang } = useLang();
@@ -95,31 +95,6 @@ export default function FormsIndex() {
             </div>
           );
         })}
-      </div>
-
-      {/* Precision Metric Auditor Section */}
-      <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white rounded-2xl p-6 sm:p-7 mb-10 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div className="space-y-2 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-semibold">
-            <Ruler className="w-3.5 h-3.5" />
-            <span>{isAr ? 'مدقق الإحداثيات الملمترية الدقيقة' : 'Auditeur métrique de précision'}</span>
-          </div>
-          <h3 className="text-lg sm:text-xl font-bold">
-            {isAr ? 'فحص ومعايرة إحداثيات الاستمارات بالميلمتر (0.00 مم)' : 'Calibration métrique sub-millimétrique des imprimés DGI'}
-          </h3>
-          <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-            {isAr
-              ? 'أداة فنية لمطابقة مواضع الخانات والشبكات الرقمية (NIF / NIN / NAI) على قوالب PDF الرسمية بدقة الميلمتر، مع إمكانية تحميل نماذج المعايرة والشبكات الطباعية.'
-              : 'Inspection détaillée de l\'alignement des grilles et des champs sur les formulaires officiels DGI avec téléchargement des gabarits de calibration.'}
-          </p>
-        </div>
-        <Link
-          href={isAr ? '/formulaires/auditeur' : '/fr/formulaires/auditeur'}
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-emerald-950 hover:bg-emerald-50 font-bold text-sm transition shadow flex-shrink-0"
-        >
-          <span>{isAr ? 'فتح مدقق الإحداثيات' : 'Ouvrir l\'auditeur'}</span>
-          {isAr ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
-        </Link>
       </div>
 
       {/* Security and Privacy Assurance */}
