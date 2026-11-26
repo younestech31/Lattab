@@ -19,9 +19,9 @@
   },
   "field_coverage": {
     "code": 2136,
-    "label_fr": 2136,
-    "label_en": 2136,
-    "label_ar": 2136,
+    "label_fr": 2133,
+    "label_en": 2134,
+    "label_ar": 2134,
     "status": 2136,
     "sector_code": 2136,
     "group_code": 2136,
@@ -98,57 +98,52 @@
     "basis": "UpGrowth dataset documentation, which describes the CNRC status field as free / regulated / blocked.",
     "limitation": "The catalog status does not, by itself, prove that no separate sector-specific title or other legal requirement applies."
   },
-  "reconciliation": {
-    "target": "UpGrowth online table snapshot (2026-11-02)",
-    "target_record_count": 2134,
-    "delta_count": 2,
-    "discrepancy_explanation": "Two codes with status 'red' (Blocked / Bloquée) representing pork/charcuterie commerce were omitted in UpGrowth's 2026-11-02 online table view but are retained as blocked historical/statutory records in the official CNRC nomenclature snapshot (2026-10-01). Per institutional retention rules, these records are preserved in the repository with raw status 'red'.",
-    "discrepant_codes": [
+  "publisher_reported_official_portal_date": "2026-11-07",
+  "upgrowth_page_checked_at": "2026-11-11",
+  "source_reconciliation": {
+    "comparison_status": "matched",
+    "source_publisher": "UpGrowth",
+    "source_url": "https://www.upgrowth.dz/outils/nomenclature",
+    "checked_at": "2026-11-11",
+    "publisher_reported_last_verified_at": "2026-11-10",
+    "publisher_reported_cnrc_portal_date": "2026-11-07",
+    "upstream_record_count": 2136,
+    "record_delta": 0,
+    "upstream_sector_counts": {
+      "1": 452,
+      "2": 81,
+      "3": 185,
+      "4": 278,
+      "5": 365,
+      "6": 754,
+      "7": 21
+    },
+    "upstream_status_counts": {
+      "normal": 1641,
+      "green": 350,
+      "red": 145
+    },
+    "confirmed_blocked_codes": [
       {
         "code": "301205",
-        "sector": "3",
         "status": "red",
-        "label_ar": "تجارة بالجملة للخنازيريات",
-        "label_fr": "Commerce de gros de la charcuterie",
-        "reason": "Statutory prohibition; omitted from UpGrowth online table view (Sector 3: 185 vs 184)"
+        "label_fr": "Commerce de gros de la charcuterie"
       },
       {
         "code": "501308",
-        "sector": "5",
         "status": "red",
-        "label_ar": "تجارة بالتجزئة للحوم الخنازير",
-        "label_fr": "Commerce de détail de la charcuterie",
-        "reason": "Statutory prohibition noted in contenue_fr ('activité supprimée par la réglementation interdisant l'élevage et la commercialisation du porc'); omitted from UpGrowth online table view (Sector 5: 365 vs 364)"
+        "label_fr": "Commerce de détail de la charcuterie"
       }
     ],
-    "sector_deltas": {
-      "3": {
-        "manifest": 185,
-        "online_table": 184,
-        "delta": 1
-      },
-      "5": {
-        "manifest": 365,
-        "online_table": 364,
-        "delta": 1
-      }
+    "historical_2026_11_02_observation": {
+      "upstream_record_count": 2134,
+      "status": "superseded",
+      "omitted_codes_now_present": [
+        "301205",
+        "501308"
+      ],
+      "note": "The 2026-11-02 comparison was an earlier observation. The page checked on 2026-11-11 displays 2,136 records and explicitly lists both codes as blocked."
     },
-    "status_deltas": {
-      "red": {
-        "manifest": 145,
-        "online_table": 143,
-        "delta": 2
-      },
-      "normal": {
-        "manifest": 1641,
-        "online_table": 1641,
-        "delta": 0
-      },
-      "green": {
-        "manifest": 350,
-        "online_table": 350,
-        "delta": 0
-      }
-    }
+    "verification_scope": "Compared the public UpGrowth nomenclature page's displayed total, sector totals, status totals, and the two code rows. This is not an independent live query or download from CNRC/Sidjilcom."
   }
 }

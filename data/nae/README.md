@@ -2,79 +2,94 @@
 
 This directory contains the generated, sector-partitioned JSON snapshot used by the LATTAB NAE project-preparation workspace.
 
-- **Dataset publisher:** UpGrowth.
-- **Source page:** https://www.upgrowth.dz/ar/datasets/cnrc-2026
-- **Publisher-reported snapshot date:** 2026-10-01.
-- **Official source portal:** https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات
-- **Source SHA-256:** `d443511fa8b798acf4240de4eca3868fd7cb67879afa4397fa985a0106001ed5`
-- **Source licence:** CC BY 4.0. Attribution: UpGrowth (2026), *Nomenclature CNRC 2026 : 2 136 codes d'activité économique en Algérie*.
-- **Imported records:** 2,136, partitioned into seven sector JSON files plus `manifest.json`.
-- The original CSV is intentionally not committed; it remains excluded by `.gitignore`.
-- The publisher-reported snapshot date is not the same as the date on which LATTAB acquired the file; `source_acquired_at` remains unknown. This is a dated snapshot, not a live connection to CNRC.
+- Dataset publisher: UpGrowth.
+- Source dataset page: https://www.upgrowth.dz/ar/datasets/cnrc-2026
+- Publisher-reported snapshot revision: 2026-10-01.
+- Official source portal: https://sidjilcom.cnrc.dz/ar/web/sidjilcom/نشاطات
+- Source SHA-256: d443511fa8b798acf4240de4eca3868fd7cb67879afa4397fa985a0106001ed5
+- Source licence: CC BY 4.0. Attribution: UpGrowth (2026), Nomenclature CNRC 2026 : 2 136 codes d'activité économique en Algérie.
+- Imported records: 2,136, partitioned into seven sector JSON files plus manifest.json.
+- The original CSV is intentionally not committed; it remains excluded by .gitignore.
+- The publisher-reported snapshot date is not the date on which LATTAB acquired the file; source_acquired_at remains unknown. This is a dated snapshot, not a live connection to CNRC.
 - Group and subgroup codes are present, but their names are not supplied by this CSV. Do not infer or invent their labels.
-- Seven invalid label cells containing `#NOM?` are preserved in the data and excluded from search label indexing; no replacement labels were guessed.
+- Seven invalid label cells containing #NOM? are preserved across five activity records and excluded from valid-label coverage; no replacement labels were guessed.
 
 ## Source status field
 
-The raw `status` values are preserved verbatim. The UpGrowth dataset page documents the following display mapping:
+The raw status values are preserved verbatim. The UpGrowth dataset page documents the following display mapping:
 
 | Raw value | Dataset status |
 |---|---|
-| `normal` | Free |
-| `green` | Regulated |
-| `red` | Blocked |
+| normal | Free |
+| green | Regulated |
+| red | Blocked |
 
-This mapping is attributed to UpGrowth's dataset documentation under CC BY 4.0. It is **not** represented as an independent CNRC legal opinion. The status is a catalogue-level signal: it does not, by itself, determine every sector-specific condition or whether an authorization must be obtained before registration or before exercising the activity.
+This mapping is attributed to UpGrowth's dataset documentation under CC BY 4.0. It is not represented as an independent CNRC legal opinion. The status is a catalogue-level signal: it does not, by itself, determine every sector-specific condition or whether an authorization must be obtained before registration or before exercising the activity.
 
-## Reconciled snapshot discrepancy (2,136 vs 2,134 records)
+## Current upstream reconciliation — checked 2026-11-11
 
-UpGrowth's online table view (snapshot 2026-11-02) lists 2,134 records, whereas the raw CSV dataset snapshot (2026-10-01) imported into this repository contains 2,136 records.
+The public UpGrowth nomenclature page at https://www.upgrowth.dz/outils/nomenclature was checked on 2026-11-11. The page reports a last verification on 2026-11-10 and a CNRC portal date of 2026-11-07.
 
-Detailed row-by-row reconciliation confirms that the 2-record discrepancy comprises:
-1. `301205` (*Commerce de gros de la charcuterie* / *تجارة بالجملة للخنازيريات*): Sector 3 (185 in repo vs 184 online).
-2. `501308` (*Commerce de détail de la charcuterie* / *تجارة بالتجزئة للحوم الخنازير*): Sector 5 (365 in repo vs 364 online).
+| Measure | Repository snapshot | Current UpGrowth page | Difference |
+|---|---:|---:|---:|
+| Total records | 2,136 | 2,136 | 0 |
+| Sector 1 | 452 | 452 | 0 |
+| Sector 2 | 81 | 81 | 0 |
+| Sector 3 | 185 | 185 | 0 |
+| Sector 4 | 278 | 278 | 0 |
+| Sector 5 | 365 | 365 | 0 |
+| Sector 6 | 754 | 754 | 0 |
+| Sector 7 | 21 | 21 | 0 |
+| Free (normal) | 1,641 | 1,641 | 0 |
+| Regulated (green) | 350 | 350 | 0 |
+| Blocked (red) | 145 | 145 | 0 |
 
-Both codes have status `red` (Blocked / Bloquée / محظور) due to national statutory prohibitions on pork products. UpGrowth's web table filtered these blocked codes out, while the official CNRC nomenclature records them as blocked activities. In accordance with institutional data retention rules, both records are retained in this repository with their true source status (`red`) and documented in `manifest.json` and `docs/NAE-RECONCILIATION-REPORT.md`.
+The current public page explicitly lists both 301205 (Commerce de gros de la charcuterie) and 501308 (Commerce de détail de la charcuterie) with status Bloquée. Both are retained in the repository as red.
 
-## Regeneration
+The earlier comparison dated 2026-11-02 recorded 2,134 entries and did not show those two rows. That observation is now historical and superseded by the page checked on 2026-11-11. The source snapshot itself has not been altered to force the match.
 
-Regenerate these files from the original source with:
+Verification scope: this reconciliation compares the public UpGrowth page's total, sector totals, status totals, and the two named rows. It is not an independent live query or download from CNRC/Sidjilcom. The reported portal date is attributed to UpGrowth.
 
-```bash
-bun run nae:import -- --input ./data-source/cnrc-2026.csv --output ./data/nae
-bun run test:nae
-```
+## Valid source-field coverage
 
-The application imports these JSON files from a `server-only` module. Do not pass the complete dataset or search index to a Client Component or expose them as a public static asset.
+manifest.json field_coverage counts usable non-empty strings and excludes the literal #NOM?:
 
-## Second-language gap overlay (`gap-translations.json`)
+| Field | Usable records |
+|---|---:|
+| Activity code | 2,136 |
+| French label | 2,133 |
+| English label | 2,134 |
+| Arabic label | 2,134 |
+| Status | 2,136 |
+| Sector, group, subgroup codes | 2,136 each |
+| Supervisory authority (French) | 379 |
+| Authorization type (French) | 379 |
+| Activity content (French) | 2,136 |
+| Accessories (French) | 905 |
+| Text references (French) | 379 |
 
-Index file plus maps under `data/nae/gap-translations/`. Holds **informational** second-language fills for fields that exist only in one language in the official snapshot. It does **not** rewrite `sector-*.json`.
+## Second-language gap overlay
 
-| Layer | Status |
-|---|---|
-| `tutelle_fr` → Arabic | Complete (58 exact source strings) |
-| `type_autorisation_fr` → Arabic | Complete (17 exact source strings) |
-| High-frequency `accessoires_fr` → Arabic | Partial (exact-string map; ~523/905 records) |
-| `references_texte_fr` missing French (code `607004`) | Filled as informational French; Arabic source cell preserved |
-| `#NOM?` labels | Preserved; no invented replacements |
-| `contenue_fr` → Arabic | 18 source-bound reviewed translations; the previous 105 code-keyed entries are quarantined because some were attached to unrelated source descriptions |
+The overlay under gap-translations/ adds reviewed translations without rewriting the source snapshot:
 
-Policy: never re-translate an official cell that already has text; only add the missing language. UI consumers must treat overlay values as citizen-facing informational text and keep the French source as the catalogue reference.
+| Field | Source records | Active Arabic translations |
+|---|---:|---:|
+| Activity content | 2,136 | 709 |
+| Accessories | 905 | 905 |
+| Tutelle | 379 | 379 |
+| Authorization type | 379 | 379 |
+| Legal references | 379 | 379 |
 
+Activity-content translations are tied to the exact French source description. Unreviewed legacy drafts are quarantined in contenue-unverified-drafts.json and are not imported by application code. A changed or mismatched source string makes the resolver return no Arabic translation.
 
-## Translation quality safeguard (2026-11-09)
+## Regeneration and audits
 
-A source-to-translation audit found that the former 105-entry `contenue.json` contained mismatches between activity codes and French source descriptions, including 32 keys that do not exist in this 2,136-record catalogue. The file was moved to `gap-translations/contenue-unverified-drafts.json`; application code does not import it.
+    bun run nae:import -- --input ./data-source/cnrc-2026.csv --output ./data/nae
+    bun run nae:audit-translations
+    bun run test:nae
 
-The active `contenue-reviewed.json` contains 18 Arabic descriptions paired with the exact French source text reviewed for each code. The resolver refuses code-only lookups and refuses a translation if its source description changes. This deliberately prefers a clear “translation unavailable” state over showing a plausible but incorrect administrative description.
+- nae:import writes the sector JSON files, manifest.json, and import-report.md. It counts #NOM? as unusable and preserves the source reconciliation only when the CSV SHA-256 is unchanged. A changed source hash clears the reconciliation until it is reviewed again.
+- nae:audit-translations recalculates integrity and translation coverage, validates the current reconciliation, and regenerates quality-report.md.
+- test:nae verifies the dataset, localization resolver, and related NAE behavior.
 
-Current measured coverage:
-- Arabic activity-content translations: 18 / 2,136.
-- Arabic accessory translations: 598 / 905 records.
-- Arabic tutelle translations: 379 / 379 populated source records.
-- Arabic authorization-type translations: 379 / 379 populated source records.
-- Arabic legal-reference source text preserved: 1 / 379 populated source records.
-- Valid source labels: 2,134 Arabic and 2,133 French; five language-label cells contain `#NOM?` and remain untouched.
-
-Run `bun run nae:audit-translations` to recalculate coverage and validate every active content translation against its paired source string.
+The application imports these JSON files from a server-only module. Do not pass the complete dataset or search index to a Client Component or expose it as a public static asset.

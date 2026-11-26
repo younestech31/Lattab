@@ -13,7 +13,7 @@ function argValue(name: string, fallback: string): string {
 }
 const inputPath = path.resolve(ROOT, argValue("--input", "data-source/cnrc-2026.csv"));
 const outputDir = path.resolve(ROOT, argValue("--output", "data/nae"));
-const reportPath = path.join(outputDir, "quality-report.md");
+const reportPath = path.join(outputDir, "import-report.md");
 const manifestPath = path.join(outputDir, "manifest.json");
 const sourceRevisionDate = argValue("--source-revision-date", "") || null;
 const sourceAcquiredAt = argValue("--source-acquired-at", "") || null;
@@ -21,6 +21,10 @@ const officialPortalUpdatedAt = argValue("--official-portal-updated-at", "") || 
 
 type CsvRow = Record<string, string>;
 type Issue = { row: number; code?: string; field: string; message: string };
+
+function isUsableSourceValue(value: unknown): boolean {
+  return typeof value === "string" && value.trim().length > 0 && value.trim() !== "#NOM?";
+}
 
 function emptyToNull(value: string): string | null {
   const trimmed = value.trim();
@@ -34,6 +38,16 @@ function markdownCell(value: string): string {
 async function main(): Promise<void> {
   const buffer = await readFile(inputPath);
   const sourceHash = createHash("sha256").update(buffer).digest("hex");
+  let retainedSourceReconciliation: Record<string, unknown> | null = null;
+  try {
+    const existingManifest = JSON.parse(await readFile(manifestPath, "utf8")) as Record<string, unknown>;
+    const existingReconciliation = existingManifest.source_reconciliation;
+    if (existingManifest.source_sha256 === sourceHash && existingReconciliation !== null && typeof existingReconciliation === "object" && !Array.isArray(existingReconciliation)) {
+      retainedSourceReconciliation = existingReconciliation as Record<string, unknown>;
+    }
+  } catch {
+    // First import, missing manifest, or unreadable previous manifest.
+  }
   const sourceText = new TextDecoder("utf-8", { fatal: true }).decode(buffer).replace(/^\uFEFF/, "");
   const matrix = parseSemicolonCsv(sourceText);
   if (matrix.length < 2) throw new Error("CSV has no activity rows.");
@@ -142,7 +156,7 @@ async function main(): Promise<void> {
     field,
     activities.filter((activity) => {
       const value = activity[field as keyof NAEActivity];
-      return value !== null && value !== "";
+      return isUsableSourceValue(value);
     }).length,
   ]));
   const sectorCounts = Object.fromEntries(
@@ -169,6 +183,7 @@ async function main(): Promise<void> {
       basis: "UpGrowth dataset documentation describes the CNRC status field as free / regulated / blocked.",
       limitation: "A catalogue status does not, by itself, prove that no separate sector-specific title or other legal requirement applies.",
     },
+    source_reconciliation: retainedSourceReconciliation,
     imported_at: new Date().toISOString(),
     record_count: activities.length,
     sector_counts: sectorCounts,

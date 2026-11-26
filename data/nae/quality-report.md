@@ -1,17 +1,12 @@
-# NAE import quality report
+# NAE data and translation quality report
 
-- Source file: cnrc-2026.csv
-- SHA-256: d443511fa8b798acf4240de4eca3868fd7cb67879afa4397fa985a0106001ed5
-- Dataset revision published by UpGrowth: 2026-10-01
-- Official Sidjilcom page displayed a last-update date of 2026-10-20 when reviewed
-- Publisher: UpGrowth (derived from the CNRC/Sidjilcom nomenclature)
-- Reuse licence: CC BY 4.0
-- Attribution: UpGrowth (2026), Nomenclature CNRC 2026, CC BY 4.0
-- Encoding: UTF-8 (BOM accepted)
-- Delimiter: semicolon
-- Imported records: 2136
-- Fatal validation issues: 0
-- Warnings: 7
+- CSV snapshot revision: 2026-10-01
+- Imported at: 2026-11-05T17:41:03.015Z
+- Source SHA-256: d443511fa8b798acf4240de4eca3868fd7cb67879afa4397fa985a0106001ed5
+- Records: 2,136
+- Duplicate activity codes: 0
+- Fatal data-integrity issues: 0
+- Invalid source-label cells preserved: 7 across 5 activity records
 
 ## Records by sector
 
@@ -25,101 +20,81 @@
 | 6 | 754 |
 | 7 | 21 |
 
-## Field coverage
+## Source-field coverage
 
-| Source field | Non-empty records |
+Counts include non-empty usable strings and exclude the literal #NOM?.
+
+| Source field | Usable records |
 |---|---:|
-| code | 2136 |
-| label_fr | 2136 |
-| label_en | 2136 |
-| label_ar | 2136 |
-| status | 2136 |
-| sector_code | 2136 |
-| group_code | 2136 |
-| subgroup_code | 2136 |
+| code | 2,136 |
+| label_fr | 2,133 |
+| label_en | 2,134 |
+| label_ar | 2,134 |
+| status | 2,136 |
+| sector_code | 2,136 |
+| group_code | 2,136 |
+| subgroup_code | 2,136 |
 | tutelle_fr | 379 |
 | type_autorisation_fr | 379 |
-| contenue_fr | 2136 |
+| contenue_fr | 2,136 |
 | accessoires_fr | 905 |
 | references_texte_fr | 379 |
 
-## Status values and documented mapping
+## Source status values
 
-The upstream dataset documentation describes these CNRC catalogue statuses as follows:
-
-| Raw CSV value | Meaning | Count |
+| Raw value | Dataset meaning | Records |
 |---|---|---:|
 | normal | Free (حر) | 1,641 |
 | green | Regulated (نشاط منظم) | 350 |
 | red | Blocked (محظور) | 145 |
 
-This mapping is attributed to the UpGrowth dataset documentation. A catalogue status does not, by itself, prove that no other sector-specific permit or legal requirement applies.
+The mapping is attributed to UpGrowth's dataset documentation. A catalogue-level status is not, by itself, a complete determination of all sector-specific legal requirements.
 
-## Source-label warnings
+## Valid activity labels
 
-- 308006 — label_fr: #NOM? (kept as source value; not guessed)
-- 308006 — label_en: #NOM? (kept as source value; not guessed)
-- 310012 — label_fr: #NOM? (kept as source value; not guessed)
-- 310012 — label_en: #NOM? (kept as source value; not guessed)
-- 431103 — label_fr: #NOM? (kept as source value; not guessed)
-- 443102 — label_ar: #NOM? (kept as source value; not guessed)
-- 607042 — label_ar: #NOM? (kept as source value; not guessed)
+- Arabic: 2,134 / 2,136
+- French: 2,133 / 2,136
+- English: 2,134 / 2,136
+- Valid Arabic and French labels on the same record: 2,131 / 2,136
+- Seven #NOM? cells across five codes are retained unchanged; no labels were guessed.
 
-## Second-language translation audit (2026-11-09)
+## Active Arabic translation coverage
 
-The 2,136-record source CSV has 2,134 usable Arabic labels and 2,133 usable French labels; two Arabic label cells and three French label cells remain `#NOM?` and are not guessed.
+| Field | Source records | Active Arabic translations |
+|---|---:|---:|
+| Activity content | 2,136 | 709 |
+| Accessories | 905 | 905 |
+| Tutelle | 379 | 379 |
+| Authorization type | 379 | 379 |
+| Legal references | 379 | 379 |
 
-| Overlay field | Arabic coverage |
-|---|---:|
-| `tutelle_fr` | 379 / 379 |
-| `type_autorisation_fr` | 379 / 379 |
-| `accessoires_fr` | 598 / 905 |
-| `contenue_fr` | 18 / 2,136 |
-| French-only references with preserved Arabic source | 1 / 379 |
+Content translations are source-bound to the exact French description. Unreviewed legacy drafts are quarantined and are not imported at runtime.
 
-**Important correction:** an audit of the former 105-entry content translation map found source-code mismatches. It has been quarantined as `contenue-unverified-drafts.json` and is no longer loaded. Only 18 content translations tied to exact French source strings are active. Untranslated source descriptions remain available in French in the collapsed source disclosure on Arabic pages; they are not presented as Arabic translations.
+- Quarantined legacy drafts: 105
+- Quarantined drafts whose codes are absent from this catalogue: 32
 
-The audit command is `bun run nae:audit-translations`. It fails if a reviewed translation has no matching activity or if its stored French source differs from the current catalogue source.
+## Current public-source reconciliation
+
+- Public source: https://www.upgrowth.dz/outils/nomenclature
+- Checked by LATTAB: 2026-11-11
+- UpGrowth-reported last verification: 2026-11-10
+- UpGrowth-reported CNRC portal date: 2026-11-07
+- Records: 2,136 repository / 2,136 published page (delta 0)
+- Sector counts and status counts: matched
+- Confirmed blocked rows: 301205 and 501308
+
+The earlier 2026-11-02 observation of 2,134 entries is historical and superseded by the 2,136-entry page checked on 2026-11-11; both previously discrepant codes are now explicitly listed as blocked.
+
+Scope: public UpGrowth page totals, sector/status totals, and the two named code rows. This is not an independent live CNRC/Sidjilcom query.
 
 ## Interpretation safeguards
 
-- Empty regulatory fields mean only that this CSV export contains no value for that field.
-- The status mapping is documented by the publisher of this dataset; preserve the original raw values and display the attribution.
+- The bundled CSV remains the dated 2026-10-01 source snapshot; reconciliation does not silently rewrite it.
 - A status such as “free” is not a blanket legal guarantee and does not replace checking sector-specific rules.
-- The dataset snapshot (2026-10-01) predates the official Sidjilcom page update date (2026-10-20) observed during this review; treat it as a dated snapshot, not a live registry.
-- Group and subgroup names are not present in the CSV and are not generated from numeric codes.
-- The source revision and acquisition dates are unknown; no official revision date is asserted.
+- Empty source regulatory fields mean only that the CSV contains no value for that field.
+- Group and subgroup names are not supplied by the CSV and must not be inferred from numeric codes.
+- Arabic content that has not been reviewed remains unavailable as an Arabic translation; the original French source is not mislabeled as Arabic.
 
-## Reconciliation with UpGrowth online table (snapshot 2026-11-02)
+## Warnings
 
-A comparison between the bundled CSV dataset (2,136 records, snapshot 2026-10-01) and UpGrowth's online table view (2,134 records, snapshot 2026-11-02) was conducted to verify sector and status discrepancies:
-
-- **Sector 3**: 185 records in repository vs 184 in online table (delta: -1).
-- **Sector 5**: 365 records in repository vs 364 in online table (delta: -1).
-- **Blocked status (`red`)**: 145 records in repository vs 143 in online table (delta: -2).
-- **Free (`normal`) & Regulated (`green`)**: Identical counts (1,641 free, 350 regulated).
-- **Total records**: 2,136 vs 2,134 (net difference of 2 records).
-
-### Discrepant codes identified
-
-1. **`301205`** — Sector 3 (Wholesale / تجارة بالجملة):
-   - Label FR: *Commerce de gros de la charcuterie*
-   - Label AR: *تجارة بالجملة للخنازيريات*
-   - Raw Status: `red` (محظور / Bloquée / Blocked)
-   - Contenue FR: *Commerce de gros de la charcuterie.*
-   - Explanation: Regulated statutory prohibition on pork/charcuterie products under Algerian commercial law. Omitted from UpGrowth's online table view, but present in the full CNRC nomenclature.
-
-2. **`501308`** — Sector 5 (Retail / تجارة بالتجزئة):
-   - Label FR: *Commerce de détail de la charcuterie*
-   - Label AR: *تجارة بالتجزئة للحوم الخنازير*
-   - Raw Status: `red` (محظور / Bloquée / Blocked)
-   - Contenue FR: *Vente au détail de la charcuterie, plats préparés, conserves de porc. (activité supprimée par la réglementation interdisant l'élevage et la commercialisation du porc).*
-   - Explanation: Expressly marked as deleted/prohibited by regulation in its source text. Omitted from UpGrowth's online table view, but maintained in the full CNRC nomenclature.
-
-### Action & Policy
-
-Per LATTAB institutional data retention guidelines:
-- Neither code is removed or fabricated. The full 2,136 records are retained in the repository.
-- No records were deleted merely to match an arbitrary online display filter.
-- Both codes remain appropriately flagged as `red` (محظور / Bloquée).
-- Provenance and CC BY 4.0 attribution to UpGrowth are preserved.
+- 32 quarantined legacy drafts refer to codes outside the current catalogue; they are not loaded by runtime code.
