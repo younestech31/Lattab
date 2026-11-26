@@ -78,14 +78,14 @@ export function middleware(request: NextRequest) {
   const hasSearchParams = url.searchParams.size > 0;
   const isDynamic = request.method.toUpperCase() !== 'GET' || hasSearchParams;
 
-  response.headers.set(
-    'X-Robots-Tag',
-    getRobotsHeader({
-      method: request.method,
-      pathname: url.pathname,
-      hasSearchParams,
-    }),
-  );
+  const robotsHeader = getRobotsHeader({
+    method: request.method,
+    pathname: url.pathname,
+    hasSearchParams,
+  });
+  if (robotsHeader) {
+    response.headers.set('X-Robots-Tag', robotsHeader);
+  }
 
   const isRSC =
     request.headers.get('RSC') === '1' ||
