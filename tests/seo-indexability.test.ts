@@ -8,13 +8,13 @@ import { isKnownPublicRoute } from "../lib/data/knownRoutes";
 const cleanGet = (pathname: string) =>
   getRobotsHeader({ method: "GET", pathname, hasSearchParams: false });
 
-test("keeps the clean Arabic and French public entry pages indexable", () => {
-  for (const pathname of ["/", "/fr", "/blog", "/fr/blog"]) {
+test("keeps clean static Arabic and French public pages explicitly indexable", () => {
+  for (const pathname of ["/", "/fr", "/blog", "/fr/blog", "/nae", "/fr/nae"]) {
     assert.equal(cleanGet(pathname), INDEXABLE_ROBOTS_HEADER, pathname);
   }
 });
 
-test("keeps Search Console example article URLs indexable when clean", () => {
+test("leaves dynamic article indexability to route metadata", () => {
   const examples = [
     "/blog/mainlevee-hypotheque-apres-credit-algerie",
     "/blog/declaration-plus-value-gn17-vente-immobilier-algerie",
@@ -29,11 +29,11 @@ test("keeps Search Console example article URLs indexable when clean", () => {
 
   for (const pathname of examples) {
     assert.equal(isKnownPublicRoute(pathname), true, pathname);
-    assert.equal(cleanGet(pathname), INDEXABLE_ROBOTS_HEADER, pathname);
+    assert.equal(cleanGet(pathname), null, pathname);
   }
 });
 
-test("every Markdown article filename is accepted by middleware in both locales", () => {
+test("every Markdown article is recognized without overriding its page metadata", () => {
   const root = process.cwd();
   const arabicDir = path.join(root, "content", "blog");
   const frenchDir = path.join(arabicDir, "fr");
@@ -52,18 +52,26 @@ test("every Markdown article filename is accepted by middleware in both locales"
       const slug = file.name.slice(0, -".md".length);
       const pathname = `${prefix}${slug}`;
       assert.equal(isKnownPublicRoute(pathname), true, pathname);
-      assert.equal(cleanGet(pathname), INDEXABLE_ROBOTS_HEADER, pathname);
+      assert.equal(cleanGet(pathname), null, pathname);
     }
   }
 });
 
-test("keeps query-string variants out of the index without blocking clean canonicals", () => {
+test("leaves NAE activity existence and language eligibility to page metadata", () => {
+  for (const pathname of ["/nae/000000", "/fr/nae/000000", "/nae/123456", "/fr/nae/123456"]) {
+    assert.equal(isKnownPublicRoute(pathname), true, pathname);
+    assert.equal(cleanGet(pathname), null, pathname);
+  }
+});
+
+test("keeps query-string variants out of the index", () => {
   const variants = [
     { pathname: "/", hasSearchParams: true },
     { pathname: "/?service=vente", hasSearchParams: true },
     { pathname: "/blog", hasSearchParams: true },
     { pathname: "/fr/blog", hasSearchParams: true },
     { pathname: "/blog/mainlevee-hypotheque-apres-credit-algerie", hasSearchParams: true },
+    { pathname: "/nae/123456", hasSearchParams: true },
   ];
 
   for (const item of variants) {
@@ -75,10 +83,6 @@ test("keeps query-string variants out of the index without blocking clean canoni
   }
 
   assert.equal(cleanGet("/"), INDEXABLE_ROBOTS_HEADER);
-  assert.equal(
-    cleanGet("/blog/mainlevee-hypotheque-apres-credit-algerie"),
-    INDEXABLE_ROBOTS_HEADER,
-  );
 });
 
 test("never marks unknown routes or non-GET requests as indexable", () => {
